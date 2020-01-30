@@ -1,0 +1,280 @@
+*Core 
+
+.SUBCKT  CoreJA  1  2   3  b1     area=24u  LeN=32m
++ ms=381.82k a=28.067 k=18.57 c=0.24753 
+.param RS=1m 
+.param c1=1/(1+c) c2=c1*C   
+.param mU0=1.256637061436u
+.func f(x) IF(aBS(x)>1m,(1/taNh(x)-1/x),0.33333*x)
+b1 3 0 V=V(1,2)/LeN
+b2 4 0  V=f(v(3)/A)
+b3 5 0 v=v(1,2)
+C1 5 7 1m rser={rs}  ic=0
+V1 7 0 0
+bi4 0 9 i=k*1m*SGN(I(V1))  rpar=1k 
+C2 9 0 1pF
+b5 11 0 v=Uramp(V(4,12)/((V(9)+1m)*len))
+b6 12 0 V=idt(1000*I(V1)*v(11)*c1)+c2*V(4)  tripdt=5n
+b7 13 0 V=aRea*mU0*(mS*V(12)+V(3))
+bi1 1 2 i=v(13) 
+b b1  0  V=V(13)/aRea   ;   +mU0*v(3)
+.ends CoreJA
+
+.subckt CoreChan in out H 1 Area=24u Len=32m Hc=15 Br=0.45 BS=0.57 
+Bh H 0 V=V(in,out)/Len tripdt=50n 
+BiH 0 L i=V(H) tripdt=50n
+L L 0 Bs={Bs} Br={Br} Hc={Hc} A=1 Lm=1 Lg=0 N=1 Rser=0  Rpar=10meg
+Cl L 0 25p Rser=200 
+BBB 1 0 V=idt(V(L)) 
+B5 in out I=area*v(1) tripdt=50n  rpar=1gig
+.ends
+.ends
+
+.SUBCKT  CoreMy  1  2   3  b1     area=24u  LeN=32m
++ ms=381.82k a=28.067 k=30 c=0.24753 
+.param RS=1m 
+.param oA=1/A  oLen=1/Len oArea=1/Area 
+.param  c1=1/(1+c) c2=c1*C
+*.param  c1=0.5 c2=0.1
+.param mU0=1.256637061436u
+.func f(x) sgn(x)*(1-exp(-abs(k*x)))
+b1 3 0 V=V(1,2)*oLeN
+b2 4 0  V=f(v(3)*oA)
+b3 5 0 v=v(1,2)
+C1 5 7 1m rser={rs}  ic=0
+V1 7 0 0
+bi4 0 9 i=k*1m*SGN(I(V1))  rpar=1k 
+C2 9 0 1pF
+b5 11 0 v=Uramp(V(4,12)/((V(9)+1m)*len))
+b6 12 0 V=idt(1000*I(V1)*v(11)*c1)+c2*V(4)
+b7 13 0 V=aRea*mU0*(mS*V(12)+V(3))
+bi1 1 2 i=v(13) 
+b b1  0  V=V(13)*oaRea+mU0*v(3)
+.ends CoreMy
+
+
+.SUBCKT CORELIN   1  2 H B1 Ur=1000 AREA=24u Len=32m 
+.param rm=gap/(1.256637061436u*Ur*AREA)
+R 1 2 {rm}
+b1 B1 0 V=V(H)/rm
+b2 H 0 V=V(1,2)/len
+.ENDS CORELIN	
+
+.SUBCKT GAP   1  2 H B1 AREA=24u gap=0.1m
+.param rm=gap/(1.256637061436u*AREA)
+R 1 2 {rm}
+b1 B1 0 V=V(H)/rm
+b2 H 0 V=V(1,2)/gap
+.ENDS GAP
+
+
+.Subckt Core in out H 1 params: Area=24u Len=32m
+.param mU0=1.256637061436u 
+B1 1 0 V=tbl(v(h),
+*____H____B___
++ -30000, -2.,
++ -10000, -1.92,
++ -5000, -1.85,
++ -2500, -1.8,
++ -1500, -1.74,
++ -900,  -1.67,
++ -610,  -1.6,
++ -440,  -1.5,
++ -340,  -1.4,
++ -280,  -1.3,
++ -230,  -1.2,
++ -200,  -1.1,
++ -170., -1,
++  0.,    0.,
++ 170.,   1.,
++ 200.,   1.1,
++ 230.,   1.2,
++ 280.,   1.3,
++ 340.,   1.4,
++ 440.,   1.5,
++ 610.,   1.6,
++ 900.,   1.67,
++ 1500,   1.74,
++ 2500,   1.8,
++ 5000,   1.85,
++ 10000,  1.92,
++ 30000,  2.
++)+mU0*v(H)
+B2 H 0 V=V(in,out)/Len 
+B3 in out I=Area*v(1)
+.ends 
+
+.Subckt IronCore in out H 1 params: Area=24u Len=32m 
+.param mU0=1.256637061436u
+B1 1 0 V=tbl(v(h),
+*____H_______B___
++ -25000 , -1.278 ,
++ -22500 , -1.269 ,
++ -20000 , -1.26 ,
++ -17500 , -1.25 ,
++ -15000 , -1.237 ,
++ -12500 , -1.2 ,
++ -10000 , -1.16 ,
++ -7500 ,  -1.065 ,
++ -5000 ,  -0.94 ,
++ -2500 ,  -0.7 ,
++ 0 ,       0,
++ 2500,     0.7, 
++ 5000 ,    0.94,
++ 7500 ,    1.065,
++ 10000 ,   1.16 ,
++ 12500 ,   1.2 ,
++ 15000 ,   1.237 ,
++ 17500 ,   1.25 ,
++ 20000 ,   1.26 ,
++ 22500 ,   1.269 ,
++ 25000 ,   1.278
++)+mU0*v(H)
+B2 H 0 V=V(in,out)/Len
+B3 in out I=Area*v(1) 
+.ends 
+
+.subckt CoreSquare1 in out H 1 Area=24u Len=32m Hc=5 Br=1.95 BS=2; Bad model
+bv1  bu 0 v=Bs*(v(h)+Hc)/(abs(v(h)+Hc)+Hc*(Bs/Br-1))*(1-v(c))  
+bv2  bd 0 v=Bs*(v(h)-Hc)/(abs(v(h)-Hc)+Hc*(Bs/Br-1))*v(c)   
+Bv 1 0 v=V(bu)+v(bd) tripdt=1n
+B2 H 0 V=V(in,out)/Len
+rf h hf 1k
+cf hf 0 10p
+b4 0 2 i=ddt(v(hf)) rpar=1
+c1 2 0 1u
+bc c 0 v=u(v(2))
+B3 in out1 I=Area*v(1) Rpar={Len*795775/Area} tripdt=10n
+.ends
+
+
+.subckt CoreSquareLoop in out H 1 Area=24u Len=32m Hc=15 Br=0.45 BS=0.57 p=0.02
+.param Bsp=Bs*p
+.param Bsk=Bsp+Bs Brk=Bsp+Br
+.param gamma=Hc*(Bsk/Brk-1)
+.param mU0=1.256637061436u
+bv1  bu 0 v=Bsk*(v(h)+Hc)/(abs(v(h)+Hc)+gamma)-BSp  
+bv2  bd 0 v=Bsk*(v(h)-Hc)/(abs(v(h)-Hc)+gamma)+BSp
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU0*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.subckt CoreSquareLoop2 in out H 1 Area=24u Len=32m Hc=15  BS=0.57 p=0.01 mUmax=100000
+.func f(x) tanh(k*x)
+.param Bsp=Bs*p Bsk=Bsp+Bs
+.param mU0=1.256637061436u k=mU0*mUmax/Bsk 
+bv1  bu 0 v=Bsk*F(v(h)+Hc)-BSp  tripdt=5n tripdv=10m
+bv2  bd 0 v=Bsk*F(v(h)-Hc)+BSp  tripdt=5n tripdv=10m
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU0*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len  tripdv=1m
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.subckt CoreSquareLoop3 in out H 1 Area=24u Len=32m Hc=15  BS=0.57 p=0.01 mUmax=100000
+.func f(x) sgn(x)*(1-exp(-abs(k*x)))
+.param Bsp=Bs*p Bsk=Bsp+Bs
+.param mU0=1.256637061436u k=mU0*mUmax/Bsk 
+bv1  bu 0 v=Bsk*F(v(h)+Hc)-BSp  tripdt=5n tripdv=10m
+bv2  bd 0 v=Bsk*F(v(h)-Hc)+BSp  tripdt=5n tripdv=10m
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU0*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len  tripdv=1m
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.subckt CoreSquareLoop4 in out H 1 Area=24u Len=32m Hc=15  BS=0.57 p=0.01 mUmax=100000
+.func f(x) sgn(x)*(1-1/(1+abs(k*x)))
+.param Bsp=Bs*p Bsk=Bsp+Bs
+.param mU0=1.256637061436u k=mU0*mUmax/Bsk 
+bv1  bu 0 v=Bsk*F(v(h)+Hc)-BSp  tripdt=5n tripdv=10m
+bv2  bd 0 v=Bsk*F(v(h)-Hc)+BSp  tripdt=5n tripdv=10m
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU0*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len  tripdv=1m
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.subckt CoreSquareLoop2m in out H 1 Area=24u Len=32m Hc=15  BS=0.57 p=0.01 mUmax=100000 mUsat=100
+.func f(x) tanh(k*x)
+.param Bsp=Bs*p Bsk=Bsp+Bs
+.param mU0=1.256637061436u k=mU0*(mUmax-mUsat)/Bsk
+.param mu=mu0*mUsat 
+bv1  bu 0 v=Bsk*F(v(h)+Hc)-BSp  tripdt=5n tripdv=10m
+bv2  bd 0 v=Bsk*F(v(h)-Hc)+BSp  tripdt=5n tripdv=10m
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len  tripdv=1m
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.subckt CoreSquareLoop3m in out H 1 Area=24u Len=32m Hc=15  BS=0.57 p=0.01 mUmax=100000 mUsat=100
+.func f(x) sgn(x)*(1-exp(-abs(k*x)))
+.param Bsp=Bs*p Bsk=Bsp+Bs
+.param mU0=1.256637061436u k=mU0*(mUmax-mUsat)/Bsk 
+.param mu=mu0*mUsat 
+bv1  bu 0 v=Bsk*F(v(h)+Hc)-BSp  tripdt=5n tripdv=10m
+bv2  bd 0 v=Bsk*F(v(h)-Hc)+BSp  tripdt=5n tripdv=10m
+Bv 1 0 v=V(bu)*v(c)+v(bd)*(1-v(c))+mU*v(h)  tripdt=5n
+B2 H 0 V=V(in,out)/Len  tripdv=1m
+B3 u 0 v=if((v(bd)>v(bu))&(V(h)<0),1,0) tripdt=5n 
+B4 d 0 v=if((v(bd)>v(bu))&(V(h)>0),1,0) tripdt=5n
+A1 u 10 0 0 0 C 0 0 OR Trise=5n
+A2 d C 0 0 0 10 0 0 OR Trise=5n
+B5 in out I=Area*v(1)  tripdt=10n
+.ic v(c)=0
+.ends
+
+.Subckt Winding l1 l2 mmf_out2 mmf_out params: N=100 rs=1m Tau=50n Tau2=50n
+*.param Tau=50n Tau2=50n
+B1 5 l1  i=v(7)*N/Rs Rpar={Rs}
+Cb1 5 l1 {tau2/rs} Rser=0
+v1 5 l2 dc 0
+bH2 6 mmf_out i=i(v1)*{N} Rpar=1
+cbh2 mmf_out1 6 100p
+v2  6 mmf_out2  dc  0 
+BF  7   0 i=i(v2) tripdt=50n
+L  7  0  1 Rpar={1/tau} Cpar=.1f 
+.ends Winding
+
+.Subckt Winding_RLCR l1 l2 mmf_out2 mmf_out params: N=100 Rs=1m Rp=1T Cp=0.1p Ls=10n Tau=50n Tau2=50n
+*.param Tau=50n Tau2=15n
+LR l l1 {Ls} rser=0
+Cp l1 l2 {Cp} Rpar={rp} rser={Rs/2}
+
+*E1 l 5 7 0 {N}
+*v1 5 l2 dc 0
+*H2 mmf_out 6 v1 {N}
+B1 5 l1  i=v(7)*N/Rs Rpar={Rs}
+Cb1 5 l1 {tau2/rs} Rser=0
+v1 5 l2 dc 0
+bH2 6 mmf_out i=i(v1)*{N} Rpar=1
+cbh2 mmf_out 6 100p
+
+v2  6 mmf_out2  dc  0 
+BF  7   0 i=i(v2) tripdt=50n
+L  7  0  1 Rpar={1/tau} Cpar=.1f
+.ends Winding_RLCR
+

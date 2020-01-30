@@ -1,0 +1,180 @@
+*******************************************
+* Library of two-wire lumped RLC coupled  *
+* transmission line models for LTspice    *
+* One to 512 segments, G is not modelled  *
+* Created by Vitaliy Tkachenko, 2005      *
+*******************************************
+* Parameters:                             *
+* Len - Transmission Line Length          *
+* Rs  - Series Resistance per Length      *
+* C11 C12 C22 - Capacitances per Length   *
+* L11 L12 L22 - Inductances per Length    *
+*******************************************
+.param
++ Ze={sqrt((L11+L12)/(C11+C12))}
++ Zo={sqrt((L11-L12)/(C11-C12))}
++ Zd={2*Ze*Zo/(Ze-Zo)}
++ Zc={Ze}
++ To={Len*sqrt((L11-L12)*(C11-C12))}
++ Te={Len*sqrt((L11+L12)*(C11+C12))}
+*******************************************
+
+.subckt two_coupled_lines 1 2 3 4 5 params:
++ Len=1 Num=1 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+C1 1 5 {(C11+C12)*Len/2/Num}
+C2 2 5 {(C22+C12)*Len/2/Num}
+C3 2 1 {-C12*Len/2/Num}
+L1 1 3 {L11*Len/Num} Rser={Rs*Len/Num}
+L2 2 4 {L11*Len/Num} Rser={Rs*Len/Num}
+K1 L1 L2 {L12/sqrt(L11*L22)}
+C4 3 5 {(C11+C12)*Len/2/Num}
+C5 4 5 {(C22+C12)*Len/2/Num}
+C6 4 3 {-C12*Len/2/Num}
+.ends
+
+.subckt two_coupled_lines_4 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=4 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    3     4     cmn two_coupled_lines
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x3  3    4    5     6     cmn two_coupled_lines
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x4  5    6    out1  out2  cmn two_coupled_lines
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_16 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=16 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_4
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    3     4     cmn two_coupled_lines_4
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x3  3    4    5     6     cmn two_coupled_lines_4
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x4  5    6    out1  out2  cmn two_coupled_lines_4
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_32 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=32 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    out1  out2  cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_64 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=64 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    3     4     cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x3  3    4    5     6     cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x4  5    6    out1  out2  cmn two_coupled_lines_16
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_128 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=128 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    out1  out2  cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_256 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=256 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    3     4     cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x3  3    4    5     6     cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x4  5    6    out1  out2  cmn two_coupled_lines_64
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends
+
+.subckt two_coupled_lines_512 in1 in2 out1 out2 cmn
++ params:
++ Len=1 Num=512 Rser=0
++ C11=1 C12=1 C22=1
++ L11=1 L12=1 L22=1
+
+x1  in1  in2  1     2     cmn two_coupled_lines_256
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+x2  1    2    out1  out2  cmn two_coupled_lines_256
++ Len={Len} Num={num} Rser={Rs}
++ C11={C11} C12={C12} C22={C22}
++ L11={L11} L12={L12} L22={L22}
+.ends

@@ -1,0 +1,52 @@
+*
+.SUBCKT BF324 1 2 3 
+* housing parasitics
+LB 2 22 1.2E-09 
+LE 3 33 2.3E-09 
+LC 1 11 1.7E-09 
+CBCG 22 11 3.53E-13 
+CBEG 22 33 1.81E-13 
+CCEG 11 33 2.37E-13 
+Q1 11 22 33 QBF324 
+*
+.MODEL QBF324 PNP( 
++     IS = 3.686E-16 
++     NF = 0.9966 
++     ISE = 2.604E-16 
++     NE = 1.263 
++     BF = 48.63 
++     IKF = 0.081 
++     VAF = 69 
++     NR = 1.01 
++     ISC = 9.693E-13 
++     NC = 1.56 
++     BR = 1.682 
++     IKR = 0.1 
++     VAR = 23 
++     RB = 18 
++     IRB = 3E-06 
++     RBM = 2 
++     RE = 0.4232 
++     RC = 1.5 
++     XTB = 0 
++     EG = 1.11 
++     XTI = 3 
++     CJE = 1.99E-12 
++     VJE = 0.7036 
++     MJE = 0.2976 
++     TF = 2.559E-10 
++     XTF = 4.5 
++     VTF = 6 
++     ITF = 0.1 
++     PTF = 0 
++     CJC = 3.103E-12 
++     VJC = 0.4209 
++     MJC = 0.3358 
++     XCJC = 0.0464 
++     TR = 3E-08 
++     CJS = 0 
++     VJS = 0.75 
++     MJS = 0.333 
++     FC = 0.9506)
+.ENDS
+*

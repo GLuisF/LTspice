@@ -1,0 +1,107 @@
+*
+* BF485PN NPN/PNP High Voltage Transistors
+*
+.SUBCKT BF485PN 1 2 3 4 5 6
+*
+Q1 6 5 1 TR1
+D1 5 6 DIODE
+Q2 3 2 1 TR2
+*
+* The diode does not reflect a
+* physical device but improves
+* only modeling in the reverse 
+* mode of operation.
+*
+.MODEL TR1 NPN
++ IS = 2.035E-14
++ NF = 0.9935
++ ISE = 3.978E-14
++ NE = 1.665
++ BF = 130
++ IKF = 0.014
++ VAF = 25
++ NR = 0.992
++ ISC = 1E-20
++ NC = 2
++ BR = 4
++ IKR = 0.05
++ VAR = 41
++ RB = 86.68
++ IRB = 4.751E-05
++ RBM = 0.01
++ RE = 0.1
++ RC = 1.121
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.796E-11
++ VJE = 0.6157
++ MJE = 0.3244
++ TF = 1.15E-09
++ XTF = 37
++ VTF = 5
++ ITF = 0.06
++ PTF = 0
++ CJC = 4.4E-12
++ VJC = 0.2356
++ MJC = 0.3701
++ XCJC = 1
++ TR = 9E-07
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.9
+.MODEL DIODE D
++ IS = 1.5E-13
++ N = 1
++ BV = 1000
++ IBV = 1E-06
++ RS = 900
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 2
+.MODEL TR2 PNP 
++ IS = 1.737E-14 
++ NF = 0.9934 
++ ISE = 8.208E-15 
++ NE = 1.559 
++ BF = 141.4 
++ IKF = 0.08 
++ VAF = 350 
++ NR = 0.9755 
++ ISC = 2.097E-10 
++ NC = 1.65 
++ BR = 2.5 
++ IKR = 0.06 
++ VAR = 17 
++ RB = 70 
++ IRB = 5E-05 
++ RBM = 0.3 
++ RE = 0.418 
++ RC = 2.5 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.916E-11 
++ VJE = 0.7361 
++ MJE = 0.3612 
++ TF = 1.356E-09 
++ XTF = 19 
++ VTF = 9 
++ ITF = 0.2 
++ PTF = 0 
++ CJC = 1.071E-11 
++ VJC = 0.726 
++ MJC = 0.5717 
++ XCJC = 0.413 
++ TR = 3.3E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.999 
+.ENDS
+*

@@ -1,0 +1,57 @@
+*
+.SUBCKT PZTA92 1 2 3 4
+* 
+* housing parasitics
+LBlead 1 11 1.63E-09
+LBbond 11 111 2.06E-09
+LE 3 33 3.69E-09
+LC 2 22 4.1E-10
+CBCG 22 111 1.76E-13
+CBEG 33 111 8.6E-14
+CCEG 22 33 1.76E-13
+*
+Q1 22 111 33 PZTA92
++ AREA = 1
+R1 2 4 0 
+*
+.MODEL PZTA92 PNP 
++ IS = 1.737E-14 
++ NF = 0.9934 
++ ISE = 8.208E-15 
++ NE = 1.559 
++ BF = 141.4 
++ IKF = 0.8 
++ VAF = 350 
++ NR = 0.9755 
++ ISC = 2.097E-10 
++ NC = 1.65 
++ BR = 2.5 
++ IKR = 0.06 
++ VAR = 17 
++ RB = 70 
++ IRB = 5E-05 
++ RBM = 0.3 
++ RE = 0.418 
++ RC = 2.5 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.916E-11 
++ VJE = 0.7361 
++ MJE = 0.3612 
++ TF = 1.356E-09 
++ XTF = 19 
++ VTF = 9 
++ ITF = 0.2 
++ PTF = 0 
++ CJC = 1.071E-11 
++ VJC = 0.726 
++ MJC = 0.5717 
++ XCJC = 0.413 
++ TR = 3.3E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.999
+.ENDS
+*

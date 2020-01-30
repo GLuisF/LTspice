@@ -1,0 +1,194 @@
+
+* X1 IS SUBCKT CALL # FOR SG1525A - ASSUMES YOU LABEL IT X1 IN YOUR NETLIST
+* CHANGE THIS PART OF THE NODE # TO CORRELATE TO THE SUBCKT CALL # THAT YOU
+* ASSIGN SUBCKT SG1525A IN YOUR CKT NETLIST  
+*
+.SUBCKT SG1525A/25C 18 6  1  2   9  111 40  15  114  16 116  
++ params:  period = 25u   deadtime = 0.5u
+*************      -IN |  |  |   |   |   |   |   |   |   |
+*****************     +IN |  |   |   |   |   |   |   |   |  
+********************     OSC |   |   |   |   |   |   |   |
+***********************     RAMP |   |   |   |   |   |   |  
+**************************     COMP  |   |   |   |   |   |
+*******************************     OUTA |   |   |   |   |
+************************************     GND |   |   |   |  
+***************************************     VC   |   |   |
+******************************************     OUTB  |   |  
+***********************************************     VIN  |  
+**************************************************     VREF  
+* SYNC - PIN3 IS NOT USED  
+**PINS 5,6, AND 7 ARE COMBINED INTO PIN2, THE RAMP.  THERE IS NO NEED TO  
+**CONNECT CAPACITORS AND RESISTORS AT THESE PINS FOR RAMP GENERATION 
+* BECAUSE  THIS WAVEFORM IS DEFINED BY THE USER IN THE OSCILLATOR SECTION
+* THROUGH TWO MODEL PARAMETERS:  PERIOD, DEADTIME.
+* THE  IDEAL OSCILLATOR IN THIS MODEL IS DEFINED BY TWO VOLTAGE PULSE
+* WAVEFORMS  (VPULSE).  ONE SETS THE OSCILLATOR OUTPUT AND THE OTHER 
+* DEFINES THE SAWTOOTH  WAVEFORM.  PLEASE SEE THE OSCILLATOR SUBCKT 
+* SECTION FOR INSTRUCTIONS ON  DEFINING THESE WAVEFORMS.  
+**PIN8, SOFT-START, AND PIN10, SHUTDOWN, ARE NOT USED IN THIS MODEL  
+**PIN9, THE COMPENSATION PIN, REQUIRES TWO RESISTORS IN PARALLEL WHEN
+* USED  BECAUSE PSPICE GENERATES AN ERROR MESSAGE IF THERE ARE NOT TWO 
+* CONNECTIONS  AT EVERY NODE.  
+r9a 9 0 1G
+r9b 9 0 1G
+X1 1 2 40 OSC  PARAMS: PERIOD={PERIOD} DEADTIME={DEADTIME} 
+X4 5 1 11 10 4 40 SR  
+X5 1 13 12 4 40 TFF_SG1525A
+X8 16 15 116 11 1 13 20 111 40 PWMOUT  
+X9 16 15 116 11 1 12 20 114 40 PWMOUT  
+EOPAMPUVL 20 40 25 16 1 ;UNDER VOLTAGE LOCKOUT  
+VIN25 25 40 8.7V
+RIN25 25 40 1MEG  
+VFIVE 4 40 5V ;POWER TO INTERNAL CKTS
+VREF 116 40 5.1V ;OUTPUT OF REFERENCE SECTION  
+EOPAMP1  3 40 6 18 10K ;THIS IS THE ERROR AMPLIFIER  
+RIN6 6 40 10E12
+RIN18 18 40 10E12  
+EOPAMP2  5 40 2 3 1 ;THIS IS THE COMPARATOR  
+RIN2 2 40 10E12  
+RIN3 3 40 10E12  
+*********************************************
+.ENDS SG1525A/25C  
+*
+*********************************************  
+.SUBCKT OSC    1         2       40   PARAMS: PERIOD=25U DEADTIME=0.5U
+*           OSC OUT     RAMP    GROUND  
+*  
+* THE USER DEFINES THE OSCILLATOR OUTPUT WAVEFORM AS A PULSE TRAIN.  THIS 
+* PULSE TRAIN IS USED FOR INTERNAL SIGNALS TO THE TOGGLE FLIP-FLOP, SR
+* LATCH, AND  4 INPUT NOR GATES OF THE OUTPUT SECTION.  
+* THE USER DEFINES THE CAPACITOR RAMP WAVEFORM WHICH IS USED AS AN 
+* INTERNAL  SIGNAL TO THE PULSE WIDTH MODULATOR COMPARATOR.  
+*
+* SET THE OSC PULSE WITH THE VOSC STATEMENT:  
+*  
+* T=PERIOD   D=DEADTIME    DELAY=T-D  
+*  
+* I.E. PULSE(0      5    T-D    20E-9  20E-9  D-(TR & TF)   T ) OSC WAVEFORM  
+*            |      |     |      |      |        |          |
+*         (VBEGIN  VEND  DELAY  TRISE  TFALL  PULSEWIDTH   PERIOD)  
+*  
+*  
+VOSC 1 40 PULSE(0 5  {period-deadtime} 20N 20N {deadtime-40n} {period} )  
+*  
+* SET THE RAMP PULSE WITH THE VCAP STATEMENT:
+*  
+* T=PERIOD   D=DEADTIME    RISETIME OF SAWTOOTH = T-D  
+*  
+* PULSE(1      3     0      T-D   D-(5E-9)    5E-9        T) CAP VOLT WAVEFORM  
+*       |      |     |       |       |         |          |  
+*    (VBEGIN  VEND  DELAY  TRISE  TFALL    PULSEWIDTH   PERIOD)
+*  
+*  
+VCAP 2 40 PULSE(1 3.5 0 {period-deadtime} {deadtime-5n} 5n {period} )  
+R1 1 40 1E6  
+R2 2 40 1E6  
+.ENDS OSC
+*
+**********************************************  
+*-----------------------------------------------------------------------------  
+.SUBCKT SR    1     4     5   6     10    40  
+*             S     R     Q  QBAR   VCC   GROUND  
+X1 1 2 3 10 40 NAND
+X2 3 4 2 10 40 NAND  
+X3 3 6 5 10 40 NAND  
+X4 5 2 6 10 40 NAND  
+R6 6 40 10E6  
+C3 3 40 0.5E-12 IC=0.5  
+CQ 5 40 0.5E-12 IC=5
+C6 6 40 0.5E-12 IC=0.5  
+.ENDS SR  
+*
+**********************************************  
+.SUBCKT TFF_SG1525A 1 10 20 50 40  
+*********** |  |  |  |  |
+*********** |  |  |  | GND  
+*********** |  |  | VCC  
+*********** |  |  QNOT  
+*********** |  Q  
+*********** INPUT  
+****************************
+**** 2 INPUT NAND2 GATE ****  
+****************************  
+R3 2 50 1E3  
+R4 50 3 1E3  
+R5 2 6 10E3  
+R6 3 5 10E3
+Q1 2 5 40 Q222200  
+Q2 3 6 40 Q222200  
+D1 5 7 D1  
+D2 6 8 D1  
+C1 1 7 100E-12  
+C2 1 8 100E-12
+R1 2 7 10000  
+R2 3 8 10000  
+X1 2 2 10 50 40 NAND  
+*NAND AS INVERTER TO BUFFER OUTPUT.  
+X2 3 3 20 50 40 NAND  
+*NAND AS INVERTER TO BUFFER OUTPUT.
+.ENDS TFF_SG1525A
+*
+******************************  
+**      SG1525A OUTPUT STAGE (X7, X8)     **  
+********************************************  
+.SUBCKT PWMOUT 1 2 17 12 13 14 20 5 40
+**             | | |  |  |  |  |  | |  
+**             | | |  |  |  |  |  | GND  
+**             | | |  |  |  |  |  OUTPUT  
+**             | | |  |  |  |  UVL  
+**             | | |  |  |  Q  
+**             | | |  |  OSC
+**             | | |  NOT PWM  
+**             | | VREF  
+**             | VC  
+**             VIN  
+*****************************************  
+I3MA 1 6 3MA
+I3MA2 1 3 3MA  
+RI3 1 6 10MEG  
+RI32 1 3 10MEG  
+Q1 8 9 40 Q222200  
+Q2 8 10 40 Q222200  
+Q3 8 11 40 Q222200
+Q4 6 8 40 Q222200  
+Q5 3 6 7 Q222200  
+Q6 2 3 4 Q222200  
+Q7 2 4 5 Q222200  
+Q8 5 7 40 Q222200  
+Q9 8 20 40 Q222200
+R1 4 5 5K  
+R2 7 40 2K  
+R3 12 9 10K  
+R4 13 10 10K  
+R5 14 11 10K  
+D1 4 3 D1
+D2 5 3 D1
+IREF 17 8 500UA  
+RIREF 17 8 10MEG  
+.ENDS  PWMOUT  
+*
+**********************************************
+* NAND GATE USING TWO DIODES AND A TRANSISTOR  
+.SUBCKT NAND 1  2  3  4  40  
+************IN  |  |  |  |
+************** IN  |  |  |  
+******************OUT |  |
+******************** VCC |
+*********************** GND
+D1 8 6 D1  
+D2 8 7 D1
+Q1 9 11 40 NP; Q222200 CAUSES OSCILLATIONS AT 250HZ ; USE NP HERE
+R1 4 8 1E3
+R2 4 9 1E3  
+R3 10 11 1E3
+R4 1 40 1E6
+R5 2 40 1E6
+E1 6 40 1 40 1
+E2 7 40 2 40 1
+E3 10 40 8 40 0.75
+E4 20 40 9 40 1
+R20 20 12 1E3
+C12 12 40 1E-12
+E5 30 40 12 40 1
+ROUT 30 3 40
+.ENDS NAND

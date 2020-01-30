@@ -1,0 +1,52 @@
+Basso Application
+SUBCKT dcXFMR          1 2 3 4 d  Basso:DCXFMR  [Misc]  ; No processable comment
+SUBCKT XFMR2           1 2 3 4 10 11   Basso:XFMR2  [Misc]  ; No processable comment
+SUBCKT XFMR1           1 2 3 4   Basso:XFMR1  [Misc]  ; No processable comment
+SUBCKT TL431           K A REF  Basso:TL431  [Misc]  ; No processable comment
+MODEL  SBREAK          <VSWITCH> [Misc]
+MODEL  SBREAK2         <VSWITCH> [Misc]
+MODEL  SBREAK3         <VSWITCH> [Misc]
+MODEL  DBREAK          <D>     [D]
+MODEL  DBREAKZ         <D>     [D]
+MODEL  DBREAKPFC       <D>     [D]
+MODEL  DBREAKCL        <D>     [D]
+MODEL  MBR20100        <D>     [D]
+MODEL  MBR845          <D>     [D]
+MODEL  MBRA210ET3      <D>     [D]
+MODEL  MBRF2060CT      <D>     [D]
+MODEL  MBRP30045CT     <D>     [D]
+SUBCKT FFLOP           6 8 2 1  Basso:FFLOP  [Misc]  ; No processable comment
+SUBCKT DFFLOP          1  2 11 12 5  6  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND30_64       1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND31_64       1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INV_64          1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT OR2             1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INV             1 2  Basso:INV  [Misc]  ; No processable comment
+SUBCKT AND2            1 2 3  Basso:AND2  [Misc]  ; No processable comment
+SUBCKT Opto            A K C E   Basso:OPTO  [Misc]  ; No processable comment
+SUBCKT SWhyste         NodeMinus NodePlus Plus Minus   Basso:SWHYSTE  [Misc]  ; No processable comment
+MODEL  MBR20100CT      <D>     [D]
+SUBCKT shuntreg        FB gnd out   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT AMPSIMP         1 5 7   Basso:AMPSIMP  [Misc]  ; No processable comment
+SUBCKT MOS             D G S TinaICs:<NMOSE> [NMOS]
+SUBCKT UVLO_G           1   2  30   Basso:UVLO  [Misc]  ; No processable comment
+SUBCKT COMPARHYS       NINV INV OUT   Basso:COMPARHYS  [Misc]  ; No processable comment
+SUBCKT COMPAR          NINV INV OUT   Basso:COMPAR  [Misc]  ; No processable comment
+SUBCKT REFVAR           In Out Gnd   Basso:REFVAR  [Misc]  ; No processable comment
+SUBCKT VARIRES         1 2 CTRL  Basso:VARIRES  [Misc]  ; No processable comment
+SUBCKT VARICAP         1 2 CTRL  Basso:VARICAP  [Misc]  ; No processable comment
+SUBCKT VARICOIL        1 2 CTRL  Basso:VARICOIL  [Misc]  ; No processable comment
+SUBCKT DTAND           1 5 6   Basso:DTAND  [Misc]  ; No processable comment
+SUBCKT GAIN            1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT POWERVCO        err out   Basso:POWERVCO  [Misc]  ; No processable comment
+SUBCKT VCO2            FB1 A B   Basso:VCO2  [Misc]  ; No processable comment
+SUBCKT coresat         L1 L2 110 100   Basso:CORESAT  [Misc]  ; No processable comment
+SUBCKT OP3842          In out gnd  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT UVLO            1 2 30   Basso:UVLO  [Misc]  ; No processable comment
+SUBCKT 262MULERR       FB MULIN ERR MULOUT  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT COMPARHYSV      NINV INV OUT VAR   Basso:COMPARHYSV  [Misc]  ; No processable comment
+SUBCKT irfbe20         1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT STP20NM60FD     1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT ntb52n10        1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT stp7nb80        1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT STP11NK50Z      1 2 3  <AutoShape>  [Misc]  ; No processable comment

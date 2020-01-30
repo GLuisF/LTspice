@@ -1,0 +1,54 @@
+*
+.SUBCKT MPSA56 1 2 3
+* 
+* housing parasitics
+LB 2 22 1.2E-009 
+LE 3 33 2.3E-009 
+LC 1 11 1.7E-009 
+CBCG 22 11 3.53E-013 
+CBEG 22 33 1.81E-013 
+CCEG 11 33 2.37E-013
+* 
+Q1 11 22 33 MPSA56 
+*
+.MODEL MPSA56 PNP 
++ IS = 6.777E-014 
++ NF = 0.9854 
++ ISE = 5.689E-015 
++ NE = 1.277 
++ BF = 206 
++ IKF = 0.175 
++ VAF = 38 
++ NR = 0.9884 
++ ISC = 1.394E-013 
++ NC = 1.145 
++ BR = 11 
++ IKR = 0.22 
++ VAR = 21 
++ RB = 16 
++ IRB = 0.0004 
++ RBM = 0.763 
++ RE = 0.085 
++ RC = 0.27 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 6.014E-011 
++ VJE = 0.7796 
++ MJE = 0.4005 
++ TF = 9E-010 
++ XTF = 10 
++ VTF = 0.5 
++ ITF = 0.5 
++ PTF = 0 
++ CJC = 2.439E-011 
++ VJC = 0.6416 
++ MJC = 0.4655 
++ XCJC = 1 
++ TR = 9E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.ENDS
+*

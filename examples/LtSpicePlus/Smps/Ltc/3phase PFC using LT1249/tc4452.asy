@@ -1,0 +1,23 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 20 -128 20 -112
+LINE Normal -20 -128 -20 -112
+LINE Normal 8 -100 -8 -100
+RECTANGLE Normal -112 -128 112 128
+ARC Normal -20 -124 4 -100 -20 -112 -8 -100
+ARC Normal -4 -124 20 -100 8 -100 20 -112
+WINDOW 0 0 -144 Center 0
+WINDOW 3 1 -2 Center 0
+SYMATTR Value TC4452
+PIN -112 -96 LEFT 8
+PINATTR PinName Vdd
+PINATTR SpiceOrder 1
+PIN -112 -32 LEFT 8
+PINATTR PinName Input
+PINATTR SpiceOrder 2
+PIN -112 96 LEFT 8
+PINATTR PinName Gnd
+PINATTR SpiceOrder 3
+PIN 112 -32 RIGHT 8
+PINATTR PinName Output
+PINATTR SpiceOrder 4

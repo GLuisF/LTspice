@@ -1,0 +1,73 @@
+* MODELLING FOR STGB20NB32LZ
+ 
+.SUBCKT STGB20NB32LZ 1 2 3
+LG 10 2 7.5E-09
+LE 3 15 7.5E-09
+LC 13 1 4.5E-09
+RG 10 5 8
+RC 14 13 0.543E-02
+RE 15 12 0.771E-02
+RGE 12 10 15K
+RF 7 10 1MEG
+RX 4 14 788.722
+CGE 12 5 0.192E-08
+CCG 17 4 0.548E-08
+CK 16 4  0.415E-10
+DGE 12 5 DE
+DCG 12 11 DG
+Q1 12 11 14 Q
+M1 11 5 12 12 MOS
+E1 16 5 8 7 1
+E2 17 5 6 7 1
+G1 7 9 11 10 1u
+D1  8 9 DI
+D2  9 6 DI
+D3 16 4 DO
+R1 7 8 1MEG
+R2 7 6 1MEG
+.ENDS STGB20NB32LZ
+ 
+.MODEL MOS NMOS
++ LEVEL = 3
++ VTO   = 1.587
++ KP    = 30.429
++ THETA = 0.997E-01
+ 
+.MODEL Q PNP
++ IS    = 0.893E-13
++ VAF   = 524.532
++ BF    = 1.982
++ NE    = 1.598
++ ISE   = 0.816E-12
++ IKF   = 4.722
++ BR    = 0.306E-01
++ NC    = 2.704
++ NK    = 0.329
++ TF    = 0.933E-06
++ ITF   = 1.201
++ VTF   = 20.164
++ XTF   = 1.523
+ 
+.MODEL DI D
++ IS    = 0.01E-12
++ RS    = 0
+ 
+.MODEL DO D
++ IS    = 0.01E-12
++ CJO   = 50E-12
++ VJ    = 0.75
++ M     = 0.35
+ 
+.MODEL DE D
++ IS    = 0.01E-12
++ BV    = 14.3
++ N     = 2
+ 
+.MODEL DG D
++ IS    = 0.01E-12
++ BV    = 380
++ VJ    = 0.75
++ M     = 0.35
+ 
+* END OF MODELLING
+

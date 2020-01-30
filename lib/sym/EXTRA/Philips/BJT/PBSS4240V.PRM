@@ -1,0 +1,50 @@
+*
+.SUBCKT PBSS4240V 1 2 3 4 5 6
+*
+R1 1 2 0
+R2 1 5 0
+R3 1 6 0
+*
+Q1 1 3 4 PBSS4240V
++ AREA = 1
+*
+.MODEL PBSS4240V NPN
++ IS = 1.967E-13
++ NF = 0.9876
++ ISE = 1.999E-13
++ NE = 2.5
++ BF = 480
++ IKF = 1
++ VAF = 85
++ NR = 0.9878
++ ISC = 1E-18
++ NC = 2.563
++ BR = 65
++ IKR = 5.5
++ VAR = 12
++ RB = 80
++ IRB = 3E-05
++ RBM = 0.6
++ RE = 0.053
++ RC = 0.073
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.158E-10
++ VJE = 0.5499
++ MJE = 0.3105
++ TF = 4.5E-10
++ XTF = 9
++ VTF = 3
++ ITF = 0.8
++ PTF = 0
++ CJC = 2.146E-11
++ VJC = 0.739
++ MJC = 0.4495
++ XCJC = 1
++ TR = 1.5E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.5
+.ENDS

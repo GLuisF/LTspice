@@ -1,0 +1,66 @@
+* Resistors,Capacitor,Inductor& Voltage sorce for use in sensitivity analysis J meech jan 2006
+* Requires "run" = (0)1...
+* Requires "sign" = -1 / 1 to set the sign of the delta componant value.
+* run == sequence uses nominal value + tolerance %
+*Resistor
+.subckt R_sens A B
+.param TOLC=SIGN*TOL/100
+.param kdr=if(run==sequence,1+TOLC,1)
+.param rdif=(R*kdr)-R
+.param rseries=if(run==sequence,0.000000000000000001,10000000000000000000000)
+.param vrdif=if(run==sequence,{rdif},0)
+V1 $G_rdif 0 {vrdif} Rser={rseries}
+R1 A B {R*kdr} 
+.ends R_sens
+*Capacitor
+.subckt C_sens A B
+.param TOLC=SIGN*TOL/100
+.param kdr=if(run==sequence,1+TOLC,1)
+.param cdif=(C*kdr)-C
+.param rseries=if(run==sequence,0.000000000000000001,10000000000000000000000)
+.param vcdif=if(run==sequence,{cdif}*1000000,0)
+V1 $G_cdif 0 {vcdif} Rser={rseries}
+C1 A B {C*kdr} 
+.ends C_sens
+*Inductor
+.subckt L_sens A B
+.param TOLC=SIGN*TOL/100
+.param kdr=if(run==sequence,1+TOLC,1)
+.param Ldif=(L*kdr)-L
+.param rseries=if(run==sequence,0.000000000000000001,10000000000000000000000)
+.param vLdif=if(run==sequence,{Ldif}*1000000,0)
+V1 $G_ldif 0 {vLdif} Rser={rseries}
+L1 A B {L*kdr} 
+.ends L_sens
+*voltage
+.subckt V_sens A B
+.param TOLC=SIGN*TOL/100
+.param kdr=if(run==sequence,1+TOLC,1)
+.param vdif=(V*kdr)-V
+.param rseries=if(run==sequence,0.000000000000000001,10000000000000000000000)
+.param vvdif=if(run==sequence,{vdif},0)
+V2 $G_vdif 0 {vvdif} Rser={rseries}
+V1 A B {V*kdr} 
+.ends V_sens
+
+* Sensitivity to delta voltage calculation
+.subckt sens_calc_v 0V
+B1 $G_Voltage_sensitivity 0 V=if(V($G_vdif)==0,0,(V($G_Test_NET)-{Vnom})/V($G_vdif))
+.ends sens_calc_v 0V
+
+* Sensitivity to delta resistance calculation
+.subckt sens_calc_r 0V
+B1 $G_Resistance_sensitivity 0 V=if(V($G_rdif)==0,0,(V($G_Test_NET)-{Vnom})/V($G_rdif)) 
+.ends sens_calc_r 0V
+
+* Sensitivity to delta capacitance calculation
+.subckt sens_calc_c 0V
+B1 $G_Capacitance_sensitivity 0 V=if(V($G_cdif)==0,0,(V($G_Test_NET)-{Vnom})/V($G_cdif)) 
+.ends sens_calc_c 0V
+
+* Sensitivity to delta Inductance calculation
+.subckt sens_calc_L 0V
+B1 $G_Inductance_sensitivity 0 V=if(V($G_Ldif)==0,0,(V($G_Test_NET)-{Vnom})/V($G_Ldif))
+.ends sens_calc_L 0V
+
+

@@ -1,0 +1,135 @@
+*//////////////////////////////////////////////////////////////////////
+* (C) National Semiconductor, Corporation.
+* Models developed and under copyright by:
+* National Semiconductor, Corporation.
+*/////////////////////////////////////////////////////////////////////
+* Legal Notice:
+* The model may be copied, and distributed without any modifications;
+* however, reselling or licensing the material is illegal.
+* We reserve the right to make changes to the model without prior notice.
+* Pspice Models are provided "AS IS, WITH NO WARRANTY OF ANY KIND"
+*////////////////////////////////////////////////////////////////////
+* For more information, and our latest models,
+* please visit the models section of our website at
+*       http://www.national.com/models/
+*////////////////////////////////////////////////////////////////////
+* LMH6672 SUBCIRCUIT
+* REV R - 3-OCT-2001
+* THIS PINOUT IS FOR
+* AMPLIFIER A ONLY
+* PINOUT ORDER  -IN +IN VCC VEE OUT
+* PINOUT         2   3   8   4   1
+.SUBCKT LMH6672 2 3 8 4 1
+R1 7 0 1.8E6
+D1 7 34 D1M
+D2 18 0 DV2M
+E1 34 0 5 0 1.0
+R2 7 5 1000
+C1 5 12 2.88E-12
+D7 23 0 DV2M
+G2 0 13 5 0 0.1
+I4 0 18 1.068E-4
+R3 13 0 10
+C2 13 0 70E-12
+G4 0 14 13 0 0.1
+R4 14 0 10
+C3 14 0 25E-12
+D10 19 8 D10M
+V1 19 20 1.83
+I8 0 23 1.068E-4
+D15 4 21 D10M
+V2 22 21 1.63
+I7 28 29 3.2E-6
+E3 3 45 23 18 0.55
+D8 37 0 DI8M
+C4 26 0 2E-12
+D11 34 7 D1M
+E2 5 22 27 0 1
+E4 20 5 27 0 1
+I3 0 30 1E-3
+D12 30 0 D12M
+D9 40 0 DI8M
+I9 0 37 1.068E-4
+V3 27 30 -0.71465
+R6 8 4 50E3
+V4 12 0 0
+L1 31 1 2E-9
+I1 8 4 0.7E-3
+Q34 33 28 29 Q34M
+Q35 17 35 36 Q35M
+Q36 16 2 38 Q35M
+Q1 8 32 26 Q1M
+R11 33 36 325
+R12 33 38 325
+Q2 8 14 39 Q2M
+Q3 4 39 26 Q3M
+Q4 4 14 32 Q4M
+R18 15 24 10E3
+I10 0 40 1.068E-4
+D14 24 42 D14M
+R7 31 1 1E3
+R9 26 31 1
+V6 35 45 4E-3
+G3 2 45 40 37 0.0123E-12
+R10 16 4 2E3
+R13 17 4 2E3
+G5 0 7 16 17 0.8E-3
+G6 0 7 0 81 -1E-9
+G7 0 7 0 48 -8.8E-7
+D3 35 8 D3M
+I6 35 4 4.1E-6
+I11 2 4 4.0E-6
+E5 15 0 8 4 1
+R16 15 41 10E3
+D13 41 25 D13M
+D4 2 8 D3M
+D5 4 35 D3M
+D6 4 2 D3M
+V7 8 29 0.8
+V10 25 0 3.4
+G1 0 48 8 0 1
+R17 49 48 1
+L2 0 49 1.2E-6
+R20 0 49 1200
+G8 8 4 41 0 0.5E-3
+G9 0 57 4 0 1
+G11 8 32 24 0 0.160E-3
+G13 39 4 43 0 0.135E-3
+V11 42 0 4.4
+R19 15 43 10E3
+D16 43 44 D16M
+V12 44 0 3.3
+D17 43 15 D17M
+R21 74 57 1
+L5 0 74 1.2E-6
+R22 0 74 1200
+G10 0 7 57 0 8.8E-7
+R34 81 82 1
+L6 82 0 1.5E-4
+R35 82 0 10E3
+R23 3 0 1E12
+R24 27 0 1E12
+G12 0 81 33 0 1
+C8 45 0 1E-12
+C9 2 0 1E-12
+D18 1 8 D3M
+D19 4 1 D3M
+.MODEL D1M D IS=5.002E-16
+.MODEL DV2M D IS=1E-16 KF=1E-14
+.MODEL D10M D IS=1E-15
+.MODEL DI8M D IS=1E-16 KF=1E-15
+.MODEL D12M D IS=7E-9 M=0.333 N=1.67
++ RS=2.95E-01 TT=2.88E-09 VJ=0.75
+.MODEL Q34M PNP
+.MODEL Q35M PNP BF=40 KF=1.5E-14
+.MODEL Q1M NPN BF=750 RC=0.75 RE=0.35
+.MODEL Q2M NPN BF=75
+.MODEL Q3M PNP BF=750 RC=4 RE=1.35
+.MODEL Q4M PNP BF=75
+.MODEL D14M D IS=1.0E-14 RS=2700
+.MODEL D3M D IS=3E-14 RS=0.5
+.MODEL D13M D IS=1.0E-14 RS=1
+.MODEL D16M D IS=1.0E-14 RS=1000
+.MODEL D17M D BV=3.3 IBV=1E-3 IS=1.0E-14
+.ENDS
+

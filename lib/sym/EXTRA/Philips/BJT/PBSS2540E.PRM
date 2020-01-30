@@ -1,0 +1,64 @@
+*
+.SUBCKT PBSS2540E 1 2 3
+*
+Q1 3 1 2 PBSS2540E
+D1 1 2 Diode
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS2540E NPN
++ IS = 4.366E-014 
++ NF = 0.9846 
++ ISE = 1.073E-015 
++ NE = 1.338 
++ BF = 400 
++ IKF = 0.1 
++ VAF = 20 
++ NR = 0.985 
++ ISC = 1E-018 
++ NC = 2.753 
++ BR = 40 
++ IKR = 0.4 
++ VAR = 10.4 
++ RB = 48.2 
++ IRB = 0.0004 
++ RBM = 8.46 
++ RE = 0.09 
++ RC = 0.2 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.557E-011 
++ VJE = 0.8 
++ MJE = 0.36 
++ TF = 5.55E-010 
++ XTF = 3 
++ VTF = 1.5 
++ ITF = 0.5 
++ PTF = 0 
++ CJC = 7.6E-012 
++ VJC = 0.5172 
++ MJC = 0.3587 
++ XCJC = 1 
++ TR = 5.4E-007 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.MODEL DIODE D 
++ IS = 2.86E-015 
++ N = 1.016 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 500 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS

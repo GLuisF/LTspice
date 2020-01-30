@@ -1,0 +1,9 @@
+*am15g_ltc.cir
+*take the x-axis in micron wavelength
+*take the y-axis in KW/m^2
+xspectr_irrad 11 0 am15g
+.include am15g_ltc.lib
+e_spectr_irrad_norm 12 0 value = {1000/962.5*v(11)}
+.tran 0.1u 4u
+.measure tran v(12)
+.end

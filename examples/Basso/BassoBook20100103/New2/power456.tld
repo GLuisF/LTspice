@@ -1,0 +1,36 @@
+Basso Power456
+SUBCKT PWMCM2          1   2   3    4  5     6    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT PWMCMS          out1   2   3    4  5     6  out2   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT 2SWITCHCM       1    8   7    2   3    4  5    6   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT PWMVM2          1   2   3    4  5    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT PUSH_CM         1    7    2   3    4  5    6   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT PUSH_VM         1    7    2   3    4  5    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT HALF_CM         1   8   7      2   3    4  5     6    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT HALF_VM         1    8   7    2   3    4  5    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FULL_CM         1    8    7    9    16   15   2   3    4  5    6    <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FULL_VM         1    8    7    9    16   15   2   3    4  5   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT ERRAMP          20 8  3  21   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT COMP            1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT OR2             1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NOR2            1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FFLOP           6 8 2 1  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT AND2            1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND3_0         1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND3_1         1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INV             1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT TOGGLE          1  2 11 12 5  6  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INVDT           1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT AND2DT          1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FreerunDT       dem fb cs gnd out   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FreerunNDT      dem fb cs gnd out   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INVFR           1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT LATCHFR         6 8 2 1  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND2FR         1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT AND2FR          1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT COMPARFR        NINV INV OUT   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT FFLOPFR         1  2 11 12 5  6  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND30_05FR     1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT NAND31_05FR     1 2 3 4  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT INV_05FR        1 2  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT UTDFR           1 2   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT ONESHOTRETFR    In Out   <AutoShape>  [Misc]  ; No processable comment

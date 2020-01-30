@@ -1,0 +1,25 @@
+***************************************************************
+* SIEMENS Small Signal Semiconductors
+* GUMMEL-POON MODEL CHIP PARAMETERS IN SPICE 2G6 SYNTAX
+* VALID UP TO 6 GHZ
+* >>> T395 <<< (CHIP)
+* Extracted on behalf of SIEMENS Small Signal Semiconductors by
+* Institut fuer Mobil- und Satellitenfunktechnik (IMST)
+* (C) 1996 SIEMENS AG
+* Version 1.0    September 1996
+***************************************************************
+.MODEL T395 NPN(
++ IS = 1.7264e-15     BF = 125          NF = 0.80012
++ VAF = 20            IKF = 0.4294      ISE = 1.1922e-13
++ NE = 1.1766         BR = 10.584       NR = 0.94288
++ VAR = 3.8128        IKR = 0.019511    ISC = 4.8666e-15
++ NC = 0.88299        RB = 1.2907       IRB = 8.4011e-05
++ RBM = 1             RE = 0.75103      RC = 0.27137
++ CJE = 1.3325e-14    VJE = 0.7308      MJE = 0.33018
++ TF = 2.3994e-11     XTF = 0.44322     VTF = 0.1
++ ITF = 0.0019775     PTF = 0           CJC = 1.667e-12
++ VJC = 0.73057       MJC = 0.3289      XCJC = 0.29998
++ TR = 2.2413e-09     CJS= 0            VJS = 0.75
++ MJS = 0             XTB = 0           EG = 1.11
++ XTI = 3             FC = 0.50922)
+***************************************************************

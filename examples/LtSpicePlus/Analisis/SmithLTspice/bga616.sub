@@ -1,0 +1,35 @@
+* BGA616 spice model from Infineon (Siemens)
+* includes transistor model and SOT323 package
+*
+.subckt BGA616 1 2 ref
+
+* SPICE Model BGA616
+* BGA616-Chip
+* Q1  T1
+* Q2  T1 (area factor: 0.5)
+Q1  7  6  9  T1_BGA616
+Q2  7  9 10  T1_BGA616 0.5
+R1  6  7  625ohm
+R2  6  8  625ohm
+R3  8  9  80ohm
+R4  8 10  4ohm
+
+* SOT323 package equivalent circuit for BGA616
+LBI  3  6  0.47nH
+LB0  1  3  0.53nH
+LEI  5  8  0.23nH
+LEO ref 5  0.05nH
+LCI  4  7  0.56nH
+LCO  2  4  0.58nH
+CBE  3  5  136fF
+CCB  3  4  6.9fF
+CCE  4  5  134fF
+
+.MODEL T1_BGA616 NPN(
++ IS=2.6e-015 BF=105 NF=1.021 VAF=1000 IKF=2.262 ISE=2.978E-12 NE=3.355 BR=100 
++ NR=1 VAR=1.2 IKR=0.00631 ISC=1.923E-14 NC=2.179 RB=2.674 IRB=1.8E-05 RBM=2.506 
++ RE=0.472 RC=2.105 XTB=-0.9 EG=1.114 XTI=3.43 CJE=3.716E-13 VJE=0.8986 MJE=0.3152 
++ TF=1.306E-12 XTF=2.71 VTF=0.492 ITF=2.444 PTF=0 CJC=2.256E-13 VJC=0.7395 
++ MJC=0.3926 XCJC=1 TR=3.884E-10 CJS=6E-14 VJS=0.5 MJS=0.5 FC=0.8215)
+
+.ends BGA616

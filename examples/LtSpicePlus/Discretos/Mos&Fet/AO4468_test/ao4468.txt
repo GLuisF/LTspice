@@ -1,0 +1,104 @@
+* http://www.aosmd.com/web/products/mosfet.jsp
+* I have changed the level=5 to level=3 in the AO4468 and AOD456.
+* I have also changed LAMBDA=1.5 to KAPPA=1.5 in the model AO4468.
+*
+.SUBCKT AO4468 4 1 2
+M1  10 5 7 8  NMOS W=556190u  L=1u 
+M2  8  5 8 10  PMOS W=1312500u  L=1.1u
+R1  4 10      RTEMP 4.8E-3
+CGS 5 7     460E-12
+R2  8 7     0.1E-3
+* Parasitic Body BJT: E: 7, B: 8, C: 9
+Q3  10 8 7   QBODY
+RG  6 5 0.7
+LG  1 6 1n
+LS  2 7 1n
+*********************************************************************
+.MODEL  NMOS       NMOS  (LEVEL  = 3               TOX    = 4.5E-8
++ RS     = 3E-4           RD     = 0               VTO=2 
++ UO =  800	  THETA  = 0.1            NSUB=2.0e17	
++ VMAX   = 8E6            XJ     = 5.1E-7          KAPPA=1.5
++ ETA    = 0              TPG    = 1  
++ IS     = 0              LD     = 0                           
++ CGSO   = 0              CGDO   = 0               CGBO   = 0 )
+**********************************************************************
+.MODEL  PMOS       PMOS (LEVEL   = 3               TOX    = 4.5E-8
++NSUB    = 1.2E16  NSS=-4E11 TPG    = -1)   
+**********************************************************************
+.MODEL QBODY NPN (IS=1.2E-12   Xti=0     Eg=1.11  
++BR=1     CJC=80E-12    MJC=0.35  
++TR=3E-9 XTB=0 VJC=0.55)
+**********************************************************************
+.MODEL RTEMP RES (TC1=3.6E-3   TC2=1E-6)
+**********************************************************************
+.ENDS
+
+
+.SUBCKT AO3414 4 1 2
+M1  3 1 2 2 NMOS W=391872u  L=1.0u 
+M2  2 1 2 4 PMOS W=391872u  L=0.93u
+R1  4 3     RTEMP 32E-3
+CGS 1 2     1E-12
+DBD 2 3     DBD
+**************************************************************************
+.MODEL  NMOS       NMOS  (LEVEL  = 3               TOX    = 1.5E-8
++ RS     = 1e-4          RD     = 0               NSUB   = 1.2E17  
++ UO     = 225        VTO=0.81     THETA  = 0
++ VMAX   = 0              XJ     = 4E-7            KAPPA  = 0.01
++ ETA    = 0              TPG    = 1  
++ IS     = 0              LD     = 0                           
++ CGSO   = 0              CGDO   = 0               CGBO   = 0 
++ NFS    = 2E10         DELTA  = 0.1)
+*************************************************************************
+.MODEL  PMOS       PMOS (LEVEL   = 3               TOX    = 1.5E-8
++NSUB    = 2.0E16      NSS=-6E11 TPG    = -1)   
+*************************************************************************
+.MODEL DBD D (CJO=46E-12     VJ=0.8    M=0.3
++RS=0.02 FC=0.5 IS=1.3E-9 TT=1.5E-7 N=1 BV=36 IBV=1E-4)
+*************************************************************************
+.MODEL RTEMP RES (TC1=2.0E-3   TC2=3E-6)
+*************************************************************************
+.ENDS
+
+
+.SUBCKT AOD456 4 1 2
+M1  10 5 7 8  NMOS W=2560000u  L=1.0u 
+M2  8  5 8 10  PMOS W=3322449u  L=0.4u
+R1  4 10      RTEMP 3.6E-3
+CGS 5 7     1E-12
+* RGS 1 2     1M
+R2  8 7     0.10E-3
+*CBS 8 7     310E-12
+*R3  9 4     3E-3
+* CDB 4 5     5E-12
+* Parasitic Body BJT: E: 7, B: 8, C: 9
+Q3  10 8 7   QBODY
+RG  6 5 0.86
+LG  1 6 3n
+LS  2 7 3n
+* BC breakdown by avalanche diode
+*DBD 8 9 DBD
+*********************************************************************
+.MODEL  NMOS       NMOS  (LEVEL  = 3               TOX    = 4.5E-8
++ RS     = 3E-4           RD     = 0               VTO=2.5  
++ UO =  930	  THETA  = 0.1            NSUB=2.0e17
++ VMAX   = 8E6            XJ     = 5.1E-7          KAPPA  = 6
++ ETA    = 0              TPG    = 1  
++ IS     = 0              LD     = 0                           
++ CGSO   = 0              CGDO   = 0               CGBO   = 0 
++ NFS    = 2E10           DELTA  = 0.1)
+**********************************************************************
+.MODEL  PMOS       PMOS (LEVEL   = 3               TOX    = 4.5E-8
++NSUB    = 5.5E16           TPG    = -1)   
+**********************************************************************
+.MODEL QBODY NPN (IS=1.5E-12   Xti=1       Eg=1.11     
++ BR=1    NC=2
++ CJC=780E-12    MJC=0.4   VJC=0.55        
++ TR=3E-9 XTB=0 )
+**********************************************************************
+.MODEL DBD D (CJO=1.2E-12     VJ=0.55    M=0.497
++RS=0  FC=0.5 IS=5E-12 TT=15E-9 N=1.0 BV=30 IBV=250E-6)
+**********************************************************************
+.MODEL RTEMP RES (TC1=3.8E-3   TC2=3.6E-6)
+**********************************************************************
+.ENDS

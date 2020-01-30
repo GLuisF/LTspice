@@ -1,0 +1,19 @@
+*DEVICE=BZX84C68V,D
+
+* BZX84C68V D model
+* created using Parts release 7.1 on 03/31/98 at 09:42
+* Parts is a MicroSim product.
+.MODEL BZX84C68V D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=11.121E-12
++ M=.34915
++ VJ=.60561
++ ISR=53.010E-12
++ BV=68.110
++ IBV=.14452
++ TT=2.6257E-6
+*$
+

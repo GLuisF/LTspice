@@ -1,0 +1,98 @@
+* WARNING : please consider following remarks before usage
+*
+* 1) All models are a tradeoff between accuracy and complexity (ie. simulation 
+*    time).
+* 2) Macromodels are not a substitute to breadboarding, they rather confirm the
+*    validity of a design approach and help to select surrounding component values.
+*
+* 3) A macromodel emulates the NOMINAL performance of a TYPICAL device within 
+*    SPECIFIED OPERATING CONDITIONS (ie. temperature, supply voltage, etc.).
+*    Thus the macromodel is often not as exhaustive as the datasheet, its goal
+*    is to illustrate the main parameters of the product.
+*
+* 4) Data issued from macromodels used outside of its specified conditions
+*    (Vcc, Temperature, etc) or even worse: outside of the device operating 
+*    conditions (Vcc, Vicm, etc) are not reliable in any way.
+
+
+**CONNECTIONS:
+*1 INVERTING INPUT
+*2 NON INVERTING INPUT
+*3 OUTPUT
+*4 POSITIVE POWER SUPPLY
+*5 NEGATIVE POWER SUPPLY
+.SUBCKT TSH70 1 2 3 4 5
+******************************************************************
+.MODEL MDTH D IS=1E-8 KF=2.664234E-16 CJO=10F
+*INPUT STAGE
+CIP 2 5 0.2E-12
+CIN 1 5 0.2E-12
+EIP 10 5 2 5 1
+EIN 16 5 1 5 1
+RIP 10 11 7
+RIN 15 16 7
+RIS 11 15 400
+DIP 11 120 MDTH 400E-12
+DIN 15 140 MDTH 400E-12
+VOFP 12 13 DC 100e-3
+VOFN 13 14 DC 0
+RDGP 120 12 312
+RDGN 140 14 312
+CDG 120 140 2P
+IPOL 13 5 780e-6
+CPS 11 15 0.3E-9
+DINN 17 13 MDTH 400E-12
+VIN 17 5 0.25
+DINR 15 18 MDTH 400E-12
+VIP 4 18 2
+FCP 4 5 VOFP 9
+FCN 5 4 VOFN 9
+FIBP 2 5 VOFP 15e-3
+FIBN 5 1 VOFN 15e-3
+**GM1 STAGE ******************************
+FGM1P 119 5 VOFP 1
+FG1N 119 5 VOFN 0.5
+RAP 119 4 4.93E5
+RAN 119 5 5E5
+**GM2 STAGE ******************************
+G2P 19 5 119 5 161E-3
+G2N 19 5 119 4 161E-3
+R2P 19 4 2.5E7
+R2N 19 5 2.5E7
+******************************************
+VINT1 500 0 3
+GCONVP 500 501 119 4 19.38
+VP 501 0 0
+GCONVN 500 502 119 5 19.38
+VN 502 0 0
+*****************************************
+** ORIENTATION ISINK ISOURCE
+VINT2 503 0 3
+FCOPY 503 504 VOUT 1
+DCOPYP 504 505 MDTH 400E-9
+VCOPYP 505 0 0
+DCOPYN 506 504 MDTH 400E-9
+VCOPYN 0 506 0
+******************************************
+F2PP 19 5 POLY(2) VCOPYP VP 0 0 0 0 0.5
+F2PN 19 5 POLY(2) VCOPYP VN 0 0 0 0 0.5
+F2NP 19 5 POLY(2) VCOPYN VP 0 0 0 0 1.75
+F2NN 19 5 POLY(2) VCOPYN VN 0 0 0 0 1.75
+***COMPENSATION**************************
+CC 19 119 4.5P
+******************************************
+****OUTPUT********************************
+DOPM 19 22 MDTH 400E-12
+DONM 21 19 MDTH 400E-12
+HOPM 22 28 VOUT 9.36E+03
+VIPM 28 4 500
+HONM 21 27 VOUT 9.90E+03
+VINM 5 27 500
+VOUT 3 23 0
+ROUT 23 19 10
+COUT 3 5 15E-12
+DOP 19 25 MDTH 400E-12
+VOP 4 25 1.35
+DON 24 19 MDTH 400E-12
+VON 24 5 1.2
+.ENDS

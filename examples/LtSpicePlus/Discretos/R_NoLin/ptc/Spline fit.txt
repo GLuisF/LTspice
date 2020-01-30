@@ -1,0 +1,9 @@
+This series of thermistors are all fit with a curve of the same form.  It consists of an exponential of a spline of two powers (constante g and j) of temperature that connect at approximately the inflexion temperature (where the second derivative of resistance versus temperature changes sign).  In the model, constant f is that temperature.  As with all splines, the value of resistance has no jump as the temperature passes through the join and the derivative of resistance has no step at the join.  
+
+This spline is added to a negative tempco to produce the low temperature characteristic.  The temperature rise is modeled as a single thermal time constant.  The temperature rise is limited to that which will rpodice no higher temperature than the data covers, to inprove convergence during high disipation conditions that pass through the steep part of the curve.
+
+The data all these models is based on can be found at:
+http://www.vishay.com/docs/29012/23226719.pdf
+
+If you find any problems with any of these models or have any suggestions on improving them, please contact me at:
+jpopelish@rica.net.

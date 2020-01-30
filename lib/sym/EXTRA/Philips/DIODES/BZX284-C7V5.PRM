@@ -1,0 +1,18 @@
+*DEVICE=BZX284C7V5,D
+* BZX284C7V5 D model
+* created using Parts release 7.1 on 06/17/98 at 10:49
+* Parts is a MicroSim product.
+.MODEL BZX284C7V5 D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=149.75
++ CJO=86.021E-12
++ M=.32808
++ VJ=.62493
++ ISR=1.1185E-9
++ BV=7.6329
++ IBV=1.0062
++ TT=2.7411E-6
+*$
+

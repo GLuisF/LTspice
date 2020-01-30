@@ -1,0 +1,261 @@
+.SUBCKT NCP4303B VCC MIN_TOFF MIN_TON TRIG/DISABLE CS COMP GND DRV
+*
+V05 $G_DPWR $G_DGND 5
+V00 $G_DGND GND 0
+*
+* source MODEL_NCP4303_V2
+X_U_U2         GND GND U_N1830577 U_N1830491 U_N1832641 M_UN0001 $G_DPWR
++  $G_DGND DFFRSH
+X_U_S4    U_DRV_QB GND DRV GND Top_U_S4 
+E_U_E1         U_N1832597 GND COMP GND -1
+X_U_U17         GND GND U_N1978668 U_N1978326 U_N1984112 M_UN0002 $G_DPWR
++  $G_DGND DFFRSH
+C_U_C1         GND U_N1829157  20p  
+R_U_R11         U_N1830007 MIN_TOFF  1  
+R_U_R16         U_N1829853 U_N1829043  10k  
+X_U_U10         U_N1832481 U_DRV_Q U_MIN_T_ON  $G_DPWR $G_DGND AND2
+C_U_C4         U_N1959992 U_N1955592  100n  
+X_U_S7    U_N2051306 GND U_N2037602 GND Top_U_S7 
+I_U_I3         U_N2054879 U_N2037614 DC 1u  
+X_U_U31         U_EN_SET U_N1842038 PULSE_RISING PARAMS:  WIDTH=200ns
+X_U_U19         U_N1832155 U_N1832265 U_N2107242  $G_DPWR $G_DGND AND2
+X_U_U12         TRIG/DISABLE U_N1832359 U_N1831921 COMPAR PARAMS:  VHIGH=5V
++  VLOW=100MV
+Q_U_Q2         VCC U_N1966183 U_N1966039 Q2N2222
+Q_U_Q1         VCC U_N1952343 U_N1955592 Q2N2222
+R_U_R23         U_MIN_T_OFF GND  100k  
+R_U_R31         U_N1829157 U_N1829495  0.1  
+X_U_S1    U_DRV_Q GND U_N1829157 GND Top_U_S1 
+X_U_U36         U_TRIGGER_SET_DISABLE U_N1832265 $G_DPWR $G_DGND DELAY PARAMS:
++ DELAY=30n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U_F2    U_INTERNAL_6V U_N1829043 U_INTERNAL_6V U_N1832649 Top_U_F2 
+X_U_U20         U_N2037602 U_N2044353 U_SLEEP_MODE COMPAR PARAMS:  VHIGH=5V
++  VLOW=100MV
+X_U_U38         U_N1830491 U_N1944186 U_N1942549  $G_DPWR $G_DGND AND2
+X_U_U14         VCC U_N1995676 U_N2022349 COMPAR PARAMS:  VHIGH=5V VLOW=100MV
+R_U_R27         U_N1966183 VCC  10k  
+C_U_C2         GND U_N1829649  20p  
+R_U_R28         GND U_N1959992  0.1  
+R_U_R22         GND U_MIN_T_ON  100k  
+X_U_U5         U_N1829157 U_N1830413 U_EN_SET COMPAR PARAMS:  VHIGH=5V
++  VLOW=100MV
+X_U_U23         U_N2107242 U_N2106454 U_N2109896  $G_DPWR $G_DGND AND2
+V_U_V13         U_N1995676 GND 10
+X_U_S2    U_DRV_QB GND U_N1829657 GND Top_U_S2 
+I_U_I1         GND CS DC 100u  
+X_U_U40         U_N2023357 U_N2022349 U_N1978326  $G_DPWR $G_DGND AND2
+X_U_U28         U_N1938263 U_N1944186  $G_DPWR $G_DGND INV
+X_U_U30         GND GND U_N1842038 U_N1842340 U_TRIGGER_BLANK M_UN0003 $G_DPWR
++  $G_DGND DFFRSH
+V_U_V16         U_N1952343 GND 5.65V
+R_U_R30         GND U_N1984112  100k  
+X_U_U18         U_EN_RES U_N1842340 PULSE_RISING PARAMS:  WIDTH=200ns
+X_U_U45         U_N1829081 U_N2127736  $G_DPWR $G_DGND INV
+R_U_R24         U_N1952343 VCC  10k  
+X_U_U11         U_N1832481 U_DRV_QB U_MIN_T_OFF  $G_DPWR $G_DGND AND2
+R_U_R14         U_N1829649 U_N1832649  0.1  
+X_U_S5    U_N1984112 GND U_N1955592 U_N1830533 Top_U_S5 
+X_U_U7         U_EN_SET U_SET_CMP U_N1832155  $G_DPWR $G_DGND AND2
+R_U_R26         GND U_SLEEP_MODE  100k  
+X_U_U6         U_N1829649 U_N1829429 U_EN_RES COMPAR PARAMS:  VHIGH=5V
++  VLOW=100MV
+X_U_U29         U_N1831921 U_N1830423 $G_DPWR $G_DGND DELAY PARAMS:
++ DELAY=20n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U_U13         U_TRIGGER_BLANK U_N1830423 U_N1830491  $G_DPWR $G_DGND AND2
+V_U_V17         U_N1966183 GND 6.8V
+V_U_V10         U_N1840739 GND 7
+R_U_R25         U_N1829853 MIN_TON  1  
+X_U_U37         GND GND U_N1938263 U_N1942549 M_UN0004 U_TRIGGER_SET_DISABLE
++  $G_DPWR $G_DGND DFFRSH
+V_U_V15         U_N2054879 GND 7
+X_U_U46         U_RES_CMP U_N1830577 U_N1938263  $G_DPWR $G_DGND AND2
+I_U_I2         U_N1840739 TRIG/DISABLE DC 10u  
+V_U_V4         GND U_N1829829 40m
+X_U_U16         U_N1998320 VCC U_N1982696 COMPAR PARAMS:  VHIGH=5V VLOW=100MV
+X_U_U15         U_N1830423 U_N1830577  $G_DPWR $G_DGND INV
+X_U_U21         U_N1830423 U_N2051306  $G_DPWR $G_DGND INV
+X_U_U34         U_N1898332 U_SET_CMP $G_DPWR $G_DGND DELAY PARAMS:
++ DELAY=35n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+E_U_ABM1         U_N1829429 0 VALUE { {if(V(U_N1829853)<1.7,
++  1.7,((V(U_N1829853)*0.65)+1.05))}    }
+X_U_S6    U_N1984112 GND U_N1966039 U_INTERNAL_6V Top_U_S6 
+R_U_R13         U_N2037602 U_N2037614  0.01  
+X_U_U8         U_RES_CMP U_EN_RES U_N1870308  $G_DPWR $G_DGND AND2
+X_U_U39         U_SLEEP_MODE U_N1982696 U_N1978668 $G_DPWR $G_DGND OR2
+V_U_V12         U_N1998320 GND 9
+X_U_U3         U_N1829829 CS U_N1898332 COMPAR PARAMS:  VHIGH=5V VLOW=100MV
+X_U_U43         U_N2107242 U_N2106848  $G_DPWR $G_DGND INV
+R_U_R15         U_N1829657 U_N1829649  0.1  
+X_U_U41         U_N1978668 U_N2023357  $G_DPWR $G_DGND INV
+X_U_U35         U_N1899227 U_RES_CMP $G_DPWR $G_DGND DELAY PARAMS:
++ DELAY=35n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U_S3    U_DRV_Q GND U_N1830533 DRV Top_U_S3 
+R_U_R10         U_N1830007 U_N1829373  10k  
+C_U_C5         U_N1966093 U_N1966039  10n  
+E_U_ABM2         U_N1830413 0 VALUE { {if(V(U_N1830007)<2.5,
++  2.5,((V(U_N1830007)*0.65)+1.05))}    }
+V_U_V11         U_N1832359 GND 2
+X_U_U4         CS U_N1832597 U_N1899227 COMPAR PARAMS:  VHIGH=5V VLOW=100MV
+X_U_F1    U_INTERNAL_6V U_N1829373 U_INTERNAL_6V U_N1829495 Top_U_F1 
+V_U_V14         U_N2044353 GND 5V
+X_U_U44         U_N2106848 U_N2106454 $G_DPWR $G_DGND DELAY PARAMS:
++ DELAY=20n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U_U33         U_N1870308 U_N1832641 U_N1829081 $G_DPWR $G_DGND OR2
+R_U_R29         GND U_N1966093  0.1  
+X_U_U9         U_EN_SET U_EN_RES U_N1832481 $G_DPWR $G_DGND NOR2
+X_U_U1         GND GND U_N1829081 U_N1832219 U_DRV_Q U_DRV_QB $G_DPWR $G_DGND
++  DFFRSH
+C_U_C3         GND U_N2037602  20p  
+X_U_U24         U_N2109896 U_N2127736 U_N1832219  $G_DPWR $G_DGND AND2
+.Ends NCP4303B
+*$
+*****************************************
+* Creation: Thierry SUTTO               *
+*     Date: 18 SEP 2003                 *
+* Based on: n/a                         *
+*****************************************
+* The pulse is generated when a rising  *
+* edge is detected on IN pin.           *
+* The pulse width is adjustable         *
+*****************************************
+.SUBCKT Pulse_Rising In Pulse params: Width=100ns
+X_U2         N200223 IN N385549 $G_DPWR $G_DGND XOR
+X_U3         N385493 IN PULSE  $G_DPWR $G_DGND AND2
+X_U4         N385549 N385493 $G_DPWR $G_DGND DELAY PARAMS: DELAY=5n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U1         IN N200223 $G_DPWR $G_DGND DELAY PARAMS: DELAY={Width} TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+.ENDS
+*$
+*****************************************
+* Creation: Thierry SUTTO               *
+*     Date: 18 SEP 2003                 *
+* Based on: n/a                         *
+*****************************************
+* The pulse is generated when a falling *
+* edge is detected on IN pin.           *
+* The width of the pulse is an          *
+* adjustable param.                     *
+*****************************************
+.SUBCKT Pulse_Falling IN Pulse params: Width=100ns
+X_U2         N383922 N383908 PULSE  $G_DPWR $G_DGND AND2
+X_U1         N383828 N383908 $G_DPWR $G_DGND DELAY PARAMS: DELAY=30ns TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U4         IN N383828 $G_DPWR $G_DGND DELAY PARAMS: DELAY={Width} TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U5         N383828 IN N383922 $G_DPWR $G_DGND XOR
+.ENDS
+*$
+***********************************************************************
+.SUBCKT COMPAR NINV INV OUT PARAMS: VHIGH=5V VLOW= 100mV
+EB1 4 0 VALUE = {IF (V(NINV, INV)>0, {VHIGH}, {VLOW})}
+R0 4 OUT 10R
+C0 OUT 0 10PF 
+.ENDS COMPAR
+***************************************************************************  
+*$
+.subckt Top_U_S4 1 2 3 4  
+S_U_S4         3 4 1 2 _U_S4
+RS_U_S4         1 2 1G
+.MODEL         _U_S4 VSWITCH Roff=1e6 Ron=1.0 Voff=0.2V Von=1.0V
+.ends Top_U_S4
+*$
+.subckt Top_U_S7 1 2 3 4  
+S_U_S7         3 4 1 2 _U_S7
+RS_U_S7         1 2 1G
+.MODEL         _U_S7 VSWITCH Roff=1e9 Ron=0.1 Voff=1.0V Von=3.0V
+.ends Top_U_S7
+*$
+.subckt Top_U_S1 1 2 3 4  
+S_U_S1         3 4 1 2 _U_S1
+RS_U_S1         1 2 1G
+.MODEL         _U_S1 VSWITCH Roff=1e6 Ron=0.1 Voff=1.0V Von=3.0V
+.ends Top_U_S1
+*$
+.subckt Top_U_F2 1 2 3 4  
+F_U_F2         3 4 VF_U_F2 0.2
+VF_U_F2         1 2 0V
+.ends Top_U_F2
+*$
+.subckt Top_U_S2 1 2 3 4  
+S_U_S2         3 4 1 2 _U_S2
+RS_U_S2         1 2 1G
+.MODEL         _U_S2 VSWITCH Roff=1e6 Ron=0.1 Voff=1.0V Von=3.0V
+.ends Top_U_S2
+*$
+.subckt Top_U_S5 1 2 3 4  
+S_U_S5         3 4 1 2 _U_S5
+RS_U_S5         1 2 1G
+.MODEL         _U_S5 VSWITCH Roff=1e6 Ron=0.1 Voff=1.0V Von=3.0V
+.ends Top_U_S5
+*$
+.subckt Top_U_S6 1 2 3 4  
+S_U_S6         3 4 1 2 _U_S6
+RS_U_S6         1 2 1G
+.MODEL         _U_S6 VSWITCH Roff=1e6 Ron=0.1 Voff=1.0V Von=3.0V
+.ends Top_U_S6
+*$
+.subckt Top_U_S3 1 2 3 4  
+S_U_S3         3 4 1 2 _U_S3
+RS_U_S3         1 2 1G
+.MODEL         _U_S3 VSWITCH Roff=1e6 Ron=1.8 Voff=2.5V Von=3.0V
+.ends Top_U_S3
+*$
+.subckt Top_U_F1 1 2 3 4  
+F_U_F1         3 4 VF_U_F1 0.2
+VF_U_F1         1 2 0V
+.ends Top_U_F1
+*$ 
+*
+
+
+.subckt delay 1 2 vcc vgnd 
+.param DELAY1={DELAY}
+A1 1 vgnd vgnd vgnd vgnd Vgnd 2 vgnd BUF Vhigh=5 REF=1.5 td={DELAY1}
+.ends
+
+
+*.SUBCKT DFFRSH D CLK R S  Q QBAR 
+* A1 d 0 c s r q_ q 0 DFLOP
+.subckt dffrsh d clk r s q qbar vcc vgnd  
+*A0 r $g_reset vgnd vgnd vgnd vgnd rr vgnd OR Vhigh=5 REF=1.5 td=5n trise=2n tfall=2n
+A1 d vgnd clk s r qbar q vgnd DFLOP Vhigh=5 REF=1.5 td=5n trise=2n tfall=2n
+.ends
+
+.SUBCKT AND2 in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd AND Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5)&(V(in2,vgnd)>1.5)), V(vcc,vgnd), 0) 
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT INV in1 out vcc vgnd
+A1 in1 vgnd vgnd vgnd vgnd out vgnd vgnd BUF Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5) | (V(in2,vgnd)>1.5)), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT OR2 in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd OR Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5) | (V(in2,vgnd)>1.5)), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT NOR2 in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd out vgnd vgnd OR Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5) | (V(in2,vgnd)>1.5)), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT XOR in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd XOR Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ( ((V(in1,vgnd)>1.5)&(V(in2,vgnd)<1.5)) | ((V(in1,vgnd)<1.5)&(V(in2,vgnd)>1.5)) ), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.model Q2N2222  NPN(Is=14.34f Xti=3 Eg=1.11 Vaf=74.03 Bf=255.9 Ne=1.307
++		Ise=14.34f Ikf=.2847 Xtb=1.5 Br=6.092 Nc=2 Isc=0 Ikr=0 Rc=1
++		Cjc=7.306p Mjc=.3416 Vjc=.75 Fc=.5 Cje=22.01p Mje=.377 Vje=.75
++		Tr=46.91n Tf=411.1p Itf=.6 Vtf=1.7 Xtf=3 Rb=10)
+*		National	pid=19		case=TO18
+*		88-09-07 bam	creation

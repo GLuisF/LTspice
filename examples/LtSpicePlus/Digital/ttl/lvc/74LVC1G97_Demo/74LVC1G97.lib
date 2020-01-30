@@ -1,0 +1,70 @@
+*
+* LTspice subcircuit for SN74LVC1G97
+*
+*
+* Date  : 9 Jan 2012
+*  G. Salmonson
+*
+*  Annn n001 n002 n003 n004 n005 n006 n007 n008 <Model> <Instance Parameters>
+* Where:
+*         Annn = Device Model ID ("XIN1", "XIN2", "A1", "XOUT", "AE1", etc.
+*  n001 - n005 = Inputs (unused inputs are tied to GND ("0")).
+*         n006 = Inverted Output.
+*         n007 = non-Inverted Output.
+*         n008 = Common (GND)
+*
+*
+* 3-input multifunction gate
+* tpd 12n/7n//4n/3n
+* tr 8n/5n//3n/2n
+.SUBCKT 74LVC1G97  A B C Y  VCC VGND  vcc1={vcc} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*4.0/({vcc1}-0.5)*{speed1}
+*
+XIN1  A 0 Ai VCC VGND  74LVC1G_IN_S_2  vcc2={vcc1}  speed2={speed1}  tripdt2={tripdt1}
+XIN2  B 0 Bi VCC VGND  74LVC1G_IN_S_2  vcc2={vcc1}  speed2={speed1}  tripdt2={tripdt1}
+XIN3  C Ci Di VCC VGND  74LVC1G_IN_S_2  vcc2={vcc1}  speed2={speed1}  tripdt2={tripdt1}
+*
+A1  Ai Di 0 0 0  0 Xi 0  AND  tripdt={tripdt1}  td={td1}
+A2  Bi Ci 0 0 0  0 Yi 0  AND  tripdt={tripdt1}  td={td1}
+A3  Xi Yi 0 0 0  0 Zi 0  OR tripdt={tripdt1}  td={td1}
+*
+XOUT  Zi Y  VCC VGND  74LVC1G_OUT_1X  vcc2={vcc1} speed2={speed1}  tripdt2={tripdt1}
+.ends
+*
+*
+*
+*
+* Standard output driver
+* Output is NON-inverted
+.SUBCKT  74LVC1G_OUT_1X  in out  VCC VGND  vcc3={vcc2} speed3={speed2}  tripdt3={tripdt2}
+.param trise1=2e-9*4.0/({vcc3}-0.5)*{speed3}
+.param Rout=20*4.0/({vcc3}-0.5)*{speed3}
+*
+AE1  in 0 0 0 0  0 out10 0  BUF  tripdt={tripdt3}  trise={trise1}
+*
+E1 out20 VGND out10 0 {vcc3}
+Rout out20 out {Rout}
+*D1 0   out  DIO2
+*D2 out VCC  DIO2
+.ends
+*
+*
+* Inverting Schmitt-input
+* 1 Input, 2 Outputs (Inverted and non-Inverted)
+.SUBCKT  74LVC1G_IN_S_2  in outinv outni  VCC VGND  vcc3={vcc2}  speed3={speed2}  tripdt3={tripdt2}
+.param Cval = 0.1e-12*4/({vcc3}-0.5)*{speed3} ; 0.2e-12=2ns
+.param vt1=1.79/4.5
+.param vh1=0.38/4.5
+.param gain=(1/{vcc3})
+*
+*D1 0   in  DIO1
+*D2 in VCC  DIO1
+R1 in out10 10k
+C1 out10 VGND {Cval}
+R2 in VGND 1e8
+*E1 out20 0 out10 VGND {gain}
+B1 out20 0 V=LIMIT(0,V(out10,VGND)*{gain},1)
+AE1  out20 0 0 0 0  outinv outni 0  SCHMITT  vt={vt1} vh={vh1} vhigh=1  tripdt={tripdt3}
+.ends
+
+

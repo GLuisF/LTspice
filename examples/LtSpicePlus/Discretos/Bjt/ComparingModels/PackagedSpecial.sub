@@ -1,0 +1,42 @@
+* subcircuits for un/packaged devices with special extensions
+
+* BJT with BE breakdown
+.SUBCKT PNP_BEBR 1 2 3 PARAMS: QMODEL={1} DMODEL={2}
+Q1    1 2 3 {QMODEL}
+DBEBR 3 2   {DMODEL}
+.ENDS PNP_BEBR
+
+* BJT in SOT-23 with BE breakdown
+.SUBCKT PNP_SOT23_BEBR 1 2 3 PARAMS: QMODEL={1} DMODEL={2}
+* Philips
+X1 1 2 3 PNP_SOT23_BEBR_PHI QMODEL={QMODEL} DMODEL={DMODEL}
+* Infineon
+*X1 1 2 3 PNP_SOT23_BEBR_INF QMODEL={QMODEL} DMODEL={DMODEL}
+.ENDS PNP_SOT23_BEBR
+
+* Philips
+.SUBCKT PNP_SOT23_BEBR_PHI 1 2 3 PARAMS: QMODEL={1} DMODEL={2}
+LB     2 22             1.25n
+LE     3 33             1.12n
+LC     1 11             0.23n
+CBCG  22 11             62f
+CBEG  22 33             45f
+CCEG  11 33             62f
+Q1    11 22 33 {QMODEL}
+DBEBR 33 22    {DMODEL}
+.ENDS PNP_SOT23_BEBR_PHI
+
+* Infineon
+.SUBCKT PNP_SOT23_BEBR_INF 1 2 3 PARAMS: QMODEL={1} DMODEL={2}
+LB    4 5             0.500n
+LE    8 7             0.600n
+LC    1 6             0.350n
+L1    2 4             0.400n
+L2    3 8             0.400n
+CBCG  4 6            70.00f
+CBEG  4 8             0.150p
+CCEG  6 8            15.00f
+Q1    6 5 7 {QMODEL}
+DBEBR 7 5   {DMODEL}
+.ENDS PNP_SOT23_BEBR_INF
+

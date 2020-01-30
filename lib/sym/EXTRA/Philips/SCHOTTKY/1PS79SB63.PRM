@@ -1,0 +1,26 @@
+*
+.SUBCKT 1PS79SB63 1 2
+*
+*
+* The resistor R1 does not 
+* reflect a physical device. Instead it
+* improves modelling in the reverse
+* mode of operation.
+*
+D1 1 2 1PS79SB63
+R1 1 2 1.744E+06
+*
+.MODEL 1PS79SB63 D
++ IS = 2.655E-07
++ N = 1.033
++ BV = 6
++ IBV = 5E-05
++ RS = 20.51
++ CJO = 3.52E-13
++ VJ = 0.007297
++ M = 0.05795
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+

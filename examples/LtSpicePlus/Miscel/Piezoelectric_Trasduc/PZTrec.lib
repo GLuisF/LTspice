@@ -1,0 +1,13 @@
+*PUTTMER 1997 THICKNESS-MODE TRANSDUCER
+.SUBCKT PZTrec E B F
+O1 B 1 F 1 mylossyTlineREC
+V1 1 2
+E1 2 0 4 0 1
+V2 E 3
+C0 3 0 {c0R}
+F1 0 3 V1 {hc0R}
+F2 0 4 V2 {hR}
+R1 4 0 1E3
+C1 4 0 1
+.model mylossyTlineREC LTRA(len={thickR} R={rR} L={LR} C={cR})
+.ENDS

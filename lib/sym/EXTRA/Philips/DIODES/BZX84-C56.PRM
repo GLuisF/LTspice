@@ -1,0 +1,19 @@
+*DEVICE=BZX84C56V,D
+
+* BZX84C56V D model
+* created using Parts release 7.1 on 03/31/98 at 09:35
+* Parts is a MicroSim product.
+.MODEL BZX84C56V D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=12.024E-12
++ M=.34443
++ VJ=.60675
++ ISR=53.794E-12
++ BV=56.116
++ IBV=.18612
++ TT=2.3083E-6
+*$
+

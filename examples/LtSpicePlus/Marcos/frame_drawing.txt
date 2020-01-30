@@ -1,0 +1,124 @@
+The Schematic Frame
+
+The best way to have a border around a circuit is drawing a rectangle
+around it.
+
+Instructions:
+-------------
+1.
+Just take a text editor and write a LTSPICE circuit file consisting
+of only that rectangle. See the following three lines. 
+
+Version 4
+SHEET 1 0 0
+RECTANGLE Normal 0 0 2256 1600
+
+Save it into a file "myframe.asc". 
+
+A size of 2256, 1600 is good for A4 landscape and a size of 
+1600, 2256 is for portrait format. The ratio between x and y 
+direction is about 1.41 . 
+The next paper size increase both values by factor of sqrt(2)=1.41 . 
+
+Use only size numbers which are multiples 8, because this is the 
+coarse grid distance in the LTSPICE schematic. 
+
+2.
+Open this file "myframe.asc" with LTSPICE and draw small rectangles
+for the info fields you like at the lower right corner. Fill in these 
+rectangles with comments(information) like date, author, company
+and more. Save it as your personal template.
+
+Now you can either start a drawing with this frame or you can 
+copy this frame over an existing drawing with LTSPICE copy/paste.
+
+Use the fine drawing mode when you have to create a company
+logo for your info fields. You get this mode if you keep the 
+<Ctrl-key> pressed while you move or stretch a drawing object.
+
+You can see a real eye catching info block in the example from
+"analogspiceman". 
+
+I have already done some frames of size A3, A4, A5 for portrait 
+and landscape format. See the files in this folder.
+Files->Lib->Schematic Frames
+
+If you don't like the file name printed below your schematic,
+then export the schematic to a .wmf File and use another program
+to print this .wmf file.
+
+Maybe all the wires and lines of your printout look too thin. 
+I experienced this with a 600dpi laser printer. I have got 
+a better printout after I enabled "draw thick wire" in LTSPICE,
+but it is only useful for printing. The only drawback is that the 
+junctions of wires are then printed too big.
+
+Control Panel->Drafting Options  mark "Draw with thick lines" 
+
+I got the best results at 600dpi, when I set the color of wires
+and component body to black and changing the halftone setting in
+the laser printer setup to black and white only.
+Control Panel->Drafting Options->Color scheme
+
+One more idea is setting the printer to a lower resolution, e.g. 300dpi.
+
+Helmut
+
+New feature for Frames and title blocks in LTSPICE version 2.10v and higher
+---------------------------------------------------------------------------
+LTSPICE has now a special symbol type named MASTER . The main feature is that 
+you can still draw inside a MASTER symbol on your schematic. 
+Be aware that if you try to move components inside of a MASTER symbol, the 
+MASTER symbol could be unintentionally selected and moved. This drawback makes 
+it impossible to reach some components in specific areas within the symbol. 
+If this is a problem then you have to switch on/off the visibilty of the MASTER 
+symbol in the Control Panel.
+Control Panel -> Drafting Options -> Show Title Blocks
+
+Instructions:
+-------------
+Take your text editor and change the first line in the frame file
+"myframe.asc" from 
+
+Version 4
+SHEET 1 0 0
+RECTANGLE Normal 0 0 2256 1600
+
+to
+
+Version 4
+SymbolType MASTER
+RECTANGLE Normal 0 0 2256 1600
+
+Save this file now as "myframe_m.asy"! LTSPICE will treat it now as a symbol, 
+because of this extenstion .asy .
+
+Helmut
+
+
+Original text from the LTSPICE author Mike Engelhardt:
+------------------------------------------------------
+Also, it occurs to me that there may be an
+undocumented feature that might be of some use.
+You can make a title block symbol that includes
+the title section and outline of a size that
+looks scaled right for the component grid. You
+could place it on a schematic and draw inside
+the boundry drawn by this symbol. Also, you can
+selective display it or not with the command
+Tools=>Control Panel=>Drafting Options=>Show
+Title Blocks.
+
+For a symbol to act like a title block, it must
+have (i) zero pins and (ii) a SymbolType attribute
+of MASTER. You can't edit the type in the symbol
+editor, but with notepad, you can edit the symbol
+to read
+
+Version 4
+SymbolType MASTER
+LINE Normal -796 -168 -1224 -168
+LINE Normal -1224 -176 -796 -176
+.
+
+ 

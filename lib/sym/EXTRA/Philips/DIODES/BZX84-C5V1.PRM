@@ -1,0 +1,19 @@
+*DEVICE=BZX84C5V1,D
+
+* BZX84C5V1 D model
+* created using Parts release 7.1 on 03/30/98 at 11:54
+* Parts is a MicroSim product.
+.MODEL BZX84C5V1 D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=232.29E-12
++ M=.35004
++ VJ=.79587
++ ISR=150.40E-12
++ BV=5.1760
++ IBV=.10454
++ TT=43.858E-9
+*$
+

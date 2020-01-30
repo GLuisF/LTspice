@@ -1,0 +1,278 @@
+*  File     : ACST.LIB 
+*  Revision : 2            
+*  Date     : January 14th 2010       
+***********************************************************************
+* 						ACST PSpice Models             			      *
+***********************************************************************
+*	This ACST model simulates:
+*	-Igt (the same for all quadrants) maximum of the specification
+*   -IL positive and negative maximum of specification
+*   -IH positive and negative typical values
+*   -VCL positive and negative typical values (behavior overvoltage protection)
+*   -IBO positive and negative typical values (behavior overvoltage protection)
+*   -(di/dt)c and (dV/dt)c parameters are simulated if those constraints 
+*     exceed the specified limits.
+*   -Power dissipation is realistic
+*   
+*
+*   All these parameters are constant, and don't vary neither 
+*   with temperature nor other parameters.
+*    
+*   For a correct ACST behavior, the "Maximum step size" must be below 
+*   or equal 20µs.
+*
+*
+.SUBCKT ACST A G K PARAMS:
++ IBO_pos=10m
++ IBO_neg=9m
++ IGT=25m
++ IH_pos=20m
++ IH_neg=20m
++ IL_pos=50m
++ IL_neg=40m 
++ RGKINT=140
++ Rd=0.1    
++ BVP=1440
++ BVN=1500
+
+* IBO_pos : positive breakover current typical 
+* IBO_neg : negative breakover current typical
+* IGT     : gate trigger current maximum
+* IH_pos  : positive Holding current maximum 
+* IH_neg  : negative Holding current maximum
+* IL_pos  : positive Latching curent maximum
+* IL_neg  : negative Latching curent maximum
+* RGKINT  : internal resistor between gate and cathode typical
+* Rd      : Dynamic on-state resistance specified
+* BVP     : positive clamping voltage typical
+* BVN     : negative clamping voltage typical
+ 
+E_IF4IF1_22         N1011499 0 VALUE 
++ {IF((I(V_IT)>V(INIH_POS))|(I(V_IT)<V(INIH_NEG)),1,0)} 
+F_ABMI1         0 DIDT V_IT 1
+V_I_osc         N1010349 N1010315 DC 0 AC 0 
+D_Dak_Q2         N909973 K DAK 
+R_Rfloat         G K  10G  
+V_ID         N910355 N910301 DC 0 AC 0 
+L_L_didt         DIDT 0  1mH  
+R_R_osc         N1010349 N1011183  300  
+C_CIHIL         CMDILIH 0  1n IC=0 
+R_R1         N910043 N1209800  600k  
+D_Doff1         A N910355 DOFF1_T 
+R_Rton         N1206309 COMMANDE  0.5  
+E_NON_neg         N1011711 0 VALUE {IF(V(CMDILIH)>0.5,0,1)}
+R_RIHIL         N1011449 CMDILIH  100  
+C_C_ibo_neg         CMDIBO_NEG 0  1n IC=0 
+E_IF5IF3_5         N1011449 0 VALUE {IF(
++  (V(N1011587)*V(N1011499)+V(N1011499)*(1-V(N1011587))*(V(CMDILIH)) )>0.5,1,0)}
+C_Cparasitic1         N1209800 K  200p  
+D_Doff2         K N910301 DOFF2_T 
+D_DTON         CONTROL N1206309 Dcontrol 
+F_ABMI2         0 DIDT V_ID 1
+E_osc_neg         N1011245 0 VALUE 
++ {IF(((I(V_IT)+(2*V(DIDT)*20m))>-IH_neg)&(I(V_IT)<-IH_neg/2),1,0)}
+R_R_ibo_pos         N1010953 CMDIBO_POS  100  
+E_IF1IF1_10         CMDIG 0 VALUE 
++ {IF(I(V_IG)<-IGT,1,IF((I(V_IG)>IGT)&(V(A)>0),1,0))}
+V_IG         N909169 K DC 0 AC 0 
+E_IF29         INIH_NEG 0 VALUE {IF(-IH_neg<-IBO_neg,-IBO_neg*0.85,-IH_neg)}
+X_S1    COMMANDE 0 N910043 N909973 ACST_S1 
+E_IF7         N1010753 0 VALUE {IF(V(CMDILIH)>0.5,0,1)}
+E_OSC         N1011183 0 VALUE 
++ {IF(I(V_I_osc)<0,IF(V(N1010315)<0.25,1+V(N1010241),0-V(N1010241)),IF(V(N1010315)>0.75,0-V(N1010241),1+V(N1010241)))}
+C_Ccommande         COMMANDE 0  1u  
+D_DGKd         G N909169 DGK 
+E_RS1         N1010953 0 VALUE {IF(
++  (V(N1012037)+(1-V(N1012037))*V(N1010753)*V(CMDIBO_POS) )>0.5,1,0)}
+D_Dak_Q3         K N909973 DAK 
+R_Rcommande         CONTROL COMMANDE  30  
+E_IF23         N1012037 0 VALUE {IF(I(V_ID)>IBO_pos,1,0)}
+E_RS2         N1011827 0 VALUE {IF(
++  (V(N1011961)+(1-V(N1011961))*V(N1011711)*V(CMDIBO_NEG) )>0.5,1,0)}
+E_porte_osc         N1010241 0 VALUE 
++ {IF((V(N1011355)>0.5)|(V(N1011245)>0.5),15,0)}
+D_DGKr         N909169 G DGK 
+C_C_ibo_pos         CMDIBO_POS 0  1n IC=0 
+E_osc_pos         N1011355 0 VALUE 
++ {IF(((I(V_IT)+(2*V(DIDT)*20m))<IH_pos)&(I(V_IT)>IH_pos/2),1,0)}
+R_R_ibo_neg         N1011827 CMDIBO_NEG  100  
+E_IF6         INIH_POS 0 VALUE {IF(IH_pos>IBO_pos,IBO_pos*0.85,IH_pos)}
+E_IF16         CONTROL 0 VALUE {IF((V(CMDIG)>0.5) | (V(CMDILIH)>0.5) |
++  (V(CMDIBO_POS)>0.5) | (V(CMDIBO_NEG)>0.5),200,0)}
+E_IF3IF1_18         N1011587 0 VALUE {IF((I(V_IT)>IL_pos)|(I(V_IT)<-IL_neg),1,0
++  )}                     
+R_Rgk         G N909169  {RGKINT} 
+V_IT         A N910043 DC 0 AC 0 
+C_C_osc         N1010315 0  100n IC=0 
+E_ID_neg         N1011961 0 VALUE {IF(I(V_ID)<-IBO_neg,1,0)}
+.ENDS
+*
+****************
+* Diodes Model *
+****************     
+.MODEL Dcontrol D (Is=1e-14 Cjo=.1pF Rs=.1)
+.MODEL DGK D (IS=1e-6 N=3.7 RS=2)
+.MODEL DAK D (IS=5e-16 RS={Rd})
+.MODEL DOFF1_T D (BV={BVN})
+.MODEL DOFF2_T D (BV={BVP})
+****************
+* Switch Model *
+****************  
+.MODEL Smain_T VSWITCH Roff=10Meg Ron=1m Voff=1 Von=195
+*
+*$
+.subckt ACST_S1 1 2 3 4   
+S_S1         3 4 1 2 Smain_T
+RS_S1        1 2 1G    
+.ends ACST_S1 
+
+
+*********************************************************************
+* 							ACST								    *
+*********************************************************************
+*
+*$
+.subckt ACST2-8S A G K
+X1 A G K ACST params:
++ IBO_pos=9m
++ IBO_neg=5m
++ IGT=10m
++ IH_pos=10m
++ IH_neg=10m
++ IL_pos=35m
++ IL_neg=25m 
++ RGKINT=210
++ Rd=0.25    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$   
+.SUBCKT ACST410-8 A G K
+X1 A G K ACST params:
++ IBO_pos=6m
++ IBO_neg=7m
++ IGT=10m
++ IH_pos=20m
++ IH_neg=20m
++ IL_pos=40m
++ IL_neg=40m 
++ RGKINT=210
++ Rd=0.11    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$ 
+.SUBCKT ACST435-8 A G K 
+X1 A G K ACST params:
++ IBO_pos=8m
++ IBO_neg=10m
++ IGT=35m
++ IH_pos=25m
++ IH_neg=25m
++ IL_pos=60m
++ IL_neg=60m  
++ RGKINT=80
++ Rd=0.11    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.SUBCKT ACST610-8 A G K
+X1 A G K ACST params:
++ IBO_pos=9m
++ IBO_neg=10m
++ IGT=10m
++ IH_pos=25m
++ IH_neg=25m
++ IL_pos=30m
++ IL_neg=30m  
++ RGKINT=210
++ Rd=0.08    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.SUBCKT ACST830-8 A G K
+X1 A G K ACST params:
++ IBO_pos=6m
++ IBO_neg=10m
++ IGT=30m
++ IH_pos=30m
++ IH_neg=30m
++ IL_pos=50m
++ IL_neg=50m  
++ RGKINT=80
++ Rd=0.05    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.subckt ACST10-7S A G K
+X1 A G K ACST params:
++ IBO_pos=10m
++ IBO_neg=5m
++ IGT=10m
++ IH_pos=30m
++ IH_neg=30m
++ IL_pos=50m
++ IL_neg=50m 
++ RGKINT=210
++ Rd=0.035    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.subckt ACST10-7C A G K
+X1 A G K ACST params:
++ IBO_pos=12m
++ IBO_neg=12m
++ IGT=35m
++ IH_pos=50m
++ IH_neg=50m
++ IL_pos=70m
++ IL_neg=70m 
++ RGKINT=80
++ Rd=0.035    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.subckt ACST12-7S A G K
+X1 A G K ACST params:
++ IBO_pos=10m
++ IBO_neg=5m
++ IGT=10m
++ IH_pos=30m
++ IH_neg=30m
++ IL_pos=50m
++ IL_neg=50m 
++ RGKINT=210
++ Rd=0.03    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$
+.subckt ACST12-7C A G K
+X1 A G K ACST params:
++ IBO_pos=12m
++ IBO_neg=12m
++ IGT=35m
++ IH_pos=50m
++ IH_neg=50m
++ IL_pos=70m
++ IL_neg=70m 
++ RGKINT=80
++ Rd=0.03    
++ BVP=980
++ BVN=1150
+* 2010 / ST / Rev 0
+.ends
+*$

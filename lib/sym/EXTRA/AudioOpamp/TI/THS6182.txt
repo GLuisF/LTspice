@@ -1,0 +1,218 @@
+* [Disclaimer] (C) Copyright 2003 Texas Instruments Incorporated.  All rights
+* reserved.
+*
+* Texas Instruments Incorporated hereby grants the user of this SPICE
+* Macro-model a non-exclusive, nontransferable license to use this SPICE
+* Macro-model under the following terms:
+*
+* Before using this SPICE Macro-model, the user should read this license. If
+* the user does not accept these terms, the SPICE Macro-model should be
+* returned to Texas Instruments within 30 days.
+*
+* The user is granted this license only to use the SPICE Macro-model and is
+* not granted rights to sell, load, rent, lease or license the SPICE
+* Macro-model in whole or in part, or in modified form to anyone other than
+* user.
+*
+* User may modify the SPICE Macro-model to suit its specific applications but
+* rights to derivative works and such modifications shall belong to Texas
+* Instruments.
+*
+* This SPICE Macro-model is provided on an "AS IS" basis and Texas Instruments
+* makes absolutely no warranty with respect to the information contained
+* herein.
+*
+* TEXAS INSTRUMENTS DISCLAIMS AND CUSTOMER WAIVES ALL WARRANTIES, EXPRESS OR
+* IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+* PURPOSE. The entire risk as to quality and performance is with the Customer.
+*
+* ACCORDINGLY, IN NO EVENT SHALL THE COMPANY BE LIABLE FOR ANY DAMAGES,
+* WHETHER IN CONTRACT OR TORT,INCLUDING ANY LOST PROFITS OR OTHER INCIDENTAL,
+* CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES ARISING OUT OF THE USE OR
+* APPLICATION OF THE SPICE Macro-model provided in this package.
+*
+* Further, Texas Instruments reserves the right to discontinue or make changes
+* without notice to any product herein to improve reliability, function, or
+* design.
+*
+* Texas Instruments does not convey any license under patent rights or any
+* other intellectual property rights, including those of third parties.
+
+
+*$
+.subckt THS6182 inp inn out vcc vee iadj b1 b2 gnd
+.MODEL D_break D
++ RS=1.0000E-1
++ CJO=1.0000E-13
++ IS=100e-15
+.MODEL bi_pnp PNP
++ IS=10.000E-18
++ BF=111.69
++ NF=1.2000
++ VAF=100
++ IKF=10.010E-3
++ ISE=10.000E-18
++ NE=1.6080
++ VAR=100
++ IKR=10.000E-3
++ NK=.6913
++ RE=1
++ RB=60
++ RC=100
++ CJE=30.000E-15
++ VJE=.95
++ MJE=.13
++ CJC=30.000E-15
++ VJC=.95
++ MJC=.43
++ TF=51.578E-12
++ XTF=10.335
++ VTF=13.317
++ ITF=84.100E-3
++ TR=10.000E-9
++ AF=0.005
++ KF=1.38e-19
+.MODEL bi_npn NPN
++ IS=10.000E-18
++ BF=141.50
++ VAF=100
++ IKF=10.010E-3
++ ISE=10.000E-18
++ NE=1.5718
++ VAR=50
++ IKR=10.000E-3
++ ISC=10.000E-18
++ NK=.31808
++ RE=1
++ RB=20
++ RC=100
++ CJE=20.000E-15
++ VJE=1
++ MJE=.2
++ CJC=20.000E-15
++ TF=48.439E-12
++ XTF=32.698
++ VTF=15.759
++ ITF=.12507
++ TR=10.000E-9
++ AF=0.005
++ KF=1.38e-19
+* source THS6182
+R_R24         N91504 EREF  1k
+E_E5         LS N110458 VCC VEE 0.5
+X_U6         B1 0 MN CN SWITCH_V PARAMS:  ON=1 OFF=1e7 V_ON=2 V_OFF=0.8
+Q_Q1         N64672 IPNP INN1 BI_NPN 16
+C_C1         N02493 O  16p
+I_I5         LN 0 DC 334uAdc
+C_C8         N91504 N91880  1p
+R_R4         EREF O  300k
+*X_F1    VCC N01092 VCC O SCHEMATIC1_F1
+X_U11    VCC N01092 VCC O cswil params: IL=3000u
+Q_Q2         N01150 INPN INN1 BI_PNP 16
+R_R8         EREF N02493  1
+R_R36         N116731 VCC  6
+X_U7         B2 0 LN CN SWITCH_V PARAMS:  ON=1 OFF=1e7 V_ON=2 V_OFF=0.8
+E_E6         TOP OO LS 0 -1
+V_V9         N127494 VCC -6.4Vdc
+R_R42         N118715 CN  1
+E_E1         N116731 N89120 TOP EREF -1
+*X_F2    N64729 VEE O VEE SCHEMATIC1_F2
+X_U22    N64729 VEE O VEE cswil params: IL=3000u
+X_F10    N02086 N92690 VCC RE SCHEMATIC1_F10
+E_E7         BOT OO LS 0 1
+V_V10         N127509 VEE 6.4Vdc
+R_R39         VEE N117363  6
+E_E2         N121085 N117363 BOT EREF 1
+R_R37         INN N15774  1250
+X_F16    N122547 0 VCC IPNP SCHEMATIC1_F16
+Q_Q3         VCC INP INPN BI_NPN 16
+G_G1         OO EREF O EREF -2.68m
+D_D2         N01883 N121085 D_BREAK 32
+D_D1         N89120 N120856 D_BREAK 32
+R_R14         N02086 N120856  1m
+R_R19         0 gnd 25k
+Q_Q4         VEE INP IPNP BI_PNP 16
+D_D3         O N127494 D_BREAK 16
+R_R15         N01883 N02086  1m
+X_F12    N91880 EREF OO EREF SCHEMATIC1_F12
+R_R40         N64729 N01150  200
+R_R23         RE EREF  1k
+R_R18         0 N02679  1m
+E_E4         EREF VEE VCC VEE 0.5
+V_V7         INN INN1 -0.144
+L_L7         N92690 OUT  4p
+R_R6         EREF OO  700
+V_V2         N110458 0 -0.62Vdc
+C_C7         N15774 OUT  2300f
+X_F14    N118715 N122547 INPN VEE SCHEMATIC1_F14
+R_R41         N64672 N01092  200
+R_R43         0 MN  10k
+D_D4         N127509 O D_BREAK 16
+C_C2         N02679 OUT  1.5p
+R_R44         0 LN  10k
+I_I3         VCC CN DC 500uAdc
+C_C6         EREF OO  2300f
+E_E3         N91504 EREF RE EREF 1
+I_I4         MN 0 DC 167uAdc
+C_C3         0 INN  1900f
+R_R76         0 IADJ  50
+X_U66         B1 0 re re1 SWITCH_V PARAMS:  ON=0.2 OFF=50k V_ON=2 V_OFF=0.8
+X_U67         B2 0 re1 0 SWITCH_V PARAMS:  ON=0.2 OFF=50k V_ON=2 V_OFF=0.8
+.ends THS6182
+*$
+
+*.subckt SCHEMATIC1_F1 1 2 3 4
+*F_F1         3 4 VF_F1 2.75
+*VF_F1         1 2 0V
+*.ends SCHEMATIC1_F1
+
+*.subckt SCHEMATIC1_F2 1 2 3 4
+*F_F2         3 4 VF_F2 2.75
+*VF_F2         1 2 0V
+*.ends SCHEMATIC1_F2
+
+.SUBCKT cswil 1 2 3 4
++ PARAMS:
++ IL = 800u ;
+v1  1 2 0
+Gout 3 4 value={2.75*limit(I(v1),IL,-IL)} ;
+.ENDS
+*$
+
+
+.subckt SCHEMATIC1_F10 1 2 3 4
+F_F10         3 4 VF_F10 1
+VF_F10         1 2 0V
+.ends SCHEMATIC1_F10
+*$
+
+.subckt SCHEMATIC1_F16 1 2 3 4
+F_F16         3 4 VF_F16 1
+VF_F16         1 2 0V
+.ends SCHEMATIC1_F16
+*$
+
+.subckt SCHEMATIC1_F12 1 2 3 4
+F_F12         3 4 VF_F12 93m
+VF_F12         1 2 0V
+.ends SCHEMATIC1_F12
+*$
+
+.subckt SCHEMATIC1_F14 1 2 3 4
+F_F14         3 4 VF_F14 1
+VF_F14         1 2 0V
+.ends SCHEMATIC1_F14
+*$
+
+.SUBCKT switch_v    1 2 3 4
++ PARAMS:
++ on = 1 ;
++ off= 5e9;
++ v_on=0.5;
++ v_off=0;
+
+S1 3 4 1 2 smod
+.model smod vswitch(Ron={on} Roff={off} Von={v_on} Voff={v_off})
+.ENDS
+
+*$

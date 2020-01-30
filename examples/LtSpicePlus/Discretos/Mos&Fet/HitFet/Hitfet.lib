@@ -1,0 +1,167 @@
+*****************************************************************
+* INFINEON HITFET Smart Power Switches                          *
+* Level 3 SPICE Library for HITFET Version 1.0          11/98   *
+*                                                               *
+*                                                               *
+*****************************************************************
+* Simulation support: simulate@infineon.com                     *
+*****************************************************************
+*                                                               *
+* Models provided by INFINEON are not warranted by INFINEON as  *
+* fully representing all of the specifications and operating    *
+* characteristics of the semiconductor product to which the     *
+* model relates. The model describe the characteristics of a    * 
+* typical device.                                               * 
+* In all cases, the current data sheet information for a given  *
+* device is the final design guideline and the only actual      *
+* performance specification.                                    *
+* Altough models can be a useful tool in evaluating device      *
+* performance, they cannot model exact device performance under *
+* all conditions, nor are they intended to replace bread-       *
+* boarding for final verification. INFINEON therefore does not  *
+* assume any liability arising from their use.                  *
+* INFINEON reserves the right to change models without prior    * 
+* notice.                                                       *
+*                                                               *
+* This library contains models of the following INFINEON        *
+* HITFET Transistors:                                           *
+*                                                               *
+*  BSP78                                                        *
+*  BTS134                                                       * 
+*****************************************************************
+*
+*
+.SUBCKT BSP78 GATE DRAIN SOURCE TJ Tsp Tamb
+.PARAM   Cgs=0.643N Cox=2.1N Kgd=0.65N VSW=-1.61 cjo_ds=0.598n
+.PARAM   W=0.68 L=1.025U VTH=2.29 alpha=0.5 RG=10 RD=19.26M RS=5M LG=7N LD=5N LS=5N
+.PARAM   uo=515 vmax=1.25E5 bv =62 trr=58n ISE=.32n  
+.MODEL  D_BODY    D (BV= {bv},CJO ={cjo_ds},TT ={trr},IS ={ISE})
+.MODEL DZE2 D (IS=1E-12,RS=5.5,BV=38,N=1.27,CJO=0.6P,VJ=0.75,M=0.33,IBV=.1M) 
+.MODEL DZE3 D (VJ=0.2)
+.MODEL	NMOS_L3	NMOS (LEVEL=3,W={W},L={L},VTO={VTH},nsub=nsub=3.3E17,tox=55E-9,vmax={vmax},u0={uo})
+.MODEL	MND	NMOS (LEVEL=3,W={50U},L={20U},VTO=-0.97,nsub=2E16,tox=55E-9,vmax={vmax},u0={uo})
+.MODEL	MNDD    NMOS (LEVEL=3,W={15U},L={45U},VTO=-16,nsub=2E16,tox=200E-9,vmax={vmax},u0={uo})
+.MODEL	MNDD2   NMOS (LEVEL=3,W={90U},L={12U},VTO=-16,nsub=2E16,tox=200E-9,vmax={vmax},u0={uo})
+.PARAM  selfh={1} Rth1={0.043}  Rth2={0.067}  Rth3={0.142}  Rth4={0.222}  Rth5={0.091}  Rth6={5.018} Rth7={5.00}
+.PARAM  CZth1={2.167E-4} CZth2={2.069E-4} CZth3={4.403E-4} CZth4={1.264E-3} CZth5={2.8116E-3} CZth6={2.611E-3} CZth7={0.58E-3}
+
+L_LS         SOURCE 7  {LS}  
+V_VDR         Vdrain dr DC 0V AC 0V 
+E_E14         RDP RKP VALUE { {alpha}*(V(RDM)-V(DSB))**2+I(V_VID)*
++ {RD}/(300/(V(TJ)+273))**1.5 }
+R_RKLEIN         RDM RKP  .01m  
+R_RDUMMY         RDM RDP  1E12  
+L_LD         DCB DRAIN  {LD}  
+V_VID         DCB RDP DC 0V AC 0V 
+R_R8         DSB vg  1E12  
+E_E13         Vdrain DSB RDM DSB 1
+G_ABMII2         RDM DSB VALUE { I(V_VDR)*((TEMP+273)/(V(TJ)+273))**1.5    }
+E_ABM11         Vdepl 0 VALUE { if (V(Vdg) >0.0, V(Vdg)   
++ +2*({Kgd}/{Cox})**2*(1-sqrt(1+(V(Vdg)/({Kgd}/{Cox})**2))),0)   }
+E_ABM26         Vgox 0 VALUE { V(Vdg)-V(Vdepl)     }
+G_G7         RDM gi VALUE { if (time>50n, DDT({Cox}*V(Vgox, 0)),0) }
+E_EVTH         vg gi VALUE { (V(TJ, 0)-{TEMP})*0.0025 }
+R_RLKG         DSB gi  1E12  
+C_CGS1         DSB gi  {Cgs}  
+E_ABM27         Vdg 0 VALUE { V(RDM)-V(gi)+{alpha}*(V(RDM)-V(DSB))**2    }
+S_S3         gi DSB $N_0002 0 S3
+RS_S3        $N_0002 0 1G
+        .MODEL S3 VSWITCH Roff=1e6 Ron=100 Voff=3.5 Von=4
+R_RS         7 DSB  {Rs}  
+R_RG         8 d12  {RG}  
+L_LG         GATE 8  {LG}  
+E_ABM22         OT 0 VALUE { if (V(TJ)<155 | V(OTN)>3.5 ,0,5)    }
+E_ABM23         OTN 0 VALUE { if (V(TJ)>165 | V(OT)>3.5 ,0,5)    }
+M_X4         dr vg DSB DSB NMOS_L3
+D_DBODY1         DSB DCB D_BODY 
+M_M3         sg12 sg12 d12 DSB MND
+M_M2         sg12 sg12 d12 DSB MNDD
+D_ZD2         gi clb DZE2 
+D_ZD1         DCB clb DZE3 
+M_M4         gi sg12 sg12 DSB MNDD2
+E_ABM28         $N_0002 0 VALUE { if (I(V_VID)>(23-(V(TJ)-25)*0.067)|V(OT)>3.5,
++  5,0)    }
+G_G8         0 TJ VALUE { if (time>50n, V(DCB, DSB)*I(V_VID)*{selfh},0) }
+R_Rth2         1 2  {Rth2}  
+C_CZth2         Tamb 1  {CZth2}  
+C_CZth3         2 Tamb  {CZth3}  
+C_CZth4         Tamb 3  {CZth4}  
+C_CZth5         Tamb 4  {CZth5}  
+C_CZth6         Tamb 5  {CZth6}  
+R_Rth3         2 3  {Rth3}  
+R_Rth4         3 4  {Rth4}  
+R_Rth5         4 5  {Rth5}  
+R_Rth6         5 6  {Rth6}  
+R_Rth1         TJ 1  {Rth1}  
+C_CZth1         TJ Tamb  {CZth1}  
+R_Rth7         6 Tsp  {Rth7}  
+C_CZth7         Tamb 6  {CZth7}  
+
+.ENDS    BSP78
+
+*
+.SUBCKT BTS134 GATE DRAIN SOURCE TJ TC Tamb
+.PARAM   Cgs=0.643N Cox=2.1N Kgd=0.65N VSW=-1.61 cjo_ds=0.598n
+.PARAM   W=0.68 L=1.025U VTH=2.29 alpha=0.5 RG=10 RD=19.26M RS=5M LG=7N LD=5N LS=5N
+.PARAM   uo=515 vmax=1.25E5 bv =62 trr=58n ISE=.32n  
+.MODEL  D_BODY    D (BV= {bv},CJO ={cjo_ds},TT ={trr},IS ={ISE})
+.MODEL DZE2 D (IS=1E-12,RS=5.5,BV=38,N=1.27,CJO=0.6P,VJ=0.75,M=0.33,IBV=.1M) 
+.MODEL DZE3 D (VJ=0.2)
+.MODEL	NMOS_L3	NMOS (LEVEL=3,W={W},L={L},VTO={VTH},nsub=nsub=3.3E17,tox=55E-9,vmax={vmax},u0={uo})
+.MODEL	MND	NMOS (LEVEL=3,W={50U},L={20U},VTO=-0.97,nsub=2E16,tox=55E-9,vmax={vmax},u0={uo})
+.MODEL	MNDD    NMOS (LEVEL=3,W={15U},L={45U},VTO=-16,nsub=2E16,tox=200E-9,vmax={vmax},u0={uo})
+.MODEL	MNDD2   NMOS (LEVEL=3,W={90U},L={12U},VTO=-16,nsub=2E16,tox=200E-9,vmax={vmax},u0={uo})
+.PARAM  selfh={1} Rth1={0.015}  Rth2={0.034}  Rth3={0.181}  Rth4={0.282}  Rth5={0.205}  Rth6={0.073}
+.PARAM  CZth1={7.167E-5} CZth2={7.7331E-5} CZth3={1.993E-4} CZth4={1.698E-3} CZth5={5.296E-3} CZth6={0.028}
+
+L_LS         SOURCE 7  {LS}  
+V_VDR         Vdrain dr DC 0V AC 0V 
+E_E14         RDP RKP VALUE { {alpha}*(V(RDM)-V(DSB))**2+I(V_VID)*
++ {RD}/(300/(V(TJ)+273))**1.5 }
+R_RKLEIN         RDM RKP  .01m  
+R_RDUMMY         RDM RDP  1E12  
+L_LD         DCB DRAIN  {LD}  
+V_VID         DCB RDP DC 0V AC 0V 
+R_R8         DSB vg  1E12  
+E_E13         Vdrain DSB RDM DSB 1
+G_ABMII2         RDM DSB VALUE { I(V_VDR)*((TEMP+273)/(V(TJ)+273))**1.5    }
+E_ABM11         Vdepl 0 VALUE { if (V(Vdg) >0.0, V(Vdg)   
++ +2*({Kgd}/{Cox})**2*(1-sqrt(1+(V(Vdg)/({Kgd}/{Cox})**2))),0)   }
+E_ABM26         Vgox 0 VALUE { V(Vdg)-V(Vdepl)     }
+G_G7         RDM gi VALUE { if (time>50n, DDT({Cox}*V(Vgox, 0)),0) }
+E_EVTH         vg gi VALUE { (V(TJ, 0)-{TEMP})*0.0025 }
+R_RLKG         DSB gi  1E12  
+C_CGS1         DSB gi  {Cgs}  
+E_ABM27         Vdg 0 VALUE { V(RDM)-V(gi)+{alpha}*(V(RDM)-V(DSB))**2    }
+S_S3         gi DSB $N_0002 0 S3
+RS_S3        $N_0002 0 1G
+        .MODEL S3 VSWITCH Roff=1e6 Ron=100 Voff=3.5 Von=4
+R_RS         7 DSB  {Rs}  
+R_RG         8 d12  {RG}  
+L_LG         GATE 8  {LG}  
+E_ABM22         OT 0 VALUE { if (V(TJ)<155 | V(OTN)>3.5 ,0,5)    }
+E_ABM23         OTN 0 VALUE { if (V(TJ)>165 | V(OT)>3.5 ,0,5)    }
+M_X4         dr vg DSB DSB NMOS_L3
+D_DBODY1         DSB DCB D_BODY 
+M_M3         sg12 sg12 d12 DSB MND
+M_M2         sg12 sg12 d12 DSB MNDD
+D_ZD2         gi clb DZE2 
+D_ZD1         DCB clb DZE3 
+M_M4         gi sg12 sg12 DSB MNDD2
+E_ABM28         $N_0002 0 VALUE { if (I(V_VID)>(23-(V(TJ)-25)*0.067)|V(OT)>3.5,
++  5,0)    }
+G_G8         0 TJ VALUE { if (time>50n, V(DCB, DSB)*I(V_VID)*{selfh},0) }
+R_Rth2         1 2  {Rth2}  
+C_CZth2         Tamb 1  {CZth2}  
+C_CZth3         2 Tamb  {CZth3}  
+C_CZth4         Tamb 3  {CZth4}  
+C_CZth5         Tamb 4  {CZth5}  
+C_CZth6         Tamb 5  {CZth6}  
+R_Rth3         2 3  {Rth3}  
+R_Rth4         3 4  {Rth4}  
+R_Rth5         4 5  {Rth5}  
+R_Rth6         5 TC  {Rth6}  
+R_Rth1         TJ 1  {Rth1}  
+C_CZth1         TJ Tamb  {CZth1}   
+
+.ENDS    BTS134

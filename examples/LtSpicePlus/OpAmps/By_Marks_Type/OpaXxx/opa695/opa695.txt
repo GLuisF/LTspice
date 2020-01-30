@@ -1,0 +1,168 @@
+* OPA695  1.4 GHZ Current Feedback Amplifier with Disable
+* REV. A - Created 4/02/04 Rea.Schmid@ti.com
+* REV. B - Correction to delete a character that effected output saturation. 4/19/04
+*
+*
+* NOTES:
+*   1- This macromodel predicts well: DC, small-signal AC,
+*      noise, and transient performance under a wide range
+*      of conditions
+*   2- This macromodel does not predict well: distortion
+*      (harmonic, intermod, diff. gain & phase, ...),
+*      temperature effects, board parasitics, differences
+*      between package styles, and process changes
+*   3- For Spice3 users they must un-comment the lines for the F 
+*      function and comment out the Lines for PSpice F functions
+*      and subckts. 
+*      General form:
+*      FXXXXXXX N+ N- <POLY(ND)> VN1 <VN2 ...> P0 <P1 ...> <IC=...>
+*      Examples:
+*      F1 12 10 VCC 1MA 1.3M
+*   4- For Gains of 1 the plots found in the data sheet include parasitic
+*      components for PCB, to get the same results place 235f from
+*      inverting pin to grd.  For Gain of two 650f for pads and 
+*      smd resistor parasitics to grd from inverting pin.
+*
+* |-------------------------------------------------------------|
+* |  This macro model is being supplied as an aid to            |
+* |  circuit designs.  While it reflects reasonably close       |
+* |  similarity to the actual device in terms of performance,   |
+* |  it is not suggested as a replacement for breadboarding.    |
+* |  Simulation should be used as a forerunner or a supplement  |
+* |  to traditional lab testing.                                |
+* |                                                             |
+* |  Neither this library nor any part may be copied without    |
+* |  the express written consent of Texas Instruments Corp.     |
+* |-------------------------------------------------------------|
+*
+* CONNECTIONS:
+*              Non-Inverting Input
+*              | Inverting Input
+*              | |  Positive Supply
+*              | |  |   Negative Supply
+*              | |  |   |  Out
+*              | |  |   |  |  DisA
+*              | |  |   |  |  | 
+*              | |  |   |  |  |  
+*              | |  |   |  |  |  
+.SUBCKT OPA695 + -  V+ V- Out DisA 
+Q_Q1         19 19 18 PNP8 .5
+Q_Q2         25 25 + NPN8 .677
+Q_Q6         30 30 29 PNP8 .5
+Q_Q7         31 31 32 NPN8 .5
+Q_Q11         16 14 10 PNP8 1
+D_D10         39 40 Da 1
+D_D11         40 41 Da 1
+D_D1         10 11 Da 1
+D_D2         11 12 Da 1
+D_D4         13 14 Da 1
+D_D6         15 10 Da 1
+E_LIMIT2         17 0 VALUE {LIMIT(V(16),1.3,3.3)}
+E_E3         38 39 POLY(2) 0 2ndpole  V+ V- -701M 1 0.5
+E_E4         41 42 POLY(2) 2ndpole 0  V+ V- -701M 1 0.5
+D_D3         V+ 13 Da 1
+D_D5         V+ 15 Da 1
+I_I24         44 43 DC 2.0uA  
+I_I22         46 45 DC 3uA  
+Q_Q4         26 26 + PNP8 .667
+D_D12         43 0 DN3 .25
+D_D13         0 44 DN3 .25
+D_D14         45 0 DN1 .5
+D_D15         0 46 DN1 .5
+G_G4         0 - POLY(2) 0 44 0 43 0 .00159 .00159
+D_D9         37 2ndpole Da 1
+X_F1    19 20 24 25 OPA695_F1       *comment out for Spice3
+*F1   19 20 24 25 39.62946          *comment out when used PSpice
+C_C4         0 V-  1P  
+X_F2    21 22 26 27 OPA695_F2       *comment out for Spice3 
+*F2     21 22 26 27 38.22865        *comment out when used PSpice
+C_C3         0 +  225f  
+C_C1         2ndpole 0  15f  
+X_F3    28 29 34 Zo OPA695_F3       *comment out for Spice3
+*F3     28 29 34 Zo 1.974914        *comment out when used PSpice
+X_F4    32 33 Zo 35 OPA695_F4       *comment out for Spice3
+*F4     32 33 Zo 35 2.000575        *comment out when used PSpice
+C_C8         0 DisA  1P  
+R_R4         0 16  80K  
+R_R5         18 V+  1K  
+R_R8         24 V+  600  
+R_R10         28 V+  210  
+R_R12         34 V+  100  
+R_Rp2         2ndpole 0  1k  
+R_R14         38 V+  3  
+R_R16         40 Out  7  
+R_R7a         0 14  120K  
+R_R3         DisA 12  17K  
+C_C6         V- Out  500f  
+R_R15         V- 42  5  
+R_R13         V- 35  100  
+R_R11         V- 33  210  
+R_R9         V- 27  600  
+C_C7         V+ 0  1P  
+R_R1         DisA V+  100K  
+R_R2         10 V+  8K  
+R_R7         23 22  1  
+R_R6         21 20  1  
+G_G3         0 2ndpole Zo 0 .001
+G_G2         V+ V- POLY(1) 17 0 -3.05E-03  0  0  0
+G_G1         23 0 POLY(1) 17 0 -2.6556E-05  1.475333E-05  0  0
+R_Rz         0 Zo  60K  
+C_Cz         0 Zo  1.10p  
+D_D8         2ndpole 36 Da 1
+E_E1         36 0 POLY(1) V+ V- -1.05  .5 
+E_E2         37 0 POLY(1) V- V+ 1.05  .5 
+Q_Q5         31 26 - PNP8 .667
+Q_Q3         30 25 - NPN8 .667
+C_C2         0 -  225f  
+G_G5         0 + POLY(2) 0 46 0 45 0 .00159 .00159
+.ENDS    OPA695
+
+.subckt OPA695_F1 1 2 3 4           *comment out for Spice3
+F_F1         3 4 VF_F1 39.62946     *comment out for Spice3
+VF_F1         1 2 0V                *comment out for Spice3
+.ends OPA695_F1                     *comment out for Spice3
+
+.subckt OPA695_F2 1 2 3 4           *comment out for Spice3
+F_F2         3 4 VF_F2 38.22865     *comment out for Spice3
+VF_F2         1 2 0V                *comment out for Spice3
+.ends OPA695_F2                     *comment out for Spice3
+
+.subckt OPA695_F3 1 2 3 4           *comment out for Spice3
+F_F3         3 4 VF_F3 1.974914     *comment out for Spice3
+VF_F3         1 2 0V                *comment out for Spice3
+.ends OPA695_F3                     *comment out for Spice3
+
+.subckt OPA695_F4 1 2 3 4           *comment out for Spice3
+F_F4         3 4 VF_F4 2.000575     *comment out for Spice3
+VF_F4         1 2 0V                *comment out for Spice3
+.ends OPA695_F4
+*
+*Models for circuit OPA695
+*
+.MODEL Da D IS=1.0000E-15
+.MODEL DN1 D(IS=2F AF=1 KF=10.5E-17)
+.MODEL DN3 D( IS=.1F AF=1.0 KF=39.0E-17)
+*
+.MODEL NPN8 NPN
++ IS = 7.604E-18 BF = 1.570E+02 NF = 1.000E+00 VAF= 7.871E+01
++ IKF= 3.975E-02 ISE= 3.219E-14 NE = 2.000E+00 BR = 7.614E-01
++ NR = 1.000E+00 VAR= 1.452E+00 IKR= 8.172E-02 ISC= 7.618E-21
++ NC = 1.847E+00 RB = 1.060E+02 IRB= 0.000E+00 RBM= 2.400E+00
++ RE = 2.520E+00 RC = 1.270E+02 CJE= 1.120E-13 VJE= 7.591E-01
++ MJE= 5.406E-01 TF = 1.213E-11 XTF= 2.049E+00 VTF= 1.813E+00
++ ITF= 4.293E-02 PTF= 0.000E+00 CJC= 8.208E-14 VJC= 6.666E-01
++ MJC= 4.509E-01 XCJC=8.450E-02 TR = 4.000E-11 CJS= 1.160E-13
++ VJS= 5.286E-01 MJS= 4.389E-01 XTB= 1.022E+00 EG = 1.120E+00
++ XTI= 1.780E+00 KF = 3.500E-16 AF = 1.000E+00 FC = 8.273E-01
+*
+.MODEL PNP8 PNP
++ IS = 7.999E-18 BF = 1.418E+02 NF = 1.000E+00 VAF= 4.158E+01
++ IKF= 1.085E-01 ISE= 2.233E-15 NE = 1.505E+00 BR = 3.252E+01
++ NR = 1.050E+00 VAR= 1.093E+00 IKR= 5.000E-05 ISC= 6.621E-16
++ NC = 1.150E+00 RB = 6.246E+01 IRB= 0.000E+00 RBM= 2.240E+00
++ RE = 2.537E+00 RC = 1.260E+02 CJE= 9.502E-14 VJE= 7.320E-01
++ MJE= 4.930E-01 TF = 1.303E-11 XTF= 3.500E+01 VTF= 3.259E+00
++ ITF= 2.639E-01 PTF= 0.000E+00 CJC= 1.080E-13 VJC= 7.743E-01
++ MJC= 5.000E-01 XCJC=8.504E-02 TR = 1.500E-10 CJS= 1.290E-13
++ VJS= 9.058E-01 MJS= 4.931E-01 XTB= 1.732E+00 EG = 1.120E+00
++ XTI= 2.000E+00 KF = 3.500E-16 AF = 1.000E+00 FC = 8.500E-01

@@ -1,0 +1,80 @@
+* WARNING : please consider following remarks before usage
+*
+* 1) All models are a tradeoff between accuracy and complexity (ie. simulation 
+*    time).
+* 2) Macromodels are not a substitute to breadboarding, they rather confirm the
+*    validity of a design approach and help to select surrounding component values.
+*
+* 3) A macromodel emulates the NOMINAL performance of a TYPICAL device within 
+*    SPECIFIED OPERATING CONDITIONS (ie. temperature, supply voltage, etc.).
+*    Thus the macromodel is often not as exhaustive as the datasheet, its goal
+*    is to illustrate the main parameters of the product.
+*
+* 4) Data issued from macromodels used outside of its specified conditions
+*    (Vcc, Temperature, etc) or even worse: outside of the device operating 
+*    conditions (Vcc, Vicm, etc) are not reliable in any way.
+*
+*
+********************************
+.SUBCKT TS27X 1 2 3 4 5 
+*** INP- = 1, INP+ =2, OUT = 3 VDD=4 VSS = 5
+*** TYPE = TS271/TS272/TS274
+.MODEL MDTH D IS=1E-8 KF=2.664E-16 CJO=10F
+***INPUT STAGE
+CIP 2 5 1E-12
+CIN 1 5 1E-12
+EIP 10 5 2 5 1
+EIN 16 5 1 5 1
+RIP 10 11 8
+RIN 15 16 8
+RIS 11 15 223.84
+CPS 11 15 1E-9
+DIP 11 120 MDTH 400E-12
+DIN 15 140 MDTH 400E-12
+RDEG1 12 120 4400
+RDEG2 14 140 4400
+VOFP 12 13 DC 0
+VOFN 13 14 DC 0
+IPOL 13 5 38E-6
+***ICC
+DICC1 4 31 MDTH 400E-12
+DICC2 31 32 MDTH 400E-12
+DICC3 32 33 MDTH 400E-12
+DICC4 33 34 MDTH 400E-12
+RICC 34 5 20E3
+ICC 4 5 600E-6
+***COMMON MODE INPUT LIMITATION
+DINN 17 13 MDTH 400E-12
+VIN 17 5 DC -0.1
+DINR 15 18 MDTH 400E-12
+VIP 4 18 DC 2.2
+***GM1 STAGE
+FGM1P 119 5 VOFP 1
+FGM1N 119 5 VOFN 1
+RAP 119 4 1E6
+RAN 119 5 1E6
+***GM2 STAGE
+G2P 19 5 119 5 4E-4
+G2N 19 5 119 4 4E-4
+R2P 19 4 450E3
+R2N 19 5 450E3
+***COMPENSATION
+CC 19 119 7p
+***BUFFER
+EBUF 20 5 19 5 1
+***SHORT-CIRCUIT LIMITATIONS( ISINK, ISOURCE)
+DOPM 19 22 MDTH 400E-12
+DONM 21 19 MDTH 400E-12
+HOPM 22 28 VOUT 910
+VIPM 28 4 DC 50
+HONM 21 27 VOUT 1222
+VINM 5 27 DC 50
+VOUT 3 23 DC 0
+***VOH, VOL DEFINITIONS
+DOP 19 25 MDTH 400E-12
+VOP 4 25 2.5
+DON 24 19 MDTH 400E-12
+VON 24 5 0.92
+***OUTPUT RESISTOR
+ROUT 23 20 10
+.ENDS

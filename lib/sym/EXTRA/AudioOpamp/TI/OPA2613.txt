@@ -1,0 +1,88 @@
+* OPA2613  Unit Gain Wide Bandwidth Voltage Feedback Amp
+* REV. A - Created 7/23/04 Rea.Schmid@ti.com
+*
+*
+* NOTES:
+*   1- This macromodel predicts well: DC, small-signal AC,
+*      noise, and transient performance under a wide range
+*      of conditions
+*   2- This macromodel does not predict: distortion
+*      (harmonic, intermod, diff. gain & phase, ...),
+*      temperature effects, board parasitics, differences
+*      between package styles, and process changes
+*   3- This is duplicated for duals.  There is no amplifier crosstalk
+*      included in this simulation package.
+*      
+*      
+*
+* |-------------------------------------------------------------|
+* |  This macro model is being supplied as an aid to            |
+* |  circuit designs.  While it reflects reasonably close       |
+* |  similarity to the actual device in terms of performance,   |
+* |  it is not suggested as a replacement for breadboarding.    |
+* |  Simulation should be used as a forerunner or a supplement  |
+* |  to traditional lab testing.                                |
+* |                                                             |
+* |  Neither this library nor any part may be copied without    |
+* |  the express written consent of Texas Instruments Corp.     |
+* |-------------------------------------------------------------|
+*
+* CONNECTIONS:
+*              Non-Inverting Input
+*              | Inverting Input
+*              | |  Out
+*              | |  |   Positive Supply
+*              | |  |   |  Negative Supply
+*              | |  |   |  |  
+*              | |  |   |  |  
+*              | |  |   |  |  
+*              | |  |   |  |  
+.SUBCKT OPA2613 + - Out V+ V- 
+V_V1         V+ 10 DC .5  
+C_C1         0 +  1p  
+C_C4         11 12  550F  
+C_C5         15 0  15.85p  
+R_R1         11 10  400  
+R_R2         12 10  400  
+R_R3         15 0  4421K  
+R_R4         19 0  1K  
+R_R5         21 V+  15  
+D_D1         14 13 Da 1
+G_G1         0 15 POLY(1) 12 11 0  2m  0  0
+G_G2         0 19 POLY(1) 15 0 0  1m  0  0
+D_D4         19 18 DX 1
+D_D5         20 19 DX 1
+D_D6         22 Out DX .5
+D_D7         Out 23 DX .5
+I_I1         13 V- DC 1.256mA  
+V_V2         14 V- DC 1.10  
+E_E2         20 0 POLY(1) V- V+ .25  0.5  0
+E_E3         21 22 POLY(2) 0 19  V+ V-  -885m 1 0.5
+E_E4         23 24 POLY(2) 19 0  V+ V-  -885M 1 0.5
+R_R6         V- 24  15  
+E_E1         18 0 POLY(1) V+ V- -.25  0.5  0
+Q_Q3         11 + 13 NPN8 10.5
+Q_Q4         12 - 13 NPN8 10.5
+
+.MODEL Da D IS=1.0000E-15
+
+.MODEL DX D
++ IS=1.0000E-15
+*
+.MODEL NPN8 NPN
++ IS = 7.604E-18 BF = 1.570E+02 NF = 1.000E+00 VAF= 7.871E+01
++ IKF= 3.975E-02 ISE= 3.219E-14 NE = 2.000E+00 BR = 7.614E-01
++ NR = 1.000E+00 VAR= 1.452E+00 IKR= 8.172E-02 ISC= 7.618E-21
++ NC = 1.847E+00 RB = 1.060E+02 IRB= 0.000E+00 RBM= 2.400E+00
++ RE = 2.520E+00 RC = 1.270E+02 CJE= 1.120E-15 VJE= 7.591E-01
++ MJE= 5.406E-01 TF = 1.213E-11 XTF= 2.049E+00 VTF= 1.813E+00
++ ITF= 4.293E-02 PTF= 0.000E+00 CJC= 8.208E-14 VJC= 6.666E-01
++ MJC= 4.509E-01 XCJC=8.450E-02 TR = 4.000E-11 CJS= 1.160E-15
++ VJS= 5.286E-01 MJS= 4.389E-01 XTB= 1.022E+00 EG = 1.120E+00
++ XTI= 1.780E+00 KF = 45.00E-16 AF = 1.000E+00 FC = 8.273E-01
+
+.ENDS    OPA2613
+*
+*
+
+$

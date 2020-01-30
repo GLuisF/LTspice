@@ -1,0 +1,96 @@
+* Simple parametrized opamp models for general purpose simulations.
+* The most important transient and AC properties are included.
+* DC precision (offset, bias, ...) is not modelled.
+* All frequency dependent behavior is linked to the GBW (Gain BandWidth
+*  product) parameter, so that GBW can be used to scale the whole opamp.
+*
+* The open loop DCgain and GBW parameters of the current feedback opamp are 
+*  specified for the combination of the opamp and its feedback resistor Rfb 
+*  in series with its inverting input.  This convention makes these parameters  
+*  equivalent and comparable to voltage feedback opamp parameters.
+* To derive DCgain and GBW from CFB opamp datasheets: divide the 
+*  published open loop DC transresistance by the specified Rfb to
+*  obtain DCgain, and divide the open loop transimpedance-frequency product
+*  as seen in typical curves by the specified Rfb to obtain GBW. 
+* Note that for wideband opamps (both VFB and CFB) the unity gain bandwidth
+*  is much higher than the GBW due to high Q closed loop poles.  For example
+*  an opamp with 1GHz unity gain bandwidth might have a GBW of only 300MHz. 
+*
+*Luc Heylen 2006
+*
+
+
+* Parametrized Voltage Feedback opamp
+* slew: slew rate [V/s], relative to GBW parameter.
+* fmargin: corner freq of high order poles [Hz], relative to GBW.
+.subckt paramVFBopamp +In -In Vcc Vee OUT
+.param GBW=10e6, DCgain=1e5, VsatPos=1.5V, VsatNeg=1.5V
+.param slew=1, fmargin=4, Rout=100, curlimSource=40mA, curlimSink=40mA, Iq=4mA
+D1 +in Vcc Dclamp
+D2 Vee +in Dclamp
+D3 -in Vcc Dclamp
+D4 Vee -in Dclamp
+B1 0 n3 I=1e-3*slew*tanh(V(n2)*2*pi/slew)/2/pi tripdv=10m tripdt={10m/GBW}
+C1 n3 0 {1e-3/(2*pi*GBW)} Rser=0
+R1 n3 0 {1e3*DCgain}
+G1 0 n1 +in -in 2e-3
+C2 n2 0 {2.2034e-3/(fmargin*GBW*2*pi)}
+C3 n1 0 {0.3374e-3/(fmargin*GBW*2*pi)}
+L1 n1 n2 {0.9705e3/(fmargin*GBW*2*pi)}
+R2 n1 0 1k noiseless
+R3 n2 0 1k noiseless
+D5 out Vcc Dclamp
+D6 Vee out Dclamp
+B_1 n4 out I=limit((V(n4)-V(out))/Rout,-curlimSink,curlimSource) tripdv=10m tripdt={10m/GBW}
+D_1 n3 Vcc DsatPos
+D_2 Vee n3 DsatNeg
+E1 n4 0 n3 0 1
+C6 out n4 1p Rpar=1e6
+R4 n4 0 1k
+.model Dclamp D(Ron=0.1 Roff=2e8 Vfwd=0.6)
+.model DsatPos D(Ron=300 Roff={DCgain*1e12} Vfwd={-VsatPos})
+.model DsatNeg D(Ron=300 Roff={DCgain*1e12} Vfwd={-VsatNeg})
+.ends paramVFBopamp
+
+
+* Parametrized Current Feedback opamp
+* slew: slew rate [V/s], relative to GBW parameter.
+* fmargin: corner freq of high order poles [Hz], relative to GBW.
+* Rfb: specified feedback resistor for which the other parameters are valid.
+* Rinv and Linv: resistance and inductance of inverting input.
+*  Note: open loop transresistance is DCgain*Rfb
+.subckt paramCFBopamp +In -In Vcc Vee OUT
+.param GBW=100e6, DCgain=1e3, VsatPos=1.5V, VsatNeg=1.5V, Rfb=1k, Rinv=10, Linv=10n
+.param slew=5, fmargin=3, Rout=10, curlimSource=60mA, curlimSink=60mA, Iq=10mA
+D1 +in Vcc Dclamp
+D2 Vee +in Dclamp
+D3 -in Vcc Dclamp
+D4 Vee -in Dclamp
+C2 n2 0 {2.2034e-3/(fmargin*GBW*2*pi)}
+C3 n1 0 {0.3374e-3/(fmargin*GBW*2*pi)}
+L1 n1 n2 {0.9705e3/(fmargin*GBW*2*pi)}
+E1 nbuf 0 +in 0 1
+L2 nbuf -in {Linv} Rser={Rinv}
+R3 n1 0 1k noiseless
+R4 n2 0 1k noiseless
+B1 0 n3 I=1e-3*slew*tanh(V(n2)*2*pi/slew)/2/pi tripdv=10m tripdt={10m/GBW}
+C1 n3 0 {1e-3/(2*pi*GBW)} Rser=0
+R1 n3 0 {1e3*DCgain}
+F1 n1 0 E1 {2e-3*Rfb}
+D5 out Vcc Dclamp
+D6 Vee out Dclamp
+B_1 n4 out I=limit((V(n4)-V(out))/Rout,-curlimSink,curlimSource) tripdv=10m tripdt={10m/GBW}
+D_1 n3 Vcc DsatPos
+D_2 Vee n3 DsatNeg
+E2 n4 0 n3 0 1
+C6 out n4 1p Rpar=1e6
+R2 n4 0 1k
+.model Dclamp D(Ron=0.1 Roff=2e8 Vfwd=0.6)
+.model DsatPos D(Ron=300 Roff={DCgain*1e12} Vfwd={-VsatPos})
+.model DsatNeg D(Ron=300 Roff={DCgain*1e12} Vfwd={-VsatNeg})
+.ends paramCFBopamp
+
+
+.end
+
+

@@ -1,0 +1,8 @@
+*black_body_ltc.cir
+.include C:\Users\Bernard J. Buenaobra\Documents\modelling_photovoltaic_systems_using_pspice\spice decks\black_body_ltc.lib
+.include C:\Users\Bernard J. Buenaobra\Documents\modelling_photovoltaic_systems_using_pspice\spice decks\wavelength_ltc.lib
+x_black_body 12 11 0 black_body
+x_wavelength 12 0 wavelength
+.tran 0.1u 4u
+.measure tran v(11)
+.end

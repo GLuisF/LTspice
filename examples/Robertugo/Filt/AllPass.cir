@@ -1,0 +1,39 @@
+ALLPASS.cir
+
+*   4 1 July   21 June 2001   J. Tonne
+
+*   Waveform generator; raw pulse is at 1;
+*   smoothed "voice" signal is at 100;
+*   output of highpass filter is at 200;
+*   output of allpass network is at 303 (for now).
+
+* Raw pulse generator:
+Vin     1    0    PULSE   -.38 1    0 .0002 .001 .0008 .005
+Rin     1    0    1G
+
+* Response shaper to form voice signal:
+E1      100  0    VALUE = { 1000 * ( V(3)-V(100) ) }
+R1      1    2    10k
+R2      2    3    10k
+C1      2    100  .15u
+C2      3    0    .003u
+
+* Highpass driven by voice signal:
+E2      200  0    VALUE = { 1000 * ( V(6)-V(200) ) }
+R3      4    0    5.7158k    ; These resistor values
+R4      5    200  2.2469k    ;    make a Butterworth
+R5      6    0    39.238k    ;    highpass filter
+C3      100  4    .2u
+C4      4    5    .2u        ; .2uF yields -3 @ 100 Hz
+C5      5    6    .2u        ;    with resistors shown
+
+* Allpass driven by voice signal:
+R6      100  301  10k
+R7      301  303  10k
+R8      302  0    10k
+C6      100  302  .1u
+E3      303  0    VALUE = { 1000 * ( V(302)-V(301) ) }
+
+.TRAN 10u .06  0 10u
+.PROBE
+.END

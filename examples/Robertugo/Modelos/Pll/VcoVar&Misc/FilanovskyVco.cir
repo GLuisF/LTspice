@@ -1,0 +1,20 @@
+* Filanovksy VCO
+* .funcs for squarer and error term computation
+.func ve(x,y,z) k*x**2+y**2-z**2
+.param k=0.1, cv=10u
+* first multiplier, summer, first integrator & error
+g1 vd 0 value {k*((-v(vo)*v(vf))+(ve(v(vo),v(vd),v(va))*v(vd)))}
+c1 vd 0 {cv}
+r1 vd 0 1G
+* second multiplier and integrator
+g2 vo 0 value {k*v(vd)*v(vf)}
+c2 vo 0 {cv}
+r2 vo 0 1G
+* initial conditions
+.ic v(vd) = 0.1, v(vo) = 0
+* controlling voltages (modify to suit)
+va va 0 1v ; amplitude
+*vctl vf 0 1 ; frequency
+vctl vf 0 pwl(0,0v 15ms,1v 15.01ms,2v)
+* analysis controls
+.tran 10u 20m

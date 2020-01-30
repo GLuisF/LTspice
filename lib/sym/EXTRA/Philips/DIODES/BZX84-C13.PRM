@@ -1,0 +1,20 @@
+*DEVICE=BZX84C13V,D
+
+* BZX84C13V D model
+* created using Parts release 7.1 on 03/31/98 at 08:52
+* Parts is a MicroSim product.
+.MODEL BZX84C13V D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=149.75
++ CJO=44.598E-12
++ M=.32761
++ VJ=.62204
++ ISR=43.951E-12
++ BV=13.118
++ IBV=.56589
++ TT=825.22E-9
+*$
+
+

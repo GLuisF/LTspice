@@ -1,0 +1,27 @@
+----- Post #3615 -----
+From: Arnold Esper
+Date: Tue Oct 12, 2004 3:23 am
+Subject:
+
+Hello,
+
+trying to export wave Data from the example
+Relaxation oscillator from this group, I wonder
+not to see any signal in V(N001) beside the
+initial ramp. It looks like saturation, although
+ringing is ok. What did I do wrong?
+
+thanks to all, Arnold
+____________________________________________________________________
+
+Hello Arnold,
+your oscillator has a triangle waveform at around +2V at V(N001).
+This is always above +1V and so all stored values are 1(V).
+You need an attenuator (e.g. E-source with gain=0.2) to bring that
+voltage level down to within +/-1V.
+Those limits are described in the LTSPICE help pages.
+
+LTSPICE: Help->LTSPICE->Dot Commands->.Wave ...
+
+Best Regards,
+Helmut

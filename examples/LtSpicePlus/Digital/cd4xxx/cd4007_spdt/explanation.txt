@@ -1,0 +1,11 @@
+Here are two SPDT switch models and symbols based on a CD4007 application
+called "transfer switch" from the Intersil CD4007 datasheet. Although I tried to be 
+careful mapping the netlists to device pin connections, beware - the author is human. 
+These switch models have NOT been tested under real world conditions, please use with care. 
+
+These models are only simplified approximations, at best. Equivalent CD4007 pin 
+connections to implement these switches are listed in the file 4007spdt.sub.
+
+Use as two into one, or one-of-two data multiplexers for analog or CMOS logic level applications. The IOs are bilateral. Device package capacitance and other parasitic effects have not been modeled here - these models' performances should not be expected to mimic real world. (Notice the lack of switching transients and other real-world buggerances as seen when running other CMOS switch models.) I think these should be perhaps be considered as behavioral models.
+
+Place all files in the same folder and CMOS_SPDT.asc should run without a hitch.

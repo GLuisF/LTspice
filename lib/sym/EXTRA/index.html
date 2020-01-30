@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <META http-equiv=Content-Type content="text/html; charset=cp866">
+    <title>Libraries of extra elements for SwCAD/LtSpice</title>
+</head>
+<body>
+
+<script type="text/javascript"><!--
+function showhide(subobjstr){
+var t;
+t=document.getElementById("ru");
+t.style.display=(t.style.display!="inline")?"inline":"none";
+t=document.getElementById("en");
+t.style.display=(t.style.display!="inline")?"inline":"none";
+}
+//--></script>
+
+
+<div id="en" style="display:inline">
+
+<a href=javascript:showhide("en") align=right>Switch to Russian</a>
+
+<h2>LtSpice/SwCADIII</h2>
+
+<p><a href="http://www.linear.com">Linear Technologies</a> makes very nice <a href="http://www.linear.com/company/software.jsp">Spice simulator</a> which is a) free; b) reliable; c) updated on weekly basis (so if you experience issues they'll be fixed rapidly) and d) has one of
+the -- if not the -- fastest, precise and numerically stable solvers (it it recommended to go to Tools->Contol Panel->Spice and choose Solver->Alternate).
+
+<p>One of the major problems with SwCAD is lack of standard elements (though the library of LT chips is quite impressive); you can download my
+<a href="extra.rar">library</a> of elements. Most of them are obtained from respective manufacturers' web cites, some were borrowed from
+<a href="http://groups.yahoo.com/group/LTspice">Yahoo LTSpice group</a>, so were provided by private parties. I admit that in the latter case
+I often slightly modified the schematics so that the element's symbol and other files do not need to be copied into the same directory with the
+schematics (the path to respective spice library file is embeeded into the symbol), the user does not need to enter model name (it is embedded into the symbol),
+and, in couple of cases, corrected the problem of using node 0 (global ground) inside subcircuit. Except for these rare and minor changes, I tried by best
+to retain original files with all the copyrights and references to the part manufacturer and/or circuit owner.
+
+
+<h2>Additional elements for SwCAD</h2>
+<ul>
+<p><li><b>Attention</b>: installation will overwrite \SwCADIII\lib\cmp\standard.{bjt,dio,mos,jft} files, so if you
+added your own bipolar transistor, diode, MOSFET, or JFET models, you'd better back them up and merge with new set later (if you
+do not understand what this all is about, do not worry then -- you will not be affected).
+<li>Make sure that SwCAD is installed in disk root directory (e.g. C:\SwCADIII, not "C:\Program Files\SwCADIII" or whatever).
+<li>Download <a href="extra.rar">library of extra elements for SwCAD</a>.
+<li>Unpack "extra.rar" using <a href="http://www.rarlab.com">RAR archiver</a> and get "extra1.rar".
+<li>Copy "extra1.rar" to the same disk where SwCAD is installed.
+<li>Unpack "extra1.rar" onto the same disk where SwCAD is installed.
+<li>Done.
+</ul>
+
+</div>
+
+<div id="ru" style="display:none">
+
+<a href=javascript:showhide("en") align=right>Switch to English</a>
+
+<h2>LtSpice/SwCADIII</h2>
+
+<p><a href="http://www.linear.com">Linear Technologies</a> делает чудный <a href="http://www.linear.com/company/software.jsp">SPICE симулятор</a>
+под кодовым названием LtSpice aka SwCAD. Чудный потому, что а) бесплатный; бе) надежный; це) ошибки чинятся быстро, обновления -- каждую неделю;
+де) самый быстрый, точный и устойчивый (сильно рекомендуется пойти в Tools->Contol Panel->Spice и выбрать Solver->Alternate).
+
+<p>Одной из главных проблем с SwCAD является наличие отсутсвия богатой библитеки элементов. Сей пробел был восполнен с помощью производителей
+микросхем, участников форумов <a href="http://groups.yahoo.com/group/LTspice">Yahoo LTSpice group</a> и ряда частных лиц, указанных в соответствующих моделях и
+символах.
+
+
+<h2>Установка библиотеки дополнительных элементов к SwCAD</h2>
+<ul>
+<p><li><b>Внимание!</b> Установка перепишет содержимое файлов \SwCADIII\lib\cmp\standard.{bjt,dio,mos,jft}, посему, если Вы
+добавляли свои модели биполярных транзисторов, диодов, MOSFET-ов, или JFET-ов, Вам лучше сохранить старые версии вышеперечисленных файлов
+и, после инсталляции, добавить Ваши элементы заново (а если Вы не понимаете, о чем идет речь, тогда и волноваться не о чем, т.к. это к Вам не относится).
+<li>Убедитесь, что SwCAD установлен в корневой директории на диске (н-р, C:\SwCADIII, а не "C:\Program Files\SwCADIII").
+<li>Скачайте <a href="extra.rar">библитеку дополинтельных элементов</a>.
+<li>Воспользовавшись <a href="http://www.rarlab.com">архиватором RAR</a>, распакуйте "extra.rar" и получите "extra1.rar".
+<li>Скопируйте "extra1.rar" на тот же диск, где установлен SwCAD.
+<li>Распакуйте "extra1.rar" на тот же диск, где установлен SwCAD.
+<li>Готово.
+</ul>
+
+</div>
+
+
+</body>
+
+</html>

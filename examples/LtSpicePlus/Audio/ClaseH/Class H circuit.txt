@@ -1,0 +1,36 @@
+4-12-04
+Class H sub amplifier using two UnivSMPS circuits.
+
+The circuit does not simulate perfectly but does the most 
+possible without getting too complex.  My goal was a sub
+woofer amplifier which performs at least as well as a good
+class D amp, but with more simplicity.  Class D is good,
+but I have not reached a circuit configuration that I am 
+pleased with.  This class H circuit has fewer parts than
+all the class D circuits which I have played around with
+so far.  Yet, even the more complicated ones still did not
+seem quite what I wanted.
+
+The circuit, like all my other simulated circuits will not
+perform identically to the simulation.  Some components
+may need to be added, altered in value, or may be
+omittable.
+
+I have uploaded the circuit in 16 color bitmap form so that
+it can be viewed in high resolution to make its large size,
+page-wise, easier to follow.  You can zoom in as large as
+needed within limits.
+
+Like all my circuits, I occasionally return to update and
+edit as I feel is helpful and as my time permits. It may 
+help to check over the files occasionally for modifications.
+
+I have long held the view that high power is only needed 
+for bass audio spectrum amplifiers, especially since I find
+that the highest fidelity subwoofer systems use sealed
+enclosures with just enough volume so that the peak in
+response in the upper sub bass region can be attenuated
+by active equalization.  No other simple sub woofer type
+can be made to give smooth, response as easily.  I also
+recommend using plenty of polyester stuffing to further
+smooth the response.

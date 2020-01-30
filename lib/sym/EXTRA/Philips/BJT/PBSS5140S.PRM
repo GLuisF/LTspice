@@ -1,0 +1,46 @@
+*
+.SUBCKT PBSS5140S 1 2 3
+*
+Q1 2 1 3 PBSS5140S 
+*
+.MODEL PBSS5140S PNP 
++ IS = 2.837E-13 
++ NF = 0.9839 
++ ISE = 1.071E-14 
++ NE = 1.221 
++ BF = 577.3 
++ IKF = 0.56 
++ VAF = 28 
++ NR = 0.982 
++ ISC = 6.577E-14 
++ NC = 1.123 
++ BR = 121 
++ IKR = 0.2 
++ VAR = 10 
++ RB = 21 
++ IRB = 0.00019 
++ RBM = 0.2 
++ RE = 0.11 
++ RC = 0.12 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 8.276E-11 
++ VJE = 0.819 
++ MJE = 0.4077 
++ TF = 6.5E-10 
++ XTF = 5 
++ VTF = 2 
++ ITF = 2 
++ PTF = 0 
++ CJC = 3.252E-11 
++ VJC = 0.803 
++ MJC = 0.4962 
++ XCJC = 1 
++ TR = 1.5E-08 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.ENDS
+*

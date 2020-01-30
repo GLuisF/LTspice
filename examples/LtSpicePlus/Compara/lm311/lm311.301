@@ -1,0 +1,83 @@
+* http://focus.ti.com/docs/prod/folders/print/lm311.html
+* LM311 VOLTAGE COMPARATOR "MACROMODEL" SUBCIRCUIT
+* CREATED USING PARTS VERSION 4.03 ON 03/07/90 AT 08:15
+* REV (N/A)
+* CONNECTIONS:   NON-INVERTING INPUT
+*                | INVERTING INPUT
+*                | | POSITIVE POWER SUPPLY
+*                | | | NEGATIVE POWER SUPPLY
+*                | | | | OPEN COLLECTOR OUTPUT
+*                | | | | | OUTPUT GROUND
+*                | | | | | |
+.SUBCKT LM311    1 2 3 4 5 6
+*
+  F1    9  3 V1 1
+  IEE   3  7 DC 100.0E-6
+  VI1  21  1 DC .45
+  VI2  22  2 DC .45
+  Q1    9 21  7 QIN
+  Q2    8 22  7 QIN
+  Q3    9  8  4 QMO
+  Q4    8  8  4 QMI
+.MODEL QIN PNP(IS=800.0E-18 BF=500)
+.MODEL QMI NPN(IS=800.0E-18 BF=1002)
+.MODEL QMO NPN(IS=800.0E-18 BF=1000 CJC=1E-15 TR=102.5E-9)
+  E1   10  6  9  4  1
+  V1   10 11 DC 0
+  Q5    5 11  6 QOC
+.MODEL QOC NPN(IS=800.0E-18 BF=103.5E3 CJC=1E-15 TF=11.60E-12 TR=48.19E-9)
+  DP    4  3 DX
+  RP    3  4 6.667E3
+.MODEL DX  D(IS=800.0E-18)
+*
+.ENDS
+
+*
+*-----------------------------------------------------------------------------
+* connections: non-inverting input
+* | inverting input
+* | | positive power supply
+* | | | negative power supply
+* | | | | open collector output
+* | | | | | output ground
+* | | | | | |
+.subckt LM211 1 2 3 4 5 6
+*
+x_lm211 1 2 3 4 5 6 LM111
+*
+* the LM211 is identical to the LM111, but has a more limited temp. range
+*
+.ends
+
+
+*-----------------------------------------------------------------------------
+* connections: non-inverting input
+* | inverting input
+* | | positive power supply
+* | | | negative power supply
+* | | | | open collector output
+* | | | | | output ground
+* | | | | | |
+.subckt LM311 1 2 3 4 5 6
+*
+f1 9 3 v1 1
+iee 3 7 dc 100.0E-6
+vi1 21 1 dc .45
+vi2 22 2 dc .45
+q1 9 21 7 qin
+q2 8 22 7 qin
+q3 9 8 4 qmo
+q4 8 8 4 qmi
+.model qin PNP(Is=800.0E-18 Bf=500)
+.model qmi NPN(Is=800.0E-18 Bf=1002)
+.model qmo NPN(Is=800.0E-18 Bf=1000 Cjc=1E-15 Tr=124.2E-9)
+e1 10 6 9 4 1
+v1 10 11 dc 0
+q5 5 11 6 qoc
+.model qoc NPN(Is=800.0E-18 Bf=206.9E3 Cjc=1E-15 Tf=7.855E-12 Tr=83.83E-9)
+dp 4 3 dx
+rp 3 4 7.087E3
+.model dx D(Is=800.0E-18)
+*
+.ends
+*$

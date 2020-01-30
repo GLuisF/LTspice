@@ -1,0 +1,110 @@
+* C:\Archivos de programa\LTC\SwCADIII\examples\Robertugo\Convert\Tero\Tero555ALL.asc
+Ct N001 0 820p
+DretInv 0 N003 1N914
+Dalim Out Alim555 MURS120
+Dpol N005 N004 MBRS1100
+Rtoff N001 N002 47K 
+Rton Alim555 N002 27K 
+QCtrl PwmCtrl beQctrl 0 0 BC547A
+Rd2 beQctrl 0 1K 
+VLocom N006 0 80v AC 1
+RDis N004 Alim555 22k 
+R_uFan Alim555 0 150 
+Rbuf N003 Out_555 47 
+Rbmin N003 0 22 
+Cf1 OutRect 0 220µ 
+Cf2 Out 0 220µ 
+Lf Out OutRect 100µ 
+Cstart N004 Alim555 47µ 
+Csnub High 0 1n2 
+D2 N002 N001 1N914
+LP N004 High 904µ
+LS 0 N007 50µ
+Drect N007 OutRect MBR735
+Qout High N003 0 0 BU508
+XU1 0 N001 Out_555 Alim555 PwmCtrl N001 N002 Alim555 LM555
+Csint N007 0 {100n}
+Rd1 beQctrl OutRect 18K 
+Rlim N005 N006 2R2
+Cps N007 High 10p
+Cf3 Alim555 0 220µ
+RLoad Out 0 4
+* .model D D
+* .lib '"C:\Archivos de programa\LTC\SwCADIII\lib\cmp\standard.dio"'
+* .model NPN NPN
+* .model PNP PNP
+* .lib '"C:\Archivos de programa\LTC\SwCADIII\lib\cmp\standard.bjt"'
+K1 LP LS .995
+.tran 0 5m uic
+*Subcircuito del LM555, traducido del
+*diagrama esquemático que hay en la
+*hoja de datos de Thomson por Robertugo_2005:
+.SUBCKT LM555 1 2 3 4 5 6 7 8
+Q1 N5 5 N7 1 NP
+Q2 N1 6 N6 1 NP
+Q3 N1 N6 N8 1 NP
+Q4 N5 N7 N8 1 NP
+Q5 7 N16 1 1 NP
+Q6 N17 N14 1 1 NP
+Q7 N1 N1 N3 1 PN
+Q8 N17 N1 N2 1 PN
+Q9 1 N5 N2 1 PN
+Q10 N5 N5 N4 1 PN
+Q11 N11 N20 N9 1 PN
+R1 8 N3 4.7K
+R2 8 N2 830
+R3 8 N4 4.7K
+R4 8 N9 1K
+R5 8 5 5K
+R6 8 N22 6.8K
+Q13 1 2 N10 1 PN
+Q14 N14 N10 N11 1 PN
+Q15 N13 N12 N11 1 PN
+Q16 N13 N15 N12 1 PN
+R7 N14 1 100K
+R8 N13 1 100K
+R9 N15 5 5K
+R10 N15 1 5K
+R11 N8 1 10K
+Q17 N16 4 N18 1 PN
+Q18 N19 N17 1 1 NP
+R12 N18 N20 5K
+Q19 N20 N20 8 1 PN
+Q20 N21 N20 8 1 PN
+Q21 N21 N19 1 1 NP
+R13 N17 N21 4.7K
+Q22 8 N22 N23 1 NP
+Q23 N22 N21 N24 1 NP
+Q24 8 N23 3 1 NP
+R14 3 N23 3.9K
+Q25 3 N25 1 1 NP
+R15 N25 N24 220
+R16 1 N24 4.7K
+R17 N24 N16 10K
+D2 3 N22 D
+D1 N18 N19 D
+.MODEL NP NPN(BF=125 Cje=.5p Cjc=.5p Rb=500)
+.MODEL PN LPNP(BF=25 Cje=.3p Cjc=1.5p Rb=250)
+.MODEL D D(IS=1E-15)
+.ENDS LM555
+* .lib '"C:\Archivos de programa\LTC\SwCADIII\lib\sub\timers.lib"'
+* .backanno
+.model BU508    NPN(Is=148.5p Xti=3 Eg=1.11 Vaf=100 Bf=43.23 Ise=1.355n
++               Ne=1.413 Ikf=8.245 Nk=.8069 Xtb=1.75 Br=2.131 Isc=529.1p
++               Nc=1.567 Ikr=1.689 Rc=32.64m Cjc=303.6p Mjc=.3333 Vjc=.5 Fc=.5
++               Cje=910.8p Mje=.3333 Vje=.5 Tr=16.1u Tf=22.02n Itf=183.6
++               Xtf=18.91K Vtf=10)
+*		case=TOP3
+.MODEL BC547A NPN(IS=1.533E-14 ISE=7.932E-16 ISC=8.305E-14 XTI=3
++ BF=178.7 BR=8.628 IKF=0.1216 IKR=0.1121 XTB=1.5
++ VAF=69.7 VAR=44.7 VJE=0.4209 VJC=0.2
++ RE=0.6395 RC=0.6508 RB=1 RBM=1 IRB=1E-06
++ CJE=1.61E-11 CJC=4.388E-12 XCJC=0.6193 FC=0.7762
++ NF=1.002 NR=1.004 NE=1.436 NC=1.207 MJE=0.3071 MJC=0.2793
++ TF=4.995E-10 TR=1E-32 PTF=0 ITF=0.7021 VTF=3.523 XTF=139
++ EG=1.11 KF=1E-9 AF=1)
+.model MBRS1100		D(Is=20.6u  Rs=0.0079 N=2.303 Cjo=270p M=.575 Eg=.69 Xti=2)
+.model 1N914		D(Is=2.52n  Rs=0.568  N=1.752 Cjo=4p   M=.4   Tt=20n)
+.model MURS120		D(Is=33.8n  Rs=0.0236 N=1.718 Cjo=45p  M=.6   Tt=45n)
+.model MBR735      	D(Is=159u   Rs=0.02   N=1.76  Cjo=740p M=.6   Eg=.69 Xti=2)
+.Probe

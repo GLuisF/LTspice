@@ -1,0 +1,73 @@
+*
+.SUBCKT PBSS4140T 1 2 3
+* 
+* housing parasitics
+LB 1 11 1.25E-09 
+LE 2 22 1.12E-09 
+LC 3 33 2.3E-10 
+CBCG 33 11 6.2E-14 
+CBEG 22 11 4.5E-14 
+CCEG 22 33 6.2E-14 
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse
+* mode of operation.
+*
+Q1 33 11 22 PBSS4140T
+D1 11 33 DIODE 
+*
+.MODEL PBSS4140T NPN 
++ IS = 1.933E-13 
++ NF = 0.9751 
++ ISE = 5.906E-16 
++ NE = 1.2 
++ BF = 441.7 
++ IKF = 5.05 
++ VAF = 85 
++ NR = 0.9739 
++ ISC = 1E-32 
++ NC = 2 
++ BR = 81 
++ IKR = 0.5 
++ VAR = 12 
++ RB = 80 
++ IRB = 3E-05 
++ RBM = 0.6 
++ RE = 0.129 
++ RC = 0.14 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.021E-10 
++ VJE = 0.5499 
++ MJE = 0.3105 
++ TF = 4E-10 
++ XTF = 9 
++ VTF = 3 
++ ITF = 1.5 
++ PTF = 0 
++ CJC = 2.134E-11 
++ VJC = 0.6106 
++ MJC = 0.4466 
++ XCJC = 1 
++ TR = 2.1E-08 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.9485 
+.MODEL DIODE D 
++ IS = 5E-15 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1000 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

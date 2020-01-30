@@ -1,0 +1,24 @@
+*
+.SUBCKT BAW62 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1.15E+10
+D1 1 2 BAW62
+*
+.MODEL BAW62 D
++ IS = 3.126E-9
++ N = 1.925
++ BV = 85
++ IBV = 0.0005
++ RS = 0.8109
++ CJO = 7.27E-13
++ VJ = 0.7226
++ M = 0.01318
++ FC = 0.5
++ TT = 4.04E-9
+.ENDS
+*

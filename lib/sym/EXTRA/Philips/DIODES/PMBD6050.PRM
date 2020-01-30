@@ -1,0 +1,19 @@
+*DEVICE=PMBD6050,D
+* PMBD6050 D model
+* created using Parts release 7.1 on 07/29/98 at 10:59
+* Parts is a MicroSim product.
+.MODEL PMBD6050 D
++ IS=6.0289E-9
++ N=2.1283
++ RS=1.0000E-3
++ IKF=37.638E-3
++ CJO=593.63E-15
++ M=.1
++ VJ=.68774
++ ISR=1.6725E-9
++ NR=4.9950
++ BV=139.42
++ IBV=34.486E-3
++ TT=4.5000E-9
+*$
+

@@ -1,0 +1,11 @@
+*subcircuit PWM4
+*parameters:
+*  period
+*  Vin_Low   ;Voltage between Input nodes for   0 % PWM
+*  Vin_High  ;Voltage between Input nodes for 100 % PWM
+*  Vout_low
+*  Vout_high
+.SUBCKT pwm4 in+ in- out+ out-
+V1 saw 0 PULSE({Vin_Low} {Vin_High} 0 {period} {period/1e6} 0 {period}); Sawtooth 
+B2 out+ out- V=if(V(in+,in-)<V(saw),{Vout_low},{Vout_high})
+.ends

@@ -1,0 +1,131 @@
+Are you interested in simulating speakers?
+
+Manufacturers sometimes give some basic info about the driver's physical 
+characteristics that can be useful to start the modeling process, but my 
+example was taken from my work from a few years ago with a prototype 
+subwoofer that I was then developing.  
+
+One gets in the ballpark by starting with the parameters from any model 
+of a vaguely similar speaker, or by calculating the first cut parameters 
+from the equations.  After that, it is not too much trouble through 
+trial and error to adjust the parameters to get a near perfect fit to 
+measurements.
+
+I measured the proto subwoofer's impedance and response on an Audio 
+Precision analyzer and I went looking for a way to model it so I could 
+simulate an equalization scheme that uses positive feedback of coil 
+current.  Almost all of the models I found were set in the acoustical-
+mechanical domain and didn't capture actual performance all that well 
+anyway.  So I came up with a much more EE friendly model to match the 
+data. --  analog spiceman
+
+
+Here is an example of a SPICE model that very accurately mimics 
+measurement.  It is for a speaker with both an actively driven cone 
+and a passive radiator cone.
+
+First some definitions (skip to the end for a quick peak at the results).
+
+  Bl    Electromechanical motor constant of the voice coil - this factor 
+        depends on magnet strength, gap geometry and turns in the coil. 
+        It relates coil displacement force to coil current (newtons/amp).
+
+  Rvc   Rvc is the dc resistance of the voice coil.  Rvc1-3 account 
+        for the frequency dependent increase in resistance due to eddy 
+        current losses in the voice coil and surrounding pole pieces.
+
+  Lvc   Voice coil inductance - decreases with increasing frequency due 
+        to flux squeezing resulting from eddy currents.
+
+  Les   Cone suspension compliance equivalent inductance:  Les = Cm*(Bl)^2
+        Cm is the mechanical compliance in m/N.
+
+  Cem   Cone mass equivalent capacitance:  Cem = Mm/(Bl)^2
+        Mm is the mechanical mass in kg.
+
+  Res   Cone suspension loss equivalent resistance:  Res = (Bl)^2/Lm
+        Lm is the mechanical losses in inverse seconds.
+
+  Fa    Acoustic output factor - goes up with cone area and motor 
+        efficiency and goes down with cone mass, but has almost no 
+        effect on electrical impedance. 
+
+Note: RLesa and RLesp are added to avoid convergence problems with 
+SPICE and Ro allows summing the current dependent current sources 
+that model the acoustic output factor of the two cones in the system.
+
+
+The Model:
+
+         /   Voice   \    /   Active   \   Air in  /   Passive  \   
+        /    Coil     \  /    Piston    \   Box   /    Piston    \  
+
+        Rvc       Lvc0                      Leb                     
+   o--./\/\/`--+--@@@@--+-------+-------+--@@@@@--+-------+-------+ 
+        3.8    |  4.5m  |       |       |   62m   |       |       | 
+               /        |       |       |         |       |       | 
+          Rvc1 \        |       |       |  RLeb   |       |       | 
+            3  /        |       |       +-./\/\/`-+       |       | 
+               |  Lvc1  |       |       |   200   |       |       | 
+               +--@@@@--+       |       |         |       |       | 
+               |  3.0m  |       |       |         |       |       | 
+               /        |       |       |         |       |       | 
+          Rvc2 \        |       |       |         |       |       | 
+           15  /        |       |       |         |       |       | 
+               |  Lvc2  |  Cema |      (@ Lesa    |  Cemp |      (@ Lesp
+               +--@@@@--+      ===     (@         |      ===     (@ 
+               |  2.0m  |  0.5m |      (@ 200m    |  1.5m |      (@ 110m
+               /        |       |       |         |       |       | 
+          Rvc3 \        |       |       |         |       |       | 
+           75  /        |       |       /         /       |       / 
+               |  Lvc3  |       |       \ RLesa   \ Resp  |       \ RLesp
+               +--@@@@--+       |       /  1m     /  80   |       /  1m
+                  1.3m  |       |       |         |       |       | 
+                        /       |   +---+         |       |   +---+ 
+                  Resa  \  Faa  |  ,!.  |         |  Fap  |  ,!.  | 
+                   90   /      [i]( I ) |         |      [i]( I ) | 
+                        |  588m |  `+'  |         | -235m |  `+'  | 
+                        |       |   |   |         |       |   |   | 
+   o------+-------------+-------+---}---+----+----+-------+---)---+ 
+         _|_                        |        /                |     
+        / / /            Acoustic   |     Ro \ 1 ohm          |     
+                          Output    |        /                |     
+                            Vo   o--+--------+----------------+     
+
+
+
+The Results:
+                       Speaker Impedance
+
+ 100   +-----------+-----------+-----------+-----------+   
+       |     '     |     '     |     '     |     '     |   
+       |     '     |      |    |     '     |     '    _|   
+ ohms  | - - + - - | ! -  l  - | - - + - - | - - + _," |   
+       |     '     | l   ; :   |     '     |   _,-"    |   
+       |     '     |; :  ; `   |     '     _,-"  '     |   
+  10   +-----------+--\-;---\--+-------_,-" -----------+   
+       |     '   _/|   v '   \ |   _,-"    |     '     |   
+       |~----**""  |     '    "*--"  '     |     '     |   
+ ohms  | - - + - - | - - + - - | - - + - - | - - + - - |   
+       |     '     |     '     |     '     |     '     |   
+       |     '     |     '     |     '     |     '     |   
+   1   +-----------+-----------+-----------+-----------+   
+      1Hz        10Hz        100Hz        1kHz       10kHz 
+
+
+                        Acoustic Output
+
+  1V   +-----------+-----------+-----------+-----------+   
+       |     '     |     '     |     '     |     '     |   
+       |     '     |     '   _.--.._ '     |     '     |   
+ 100mV | - - + - - | - -__.-"- | - -`+~._- | - - + - - |   
+       |     '     |   / '     |     '   `~~..__ '     |   
+       |     '     |  ;  '     |     '     |    `~~..__|   
+ 10mV  +-----------+-y---------+-----------+-----------+   
+       |     '     | |   '     |     '     |     '     |   
+       |     '   __| ;   '     |     '     |     '     |   
+  1mV  | - - -,-"  \/- - + - - | - - + - - | - - + - - |   
+       |  _,-"     |     '     |     '     |     '     |   
+       | /   '     |     '     |     '     |     '     |   
+ 0.1mV +"----------+-----------+-----------+-----------+   
+      1Hz        10Hz        100Hz        1kHz       10kHz 

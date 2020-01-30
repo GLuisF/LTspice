@@ -1,0 +1,27 @@
+*
+.SUBCKT PESD5VOV4UW 1 2 3 4 5
+*
+* The Resistors do not reflect
+* physical devices.  Instead they 
+* improve modeling in the reverse
+* mode of operation.
+*
+R1 2 1 1E+10
+D1 2 1 PESD5VOV4UW
+R1 2 3 1E+10
+D1 2 3 PESD5VOV4UW
+R1 2 4 1E+10
+D1 2 4 PESD5VOV4UW
+R1 2 5 1E+10
+D1 2 5 PESD5VOV4UW
+*
+.MODEL PESD5VOV4UW D
++ IS = 3.997E-17
++ N = 1.012
++ BV = 6.8
++ IBV = 0.001
++ RS = 1.445
++ CJO = 1.217E-11
++ VJ = 0.6509
++ M = 0.2841
+.ENDS

@@ -1,0 +1,24 @@
+.SUBCKT BAW101 1 2 3 4
+*
+* The Resistors do not reflect
+* physical devices.  Instead they 
+* improve modeling in the reverse
+* mode of operation.
+*
+R1 4 1 1.2E+10 
+D1 4 1 BAW101
+R2 3 2 1.2E+10 
+D2 3 2 BAW101
+*
+.MODEL BAW101 D 
++ IS = 7.219E-9 
++ N = 2 
++ BV = 310 
++ IBV = 0.0001 
++ RS = 0.63 
++ CJO = 4.584E-13 
++ VJ = 0.7483 
++ M = 0.06257 
++ FC = 0.5
++ TT = 2.1987E-8
+.ENDS

@@ -1,0 +1,18 @@
+*DEVICE=BAV103,D
+* BAV103 D model
+* created using Parts release 6.2i on 02/21/97 at 11:01
+* Parts is a MicroSim product.
+.MODEL BAV103 D
++ IS=21.910E-9
++ N=2.2330
++ RS=1.0000E-3
++ IKF=19.230E-3
++ CJO=1.0300E-12
++ M=.1001
++ VJ=.75
++ ISR=10.010E-21
++ BV=293.10
++ IBV=1.2930E-3
++ TT=51.940E-9
+*$
+

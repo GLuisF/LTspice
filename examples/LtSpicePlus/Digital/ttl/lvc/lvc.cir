@@ -1,0 +1,218 @@
+LVC SPICE MODELS
+* LVC.CIR 
+* LOGIC PRODUCTS GROUP 
+* NXP SEMICONDUCTORS 
+*
+* Revision History
+* 
+* Version  Date         Author  Update
+* ------------------------------------------------------------------------
+* 1.08     27 Oct 2008  RRV     LVC1G79, LVC3G17 added
+* 1.07     08 Sep 2008  RRV     LVC1G80 added (not published)
+* 1.06     19 Oct 2006  RRV     LVC1G157 added
+*                               LVC240/240/244 Enable corrected
+* 1.05     22 Jul 2005  RRV     LVC14A updated
+* 1.04     02 May 2005  RRV     LVC06/07 added
+* 1.03     27 Apr 1999
+**************************************************************************
+*  (C) Copyright 2008 NXP Semiconductors                                 *
+*  All rights reserved                                                   *
+*                                                                        *
+*  NXP Semiconductors warrants and represents that the SPICE models      *
+*  identified herein are owned by NXP Semiconductors (NXP).  The         *
+*  models provided are not warranted as fully representing all of the    *
+*  operating characteristics and specifications of the semiconductor     *
+*  products to which the models relate.  Moreover, unless there is a     *
+*  signed, written agreement to the contrary, these models are furnished *
+*  on an "as is" basis without support or warranty of any kind, either   *
+*  expressed or implied, regarding the use thereof, and NXP              *
+*  specifically disclaims all implied warranties of merchantability and  *
+*  fitness of the models for any purpose.                                *
+*                                                                        *
+*  NXP does not assume any liability arising out of the application      *
+*  or use of these SPICE models including infringement of patents and    *
+*  copyrights, nor does NXP convey any license under its patents and     *
+*  copyrights or the rights of others.                                   *
+*                                                                        *
+*  NXP provides SPICE models as a service to our customers.  You and     *
+*  your company shall not distribute, convey, sell, or give these models *
+*  to anyone else without receiving prior written permission from        *
+*  NXP.                                                                  *
+*                                                                        *
+*  NXP reserves the right to make changes without notice to these        *
+*  SPICE models to improve reliability, function, or design.             *
+*                                                                        *
+*  Please be aware that your receipt and subsequent use of the SPICE     *
+*  information provided shall serve as acceptance of the terms and       *
+*  conditions of this agreement.  If you do not accept these terms, you  *
+*  should return or destroy the SPICE models and any other accompanying  *
+*  information immediately.                                              *
+*                                                                        *
+**************************************************************************
+* 
+*--------------------------------------------------------------* 
+* SIMULATION MODULES OF CMOS LOGIC PARTS OF NXP LVC FAMILY     * 
+*                     BERKELEY SPICE FORMAT                    * 
+*--------------------------------------------------------------* 
+* IN ORDER TO SIMULATE A SPECIFIC LVC DEVICE, GO TO THE END OF * 
+* FILE UNDER HEADING 'START RUNNING CIRCUIT MODEL' AND REMOVE  * 
+* THE COMMENT STATEMENT '*' BEFORE THE REQUIRED DEVICE.        * 
+* ALL OTHER DEVICES MUST HAVE AN '*' COMMENT STATEMENT.        * 
+* IF YOU LIKE TO SIMULATE WITH FAST OR SLOW PARAMETERS, GO TO  * 
+* HEADING 'PROCESS MODELS' AND REMOVE THE COMMENT STATEMENT '*'* 
+* BEFORE THE REQUIRED PROCESS MODEL.                           * 
+* THREE PACKAGES ARE AVAILABLE FOR SIMULATIONS: SO, SSOP, AND  * 
+* TSSOP. TO SELECT A PACKAGE, GO TO THE HEADING 'PACKAGE       * 
+* MODELS' AND REMOVE THE COMMENT STATEMENT '*' BEFORE THE      * 
+* DESIRED PACKAGE MODEL.                                       * 
+* YOU MAY ONLY SIMULATE ONE DEVICE AT THE TIME.                * 
+* THE LOAD CIRCUIT AND SIMULATION TIMING SHOULD NORMALLY BE    * 
+* ADAPTED TO YOUR SPECIFIC SITUATION.                          * 
+*--------------------------------------------------------------* 
+* 
+****************************************************************** 
+*                                                                * 
+* These LVC models represent only one data input and one output  * 
+* buffer of the device. Devices with a 3-state output buffer,    * 
+* have also an Output Enable (OE) input. The devices 137/138/139 * 
+* 157 have also an Input Enable (EN) input. Other control inputs * 
+* such as DIR or CLK inputs are not modeled. Circuitry between   * 
+* the input and output buffers are also omitted, such as gates,  * 
+* registers, latches, mux's and intermediate buffers. One result * 
+* of this is that LVC models does not show the exact function of * 
+* the device. Another result of this is that propagation delays  * 
+* in SPICE will not necessarily match with the published AC      * 
+* timing specifications in the device datasheet.                 * 
+*                                                                * 
+****************************************************************** 
+*
+**************  PACKAGE MODELS  ************** 
+************* UNCOMMENT ONLY ONE ************* 
+* Each file contains the appropriate package models
+*
+* SO Package Models
+* .INCLUDE so.s
+
+* SSOP Package Models
+* .INCLUDE ssop.s
+
+* TSSOP Package Models
+.INCLUDE tssop.s 
+
+* XSON Package Models
+* Use only for the 1G/2G/3G functions
+* .INCLUDE xson.s
+
+* Picogate Package Models
+* Use only for the 1G/2G functions
+* .INCLUDE sc88.s
+* .INCLUDE sc74.s
+
+* VSSOP Package Models
+* Use only for the 1G/2G/3G functions
+* .INCLUDE vssop.s 
+
+**************  PROCESS MODELS *************** 
+************* UNCOMMENT ONLY ONE ************* 
+* Nominal parameters 
+*.INCLUDE lvcnom.lib 
+
+* Fast parameters
+.INCLUDE lvcfast.lib 
+
+* Slow parameters
+* .INCLUDE lvcslow.lib 
+
+******* START RUNNING CIRCUIT MODEL ******** 
+* Part Type  En  In  Out Vcc Gnd   Subcircuit   
+
+* XLVC3G17        2   4   1   0    INVERT3G17
+* XLVC1G79        2   4   1   0    INVERTN
+* XLVC1G80        2   4   1   0    INVERT
+* XLVC1G157A      0   2   4   1   0     SANDINVN
+
+XLVC00A         2   4   1   0     INVERT 
+* XLVC02A         2   4   1   0     INVERT 
+* XLVC04A         2   4   1   0     INVERT 
+* XLVCU04A        2   4   1   0     INVERT2 
+
+* XLVC06A         2   4   1   0     INVERT10
+* OPEN DRAIN OUTPUT
+
+* XLVC07A         2   4   1   0     INVERT10N 
+* OPEN DRAIN OUTPUT
+
+* XLVC08A         2   4   1   0     INVERTN 
+* XLVC10A         2   4   1   0     INVERT 
+* XLVC11          2   4   1   0     INVERTN 
+* XLVC14A         2   4   1   0     INVERT14A 
+* XLVC27          2   4   1   0     INVERT 
+* XLVC32A         2   4   1   0     INVERTN
+
+* XLVC38      5   2   4   1  0      INVERT4
+* OPEN DRAIN OUTPUT
+
+* XLVC74A         2   4   1   0     INVERTN 
+* XLVC86A         2   4   1   0     INVERTN 
+* XLVC109         2   4   1   0     INVERT
+* XLVC125A    5   2   4   1   0     INVERT7N
+* XLVC126A    5   2   4   1   0     INVERT7N
+* XLVC138A    0   2   4   1   0     NANDINVN 
+* XLVC139     0   2   4   1   0     NANDINVN 
+* XLVC157A    0   2   4   1   0     ANDINVN
+* XLVC161     5   2   4   1   0     INVERT6N 
+* XLVC163     5   2   4   1   0     INVERT6N 
+* XLVC169     5   2   4   1   0     INVERT6N 
+* XLVC240A    5   2   4   1   0     INVERT3 
+* XLVC241A    5   2   4   1   0     INVERT3N 
+* XLVC244A    5   2   4   1   0     INVERT3N 
+* XLVCH244A   5   2   4   1   0     INVERT3NH
+* XLVC2244A   5   2   4   1   0     INVERT5N
+* XLVC245A    5   2   4   1   0     INVERT3N 
+* XLVCH245A   5   2   4   1   0     INVERT3NH
+* XLVC2245A   5   2   4   1   0     INVERT5N
+* XLVC257A    0   2   4   1   0     ANDINVN2 
+* XLVC273     5   2   4   1   0     INVERT3N
+* XLVC373A    5   2   4   1   0     INVERT3N 
+* XLVC374A    5   2   4   1   0     INVERT3N
+* XLVC377     5   2   4   1   0     INVERT3N 
+* XLVC541A    5   2   4   1   0     INVERT3N 
+* XLVC543A    5   2   4   1   0     INVERT3N 
+* XLVC544A    5   2   4   1   0     INVERT8
+* XLVC573A    5   2   4   1   0     INVERT3N
+* XLVC574A    5   2   4   1   0     INVERT3N
+* XLVC623A    5   2   4   1   0     INVERT3N
+* XLVC646A    5   2   4   1   0     INVERT8N 
+* XLVC652     5   2   4   1   0     INVERT8N 
+* XLVC821A    5   2   4   1   0     INVERT8N
+* XLVC823A    5   2   4   1   0     INVERT8N
+* XLVC827A    5   2   4   1   0     INVERT8N
+* XLVC841A    5   2   4   1   0     INVERT8N
+* XLVC2952A   5   2   4   1   0     INVERT8N
+* XLVC4245A   5   2   4   1   0     INVERT8N
+
+
+* Dummy Test Load 
+
+ C2    4   0   50P 
+ R1    4   0   500 
+ 
+* R2    4   99   1000
+* Use this pullup resistor only with the 74LVC06/07/38 (open drain output)
+
+* Power Supply 
+VDD    1   0   DC  3.3 
+
+* Signal Source
+VIN1   2   0   PULSE  0  3.0  5N  2N  2N  8N  50N
+
+* Enable Voltage Source
+VEN    5   0   DC  0.0  
+
+.TRAN  1.000N   50.000N
+.print v(2) v(4)
+.TEMP  25
+.OPTIONS ITL4 = 50
+.OPTIONS POST = 2
+.PROBE
+.END 

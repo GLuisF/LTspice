@@ -1,0 +1,49 @@
+* TLV247x operational amplifier ”macromodel” subcircuit
+* created using Parts release 8.0 on 4/27/99 at 14:31
+* Parts is a MicroSim product.
+*
+* connections: non–inverting input
+* | inverting input
+* | | positive power supply
+* | | | negative power supply
+* | | | | output
+* | | | | |
+.subckt TLV247x 1 2 3 4 5
+*
+c1 11 12 1.1094E–12
+c2 6 7 5.5000E–12
+css 10 99 556.53E–15
+dc 5 53 dy
+de 54 5 dy
+dlp 90 91 dx
+dln 92 90 dx
+dp 4 3 dx
+egnd 99 0 poly(2) (3,0) (4,0) 0 .5 .5
+fb 7 99 poly(5) vb vc ve vlp vln 0
++ 39.614E6 –1E3 1E3 40E6 –40E6
+ga 6 0 11 12 79.828E–6
+gcm 0 6 10 99 32.483E–9
+iss 10 4 dc 10.714E–6
+hlim 90 0 vlim 1K
+ioff 0 6 dc 75E–9
+j1 11 2 10 jx1
+j2 12 1 10 jx2
+r2 6 9 100.00E3
+rd1 3 11 12.527E3
+rd2 3 12 12.527E3
+ro1 8 5 10
+ro2 7 99 10
+rp 3 4 3.8023E3
+rss 10 99 18.667E6
+vb 9 0 dc 0
+vc 3 53 dc .842
+ve 54 4 dc .842
+vlim 7 8 dc 0
+vlp 91 0 dc 110
+vln 0 92 dc 110
+.model dx D(Is=800.00E–18)
+.model dy D(Is=800.00E–18 Rs=1m Cjo=10p)
+.model jx1 NJF(Is=1.0825E–12 Beta=594.78E–06 + Vto=–1)
+.model jx2 NJF(Is=1.0825E–12 Beta=594.78E–06 + Vto=–1)
+.ends
+*$

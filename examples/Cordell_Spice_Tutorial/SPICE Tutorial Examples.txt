@@ -1,0 +1,73 @@
+﻿
+SPICE Tutorial Examples
+
+October 2, 2010
+
+
+Schematic Capture – Figure 19.1
+
+DC Operating Point
+
+AC Analysis
+
+Transient Simulation
+
+Distortion Analysis and FFT
+
+Noise Analysis
+
+A Weighting Filter – Figure 19.2
+
+Controlled Sources – Figure 19.3
+
+DC Sweep
+
+DC Transfer
+
+Stepped Simulations
+
+Wingspread Simulation – Figure 19.4
+
+Gummel Plot – Figure 19.5
+
+Beta vs. Ic – Figure 19.6
+
+Transconductance vs Ic
+
+Subcircuits – LPF and/or Aweight
+
+Power Amplifier DC Analysis – Figure 19.7
+
+Power Amplifier Frequency Response
+
+Power Amplifier 1 kHz Transient Analysis
+
+Power Amplifier 20 kHz Transient Analysis
+
+Power Amplifier Square-Wave Response
+
+Power Amplifier 1 kHz Total Harmonic Distortion
+
+Power Amplifier 20-kHz THD
+
+Power Amplifier CCIF IM Distortion
+
+Power Amplifier Signal-to-Noise Ratio
+
+Power Amplifier Damping Factor and Output Impedance
+
+Power Amplifier Stability
+
+Power Amplifier Inference of Loop Gain
+
+Measurement of Power Amplifier Loop Gain
+
+Power Amplifier Output Stage Power Dissipation
+
+Power Amplifier Output Current Limiting
+
+Power Amplifier Safe Operating Area
+
+
+
+

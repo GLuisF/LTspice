@@ -1,0 +1,14 @@
+* LPF 2e orde VCVS E48 
+R1 1 2 1500
+R2 2 3 15000
+R4 4 5 15000
+
+C 4 2 10n
+C1 3 0 1n
+* theoretische opamp 
+E1 4 0 3,5 1e5
+V1 1 0 ac 1
+
+.AC dec 30 1000 100000
+.Probe ac v(4)
+.END

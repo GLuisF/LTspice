@@ -1,0 +1,40 @@
+                Helmut Sennewald   V2.0    02/21/04
+Some Information about the NiMH SPICE model.  
+
+The basic idea for the discharge model is from an EDN article,
+February 2 1995. The author was Steven C Hageman.
+
+Here is the article published in EDN magazine eight years ago.
+http://www.reed-electronics.com/ednmag/archives/1995/020295/03di1.htm
+A part of this article is used inside this document.
+http://delta.cs.cinvestav.mx/~pmejia/power/dissertation.ps
+
+
+I did firstly some changes on the original discharge model "NIMH". 
+The result was the model(subcircuit) "NIMH1".
+Then I added a charging model and finished with the model "RECBAT". 
+I recommend to use the newest model "RECBAT" only.
+That's the reason why I put all my older data into the folder "old".
+
+The files are in the directory of
+Files->Tut->NiMH battery
+There is a nice symbol also there.
+
+Put the symbol file "battery_NiMH.asy" into the
+LTSPICE "...\Lib\sym\misc" directory before you start LTSPICE.
+Then start LTSPICE and load "NiMH_Test.asc". The model
+file "NiMH.sub" should be copied to the same directory as the
+schematic file "NiMH_Test.asc" or put it into the folder 
+of your LTSPICE installation ...LTC\SWCADIII\LIB\SUB .
+
+The schematic used for model development is in the file NiMH_develop.asc.
+The subcircuit NIMH_AA is equivalent to the netlist of this circuit.
+
+Have fun with it.
+
+Helmut
+
+PS: I haven't understood what the original SOC output shows. So I
+routed another internal node to this pin. I believe this third pin
+now shows the actual charge of the battery.
+

@@ -1,0 +1,7 @@
+Basso Copec
+SUBCKT CCM-DCM1        1  2  3  4 CTRL   Basso:CCM-DCM  [Misc]  ; No processable comment
+SUBCKT CCM-DCM2        1  2  3  4  CTRL   Basso:CCM-DCM  [Misc]  ; No processable comment
+SUBCKT limit           d dc   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT limit2          d2nc d d2c  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT CPM             Ctr Current 1 2 d   Basso:CPM  [SMPS]  ; No processable comment
+SUBCKT ccm-dcm10       1  2  3  4  5    <AutoShape>  [Misc]  ; No processable comment

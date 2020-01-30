@@ -1,0 +1,68 @@
+*
+.SUBCKT PBSS5350Z 1 2 3
+*
+R1 2 4 0
+*
+Q1 2 1 3 PBSS5350Z
++ AREA = 1
+D1 2 1 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS5350Z PNP
++ IS = 5.841E-13
++ NF = 0.9934
++ ISE = 9.926E-15
++ NE = 1.3
++ BF = 360
++ IKF = 2.36
++ VAF = 40
++ NR = 0.9927
++ ISC = 1.037E-13
++ NC = 1.19
++ BR = 75
++ IKR = 0.7
++ VAR = 12
++ RB = 7
++ IRB = 0.00075
++ RBM = 1
++ RE = 0.047
++ RC = 0.041
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 2.915E-10
++ VJE = 0.73
++ MJE = 0.375
++ TF = 1.1E-09
++ XTF = 21
++ VTF = 0.7
++ ITF = 3
++ PTF = 0
++ CJC = 8.8E-11
++ VJC = 0.575
++ MJC = 0.4
++ XCJC = 1
++ TR = 1.5E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.4
+.MODEL DIODE D
++ IS = 3E-16
++ N = 1
++ BV = 1000
++ IBV = 0.001
++ RS = 0.6
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 3
+.ENDS
+*

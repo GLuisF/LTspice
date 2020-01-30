@@ -1,0 +1,25 @@
+*
+.SUBCKT PRLL5817 1 2 
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1.5E+06 
+D1 1 2 PRLL5817
+.MODEL PRLL5817 D 
++ IS = 2.119E-06 
++ N = 1.02 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 0.0419 
++ CJO = 2.52E-10 
++ VJ = 0.4792 
++ M = 0.5104 
++ FC = 500E-3 
++ TT = 0 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

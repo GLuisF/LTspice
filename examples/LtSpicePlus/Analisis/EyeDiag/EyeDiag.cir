@@ -1,0 +1,29 @@
+* C:\SwCADIII\Apple_T.asc
+R4 input N001 19
+T1 input 0 N002 0 Td={ta} Z0={Z1}
+T3 N002 0 N003 0 Td={tb} Z0={Z2}
+R2 N006 0 {Rload}
+R3 N005 0 {Rload}
+L1 Vout1 N003 {L}
+L2 N004 Vout3 {L}
+L3 Vout2 N005 {L}
+L4 N006 Vout4 {L}
+C1 Vout1 0 {C}
+V2 Vref 0 {Vref}
+R1 Vref N005 {Rload}
+R5 Vref N006 {Rload}
+T2 N003 0 N005 0 Td={tb} Z0={Z2}
+T4 N004 0 N006 0 Td={tb} Z0={Z2}
+T5 N002 0 N004 0 Td={tb} Z0={Z2}
+C2 Vout2 0 {C}
+C3 Vout4 0 {C}
+C4 Vout3 0 {C}
+B1 N001 0 V=1.8*(rand(time*br) >=.5)
+.tran 0 100n
+.param L=1n Rload=190 Vdd=1.8 Vref=0.5*Vdd Len1=5 ta=.18n*Len1 Z1=40
+.param Len2=0.63 tb=.18n*Len2 Z2=50 C=2.5p
+* Tx line lengths, Len1,2 in inches.
+.options baudrate={br} delay=1.5n
+.param br=180meg
+*.backanno
+.end

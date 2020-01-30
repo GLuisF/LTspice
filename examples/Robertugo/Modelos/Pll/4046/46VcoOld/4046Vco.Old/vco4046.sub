@@ -1,0 +1,54 @@
+*4046 VCO Section		
+* Rin= VCO Input Resistace S1= Voltage Limiter linear slope. S2= Voltage Limiter non-linear slope.
+* Vx = Input threshold voltage (between S1 and S2).
+* Kb = Arbitrary constant to adjust the value of the conversion gain (transimpedance gain).
+* Vfree= Frequency dependent constant in Emult. Kc= Negative inverse amplitude of the square wave.
+* Vt = Trigger voltage of Schmitt trigger (not used). Vxqr= Amplitude of square wave (not used).
+* M1 & M2 = Current mirror multiplier to adjust oscillator frequency.
+.Subckt 4046Vco Vcoin r1 r2 ce1 ce2 vcout inh zener vdd vss
+*+	Params Rin=1Meg S1=1  S2=0.5 M1=0.5 M2=1.0 Vx=10
+*+	Kb=1 Vfree=0.0 Kc=-0.1 Vt=1.2 Vxqr=10
+Rvdd Vdd 0 1g
+Rin vcoin vss {Rin}
+Bvlim vlim 0 V=(if(v(vcoin,vss)<v(vdd,vss),
++	S1*v(vcoin,vss),S2*(v(vcoin,vss)-v(vdd,vss))+v(vdd,vss)))
+Rvlim vlim 0 1e6
+Bmult mix 0 V=(v(vlim)*Kb+Vfree)
+Rmult mix 0 1
+
+*Bdemout demout 0 V=table ((2e8*v(vcoin,demout)*v(off)),-20,-20, 20,20)
+*Rdemout demout 0 1e6
+ER2 ir2 0 vdd ir2 2e8
+VR2 ir2 r2 0
+ER1 ir1 0 mix ir1 2e8
+VR1 ir1 r1 0
+
+Bosclg adj 0 V=TABLE ((abs((V(vdd)/I(VR2))/(V(mix)/I(VR1))))
++,.5,1.43, 1,1.6, 10,1.04, 50,.67, 100,.84, 101,1, 102,1, 1000,1)
+
+Radj adj 0 1G
+BIM ce1 0 I=((M1*I(VR1)*V(adj)+M2*I(VR2))*Kc*V(sqrrc))
+Vcext ce2 0 0 ;(Vcext ce2 0)
+Cstray ce1 ce2 6p
+Rcext ce1 ce2 1g ;(1T)
+Etrngl trngl 0 ce1 0 1
+Rtrngl trngl 0 1e6
+Bsqr sqr 0 V=(-10e6*V(trngl)+1.2e6*V(sqrrc))
+Rsqr sqr sqrrc 100g ;(.1T)
+Csqr sqrrc 0 10f
+Dsqr1 sqrrc 13 Diode
+Vsqr1 13 0 {Vx}
+Dsqr2 14 sqrrc Diode
+.model Diode D (IS=10u N=0.1 CJO=80f RS=1m)
+Vsqr2 14 0 {-Vx}
+Ipls 0 sqrrc pwl 0 0 10n 0 20n 0.01u 0.1u 0.01u 0.12u 0 1 0
+Bvcoout vcout 0 V=table ((v(vdd)*v(off)*(v(sqrrc)/Vx)),.1,.1, v(vdd),v(vdd))
+Rinh inh 0 1e6
+Boff off 0 V=(if(v(inh)<0.9,1.0,0.0))
+Roff off 0 1e6
+Dzener vss zener znr
+Rzener vss zener 1G
+.model znr	D(Is=1.004f Rs=.5875 Ikf=0 N=1 Xti=3 Eg=1.11 Cjo=160p M=.5484
++		Vj=.75 Fc=.5 Isr=1.8n Nr=2 Bv=5.2 Ibv=27.721m Nbv=1.1779
++		Ibvl=1.1646m Nbvl=21.894 Tbv1=176.47u)
+.ends

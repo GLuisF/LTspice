@@ -1,0 +1,24 @@
+*
+.SUBCKT PMEG4010CEJ 1 2
+*
+D1 1 2 PMEG4010CEJ
+R1 1 2 1E+7
+*
+* The Resistor R1 does not reflect
+* a physical device. Instead it
+* improves modeling in the reverse
+* mode of operation.
+*
+.MODEL PMEG4010CEJ D
++ IS = 2.802E-7
++ N = 0.9521
++ BV = 44
++ IBV = 6E-6
++ RS = 0.1201
++ CJO = 1.288E-10
++ VJ = 0.3855
++ M = 0.4889
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

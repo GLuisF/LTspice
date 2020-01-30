@@ -1,0 +1,67 @@
+*
+.SUBCKT PZTA14 1 2 3 
+*
+* For use with Microsim PSPICE 
+* please modify the AREA statement
+* in this model:  e.g.
+* SPICE: 
+* Q2 1 22 3 PZTA14 AREA = 5.1 
+* PSPICE:
+* Q2 1 22 3 PZTA14 5.1 
+* VTF, ITF, XTF are set to 
+* default values 
+*
+* housing parasitics
+LB 2 22 4.13E-09 
+LE 3 33 3.77E-09 
+LC 1 11 4.1E-10 
+*
+CBCG 22 11 1.76E-13 
+CBEG 22 33 8.6E-14 
+CCEG 11 33 1.76E-13 
+*
+Q1 11 22 222 PZTA14 AREA = 1 
+Q2 11 222 33 PZTA14 AREA = 5.1 
+*
+.MODEL PZTA14 NPN 
++ IS = 1.35E-14 
++ NF = 0.9889 
++ ISE = 4.441E-28 
++ NE = 1.03 
++ BF = 204 
++ IKF = 0.1 
++ VAF = 94 
++ NR = 1 
++ ISC = 1E-32 
++ NC = 2 
++ BR = 5 
++ IKR = 0.1 
++ VAR = 10 
++ RB = 45 
++ IRB = 7E-06 
++ RBM = 1 
++ RE = 0.25 
++ RC = 2 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.445E-11 
++ VJE = 0.9 
++ MJE = 0.3635 
++ TF = 7E-10 
++ XTF = 1 
++ VTF = 1000 
++ ITF = 0.01 
++ PTF = 0 
++ CJC = 4.89E-12 
++ VJC = 0.6559 
++ MJC = 0.5115 
++ XCJC = 1 
++ TR = 1E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.999 
+*
+.ENDS
+*

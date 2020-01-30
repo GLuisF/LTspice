@@ -1,0 +1,138 @@
+Xsim PLL netlist
+* Phase detector
+X2 1 2 3 V+ V- PD
+* VCO
+X1 4 2 V+ V- 0 40 VCO
+* Low pass filter
+R1 3 4 1Meg
+C1 4 9 3n
+R2 9 V- 100K
+* Clock reference
+V1REF 1 0 pulse(0 5 0 20u 20u 60u 0.0012)
+* Power supplies
+VDD V+ 0 dc ( 5)
+VSS V- 0 dc (-5)
+*** Phase Detector SubCkt ***
+* Input(1) Input(2) Output(6) VDD(7) VSS(8)
+.subckt PD 1 2 6 7 8
+.param Vcc=10
+XU1 1 2 3 V+ V- CMOS_NAND VDD={Vcc} SPEED=1.0 TRIPDT=5e-9
+XU2   1 2 4  V+ V- CMOS_OR VDD={Vcc} SPEED=1.0 TRIPDT=5e-9
+XU3 3 4 5  V+ V- CMOS_NAND VDD={Vcc} SPEED=1.0 TRIPDT=5e-9
+M10 6 5 7 7 pmos l=2u w=50u ad=20p as=20p pd=24u ps=24u
+RPD 6 8 10K
+.ends
+*** VCO Subckt ***
+* Control(33) Output(5) V+ V-
+* Gnd(10) Int(6)
+.subckt VCO 33 5 V+ V- 10 6
+* Comparator with hysteresis
+* -input(1) +input(6) output(5) gnd(10)
+* Op-amp model: AVo~277K RI=20Meg RO=50 Vo=+/-5V
+Ri 1 2 20Meg
+Ro 4 5 50
+E1 4 10 2 1 25K
+* Feedback elements for hysteresis
+RF2 1 10 1
+RP1 5 2 4Meg
+RP2 2 6 1Meg
+* Charge element for current
+C2 6 10 100n
+* Transconductance and current steering
+RSINK V- 35 10Meg
+RSORCE 36 V+ 10Meg
+GSORCE V+ 36 33 V- 110u
+GSINK 35 V- 33 V- 110u
+M3 6 5 35 V- nmos l=2u w=20u ad=20p as=20p pd=24u ps=24u
+M6 6 5 6 V+ pmos l=2u w=40u ad=20p as=20u pd=24u ps=24u
+.ends
+.model NMOS NMOS
+.model PMOS PMOS
+* 2-input AND gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_AND  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  0 Yp 0  AND  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOS_AND
+*
+* 2-input NAND gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_NAND  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  Yi 0 0  AND  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yi Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ends CMOS_NAND
+*
+* 2-input OR gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_OR  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  0 Yp 0  OR  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ends CMOS_OR
+*
+.SUBCKT  CD40_IN_1  in out  VDD VGND  vdd3={vdd2} speed3={speed2}  tripdt3={tripdt2} 
+* 3ns input delay
+*.param Cval = 0.55e-12*4/({vdd3}-0.5)*{speed3}
+* 10ns delay @5V
+.param Cval = 1.8e-12*5/{vdd3}*{speed3}
+.param vt1=0.5
+.param gain=(1/{vdd3})
+*
+*D1 0   in  CD40DIO1 
+D2 in VDD  CD40DIO1
+R1 in out10 10k
+C1 out10 VGND {Cval}
+R2 in VGND 1e8
+*E1 out20 0 out10 VGND {gain}
+B1 out20 0 V=LIMIT(0,V(out10,VGND)*{gain},1)
+AE1  out20 0 0 0 0  0 out 0  BUF  ref={vt1}  vhigh=1  tripdt={tripdt3}
+.MODEL CD40DIO1 D(Is=1e-12 Rs=100)
+.ends
+*
+*
+* Standard output driver
+.SUBCKT  CD40_OUT_1X  in out  VDD VGND  vdd3={vdd2} speed3={speed2}  tripdt3={tripdt2}
+.param trise1=80e-9*5.0/{vdd3}*{speed3}
+.param Rout=500*5.0/{vdd3}*{speed3}
+*
+AE1  in 0 0 0 0  0 out10 0  BUF  tripdt={tripdt3}  trise={trise1}
+*
+E1 out20 VGND out10 0 {vdd3}
+Rout out20 out {Rout}
+D1 0   out  DIO2 
+D2 out VDD  DIO2
+.ends
+*
+.MODEL DIO2 D(Is=1e-12 Rs=10)
+* Analysis
+.lib pll.lib
+.IC v(40)=-1
+.options itl4=500
+*.plot tran v(1) v(2) v(3) v(4) v(40)
+*.probe tran vdsb M6.X1
+*.probe tran idsb M6.X1
+*.probe tran vdsb M3.X1
+*.probe tran idsb M3.X1
+.tran 0 19m 0.01m uic
+*.status
+.end

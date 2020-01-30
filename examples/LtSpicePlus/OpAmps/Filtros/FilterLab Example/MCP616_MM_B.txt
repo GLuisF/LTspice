@@ -1,0 +1,126 @@
+.SUBCKT MCP616 1 2 3 4 5
+*              | | | | |
+*              | | | | Output
+*              | | | Negative Supply
+*              | | Positive Supply
+*              | Inverting Input
+*              Non-inverting Input
+*
+********************************************************************************
+* Software License Agreement                                                   *
+*                                                                              *
+* The software supplied herewith by Microchip Technology Incorporated (the     *
+* "Company") is intended and supplied to you, the Company's customer, for use  *
+* soley and exclusively on Microchip products.                                 *
+*                                                                              *
+* The software is owned by the Company and/or its supplier, and is protected   *
+* under applicable copyright laws. All rights are reserved. Any use in         *
+* violation of the foregoing restrictions may subject the user to criminal     *
+* sanctions under applicable laws, as well as to civil liability for the       *
+* breach of the terms and conditions of this license.                          *
+*                                                                              *
+* THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES, WHETHER    *
+* EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED        *
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO  *
+* THIS SOFTWARE. THE COMPANY SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR    *
+* SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.     *
+********************************************************************************
+*
+* Macromodel for the MCP616/7/8/9 op amp family:
+*   MCP616 (single)
+*   MCP617 (dual)
+*   MCP618 (single w/ CS; chip select is not modeled)
+*   MCP619 (quad)
+*
+* Revision History:
+*   REV A: 23-Feb-01, KEB (created model)
+*   REV B: 19-Jul-02, KEB (improved model)
+*
+* Recommendations:
+*   Use PSPICE (or SPICE 2G6; other simulators may require translation)
+*   For a quick, effective design, use a combination of: data sheet
+*     specs, bench testing, and simulations with this macromodel
+*   For high impedance circuits, set GMIN=100F in the .OPTIONS
+*     statement
+*
+* Supported:
+*   Typical performance at room temperature (25 degrees C)
+*   DC, AC, Transient, and Noise analyses.
+*   Most specs, including: offsets, DC PSRR, DC CMRR, input impedance,
+*     open loop gain, voltage ranges, supply current, ... , etc.
+*
+* Not Supported:
+*   Chip select (MCP618)
+*   Variation in specs vs. Power Supply Voltage
+*   Distortion (detailed non-linear behavior)
+*   Temperature analysis
+*   Process variation
+*   Behavior outside normal operating region
+*
+* Input Stage
+D13 13 14 DL
+V13 13  4 350M
+D16 15 16 DL
+V16  3 16 900M
+I15  3 15 9.50U
+C14  2  0 4.00P
+I14  2  0 -150P
+Q14 12  2 15 15 PQ
+C13  2 14 2.00P
+Q12 11 14 15 15 PQ
+I12 14  0 150P
+E12  1 14 POLY(4) 20 0 21 0 26 0 27 0   50.0U 27.5 27.5 1 1
+C12  1  0 4.00P
+C11 12 11 928E-15
+R11 12 10 5.41K
+R10 11 10 5.41K
+V10 10  4 0.00
+*
+* Noise, PSRR, and CMRR
+I20 21 20 423U
+D20 20  0 DN1
+D21  0 21 DN1
+G26  0 26 POLY(1) 3 4   -27.5U 5.00U
+R26 26  0 1
+G27  0 27 POLY(2) 1 3 2 4   -55.0U 10.0U 10.0U
+R27 27  0 1
+*
+* Open Loop Gain, Slew Rate
+G30  0 30 POLY(1) 12 11   0 1.00K
+R30 30  0 1
+E31 31  0 POLY(1) 3 4   56.1 1.28
+D31 30 31 DL
+E32  0 32 POLY(1) 3 4   45.4 1.28
+D32 32 30 DL
+G33  0 33 POLY(1) 30 0   0 1.78K
+R33 33  0 1
+C33 33  0 1.46
+G34  0 34 POLY(1) 33 0   0 1.00
+R34 34  0 1.00
+C34 34  0 285N
+G35  0 35 POLY(2) 34 0 33 34   0 1.00 818M
+R35 35  0 1.00
+*
+* Output Stage
+G50  0 50 POLY(1) 57 5   0 5.00
+D51 50 51 DL
+R51 51  0 1K
+D52 52 50 DL
+R52 52  0 1K
+G53  3  0 POLY(1) 51 0   9.50U  1M
+G54  0  4 POLY(1) 52 0   9.50U  -1M
+E55 55  0 POLY(2) 3 0 51 0   -10M 1 -21.0M
+D55 57 55 DLS
+E56 56  0 POLY(2) 4 0 52 0    10M 1 -20.0M
+D56 56 57 DLS
+G57  0 57 POLY(3) 3 0 4 0 35 0   0 83.3U 83.3U 167U
+R57 57  0 6.00K
+R58 57  5 200M
+C58  5  0 2.00P
+*
+* Models
+.MODEL PQ PNP  IS=100E-18 BF=317
+.MODEL DL  D   N=1   IS=1F
+.MODEL DLS D   N=10M IS=1F
+.MODEL DN1 D   IS=1F KF= 12.2E-18 AF = 1
+.ENDS MCP616

@@ -1,0 +1,53 @@
+* This is not a model from LTC. 
+* It's only a experimental model written by Helmut Sennewald
+* 
+.subckt lt1185 GND+ FB VIN- VOUT- REF
+D1 N007 VIN- D
+R1 GND+ refsy 100k
+R2 GND+ vref 1e6
+B1 GND+ vref V=Limit((2.37+(V(GND+,VIN-)-10)*1e-5),V(GND+,refsy),0)
+Q1 cref N003 REF 0 PNP
+B2 GND+ N003 V=Limit((V(GND+,VIN-)-1),(100*V(REF,vref)), V(vref))
+R5 cref VIN- 355
+R6 GND+ REF 1e9
+Q2 VOUT- N006 sense 0 NPN3
+Q3 N002 N005 N006 0 NPN2
+Q4 N002 N004 N005 0 NPN1
+R4 sense VIN- 0.055
+R7 N006 sense 1k
+R8 N005 N006 6k
+Q5 vb N001 GND+ 0 PNP
+R11 vb N006 30k
+Q6 N001 N001 GND+ 0 PNP
+B4 N001 VIN- I=V(GND+,vref)/2.37e3
+B5 GND+ N002 I=V(GND+,vref)/600
+B6 N011 VIN- V=Limit(V(GND+,VIN-), (2.5-1000*(V(sense,VIN-)-V(ilim,VIN-)*0.056)), 0)
+D4 vb N008 D
+B7 N012 VIN- V=LIMIT(V(GND+,VIN-), (2.5-1000*(V(sense,VIN-)-V(cref,VIN-))), 0)
+D3 vb N009 D
+C1 vb VIN- 1p
+R15 N009 N012 100
+R16 N008 N011 100
+C5 VIN- N009 100n
+C6 N008 VIN- 100n
+B8 N013 VIN- V=LIMIT(V(GND+,VIN-), (2.5 -200*(V(GND+,FB)-V(GND+,vref))), 0)
+D5 vb N010 D
+R19 N010 N013 100
+C8 VIN- N010 2µ
+R3 GND+ FB 1e9
+R9 FB VOUT- 1e9
+D2 N002 GND+ D
+B3 GND+ N002 I=Limit(0.12, (V(sense,VIN-)*0.6), 0)
+D6 refsy N007 D
+B9 ilim VIN- V= TABLE( V(VOUT-,VIN-), 0,3.6, 12,3.6, 15,3, 20,1.6, 25,0.8, 30,0.4, 35,0.1)
+C4 VOUT- VIN- 100p
+C7 N002 VIN- 10p
+R10 vb N004 1
+.MODEL PNP1 PNP (BF=40 VAF=40 Cjc=3p Cje=3p TF=2e-8)
+.MODEL NPN1 NPN(BF=100 TF=1e-9 VAF=80 Cjc=3p Cje=3p)
+.MODEL NPN2 NPN (BF=70 TF=1e-9 Rc=1 Re=0.1 VAF=80 Cjc=10pF Cje=10p))
+.MODEL NPN3 NPN (BF=70 TF=1e-8 Rc=0.1 Re=0.01 VAF=80 Cjc=100pF Cje=100p))
+.MODEL D D
+.MODEL PNP PNP
+.ends lt1185
+

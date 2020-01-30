@@ -1,0 +1,139 @@
+Generador cross bar: 
+
+Este circuito es un generador de retícula, para ajustes de linealidad,
+tamaño, simetría y convergencia de la imagen de televisores, para norma
+N, aunque puede funcionar perfectamente para otras normas, ajustando el
+potenciómetro de preajuste Upot, se establece la correcta frecuencia
+horizontal.
+
+La frecuencia vertical se obtiene del secundario del trafo de alimentación,
+de cualquiera de sus 2 extremos. que se ha omitido, al igual que el puente
+de Graetz, el capacitor de filtro principal, un resistor serie de 120 ohm, 
+un capacitor de 220uF x 16v y luego 2 diodos zener en serie, uno de 6V2 y
+otro de 5V1, ambos de medio watt y a la salida del último otro capacitor
+de filtrado de 100uF X 10v.
+
+Esta omisión se hizo para posibilitar la simulación.
+
+Para ver un ciclo completo de todas las señales del sistema, son necesarios
+alrededor de 25 mS, como se trata de un circuito que involucra señales de muy
+diversas frecuencias, desde 50 Hz a mas de 50mHz, la simulación llega ha tomar
+media hora en un Athlon XP de 1.6 Ghz; además de usar mas de 2 Gb! de disco.
+
+Para acelerarla y ver los resultados parciales, pruebe la siguiente secuencia:
+
+1) Para ver la salida Vrfout, correr el circuito solo durante 5uS o 10 uS.
+
+2) Para ver las señales relacionadas al horizontal y las columnas, aumente el valor
+del capacitor del oscilador de VHF Cre, del valor original (6p8), a 10n y correr el
+circuito especificando un tiempo de simulación de hasta 200uS.
+
+3) Por último si quiere observar las señales correspondientes al grupo vertical y a
+las filas o renglones aumente el valor del capacitor Cc a 100n, el tiempo a simular
+puede fijarse entonces en 25 mS o 50mS, y en uno o dos minutos,(75 Mb o 150Mb de disco)
+respectiva y aproximadamente obtener los resultados y tener prestamente una idea acerca
+del funcionamiento del circuito de este generador de barras.
+
+4) Para retornar a los valores originales, pulse varias veces la tecla F9.
+
+Si usted desea ver la modulación en amplitud de la RF, por parte del video y el
+sincronismo, como también las señales, no hay mas remedio que correrlo 25 mS,
+y espere pacientemente a que termine. Aunque también puede obtener una pincelada bastante
+completa corriéndolo solo 6 mS.
+
+Funcionamiento:
+
+He tratado de ser lo mas descriptivo posible con la denominación de los componentes del
+cicuito que consta de un escuadrador de la señal sinusoidal del secundario del trafo,
+a cargo de U1a, cuya salida etiqueté Vsq, luego ésta señal se conforma en un diferenciador
+CdifV y RdifV, para atacar la entrada de U1b, que ha sido modelada sin los diodos de 
+protección y por ello se ve una tensión negativa exagerada aquí, pero que no influye en el
+funcionamiento ni en los resultados, en su salida están los pulsos de sincronismo vertical
+Vsync; por el lado horizontal U1c es el oscilador de línea del sistema, que se ajusta con
+el preset Upot, esta señal se conforma adecuadamente con el conjunto RdifH, CdifH y U1D,
+para obtener en su salida los pulsos de sincronismo horizontal Hsync. Hsymc y Vsync se
+aúnan mediante Dor1 y Dor2, para obtener el sincronismo compuesto Sync,que es puesto en el
+nivel correcto de contínua con las resistencias de polarización Rp1 y Rp2, Sync se acopla y
+modula a la base del transistor oscilador QoscRF mediante Racop2.
+El transistor Qdisch,descarga un poquitín al capacitor Cramp, cada vez que en su base aparece
+un pulso Hsync, este componente es cargado a su máximo valor, cada vez que un pulso Vsync
+resetea o detiene al generador de renglones a través del diodo DresRow, ya que durante el
+sicronismo se anula el video, Cramp comienza pues a descargarse hasta que su valor es lo
+suficientemente bajo, como para cambiar la salida del inversor trigger Schmidtt U1e, que pasa
+entonces a ser alta y recargar un poco entonces mediante RwidthRow y Dr a Cramp, ésta carga
+aumenta la tensión en la entrada de U1e y el circuito oscila entonces "libremente" con un
+ciclo de actividad bastante corto, dado por la histéresis del inversor, por el diodo Dr y por
+RwidthRow, en cuanto a la frecuencia ésta es determinada principalmente por Cramp, Qdisch y
+RnumRows, ya que al estar estos últimos en paralelo con Cramp, si se disminuye RnumRows,
+entonces Cramp se descarga mas rápidamente después de cada pulso de carga Vsync y esto
+precipita el ciclo de oscilación libre con una mayor pendiente de descarga en Cramp, que es
+"visto" desde la entrada del inversor como un capacitor de menor valor, posibilitando un mayor
+número de renglones en la salida RowOut y viceversa, si se aumenta RnumRows, el efecto "shunt"
+del transistor es menor y Cramp empléa menos ciclos o renglones (tarda mas en descargarse)
+para mantener la oscilación.
+
+Este sistema se usa porque asegura una buena linealidad, es decir un espaciado parejo entre
+cada renglon en la pantalla y un buen reposicionamiento luego de cada recarga entre las
+espaciadas intervenciones del Vsync.
+
+El generador de columnas funciona de manera similar aunque algo mas sencillamente gracias a
+que la provisión de pulsos Hsync de reseteo y / o carga del capacitor Cc a través de DresCol
+no es tan espóradica y la inercia del oscilador en este orden de magnitud (unos 400Khz) es
+suficiente para asegurar un correcto espaciado y linealidad de las columnas, un componente
+que puede variarse aquí es RnumColumns, para ajustar la cantidad de ciclos "libres" del
+oscilador entre pulsos de sicronismo horizontal, esta cantidad de ciclos, es el número de 
+columnas a lo ancho de cada exploración, también puede variarse RwidthCol, si bien los valores
+consigandos funcionan perfectamente para 15600<Hsync<15800 y 48<Vsync<62.
+
+Un plus: si conecta el inversor de una llave de un polo por 3 posiciones a una resistencia
+"pullup" de 4K7, y ésta a Vdig; luego deja una de las posiciones libre y de las dos que restan
+conecta una a Vramp y la otra a X, entonces habrá tres patrones de ajuste en la pantalla del
+TV: 
+1) La que corresponde a la pata sin conexión es la que deja el circuito como hasta ahora y por
+ello con esta posición de la llave, el patron de salida es el de cuadrículas.
+2) La que conecta X a la resistencia pullup, y con ello imposibilita el funcionamiento del 
+oscilador de columnas formado por U1f y componentes asociados (solo se ven en la pantalla del
+TV renglones o filas).
+3) Por último la conexión mediante esta posición de la llave entre la resistencia pullup y
+Ramp, anula el funcionamiento del generador de renglones (solo se ven en la pantalla del TV
+columnas).
+
+Para terminar las señales de filas y columnas se aúnan en el punto VidOut, por medio de la Or
+formada por los diodos Dor3 y Dor4, que modulan en amplitud, luego de atravesar R9, al emisor
+del transistor oscilador de VHF. Si se ajusta R9 puede modificarse el nivel de modulación o
+contraste, es preferible hacer oscilar al transistor QoscRf alrededor de los 50Mhz, por
+tratarse de uno de tipo corriente (BC548B, 2N2222A, etc), se logran mejores resultados,
+además de podérlo captar inalámbricamente tan solo con 2 "chicotes" en el canal 2. Se obtienen
+sintonías por armónicos (aunque ya no inalámbricamente) hasta en la banda de UHF. Además, es
+bueno tener una fuente emisora próxima a la FIV, ya que puede servir para pruebas y para obviar
+al sintonizador y despejar las dudas acerca de su correcto funcionamiento.
+
+Yo monté mi prototipo en una plaquetita universal y lo alojé en el mueble de mi fuente, como
+ésta es regulable y de varias tensiones, tomé una salida rectificada y filtrada fija de 15Vcc
+pero sin estabilizar, ya que al ser la salida variable, no resultaba del todo conveniente
+y puse una resistencia de 120 Ohms, un capacitor de 220uF x 16v y luego 2 diodos zener en 
+serie, uno de 6V2 y otro de 5V1, ambos de medio watt y a la salida del último otro capacitor
+de filtrado de 100uF X 10v. Con ésto quedan 5V1+6V2=11V3 para el oscilador de RF, aunque puede
+hacerse funcionar hasta con 8V. En cuanto a la bobina son 9 vueltas de alambre de telefonía
+(puede usarse otro) bobinado sobre un lápiz (6mm de diámetro), se quita el lápiz y se suelda
+la bobina vertical en la plaqueta, el secundario es una espira del mismo alambre encima del
+primario ya soldado, a uno de los extremos se lo suelda a masa y al otro a la ficha de salida.
+
+De modo que con un solo y baratísimo sextuple inversor Schmidtt CMOS y 2 transistores comunes
+puede tenerse este generador de tres patrones diferentes de ajuste que puede funcionar dentro
+del mueble de una fuente preexistente u otro aparato.
+
+Nota 1: este circuito no puede funcionar a pilas, ya que la referencia de frecuencia de trama se
+toma del secundario del trafo de alimentación,por ser ésta bastante estable y simple de procesar
+para hacerlo a pilas habría que modificar U1a,para formar alrededor del mismo un oscilador de
+50 / 60hz.
+
+Nota 2: Desisintonizando ligeramente al televisor, se puede oír un tono de audio de unos 700Hz,
+correspondiente al oscilador de filas o renglones y que "demuda" al generador de patrones! 
+
+Nota 3: Los sufijos designadores de los diversos componentes y etiquetas de puntos del circuito
+se hicieron deliberadamente en inglés, para ayudar en su comprensión a quienes no hablan mi lengua
+
+Saludos a todos, desde Salta, la Linda en el norte argentino.
+
+Roberto Hugo Rodríguez Zubieta.

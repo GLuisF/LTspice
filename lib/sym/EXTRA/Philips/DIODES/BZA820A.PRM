@@ -1,0 +1,18 @@
+*DEVICE=BZA820A,D
+
+* BZA820A D model
+* created using Model Editor release 9.0 on 06/27/00 at 09:48
+* Model Editor is an OrCAD product.
+.MODEL BZA820A D
++ IS=323.81E-18
++ N=.97963
++ RS=.24264
++ IKF=6.9002
++ CJO=37.279E-12
++ M=.32559
++ VJ=.3905
++ ISR=2.7811E-9
++ NR=2.4186
++ BV=19.919
++ IBV=6.0752
++ TT=656.43E-9

@@ -1,0 +1,21 @@
+D:\Docs\Electronics\CIRCUITS\CM\LearnSPICE\CurrentDirection2.ckt
+Vs2 Vs2_1 0 20V
+R4 Vs2_1 R6_1 500
+R5 R6_1 0 1k
+R6 R6_1 0 1k
+
+* This is what can be done in CM(Circuit Maker)
+*.SAVE R6_1 Vs2_1 @vs2[p] vs2#branch @vs2[z] @r4[p] @r4[i] @r5[p] @r5[i] @r6[p]
+*.SAVE @r6[i]
+
+* Additionally calculate the power dissipation.
+* The result will be in the "SPICE Error Log"-file.
+*
+.measure OP p_vs2 PARAM V(Vs2_1)*I(Vs2)  
+.measure OP p_r4  PARAM V(Vs2_1,R6_1)*I(R4) 
+.measure OP p_r5  PARAM V(R6_1)*I(R5)  
+.measure OP p_r6  PARAM V(R6_1)*I(R6)  
+
+* Selected Circuit Analyses :
+.OP
+.END

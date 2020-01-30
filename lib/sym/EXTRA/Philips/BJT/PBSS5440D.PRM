@@ -1,0 +1,69 @@
+*
+.SUBCKT PBSS5440D 1 2 3 4 5 6
+*
+R1 1 2 0
+R2 1 5 0
+R3 1 6 0
+*
+Q1 1 3 4 PBSS5440D
+D1 1 3 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS5440D PNP 
++ IS = 6.033E-013 
+  + NF = 0.9576 
+  + ISE = 4.885E-014 
+  + NE = 1.233 
+  + BF = 380 
+  + IKF = 1.95 
+  + VAF = 12.8 
+  + NR = 0.9592 
+  + ISC = 1E-018 
+  + NC = 3 
+  + BR = 68 
+  + IKR = 1.5 
+  + VAR = 6.9 
+  + RB = 15.2 
+  + IRB = 0.001 
+  + RBM = 0.75 
+  + RE = 0.035 
+  + RC = 0.018 
+  + XTB = 0 
+  + EG = 1.11 
+  + XTI = 3 
+  + CJE = 4.977E-010 
+  + VJE = 0.8119 
+  + MJE = 0.3949 
+  + TF = 2.35E-009 
+  + XTF = 15 
+  + VTF = 5 
+  + ITF = 10 
+  + PTF = 0 
+  + CJC = 1.698E-010 
+  + VJC = 0.4041 
+  + MJC = 0.2934 
+  + XCJC = 1 
+  + TR = 2.5E-009 
+  + CJS = 0 
+  + VJS = 0.75 
+  + MJS = 0.333 
+  + FC = 0.8 
+  .MODEL DIODE D 
+  + IS = 2.586E-013 
+  + N = 1.197 
+  + BV = 1000 
+  + IBV = 0.001 
+  + RS = 1000 
+  + CJO = 0 
+  + VJ = 1 
+  + M = 0.9 
+  + FC = 0 
+  + TT = 0 
+  + EG = 1.1 
++ XTI = 3 
+.ENDS
+*

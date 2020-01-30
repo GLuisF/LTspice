@@ -1,0 +1,33 @@
+[aimspice]
+*[description]
+*299
+*Vco de fase variable
+evco1 out1 0 value {sin( twopi * (fc * time + v(int)))}
+rvco1 out1 0 1G
+gint 0 int value {k1 * v(ctrl) * 1e-6}
+cint int 0 1u
+rint int 0 1G
+.Ic v(int) = 0
+vstim ctrl 0 pwl(0,0v 5us,0v 5.01us,1v) DC=0 
+rstim ctrl 0 1G
+.param twopi=6.283 fc=1e6 k1=1e6
+*.tran 1u 10u 0 50n
+[options]
+2
+Trytocompact 1
+PivTol 1.0E-03
+[tran]
+50n
+10u
+0
+1u
+1
+[ana]
+4 1
+0
+1 1
+1 1 0 5
+2
+v(out1)
+v(ctrl)
+[end]

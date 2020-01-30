@@ -1,0 +1,7 @@
+*
+V1 1 0 1
+R1 1 2 1K
+D1 2 0 D
+.model D D
+.dc temp 0 100 1
+.end

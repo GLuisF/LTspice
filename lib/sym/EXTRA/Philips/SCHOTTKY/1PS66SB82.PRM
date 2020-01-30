@@ -1,0 +1,30 @@
+*
+.SUBCKT 1PS66SB82 1 2 3 4 5 6
+*
+* The Resistors do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+R1 1 6 3E+7
+D1 1 6 1PS66SB82
+R2 2 5 3E+7
+D2 2 5 1PS66SB82
+R3 3 4 3E+7
+D3 3 4 1PS66SB82
+*
+.MODEL 1PS66SB82 D 
++ IS = 1.042E-8 
++ N = 1.029 
++ BV = 17 
++ IBV = 0.001 
++ RS = 5.567 
++ CJO = 9.779E-13 
++ VJ = 0.2925 
++ M = 0.194 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

@@ -1,0 +1,20 @@
+.subckt DIAC T1 T2
+R1 T1 N001 {Rs}
+Q1 N003 N002 T2 0 PNP
+Q2 N002 N003 N001 0 NPN
+D1 N003 N002 D
+R2 N003 N001 {Rk}
+Q3 N005 N004 N001 0 PNP
+D2 N005 N004 D
+Q4 N004 N005 T2 0 NPN
+R3 N003 N005 1Meg
+R4 N005 T2 {Rk}
+.model D D
+.lib C:\PROGRA~1\LTC\LTSPIC~1\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib C:\PROGRA~1\LTC\LTSPIC~1\lib\cmp\standard.bjt
+.param Rk = (.491 * Rs + 491k) / (Vbr - .982)
+.backanno
+.end
+

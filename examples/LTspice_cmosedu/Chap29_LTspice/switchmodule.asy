@@ -1,0 +1,35 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 0 -352 0 0
+LINE Normal 129 -352 0 -352
+LINE Normal 129 0 129 -352
+LINE Normal 0 0 129 0
+LINE Normal 0 -48 -16 -48
+LINE Normal 1 -112 -15 -112
+LINE Normal 1 -304 -15 -304
+LINE Normal 80 -352 80 -368
+LINE Normal 80 16 80 0
+LINE Normal 1 -240 -15 -240
+LINE Normal 1 -176 -15 -176
+TEXT 105 -85 VLeft 0 Switch Module
+PIN -16 -48 LEFT 20
+PINATTR PinName Vin
+PINATTR SpiceOrder 1
+PIN 80 16 BOTTOM 17
+PINATTR PinName Bit
+PINATTR SpiceOrder 2
+PIN -16 -112 LEFT 20
+PINATTR PinName VrefM
+PINATTR SpiceOrder 3
+PIN -16 -304 LEFT 20
+PINATTR PinName VDD/2
+PINATTR SpiceOrder 4
+PIN 80 -368 TOP 17
+PINATTR PinName Out
+PINATTR SpiceOrder 5
+PIN -16 -240 LEFT 20
+PINATTR PinName RST
+PINATTR SpiceOrder 6
+PIN -16 -176 LEFT 20
+PINATTR PinName VrefP
+PINATTR SpiceOrder 7

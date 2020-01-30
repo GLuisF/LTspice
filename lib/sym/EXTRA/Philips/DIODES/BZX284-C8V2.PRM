@@ -1,0 +1,18 @@
+*DEVICE=BZX284C8V2,D
+* BZX284C8V2 D model
+* created using Parts release 7.1 on 06/17/98 at 11:00
+* Parts is a MicroSim product.
+.MODEL BZX284C8V2 D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=75.686E-12
++ M=.32952
++ VJ=.64386
++ ISR=146.71E-12
++ BV=8.3329
++ IBV=.94329
++ TT=2.7700E-6
+*$
+

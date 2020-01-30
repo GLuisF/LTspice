@@ -1,0 +1,7 @@
+* BSIM4 toxe test
+M1 N001 N002 0 0 NM
+V1 N001 0 0
+V2 N002 0 0
+.model NM NMOS level=14 toxe=1n
+.dc V1 0 5 1m V2 0 5 1
+.end

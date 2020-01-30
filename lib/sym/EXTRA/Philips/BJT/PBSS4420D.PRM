@@ -1,0 +1,69 @@
+*
+.SUBCKT PBSS4420D 1 2 3 4 5 6
+*
+R1 1 2 0
+R2 1 5 0
+R3 1 6 0
+*
+Q1 1 3 4 PBSS4420D
+D1 3 1 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS4420D NPN 
++ IS = 7.987E-013 
++ NF = 0.9652 
++ ISE = 1.1E-014 
++ NE = 1.33 
++ BF = 510 
++ IKF = 9 
++ VAF = 65 
++ NR = 0.9659 
++ ISC = 1.147E-014 
++ NC = 1.14 
++ BR = 223 
++ IKR = 1.1 
++ VAR = 10.5 
++ RB = 21.5 
++ IRB = 0.0008 
++ RBM = 1.8 
++ RE = 0.03 
++ RC = 0.02 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 5.681E-010 
++ VJE = 0.7622 
++ MJE = 0.3574 
++ TF = 2.45E-009 
++ XTF = 1 
++ VTF = 1000 
++ ITF = 6 
++ PTF = 0 
++ CJC = 9.107E-011 
++ VJC = 0.04067 
++ MJC = 0.1902 
++ XCJC = 1 
++ TR = 3.5E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.1 
+.MODEL DIODE D 
++ IS = 1E-018 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 0 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

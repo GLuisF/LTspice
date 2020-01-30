@@ -1,0 +1,13 @@
+.SUBCKT AMPSIMP 1 5 7  params: POLE=30 GAIN=30000 VHIGH=4V VLOW=100mV
+*               + - OUT
+G1 0 4 1 5 100u
+R1 4 0 {GAIN/100u}
+C1 4 0 {1/(6.28*(GAIN/100u)*POLE)}
+E1 2 0 4 0 1
+Ro 2 7 10
+Vlow 3 0 DC={VLOW}
+Vhigh 8 0 DC={VHIGH}  
+Dlow 3 4 DCLP
+Dhigh 4 8 DCLP
+.MODEL DCLP D N=0.01
+.ENDS

@@ -1,0 +1,66 @@
+*
+.SUBCKT PBSS4540X 1 2 3
+*
+Q1 2 3 1 PBSS4540X 
++ AREA = 1 
+D1 3 2 
++ DIODE
+* 
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PB4540X NPN 
++ IS = 1.728E-012 
++ NF = 0.9717 
++ ISE = 1.686E-014 
++ NE = 1.295 
++ BF = 570 
++ IKF = 30 
++ VAF = 110.5 
++ NR = 0.972 
++ ISC = 1.619E-014 
++ NC = 1.094 
++ BR = 160 
++ IKR = 15 
++ VAR = 13.2 
++ RB = 2.6 
++ IRB = 0.000183 
++ RBM = 1.3 
++ RE = 0.013 
++ RC = 0.019 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.044E-009 
++ VJE = 0.55 
++ MJE = 0.3176 
++ TF = 1.35E-009 
++ XTF = 30 
++ VTF = 1.7 
++ ITF = 1.6 
++ PTF = 0 
++ CJC = 2.02E-010 
++ VJC = 0.627 
++ MJC = 0.45 
++ XCJC = 1 
++ TR = 2E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.08 
+.MODEL DIODE D 
++ IS = 1E-015 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1.298 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS

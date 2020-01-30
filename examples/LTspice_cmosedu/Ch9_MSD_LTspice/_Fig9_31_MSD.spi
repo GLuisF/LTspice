@@ -1,0 +1,75 @@
+*** SPICE deck for cell _Fig9_31_MSD{sch} from library Ch9_MSD
+*** Created on Mon Apr 21, 2008 15:52:05
+*** Last revised on Sun Jan 11, 2009 10:56:11
+*** Written on Tue Mar 24, 2009 09:31:29 by Electric VLSI Design System, 
+*version 8.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.OPTIONS NOMOD NOPAGE
+
+*** CELL: Inv_20_10{sch}
+.SUBCKT Inv_20_10 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=6U
+.ENDS Inv_20_10
+
+*** CELL: Inv_100_50{sch}
+.SUBCKT Inv_100_50 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=15U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=30U
+.ENDS Inv_100_50
+
+*** CELL: NAND_2{sch}
+.SUBCKT NAND_2 A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnandB A net@10 gnd NMOS L=0.6U W=3U
+Mnmos@1 net@10 B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 AnandB B vdd vdd PMOS L=0.6U W=3U
+Mpmos@1 AnandB A vdd vdd PMOS L=0.6U W=3U
+.ENDS NAND_2
+
+*** CELL: clk_comparator{sch}
+.SUBCKT clk_comparator Clk InN InP Q Qbar
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 net@2 net@1 net@23 gnd NMOS L=0.6U W=3U
+MM2 net@58 net@0 net@45 gnd NMOS L=0.6U W=3U
+MM3 vdd net@1 net@0 vdd PMOS L=0.6U W=3U
+MM4 vdd net@0 net@1 vdd PMOS L=0.6U W=3U
+MMB1 net@23 InP gnd gnd NMOS L=0.6U W=3U
+MMB2 net@45 InN gnd gnd NMOS L=0.6U W=3U
+MMB3 net@5 net@95 gnd gnd NMOS L=0.6U W=3U
+MMB4 net@95 Clk gnd gnd NMOS L=0.6U W=0.9U
+MMS1 net@0 net@5 net@2 gnd NMOS L=0.6U W=3U
+MMS2 net@1 net@5 net@58 gnd NMOS L=0.6U W=3U
+MMS3 vdd net@5 net@0 vdd PMOS L=0.6U W=3U
+MMS4 vdd net@5 net@1 vdd PMOS L=0.6U W=3U
+MMS5 vdd net@95 net@5 vdd PMOS L=0.6U W=3U
+MMS6 vdd Clk net@95 vdd PMOS L=0.6U W=0.9U
+XInv_20_1@0 net@37 net@114 Inv_20_10
+XInv_20_1@1 net@40 net@115 Inv_20_10
+XInv_100_@0 net@114 Qbar Inv_100_50
+XInv_100_@1 net@115 Q Inv_100_50
+XNAND_2@0 net@1 net@37 net@40 NAND_2
+XNAND_2@1 net@37 net@40 net@0 NAND_2
+.ENDS clk_comparator
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: _Fig9_31_MSD{sch}
+Xclk_comp@0 clk Inm Inp Q Qi clk_comparator
+
+* Spice Code nodes in cell cell '_Fig9_31_MSD{sch}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+VCLK CLK 0 DC 0 PULSE 0  5 0 10p 10p 5n 10n
+VInp Inp 0 DC 0 PULSE 1 2 0 500n
+VInn Inm 0 DC 1.5
+.include C5_models.txt
+.tran .1n  500n 0 uic
+.END

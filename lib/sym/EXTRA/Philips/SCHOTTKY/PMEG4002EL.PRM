@@ -1,0 +1,25 @@
+*
+.SUBCKT PMEG4002EL 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 2 1 9.5E+07
+D1 2 1 PMEG4002EL
+*
+.MODEL PMEG4002EL D
++ IS = 8E-08
++ N = 1.012
++ BV = 45
++ IBV = 0.0001
++ RS = 0.8243
++ CJO = 2.515E-11
++ VJ = 0.4182
++ M = 0.4941
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

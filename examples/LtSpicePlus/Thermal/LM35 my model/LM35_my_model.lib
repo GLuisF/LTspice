@@ -1,0 +1,18 @@
+* LM35 spice model by ACMattos Apr-2009
+* See LM35 datasheet
+
+X1 1 2 3 LM35
+
+.subckt LM35 Out v+ v-
+
+V1 N002 v- {temp*0.01}
+XU1 N003 N001 v+ v- N001 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+I1 v+ v- {56u+0.39u*temp}
+R1 out N001 0.5
+R3 N003 N002 10k
+R4 N001 v- 10k
+
+.ends
+
+*.step temp -55 150 5
+

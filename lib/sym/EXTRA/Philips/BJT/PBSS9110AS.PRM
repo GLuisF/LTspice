@@ -1,0 +1,65 @@
+*
+.SUBCKT PBSS9110AS 1 2 3
+*
+Q1 1 2 3 PBSS9110AS
+D1 1 2 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS9110AS PNP
++ IS = 4.794E-13
++ NF = 0.9939
++ ISE = 2.251E-14
++ NE = 1.552
++ BF = 289.5
++ IKF = 10
++ VAF = 154.1
++ NR = 0.99
++ ISC = 6.046E-15
++ NC = 1.1
++ BR = 77
++ IKR = 1.5
++ VAR = 20
++ RB = 9.6
++ IRB = 0.0012
++ RBM = 2.05
++ RE = 0.047
++ RC = 0.036
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.857E-10
++ VJE = 0.55
++ MJE = 0.3026
++ TF = 8.5E-10
++ XTF = 19
++ VTF = 0.5
++ ITF = 3.5
++ PTF = 0
++ CJC = 6.554E-11
++ VJC = 0.6265
++ MJC = 0.4593
++ XCJC = 1
++ TR = 2.85E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.5
+.MODEL DIODE D
++ IS = 7.67E-15
++ N = 1
++ BV = 1000
++ IBV = 0.001
++ RS = 150
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 3
+.ENDS
+*

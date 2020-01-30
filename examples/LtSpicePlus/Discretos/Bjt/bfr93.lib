@@ -1,0 +1,121 @@
+*---------------------------------------------------------------------------
+*
+* BFR93A SPICE MODEL
+* PHILIPS SEMICONDUCTORS
+* Date : September 1995
+*
+* PACKAGE : SOT23 DIE MODEL : BFR91A
+* 1: COLLECTOR; 2: BASE; 3: EMITTER;
+.SUBCKT BFR93A/PLP 1 2 3
+Q1 6 5 7 7 BFR91A
+* SOT23 parasitic model
+               Lb  4 5 .4n 
+               Le  7 8 .83n
+               L1  2 4 .35n
+               L2  1 6 .17n
+               L3  3 8 .35n
+              Ccb  4 6 71f
+              Cbe  4 8 71f
+*
+* PHILIPS SEMICONDUCTORS                                     Version:   1.0
+* Filename:   BFR91A.PRM                                     Date: Feb 1992
+*
+.MODEL  BFR91A   NPN
++              IS = 1.32873E-015
++              BF = 1.02000E+002
++              NF = 1.00025E+000
++             VAF = 5.19033E+001
++             IKF = 8.15511E+000
++             ISE = 1.39029E-014
++              NE = 1.51292E+000
++              BR = 1.76953E+001
++              NR = 9.94038E-001
++             VAR = 3.28032E+000
++             IKR = 1.00000E+001
++             ISC = 1.04297E-015
++              NC = 1.18993E+000
++              RB = 1.00000E+001
++             IRB = 1.00000E-006
++             RBM = 1.00000E+001
++              RE = 7.63636E-001
++              RC = 9.00000E+000
++              EG = 1.11000E+000
++             XTI = 3.00000E+000
++             CJE = 2.03216E-012
++             VJE = 6.00000E-001
++             MJE = 2.90076E-001
++              TF = 6.55790E-012
++             XTF = 3.89752E+001
++             VTF = 1.09308E+001
++             ITF = 5.21078E-001
++             CJC = 1.00353E-012
++             VJC = 3.40808E-001
++             MJC = 1.94223E-001
+.ENDS
+*
+
+*
+*  INFINEON
+*
+.SUBCKT BFR93A/INF 200 100 300
+L1    1   10    0.85nH 
+L2    2   20    0.001nH 
+L3    3   30    0.69nH 
+C1   10   20    84fF         
+C2   20   30    165fF 
+C3   30   10    73fF 
+L4   10  100    0.51nH 
+L5   20  200    0.49nH 
+L6   30  300    0.61nH 
+Q1   2 1 3 BFR93A 
+.ENDS
+.MODEL BFR93A NPN(
++ IS = 8.6752e-15     BF = 137.63       NF = 0.93633
++ VAF = 20.011        IKF = 0.33395     ISE = 2.6193e-12
++ NE = 1.5466         BR = 59           NR = 0.88761
++ VAR = 26.834        IKR = 0.015129    ISC = 7.0823e-16
++ NC = 1.95           RB = 7.2326       IRB = 4.3806e-05
++ RBM = 3.4649        RE = 1.0075       RC = 0.13193
++ CJE = 3.1538e-15    VJE = 0.70393     MJE = 0.5071
++ TF = 3.3388e-11     XTF = 0.28319     VTF = 0.17765
++ ITF = 0.0025184     PTF = 0           CJC = 1.0395e-12
++ VJC = 0.72744       MJC = 0.34565     XCJC = 0.21422
++ TR = 1.1061e-09     CJS= 0            VJS = 0.75
++ MJS = 0             XTB = 0           EG = 1.11
++ XTI = 3             FC = 0.75935)
+**************************************************************
+
+
+
+* Original model from Danzer
+.MODEL BFR93A_DZR  NPN(IS=0.97f BF=99
++ VAF=55 IKF=0.26 ISE=0.8f
++ NE=1.34 CJE=3.23p CJC=1.35p
++ TF=18.4p ITF=85m XTF=3 VTF=2
++ RB=45 XCJC=0.2)
+
+*
+* Model improved from Danzer with additional package
+* Package from INFINEON
+* PACKAGE added from BFR93AW/INF
+.SUBCKT BFR93A_DZRP 200 100 300
+Q1 2 1 3 BFR93A_DZRP
+* SOT23 parasitic model
+L1    1   10    0.85nH 
+L2    2   20    0.001nH 
+L3    3   30    0.69nH 
+C1   10   20    84fF         
+C2   20   30    165fF 
+C3   30   10    73fF 
+L4   10  100    0.51nH 
+L5   20  200    0.49nH 
+L6   30  300    0.61nH 
+.ENDS
+*
+.MODEL BFR93A_DZRP  NPN(IS=0.97f BF=99
++ VAF=55 IKF=0.26 ISE=0.8f
++ NE=1.34 CJE=2.9p CJC=1.0p
++ TF=18.4p ITF=85m XTF=3 VTF=2
++ RB=40 XCJC=0.2)
+
+ 

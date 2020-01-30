@@ -1,0 +1,65 @@
+* MODELLING FOR STGP20NC60V
+ 
+.SUBCKT STGP20NC60V 1 2 3
+LG 10 2 7.5E-09
+LE 3 15 7.5E-09
+LC 13 1 4.5E-09
+RG 10 5 1.9
+RC 14 13 0.679E-03
+RE 15 12 0.176E-02
+RF 7 10 1MEG
+RX 4 14 799.975
+CGE 12 5 0.212E-08
+CCG 17 4 0.435E-08
+CK 16 4  0.187E-10
+DCG 12 11 DG
+Q1 12 11 14 Q
+M1 11 5 12 12 MOS
+E1 16 5 8 7 1
+E2 17 5 6 7 1
+G1 7 9 11 10 1u
+D1  8 9 DI
+D2  9 6 DI
+D3 16 4 DO
+R1 7 8 1MEG
+R2 7 6 1MEG
+.ENDS STGP20NC60V
+ 
+.MODEL MOS NMOS
++ LEVEL = 3
++ VTO   = 5.734
++ KP    = 16.995
++ THETA = 0.181
+ 
+.MODEL Q PNP
++ IS    = 0.101E-15
++ VAF   = 100.760
++ BF    = 0.258
++ NE    = 1.379
++ ISE   = 0.497E-15
++ IKF   = 0.451
++ BR    = 0.944E-02
++ NC    = 1.639
++ NK    = 0.315
++ TF    = 1E-06
++ ITF   = 1
++ VTF   = 10
++ XTF   = 0.1
+ 
+.MODEL DI D
++ IS    = 0.01E-12
++ RS    = 0
+ 
+.MODEL DO D
++ IS    = 0.01E-12
++ CJO   = 50E-12
++ VJ    = 0.75
++ M     = 0.35
+ 
+.MODEL DG D
++ IS    = 0.01E-12
++ BV    = 665
++ VJ    = 0.75
++ M     = 0.35
+ 
+* END OF MODELLING

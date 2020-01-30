@@ -1,0 +1,119 @@
+* H:\ELE\SOFT\LtSpice\WinSwCad3Plus\examples\Robertugo\Convert\Tero\Jerarq\TeroJerNe555H3.asc
+Ct N001 0 820p
+DretInv 0 N003 1N914
+Dalim Out Alim555 MURS120
+Dpol N005 N004 MBRS1100
+Rtoff N001 N002 47K
+Rton Alim555 N002 27K
+QCtrl PwmCtrl beQctrl 0 0 BC547A
+Rd2 beQctrl 0 1K
+VLocom N006 0 80v AC 1
+RDis N004 Alim555 22k
+R_uFan Alim555 0 150
+Rbuf N003 Out_555 47
+Rbmin N003 0 22
+Cf1 OutRect 0 220µ
+Cf2 Out 0 220µ
+Lf Out OutRect 100µ
+Cstart N004 Alim555 47µ
+Csnub High 0 1n
+D2 N002 N001 1N914
+LP N004 High 904µ
+LS 0 N007 50µ
+Drect N007 OutRect MBR735
+Qout High N003 0 0 BU508
+Csint N007 0 82n
+Rd1 beQctrl OutRect 18K
+Rlim N005 N006 2R2
+Cps N007 High 10p
+Cf3 Alim555 0 220µ
+XX1 0 N001 Out_555 Alim555 PwmCtrl N001 N002 Alim555 ne555h3
+
+* block symbol definitions
+.subckt ne555h3 1 2 3 4 5 6 7 8
+R1 N1 1 5k
+R2 5 N1 5k
+R3 8 5 5k
+S1 1 7 N7 1 DS
+S2 8 3 N6 1 OS
+S3 3 1 1 N6 OS
+R4 1 8 4k
+I1 8 4 .4m
+D1 4 1 DR
+XX3 N2 N3 V+ V- N5 N001 srff
+V1 V+ 1 1
+XX5 N4 N5 V+ V- N7 orh
+XX6 N5 N4 V+ V- N6 norh
+XX4 4 V+ V- N4 noth
+XX1 6 5 V+ V- N2 comp3
+XX2 N1 2 V+ V- N3 comp3
+V2 1 V- 1
+.model DS VSWITCH(Ron=6 Roff=.75G Vt=.5 Vh=.4 Td=0)
+.model OS VSWITCH(Ron=6 Roff=1Meg Vt=0 Vh=.8 Td=0)
+.model DR D(Rs=150K)
+.ends ne555h3
+.subckt srff S R V+ V- Q _Q
+R1 S R 1g
+XX1 S Q V+ V- _Q norh
+XX2 _Q R V+ V- Q norh
+.ends srff
+
+.subckt orh A B V+ V- Y
+S1 V+ Y A V- SwOr
+S2 V+ Y B V- SwOr
+RabOr B A 1g
+CR_OR Y V- 1p
+Rpar Y V- 1k
+.MODEL SwOr VSWITCH (VT=.5 VH=0 RON=10 ROFF=1e6)
+.ends orh
+
+.subckt norh A B V+ V- Y
+S1 V+ N001 V+ A SwNor
+S2 N001 Y V+ B SwNor
+RabNor B A 1g
+CR_Nor Y V- 1p
+Rpar Y V- 1k
+.MODEL SwNor VSWITCH (VT=.5 VH=0 RON=10 ROFF=1e6)
+.ends norh
+
+.subckt noth in V+ V- _Q
+S1 _Q V- In V- SwNot
+RNotIn In V- 1g
+CNot _Q V- 10p
+RNotLoad _Q V+ 1k
+.MODEL SwNot VSWITCH (VT=.7 VH=1m RON=10 ROFF=1e6)
+.ends noth
+
+.subckt comp3 In+ In- V+ V- Out
+S1 V+ Out In+ In- CsW
+S2 V- Out In- In+ CsW
+Rin+- In- In+ 1e9
+.model CsW VSWITCH (Ron=1e3 Roff=1G Vt=0 Vh=1m)
+.ends comp3
+
+.model D D
+.model NPN NPN
+.model PNP PNP
+.model BU508    NPN(Is=148.5p Xti=3 Eg=1.11 Vaf=100 Bf=43.23 Ise=1.355n
++               Ne=1.413 Ikf=8.245 Nk=.8069 Xtb=1.75 Br=2.131 Isc=529.1p
++               Nc=1.567 Ikr=1.689 Rc=32.64m Cjc=303.6p Mjc=.3333 Vjc=.5 Fc=.5
++               Cje=910.8p Mje=.3333 Vje=.5 Tr=16.1u Tf=22.02n Itf=183.6
++               Xtf=18.91K Vtf=10)
+*		case=TOP3
+.MODEL BC547A NPN(IS=1.533E-14 ISE=7.932E-16 ISC=8.305E-14 XTI=3
++ BF=178.7 BR=8.628 IKF=0.1216 IKR=0.1121 XTB=1.5
++ VAF=69.7 VAR=44.7 VJE=0.4209 VJC=0.2
++ RE=0.6395 RC=0.6508 RB=1 RBM=1 IRB=1E-06
++ CJE=1.61E-11 CJC=4.388E-12 XCJC=0.6193 FC=0.7762
++ NF=1.002 NR=1.004 NE=1.436 NC=1.207 MJE=0.3071 MJC=0.2793
++ TF=4.995E-10 TR=1E-32 PTF=0 ITF=0.7021 VTF=3.523 XTF=139
++ EG=1.11 KF=1E-9 AF=1)
+.model MBRS1100		D(Is=20.6u  Rs=0.0079 N=2.303 Cjo=270p M=.575 Eg=.69 Xti=2)
+.model 1N914		D(Is=2.52n  Rs=0.568  N=1.752 Cjo=4p   M=.4   Tt=20n)
+.model MURS120		D(Is=33.8n  Rs=0.0236 N=1.718 Cjo=45p  M=.6   Tt=45n)
+.model MBR735      	D(Is=159u   Rs=0.02   N=1.76  Cjo=740p M=.6   Eg=.69 Xti=2)
+K1 LP LS .995
+.tran 1u 4m uic
+*.backanno
+.Probe
+.end

@@ -1,0 +1,65 @@
+*
+.SUBCKT PMBTA64 1 2 3 
+*
+* For use with Microsim PSPICE 
+* please modify the AREA statement
+* in this model:  e.g.
+* SPICE: 
+* Q2 11 222 33 PMBTA64 AREA = 4.68 
+* PSPICE:
+* Q2 11 222 33 PMBTA64 4.68 
+*
+* housing parasitics
+LB 2 22 1.25E-09 
+LE 3 33 1.12E-09 
+LC 1 11 2.3E-10 
+*
+CBCG 22 11 6.2E-14 
+CBEG 22 33 4.5E-14 
+CCEG 11 33 6.2E-14 
+*
+Q1 11 22 222 PMBTA64 AREA = 1 
+Q2 11 222 33 PMBTA64 AREA = 4.68 
+*
+.MODEL PMBTA64 PNP 
++ IS = 1.593E-14 
++ NF = 0.9855 
++ ISE = 7E-15 
++ NE = 1.5 
++ BF = 280 
++ IKF = 0.09 
++ VAF = 31 
++ NR = 1 
++ ISC = 1E-32 
++ NC = 2 
++ BR = 5 
++ IKR = 0.1 
++ VAR = 4 
++ RB = 600 
++ IRB = 1E-06 
++ RBM = 10 
++ RE = 0.1 
++ RC = 1 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.32E-11 
++ VJE = 0.9 
++ MJE = 0.4141 
++ TF = 9.9E-10 
++ XTF = 15 
++ VTF = 5 
++ ITF = 0.4 
++ PTF = 0 
++ CJC = 7.95E-12 
++ VJC = 0.9 
++ MJC = 0.5622 
++ XCJC = 0.9 
++ TR = 1E-15 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.98 
+*
+.ENDS
+*

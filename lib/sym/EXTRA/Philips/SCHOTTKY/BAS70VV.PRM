@@ -1,0 +1,30 @@
+*
+.SUBCKT BAS70VV 1 2 3 4 5 6
+*
+* The Resistors do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+R1 1 6 1.409E+09
+D1 1 6 BAS70VV
+R2 2 5 1.409E+09
+D2 2 5 BAS70VV
+R3 3 4 1.409E+09
+D3 3 4 BAS70VV
+*
+.MODEL BAS70VV D
++ IS = 3.22E-09
++ N = 1.018
++ BV = 77 
++ IBV = 1.67E-07
++ RS = 20.89 
++ CJO = 1.655E-12
++ VJ = 0.349 
++ M = 0.3583 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

@@ -1,0 +1,122 @@
+*
+.SUBCKT PUMZ2 1 2 3 4 5 6
+*
+Q1 6 2 1 TR1
+D1 6 2 DIODE1
+Q2 4 3 5 TR2
+D2 3 4 DIODE2
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse 
+* mode of operation of the PNP
+* transistor.
+*
+.MODEL TR1 PNP 
++ IS = 9.134E-15
++ NF = 0.9775
++ ISE = 5.035E-16
++ NE = 1.4
++ BF = 267.4
++ IKF = 0.095
++ VAF = 38
++ NR = 0.9848
++ ISC = 1.713E-15
++ NC = 1.034
++ BR = 17
++ IKR = 0.0075
++ VAR = 11.5
++ RB = 75
++ IRB = 0.0002144
++ RBM = 0.108
++ RE = 0.4
++ RC = 0.95
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.126E-11
++ VJE = 0.7922
++ MJE = 0.3954
++ TF = 4.5E-10
++ XTF = 1.5
++ VTF = 20
++ ITF = 0.07
++ PTF = 0
++ CJC = 1.031E-11
++ VJC = 1
++ MJC = 0.6227
++ XCJC = 1
++ TR = 5.1E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL DIODE1 D
++ IS = 4.065E-18
++ N = 0.9309
++ BV = 1000
++ IBV = 0.001
++ RS = 0.02115
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ XTI = 2
++ EG = 1.11
++ XTI = 2
+.MODEL TR2 NPN
++ IS = 1.217E-14
++ NF = 0.9803
++ ISE = 1.129E-15
++ NE = 1.342
++ BF = 300
++ IKF = 0.16
++ VAF = 130
++ NR = 0.9758
++ ISC = 8.952E-15
++ NC = 1.2
++ BR = 6.2
++ IKR = 0.075
++ VAR = 20
++ RB = 10
++ IRB = 8E-05
++ RBM = 1
++ RE = 0.5
++ RC = 0.75
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.362E-11
++ VJE = 0.7287
++ MJE = 0.36
++ TF = 3.8E-10
++ XTF = 1.5
++ VTF = 15
++ ITF = 0.085
++ PTF = 0
++ CJC = 5.522E-12
++ VJC = 0.4075
++ MJC = 0.3704
++ XCJC = 1
++ TR = 1E-07
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL DIODE2 D
++ IS = 4E-17
++ N = 1
++ BV = 1000
++ IBV = 0.001
++ RS = 0.1
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ XTI = 2
++ EG = 1.11
++ XTI = 2
+.ENDS
+*

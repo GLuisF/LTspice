@@ -1,0 +1,67 @@
+*
+.SUBCKT 2PD601ARW 1 2 3
+*
+Q1 3 1 2 Q2PD601ARW
++ AREA = 1
+D1 1 3 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL Q2PD601ARW NPN
++ IS = 1.217E-14
++ NF = 0.9803
++ ISE = 1.129E-15
++ NE = 1.342
++ BF = 300
++ IKF = 0.16
++ VAF = 130
++ NR = 0.9758
++ ISC = 8.952E-15
++ NC = 1.2
++ BR = 6.2
++ IKR = 0.075
++ VAR = 20
++ RB = 10
++ IRB = 8E-05
++ RBM = 1
++ RE = 0.5
++ RC = 0.75
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.362E-11
++ VJE = 0.7287
++ MJE = 0.36
++ TF = 3.8E-10
++ XTF = 1.5
++ VTF = 15
++ ITF = 0.085
++ PTF = 0
++ CJC = 5.522E-12
++ VJC = 0.4075
++ MJC = 0.3704
++ XCJC = 1
++ TR = 1E-07
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL DIODE D
++ IS = 4E-17
++ N = 1
++ BV = 1000
++ IBV = 0.001
++ RS = 0.1
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ XTI = 2
++ EG = 1.11
++ XTI = 2
+.ENDS
+*

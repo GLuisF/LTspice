@@ -1,0 +1,32 @@
+*
+.SUBCKT BAS40-05V 1 2 3 4 5 6
+*
+* The resistors do not 
+* reflect a physical devices. Instead they
+* improve modelling in the reverse
+* mode of operation.
+*
+R1 1 6 8E+08
+D1 1 6 BAS40-05V 
+R2 2 6 8E+08
+D2 2 6 BAS40-05V
+R3 4 3 8E+08
+D3 4 3 BAS40-05V
+R4 5 3 8E+08
+D4 5 3 BAS40-05V
+*
+.MODEL BAS40-05V D( 
++ IS = 9.114E-09 
++ N = 1.006 
++ BV = 45 
++ IBV = 7.8E-05 
++ RS = 4.563 
++ CJO = 3.895E-12 
++ VJ = 0.3192 
++ M = 0.4008 
++ FC = 0.5 
++ TT = 0 
++ EG = 0.69 
++ XTI = 2) 
+.ENDS
+*

@@ -1,0 +1,46 @@
+*
+.SUBCKT PBSS5540X 1 2 3
+*
+Q1 2 3 1 PBSS5540X 
++ AREA = 1 
+*
+.MODEL PBSS5540X PNP 
++ IS = 1.784E-012 
++ NF = 0.9891 
++ ISE = 7.679E-014 
++ NE = 1.384 
++ BF = 367 
++ IKF = 7.7 
++ VAF = 35 
++ NR = 0.988 
++ ISC = 1.379E-013 
++ NC = 1.169 
++ BR = 105 
++ IKR = 1.2 
++ VAR = 8 
++ RB = 3 
++ IRB = 0.0012 
++ RBM = 0.951 
++ RE = 0.019 
++ RC = 0.014 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 8.721E-010 
++ VJE = 0.68 
++ MJE = 0.365 
++ TF = 1.62E-009 
++ XTF = 22 
++ VTF = 1.2 
++ ITF = 0.9 
++ PTF = 0 
++ CJC = 2.76E-010 
++ VJC = 0.6352 
++ MJC = 0.4041 
++ XCJC = 1 
++ TR = 5E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.5 
+.ENDS

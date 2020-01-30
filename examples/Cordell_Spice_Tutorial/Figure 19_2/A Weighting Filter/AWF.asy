@@ -1,0 +1,17 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal 128 80 -128 -80
+WINDOW 0 51 -97 Left 0
+WINDOW 3 19 96 Left 0
+SYMATTR Value AWF
+SYMATTR Prefix X
+SYMATTR ModelFile AWF.sub
+PIN -128 0 LEFT 8
+PINATTR PinName in
+PINATTR SpiceOrder 1
+PIN 128 0 RIGHT 8
+PINATTR PinName out
+PINATTR SpiceOrder 2
+PIN 0 80 BOTTOM 8
+PINATTR PinName gnd
+PINATTR SpiceOrder 3

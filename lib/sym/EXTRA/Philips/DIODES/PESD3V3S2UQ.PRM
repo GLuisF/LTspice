@@ -1,0 +1,26 @@
+*
+.SUBCKT PESD3V3S2UQ 1 2 3
+*
+* The Resistors R1 and R2 do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+R1 3 1 2.2E+9
+D1 3 1 PESD3V3S2UQ
+R2 3 2 2.2E+9
+D2 3 2 PESD3V3S2UQ
+*
+.MODEL PESD3V3S2UQ D
++ IS = 3.134E-16
++ N = 0.9403
++ BV = 5.6
++ IBV = 0.005
++ RS = 0.2549
++ CJO = 1.961E-10
++ VJ = 0.9187
++ M = 0.423
++ FC = 0.5
+.ENDS
+*

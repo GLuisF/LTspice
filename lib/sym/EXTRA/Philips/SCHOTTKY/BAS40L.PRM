@@ -1,0 +1,25 @@
+*
+.SUBCKT BAS40L 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 8E+08
+D1 1 2 BAS40L
+*
+.MODEL BAS40-05V D 
++ IS = 9.114E-9 
++ N = 1.006 
++ BV = 45 
++ IBV = 7.8E-5 
++ RS = 4.563 
++ CJO = 3.895E-12 
++ VJ = 0.3192 
++ M = 0.4008 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

@@ -1,0 +1,10 @@
+* 
+.SUBCKT device_gauss d p  
+
+.PARAM process_var_gauss={process_var_gauss1}
+.PARAM device_var_gauss=gauss(1)
+
+Vd d 0 {device_var_gauss}
+Vp p 0 {process_var_gauss}
+
+.ENDS device_gauss

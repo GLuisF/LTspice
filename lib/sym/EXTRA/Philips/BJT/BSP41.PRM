@@ -1,0 +1,71 @@
+*
+.SUBCKT BSP41 1 2 3 
+* housing parasitics
+LB 2 22 4.13E-09 
+LE 3 333 3.77E-09 
+LC 1 11 4.1E-10 
+CBCG 22 11 1.76E-13 
+CBEG 22 333 8.6E-14 
+CCEG 11 333 1.76E-13 
+Q1 11 22 333 QBSP41
+D1 22 11 DIODE 
+*
+* The diode does not reflect a physical
+* device but improves only modeling
+* in the reverse mode of operation
+*
+.MODEL QBSP41 NPN( 
++ IS = 4.638E-14 
++ NF = 0.9949 
++ ISE = 3.954E-16 
++ NE = 1.25 
++ BF = 145.2 
++ IKF = 0.55 
++ VAF = 91 
++ NR = 0.9994 
++ ISC = 2.3E-10 
++ NC = 1.891 
++ BR = 2.821 
++ IKR = 0.15 
++ VAR = 55 
++ RB = 55 
++ IRB = 2E-06 
++ RBM = 0.4 
++ RE = 0.391 
++ RC = 0.02 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 8.404E-11 
++ VJE = 0.7161 
++ MJE = 0.3543 
++ TF = 7.3E-10 
++ XTF = 9 
++ VTF = 5 
++ ITF = 1.6 
++ PTF = 0 
++ CJC = 2.79E-11 
++ VJC = 0.5208 
++ MJC = 0.4256 
++ XCJC = 1 
++ TR = 1.2E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 )
+*
+.MODEL DIODE D (
++ IS = 9.8E-11 
++ N = 1.05 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 80 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3) 
+.ENDS
+*

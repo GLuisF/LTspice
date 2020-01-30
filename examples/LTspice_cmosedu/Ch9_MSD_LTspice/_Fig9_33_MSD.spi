@@ -1,0 +1,208 @@
+*** SPICE deck for cell _Fig9_33_MSD{sch} from library Ch9_MSD
+*** Created on Wed May 14, 2008 16:27:28
+*** Last revised on Tue Mar 24, 2009 09:44:27
+*** Written on Tue Mar 24, 2009 09:44:38 by Electric VLSI Design System, 
+*version 8.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.OPTIONS NOMOD NOPAGE
+
+*** CELL: DFF{sch}
+.SUBCKT DFF Clk D Qi
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 net@97 D vdd vdd PMOS L=0.6U W=3U
+MM3 net@62 Clk net@97 vdd PMOS L=0.6U W=3U
+MM4 net@62 D gnd gnd NMOS L=0.6U W=3U
+MM5 net@55 Clk vdd vdd PMOS L=0.6U W=3U
+MM6 net@55 net@62 net@17 gnd NMOS L=0.6U W=3U
+MM8 net@17 Clk gnd gnd NMOS L=0.6U W=3U
+MM9 net@115 net@55 vdd vdd PMOS L=0.6U W=3U
+MM10 net@115 Clk net@49 gnd NMOS L=0.6U W=3U
+MM11 net@49 net@55 gnd gnd NMOS L=0.6U W=3U
+MM12 net@117 net@115 gnd gnd NMOS L=0.6U W=3U
+MM13 net@117 net@115 vdd vdd PMOS L=0.6U W=3U
+MM14 Qi net@117 gnd gnd NMOS L=0.6U W=3U
+MM15 Qi net@117 vdd vdd PMOS L=0.6U W=3U
+.ENDS DFF
+
+*** CELL: 100f_cap{sch}
+.SUBCKT _100f_cap P1 P2
+
+* Spice Code nodes in cell cell '100f_cap{sch}'
+C1 P1 P2 100f
+Cb P1 GND 20f
+.ENDS _100f_cap
+
+*** CELL: SC_input{sch}
+.SUBCKT SC_input lb lt p1 p1i p2 p2i rb rt
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 lt p1 top gnd NMOS L=0.6U W=15U
+Mnmos@1 top p2 rt gnd NMOS L=0.6U W=15U
+Mnmos@2 lb p1 bot gnd NMOS L=0.6U W=15U
+Mnmos@3 bot p2 rb gnd NMOS L=0.6U W=15U
+Mpmos@0 top p1i lt vdd PMOS L=0.6U W=30U
+Mpmos@1 rt p2i top vdd PMOS L=0.6U W=30U
+Mpmos@2 bot p1i lb vdd PMOS L=0.6U W=30U
+Mpmos@3 rb p2i bot vdd PMOS L=0.6U W=30U
+X_100f_cap@0 bot top _100f_cap
+.ENDS SC_input
+
+*** CELL: amp{sch}
+.SUBCKT amp Inm Inp Outm Outp
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@4 Outm Outm gnd gnd NMOS L=0.6U W=30U
+Mnmos@5 Outp Outm gnd gnd NMOS L=0.6U W=30U
+Mpmos@4 net@113 Inp Outm vdd PMOS L=0.6U W=300U
+Mpmos@5 net@113 Inm Outp vdd PMOS L=0.6U W=300U
+Mpmos@6 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+Mpmos@8 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+.ENDS amp
+
+*** CELL: Inv_20_10{sch}
+.SUBCKT Inv_20_10 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=6U
+.ENDS Inv_20_10
+
+*** CELL: Inv_100_50{sch}
+.SUBCKT Inv_100_50 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=15U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=30U
+.ENDS Inv_100_50
+
+*** CELL: NAND_2{sch}
+.SUBCKT NAND_2 A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnandB A net@10 gnd NMOS L=0.6U W=3U
+Mnmos@1 net@10 B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 AnandB B vdd vdd PMOS L=0.6U W=3U
+Mpmos@1 AnandB A vdd vdd PMOS L=0.6U W=3U
+.ENDS NAND_2
+
+*** CELL: clk_comparator{sch}
+.SUBCKT clk_comparator Clk InN InP Q Qbar
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 net@2 net@1 net@23 gnd NMOS L=0.6U W=3U
+MM2 net@58 net@0 net@45 gnd NMOS L=0.6U W=3U
+MM3 vdd net@1 net@0 vdd PMOS L=0.6U W=3U
+MM4 vdd net@0 net@1 vdd PMOS L=0.6U W=3U
+MMB1 net@23 InP gnd gnd NMOS L=0.6U W=3U
+MMB2 net@45 InN gnd gnd NMOS L=0.6U W=3U
+MMB3 net@5 net@95 gnd gnd NMOS L=0.6U W=3U
+MMB4 net@95 Clk gnd gnd NMOS L=0.6U W=0.9U
+MMS1 net@0 net@5 net@2 gnd NMOS L=0.6U W=3U
+MMS2 net@1 net@5 net@58 gnd NMOS L=0.6U W=3U
+MMS3 vdd net@5 net@0 vdd PMOS L=0.6U W=3U
+MMS4 vdd net@5 net@1 vdd PMOS L=0.6U W=3U
+MMS5 vdd net@95 net@5 vdd PMOS L=0.6U W=3U
+MMS6 vdd Clk net@95 vdd PMOS L=0.6U W=0.9U
+XInv_20_1@0 net@37 net@114 Inv_20_10
+XInv_20_1@1 net@40 net@115 Inv_20_10
+XInv_100_@0 net@114 Qbar Inv_100_50
+XInv_100_@1 net@115 Q Inv_100_50
+XNAND_2@0 net@1 net@37 net@40 NAND_2
+XNAND_2@1 net@37 net@40 net@0 NAND_2
+.ENDS clk_comparator
+
+*** CELL: delay{sch}
+.SUBCKT delay inbot intop phi1 phi1i phi2 phi2i
+** GLOBAL gnd
+** GLOBAL vdd
+XInv_20_1@0 net@21 phi1 Inv_100_50
+XInv_20_1@1 phi1 phi1i Inv_100_50
+XInv_20_1@2 net@17 phi2 Inv_100_50
+XInv_20_1@3 phi2 phi2i Inv_100_50
+XInv_20_1@4 net@37 net@38 Inv_20_10
+XInv_20_1@5 net@38 net@21 Inv_20_10
+XInv_20_1@6 net@44 net@40 Inv_20_10
+XInv_20_1@7 net@40 net@17 Inv_20_10
+XNAND_2@0 intop net@37 net@17 NAND_2
+XNAND_2@1 inbot net@44 net@21 NAND_2
+.ENDS delay
+
+*** CELL: clock_gen{sch}
+.SUBCKT clock_gen p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 
++p2_4 p2i_1 p2i_2 p2i_3 p2i_4
+** GLOBAL gnd
+** GLOBAL vdd
+Xdelay@4 p2i_4 p1i_4 p1_1 p1i_1 p2_1 p2i_1 delay
+Xdelay@5 p2_1 p1_1 p1_2 p1i_2 p2_2 p2i_2 delay
+Xdelay@6 p2_2 p1_2 p1_3 p1i_3 p2_3 p2i_3 delay
+Xdelay@7 p2_3 p1_3 p1_4 p1i_4 p2_4 p2i_4 delay
+.ENDS clock_gen
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: _Fig9_33_MSD{sch}
+Ccap@0 gnd sum_d 0.025f
+Rres@8 sum_d Q_1b 100000k
+Rres@9 sum_d Q_2b 100000k
+Rres@10 sum_d Q_4b 100000k
+Rres@11 sum_d Q_3b 100000k
+Rres@12 sum_d Q_8b 100000k
+Rres@13 sum_d Q_7b 100000k
+Rres@14 sum_d Q_5b 100000k
+Rres@15 sum_d Q_6b 100000k
+Rres@16 sum Q_4 100000k
+Rres@17 sum Q_3 100000k
+Rres@18 sum Q_8 100000k
+Rres@19 sum Q_7 100000k
+Rres@20 sum Q_5 100000k
+Rres@21 sum Q_6 100000k
+Rres@22 sum Q_1 100000k
+Rres@23 sum Q_2 100000k
+XDFF@0 p1_1 Q_1i Q_1b DFF
+XDFF@1 p1_2 Q_2i Q_2b DFF
+XDFF@2 p1_3 Q_3i Q_3b DFF
+XDFF@3 p1_4 Q_4i Q_4b DFF
+XDFF@4 p2_1 Q_5i Q_5b DFF
+XDFF@5 p2_2 Q_6i Q_6b DFF
+XDFF@6 p2_3 Q_7i Q_7b DFF
+XDFF@7 p2_4 Q_8i Q_8b DFF
+XSC_input@0 Vin VCM p1_3 p1i_3 p2_3 p2i_3 Q_3 int SC_input
+XSC_input@1 Vin VCM p1_4 p1i_4 p2_4 p2i_4 Q_4 int SC_input
+XSC_input@2 Vin VCM p2_1 p2i_1 p1_1 p1i_1 Q_5 int SC_input
+XSC_input@3 Vin VCM p2_2 p2i_2 p1_2 p1i_2 Q_6 int SC_input
+XSC_input@4 Vin VCM p2_3 p2i_3 p1_3 p1i_3 Q_7 int SC_input
+XSC_input@5 Vin VCM p2_4 p2i_4 p1_4 p1i_4 Q_8 int SC_input
+XSC_input@6 Vin VCM p1_1 p1i_1 p2_1 p2i_1 Q_1 int SC_input
+XSC_input@7 Vin VCM p1_2 p1i_2 p2_2 p2i_2 Q_2 int SC_input
+Xamp@1 int VCM min pos amp
+Xcf[0] pos int _100f_cap
+Xcf[1] pos int _100f_cap
+Xcf[2] pos int _100f_cap
+Xcf[3] pos int _100f_cap
+Xcf[4] pos int _100f_cap
+Xcf[5] pos int _100f_cap
+Xcf[6] pos int _100f_cap
+Xcf[7] pos int _100f_cap
+Xclk_comp@0 p1_3 min pos Q_3 Q_3i clk_comparator
+Xclk_comp@1 p1_4 min pos Q_4 Q_4i clk_comparator
+Xclk_comp@2 p2_1 min pos Q_5 Q_5i clk_comparator
+Xclk_comp@3 p2_2 min pos Q_6 Q_6i clk_comparator
+Xclk_comp@4 p2_3 min pos Q_7 Q_7i clk_comparator
+Xclk_comp@5 p2_4 min pos Q_8 Q_8i clk_comparator
+Xclk_comp@6 p1_1 min pos Q_1 Q_1i clk_comparator
+Xclk_comp@7 p1_2 min pos Q_2 Q_2i clk_comparator
+Xclock_ge@0 p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 p2_4 
++p2i_1 p2i_2 p2i_3 p2i_4 clock_gen
+
+* Spice Code nodes in cell cell '_Fig9_33_MSD{sch}'
+VDD VDD 0 DC 5
+VCM VCM 0 DC 2.5
+Vgnd GND 0 DC 0
+Vin Vin 0 DC 0 SINE(2.5 2 10MEG)
+.include C5_models.txt
+.options plotwinsize=0
+.ic v(p1_1)=5 v(p2_1)=0
+.tran 0 300n 0 0.1n
+.END

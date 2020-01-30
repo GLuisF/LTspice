@@ -1,0 +1,18 @@
+*DEVICE=BAS321,D
+* BAS321 D model
+* created using Parts release 7.1 on 11/20/98 at 13:45
+* Parts is a MicroSim product.
+.MODEL BAS321 D
++ IS=3.7106E-9
++ N=1.9403
++ RS=.41967
++ IKF=62.731E-3
++ CJO=412.54E-12
++ M=.1
++ VJ=2.2836
++ ISR=7.2305E-9
++ BV=319.86
++ IBV=5.1728E-6
++ TT=37.510E-9
+*$
+

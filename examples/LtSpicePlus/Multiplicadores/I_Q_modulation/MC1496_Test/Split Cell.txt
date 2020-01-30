@@ -1,0 +1,24 @@
+I/Q demodulator/modulator in one chip
+
+ ~ Thanks to a file for running and testing the MC1496 by Ray Anderson WB6TPU,  I was able to test out my dual mixer theory I posted here last year sometime.
+
+I split the MC1496 Gilbert Cell into two independent demodulator / modulator sections.  I have devised a way to test the circuit to prove the separation of each half.   You can run and test the simulation with LTSpice.
+
+Note:  In order to magnify the I/Q separation, the Transient time domain simulation is set for 10u ( .tran 10u).
+
+R2 is on pin 1 (S+) and R3 is on pin 4 (S-).  If you adjust the value of either resistor, you can balance the I and Q level, or diminish one of them.  If you remove R2 and C2 and their nodes.  Or R3 and C3 and their nodes. you can completely remove either the I or the Q  outputs.  This way you can prove the separation of the two halves of the Gilbert Cell.  What you do in one half of the circuit, will not effect the other half.
+
+R2 (Q) is set for 75 ohms to diminish the Q, and R3 is set for 1 ohm so that (I) can be full amplitude.  And you will see the effect as soon as you run the Transient analysis.
+
+I worked on R7 and R8 to get the best separation waveform I could.
+
+I wanted to do this so that one chip could be used for a QSD mixer.  Or for quad phase modulator or for both.  And so, this will handle both the I and Q.   
+
+My vision of this is that we can use perhaps a 74HC74 to split, shift and divide down a local oscillator, and run this split I /Q ~ LO IN to pins 1 and 4, and then the incoming signal to be sampled from a receiver or an antenna can be applied to pin 8.
+
+You might be able to make something like SR40 with this and even without a broadband input transformer.  But I am thinking this would be a good idea in a conventional off the shelf radio as a SDR hybrid.
+
+Dannie Jackson ka9rza
+
+
+  

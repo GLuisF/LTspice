@@ -1,0 +1,85 @@
+* WARNING : please consider following remarks before usage
+*
+* 1) All models are a tradeoff between accuracy and complexity (ie.
+simulation 
+*    time).
+* 2) Macromodels are not a substitute to breadboarding, they rather confirm the
+*    validity of a design approach and help to select surrounding component
+values.
+*
+* 3) A macromodel emulates the NOMINAL performance of a TYPICAL device within 
+*    SPECIFIED OPERATING CONDITIONS (ie. temperature, supply voltage, etc.).
+*    Thus the macromodel is often not as exhaustive as the datasheet, its
+goal
+*    is to illustrate the main parameters of the product.
+*
+* 4) Data issued from macromodels used outside of its specified conditions
+*    (Vcc, Temperature, etc) or even worse: outside of the device operating 
+*    conditions (Vcc, Vicm, etc) are not reliable in any way.
+
+
+** Standard Linear Ics Macromodels. 
+** CONNECTIONS :
+* 1 INVERTING INPUT
+* 2 NON-INVERTING INPUT
+* 3 OUTPUT
+* 4 POSITIVE POWER SUPPLY
+* 5 NEGATIVE POWER SUPPLY
+.SUBCKT MC4558 1 2 3 4 5
+**********************************************************
+.MODEL MDTH D IS=1E-8 KF=3.103536E-16 CJO=10F
+* INPUT STAGE
+CIP 2 5 1.400000E-12
+CIN 1 5 1.400000E-12
+EIP 10 5 2 5 1
+EIN 16 5 1 5 1
+RIP 10 11 1.238095E+01
+RIN 15 16 1.238095E+01
+RIS 11 15 1.142635E+02
+DIP 11 12 MDTH 400E-12
+DIN 15 14 MDTH 400E-12
+VOFP 12 13 DC 0
+VOFN 13 14 DC 0
+IPOL 13 5 2.100000E-05
+CPS 11 15 5.9E-10
+DINN 17 13 MDTH 400E-12
+VIN 17 5 3.000000e+00
+DINR 15 18 MDTH 400E-12
+VIP 4 18 3.000000E+00
+FCP 4 5 VOFP 5.376190E+01
+FCN 5 4 VOFN 5.376190E+01
+FIBP 2 5 VOFN 1.904762E-03
+FIBN 5 1 VOFP 1.904762E-03
+* AMPLIFYING STAGE
+FIP 5 19 VOFP 1.361905E+03
+FIN 5 19 VOFN 1.361905E+03
+RG1 19 5 8.864107E+05
+RG2 19 4 8.864107E+05
+CC 19 29 1.300000E-08
+HZTP 30 29 VOFP 8.862530E+02
+HZTN  5 30 VOFN 8.862530E+02
+DOPM 19 22 MDTH 400E-12
+DONM 21 19 MDTH 400E-12
+HOPM 22 28 VOUT 7.500000E+03
+VIPM 28 4 1.500000E+02
+HONM 21 27 VOUT 7.500000E+03
+VINM 5 27 1.500000E+02
+GCOMP 5 4 4 5 6.485084E-04
+RPM1 5 80 1E+09
+RPM2 4 80 1E+09
+GAVPH 5 82 19 80 2.59E-03
+RAVPHGH 82 4 771
+RAVPHGB 82 5 771
+RAVPHDH 82 83 1000
+RAVPHDB 82 84 1000
+CAVPHH 4 83 0.331E-09
+CAVPHB 5 84 0.331E-09
+EOUT 26 23 82 5 1
+VOUT 23 5 0
+ROUT 26 3 120
+COUT 3 5 1.000000E-12
+DOP 19 25 MDTH 400E-12
+VOP 4 25 1.981520E+00
+DON 24 19 MDTH 400E-12
+VON 24 5 1.981520E+00
+.ENDS

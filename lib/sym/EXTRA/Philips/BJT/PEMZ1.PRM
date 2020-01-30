@@ -1,0 +1,87 @@
+*
+* PEMZ1 
+* Complementary NPN and PNP  
+* Transistors in SOT666
+* QTR1  NPN  
+* QTR2  PNP  
+*
+.MODEL QTR1 NPN( 
++     IS=2.456E-14
++     NF=0.997
++     ISE=4.908E-15
++     NE=1.706
++     BF=265.4  
++     IKF=0.1357
++     VAF=63.2
++     NR=1.004
++     ISC=6.272E-14
++     NC=1.243  
++     BR=6.657
++     IKR=0.1144
++     VAR=25.9
++     RB=1
++     IRB=1E-06
++     RBM=1  
++     RE=0.4683
++     RC=1.31
++     XTB=0
++     EG=1.11
++     XTI=3
++     CJE=1.384E-11  
++     VJE=0.5561
++     MJE=0.3437
++     TF=5.275E-10
++     XTF=127
++     VTF=1.441  
++     ITF=0.565
++     PTF=0
++     CJC=4.399E-12
++     VJC=0.2006
++     MJC=0.3344  
++     XCJC=0.6193
++     TR=1E-32
++     CJS=0
++     VJS=0.75
++     MJS=0.333
++     FC=0.8361 )
+*
+.MODEL QTR2 PNP( 
++     IS=2.514E-14
++     NF=0.9978
++     ISE=5.697E-15
++     NE=1.421
++     BF=315.5  
++     IKF=0.08039
++     VAF=40.01
++     NR=1.001
++     ISC=2.533E-14
++     NC=1.25  
++     BR=9.217
++     IKR=0.047
++     VAR=32.02
++     RB=1
++     IRB=1E-06
++     RBM=1  
++     RE=0.6308
++     RC=0.956
++     XTB=0
++     EG=1.11
++     XTI=3
++     CJE=1.17E-11  
++     VJE=0.746
++     MJE=0.4143
++     TF=6.328E-10
++     XTF=6.555
++     VTF=2.416  
++     ITF=0.129
++     PTF=0
++     CJC=6.96E-12
++     VJC=0.778
++     MJC=0.6596  
++     XCJC=0.6288
++     TR=1E-32
++     CJS=0
++     VJS=0.75
++     MJS=0.333
++     FC=0.79)
+*

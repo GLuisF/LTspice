@@ -1,0 +1,5 @@
+* example noise simulation
+R1 0 OUT 1K
+I1 0 OUT AC 1
+.noise V(out) I1 oct 10 1 1Meg
+.end

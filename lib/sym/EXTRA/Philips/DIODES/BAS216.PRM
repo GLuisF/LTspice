@@ -1,0 +1,20 @@
+*DEVICE=BAS216,D
+* BAS216 D model
+* created using Parts release 7.1 on 06/03/98 at 11:40
+* Parts is a MicroSim product.
+.MODEL BAS216 D
++ IS=6.0289E-9
++ N=2.1283
++ RS=1.0000E-3
++ IKF=37.638E-3
++ CJO=593.63E-15
++ M=.1
++ VJ=.68774
++ ISR=2.0646E-9
++ NR=4.9950
++ BV=113.60
++ IBV=10
++ TT=4.5000E-9
+*$
+
+

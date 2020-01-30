@@ -1,0 +1,31 @@
+*
+.SUBCKT BAT754L 1 2 3 4 5 6
+*
+* The resistors do not reflect 
+* physical devices. Instead they
+* improve modeling in the reverse 
+* mode of operation.
+*
+R1 1 6 3.558E+07
+D1 1 6 BAT754L
+R2 2 5 3.558E+07
+D2 2 5 BAT754L
+R3 3 4 3.558E+07
+D3 3 4 BAT754L
+*
+.MODEL BAT754L D
++ IS = 2.993E-07
++ N = 1.01
++ BV = 30
++ IBV = 1.5E-06
++ RS = 2.734
++ CJO = 9.228E-12
++ VJ = 0.3033
++ M = 0.4131
++ FC = 0.5178
++ TT = 0
++ EG = 0.69
++ XTI = 2
+.ENDS
+*
+

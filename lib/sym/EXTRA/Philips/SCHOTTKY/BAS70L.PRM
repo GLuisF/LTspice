@@ -1,0 +1,25 @@
+*
+.SUBCKT BAS70L 1 2 
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1.409E+9 
+D1 1 2 BAS70L 
+*
+.MODEL BAS70L D 
++ IS = 3.22E-9 
++ N = 1.018 
++ BV = 77 
++ IBV = 1.67E-7 
++ RS = 20.89 
++ CJO = 1.608E-12 
++ VJ = 0.3891 
++ M = 0.3683 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

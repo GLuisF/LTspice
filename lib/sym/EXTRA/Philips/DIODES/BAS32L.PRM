@@ -1,0 +1,18 @@
+*DEVICE=BAS32L,D
+* BAS32L D model
+* created using Parts release 6.2i on 02/21/97 at 11:11
+* Parts is a MicroSim product.
+.MODEL BAS32L D
++ IS=22.270E-9
++ N=2.2030
++ RS=1.0000E-3
++ IKF=16.940E-3
++ CJO=1.0350E-12
++ M=.1
++ VJ=.75
++ ISR=10.010E-21
++ BV=124.10
++ IBV=7.6070E-3
++ TT=4.3280E-9
+*$
+

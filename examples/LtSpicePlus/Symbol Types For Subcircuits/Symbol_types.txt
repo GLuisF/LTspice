@@ -1,0 +1,393 @@
+Version 2.0        03/21/2008         Helmut Sennewald
+
+Rearranged version based on the older version 1.8 .
+Special thanks to Luc Heylen who reorganized the contents of this document.
+
+
+Third party models
+==================
+
+Installation Path
+-----------------
+In this text {SwCADIII} refers to the installation path.
+Typically this is C:\program files\LTC\SwCADIII.
+
+
+Simulation subcircuit models
+----------------------------
+Subcircuits are SPICE models defined with the syntax:
+  .SUBCKT name node1 node2 ...
+  ...
+  .ENDS 
+
+
+Libraries of simulation models and subcircuits
+----------------------------------------------
+
+If a part(component, subcircuit, partial design) is not on the schematic, 
+then it must be included with a ".include: or ".lib" command in the schematic.
+Only text files with SPICE lines can be included. A line with a "*" in the 
+first place is treated as a comment line. 
+
+The filename extension may be any name.
+
+
+Search path for .include
+------------------------ 
+
+.include name.xxx  
+
+Search path:
+   Absolute path name   
+   {SwCADIII} \lib\sub
+   Path of schematic or netlist
+
+Circuit elements/lines of global scope are included.
+That means that any line of this file becomes part of the whole netlist.
+
+
+Search path for .lib
+--------------------
+
+.lib name.xxx
+
+Search path priority:
+   Absolute path name
+   {SwCADIII}\lib\cmp    
+   {SwCADIII}\lib\sub
+   Path of schematic or netlist
+
+Circuit elements/lines of global scope are ignored.
+That means that any line not part of a .SUBCKT, a .MODEL or a .FUNC will be 
+ignored.
+
+
+Some examples for specifying library paths.
+-------------------------------------------
+Example 1: My preferred way!!!
+   Schematic file: ...\working_directory\test.asc
+   Library file:   ...\working_directory\myopams.lib
+   The library specification in the symbol have to be  
+     myopamps.lib  
+   The library specification in the command line have to be 
+  .include myopamps.lib
+
+Example 2:      
+   Schematic file: ...\working_directory\test.asc
+   Library file:   {SwCADIII}\lib\sub\myopamps.lib 
+   The library specification in the symbol have to be  
+     myopamps.lib  
+   The library specification in the command line have to be 
+    .include myopamps.lib
+
+Example 3: Don't do that!!!
+   Schematic file: ...\working_directory\test.asc
+   Library file:   {SwCADIII}\lib\sub\Private\myopamps.lib 
+   The library specification in the symbol or in a command line() 
+   would be  (.include) Private\myopamps.lib .
+   The library specification in the symbol or in a command line 
+   The library specification in the symbol have to be  
+     Private\myopamps.lib   
+   The library specification in the command line have to be 
+    .include Private\myopamps.lib
+
+
+ 
+
+Making your own Symbols
+=======================
+
+A symbol is just a picture with ports and properties.
+The port pins are the interface nodes and the properties are the name of the 
+subcircuit and additional parameters if necessary.
+
+Search Path For Symbols 
+----------------------
+LTSPICE looks for symbols instantiated in a schematic in the following 
+directories.
+Search order:
+  symbol path from where the instance has been instantiated
+ 	working directory(schematic's directory) 
+	{SwCADIII} \lib\sym
+	{SwCADIII} \lib\sym\other folders
+The given path order is valid for LTSPICE version 2.10i and newer.
+The advantage is that LTSPICE will find symbols for a schematic even if they 
+aren't stored in its original directory.
+
+
+Basic Types Of Symbols
+----------------------
+
+There are basically three types of symbols for subcircuits.
+I have given them the names "Specific/Individual", "Drop Down" and Universal". 
+Each of them has advantages in one of its features.
+I mostly use Type 1 and Type 4.
+
+All the provided opamp symbols from Linear Technology in LTSPICE are of the 
+"Specific"-type! They can't be changed at the schematic.
+
+
+Features of Symbol Types
+------------------------
+   Overview
+   --------
+      Type 1 is "Specific/individual" symbol
+      Type 2 is "Drop Down" symbol
+      Type 3 is "Universal" symbol variant 1
+      Type 4 is "Universal" symbol variant 2  
+      Type 5 is "Universal" symbol variant 3
+
+   Features                      Type:   1     2     3    4     5       
+   ------------------------------------------------------------------  
+   Selection from Win-Explorer-Box       yes  no    no    no    no      
+   Selection from Drop Down Box          no   yes   no    no    no      
+   One symbol fits all                   no   yes*1 yes   yes   yes*1  
+   .INCLUDE command needed in schematic  no   no    yes   yes   no      
+   Parameter passing from schematic      no   yes   yes   yes   yes     
+   Node passing from schematic           no   no    no    yes   yes    
+  
+*1  Only one symbol is needed for all the subcircuits contained in the 
+    specified library file, but every library file needs its own symbol, 
+    because the name of this file is stored within the symbol.
+
+
+
+Specific/Individual Symbol (Type-1)
+-----------------------------------
+   Selection from Win-Explorer-Box       yes
+   Selection from Drop Down Box          no
+   One symbol fits all                   no
+   .INCLUDE command needed in schematic  no
+   Parameter passing from schematic      no
+   Node passing from schematic           no
+  
+Parameters set in the symbol attribute editor box:
+
+    Prefix           X
+    SpiceModel       LTC.lib
+    Value            LT1013
+    Value2           LT1013
+    SpiceLine
+    SpiceLIne2
+    Description      Dual Precision Amplifier
+    Modelfile
+      
+A specific symbol is needed for every model, so every part/type can have a 
+very specific picture. All the Opamp symbols in LTSPICE are of this type. 
+The symbols placed in the schematic are not editable. 
+No additional parameter can be passed from the schematic to the subcircuit. 
+
+The Value-field is what you see in the schematic and the Value2-field 
+contains the exact "modelname" as used in the SPICE model:
+  .subckt modelname ...
+SpiceModel LTC.lib is the file name of the library file in the example above.
+The library file contains the specified subcircuit as specified in 
+Value2. The model file can contain other models too.
+  .subckt LT1013 ....
+  
+
+
+
+Drop Down Symbol (Type-2)
+-------------------------
+   Selection from Win-Explorer-Box       no    
+   Selection from Drop Down Box          yes   
+   One symbol fits all                   yes*1 
+   .INCLUDE command needed in schematic  no    
+   Parameter passing from schematic      yes   
+   Node passing from schematic           no
+ 
+*1  Only one symbol is needed for all the subcircuits contained in the 
+specified library file, but every library file needs its own symbol because 
+the name of this file is stored within the symbol.
+     
+The symbol attributes for the "select-box"-feature:
+ 
+    Prefix           X
+    SpiceModel       LTC1013
+    Value            (optional parameters)
+    Value2
+    SpiceLine        (optional parameters)
+    SpiceLIne2       (optional parameters)
+    Description      Precision Opamp
+    Modelfile        LTC.lib
+
+One symbol is needed for every library file, because the name has to be 
+specified in the symbol property Modelfile.
+After you have placed this component on your schematic(circuit), right click 
+the symbol to choose any of the models contained in the library file.
+You can also fill in additional parameters in the Value2 field.
+
+It is very important that the value in "SpiceModel" is the name of a 
+subcircuit in the Modelfile! Otherwise the selection feature will not work!
+In this example a subcircuit LTC1013 must be in the model file LTC.lib. 
+
+
+
+Universal Symbol (Type-3)
+-------------------------
+   Selection from Win-Explorer-Box       no  
+   Selection from Drop Down Box          no  
+   One symbol fits all                   yes 
+   .INCLUDE command needed in schematic  yes 
+   Parameter passing from schematic      yes 
+   Node passing from schematic           no  
+
+Parameters set in the symbol attribute editor box:
+
+    Prefix           X
+    SpiceModel       X-Opamp
+    Value            (optional parameters)
+    Value2
+    SpiceLine        (optional parameters)
+    SpiceLine2       (optional parameters)
+
+The location of the model has to be specified in the schematic. 
+Richt click the symbol text "X-Opamp" in the schematic or the symbol and 
+change the text "X-Opamp" to the name of the opamp model, e.g. LT1013.
+Add a command line with .INCLUDE to load the library file to your schematic.
+Example: .INCLUDE LTC.lib
+
+Only one symbol is needed for all these 5-pin opamp models if the 
+netlist order is matching. The same symbol can be used for all library files.
+Parameters can be passed in up to three fields. 
+Each filed can be made visible in the schematic if needed. 
+The parameters can be entered/changed by clicking with the right mouse 
+button on the symbol.
+
+
+
+Universal Symbol (Type-4)
+-------------------------
+It's very similar to type-3, except that the model name is specified in
+the attribute "Value". The symbol "opamp2" in [Opamps] of the LTspice 
+program is of this type.
+
+   Selection from Win-Explorer-Box       no  
+   Selection from Drop Down Box          no  
+   One symbol fits all                   yes  
+   .INCLUDE command needed in schematic  yes 
+   Parameter passing from schematic      yes 
+   Node passing from schematic           yes 
+
+Parameters set in the symbol attribute editor box:
+
+    Prefix           X
+    SpiceModel       (optional hidden nodes)
+    Value            X-Opamp
+    Value2
+    SpiceLine        (optional parameters)
+    SpiceLine2       (optional parameters)
+
+The location of the model file has to be specified in the schematic. 
+Richt click the symbol text "X-Opamp" in the schematic or the symbol and 
+change the text "X-Opamp" to the name of the opamp model, e.g. LT1013.
+Add a command line with .INCLUDE to load the library file to your schematic.
+Example: .INCLUDE LTC.lib
+
+Only one symbol is needed for all these 5-pin opamp models if the 
+netlist order is matching. The same symbol can be used for all library files.
+Parameters can be passed in up to two fields. 
+Each filed can be made visible in the schematic if needed. 
+The parameters can be entered/changed by clicking with the right mouse 
+button on the symbol. Additional hidden circuit nodes can be passed in the 
+line "SpiceModel". I have used this feature in the HC74xx digital library.
+
+
+
+Universal Symbol (Type-5)
+-------------------------
+It's very similar to type-3, except that the model file is already
+specified in the attribute "Modelfile".
+I have never use it, because I can't see an advantage. 
+
+   Selection from Win-Explorer-Box       no
+   Selection from Drop Down Box          no
+   One symbol fits all                   yes*1  
+   .INCLUDE command needed in schematic  no
+   Parameter passing from schematic      yes
+   Node passing from schematic           no
+
+*1  Only one symbol is needed for all the subcircuits contained in the 
+specified library file, but every library file needs its own symbol because 
+the name of this file is stored within the symbol.
+
+Parameters set in the symbol attribute editor box:
+
+    Prefix           X
+    InstNAme         U1
+    SpiceModel       
+    Value            X-Opamp 
+    Value2
+    SpiceLine        (optional parameters)
+    SpiceLine2       (optional parameters)
+    Modelfile        LTC.lib
+
+Richt click the symbol text "X-Opamp" in the schematic or the symbol and 
+change the text "X-Opamp" to the name of the opamp model, e.g. LT1013.
+In this case a subcircuit LTC1013 must be in the model file LTC.lib. 
+
+
+
+
+
+General tips for new symbol creation
+------------------------------------
+I recommend to start by copying of an already existing similar symbol. 
+Shure, you can start from scratch too.
+The most important thing is the pin order of your model and not the picture 
+itself. The pin order must be set to the functional order used in the the 
+subcircuit definition.
+
+Example:    
+  The model:
+    The numbers are the interface nodes.
+    Only the order is important, the value itself not!        
+ 
+        *             in+ in- v+ v- out
+        .SUBCKT OP11  2   50  3  19 99
+        ...
+        .ENDS   
+
+  The symbol:
+     The picture will be drawn in the symbol editor.
+     The numbers of the the pin order are set either directly after placing 
+     the port pins or later by right-clicking the port pins. 
+     The properties of the symbol can be set/changed with  
+     Edit > Attributes > Edit Attributes. 
+
+                          3
+                       ___|___
+                      |  v+   |
+                   2--|in-    |
+                      |    out|--5
+                   1--|in+    |
+                      |  v-   |
+                      |_______|
+                          |
+                          4
+
+Close and restart LTSPICE after you have saved your new symbol before 
+using it in your schematic!
+
+  
+Fast creation of a specific Opamp symbol
+----------------------------------------
+It really saves time to copy existing symbols if they are similar.
+If you are especially in need for an opamp, then look first the symbols 
+of the LTSPICE opamps. If any of them fits your needs, then just make a 
+copy that symbol and change the obvious names. 
+
+Example:  uA741A, model in file xyz.lib
+  Copy     LT1013.asy  -> uA741A.asy
+  Change      LTC.lib  -> xyz.lib
+  Change twice  LT1013 -> uA741A
+Close LTSPICE. Restart LTSPICE and use the new symbol. File xyz.lib must 
+be either in your working directory or in the LTSPICE-"lib\sub" dirctory 
+in this example. The following subcircuit definition line has to be in xyz.lib. 
+  .subckt uA741A ....
+
+
+See also:
+LTspice help file:   FAQs/Third-party models.
+LTSPICE users's group http://groups.yahoo.com/group/LTspice/

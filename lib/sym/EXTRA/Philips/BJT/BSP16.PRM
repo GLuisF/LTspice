@@ -1,0 +1,71 @@
+*
+.SUBCKT BSP16 1 2 3 
+* housing parasitics
+LB 2 22 4.13E-09
+LE 3 333 3.77E-09 
+LC 1 11 0.41E-09 
+CBCG 22 11 1.76E-13 
+CBEG 22 333 8.6E-14 
+CCEG 11 333 1.76E-14 
+Q1 11 22 333 QBSP16 AREA = 1 
+D1 11 22 DIODE 
+*
+* The diode does not reflect a physical
+* device but improves only modeling
+* in the reverse mode of operation
+*
+.MODEL QBSP16 PNP 
++ IS = 1.668E-14 
++ NF = 0.9925 
++ ISE = 1.187E-14 
++ NE = 1.45 
++ BF = 72.69 
++ IKF = 1.02 
++ VAF = 300 
++ NR = 1.001 
++ ISC = 3.8E-15 
++ NC = 1.515 
++ BR = 4.032 
++ IKR = 0.02433 
++ VAR = 50 
++ RB = 20 
++ IRB = 1E-06 
++ RBM = 0.01 
++ RE = 0.55 
++ RC = 0.4707 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 8.812E-11 
++ VJE = 0.6708 
++ MJE = 0.3409 
++ TF = 1.5E-09 
++ XTF = 22 
++ VTF = 4 
++ ITF = 0.19 
++ PTF = 0 
++ CJC = 1.486E-11 
++ VJC = 0.9514 
++ MJC = 0.4793 
++ XCJC = 1 
++ TR = 5E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.949 
+*
+.MODEL DIODE D 
++ IS = 2.441E-13 
++ N = 1.027 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 220 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

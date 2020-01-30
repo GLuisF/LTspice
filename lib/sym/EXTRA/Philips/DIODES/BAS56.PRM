@@ -1,0 +1,18 @@
+*DEVICE=BAS56,D
+* BAS56 D model
+* created using Parts release 6.2i on 07/23/97 at 15:20
+* Parts is a MicroSim product.
+.MODEL BAS56 D
++ IS=10.825E-9
++ N=1.9301
++ RS=.49924
++ IKF=1.4135
++ CJO=994.44E-15
++ M=.10001
++ VJ=.69196
++ ISR=1.0704E-9
++ BV=113.15
++ IBV=15.676E-3
++ TT=5.7708E-9
+*$
+

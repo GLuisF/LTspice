@@ -1,0 +1,18 @@
+*DEVICE=BZA868A,D
+
+* BZA868A D model
+* updated using Model Editor release 9.0 on 06/27/00 at 09:52
+* Model Editor is an OrCAD product.
+.MODEL BZA868A D
++ IS=323.81E-18
++ N=.97963
++ RS=.24264
++ IKF=6.9002
++ CJO=125.11E-12
++ M=.34068
++ VJ=1.2066
++ ISR=894.24E-12
++ NR=2.4186
++ BV=7.0126
++ IBV=2.4043
++ TT=115.42E-9

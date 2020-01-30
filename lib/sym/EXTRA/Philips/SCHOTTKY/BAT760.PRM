@@ -1,0 +1,25 @@
+*
+.SUBCKT BAT760 1 2
+*
+* The resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse
+* mode of operation.
+*
+R1 1 2 2E+06
+D1 1 2 BAT760
+*
+.MODEL BAT760 D (
++ IS = 1.686E-06
++ N = 1.015
++ BV = 21
++ IBV = 1E-06
++ RS = 0.1249
++ CJO = 9.086E-11
++ VJ = 0.1939
++ M = 0.4542
++ FC = 1
++ TT = 0
++ EG = 0.69
++ XTI = 2 )
+.ENDS

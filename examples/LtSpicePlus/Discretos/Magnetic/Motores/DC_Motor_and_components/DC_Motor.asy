@@ -1,0 +1,42 @@
+Version 4
+SymbolType CELL
+LINE Normal -52 -16 -41 -16
+LINE Normal -52 16 -52 -16
+LINE Normal -41 16 -52 16
+LINE Normal 26 16 15 16
+LINE Normal 26 -16 26 16
+LINE Normal 15 -16 26 -16
+LINE Normal -80 -40 -96 -63
+LINE Normal 36 -40 -80 -40
+LINE Normal 36 0 36 -40
+LINE Normal 26 0 36 0
+LINE Normal -80 65 -96 80
+LINE Normal -80 0 -80 65
+LINE Normal -52 0 -80 0
+RECTANGLE Normal 96 96 -96 -80
+CIRCLE Normal -18 -6 -6 6
+CIRCLE Normal -45 33 19 -33
+TEXT -54 -55 Left 0 DC-Motor
+WINDOW 0 -46 -95 Left 0
+WINDOW 39 -74 137 Left 0
+WINDOW 38 -59 111 Left 0
+SYMATTR SpiceModel DCMotor
+SYMATTR Prefix X
+PIN -96 -64 LEFT 8
+PINATTR PinName E1
+PINATTR SpiceOrder 1
+PIN -96 80 LEFT 8
+PINATTR PinName E2
+PINATTR SpiceOrder 2
+PIN 96 -64 RIGHT 8
+PINATTR PinName V1
+PINATTR SpiceOrder 3
+PIN 96 -16 RIGHT 8
+PINATTR PinName V2
+PINATTR SpiceOrder 4
+PIN 96 32 RIGHT 8
+PINATTR PinName Pos1
+PINATTR SpiceOrder 5
+PIN 96 80 RIGHT 8
+PINATTR PinName Pos2
+PINATTR SpiceOrder 6

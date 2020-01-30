@@ -1,0 +1,5 @@
+*black_body.lib
+.subckt black_body 12 11 10 params:t=5900
+e_black_body 11 10 value={8.925e-12/(((v(12)*1e-6)**5)*(t**4)
++*(exp(0.0143/(v(12)*1e-6*t))-1))}
+.ends black_body

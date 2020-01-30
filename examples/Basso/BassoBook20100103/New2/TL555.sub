@@ -1,0 +1,104 @@
+*  TLC555, TLC556 and NE555 Timer models.
+*
+*  The new TLC models are based on the NE555 model from Mike Engelhardt.
+*  Changes: Reset threshhold changed to 1.1V.
+*           Ron of switches changed according to TI and NS data sheet.
+*           Warning: These values depend on the supply voltage.
+*           They are calculated from the 15V values by an formula(approximation).
+*           R1, R2, R5 changed to 100k according to NS data sheet.
+*           R7 changed to 16k for correct power dissipation.
+*           I1 and D1 removed
+*
+*  Helmut Sennewald, 8/24/2003
+*
+*------------ TLC555 ---------------
+*
+*      1 GND     VDD   8
+*      2 TRIG    DISCH 7
+*      3 OUT     THRES 6
+*      4 RESET    CONT 5
+*
+.subckt TLC555 1 2 3 4 5 6 7 8  vdd1={VDD} RonX1={RONX}
+.param Ron_d=RonX1*(1+7*(14.3/{vdd1-0.7})**0.75)
+.param Ron_oh=RonX1*(10+60*(14.3/{vdd1-0.7})**0.75)
+.param Ron_ol=RonX1*(2+15*(14.3/{vdd1-0.7})**0.75)
+A1 N001 2 1 1 1 1 N003 1 SCHMITT Vt=0 Vh=1m 
+R1 N001 1 100K
+R2 5 N001 100K
+R3 8 5 100K
+S1 1 7 N012 1 DS
+A2 N006 N003 1 1 1 1 N004 1 SRFLOP Trise=100n tripdt=10n
+A3 6 5 1 1 1 1 N006 1 SCHMITT Vt=0 Vh=1m
+S2 8 3 N010 1 OH
+S3 3 1 1 N010 OL
+A6 1 N013 1 N004 1 1 N012 1 OR Ref=.5 Vlow=-1 Trise=100n
+R7 8 1 16K
+R8 4 1 1G
+R9 2 1 1G
+R10 6 1 1G
+A4 1 N004 1 N013 1 N010 1 1 OR ref=.5 Vlow=-1 Trise=100n
+A5 4 1 1 1 1 N013 1 1 SCHMITT Vt=1.1 Vh=1m
+* Ron depends on VDD.
+.model DS SW(Ron={Ron_d} Roff=1G Vt=.5 Vh=-.4)
+.model OH SW(Ron={Ron_oh} Roff=1Meg Vt=0 Vh=-.8)
+.model OL SW(Ron={Ron_ol} Roff=1Meg Vt=0 Vh=-.8)
+*   Values for VDD=15V from TI data sheet. 
+*.model DS SW(Ron=7 Roff=1G Vt=.5 Vh=-.4)
+*.model OH SW(Ron=80 Roff=1Meg Vt=0 Vh=-.8)
+*.model OL SW(Ron=13 Roff=1Meg Vt=0 Vh=-.8)
+*   Values for VDD=5V from TI data sheet. 
+*.model DS SW(Ron=15 Roff=1G Vt=.5 Vh=-.4)
+*.model OH SW(Ron=200 Roff=1Meg Vt=0 Vh=-.8)
+*.model OL SW(Ron=25 Roff=1Meg Vt=0 Vh=-.8)
+*   Values for VDD=2V from TI data sheet.
+*.model DS SW(Ron=30 Roff=1G Vt=.5 Vh=-.4)
+*.model OH SW(Ron=330 Roff=1Meg Vt=0 Vh=-.8)
+*.model OL SW(Ron=70 Roff=1Meg Vt=0 Vh=-.8)
+.ends TLC555
+*
+*
+*
+*------------ TLC556 ---------------
+*
+*      1 DISCH1       VDD 14
+*      2 THRES1    DISCH2 13
+*      3 CONT1     THRES2 12
+*      4 RESET1     CONT2 11    
+*      5 OUT1      RESET2 10
+*      6 TRIG1       OUT2  9
+*      7 GND        TRIG2  8  
+*
+.subckt TLC556 1 2 3 4 5 6 7 8 9 10 11 12 13 14  vdd1={VDD} RonX1={RONX}
+X1  7 6 5  4  3  2  1 14  TLC555 vdd={vdd1} ronx={ronx1}
+X2  7 8 9 10 11 12 13 14  TLC555 vdd={vdd1} ronx={ronx1}
+.ends TLC556
+*
+*
+*
+*------------ NE555 ---------------
+*
+.subckt NE555 1 2 3 4 5 6 7 8
+A1 N001 2 1 1 1 1 N003 1 SCHMITT Vt=0 Vh=1m
+R1 N001 1 5K
+R2 5 N001 5K
+R3 8 5 5K
+S1 1 7 N012 1 DS
+A2 N006 N003 1 1 1 1 N004 1 SRFLOP Trise=100n tripdt=10n
+A3 6 5 1 1 1 1 N006 1 SCHMITT Vt=0 Vh=1m
+S2 8 3 N010 1 OS
+S3 3 1 1 N010 OS
+A6 1 N013 1 N004 1 1 N012 1 OR Ref=.5 Vlow=-1 Trise=100n
+R7 8 1 4K
+R9 2 1 1G
+R10 6 1 1G
+A4 1 N004 1 N013 1 N010 1 1 OR ref=.5 Vlow=-1 Trise=100n
+A5 4 1 1 1 1 N013 1 1 SCHMITT Vt=.7 Vh=1m
+I1 8 4 .4m load
+D1 4 1 DR
+.model DS SW(Ron=6 Roff=.75G Vt=.5 Vh=-.4)
+.model OS SW(Ron=6 Roff=1Meg Vt=0 Vh=-.8)
+*.model DR D(Ron=150K Roff=1T Vfwd=1.6)
+.ends NE555
+
+
+

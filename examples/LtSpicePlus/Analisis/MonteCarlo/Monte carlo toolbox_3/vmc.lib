@@ -1,0 +1,110 @@
+* Voltage source for use in montecarlo simulations J meech 0ct 2004
+* Gausian distribution with average of 10
+
+* Minimum Value
+.subckt V_min_0 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends V_min
+
+* Nominal Value
+.subckt V_nom_1 A B
+V1 A B {V} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends V_nom
+
+* Maximum Value
+.subckt V_max_2 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends V_max
+
+
+* Uniform distribution
+.subckt V_uniform_3 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends V_uniform
+
+* Binary min/max distribution
+* Requires "run" = (0)1...
+* run==0 uses nominal value
+* Requires "seed" = 1 ... N  ->  Bit-n 0...N-1
+.subckt V_minmax_bin_4 A B
+.param EPS=1e-6
+.param TOLC=TOL/50
+.param w=2**(seed-1)
+* Test if Bit-n is 1   n=0..N-1
+.param RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+{EPS}))>(w-0.5),1,0)
+.param ran={if((run==0),1,1-TOLC/2+TOLC*RN)} 
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar} 
+.ends V_minmax_bin_4
+
+* Gausian distribution with average of 5
+.subckt V_Gausian_5 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends V_Gausian_5
+
+
+* Minimum Value
+.subckt 60 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends 60
+
+* Nominal Value
+.subckt 61 A B
+V1 A B {V}
+.ends 61
+
+* Maximum Value
+.subckt 62 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends 62
+
+* Uniform distribution
+.subckt 63 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+V1 A B {V*ran}
+.ends 63
+
+
+* Binary min/max distribution
+* Requires "run" = (0)1...
+* run==0 uses nominal value
+* Requires "seed" = 1 ... N  ->  Bit-n 0...N-1
+.subckt 64 A B
+.param EPS=1e-6
+.param TOLC=TOL/50
+.param w=2**(seed-1)
+* Test if Bit-n is 1   n=0..N-1
+.param RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+{EPS}))>(w-0.5),1,0)
+.param ran={if((run==0),1,1-TOLC/2+TOLC*RN)} 
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar} 
+.ends 64
+
+* Gausian distribution with average of 5
+.subckt 65 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+V1 A B {V*ran} AC={AC} Rser={Rser} Cpar={Cpar}
+.ends 65
+

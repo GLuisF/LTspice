@@ -1,0 +1,54 @@
+*
+.SUBCKT PBSS4120T 1 2 3
+*
+* housing parasitics
+LBlead 11 111 3.5E-10
+LE 2 22 1.12E-09
+LC 3 33 2.3E-10
+LBbond 1 11 9E-10
+CBCG 33 111 6.2E-14
+CBEG 22 111 4.5E-14
+CCEG 22 33 6.2E-14
+*
+Q1 33 111 22 PBSS4120T
+*
+.MODEL PBSS4120T NPN 
++ IS = 3.984E-013 
++ NF = 0.957 
++ ISE = 3.127E-015 
++ NE = 1.187 
++ BF = 570 
++ IKF = 2.8 
++ VAF = 88 
++ NR = 0.9615 
++ ISC = 1.253E-013 
++ NC = 1.35 
++ BR = 90.88 
++ IKR = 3800 
++ VAR = 10.6 
++ RB = 14 
++ IRB = 0.0009 
++ RBM = 9.392 
++ RE = 0.08 
++ RC = 0.0305 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 2.639E-010 
++ VJE = 0.7555 
++ MJE = 0.364 
++ TF = 5.8E-010 
++ XTF = 9 
++ VTF = 1.5 
++ ITF = 1 
++ PTF = 0 
++ CJC = 5.076E-011 
++ VJC = 0.7 
++ MJC = 0.465 
++ XCJC = 1 
++ TR = 1.22E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.99 
+.ENDS

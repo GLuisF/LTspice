@@ -1,0 +1,273 @@
+*OPA830  Low-Power, Single-Supply, Wideband Operational Amplifier  
+* REV. A - Created 7/03/06 X-ramus2@ti.com
+*
+*
+* NOTES:
+*   1- This macromodel predicts well: DC, small-signal AC, noise,
+*      , and transient performance under a wide range
+*      of conditions.
+*   2- This macromodel does not predict well: distortion
+*      (harmonic, intermod, diff. gain & phase, ...),
+*      temperature effects, board parasitics, differences
+*      between package styles, and process changes
+*   3- For Spice3F4 users they might need to un-comment the lines for the F 
+*      function and comment out the Lines for PSpice F functions
+*      and subckts. First try the present netlist then comment out lines if 
+*      errors appear.
+*      General form:
+*      FXXXXXXX N+ N- <POLY(ND)> VN1 <VN2 ...> P0 <P1 ...> <IC=...>
+*      Examples:
+*      F1 12 10 VCC 1MA 1.3M
+*   4- For some simulators the subckt for the F statement need to be placed 
+*      inside the ends statement followed by carriage return  
+*   5- Known Problems: - Output current capability on +5V too low
+*                                 - Most positive output voltage on +3V too low
+*
+* |-------------------------------------------------------------|
+* |  This macro model is being supplied as an aid to            |
+* |  circuit designs.  While it reflects reasonably close       |
+* |  similarity to the actual device in terms of performance,   |
+* |  it is not suggested as a replacement for breadboarding.    |
+* |  Simulation should be used as a forerunner or a supplement  |
+* |  to traditional lab testing.                                |
+* |                                                             |
+* |  Neither this library nor any part may be copied without    |
+* |  the express written consent of Texas Instruments Corp.     |
+* |-------------------------------------------------------------|
+*
+* CONNECTIONS:
+*                                   Non-Inverting Input
+*                                   |  Inverting Input
+*                                   |  |  Disable
+*                                   |  |  |    Output
+*                                   |  |  |     |   Positive Supply
+*                                   |  |  |     |   |    Negative Supply
+*                                   |  |  |     |   |    |
+*                                   |  |  |     |   |    |
+*                                   |  |  |     |   |    |
+*                                   |  |  |     |   |    |
+.SUBCKT OPAx83x_Model + - Dis OUT V+ V- 
+
+.PARAM coef=1
+.PARAM x1=0.125
+.PARAM x12={x1*12}
+.PARAM x6={x1*6}
+.PARAM x3={x1*3}
+.PARAM x4={x1*4}
+.PARAM x20={x1*20}
+.PARAM x128={x1*128}
+.PARAM x64={x1*64}
+.PARAM x5={x1*5}
+.PARAM Cout=2.5p
+.PARAM Radj=1u
+
+C_C4         $N_0001 Vmid  0.8p  
+C_C2         Vmid Dis  2p  
+V_V2         $N_0002 Vmid 1.838V
+R_R6         $N_0003 Vmid  10k  
+X_S3    $N_0004 0 $N_0005 $N_0002 OPAx83x_Model_S3 
+D_D4         $N_0006 $N_0007 DX 
+D_D5         $N_0008 $N_0009 DX 
+Q_Q1         $N_0010 Vmid $N_0011 PNP8 {x12}
+Q_Q2         $N_0010 Vmid $N_0012 NPN8 {x12}
+Q_Q5         $N_0014 $N_0013 $N_0015 NPN8 {x12}
+Q_Q6         $N_0014 $N_0013 $N_0016 PNP8 {x12}
+R_R3         Vmid $N_0017  10k  
+X_F14    $N_0018 $N_0019 $N_0013 $N_0020 OPAx83x_Model_F14 
+C_C5         $N_0013 $N_0014  1p  
+R_R21         $N_0013 $N_0001  400  
+Q_Q12         $N_0018 $N_0021 $N_0022 PNP8 {x3}
+D_D3         $N_0023 $N_0022 DX 
+D_D2         $N_0024 $N_0025 DX 
+Q_Q11         $N_0013 $N_0026 $N_0025 PNP8 {x3}
+C_C6         $N_0010 Vmid  1p  
+Q_Q3         $N_0027 $N_0016 $N_0014 NPN8 {x6}
+Q_Q9         $N_0028 $N_0016 $N_0014 NPN8 {x6}
+Q_Q10         $N_0029 $N_0015 $N_0014 PNP8 {x6}
+Q_Q4         $N_0030 $N_0015 $N_0014 PNP8 {x6}
+Q_Q7         $N_0031 $N_0011 $N_0010 NPN8 {x12}
+C_C11         $N_0032 OUT  {Cout}  
+Q_Q23         OUT $N_0032 $N_0033 NPN8 {x64}
+Q_Q24         OUT $N_0032 $N_0034 NPN8 {x64}
+Q_Q22         OUT $N_0031 $N_0035 PNP8 {x128}
+C_C10         $N_0031 OUT  {Cout}  
+Q_Q21         $N_0031 $N_0036 $N_0037 PNP8 {x5}
+R_R42         $N_0027 $N_0036  300  
+D_D8         $N_0036 $N_0027 DX 
+Q_Q8         $N_0032 $N_0012 $N_0010 PNP8 {x20}
+Q_Q29         $N_0032 $N_0029 V- NPN8 {x5}
+R_R45         V- $N_0038  {Radj}  
+R_R25         V- $N_0019  200  
+X_F2    $N_0039 $N_0040 $N_0041 V- OPAx83x_Model_F2 
+X_F3    $N_0040 $N_0042 $N_0021 V- OPAx83x_Model_F3 
+X_F6    $N_0043 $N_0044 $N_0015 V- OPAx83x_Model_F6 
+R_R22         V- $N_0020  200  
+X_F5    $N_0045 $N_0043 $N_0026 V- OPAx83x_Model_F5 
+X_F7    $N_0044 V- $N_0012 V- OPAx83x_Model_F7 
+Q_Q28         $N_0029 $N_0029 V- NPN8 {x5}
+D_D11         $N_0030 $N_0046 DX 
+R_R43         $N_0046 $N_0030  300  
+Q_Q25         $N_0032 $N_0046 $N_0038 NPN8 {x5}
+R_R50         $N_0032 $N_0046  350  
+R_R49         $N_0031 $N_0036  350  
+D_D25         0 $N_0047 DN3 .25
+D_D24         $N_0048 0 DN3 .25
+I_I24         $N_0047 $N_0048 DC 0.001fA  
+D_D26         $N_0049 0 DN3 .25
+D_D27         0 $N_0050 DN3 .25
+I_I25         $N_0050 $N_0049 DC 0.001fA  
+X_F4    $N_0042 $N_0045 $N_0051 V- OPAx83x_Model_F4 
+X_F9    V+ $N_0052 V+ $N_0011 OPAx83x_Model_F9 
+R_R13         Dis V+  41k  
+E_ABM21         $N_0004 0 VALUE { ( V(Dis)  
++ / (V(V+)   
++ + 1e-6) ) * 5.0  }
+X_F1    $N_0005 $N_0003 V+ $N_0039 OPAx83x_Model_F1 
+R_R27         $N_0022 V+  650  
+R_R26         $N_0023 V+  60  
+R_R31         $N_0008 V+  20  
+X_F8    $N_0052 $N_0041 V+ $N_0016 OPAx83x_Model_F8 
+R_R23         $N_0024 V+  60  
+R_R24         $N_0025 V+  650  
+Q_Q14         V+ $N_0009 $N_0026 NPN8 {x6}
+R_R30         $N_0009 V+  950  
+R_R29         $N_0006 V+  20  
+R_R28         $N_0007 V+  950  
+C_C7         $N_0022 V+  0.1p  
+C_C8         $N_0025 V+  0.1p  
+Q_Q27         $N_0028 $N_0028 V+ PNP8 {x6}
+R_R44         $N_0037 V+  {Radj}  
+Q_Q26         $N_0031 $N_0028 V+ PNP8 {x6}
+R_R4         V+ V-  123.609k  
+E_E2         $N_0017 V- V+ V- 0.5
+Q_Q13         V+ $N_0007 $N_0021 NPN8 {x6}
+R_R53         $N_0053 V+  10k  
+Q_Q33         $N_0054 $N_0054 $N_0053 PNP8 {x1}
+Q_Q30         $N_0051 $N_0054 $N_0055 PNP8 {x3}
+Q_Q34         V- $N_0051 $N_0054 PNP8 {x1}
+Q_Q16         $N_0056 $N_0056 $N_0057 NPN8 {x4}
+Q_Q17         $N_0007 $N_0056 $N_0058 NPN8 {x4}
+Q_Q31         $N_0056 $N_0054 $N_0059 PNP8 {x6}
+Q_Q19         $N_0060 $N_0060 $N_0061 NPN8 {x4}
+Q_Q18         $N_0009 $N_0060 $N_0062 NPN8 {x4}
+Q_Q32         $N_0060 $N_0054 $N_0063 PNP8 {x6}
+Q_Q20         V- $N_0064 $N_0065 PNP8 {x12*coef}
+Q_Q15         V- $N_0066 $N_0067 PNP8 {x12*coef}
+R_R20         OUT $N_0068  60  
+R_R51         - $N_0066  50  
+D_D28         $N_0069 0 DN3 .25
+D_D29         0 $N_0070 DN3 .25
+I_I26         $N_0070 $N_0069 DC 0.001fA  
+I_I27         $N_0071 $N_0072 DC 0.001fA  
+D_D30         $N_0072 0 DN3 .25
+D_D31         0 $N_0071 DN3 .25
+R_R52         + $N_0064  50  
+R_R37         $N_0062 $N_0065  520  
+R_R38         $N_0067 $N_0058  520  
+R_R32         $N_0055 V+  250  
+G_G14         + 0 POLY(2) $N_0072 0 $N_0071 0 0 0 9u
+G_G13         - 0 POLY(2) $N_0069 0 $N_0070 0 0 0 9u
+R_R36         $N_0065 $N_0057  20  
+R_R35         $N_0067 $N_0061  20  
+C_C3         $N_0068 $N_0013  1.95p  
+G_G12         $N_0067 0 POLY(2) $N_0049 0 $N_0050 0 0 0 108u
+G_G11         $N_0065 0 POLY(2) $N_0048 0 $N_0047 0 0 0 108u
+R_R17         $N_0014 $N_0010  70  
+R_R33         $N_0059 V+  225  
+R_R34         $N_0063 V+  225  
+R_R39         V- $N_0033  2  
+R_R41         V- $N_0034  2  
+R_R40         $N_0035 V+  0.5  
+R_R56         Vmid Dis  100MEG  
+
+.MODEL DX D
++ IS=1.0000E-15  
+
+.MODEL DN3 D( IS=.1F AF=1.0 KF=39.0E-17)
+
+
+.MODEL NPN8 NPN
++ IS = 7.604E-18 BF = 1.570E+02 NF = 1.000E+00 VAF= 7.871E+01
++ IKF= 3.975E-02 ISE= 3.219E-14 NE = 2.000E+00 BR = 7.614E-01
++ NR = 1.000E+00 VAR= 1.452E+00 IKR= 8.172E-02 ISC= 7.618E-21
++ NC = 1.847E+00 RB = 1.060E+02 IRB= 0.000E+00 RBM= 2.400E+00
++ RE = 2.520E+00 RC = 1.270E+02 CJE= 1.120E-13 VJE= 7.591E-01
++ MJE= 5.406E-01 TF = 1.213E-11 XTF= 2.049E+00 VTF= 1.813E+00
++ ITF= 4.293E-02 PTF= 0.000E+00 CJC= 8.208E-14 VJC= 6.666E-01
++ MJC= 4.509E-01 XCJC=8.450E-02 TR = 4.000E-11 CJS= 1.160E-13
++ VJS= 5.286E-01 MJS= 4.389E-01 XTB= 1.022E+00 EG = 1.120E+00
++ XTI= 1.780E+00 KF = 3.500E-16 AF = 1.000E+00 FC = 8.273E-01
+
+
+
+
+.MODEL PNP8 PNP
++ IS = 7.999E-18 BF = 1.418E+02 NF = 1.000E+00 VAF= 4.158E+01
++ IKF= 1.085E-01 ISE= 2.233E-15 NE = 1.505E+00 BR = 3.252E+01
++ NR = 1.050E+00 VAR= 1.093E+00 IKR= 5.000E-05 ISC= 6.621E-16
++ NC = 1.150E+00 RB = 6.246E+01 IRB= 0.000E+00 RBM= 2.240E+00
++ RE = 2.537E+00 RC = 1.260E+02 CJE= 9.502E-14 VJE= 7.320E-01
++ MJE= 4.930E-01 TF = 1.303E-11 XTF= 3.500E+01 VTF= 3.259E+00
++ ITF= 2.639E-01 PTF= 0.000E+00 CJC= 1.080E-13 VJC= 7.743E-01
++ MJC= 5.000E-01 XCJC=8.504E-02 TR = 1.500E-10 CJS= 1.290E-13
++ VJS= 9.058E-01 MJS= 4.931E-01 XTB= 1.732E+00 EG = 1.120E+00
++ XTI= 2.000E+00 KF = 3.500E-16 AF = 1.000E+00 FC = 8.500E-01
+
+
+.ENDS    OPAx83x_Model
+
+.subckt OPAx83x_Model_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e12 Ron=0.001 Voff=3.0 Von=4.5
+.ends OPAx83x_Model_S3
+
+.subckt OPAx83x_Model_F14 1 2 3 4  
+F_F14         3 4 VF_F14 0.976983046653
+VF_F14         1 2 0V
+.ends OPAx83x_Model_F14
+
+.subckt OPAx83x_Model_F2 1 2 3 4  
+F_F2         3 4 VF_F2 0.4982851544336
+VF_F2         1 2 0V
+.ends OPAx83x_Model_F2
+
+.subckt OPAx83x_Model_F3 1 2 3 4  
+F_F3         3 4 VF_F3 0.68887800098
+VF_F3         1 2 0V
+.ends OPAx83x_Model_F3
+
+.subckt OPAx83x_Model_F6 1 2 3 4  
+F_F6         3 4 VF_F6 1.06026457619
+VF_F6         1 2 0V
+.ends OPAx83x_Model_F6
+
+.subckt OPAx83x_Model_F5 1 2 3 4  
+F_F5         3 4 VF_F5 0.689857912788
+VF_F5         1 2 0V
+.ends OPAx83x_Model_F5
+
+.subckt OPAx83x_Model_F7 1 2 3 4  
+F_F7         3 4 VF_F7 1.06026457619
+VF_F7         1 2 0V
+.ends OPAx83x_Model_F7
+
+.subckt OPAx83x_Model_F4 1 2 3 4  
+F_F4         3 4 VF_F4 0.512003919647
+VF_F4         1 2 0V
+.ends OPAx83x_Model_F4
+
+.subckt OPAx83x_Model_F9 1 2 3 4  
+F_F9         3 4 VF_F9 2.12782694199
+VF_F9         1 2 0V
+.ends OPAx83x_Model_F9
+
+.subckt OPAx83x_Model_F1 1 2 3 4  
+F_F1         3 4 VF_F1 1.11044613711
+VF_F1         1 2 0V
+.ends OPAx83x_Model_F1
+
+.subckt OPAx83x_Model_F8 1 2 3 4  
+F_F8         3 4 VF_F8 2.12782694199
+VF_F8         1 2 0V
+.ends OPAx83x_Model_F8

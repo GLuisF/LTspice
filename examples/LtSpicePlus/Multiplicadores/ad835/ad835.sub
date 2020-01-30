@@ -1,0 +1,31 @@
+*Description d'un multiplieur analogique AD835.
+*Macro modèle modélisant :
+*Les tensions de saturations +5V -5V (amélioration du composant !!)
+*La bande passante de 250MHz
+*Les Impédances d'entrée de la doc 100kohm // 2pF
+* R11, R22, R33, R44    bias current 10uA
+* Rpd  power dissipation
+*                         VNEG
+*             X1 X2 Y1 Y2  |  Z  W  VPOS
+.SUBCKT AD835  1  2  3  4  5  6  7  8
+Rpd 8 5 600
+R6  6 5 100k
+R67 6 7 60k
+C6  6 0 2p
+*
+R12 1 2 100k
+R1  1 5 500k
+R2  2 5 500k
+R34 3 4 100k
+R3  3 5 500k
+R4  4 5 500k
+C1 1 0 2p
+C2 2 0 2p
+C3 3 0 2p
+C4 4 0 2p
+B1 9 0 V=(V(1)-V(2))*(V(3)-V(4))+V(6)
+R5 9 10 10
+C5 10 0 63.7p
+B2 77 0 V=table(V(10),V(5),V(5),V(8),V(8))
+R7 77 7 0.1
+.ENDS AD835

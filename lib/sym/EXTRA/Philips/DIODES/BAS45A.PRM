@@ -1,0 +1,19 @@
+*DEVICE=BAS45A,D
+* BAS45A D model
+* created using Parts release 6.2i on 02/21/97 at 11:00
+* Parts is a MicroSim product.
+.MODEL BAS45A D
++ IS=7.0000E-9
++ N=2.2707
++ RS=1.0000E-3
++ IKF=22.121
++ CJO=2.9332E-12
++ M=.24677
++ VJ=.3905
++ ISR=10.010E-21
++ NR=4.9950
++ BV=225.36
++ IBV=10
++ TT=1.7500E-6
+*$
+

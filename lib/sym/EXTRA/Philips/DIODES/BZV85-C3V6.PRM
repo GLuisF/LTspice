@@ -1,0 +1,19 @@
+*DEVICE=BZV85C3V6,D
+* BZV85C3V6 D model
+* created using Parts release 6.2i on 02/21/97 at 11:02
+* Parts is a MicroSim product.
+.MODEL BZV85C3V6 D
++ IS=4.2450E-15
++ N=1.0330
++ RS=1.0000E-3
++ IKF=12.280E-3
++ CJO=245.10E-12
++ M=.218
++ VJ=.3905
++ ISR=9.2230E-6
++ NR=4.9950
++ BV=3.4110
++ IBV=52.160E-3
++ TT=5.0000E-9
+*$
+

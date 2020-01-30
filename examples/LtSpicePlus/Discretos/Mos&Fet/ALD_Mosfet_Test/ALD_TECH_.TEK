@@ -1,0 +1,76 @@
+*  ald_tech.tek technology file for 
+*  An Analog Integrated MOS Circuit Design Library.
+*  Created by Advanced Linear Devices 1/05/03/jpg.
+*-----------------------------------------------------
+*###.options list expand gmin=1e-12
+*
+* The following is the ALD global parameter definition statement. Preset are 
+* nominal values of each lot variation parameter. Use this statement to 
+* scale gloal input parameters of your circuit file to test for effects of lot 
+* (global) processing parameter changes. 
+*
+.param: 
+* resistors:  implanted and polysilicon (a multiplier)
++             ires=1.0      pres=1.0   M_dec=1
+* capacitors: poly/gate   interpoly  (a multiplier)
++             Cox=1.0     Pox=1.0 
+* transistors: (input a delta shift of threshold) 
++             Vtn=0.0     Vtp=0.0    Lv=0.0u Wv=0.0u M=1
+* amplifiers: 
++             vos=0.0 
+* zeners: 
++             bvz=5.3 
+*
+* ADVANCED LINEAR DEVICES LIBRARIES 
+
+* simple packaged macromodels of ALD's operational amplifiers
+*###.lib adv_lin.lib
+
+* default breadboard resistors and capacitors. 
+*.lib ald_bbc.lib
+.param: cres=1 
+* More complex macromodels of standard products for breadboarding.
+*.lib ald_amps.lib
+*.lib ald_comp.lib
+*.lib ald_time.lib
+*.lib ald_conv.lib
+*.lib ald_vref.lib
+*
+* standard product component library
+*.lib ald_tran.lib
+*.lib ald_dio.lib
+*.lib add_tran.lib
+*.lib ald_epat.lib
+*
+* Integrated subcircuit macromodels
+*.lib ic_amps.lib
+*.lib ic_comp.lib
+*.lib ic_time.lib
+*.lib ic_epat.lib
+*.lib ic_neur.lib
+*.lib ic_conv.lib
+*.lib ic_vref.lib
+*
+* std. basic integrated component libraries.
+.lib ic_tran.lib
+*.lib id_tran.lib
+
+*Process models and auxilliary circuits.
+*.lib ic_ept.lib
+*.lib ic_dio.lib
+*.lib ic_res.lib
+*.lib ic_cap.lib
+.lib ic_mod.lib
+*.lib ic_mod_1.lib
+*.lib id_mod.lib
+*.lib id_gate.lib
+*.lib id_l1.lib
+*.lib idi_mod.lib
+*.lib ic_aux.lib
+*
+*
+.model dps D (Is=2.61e-7
++             Isr=1.0e-5
++             Bv=34 Ibv=1e+4
++             Rs=2.74e-7 trs1=3e-3
++             Cjo=1.3e-4 )

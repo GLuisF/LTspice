@@ -1,0 +1,59 @@
+Xsim PLL netlist
+* Phase detector
+X2 1 2 3 31 32 PD
+* VCO
+X1 4 2 31 32 0 40 VCO
+* Low pass filter
+R1 3 4 1Meg
+C1 4 9 3n
+R2 9 32 100K
+* Clock reference
+V1REF 1 0 pulse(0 5 0 20u 20u 60u 0.0012)
+* Power supplies
+VDD 31 0 dc ( 5)
+VSS 32 0 dc (-5)
+*** Phase Detector SubCkt ***
+* Input(1) Input(2) Output(6) VDD(7) VSS(8)
+.subckt PD 1 2 6 7 8
+U1 0 3 1 2 cmos nand2 cmos-nand2
+U2 0 4 1 2 cmos or2 cmos-or2
+U3 0 5 3 4 cmos nand2 cmos-nand2
+M10 6 5 7 7 pmos l=2u w=50u ad=20p as=20p pd=24u ps=24u
+RPD 6 8 10K
+.ends
+*** VCO Subckt ***
+* Control(33) Output(5) VDD(31) VSS(32)
+* Gnd(10) Int(6)
+.subckt VCO 33 5 31 32 10 6
+* Comparator with hysteresis
+* -input(1) +input(6) output(5) gnd(10)
+* Op-amp model: AVo~277K RI=2Meg RO=50 Vo=+/-5V
+RI 1 2 20Meg
+Ro 4 5 50
+E1 4 10 2 1 max(25K 5)
+* Feedback elements for hysteresis
+RF2 1 10 1
+RP1 5 2 4Meg
+RP2 2 6 1Meg
+* Charge element for current
+C2 6 10 100n
+* Transconductance and current steering stage
+RSINK 32 35 10Meg
+RSORCE 36 31 10Meg
+GSORCE 31 36 33 32 110u
+GSINK 35 32 33 32 110u
+M3 6 5 35 32 nmos l=2u w=20u ad=20p as=20p pd=24u
++ ps=24u
+M6 6 5 6 31 pmos l=2u w=40u ad=20p as=20u pd=24u
++ ps=24u
+.ends
+* Analysis
+.IC v(40)=-1
+.options itl4=500
+.plot tran v(1) v(2) v(3) v(4) v(40)
+.probe tran vdsb M6.X1
+.probe tran idsb M6.X1
+.probe tran vdsb M3.X1
+.probe tran idsb M3.X1
+.tran 0 19m 0.01m
+.end

@@ -1,0 +1,309 @@
+*==========================================================
+* NCP101X
+* ON Semiconductor models developed by Christophe BASSO, Toulouse (FRANCE)
+*
+* This model is subject to change without notice.
+* Users may not directly or indirectly re-sell or 
+* re-distribute this model. This model may not 
+* be used, modified, or altered 
+* without the consent of ON Semiconductor. 
+*
+* PSpice OrCAD compatible
+*
+* Revision: December 15th 2005
+* This fully floating simplified models accounts for:
+*
+* various propagation delays 
+* overload detection
+* overvoltage protection on Vcc
+* frequency jittering
+* the MOSFET is made of a smooth switch for faster simulations
+*
+*==========================================================
+************
+.SUBCKT NCP1010P06 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=65k Conso=1m Ipeak=100m Rdson=26
+.ENDS
+************
+.SUBCKT NCP1010P10 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=100k Conso=1m Ipeak=100m Rdson=26
+.ENDS
+**********
+.SUBCKT NCP1010P13 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=133k Conso=1m Ipeak=100m Rdson=26
+.ENDS
+************
+.SUBCKT NCP1011P06 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=65k Conso=1m Ipeak=250m Rdson=26
+.ENDS
+************
+.SUBCKT NCP1011P10 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=100k Conso=1m Ipeak=250m Rdson=26
+.ENDS
+**********
+.SUBCKT NCP1011P13 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=133k Conso=1m Ipeak=250m Rdson=26
+.ENDS
+***********
+.SUBCKT NCP1012P06 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=65k Conso=1m Ipeak=250m Rdson=12
+.ENDS
+************
+.SUBCKT NCP1012P10 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=100k Conso=1m Ipeak=250m Rdson=12
+.ENDS
+**********
+.SUBCKT NCP1012P13 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=133k Conso=1m Ipeak=250m Rdson=12
+.ENDS
+***********
+.SUBCKT NCP1013P06 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=65k Conso=1m Ipeak=350m Rdson=12
+.ENDS
+************
+.SUBCKT NCP1013P10 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=100k Conso=1m Ipeak=350m Rdson=12
+.ENDS
+**********
+.SUBCKT NCP1013P13 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=133k Conso=1m Ipeak=350m Rdson=12
+.ENDS
+**********
+.SUBCKT NCP1014P06 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=65k Conso=1m Ipeak=450m Rdson=12
+.ENDS
+**********
+.SUBCKT NCP1014P10 VCC FB DRAIN GND
+X1 VCC FB DRAIN GND NCP101X params: Fsw=100k Conso=1m Ipeak=450m Rdson=12
+.ENDS
+**********
+.SUBCKT NCP101X 6 2 HV 4 params: Fsw=100k Conso=1m Ipeak=350m Rdson=12
+* Vcc FB HV Gnd
+.PARAM VCCOFF=8.5 ; VCCoff level
+.PARAM VCCON=7.5 ; VCCon level
+.PARAM IC1=7m ; DSS source current
+.PARAM VCCLATCH=4.7 ; latch-off voltage
+.PARAM PRODEL=125n ; internal propagation delay
+.PARAM LEB=250n ; Leading Edge Blanking duration
+.PARAM SKIPHYSTE=50m ; built-in hysteresis in skip
+.PARAM ILATCH=6m ; Vcc OVP latching current
+.PARAM IVLIMIT=65m ; internal current limitation
+.PARAM RI={IVLIMIT/Ipeak}
+.PARAM SKIPLEVEL=500m ; default FB skip level
+.PARAM FBDIV={4*SKIPLEVEL/IVLIMIT} ; internal FB divided
+.PARAM OPENFB=4 ; open-loop FB voltage
+*
+*** ESD NETWORK ****
+D2 4 2 DCLAMP1 ; 10V ESD FB
+D5 4 6 DCLAMP1 ; 10V ESD Vcc
+**** SELF-SUPPLY ****
+GB2 HV 6 Value = { IF ( V(11) > 3.5, 0, {IC1} ) } ; DSS current capability
+XCOMP1 6 10 UVLO COMP2101X
+EB5 10 4 Value = { IF ( V(UVLO) < 3.5, {VCCOFF}, {VCCON} ) } ; DSS operating levels
+X2 UVLO OVERLATCH 11 OR2101X
+XUVLO6 100 6 110 COMP2101X
+X50 110 OVERLATCH UVLO6 AND2101X
+VUVLO6 100 4 {VCCLATCH} ; latch-off level
+Rdummy Ramp 0 10Meg
+*** VCC CURRENT SENSING ***
+DCLP ICLP 6 DCLP
+VCLP ICLP 4 ; latching current sensing
+**** OUTPUT PULSE VALIDATION ****
+XPULS UVLO OVER PULSOK NC4 TFFLOP101X; turns the pulses on at VCCOFF
+* S R Q Q\
+**** CURRENT CONSUMPTION ****
+ISUPP1 6 4 300u 									; minimum static current consumption
+GBSUPP2 6 4 Value = { IF ( V(PULSOK) > 3.5, ({conso} + I(VFBM)), 0 ) } ; internal operating + FB current
+GBSUPP3 6 4 Value = { IF ( I(VDRV)>0, I(VDRV), 0 ) }
+**** CLOCK SECTION ****
+**
+** Fsw={Fsw} @ Vcc=8V    }
+** Fsw={Fsw}+4% @ Vcc=8.5 }
+** Fsw={Fsw}-4% @ Vcc=7.5 } => DeltaV=0.5V, Jittering=0.04, Vref=8V
+**
+XCLOCK clk1 ramp 6 mduty CLOCK101X params: DC=0.65 Fsw={Fsw} Vref=8V Valley=0V Swing=2.9V DeltaV=0.5V Jittering=0.04
+****
+XRST MDUTY IMAX SKIP RST OR3101X
+XRESET clk1 200 clk2 AND2101X
+EBINVRST 200 4 Value = { IF ( V(SKIP)<800mV, 3.5, 0 ) }
+XFFLOP clk2 RST Q NC1 TFFLOP101X
+RNC1 NC1 4 100k
+**** CURRENT SENSE ****
+EBVREF REF1 4 Value = { IF ( V(6)>{OPENFB}, {OPENFB}, V(6) ) } ; internal FB reference following Vcc
+VFBM REF1 REF; feedback current measure
+RFB REF 2 18k ; FB pull-up resistor
+EBCLIP ISET 4 Value = { IF ( V(2)/{FBDIV} > V(901), V(901), V(2)/{FBDIV} ) }; internal 1V clamping diode + SS
+XCOMP2 LEBO ISET OVERI COMP2101X
+XPROPDEL OVERI IMAX UTD101X params: TD={PRODEL}; propagation delay
+XDEL3 Q 30 UTD101X params: TD={LEB}
+EBLEB LEBO 4 Value = { IF ( V(30) > 3V, V(3), 0 ) }
+**** OVERLOAD SECTION ****
+EBOVER 50 4 Value = { IF ( (V(ISET)>{IVLIMIT}*0.98) & (V(6)<7.51), 10, 0 ) } ; error flag acknowledgement
+XOVER UVLO 50 OVER AND2I101X; UVLO low and OVL, latches off the pulses
+XLATCH OVER UVLO6 OVERLATCH NC5 TFFLOP101X; latches off the current source
+RNC5 NC5 4 100k
+**** SOFT-START SECTION ****
+GBSOFT1 4 900 Value = { IF ( V(PULSOK) > 3V, 1mA, 0 ) }
+CSOFT 900 4 0.5uF
+EBSOFT2 901 4 Value = { IF ( V(900)/{FBDIV} > {IVLIMIT}, {IVLIMIT}, V(900)/{FBDIV} ) }
+XSOFT3 940 6 950 COMP2101X; reset de CSOFT at Vcc<5V
+VSS 940 4 7.4V
+Q100 900 920 4 QRSS
+R100 920 950 10k
+*** Latching section ***
+EB500 502 0 Value = { IF ( I(VCLP) > {ILATCH}, 5V, 0 ) }
+R500 502 503 100 ; noise filter
+C500 503 0 10n
+X501 503 RstOVP QL OVPOK TFFLOP101X
+* S R Q Qb
+RDUMLATCH QL 4 100k
+X502 506 6 RstOVP COMP2101X
+V502 506 4 3V ; Latch reset
+**** SKIP CYCLE SECTION ****
+VREF 1 4 {SKIPLEVEL} ; skip cycle level
+XSKIP 150 2 SKIP COMP2101X
+EBHYST 150 4 Value = { IF ( V(SKIP) < 3.5, V(1), V(1)+{SKIPHYSTE} ) } ; offset on skip 
+**** POWER MOSFET ****
+EBDRVU 90 0 Value = { IF ( (V(PULSOK)>3V) & (V(Q)>3V) & (V(OVPOK)>3V), V(6), 100m ) }
+Rdrv 90 9001 10
+Vdrv 9001 9002 0
+Ciss 9002 0 1n
+SMOS HV 400 9002 0 MOS_SW
+Dbody 4 HV DB
+Coss HV 4 15pF
+Vsense 400 4
+GBsense 4 3 Value = { I(Vsense) }; current sense
+Rsense 3 4 {RI} ; voltage transformation
+****
+.MODEL DSTD D RS=100M CJO=15pF N=0.2
+.MODEL DCLAMP1 D BV=10
+.MODEL DCLP D BV=8.7V ; VCC active clamping voltage
+.MODEL DB D BV=700V
+.MODEL QRSS NPN BF=200
+.MODEL MOS_SW VSWITCH (RON={Rdson} VON=4 VOFF=3 )
+.ENDS
+*
+.SUBCKT CLOCK101X out12 ramp vcc maxduty2 params: DC=0.6 Fsw={Fsw} Vref=8V Valley=0V 
++ Swing=2.9V DeltaV=1V Jittering=0.04
+* Fsw @ Vref
+* At Vcc=Vref+DeltaV then Fsw_Vcc=Fsw*(1+Jittering)
+.PARAM I1=100uA
+.PARAM I2={ (I1*{DC})/(1-{DC}) }
+.PARAM Tsw={1/Fsw}
+.PARAM Ct={ (Tsw/Swing)*((I1*I2)/(I1+I2)) }
+* coeff : frequency jittering based on Vcc level : {1+((V(vcc)-Vref)/DeltaV)*Jittering}
+* the jittering depth is (0.04 = +/- 4%)
+*
+* Vcc input is for jittering
+* SET/RESET pulses for clock gen.
+*
+X100 out outb INVOSC101X
+Cmd	outb maxduty 1n
+Rmd maxduty	0 100
+Dmd1 0 maxduty DCLP
+Cpuls out out1 1n
+Rpuls out1 0 100
+Dmd2 0 out1 DCLP
+*
+Xbuf1 out1 out12 BUFOSC101X ; formats the pulses
+Xbuf2 maxduty maxduty2 BUFOSC101X
+*
+X4	ramp	4	cmp	COMPAROSC101X
+Ct	ramp	0	{Ct} IC=0V
+X1 	cmp	OUT	INVOSC101X
+EB1 4 0 Value = { IF ( V(CMP) > 3V, {valley}, {valley+swing} ) }
+GB2	ramp 0 Value = { IF ( V(CMP) > 3.5V, ({I1}*{DC}*(1+((V(vcc)-{Vref})/{DeltaV})*{Jittering}))/(1-{DC}), 0 ) }
+GB3 0 ramp Value = { IF ( V(CMP) < 3.5V, ({I1}*(1+((V(vcc)-{Vref})/{DeltaV})*{Jittering})), 0 ) }
+*
+.model DCLP D (Cjo=10p Rs=100m N=0.01)
+.ENDS clock101X
+** Clock subcircuits **
+.SUBCKT INVOSC101X 1 2
+EB1 4 0 Value = { IF ( V(1)>800mV, 0, 5V ) }
+RD 4 2 100
+CD 2 0 100P
+.ENDS INVOSC101X
+*
+.SUBCKT BUFOSC101X 1 2
+EB1 4 0 Value = { IF ( V(1)>0.5V, 5V, 0V ) }
+RD 4 2 10
+CD 2 0 10P
+.ENDS BUFOSC101X
+*
+.SUBCKT COMPAROSC101X NINV INV OUT params: VHIGH=12 VLOW=100m
+EB1 4 0 Value = { IF ( V(NINV,INV) > 0, {VHIGH}, {VLOW} ) }
+RO 4 OUT 100
+CO OUT 0 100P
+.ENDS COMPAROSC101X
+****
+**** SUBCIRCUIT MODELS ****
+*
+.SUBCKT UTD101X 1 2 params: TD=1n
+*
+*Parameters K=GAIN TD=DELAY
+RIN 1 0 1E15
+E1 3 0 1 0 1
+T1 3 0 2 0 Z0=1 TD={TD}
+R1 2 0 1
+.ENDS UTD101X
+**** 2 INPUT COMPARATOR ****
+.SUBCKT COMP2101X 1 2 3
+*             + - S
+EB1 4 0 Value = { IF ( V(1) > V(2), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS COMP2101X
+**** 3 INPUT OR GATE ****
+.SUBCKT OR3101X 1 2 3  6
+EB1 5 0 Value = { IF ( (V(1)>800m) | (V(2)>800m) | (V(3)>800m), 5, 0 ) }
+RD 5 6 100
+CD 6 0 10P
+.ENDS OR3101X
+**** 2 INPUT OR GATE ****
+.SUBCKT OR2101X 1 2 3
+EB1 4 0 Value = { IF ( (V(1)>800M) | (V(2)>800M), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS OR2101X
+**** 2 INPUT AND CIRCUIT ****
+.SUBCKT AND2101X 1 2 3
+EB1 4 0 Value = { IF ( (V(1)>800M) & (V(2)>800M), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS AND2101X
+**** 2 INPUT INVERTED AND CIRCUIT ****
+.SUBCKT AND2I101X 1 2 3
+EB1 4 0 Value = { IF ( (V(1)<800M) & (V(2)>800M), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS AND2I101X
+**** 2 INPUT NOR CIRCUIT ****
+.SUBCKT NOR2101X 1 2 3
+EB1 4 0 Value = { IF ( (V(1)>800M) | (V(2)>800M), 0V, 5 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS NOR2101X
+****
+.SUBCKT INV101X 1 2
+EB1 4 0 Value = { IF ( V(1)>800mV, 0, 10V ) }
+RD 4 2 100
+CD 2 0 10P
+.ENDS INV101X
+*
+.SUBCKT TFFLOP101X 6 8 2 1
+*              S R Q Q\
+EBQB   10 0 Value = { IF ( (V(8)<800M) & (V(2)>800M), 0, 10V ) }
+EBQ    20 0 Value = { IF ( (V(6)<800M) & (V(1)>800M), 0, 10V ) }
+RD1   10 1 100
+CD1   1 0 10p IC=5
+RD2   20 2 100
+CD2   2 0 10p IC=0
+.ENDS TFFLOP101X
+*
+.SUBCKT UVLO101X  1   3 params: VON=12 VOFF=10
+*            VIN OUT
+Vref 10 0 10V
+X1 10 3 1 0 SWhyste params: RON=1 ROFF=1MEG VT={((VON-VOFF)/2) + VOFF} VH={(VON-VOFF)/2}
+RUV 3 0 1k
+.ENDS UVLO101X
+*

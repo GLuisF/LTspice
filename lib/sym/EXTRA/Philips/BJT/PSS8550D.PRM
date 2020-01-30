@@ -1,0 +1,73 @@
+*
+.SUBCKT PSS8550D 1 2 3
+*
+* housing parasitics
+LBlead 2 22 9E-010 
+LE 3 333 2.3E-009 
+LC 1 11 1.7E-012 
+LBbond 22 222 9E-010 
+CBCG 222 11 3.53E-013 
+CBEG 222 333 1.81E-013 
+CCEG 11 333 2.37E-013
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse
+* mode of operation.
+*
+Q1 11 222 333 PSS8550D 
+D1 11 222 DIODE
+*
+.MODEL PSS8550D PNP 
++ IS = 9.824E-014 
++ NF = 0.9901 
++ ISE = 8.811E-015 
++ NE = 1.335 
++ BF = 218 
++ IKF = 1.1 
++ VAF = 74 
++ NR = 0.9853 
++ ISC = 9.149E-014 
++ NC = 1.245 
++ BR = 36 
++ IKR = 0.25 
++ VAR = 63 
++ RB = 8 
++ IRB = 0.0007 
++ RBM = 1.084 
++ RE = 0.045 
++ RC = 0.15 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.139E-010 
++ VJE = 0.7868 
++ MJE = 0.3884 
++ TF = 6.85E-010 
++ XTF = 10 
++ VTF = 8 
++ ITF = 2.3 
++ PTF = 0 
++ CJC = 3.379E-011 
++ VJC = 0.4902 
++ MJC = 0.3975 
++ XCJC = 1 
++ TR = 1.2E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.MODEL DIODE D 
++ IS = 1E-015 
++ N = 0.93 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1100 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS

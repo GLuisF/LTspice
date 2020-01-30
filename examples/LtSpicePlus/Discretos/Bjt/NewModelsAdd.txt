@@ -1,0 +1,177 @@
+Hello Mike,
+no, you don't start from scratch. You take the NPN-transistor symbol
+file npn.asy and copy it to xxx.asy.  Then double-click on xxx.asy
+or "File open" it with SwitcherCADIII. Now you must add/change
+the lines different between the examples below.
+
+If you use the attached example BFG93A.asy, then you have to change
+only two times the "BFG93A" with your model name and also you must
+set the link relative to the model path. The example below has
+the library in  "....\lib\sub\private\philips.lib" .
+
+This is the way you add new symbols and their subcircuits.
+Opamp models are always subcircuits too.
+Please be aware we are talking about subcircuits!!!
+
+If you have only a .MODEL BC108 NPN(....) it's much easier to
+directly include it in the standard.bjt file. Otherwise you
+have to make a subcircuit for your transistor before.
+
+Mike, do you have a .MODEL name NPN(..) or do you have subcircuits?
+
+Best Regards
+Helmut
+
+
+
+Attachement
+===========
+How to include transistor models given as subcircuits into
+SwitcherCADIII schematics.
+
+"npn.asy" is the SwitcherCAD NPN symbol.
+
+"BFG93A.asy" is the new subcircuit symbol. It's structured
+like any opamp symbol. Make a symbol for every subcircuit.
+Lazy people can write a small script which easily can automate
+this process for any transistor type or opamp model.
+
+"philips.lib" is the original file from Philips. You can put
+all models from them into one file.
+
+
+npn.asy
+-------
+
+Version 3
+SymbolType CELL
+LINE Normal 11 19  9 21
+LINE Normal 16 24 11 19
+LINE Normal 16 24  9 21
+LINE Normal 10 20  4 16
+LINE Normal  4 20  4  4
+LINE Normal  4  8 16  0
+LINE Normal  4 12  0 12
+WINDOW 0 14  8 Left 0
+WINDOW 3 14 17 Left 0
+SYMATTR Prefix QN
+SYMATTR SpiceModel *
+SYMATTR Value NPN
+SYMATTR SpiceLine *
+SYMATTR SpiceLine2 *
+SYMATTR Description Bipolar NPN transistor
+PIN 16  0  NONE 0
+PINATTR PinName C
+PINATTR SpiceOrder 1
+PIN  0 12  NONE 0
+PINATTR PinName B
+PINATTR SpiceOrder 2
+PIN 16 24  NONE 0
+PINATTR PinName E
+PINATTR SpiceOrder 3
+
+
+
+
+BFG93A.asy
+----------
+
+Version 3
+SymbolType CELL
+LINE Normal 11 19  9 21
+LINE Normal 16 24 11 19
+LINE Normal 16 24  9 21
+LINE Normal 10 20  4 16
+LINE Normal  4 20  4  4
+LINE Normal  4  8 16  0
+LINE Normal  4 12  0 12
+WINDOW 0 14  8 Left 0
+WINDOW 3 14 17 Left 0
+SYMATTR Prefix X
+SYMATTR SpiceModel Private\philips.lib
+SYMATTR Value BFG93A
+SYMATTR Value2 BFG93A
+SYMATTR SpiceLine *
+SYMATTR SpiceLine2 *
+SYMATTR Description Bipolar NPN transistor
+PIN 16  0  NONE 0
+PINATTR PinName C
+PINATTR SpiceOrder 1
+PIN  0 12  NONE 0
+PINATTR PinName B
+PINATTR SpiceOrder 2
+PIN 16 24  NONE 0
+PINATTR PinName E
+PINATTR SpiceOrder 3
+
+
+
+philips.lib
+-----------
+
+* BFG93A SPICE MODEL
+* PHILIPS SEMICONDUCTORS
+* Date : September 1995
+*
+* PACKAGE : SOT143 DIE MODEL : BFR91A
+* 1: COLLECTOR; 2: BASE; 3: EMITTER;
+*ABC
+.SUBCKT BFG93A 1 2 3
+Q1 6 5 7 BFR91A
+* SOT 143 parasitic model
+               Lb  4 5 .95n
+               Le  7 8 .4n
+               L1  2 4 .12n
+               L2  1 6 .21n
+               L3  3 8 .06n
+              Ccb  4 6 17f
+              Cbe  4 8 84f
+*
+* PHILIPS SEMICONDUCTORS                                     Version:   1.0
+* Filename:   BFR91A.PRM                                     Date: Feb 1992
+*
+.MODEL  BFR91A   NPN
++              IS = 1.32873E-015
++              BF = 1.02000E+002
++              NF = 1.00025E+000
++             VAF = 5.19033E+001
++             IKF = 8.15511E+000
++             ISE = 1.39029E-014
++              NE = 1.51292E+000
++              BR = 1.76953E+001
++              NR = 9.94038E-001
++             VAR = 3.28032E+000
++             IKR = 1.00000E+001
++             ISC = 1.04297E-015
++              NC = 1.18993E+000
++              RB = 1.00000E+001
++             IRB = 1.00000E-006
++             RBM = 1.00000E+001
++              RE = 7.63636E-001
++              RC = 9.00000E+000
++              EG = 1.11000E+000
++             XTI = 3.00000E+000
++             CJE = 2.03216E-012
++             VJE = 6.00000E-001
++             MJE = 2.90076E-001
++              TF = 6.55790E-012
++             XTF = 3.89752E+001
++             VTF = 1.09308E+001
++             ITF = 5.21078E-001
++             CJC = 1.00353E-012
++             VJC = 3.40808E-001
++             MJC = 1.94223E-001
+.ENDS
+
+.SUBCKT BS170 1 2 3
+Cgs  2 3 12.3E-12
+Cgd1 2 4 27.4E-12
+Cgd2 1 4 6E-12
+M1 1 2 3 3 MOST1
+M2 4 2 1 3 MOST2
+D1 3 1 Dbody
+.MODEL MOST1 NMOS(Level=3 Kp=20.78u W=9.7m L=2u Rs=20m Vto=2 Rd=1.186)
+.MODEL MOST2 NMOS(VTO=-4.73 Kp=20.78u W=9.7m L=2u Rs=20m)
+.MODEL Dbody D(Is=125f N=1.023 Rs=1.281 Ikf=18.01 Cjo=46.3p M=.3423
++            Vj=.4519 Bv=60 Ibv=10u Tt=161.6n)
+.ENDS

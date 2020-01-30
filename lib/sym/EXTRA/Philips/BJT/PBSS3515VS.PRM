@@ -1,0 +1,48 @@
+*
+.SUBCKT PBSS3515VS 1 2 3 4 5 6
+*
+Q1 6 2 1 PBSS3515VS
+Q2 3 5 4 PBSS3515VS
++ AREA = 1
+*
+.MODEL PBSS3515VS PNP
++ IS = 6.93E-14
++ NF = 1.002
++ ISE = 1.892E-14
++ NE = 1.457
++ BF = 250
++ IKF = 0.49
++ VAF = 13.72
++ NR = 1.002
++ ISC = 1.738E-14
++ NC = 1.164
++ BR = 90
++ IKR = 0.14
++ VAR = 13.24
++ RB = 27
++ IRB = 0.0005
++ RBM = 0.5
++ RE = 0.12
++ RC = 0.13
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.814E-11
++ VJE = 0.55
++ MJE = 0.3388
++ TF = 5.2E-10
++ XTF = 25
++ VTF = 0.5
++ ITF = 1.5
++ PTF = 0
++ CJC = 1.763E-11
++ VJC = 0.3595
++ MJC = 0.3692
++ XCJC = 1
++ TR = 1E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.ENDS
+*

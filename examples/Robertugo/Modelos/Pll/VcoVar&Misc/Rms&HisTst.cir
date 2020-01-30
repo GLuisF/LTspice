@@ -1,0 +1,26 @@
+*
+V1 In 0 SIN (0 1 1)
+Xrms In OutRms RMS
+Rp OutRms 0 1e9
+Xhys In OutHys HYS
+*
+.subckt RMS in out
+*G1 0 1 VALUE={V(IN)*V(IN)};== 
+B1 0 1 I={V(IN)**2}
+C1 1 0 1
+R1 1 0 1G
+*E1 out 0 VALUE={IF(TIME<=0, 0, SQRT(V(1)/TIME))};== 
+B2 Out 0 V={IF(TIME<=0, 0, SQRT(V(1)/TIME))}
+*B3 x 0 i=-abs(V(in))
+*C2 x 0 1u
+*R2 x 0 1
+.ends
+.subckt HYS in out params: H=1
+B1 0 1 I=TABLE (V(IN,1)/{H/2}, -2,-1G, -1,0, 1,0, 2,1G)
+C1 1 0 1
+R1 1 0 1G
+E1 out 0 1 0 1
+.ends
+.tran 10m 10
+.end
+

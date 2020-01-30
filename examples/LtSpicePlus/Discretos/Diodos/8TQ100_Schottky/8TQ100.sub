@@ -1,0 +1,24 @@
+********************************************
+* This model has been developed by *
+* Wizard SPICE MODEL GENERATOR (1999) *
+* (International Rectifier Corporation) *
+* Contain Proprietary Information *
+********************************************
+* SPICE Model Diode is composed by a *
+* simple diode plus paralled VCG2T *
+********************************************
+.SUBCKT 8TQ100 ANO CAT
+D1 ANO 1 DMOD (0.07089)
+*Define diode model
+.MODEL DMOD D(IS=1.15938021883115E-03A,N=1.95244918720315,BV=120V,
++ IBV=5.37891460505463A,RS= 0.00127602,CJO=9.9895753025115E-09,
++ VJ=2.30070034831946,XTI=2, EG=0.758916909331649)
+********************************************
+*Implementation of VCG2T
+VX 1 2 DC 0V
+R1 2 CAT TRES 1E-6
+.MODEL TRES RES(R=1,TC1=-90.2420977904848)
+GP1 ANO CAT VALUE={-ABS(I(VX))*(EXP((((1.635248E-02/-90.2421)*((V(2,CAT)*1E6)/(I(VX)+1E-6)-1))+1)*4.011038E-03*ABS(V(ANO,CAT)))-1)}
+
+********************************************
+.ENDS 8TQ100

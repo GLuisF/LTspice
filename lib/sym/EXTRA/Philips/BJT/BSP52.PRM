@@ -1,0 +1,68 @@
+*
+.SUBCKT BSP52 1 2 3 
+* For use with Microsim PSPICE please
+* modify the AREA statement in this 
+* model:  e.g.
+* SPICE: 
+* Q2 1 22 3 QBSP52 AREA = 3.33 
+* PSPICE:
+* Q2 1 22 3 QBSP52 3.33 
+Q1 1 2 22 BSP52  AREA = 1 
+Q2 1 22 3 BSP52  AREA = 3.33 
+R1 22 3 118.1 
+D1 3 1 DIODE 
+.MODEL BSP52 NPN( 
++ IS = 6.501E-15 
++ NF = 0.9913 
++ ISE = 1.113E-14 
++ NE = 2.5 
++ BF = 102.4 
++ IKF = 0.169 
++ VAF = 275.3 
++ NR = 1.163 
++ ISC = 6.246E-15 
++ NC = 1.042 
++ BR = 19.35 
++ IKR = 1000 
++ VAR = 20 
++ RB = 30.9 
++ IRB = 0.0002 
++ RBM = 2 
++ RE = 0.3 
++ RC = 3.583 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.63E-11 
++ VJE = 0.79 
++ MJE = 0.2652 
++ TF = 1.009E-09 
++ XTF = 252.1 
++ VTF = 6.4 
++ ITF = 2.99 
++ PTF = 0 
++ CJC = 7.9E-12 
++ VJC = 0.49 
++ MJC = 0.6503 
++ XCJC = 0.5 
++ TR = 9E-06 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.99) 
+*
+.MODEL DIODE D( 
++ IS = 2.833E-14 
++ N = 0.9881 
++ BV = 100 
++ IBV = 1.5E-08 
++ RS = 50 
++ CJO = 4.9E-12 
++ VJ = 0.4709 
++ M = 0.15 
++ FC = 0.89 
++ TT = 1E-12 
++ EG = 1.1 
++ XTI = 3) 
+.ENDS
+*

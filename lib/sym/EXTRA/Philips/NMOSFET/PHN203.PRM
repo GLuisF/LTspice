@@ -1,0 +1,22 @@
+.SUBCKT PHN203 1 2 3
+* 1=drain  2=gate  3=source
+Cgs  6 3 392E-12
+Cgd1 6 4 1032E-12
+Cgd2 1 4 133E-12
+M1 5 6 3 3 MOST1
+M2 4 6 5 3 MOST2
+D1 3 1 Dbody
+Rd 5 1 Rtemp 10e-3
+Rg 2 6 25
+.MODEL MOST1 NMOS (LEVEL=3 W=0.1 L=0.3e-6 Vto=2.19 Kp=2.58e-5 
++                          RS=0 RD=0 UO=650 VMAX=0 XJ=0.5E-6 KAPPA=10E-2
++                          ETA=5e-5 TPG=1 IS=0 LD=0 WD=0 CGSO=0 CGDO=0
++                          CGBO=0 NFS=1.85e12 DELTA=0.1)
+.MODEL MOST2 NMOS (LEVEL=3 W=0.1 L=0.3e-6 Vto=-4.79 Kp=2.58e-5
++                          RS=1000 RD=1000 UO=650 VMAX=0 XJ=0.5E-6 KAPPA=10E-2
++                          ETA=5e-5 TPG=1 IS=0 LD=0 WD=0 CGSO=0 CGDO=0
++                          CGBO=0 NFS=0 DELTA=0.1)
+.MODEL Dbody D(Is=1e-14 N=0.8 Rs=18e-3 Ikf=1e3 Cjo=0 M=0.5 Vj=0.4
++                         Bv=25 Ibv=10e-6 Tt=40e-9)
+.MODEL Rtemp RES(TC1=4.6e-3 TC2=8e-6)
+.ENDS

@@ -1,0 +1,119 @@
+.subckt NNMOS vd vg vs vb w=1.2e-6 l=0.35e-6 nf=1 sx=1 dx=1
+
+.param _AS='sx*w*1.0e-6'
+.param _AD='dx*w*1.0e-6'
+.param _PS='sx*nf*2*1.0e-6 + w/nf'
+.param _PD='dx*nf*2*(w/nf+1.0e-6)'
+.param _Rsq=6
+
+Rg vg vgate '_Rsq*w/(3*nf*nf*1)'
+
+M1 D1aux vgate vs vb cmosn W='w' L='l' AS='_AS' AD='_AD' PS='_PS' PD='_PD'
+
+Vsens1 vd d1aux 0
+
+M2 D2aux vgp1 0 b2 cmosn W='w' L='l' AS='_AS' AD='_AD' PS='_PS' PD='_PD'
+
+Vsens2 d2 d2aux 0
+
+E11 vgp1 aux2 nr1 0 -1
+E12 d2 0 vd vs 1
+E13 b2 0 vb vs 1
+
+C2 nr1 0 'W*2n'
+G1 nr1 0 nr1 0 10p
+
+F11 d2 nr1 vsens2 1
+F13 nr1 0 vsens1 1
+
+M3 D3aux vgp2 0 b3 cmosn W='w' L='l' AS='_AS' AD='_AD' PS='_PS' PD='_PD'
+
+Vsens3 d3 d3aux 0
+
+E14 vgp2 aux3 nr2 0 -1
+E15 d3 0 vd vs 1
+E16 b3 0 vb vs 1
+
+C3 nr2 0 'W*2n'
+G2 nr2 0 nr2 0 10p
+
+F12 d3 nr2 vsens3 1
+F14 nr2 0 vsens1 1
+
+Vsens4 aux2 0 0
+Vsens5 aux3 0 0
+
+F21 vgate vs POLY(2) vsens4 vsens5 0 0.3638 -0.3638
+
+*Model file for ELEN351
+
+.model cmosn nmos level = 49
++version = 3.1 tnom = 27 tox = 7.8e-9
++xj = 1.5e-7 nch = 1.7e17 vth0 = 0.529027
++k1=0.7929458 k2=-0.0106553 k3 = 31.3572601
++k3b=-8.434772 w0=1e-5 nlx=6.557761e-8
++dvt0w=0 dvt1w=5.3e6 dvt2w=-0.032
++dvt0=0.0381121 dvt1=0.0284664 dvt2=0.3182357
++u0=431.8697514 ua=4.27421e-10 ub=1.026103e-18
++uc=7.336728e-11 vsat=1.20407e5 a0=0.7819048
++ags=0.1983485 b0 =1.524477e-8 b1=5.095816e-7
++keta=-0.110262 a1=0 a2=1
++rdsw=1.04703e3 prwg=-1.1278e-3 prwb=-1.035e-3
++wr=1 wint=4.015611e-8 lint=1.014094e-8
++dwg=-1.591308e-8 dwb=2.999175e-9 voff=-0.1221406
++nfactor=1.3839505 cit=0 cdsc=1.150634e-6
++cdscd=0 cdscb=0 eta0=1.670629e-3
++etab=0 dsub=0.0186354 pclm=0.5847722
++pdiblc1=0.0547118 pdiblc2=1.459779e-3 pdiblcb=0
++drout=0.263937 pscbe1=4.324588e9 pscbe2=5e-6
++pvag=0.0721704 delta=0.01 mobmod=1
++prt=0 ute=-1.5 kt1=-0.11
++kt1l=0 kt2=0.022 ua1=4.31e-9
++ub1=-7.61e-18 uc1=-5.6e-11 at=3.3e4
++wl=0 wln=1 ww=0
++wwn=1 wwl=0 ll=0
++lln=1 lw=0 lwn=1
++lwl=0 capmod=2 cgdo=3.6e-10
++cgso=3.6e-10 cgbo=0 cj=1.0264e-3
++pb=0.73677 mj=0.3212 cjsw=1.1561e-10
++pbsw=0.73677 mjsw=0.398 pvth0=-0.0208879
++prdsw=-125.4323529 pk2=-2.69247e-3 wketa=1.01604e-3
++lketa=-0.0259621
+
+
+.model cmosp pmos level=49
++version=3.1 tnom=27 tox=7.8e-9
++xj=1.5e-7 nch=1.7e17 vth0=-0.695957
++k1=0.6105731 k2=-0.0367919 k3=46.1436807
++k3b=-0.5361487 w0=2.268932e-6 nlx=6.856483e-8
++dvt0w=0 dvt1w=5.3e6 dvt2w=-0.032
++dvt0=0.717439 dvt1=0.9241335 dvt2=-0.7176818
++u0=176.1569901 ua=5.190636e-10 ub=1.838163e-18
++uc=-2.50283e-11 vsat=6.075509e4 a0=0.5798632
++ags=0.2982198 b0=1.400359e-7 b1=1e-6
++keta=-0.0927 a1=0 a2=1
++rdsw=2.243184e3 prwg=-1.539171e-3 prwb=-5e-3
++wr=1 wint=7.527266e-8 lint=7.082567e-9
++dwg=-3.50934e-8 dwb=1.755184e-8 voff=-0.15
++nfactor=2 cit=0 cdsc=6.593084e-4
++cdscd=0 cdscb=0 eta0=0.9829096
++etab=0 dsub=0.7480557 pclm=8.4848105
++pdiblc1=8.75058e-3 pdiblc2=3.584718e-3 pdiblcb=0
++drout=0.7480557 pscbe1=1.34897e10 pscbe2=5.005e-9
++pvag=5.279 delta=0.01 mobmod=1
++prt=0 ute=-1.5 kt1=-0.11
++kt1l=0 kt2=0.022 ua1=4.31e-9
++ub1=-7.61e-18 uc1=-5.6e-11 at=3.3e4
++wl=0 wln=1 ww=0
++wwn=1 wwl=0 ll=0
++lln=1 lw=0 lwn=1
++lwl=0 capmod=2 cgdo=2.7e-10
++cgso=2.7e-10 cgbo=0 cj=1.4189e-3
++pb=0.99 mj=0.55859 cjsw=4.3454e-10
++pbsw=0.99 mjsw=0.41698 pvth0=0.0205222
++prdsw=-192.4659503 pk2=-1.47247e-3 wketa=-0.0211398
++lketa=9.027967e-3
+
+
+.ends
+

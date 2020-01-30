@@ -1,0 +1,11 @@
+* Electrostatic speaker models
+*
+*
+.subckt R 1 2 
+R1 1 10  0.01
+V1 10 11 0
+B1 11 2 V=I(V1)  MAG FREQ=
+.include R_freq_data.txt
+.ends
+*
+*

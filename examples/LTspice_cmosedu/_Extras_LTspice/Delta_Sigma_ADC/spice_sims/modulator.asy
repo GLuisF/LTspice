@@ -1,0 +1,22 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal 80 128 -80 -80
+WINDOW 1 1 -31 VRight 0
+PIN 0 -80 TOP 8
+PINATTR PinName Vdd
+PINATTR SpiceOrder 1
+PIN -80 64 LEFT 8
+PINATTR PinName phi0
+PINATTR SpiceOrder 2
+PIN -80 16 LEFT 8
+PINATTR PinName Vin
+PINATTR SpiceOrder 3
+PIN 80 16 RIGHT 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 4
+PIN -80 -32 LEFT 8
+PINATTR PinName Vref
+PINATTR SpiceOrder 5
+PIN -80 96 LEFT 8
+PINATTR PinName phi1
+PINATTR SpiceOrder 6

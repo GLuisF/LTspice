@@ -1,0 +1,142 @@
+* Inductoror for use in montecarlo simulations J meech 0ct 2004
+* No parasitics are included in LMC.lib. Inductors with parasitics are in LMCPAR.lib
+* Minimum Value
+.subckt L_min_0 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+L1 A B {L*ran}
+.ends L_min
+
+* Nominal Value
+.subckt L_nom_1 A B
+L1 A B {L} 
+.ends L_nom
+
+* Maximum Value
+.subckt L_max_2 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+L1 A B {L*ran}
+.ends L_max_2
+
+* Binary min/max distribution
+* Requires "run" = (0)1...
+* run==0 uses nominal value
+* Requires "seed" = 1 ... N  ->  Bit-n 0...N-1
+.subckt L_minmax_bin A B
+.param EPS=1e-6
+.param TOLC=TOL/50
+.param w=2**(seed-1)
+* Test if Bit-n is 1   n=0..N-1
+.param RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+{EPS}))>(w-0.5),1,0)
+.param ran={if((run==0),1,1-TOLC/2+TOLC*RN)} 
+L1 A B {L*ran} 
+.ends L_minmax_bin
+
+* Uniform distribution
+.subckt L_uniform_3 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+L1 A B {L*ran}  
+.ends L_uniform
+
+* worst case distribution
+.subckt L_worstcase_4 A B
+.param TOLC=TOL/50
+.param RN=round(rand(seed*100000+run))-.5
+.param ran={1+TOLC*RN} 
+L1 A B {L*ran} 
+.ends L_worstcase_4
+
+* Gausian distribution with average of 5
+.subckt L_Gausian_5 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+L1 A B {L*ran}
+.ends L_Gausian_5
+
+* Gausian distribution with average of 10
+.subckt L_Gausian_10 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param A6=(1+TOLC*(rand(seed*100000+50000+run)-.5))
+.param A7=(1+TOLC*(rand(seed*100000+60000+run)-.5))
+.param A8=(1+TOLC*(rand(seed*100000+70000+run)-.5))
+.param A9=(1+TOLC*(rand(seed*100000+80000+run)-.5))
+.param A10=(1+TOLC*(rand(seed*100000+90000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5+a6+a7+a8+a9+a10)/10}
+L1 A B {L*ran} 
+.ends L_Gausian_10
+
+
+* Minimum Value
+.subckt 0 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+L1 A B {L*ran}
+.ends 0
+
+* Nominal Value
+.subckt 1 A B
+L1 A B {L} 
+.ends 1
+
+* Maximum Value
+.subckt 2 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+L1 A B {L*ran} 
+.ends 2
+
+* Uniform distribution
+.subckt 3 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+L1 A B {L*ran} 
+.ends 3
+
+* worst case distribution
+.subckt 4 A B
+.param TOLC=TOL/50
+.param RN=round(rand(seed*100000+run))-.5
+.param ran={1+TOLC*RN}
+L1 A B {L*ran} 
+.ends 4
+
+* Gausian distribution with average of 5
+.subckt 5 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+L1 A B {L*ran} 
+.ends 5
+
+* Gausian distribution with average of 10
+.subckt 10 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param A6=(1+TOLC*(rand(seed*100000+50000+run)-.5))
+.param A7=(1+TOLC*(rand(seed*100000+60000+run)-.5))
+.param A8=(1+TOLC*(rand(seed*100000+70000+run)-.5))
+.param A9=(1+TOLC*(rand(seed*100000+80000+run)-.5))
+.param A10=(1+TOLC*(rand(seed*100000+90000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5+a6+a7+a8+a9+a10)/10}
+L1 A B {L*ran} 
+.ends 10

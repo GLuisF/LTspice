@@ -1,0 +1,435 @@
+*** SPICE deck for cell _Fig9_34_MSD{sch} from library Ch9_MSD
+*** Created on Wed May 14, 2008 16:27:28
+*** Last revised on Tue Mar 24, 2009 09:49:50
+*** Written on Tue Mar 24, 2009 09:50:41 by Electric VLSI Design System, 
+*version 8.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.OPTIONS NOMOD NOPAGE
+
+*** CELL: DFF{sch}
+.SUBCKT DFF Clk D Qi
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 net@97 D vdd vdd PMOS L=0.6U W=3U
+MM3 net@62 Clk net@97 vdd PMOS L=0.6U W=3U
+MM4 net@62 D gnd gnd NMOS L=0.6U W=3U
+MM5 net@55 Clk vdd vdd PMOS L=0.6U W=3U
+MM6 net@55 net@62 net@17 gnd NMOS L=0.6U W=3U
+MM8 net@17 Clk gnd gnd NMOS L=0.6U W=3U
+MM9 net@115 net@55 vdd vdd PMOS L=0.6U W=3U
+MM10 net@115 Clk net@49 gnd NMOS L=0.6U W=3U
+MM11 net@49 net@55 gnd gnd NMOS L=0.6U W=3U
+MM12 net@117 net@115 gnd gnd NMOS L=0.6U W=3U
+MM13 net@117 net@115 vdd vdd PMOS L=0.6U W=3U
+MM14 Qi net@117 gnd gnd NMOS L=0.6U W=3U
+MM15 Qi net@117 vdd vdd PMOS L=0.6U W=3U
+.ENDS DFF
+
+*** CELL: Ideal_Differencer_G=0.5{sch}
+.SUBCKT Ideal_Differencer_G_0_5 im ip om op
+
+* Spice Code nodes in cell cell 'Ideal_Differencer_G=0.5{sch}'
+E  op  om  ip  im  0.5
+.ENDS Ideal_Differencer_G_0_5
+
+*** CELL: Ideal_Switch{sch}
+.SUBCKT Ideal_Switch contrlm contrlp in out
+
+* Spice Code nodes in cell cell 'Ideal_Switch{sch}'
+Sswitch  in out  contrlp contrlm  switmod
+.model switmod sw
+.ENDS Ideal_Switch
+
+*** CELL: Ideal_inverter{sch}
+.SUBCKT Ideal_inverter In Out vdd
+** GLOBAL gnd
+XIdeal_Di@2 gnd vdd gnd net@8 Ideal_Differencer_G_0_5
+XIdeal_Sw@2 In net@8 vdd Out Ideal_Switch
+XIdeal_Sw@3 net@8 In Out gnd Ideal_Switch
+.ENDS Ideal_inverter
+
+*** CELL: Ideal_Adderbit{sch}
+.SUBCKT Ideal_Adderbit BitA BitB Cin Cout S vdd
+** GLOBAL gnd
+XIdeal_Di@1 gnd vdd gnd Vtrip Ideal_Differencer_G_0_5
+XIdeal_Sw@48 Vtrip BA AXORBi net@2 Ideal_Switch
+XIdeal_Sw@49 BA Vtrip vdd net@0 Ideal_Switch
+XIdeal_Sw@50 BB Vtrip vdd net@0 Ideal_Switch
+XIdeal_Sw@51 BAi Vtrip net@0 AXORBi Ideal_Switch
+XIdeal_Sw@52 BBi Vtrip net@0 AXORBi Ideal_Switch
+XIdeal_Sw@53 Vtrip BAi AXORBi net@3 Ideal_Switch
+XIdeal_Sw@54 Vtrip BB net@2 gnd Ideal_Switch
+XIdeal_Sw@55 Vtrip BBi net@3 gnd Ideal_Switch
+XIdeal_Sw@56 AXORBi Vtrip vdd net@68 Ideal_Switch
+XIdeal_Sw@57 Cinbuf Vtrip vdd net@68 Ideal_Switch
+XIdeal_Sw@58 AXORB Vtrip net@68 S Ideal_Switch
+XIdeal_Sw@59 Cini Vtrip net@68 S Ideal_Switch
+XIdeal_Sw@60 Vtrip AXORBi S net@80 Ideal_Switch
+XIdeal_Sw@61 Vtrip AXORB S net@66 Ideal_Switch
+XIdeal_Sw@62 Vtrip Cinbuf net@80 gnd Ideal_Switch
+XIdeal_Sw@63 Vtrip Cini net@66 gnd Ideal_Switch
+XIdeal_Sw@64 Vtrip BA vdd net@111 Ideal_Switch
+XIdeal_Sw@65 Vtrip BA vdd net@112 Ideal_Switch
+XIdeal_Sw@66 Vtrip BB net@111 Cout Ideal_Switch
+XIdeal_Sw@67 Vtrip Cinbuf net@112 Cout Ideal_Switch
+XIdeal_Sw@68 BA Vtrip Cout net@95 Ideal_Switch
+XIdeal_Sw@69 BA Vtrip Cout net@81 Ideal_Switch
+XIdeal_Sw@70 BB Vtrip net@95 gnd Ideal_Switch
+XIdeal_Sw@71 Cinbuf Vtrip net@81 gnd Ideal_Switch
+XIdeal_Sw@72 BB Vtrip Cout net@96 Ideal_Switch
+XIdeal_Sw@73 Cinbuf Vtrip net@96 gnd Ideal_Switch
+XIdeal_Sw@74 Vtrip BB vdd net@113 Ideal_Switch
+XIdeal_Sw@75 Vtrip Cinbuf net@113 Cout Ideal_Switch
+XIdeal_in@8 BitA BAi vdd Ideal_inverter
+XIdeal_in@9 BAi BA vdd Ideal_inverter
+XIdeal_in@10 BitB BBi vdd Ideal_inverter
+XIdeal_in@11 BBi BB vdd Ideal_inverter
+XIdeal_in@12 Cin Cini vdd Ideal_inverter
+XIdeal_in@13 Cini Cinbuf vdd Ideal_inverter
+XIdeal_in@14 AXORBi AXORB vdd Ideal_inverter
+.ENDS Ideal_Adderbit
+
+*** CELL: 4_bit_adder{sch}
+.SUBCKT _4_bit_adder BA0 BA1 BA2 BA3 BB0 BB1 BB2 BB3 Cin Cout S0 S1 S2 S3 vdd
+** GLOBAL gnd
+XIdeal_Ad@7 BA3 BB3 net@9 Cout S3 vdd Ideal_Adderbit
+XIdeal_Ad@8 BA2 BB2 net@7 net@9 S2 vdd Ideal_Adderbit
+XIdeal_Ad@9 BA1 BB1 net@6 net@7 S1 vdd Ideal_Adderbit
+XIdeal_Ad@10 BA0 BB0 Cin net@6 S0 vdd Ideal_Adderbit
+.ENDS _4_bit_adder
+
+*** CELL: Ideal_Op_amp{sch}
+.SUBCKT Ideal_Op_amp Vm Vo Vp
+** GLOBAL gnd
+Rres@0 Vp Vm 1410.065meg
+Rres@1 Vo gnd 1
+
+* Spice Code nodes in cell cell 'Ideal_Op_amp{sch}'
+G1 0  Vo  Vp  Vm 100MEG
+.ENDS Ideal_Op_amp
+
+*** CELL: Ideal_Sample&Hold{sch}
+.SUBCKT Ideal_Sample_Hold Vclk Vin Voutsh vdd
+** GLOBAL gnd
+Ccap@0 Vins gnd 0.1n
+Ccap@1 net@60 gnd 0.1f
+Rres@0 vdd Vtrip 100000k
+Rres@1 Vtrip gnd 100000k
+XIdeal_Op@4 Vinb Vinb Vin Ideal_Op_amp
+XIdeal_Op@5 Voutsh Voutsh net@60 Ideal_Op_amp
+XIdeal_Sw@4 Vclk Vtrip Vinb Vins Ideal_Switch
+XIdeal_Sw@5 Vtrip Vclk Vins net@60 Ideal_Switch
+.ENDS Ideal_Sample_Hold
+
+*** CELL: Ideal_DFF{sch}
+.SUBCKT Ideal_DFF D Q Qi clk vdd
+** GLOBAL gnd
+XIdeal_Di@0 gnd vdd gnd Vtrip Ideal_Differencer_G_0_5
+XIdeal_Sa@2 clk D Vshp vdd Ideal_Sample_Hold
+XIdeal_Sw@8 Vshp Vtrip Q gnd Ideal_Switch
+XIdeal_Sw@9 Vtrip Vshp vdd Q Ideal_Switch
+XIdeal_Sw@10 Vshp Vtrip vdd Qi Ideal_Switch
+XIdeal_Sw@11 Vtrip Vshp Qi gnd Ideal_Switch
+.ENDS Ideal_DFF
+
+*** CELL: 4_bit_register{sch}
+.SUBCKT _4_bit_register Clk D0 D1 D2 D3 Q0 Q1 Q2 Q3 VDD
+** GLOBAL gnd
+XIdeal_DF@4 D2 Q2 Ideal_DF@4_Qi Clk VDD Ideal_DFF
+XIdeal_DF@5 D3 Q3 Ideal_DF@5_Qi Clk VDD Ideal_DFF
+XIdeal_DF@6 D1 Q1 Ideal_DF@6_Qi Clk VDD Ideal_DFF
+XIdeal_DF@7 D0 Q0 Ideal_DF@7_Qi Clk VDD Ideal_DFF
+.ENDS _4_bit_register
+
+*** CELL: 4_bit_comb_K_8{sch}
+.SUBCKT _4_bit_comb_K_8 B0 B1 B2 B3 Clock S0 S1 S2 S3 S4 VDD
+** GLOBAL gnd
+X_4_bit_ad@3 B0Di B1Di B2Di B3Di B0 B1 B2 B3 VDD net@280 S0 S1 S2 S3 VDD 
++_4_bit_adder
+X_4_bit_re@8 Clock net@57 net@56 net@55 net@54 B0D B1D B2D B3D VDD 
++_4_bit_register
+X_4_bit_re@9 Clock B0 B1 B2 B3 net@33 net@32 net@31 net@30 VDD 
++_4_bit_register
+X_4_bit_re@10 Clock net@33 net@32 net@31 net@30 net@37 net@36 net@35 net@34 
++VDD _4_bit_register
+X_4_bit_re@11 Clock net@37 net@36 net@35 net@34 net@41 net@40 net@39 net@38 
++VDD _4_bit_register
+X_4_bit_re@12 Clock net@41 net@40 net@39 net@38 net@45 net@44 net@43 net@42 
++VDD _4_bit_register
+X_4_bit_re@13 Clock net@45 net@44 net@43 net@42 net@49 net@48 net@47 net@46 
++VDD _4_bit_register
+X_4_bit_re@14 Clock net@49 net@48 net@47 net@46 net@53 net@52 net@51 net@50 
++VDD _4_bit_register
+X_4_bit_re@15 Clock net@53 net@52 net@51 net@50 net@57 net@56 net@55 net@54 
++VDD _4_bit_register
+XIdeal_Ad@1 B3Di B3 net@280 Ideal_Ad@1_Cout S4 VDD Ideal_Adderbit
+XIdeal_in@4 B3D B3Di VDD Ideal_inverter
+XIdeal_in@5 B2D B2Di VDD Ideal_inverter
+XIdeal_in@6 B1D B1Di VDD Ideal_inverter
+XIdeal_in@7 B0D B0Di VDD Ideal_inverter
+.ENDS _4_bit_comb_K_8
+
+*** CELL: 8_bit_adder{sch}
+.SUBCKT _8_bit_adder BA0 BA1 BA2 BA3 BA4 BA5 BA6 BA7 BB0 BB1 BB2 BB3 BB4 BB5 
++BB6 BB7 Cin Cout S0 S1 S2 S3 S4 S5 S6 S7 vdd
+** GLOBAL gnd
+XIdeal_Ad@24 BA7 BB7 net@19 Cout S7 vdd Ideal_Adderbit
+XIdeal_Ad@25 BA6 BB6 net@20 net@19 S6 vdd Ideal_Adderbit
+XIdeal_Ad@26 BA5 BB5 net@21 net@20 S5 vdd Ideal_Adderbit
+XIdeal_Ad@27 BA4 BB4 net@22 net@21 S4 vdd Ideal_Adderbit
+XIdeal_Ad@28 BA3 BB3 net@28 net@22 S3 vdd Ideal_Adderbit
+XIdeal_Ad@29 BA2 BB2 net@29 net@28 S2 vdd Ideal_Adderbit
+XIdeal_Ad@30 BA1 BB1 net@30 net@29 S1 vdd Ideal_Adderbit
+XIdeal_Ad@31 BA0 BB0 Cin net@30 S0 vdd Ideal_Adderbit
+.ENDS _8_bit_adder
+
+*** CELL: 8_bit_register{sch}
+.SUBCKT _8_bit_register Clk D0 D1 D2 D3 D4 D5 D6 D7 Q0 Q1 Q2 Q3 Q4 Q5 Q6 Q7 
++vdd
+** GLOBAL gnd
+XIdeal_DF@8 D0 Q0 Ideal_DF@8_Qi Clk vdd Ideal_DFF
+XIdeal_DF@9 D4 Q4 Ideal_DF@9_Qi Clk vdd Ideal_DFF
+XIdeal_DF@10 D1 Q1 Ideal_DF@10_Qi Clk vdd Ideal_DFF
+XIdeal_DF@11 D5 Q5 Ideal_DF@11_Qi Clk vdd Ideal_DFF
+XIdeal_DF@12 D2 Q2 Ideal_DF@12_Qi Clk vdd Ideal_DFF
+XIdeal_DF@13 D6 Q6 Ideal_DF@13_Qi Clk vdd Ideal_DFF
+XIdeal_DF@14 D3 Q3 Ideal_DF@14_Qi Clk vdd Ideal_DFF
+XIdeal_DF@15 D7 Q7 Ideal_DF@15_Qi Clk vdd Ideal_DFF
+.ENDS _8_bit_register
+
+*** CELL: 8_bit_integrator{sch}
+.SUBCKT _8_bit_integrator B0 B1 B2 B3 B4 B5 B6 B7 Clock S0 S1 S2 S3 S4 S5 S6 
++S7 VDD
+** GLOBAL gnd
+X_8_bit_ad@1 B0 B1 B2 B3 B4 B5 B6 B7 net@9 net@12 net@15 net@18 net@21 net@6 
++net@3 net@0 gnd NC S0 S1 S2 S3 S4 S5 S6 S7 VDD _8_bit_adder
+X_8_bit_re@1 Clock S0 S1 S2 S3 S4 S5 S6 S7 net@9 net@12 net@15 net@18 net@21 
++net@6 net@3 net@0 VDD _8_bit_register
+.ENDS _8_bit_integrator
+
+*** CELL: Adder{sch}
+.SUBCKT Adder A1 A2 A3 A4 A5 A6 A7 A8 b0 b1 b2 b3 vdd
+** GLOBAL gnd
+XIdeal_Ad@11 A1 A2 gnd net@28 net@35 vdd Ideal_Adderbit
+XIdeal_Ad@12 A5 A6 gnd net@49 net@56 vdd Ideal_Adderbit
+XIdeal_Ad@13 A7 A8 gnd net@52 net@59 vdd Ideal_Adderbit
+XIdeal_Ad@14 A3 A4 gnd net@32 net@38 vdd Ideal_Adderbit
+XIdeal_Ad@15 net@28 net@32 net@119 net@80 net@74 vdd Ideal_Adderbit
+XIdeal_Ad@16 net@35 net@38 gnd net@119 net@69 vdd Ideal_Adderbit
+XIdeal_Ad@17 net@49 net@52 net@118 net@77 net@72 vdd Ideal_Adderbit
+XIdeal_Ad@18 net@56 net@59 gnd net@118 net@66 vdd Ideal_Adderbit
+XIdeal_Ad@19 net@69 net@66 gnd net@120 b0 vdd Ideal_Adderbit
+XIdeal_Ad@20 net@74 net@72 net@120 net@121 b1 vdd Ideal_Adderbit
+XIdeal_Ad@21 net@80 net@77 net@121 b3 b2 vdd Ideal_Adderbit
+.ENDS Adder
+
+*** CELL: Ideal_DACbit{sch}
+.SUBCKT Ideal_DACbit Bitin Bitout Vone Vtrip
+** GLOBAL gnd
+XIdeal_Sw@2 Bitin Vtrip Bitout gnd Ideal_Switch
+XIdeal_Sw@3 Vtrip Bitin Vone Bitout Ideal_Switch
+.ENDS Ideal_DACbit
+
+*** CELL: Ideal_8Bit_DAC{sch}
+.SUBCKT Ideal_8Bit_DAC B0 B1 B2 B3 B4 B5 B6 B7 VREFM VREFP Vout vdd
+** GLOBAL gnd
+Rres@0 vdd Vtrip 100000k
+Rres@1 Vtrip gnd 100000k
+Rres@2 VREFP VREFM 100000k
+XIdeal_DA@1 B7 B7L Vone Vtrip Ideal_DACbit
+XIdeal_DA@2 B6 B6L Vone Vtrip Ideal_DACbit
+XIdeal_DA@3 B2 B2L Vone Vtrip Ideal_DACbit
+XIdeal_DA@5 B5 B5L Vone Vtrip Ideal_DACbit
+XIdeal_DA@6 B1 B1L Vone Vtrip Ideal_DACbit
+XIdeal_DA@8 B4 B4L Vone Vtrip Ideal_DACbit
+XIdeal_DA@9 B0 B0L Vone Vtrip Ideal_DACbit
+XIdeal_DA@10 B3 B3L Vone Vtrip Ideal_DACbit
+
+* Spice Code nodes in cell cell 'Ideal_8Bit_DAC{sch}'
+Vone Vone 0 DC 1
+B1 Vout 0 
++V=((v(vrefp)-v(vrefm))/256)*(v(B7L)*128+v(B6L)*64+v(B5L)*32+v(B4L)*16+v(B3L)*8+v(B2L)*4+v(B1L)*2+v(B0L))+v(vrefm)
+.ENDS Ideal_8Bit_DAC
+
+*** CELL: Filter_L_2{sch}
+.SUBCKT Filter_L_2 A1 A2 A3 A4 A5 A6 A7 A8 Clk Dout vdd
+** GLOBAL gnd
+X_4_bit_co@1 net@7 net@5 net@3 net@147 Clk net@24 net@21 net@18 net@15 net@9 
++vdd _4_bit_comb_K_8
+X_8_bit_in@1 gnd net@24 net@21 net@18 net@15 net@9 net@9 net@9 Clk net@298 
++net@293 net@291 net@289 net@287 net@285 net@284 _8_bit_in@1_S7 vdd 
++_8_bit_integrator
+X_8_bit_re@1 Clk A8 A7 A6 A5 A4 A3 A2 A1 net@150 net@125 net@122 net@121 
++net@117 net@114 net@111 net@108 vdd _8_bit_register
+XAdder@0 net@108 net@111 net@114 net@117 net@121 net@122 net@125 net@150 
++net@7 net@5 net@3 net@0 vdd Adder
+XIdeal_8B@0 gnd net@298 net@293 net@291 net@289 net@287 net@285 net@284 gnd 
++vdd Dout vdd Ideal_8Bit_DAC
+XIdeal_in@1 net@0 net@147 vdd Ideal_inverter
+.ENDS Filter_L_2
+
+*** CELL: 100f_cap{sch}
+.SUBCKT _100f_cap P1 P2
+
+* Spice Code nodes in cell cell '100f_cap{sch}'
+C1 P1 P2 100f
+Cb P1 GND 20f
+.ENDS _100f_cap
+
+*** CELL: SC_input{sch}
+.SUBCKT SC_input lb lt p1 p1i p2 p2i rb rt
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 lt p1 top gnd NMOS L=0.6U W=15U
+Mnmos@1 top p2 rt gnd NMOS L=0.6U W=15U
+Mnmos@2 lb p1 bot gnd NMOS L=0.6U W=15U
+Mnmos@3 bot p2 rb gnd NMOS L=0.6U W=15U
+Mpmos@0 top p1i lt vdd PMOS L=0.6U W=30U
+Mpmos@1 rt p2i top vdd PMOS L=0.6U W=30U
+Mpmos@2 bot p1i lb vdd PMOS L=0.6U W=30U
+Mpmos@3 rb p2i bot vdd PMOS L=0.6U W=30U
+X_100f_cap@0 bot top _100f_cap
+.ENDS SC_input
+
+*** CELL: amp{sch}
+.SUBCKT amp Inm Inp Outm Outp
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@4 Outm Outm gnd gnd NMOS L=0.6U W=30U
+Mnmos@5 Outp Outm gnd gnd NMOS L=0.6U W=30U
+Mpmos@4 net@113 Inp Outm vdd PMOS L=0.6U W=300U
+Mpmos@5 net@113 Inm Outp vdd PMOS L=0.6U W=300U
+Mpmos@6 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+Mpmos@8 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+.ENDS amp
+
+*** CELL: Inv_20_10{sch}
+.SUBCKT Inv_20_10 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=6U
+.ENDS Inv_20_10
+
+*** CELL: Inv_100_50{sch}
+.SUBCKT Inv_100_50 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=15U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=30U
+.ENDS Inv_100_50
+
+*** CELL: NAND_2{sch}
+.SUBCKT NAND_2 A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnandB A net@10 gnd NMOS L=0.6U W=3U
+Mnmos@1 net@10 B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 AnandB B vdd vdd PMOS L=0.6U W=3U
+Mpmos@1 AnandB A vdd vdd PMOS L=0.6U W=3U
+.ENDS NAND_2
+
+*** CELL: clk_comparator{sch}
+.SUBCKT clk_comparator Clk InN InP Q Qbar
+** GLOBAL gnd
+** GLOBAL vdd
+MM1 net@2 net@1 net@23 gnd NMOS L=0.6U W=3U
+MM2 net@58 net@0 net@45 gnd NMOS L=0.6U W=3U
+MM3 vdd net@1 net@0 vdd PMOS L=0.6U W=3U
+MM4 vdd net@0 net@1 vdd PMOS L=0.6U W=3U
+MMB1 net@23 InP gnd gnd NMOS L=0.6U W=3U
+MMB2 net@45 InN gnd gnd NMOS L=0.6U W=3U
+MMB3 net@5 net@95 gnd gnd NMOS L=0.6U W=3U
+MMB4 net@95 Clk gnd gnd NMOS L=0.6U W=0.9U
+MMS1 net@0 net@5 net@2 gnd NMOS L=0.6U W=3U
+MMS2 net@1 net@5 net@58 gnd NMOS L=0.6U W=3U
+MMS3 vdd net@5 net@0 vdd PMOS L=0.6U W=3U
+MMS4 vdd net@5 net@1 vdd PMOS L=0.6U W=3U
+MMS5 vdd net@95 net@5 vdd PMOS L=0.6U W=3U
+MMS6 vdd Clk net@95 vdd PMOS L=0.6U W=0.9U
+XInv_20_1@0 net@37 net@114 Inv_20_10
+XInv_20_1@1 net@40 net@115 Inv_20_10
+XInv_100_@0 net@114 Qbar Inv_100_50
+XInv_100_@1 net@115 Q Inv_100_50
+XNAND_2@0 net@1 net@37 net@40 NAND_2
+XNAND_2@1 net@37 net@40 net@0 NAND_2
+.ENDS clk_comparator
+
+*** CELL: delay{sch}
+.SUBCKT delay inbot intop phi1 phi1i phi2 phi2i
+** GLOBAL gnd
+** GLOBAL vdd
+XInv_20_1@0 net@21 phi1 Inv_100_50
+XInv_20_1@1 phi1 phi1i Inv_100_50
+XInv_20_1@2 net@17 phi2 Inv_100_50
+XInv_20_1@3 phi2 phi2i Inv_100_50
+XInv_20_1@4 net@37 net@38 Inv_20_10
+XInv_20_1@5 net@38 net@21 Inv_20_10
+XInv_20_1@6 net@44 net@40 Inv_20_10
+XInv_20_1@7 net@40 net@17 Inv_20_10
+XNAND_2@0 intop net@37 net@17 NAND_2
+XNAND_2@1 inbot net@44 net@21 NAND_2
+.ENDS delay
+
+*** CELL: clock_gen{sch}
+.SUBCKT clock_gen p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 
++p2_4 p2i_1 p2i_2 p2i_3 p2i_4
+** GLOBAL gnd
+** GLOBAL vdd
+Xdelay@4 p2i_4 p1i_4 p1_1 p1i_1 p2_1 p2i_1 delay
+Xdelay@5 p2_1 p1_1 p1_2 p1i_2 p2_2 p2i_2 delay
+Xdelay@6 p2_2 p1_2 p1_3 p1i_3 p2_3 p2i_3 delay
+Xdelay@7 p2_3 p1_3 p1_4 p1i_4 p2_4 p2i_4 delay
+.ENDS clock_gen
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: _Fig9_34_MSD{sch}
+XDFF@0 p1_2 Q_1i Q_1b DFF
+XDFF@1 p1_2 Q_2i Q_2b DFF
+XDFF@2 p1_2 Q_3i Q_3b DFF
+XDFF@3 p1_2 Q_4i Q_4b DFF
+XDFF@4 p1_2 Q_5i Q_5b DFF
+XDFF@5 p1_2 Q_6i Q_6b DFF
+XDFF@6 p1_2 Q_7i Q_7b DFF
+XDFF@7 p1_2 Q_8i Q_8b DFF
+XFilter_L@0 Q_1b Q_2b Q_3b Q_4b Q_5b Q_6b Q_7b Q_8b p1_2 Out VDD Filter_L_2
+XSC_input@0 Vin VCM p1_3 p1i_3 p2_3 p2i_3 Q_3 int SC_input
+XSC_input@1 Vin VCM p1_4 p1i_4 p2_4 p2i_4 Q_4 int SC_input
+XSC_input@2 Vin VCM p2_1 p2i_1 p1_1 p1i_1 Q_5 int SC_input
+XSC_input@3 Vin VCM p2_2 p2i_2 p1_2 p1i_2 Q_6 int SC_input
+XSC_input@4 Vin VCM p2_3 p2i_3 p1_3 p1i_3 Q_7 int SC_input
+XSC_input@5 Vin VCM p2_4 p2i_4 p1_4 p1i_4 Q_8 int SC_input
+XSC_input@6 Vin VCM p1_1 p1i_1 p2_1 p2i_1 Q_1 int SC_input
+XSC_input@7 Vin VCM p1_2 p1i_2 p2_2 p2i_2 Q_2 int SC_input
+Xamp@1 int VCM min pos amp
+Xcf[0] pos int _100f_cap
+Xcf[1] pos int _100f_cap
+Xcf[2] pos int _100f_cap
+Xcf[3] pos int _100f_cap
+Xcf[4] pos int _100f_cap
+Xcf[5] pos int _100f_cap
+Xcf[6] pos int _100f_cap
+Xcf[7] pos int _100f_cap
+Xclk_comp@0 p1_3 min pos Q_3 Q_3i clk_comparator
+Xclk_comp@1 p1_4 min pos Q_4 Q_4i clk_comparator
+Xclk_comp@2 p2_1 min pos Q_5 Q_5i clk_comparator
+Xclk_comp@3 p2_2 min pos Q_6 Q_6i clk_comparator
+Xclk_comp@4 p2_3 min pos Q_7 Q_7i clk_comparator
+Xclk_comp@5 p2_4 min pos Q_8 Q_8i clk_comparator
+Xclk_comp@6 p1_1 min pos Q_1 Q_1i clk_comparator
+Xclk_comp@7 p1_2 min pos Q_2 Q_2i clk_comparator
+Xclock_ge@0 p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 p2_4 
++p2i_1 p2i_2 p2i_3 p2i_4 clock_gen
+
+* Spice Code nodes in cell cell '_Fig9_34_MSD{sch}'
+VDD VDD 0 DC 5
+VCM VCM 0 DC 2.5
+Vgnd GND 0 DC 0
+Vin Vin 0 DC 0 SINE(2.5 2 10MEG)
+.include C5_models.txt
+.options plotwinsize=0
+.ic v(p1_1)=5 v(p2_1)=0
+.tran 0 300n 0 0.1n UIC
+.END

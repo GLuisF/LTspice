@@ -1,0 +1,206 @@
+*  File     : ACS.LIB 
+*  Revision : 2            
+*  Date     : January 14th 2010       
+
+*	This ACS model simulates:
+*	-Igt (the same for all quadrants) maximum of the specification
+*   -IL positive and negative maximum of specification
+*   -IH positive and negative typical values
+*   -VCL positive and negative typical values (behavior overvoltage protection)
+*   -IBO positive and negative typical values (behavior overvoltage protection)
+*   -(di/dt)c and (dV/dt)c parameters are simulated if those constraints 
+*     exceed the specified limits.
+*   -Power dissipation is realistic
+*   
+*
+*   All these parameters are constant, and don't vary neither 
+*   with temperature nor other parameters.
+*    
+*   For a correct ACS behavior, the "Maximum step size" must be below 
+*   or equal 20µs.
+*
+*
+*$
+.SUBCKT ACS A G K PARAMS:
++ IBO_pos=10m
++ IBO_neg=5m
++ IGT=5m
++ IH_pos=20m
++ IH_neg=20m
++ IL_pos=25m
++ IL_neg=25m 
++ Rd=0.5    
++ BVP=790
++ BVN=670
++ RGINT=8
++ BVGK=14.9
+* IBO_pos : positive breakover current typical 
+* IBO_neg : negative breakover current typical
+* IGT     : gate trigger current maximum
+* IH_pos  : positive Holding current maximum 
+* IH_neg  : negative Holding current maximum
+* IL_pos  : positive Latching curent maximum
+* IL_neg  : negative Latching curent maximum
+* Rd      : Dynamic on-state resistance specified
+* BVP     : positive clamping voltage typical
+* BVN     : negative clamping voltage typical 
+* RGINT   : internal resistor gate
+* BVGK    : Reverse gate voltage
+
+E_RS2         N1018887 0 VALUE {IF(
++  (V(N1019001)+(1-V(N1019001))*V(N1018771)*V(CMDIBO_NEG) )>0.5,1,0)}
+R_R1         N899223 N1208329  600k  
+E_porte_osc         N1017309 0 VALUE 
++ {IF((V(N1018407)>0.5)|(V(N1018305)>0.5),15,0)}
+C_C_ibo_pos         CMDIBO_POS 0  1n IC=0 
+E_osc_pos         N1018407 0 VALUE 
++ {IF(((I(V_IT)+(2*V(DIDT)*20m))<IH_pos)&(I(V_IT)>IH_pos/2),1,0)}
+R_R_ibo_neg         N1018887 CMDIBO_NEG  100  
+V_ID         N899522 N899471 DC 0 AC 0 
+E_IF16         CONTROL 0 VALUE {IF((V(CMDIG)>0.5) | (V(CMDILIH)>0.5) |
++  (V(CMDIBO_POS)>0.5) | (V(CMDIBO_NEG)>0.5),200,0)}
+C_Cparasitic1         N1208329 K  200p  
+D_Dak_Q2         N899160 K DAK 
+E_IF6         INIH_POS 0 VALUE {IF(IH_pos>IBO_pos,IBO_pos*0.85,IH_pos)}
+E_IF3IF1_18         N1018619 0 VALUE {IF((I(V_IT)>IL_pos)|(I(V_IT)<-IL_neg),1,0
++  )}
+C_C_osc         N1017379 0  100n IC=0 
+E_IF4IF1_22         N1018559 0 VALUE 
++ {IF((I(V_IT)>V(INIH_POS))|(I(V_IT)<V(INIH_NEG)),1,0)} 
+D_Doff1         A N899522 DOFF1_T 
+C_Ccommande         COMMANDE 0  1u  
+R_Rfloat         G K  10G  
+V_I_osc         N1017413 N1017379 DC 0 AC 0 
+F_ABMI1         0 DIDT V_IT 1
+E_ID_neg         N1019001 0 VALUE {IF(I(V_ID)<-IBO_neg,1,0)}
+D_Doff2         K N899471 DOFF2_T 
+R_R_osc         N1017413 N1018243  300  
+D_Dgk         N899818 G DGK 
+L_L_didt         DIDT 0  1mH  
+R_Rton         N1159007 COMMANDE  0.5  
+C_CIHIL         CMDILIH 0  1n IC=0 
+E_NON_neg         N1018771 0 VALUE {IF(V(CMDILIH)>0.5,0,1)}
+C_C_ibo_neg         CMDIBO_NEG 0  1n IC=0 
+E_IF5IF3_5         N1018509 0 VALUE {IF(
++  (V(N1018619)*V(N1018559)+V(N1018559)*(1-V(N1018619))*(V(CMDILIH)) )>0.5,1,0)}
+X_S1    COMMANDE 0 N899223 N899160 ACS_S1 
+R_RIHIL         N1018509 CMDILIH  100  
+F_ABMI2         0 DIDT V_ID 1
+E_osc_neg         N1018305 0 VALUE 
++ {IF(((I(V_IT)+(2*V(DIDT)*20m))>-IH_neg)&(I(V_IT)<-IH_neg/2),1,0)}
+E_IF1IF1_10         CMDIG 0 VALUE {IF(I(V_IG)<-IGT,1,0)}
+E_IF29         INIH_NEG 0 VALUE {IF(-IH_neg<-IBO_neg,-IBO_neg*0.85,-IH_neg)}
+R_R_ibo_pos         N1018017 CMDIBO_POS  100  
+V_IG         N899818 K DC 0 AC 0 
+D_DTON         CONTROL N1159007 Dcontrol 
+D_Dak_Q3         K N899160 DAK 
+E_IF7         N1017817 0 VALUE {IF(V(CMDILIH)>0.5,0,1)}
+E_OSC         N1018243 0 VALUE 
++ {IF(I(V_I_osc)<0,IF(V(N1017379)<0.25,1+V(N1017309),0-V(N1017309)),IF(V(N1017379)>0.75,0-V(N1017309),1+V(N1017309)))}
+V_IT         A N899223 DC 0 AC 0 
+R_Rgk         G N899818  10Meg  
+R_Rcommande         CONTROL COMMANDE  30  
+E_RS1         N1018017 0 VALUE {IF(
++  (V(N1018741)+(1-V(N1018741))*V(N1017817)*V(CMDIBO_POS) )>0.5,1,0)}
+E_IF23         N1018741 0 VALUE {IF(I(V_ID)>IBO_pos,1,0)}
+.ENDS
+*$
+*
+****************
+* Diodes Model *
+****************   
+*$
+.MODEL Dcontrol D (Is=1e-14 Cjo=.1pF Rs=.1)
+*$
+.MODEL DGK D (IS=1e-14 N=1.05 RS={RGINT} BV={BVGK} IBV=3.95 NBV=1) 
+*$
+.MODEL DAK D (IS=5e-16 RS={Rd})
+*$
+.MODEL DOFF1_T D (BV={BVN})
+*$
+.MODEL DOFF2_T D (BV={BVP})
+*$
+****************
+* Switch Model *
+****************  
+*$
+.MODEL Smain_T VSWITCH Roff=10Meg Ron=1m Voff=1 Von=195
+*
+*$
+.subckt ACS_S1 1 2 3 4   
+S_S1         3 4 1 2 Smain_T
+RS_S1        1 2 1G    
+.ends ACS_S1 
+*********************************************************************
+* 							ACS								    *
+*********************************************************************
+*
+*$
+.subckt ACS110-7S A G K
+X1 A G K ACS params:
++ IBO_pos=10m
++ IBO_neg=5m
++ IGT=10m
++ IH_pos=45m
++ IH_neg=45m
++ IL_pos=65m
++ IL_neg=65m 
++ Rd=0.3    
++ BVP=1340
++ BVN=1370 
++ RGINT=3
++ BVGK=11.3
+* 2010 / ST / Rev 1
+.ends
+*$
+.SUBCKT ACS120-7S A G K PARAMS:  
+X1 A G K ACS params:
++ IBO_pos=10m
++ IBO_neg=5m
++ IGT=10m
++ IH_pos=45m
++ IH_neg=45m
++ IL_pos=65m
++ IL_neg=65m 
++ Rd=0.2    
++ BVP=1260
++ BVN=1340
++ RGINT=3
++ BVGK=11.3
+* 2010 / ST / Rev 1
+.ends
+*$
+.SUBCKT ACS108-6S A G K PARAMS: 
+X1 A G K ACS params:
++ IBO_pos=17m
++ IBO_neg=5m 
++ IGT=10m
++ IH_pos=25m
++ IH_neg=25m
++ IL_neg=30m
++ IL_pos=30m
++ Rd=0.3    
++ BVP=700
++ BVN=650
++ RGINT=8
++ BVGK=14.9
+* 2010 / ST / Rev 0
+.ends
+*$
+.SUBCKT ACS102-6T A G K PARAMS: 
+X1 A G K ACS params:
++ IBO_pos=10m
++ IBO_neg=5m 
++ IGT=5m
++ IH_pos=20m
++ IH_neg=20m
++ IL_neg=25m
++ IL_pos=25m
++ Rd=0.5    
++ BVP=790
++ BVN=670
++ RGINT=8
++ BVGK=14.9
+* 2010 / ST / Rev 0
+.ends
+*$

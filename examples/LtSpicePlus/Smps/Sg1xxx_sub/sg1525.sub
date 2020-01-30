@@ -1,0 +1,240 @@
+*+----------------------------------------------------------------------------
+*|* POWER SUPPLY CONTAINING SG1524B
+*|*
+*|* THE FOLLOWING LINES CONFIGURE A BUCK REGULATOR AROUND A 1524B
+*|* AND DEMONSTRATES THE USE OF THE 1524B MACROMODEL.
+*|
+*|.LIB "swit_reg.lib"
+*|.LIB "digital.lib"
+*|
+*|.IC V(711)=4.8                ; INITIALIZE THE OUTPUT TO 5 VOLTS 
+*|                              ; (CLOSE TO STEADY)
+*|
+*|VIN 15 0 20                   ; INPUT VOLTAGE SET TO 15 VOLTS
+*|RLOAD 711 0 5                 ; 1.25A LOAD CURRENT AT OUTPUT 
+*|UPRS STIM(1,1) $G_DPWR $G_8 10 IO_STM 0S 0    ; DIGITAL SHUTDOWN 
+*|                                              ; SIGNAL DISABLED
+*|VEMMITS EMMITS 0 0            ; TIE THE EMITTERS OF THE OUTPUT DRIVERS 
+*|                              ; TO GND
+*|VREF 2 0 2.5                  ; REFERENCE INPUT TO +IN OF ERROR AMP
+*|X8  12 711 1 15  BUCK         ; CALL TO BUCK CCT
+*|V4 4 0 PULSE(0 1 6MS 1U 1U 1M 1)             ; CURRENT OVERLOAD 
+*|                                             ; SHUTDOWN TEST
+*|VCLIM  5 0 0                  ; -IN OF CURRENT LIMIT AMP GNDED
+*|RCOMP 50 0 20K                ; COMPENSATION RESISTOR
+*|CCOMP 9 50 100N               ; COMPENSATION CAPACITANCE
+*|
+*|X1  1 2 3 4 5 7 0 9 10 EMMITS 12 12 EMMITS 15 16  SG1524B
+*|+ PARAMS: PERIOD=22U DEADTIME=0.5U
+*|
+*|* BUCK CONVERTER
+*|.SUBCKT BUCK 7 5 21 1
+*|R1   2 7 150
+*|Q1   4 2 1  QX2
+*|C1   5 88    4840UF
+*|RZERO 88 0 .0002
+*|RSNUB 4 5 1.5K
+*|L1   4 5    500UH
+*|D1   0 4    DX
+*|RO1 5 21   10
+*|RO2 21 0  10
+*|.ENDS
+*|
+*|.MODEL DX     D(IS=0.1P RS=16 CJO=2P TT=12N BV=100 IBV=0.1P)
+*|.MODEL QX2    PNP(IS=1.34F XTI=3 EG=1.11 VAF=74.03 BF=65.62 NE=1.208
+*|+             ISE=19.48F IKF=5.385 XTB=1.5 BR=9.715 NC=2 ISC=0 IKR=0 RC=1
+*|+             CJC=1.393P MJC=.3416 VJC=.75 FC=.5 CJE=2.01P MJE=.377 VJE=.75
+*|+             TR=.1N TF=408.8P ITF=.6 VTF=1.7 XTF=3 RB=10)
+*|
+*|.TRAN 10U 5MS 
+*|.PROBE V(711) V(1) I(L1) V(7) D(3) V(12) V(10) V(4)
+*|.END
+*+----------------------------------------------------------------------------
+*$
+
+
+*** SG1525 ***
+
+* The following model for the 1525 was obtained by consulting the data sheets
+* and corresponding with Silicon General.  A number of simplifications were
+* made to speed up the model, among these we have:
+* (a) replaced th oscillator with ideal voltage sources,
+* (b) simplified the output stage (only two bipolars per output driver),
+* (c) the sync pin is ignored (can drive clock directly if needs be),
+* (d) made the shutdown pin respond to digital stimulus, and
+* (e) used digital simulation for the internal logic.
+
+* The impact of that these simplifications must be considered in the context
+* of the parameters of the circuit, and the circuit being examined.  The
+* above list might change as we get feedback.
+
+.subckt SG1525  ; note: the node numbers are equivalent to chip pinout
++  1    ; - input of error amp
++  2    ; + input of error amp
++  4    ; oscillator output
++  5    ; ramp output
++  8    ; soft start pin
++  9    ; compensation pin
++ 10    ; shutdown pin
++ 11    ; output A
++ 12    ; ground
++ 13    ; collector of the output drivers
++ 14    ; output B
++ 15    ; vin
++ 16    ; vref
++ params:
++ period   = 25us ; internal clock period
++ deadtime = 0.5us ; internal clock deadtime
+
+* Pin  3 (sync) NOT USED due to (a) above. 
+* Pin  6 (oscillator time resistor) NOT INCLUDED due to (a) above.
+* Pin  7 (discharge resistor pin) NOT INCLUDED due to (a) above.
+
+  xdigpwr 12 DPWR DGND DIGIFPWR
+
+  v_clkset 5 DGND  pulse(0.9 3.3 .1ns
++ {period-deadtime-2*deadtime/100} {deadtime} {deadtime/100} {period} )
+  u99 BUF DPWR DGND dclk 4 d0_gate io_std
+  x15 5 dclk  DPWR DGND gen_clk 
+  uinvds1 inv DPWR DGND    10 1110 delgate io_std       ; organizes the delay
+  uinvds2 inv DPWR DGND  1110 1010 delgate io_std       ; through loop
+  .model dshutd  ugate(tplhty=2ns, tphlty=2ns)
+
+.model delgate ugate(tplhty=60ns, tphlty=60ns)
+  uinvd1 inv DPWR DGND   22 2220 dshutd io_std  ; organizes the delay
+  uinvd2 inv DPWR DGND 2220 2222 dshutd io_std  ; through loop
+  v16 26 DGND 5.1
+  r16 16 DGND 1G
+  rser1 26 16 1
+*model standby current
+  gp 15 DGND table {v(15)} (0 0) (8 14m)        ; 0mA at 0V, 14mA at 8V
+* erramp
+  x4 1 2 60 9 DPWR DGND eamp3 
+* soft st section
+  x1 5 60 8 22  DPWR DGND softst
+  ustst stim(1,1) DPWR DGND  57 io_stm 0s 0 1us 1
+* toggle flip flop
+  uhigh stim(1,1) DPWR DGND  51 io_stm 0s 1
+  u10 dff(1) DPWR DGND  51,57,dclk,21 20 21 d0_eff io_std
+  x16 8 713 1010  DPWR DGND uvlock 
+  ouvlock 15 DGND uvl dgtlnet=713 io_std
+.model uvl doutput(
++ s0name=0 s0vlo= 7 s0vhi=50
++ s1name=1 s1vlo= 0 s1vhi=7.2 )
+  eintern 115 DGND 15 DGND 1
+  roc4 DPWR 7114 10
+  roc3 DPWR 7113 10
+  roc1 115 7111 10
+  roc2  115 7112 10
+  u1 nor(5)  DPWR DGND 713 20 dclk 77 1010 7111 d_00 io_pwm_oc
+  u2 nor(5)  DPWR DGND 713 21 dclk 77 1010 7112 d_00 io_pwm_oc
+  u3 or(5)   DPWR DGND 713 20 dclk 77 1010 7113 d_00 io_pwm_oc
+  u4 or(5)   DPWR DGND 713 21 dclk 77 1010 7114 d_00 io_pwm_oc
+
+* set-dominant latch
+  u5 srff(1) DPWR DGND  51 51 51 2222 101 77 78 d0_gff io_dft
+  u6 inv DPWR DGND dclk 100 d0_gate io_std
+  u7 nor(2) DPWR DGND 100 2222 101 d0_gate io_std
+
+  rblim1 7111 731 900
+  rblim2 7112 732 900
+  rblim3 7113 733 1.2k
+  rblim4 7114 734 1.2K
+  qo1 735 731 11 q_pwm1
+  qo2 735 732 14 q_pwm1
+  qo3  11 733 DGND q_pwm1
+  q04  14 734 DGND q_pwm1
+  vdrop 13 735 1
+.model sw iswitch (ron=1 roff=1e8 ion=400e-3 ioff=350e-3)
+.model q_pwm1    npn(is=1.34f bf=65.62 ikf=.5385 rc=9
++               cjc=1.393p mjc=.3416 vjc=.75 cje=2.01p mje=.377 vje=.75
++               tf=408.8p rb=10)
+.ends
+*
+
+*$
+.subckt gen_clk ramp dclk DPWR DGND
+* generate the digital clock from the analog ramp
+  vser ramp ramp1 0
+ cramp ramp1 0 10e-6
+ vofset offs 0 .0001
+ roffs offs 0 1
+  eset  offs pos_neg value {i(vser)}
+  ocmp1 pos_neg 0 cmp dgtlnet=dclk io_std
+.model cmp doutput(
++ s0name=0 s0vlo=-20000 s0vhi=0
++ s1name=1 s1vlo=    0 s1vhi=20000)
+.ends
+*
+*$
+.subckt eamp3   ; error amplifier
++  1    ; - in
++  2    ; + in
++  60   ; output
++  9    ; compensation
++ DPWR DGND
+  vt 10 DGND 4.9
+  vb 20 DGND .7
+  rin1 2 DGND 5.1meg
+  rin2 1 DGND 5.1meg
+  dt 60 10 dx
+  db 20 60 dx
+  g1 DGND 60 table {.0018 *(v(2)-v(1))+1u } (-100u -100u) (100u 100u) 
+
+  rout 60 DGND 3megs
+  cpole 60 DGND 140p
+  r30 9 60 30
+.model dx d(is=1e-19 rs=1)
+.ends
+*
+*$
+.subckt softst  ; soft start circuit
++ 5     ; ramp from oscillator
++ 1     ; error amp output
++ 2     ; soft start pin
++ 7     ; PWM output
++ DPWR DGND 
+  x1 1 2  3  DPWR DGND opamp_pwm 
+  o6 5 4 compmod dgtlnet=7 io_std
+  s2 1 4 3 DGND sonlo
+  s3 2 4 3 DGND sonhi
+  i1 2 DGND -50u
+  s1 2 DGND 2 DGND smod
+  v1 8 0 pulse(1 0 0 2n 1 10k 11k)
+  s4 2 DGND 8 0 sw_topen
+.model compmod doutput(
++ s0name=0 s0vlo=-15 s0vhi=0
++ s1name=1 s1vlo=  0 s1vhi=7 )
+.model sonlo vswitch (ron=1 roff=100meg von=2.4 voff=2.6)
+.model sonhi vswitch (ron=1 roff=100meg von=2.6 voff=2.4)
+.model smod  vswitch (ron=1 roff=100meg von=5.1 voff=5)
+.model sw_topen vswitch( ron=1 roff=10meg von=0.9 voff=0.1 )
+.ends
+*
+*$
+.subckt uvlock 1 4 5 DPWR DGND
+* uv lock out section which interacts with the soft start section
+* to start a discharge of the soft start cap
+  u1 or(2)  DPWR DGND 4 5 3  d_00 io_std
+  rshut 3 6 93k
+  qshut 1 6 DGND shutmod
+.model shutmod npn (bf=50)
+.ends
+*
+*$
+.subckt opamp_pwm 
++ 1     ; + in
++ 2     ; - in
++ 6     ; output
++ DPWR DGND
+  vt 10 DGND 4.3
+  vb 20 DGND .7
+  dt 6 10 dx
+  db 20 6 dx
+  eop 5 DGND value {10*(v(1)-v(2))}
+  ro 5 6 100
+  c0 6 DGND 1p
+.model dx       d(is=0.1p rs=16 cjo=2p tt=12n bv=100 ibv=0.1p)
+.ends
+
+

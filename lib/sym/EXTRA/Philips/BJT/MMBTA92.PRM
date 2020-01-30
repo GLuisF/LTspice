@@ -1,0 +1,55 @@
+*
+.SUBCKT MMBTA92 1 2 3
+* 
+* housing parasitics
+LB 2 22 1.25E-09 
+LE 3 33 1.12E-09 
+LC 1 11 1E-10 
+CBCG 22 11 6.2E-14 
+CBEG 22 33 4.5E-14 
+CCEG 11 33 6.2E-14 
+*
+Q1 11 22 33 QMMBTA92 
+*
+.MODEL QMMBTA92 PNP( 
++    IS = 1.737E-14 
++    NF = 0.9934 
++    ISE = 8.208E-15 
++    NE = 1.559 
++    BF = 141.4 
++    IKF = 0.8 
++    VAF = 350 
++    NR = 0.9755 
++    ISC = 2.097E-10 
++    NC = 1.65 
++    BR = 2.5 
++    IKR = 0.06 
++    VAR = 17 
++    RB = 70 
++    IRB = 5E-05 
++    RBM = 0.3 
++    RE = 0.418 
++    RC = 2.5 
++    XTB = 0 
++    EG = 1.11 
++    XTI = 3 
++    CJE = 3.916E-11 
++    VJE = 0.7361 
++    MJE = 0.3612 
++    TF = 1.356E-09 
++    XTF = 19 
++    VTF = 9 
++    ITF = 0.2 
++    PTF = 0 
++    CJC = 1.071E-11 
++    VJC = 0.726 
++    MJC = 0.5717 
++    XCJC = 0.413 
++    TR = 3.3E-07 
++    CJS = 0 
++    VJS = 0.75 
++    MJS = 0.333 
++    FC = 0.999) 
+.ENDS
+*
+

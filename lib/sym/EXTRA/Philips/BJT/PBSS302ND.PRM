@@ -1,0 +1,69 @@
+*
+.SUBCKT PBSS302ND 1 2 3 4 5 6
+*
+R1 1 2 0
+R2 1 5 0
+R3 1 6 0
+*
+Q1 1 3 4 PBSS302ND
+D1 3 1 DIODE
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS302ND NPN 
++ IS = 1.147E-012 
++ NF = 0.9743 
++ ISE = 1.81E-015 
++ NE = 1.121 
++ BF = 600 
++ IKF = 3 
++ VAF = 15 
++ NR = 0.974 
++ ISC = 3.648E-013 
++ NC = 2.393 
++ BR = 110 
++ IKR = 5 
++ VAR = 8.8 
++ RB = 14.4 
++ IRB = 0.0006 
++ RBM = 0.74 
++ RE = 0.038 
++ RC = 0.03 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 5.681E-010 
++ VJE = 0.7622 
++ MJE = 0.3574 
++ TF = 1.2E-009 
++ XTF = 2.5 
++ VTF = 0.6 
++ ITF = 1 
++ PTF = 0 
++ CJC = 9.107E-011 
++ VJC = 0.04067 
++ MJC = 0.1902 
++ XCJC = 1 
++ TR = 4E-009 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.1 
+.MODEL DIODE D 
++ IS = 2.889E-014 
++ N = 1.004 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1000 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

@@ -1,0 +1,55 @@
+*
+.SUBCKT PBSS4320T 1 2 3
+*
+* housing parasitics
+LBlead 11 111 3.5E-10
+LE 2 22 1.12E-09
+LC 3 33 2.3E-10
+LBbond 1 11 9E-10
+CBCG 33 111 6.2E-14
+CBEG 22 111 4.5E-14
+CCEG 22 33 6.2E-14
+*
+Q1 33 111 22 PBSS4320T
++ AREA = 1
+*
+.MODEL PBSS4320T NPN
++ IS = 5.496E-13
++ NF = 0.9946
++ ISE = 2.489E-15
++ NE = 1.224
++ BF = 330
++ IKF = 8.2
++ VAF = 88
++ NR = 0.994
++ ISC = 7.962E-13
++ NC = 3
++ BR = 210
++ IKR = 2.7
++ VAR = 18
++ RB = 9
++ IRB = 0.001
++ RBM = 2.3
++ RE = 0.03
++ RC = 0.038
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.126E-10
++ VJE = 0.8521
++ MJE = 0.3129
++ TF = 1E-09
++ XTF = 6
++ VTF = 0.75
++ ITF = 1
++ PTF = 0
++ CJC = 9.508E-11
++ VJC = 0.6421
++ MJC = 0.4119
++ XCJC = 1
++ TR = 1E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.7211
+.ENDS

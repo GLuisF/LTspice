@@ -1,0 +1,49 @@
+*
+.SUBCKT PBSS5220V 1 2 3 4 5 6
+*
+R1 1 2 0
+R2 1 5 0
+R3 1 6 0
+*
+Q1 1 3 4 PBSS5220V
+*
+.MODEL PBSS5220V PNP 
++ IS = 2.37E-013 
++ NF = 0.988 
++ ISE = 2.328E-014 
++ NE = 1.419 
++ BF = 510 
++ IKF = 0.65 
++ VAF = 20 
++ NR = 0.985 
++ ISC = 5E-014 
++ NC = 1.229 
++ BR = 170 
++ IKR = 0.17 
++ VAR = 10.4 
++ RB = 30 
++ IRB = 6E-005 
++ RBM = 0.0737 
++ RE = 0.057 
++ RC = 0.053 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 9.38E-011 
++ VJE = 0.8592 
++ MJE = 0.417 
++ TF = 1.12E-009 
++ XTF = 5 
++ VTF = 2.2 
++ ITF = 1 
++ PTF = 0 
++ CJC = 4.65E-011 
++ VJC = 0.63 
++ MJC = 0.35 
++ XCJC = 1 
++ TR = 4E-010 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.99 
+.ENDS

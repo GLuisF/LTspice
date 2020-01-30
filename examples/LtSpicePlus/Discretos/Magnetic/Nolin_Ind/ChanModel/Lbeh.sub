@@ -1,0 +1,71 @@
+************************************************
+*  Non-Linear Inductor Model for LTSpice    *
+*  Hysteretic core model by John Chan ...      * 
+*  IEEE Transactions On Computer-Aided Design, *
+*  Vol. 10. No. 4, April 1991                  *
+*  (see Help in LTSpice /  L: Inductor) ]      *
+*                                              *
+*  (c) Peter KAPAS, Nov. 20, 2006, USA, CA     *
+*      e-mail: pkapas@sbcglobal.net            *
+************************************************
+*
+.subckt lmod P1 P2 B Hf Hg
+*
+.params Hc=16  Bs=0.44  Br=0.1
+.params A=0.0000251  s1=0.0006858  s2=0.0198  N=1000
+.param u0=4*Pi*1e-7
+.params Rs=1f
+.params Rp=10Meg  Cp=1f
+.params i0=0
+XX1 di Is int params: y0={i0}
+G1 P1 P2 Is 0 1
+XX5 Is dB/dH Ld B Hf Hg lint params: Hc={Hc} Bs={Bs} Br={Br} N={N} s1={s1} s2={s2} A={A}
+R1 P1 P2 {Rp}
+C1 P1 P2 {Cp}
+B2 di 0 V={V(vr)/V(Ld)}
+B3 vr 0 V={(V(P1,P2)-Rs*V(Is))}
+.ends lmod
+
+.subckt int IN OUT
+G1 0 O1 0 ZERO 100G
+C1 ZERO O1 {1µ*Kint}
+R1 ZERO IN {1Meg/Kint}
+R2 O1 0 100G
+B1 OUT 0 V=-V(O1)
+.ic V(Zero)=0
+.ic V(O1)={-y0}
+.param Kint=1000
+.ends int
+
+.subckt lint i dB/dH Ld B Hf Hg
+*
+.param u0=4*Pi*1e-7
+.param N=1000 s1=0.0006858  s2=0.0198  Hc=16 Bs=0.44 Br=0.1
+.param A=0.0000251
+XX1 Hf B hb params: Hc={Hc} Br={Br} Bs={Bs}
+XX2 Hf dB/dH dbdh01 params: Hc={Hc} Br={Br} Bs={Bs}
+B2 Ls 0 V={if (Abs(V(B))<1f, A*N*N/(s2/V(dB/dH)+s1/u0),  A*N*V(B)/V(i))}
+B1 Hf 0 V={(V(i)*N-V(Hg)*s1)/s2}
+B0 Hg 0 V={V(B)/u0}
+B3 Ld 0 V={A*N*N/(s2/V(dB/dH)+s1/u0)}
+.ends lint
+
+.subckt hb H B
+.param u0=4*Pi*1e-7
+.param Bs=0.44 Br=0.4 Hc=16
+.param alfa={Hc*(Bs/Br-1)}
+B1 Bu 0  V={Bs*(V(H)+Hc)/(Abs(V(H)+Hc)+alfa)+u0*V(H)}
+B2 Bd 0  V={Bs*(V(H)-Hc)/(Abs(V(H)-Hc)+alfa)+u0*V(H)}
+B0 B 0  V={0.5*(V(Bu)+V(Bd))}
+.ends hb
+
+.subckt dbdh01 H dB
+.param u0=4*Pi*1e-7
+.params Hc=16 Bs=0.44 Br=0.1
+.param alfa={Hc*(Bs/Br-1)}
+B1 sqr1 0 V={(Abs(V(H)+Hc)+alfa)**2}
+B2 sqr2 0 V={(Abs(V(H)-Hc)+alfa)**2}
+Bud dBu 0 V={Bs*alfa/V(sqr1)+u0}
+Bdd dBd 0 V={Bs*alfa/V(sqr2)+u0}
+B0 dB 0 V={0.5*(V(dBu)+V(dBd))}
+.ends dbdh01

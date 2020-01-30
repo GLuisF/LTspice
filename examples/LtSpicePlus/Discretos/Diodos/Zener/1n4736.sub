@@ -1,0 +1,62 @@
+*SRC=1N4736A;DI_1N4736A;Diodes;Zener <=10V; 6.80V  1.00W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT DI_1N4736A  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 6.05
+.MODEL DF D ( IS=60.6p RS=0.620 N=1.10
++ CJO=123p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=12.1f RS=0.209 N=1.00 )
+.ENDS
+
+
+* Philips
+*
+.SUBCKT 1N4736A 1 2 
+* Modified model of 1N4745A, Helmut 
+*+ BV = 6.2  --> BV=6.8
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 3E+9 
+D1 1 2 1N4736AA
+*
+.MODEL 1N4736AA D 
++ IS = 1.803E-14 
++ N = 1.167 
++ BV = 6.8 
++ IBV = 0.041 
++ RS = 0.3264 
++ CJO = 6.85E-11 
++ VJ = 0.6947 
++ M = 0.3439 
++ FC = 0.5 
+.ENDS* Philips
+*
+
+
+.SUBCKT 1N4735A 1 2 
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 3E+9 
+D1 1 2 1N4735aA
+*
+.MODEL 1N4735AA D 
++ IS = 1.803E-14 
++ N = 1.167 
++ BV = 6.2 
++ IBV = 0.041 
++ RS = 0.3264 
++ CJO = 6.85E-11 
++ VJ = 0.6947 
++ M = 0.3439 
++ FC = 0.5 
+.ENDS

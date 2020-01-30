@@ -1,0 +1,19 @@
+*DEVICE=BZX84C20V,D
+
+* BZX84C20V D model
+* created using Parts release 7.1 on 03/31/98 at 08:46
+* Parts is a MicroSim product.
+.MODEL BZX84C20V D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=22.793E-12
++ M=.3421
++ VJ=.68922
++ ISR=39.678E-12
++ BV=20.108
++ IBV=.35715
++ TT=2.6690E-6
+*$
+

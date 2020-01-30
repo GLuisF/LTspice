@@ -1,0 +1,24 @@
+*
+.SUBCKT 1PS10SB63 1 2 
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1.744E+6 
+D1 1 2 1PS10SB63 
+*
+.MODEL 1PS10SB63 D 
++ IS = 2.655E-7 
++ N = 1.033 
++ BV = 6 
++ IBV = 5E-5 
++ RS = 20.51 
++ CJO = 3.376E-13 
++ VJ = 0.02199 
++ M = 0.0446 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS

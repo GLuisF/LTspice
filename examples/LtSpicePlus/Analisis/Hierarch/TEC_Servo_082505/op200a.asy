@@ -1,0 +1,32 @@
+Version 4
+SymbolType BLOCK
+LINE Normal -47 65 -47 -67
+LINE Normal 66 0 -47 65
+LINE Normal -47 -67 66 0
+LINE Normal 16 -29 16 -80
+LINE Normal 16 29 16 80
+LINE Normal -32 -58 -32 -80
+TEXT -85 -81 Left 0 V1V
+WINDOW 1 65 56 Left 0
+WINDOW 0 62 37 Left 0
+SYMATTR ModelFile OP200A.cir
+SYMATTR Prefix X
+SYMATTR SpiceModel OP200A
+PIN -48 32 LEFT 8
+PINATTR PinName Vinp
+PINATTR SpiceOrder 1
+PIN -48 -32 LEFT 8
+PINATTR PinName Vinn
+PINATTR SpiceOrder 2
+PIN 16 -80 TOP 8
+PINATTR PinName Vcc
+PINATTR SpiceOrder 3
+PIN 16 80 BOTTOM 8
+PINATTR PinName Vss
+PINATTR SpiceOrder 4
+PIN 64 0 RIGHT 8
+PINATTR PinName out
+PINATTR SpiceOrder 5
+PIN -32 -80 NONE 8
+PINATTR PinName V1V
+PINATTR SpiceOrder 6

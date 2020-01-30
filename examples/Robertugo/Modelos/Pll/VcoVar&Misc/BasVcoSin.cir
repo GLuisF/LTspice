@@ -1,0 +1,5 @@
+Vco Sinusoidal
+esin out 0 value {sin( (twopi * fc * time) + phi)}
+rsin out 0 1G
+.param twopi=6.283 fc=1e6 phi=135
+.tran 1us 10us 0 50ns

@@ -1,0 +1,14 @@
+* 
+.subckt LoopGainProbe LoopIn LoopOut StimIn LGainOut CurMon 
+
+E1 LoopOut 0 N001 0 1
+E2 LGainOut 0 LoopIn 0 -1
+R1 N001 LoopIn 10Meg
+F1 CurMon LoopIn E1 1
+C1 N001 StimIn 1
+R2 CurMon 0 1
+.backanno
+
+
+.ends LoopGainProbe 
+

@@ -1,0 +1,27 @@
+*
+.SUBCKT 1PS76SB62 1 2
+*
+* The resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modelling in the reverse
+* mode of operation.
+*
+R1 1 2 5.729E+08
+D1 1 2 1PS76SB62
+*
+.MODEL 1PS76SB62 D
++ IS = 4E-10
++ N = 0.9529
++ BV = 43
++ IBV = 0.0001
++ RS = 131.3
++ CJO = 4.181E-13
++ VJ = 0.1122
++ M = 0.08766
++ FC = 0.5
++ TT = 0
++ EG = 0.69
++ XTI = 2
+.ENDS
+*
+

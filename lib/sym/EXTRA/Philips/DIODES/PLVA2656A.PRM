@@ -1,0 +1,18 @@
+*DEVICE=PLVA2656A,D
+* PLVA2656AB D model
+* created using Parts release 7.1 on 12/04/98 at 14:05
+* Parts is a MicroSim product.
+.MODEL PLVA2656A D
++ IS=1.2302E-15
++ N=.99169
++ RS=.4793
++ IKF=49.525E-3
++ CJO=125.26E-12
++ M=.33643
++ VJ=.68657
++ ISR=32.826E-9
++ BV=5.7651
++ IBV=3.2718
++ TT=104.45E-9
+*$
+

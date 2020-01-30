@@ -1,0 +1,21 @@
+* D:\Daten\Ltc_spice\S_param\Helmut\cfy30_test.asc
+C1 IN 1 1nF
+C3 2 OUT 1n
+L2 N001 2 220nH
+R3 0 N001 1
+R4 OUT 0 50
+R6 N002 IN 50
+C4 N001 0 1nF
+V3 N002 0 PULSE(-0.5 0.5 0 10p 10p 1n 2n) AC 1V
+R1 1 0 50
+;ac dec 500 10Meg 6G
+.tran 10p 100n 0 10p
+.INC CFY30.LIB
+* IN
+* OUT
+* COMMON
+XSPAR  1 2 0  CFY30.LIB
+.PROBE
+* .params reltol=1e-5
+* E 1 2 FREQ {V(,)}=  ( ) ( ) ... window=10n mtol=..\nnfft, mtol and reltol didn't improve pulse performance\nwindow=10n helped something
+.end

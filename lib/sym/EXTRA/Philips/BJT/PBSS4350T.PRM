@@ -1,0 +1,55 @@
+*
+.SUBCKT PBSS4350T 1 2 3
+* 
+* housing parasitics
+LBlead 11 111 3.5E-10 
+LE 2 22 1.12E-09 
+LC 3 33 2.3E-10 
+LBbond 1 11 9E-10 
+CBCG 33 111 6.2E-14 
+CBEG 22 111 4.5E-14 
+CCEG 22 33 6.2E-14
+* 
+Q1 33 111 22 PBSS4350T 
++ AREA = 1
+* 
+.MODEL PBSS4350T NPN 
++ IS = 1.146E-12 
++ NF = 0.9958 
++ ISE = 2.959E-15 
++ NE = 1.188 
++ BF = 610 
++ IKF = 5 
++ VAF = 83 
++ NR = 0.995 
++ ISC = 1.991E-15 
++ NC = 1.283 
++ BR = 100 
++ IKR = 4.2 
++ VAR = 54 
++ RB = 14 
++ IRB = 0.0007 
++ RBM = 0.998 
++ RE = 0.044 
++ RC = 0.046 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.185E-10 
++ VJE = 0.6753 
++ MJE = 0.3597 
++ TF = 7E-10 
++ XTF = 20 
++ VTF = 0.6 
++ ITF = 2 
++ PTF = 0 
++ CJC = 6.25E-11 
++ VJC = 0.5659 
++ MJC = 0.4359 
++ XCJC = 1 
++ TR = 3E-08 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.ENDS

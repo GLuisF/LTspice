@@ -1,0 +1,32 @@
+Complete Phase Modulated Transmitter 
+
+
+
+This is a one band transmitter model.
+"Top Shelf 11 Meter Transmitter" 
+A Software Defined CB Radio Hardware
+
+This circuit is subject to refinements and betterment with time.
+And kind of quickly designed up for the moment.  
+
+This is sort of a novel transmitter circuit idea.  I decided to run the Phase Modulator circuit simulation in LTspice all the way out to  50 ohms.  Since I was designing a general use modulator around 10 MHz, I decided to consider what real life use I could put that to now.  And decided to set the modulator for 10.695 MHz, and mix it with a LO IN (phase lock loop) frequency of 16.27 MHz.  So this is a 11 meter CB Radio.  And subject to refinements in removing the levels of harmonic content with more time.
+
+Run the Tranisient analysis plot simulation and look at the end results on the carrier output into 50 ohms.  The simulation runs kind of slow but not too slow, give it some time before you see the modulation plot emerge.  
+
+A latter stage for final amplification will be added later.
+
+Hence the circuit has 10 transistors in it now.  And all still low cost easy to get 2N2222 types.  (800mA collector rating and not too soon clipped with modulation)
+
+After the modulated I/Q combining transformer, I have a two transistor mixer.  Followed by a Class B push pull pair as a rf driver to go to a final amplifier stage.  I output the rf into 50 ohms.   Added a little filtering.
+
+I want enough output from this to drive a final rf amplifer section.  If you build this inexpensive Software Defined CB Radio hardware, then add the final amplifer transitor of your choice and a final stage low pass filter to clean up the final output.
+
+The Class B amp's transformers are meant to be coaxial type transformers but are modeled with simple transformers.
+
+The first harmonic product @ 32 MHz is down by - 50 dB and the rest are are  - 52 dB or more.
+
+I still use the 12 kHz modulation signal since it simulates faster that 1 kHz does.  However the full analysis of the plot of the output carrier in the Transient plot takes a few minutes to run.  Not long though.  And this modulation frequency range may be somewhat of a source of mixing products that are creating some of the harmonic products.  And so, voice range audio is expected to be much better in this circuit.
+
+The modulation looks good and maybe could be made better in a real circuit on the test bench as one gets to working with the circuit.
+
+Dan ka9rza

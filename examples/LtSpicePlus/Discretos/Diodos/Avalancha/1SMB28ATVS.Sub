@@ -1,0 +1,43 @@
+**************************************************************************************
+* 1SMB28A PSPICE macro-model
+* Uni-directional TVS avalanche diode, SMB package, VBR = 32.75 V
+**************************************************************************************
+* Anode Cathode
+.SUBCKT SMB28A 7 1
+**************************************************************************************
+* Forward Region
+* D1’s CJO term models the capacitance
+D1 2 1 MDD1
+.MODEL MDD1 D IS=1.83708e-14 N=1 XTI=1 RS=0.2
++ CJO=486e-12 TT=5e-10
+**************************************************************************************
+* Leakage Region
+* RL models leakage current (IL)
+* MDR temp. coef. model ?IL / ?T
+RL 1 2 MDR 5.64e+06
+.MODEL MDR RES TC1=0 TC2=0
+**************************************************************************************
+* Reverse Breakdown Region
+* RZ models the ?I / ?V slope
+* The small signal impedance is equal to 0.1 O
+* A RZ value of 0.65 O matches the clamping voltage at max. current
+* Increasing RZ models the self-heating from the energy of a surge event
+RZ 2 3 0.65
+D2 4 3 MDD2
+.MODEL MDD2 D IS=2.5e-15 N=0.5
+* Breakdown Voltage (VBR) = IBV x RBV
+EV1 1 4 6 8 1
+IBV 0 6 0.001
+RBV 6 0 MDRBV 32750
+* MDRBV temp. coef. model ?VBR / ?T
+.MODEL MDRBV RES TC1=0.00098
+D3 8 0 MDD2
+IT 0 8 0.001
+**************************************************************************************
+* L models the lead-to-silicon connection package inductance
+L 7 2 2.44e-9
+*
+.ENDS SMB28A
+
+**************************************************************************************
+**************************************************************************************

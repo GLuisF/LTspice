@@ -1,0 +1,7 @@
+
+These are just a sample at this time of numerous LT Spice SDR circuits models I am building for analysis and use in other LT Spice designs.
+
+These two circuits with some development, should find good use in home brew SDR hardware projects, and hybrid SDR circuits for use with conventional radios.
+
+Dan ka9rza
+wavelengths@netzero.com

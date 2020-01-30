@@ -1,0 +1,17 @@
+* Impedance Multiplier
+* 1,2 control voltage +/-
+* 3,0 reference impedance Zref
+* 4,5 output node, Z = V(1,2)*Zref
+* Condition: V(1,2) > 0
+*
+
+.subckt Z_mult 1 2 3 4 5 
+R1 1 2 1G
+R6 6 0 1e6
+B4 5 4 I=1/sqrt(V(7))*V(6)
+B3 3 0 I=sqrt(V(7))*V(6)
+B1 0 6 I=sqrt(V(7))*V(3)
+B2 6 0 I=1/sqrt(V(7))*V(4,5)
+B5 0 7 I=sqrt(abs(V(1,2)))
+R7 7 0 1
+.ends

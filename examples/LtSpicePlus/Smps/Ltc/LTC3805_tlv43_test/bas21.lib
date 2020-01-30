@@ -1,0 +1,58 @@
+*
+******************************************
+*
+*BAS21
+*
+*NXP Semiconductors
+*
+*General purpose diode
+*
+*
+*
+*
+* 
+*
+*
+*
+*
+*
+*
+*VRRM = 250V
+*IFRM = 625mA @ tp =  
+*trr  = 50ns
+*
+*Package: SOT23
+*
+*Package Pin 1: Anode
+*Package Pin 2: not connected
+*Package Pin 3: Cathode  
+*
+*
+*
+*Simulator: SPICE2
+*
+******************************************
+*
+.SUBCKT BAS21 1 2 
+*
+*The resistor R1 does not reflect 
+*a physical device. Instead it
+*improves modeling in the reverse 
+*mode of operation.
+*
+R1 1 2 1.622E+10 
+D1 1 2 BAS21 
+*
+.MODEL BAS21 D
++ IS = 3.648E-9 
++ N = 1.909 
++ BV = 260 
++ IBV = 2E-7 
++ RS = 0.7535 
++ CJO = 6.99E-13 
++ VJ = 0.2028 
++ M = 0.1151 
++ FC = 0.5 
++ TT = 3.462E-8 
+.ENDS
+*

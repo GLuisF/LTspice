@@ -1,0 +1,26 @@
+.SUBCKT PSMN035-150P 1 2 3
+* 1=drain  2=gate  3=source
+L1 1 11 4.5e-9
+L2 2 22 7.5e-9
+L3 3 33 7.5e-9
+Cgs  6 33 2725E-12
+Cgd1 6 4 4275E-12
+Cgd2 11 4 208E-12
+M1 5 6 33 33 MOST1
+M2 4 6 5 33 MOST2
+D1 33 12 Dbody
+Rdiode 12 11 Rtemp 1e-3
+Rdrain 5 11 Rtemp 23.5e-3
+Rgate 22 6 13
+.MODEL MOST1 NMOS (LEVEL=3 W=0.1 L=0.3e-6 Vto=4.01 Kp=7.71e-5
++                          RS=0 RD=0 UO=650 VMAX=0 XJ=0.5E-6 KAPPA=10E-2
++                          ETA=1e-4 TPG=1 IS=0 LD=0 WD=0 CGSO=0 CGDO=0
++                          CGBO=0 NFS=1.37e12 DELTA=0.1)
+.MODEL MOST2 NMOS (LEVEL=3 W=0.1 L=0.3e-6 Vto=-3.48 Kp=7.71e-5
++                          RS=1000 RD=1000 UO=650 VMAX=0 XJ=0.5E-6 KAPPA=10E-2
++                          ETA=1e-4 TPG=1 IS=0 LD=0 WD=0 CGSO=0 CGDO=0
++                          CGBO=0 NFS=0 DELTA=0.1)
+.MODEL Dbody D(Is=1e-14 N=0.8 Rs=3.8e-3 Ikf=1e3 Cjo=0 M=0.5 Vj=0.4
++                         Bv=150 Ibv=250e-6 Tt=126e-9)
+.MODEL Rtemp RES(TC1=7.58e-3 TC2=1.16e-5)
+.ENDS

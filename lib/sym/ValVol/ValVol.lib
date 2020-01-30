@@ -1,0 +1,561 @@
+* ----------------------------------------------------------
+* Библиотека личных моделей Валентина Яковлевича Володина
+* email: valvolodin@narod.ru
+* ---------------------------------------------------------- 
+* Модель ШИМ контроллера TL494
+* Создана 1 Февраля 2008 года
+*  
+.subckt tl494 IN1 -IN1 IN2 -IN2 FB DTC Vref OCT CT1 ET1 CT2 ET2 Ct Rt GND Vcc
+A1 N005 0 N006 0 0 N005 N011 0 DFLOP Vhigh=5 Trise=50n Rout=30
+A2 0 0 0 N009 N011 0 N007 0 AND Vhigh=5 Trise=50n Rout=30
+A3 N005 N009 0 0 0 0 N013 0 AND Vhigh=5 Trise=50n Rout=30
+A4 N006 N007 0 0 0 N004 0 0 OR Vhigh=5 Trise=300n Rout=30
+A5 N006 N013 0 0 0 N015 0 0 OR Vhigh=5 Trise=300n Rout=30
+G1 N002 ET1 N004 0 table=(1 0,4 250m)
+G3 N014 ET2 N015 0 table=(1 0,4 250m)
+A6 N008 N012 0 0 0 0 N006 0 OR Vhigh=5 Trise=50n Rout=30
+A7 N010 Ct 0 0 0 0 N008 0 SCHMITT Vt=0 Vh=0.1m Vhigh=5
+A8 FB N016 0 0 0 0 N012 0 SCHMITT Vt=0 Vh=0.1m Vhigh=5
+V4 N016 Ct 0.7
+V5 N010 DTC 0.1
+D5 N020 FB IDEAL
+D6 N024 FB IDEAL
+R1 N017 N018 1meg
+R3 N021 N022 1meg
+C4 N019 0 15.9n IC=0
+C5 N023 0 15.9n IC=0
+D1 ET1 N002 IDEALZ
+E1 N020 0 N019 0 table=(0,0 5,5)
+E2 N024 0 N023 0 table=(0,0 5,5)
+R5 -IN1 0 5meg
+R6 IN1 0 5meg
+R7 -IN2 0 5meg
+R8 IN2 0 5meg
+I1 FB 0 0.7m
+V2 N001 0 3.65
+F1 0 Ct V2 -1
+S1 0 Ct N003 0 OSC
+D3 CT1 N002 IDEAL1
+D7 CT1 N002 IDEAL2
+G2 ET1 N002 Vcc ET1 table=(0 250m,1.42 243m,1.46 150m,1.57 0)
+D2 ET2 N014 IDEALZ
+D4 CT2 N014 IDEAL1
+D8 CT2 N014 IDEAL2
+G4 ET2 N014 Vcc ET2 table=(0 250m,1.42 243m,1.46 150m,1.57 0)
+C7 N002 ET1 5p IC=0
+C8 N014 ET2 5p IC=0
+D9 N001 Rt IDEAL
+R14 Ct 0 5meg
+R15 ET2 0 5meg
+R16 ET1 0 5meg
+G5 Vcc 0 Vcc 0 TABLE=(1 0,5 4.5m,6.85 7.6m,40 8.4m)
+I2 0 Vref 25m
+D10 0 Vref IDEAL5
+B1 Vcc 0 I=I(D10)+25m
+R9 N009 OCT 1k
+R10 Ct N003 5k
+C1 N003 0 10p IC=3.65
+I3 N018 N019 10m load
+I4 N019 N018 10m load
+I5 N022 N023 10m load
+I6 N023 N022 10m load
+E3 N017 0 IN1 -IN1 100000
+E4 N021 0 IN2 -IN2 100000
+D11 0 N019 DAMP
+D12 0 N023 DAMP
+C2 N018 0 0.2p IC=0
+C3 N022 0 0.2p IC=0
+.MODEL IDEALZ D(Ron=0 Roff=20meg Vfwd=0 Vrev=41)
+.MODEL IDEAL D(Ron=0 Roff=1G Vfwd=0)
+.model OSC SW(Ron=10 Vt=1.51 Vh=1.49 Ilimit=20m)
+.MODEL IDEAL1 D(Ron=2 Roff=1G Vfwd=0.66)
+.MODEL IDEAL2 D(Ron=175 Roff=1G Vfwd=0)
+.MODEL IDEAL5 D(Ron=0 Roff=1G Vfwd=0 Vrev=5)
+.model DAMP D(Ron=0 Rrev=500 Roff=1Meg Vfwd=0 Vrev=3.5 Revepsilon=1)
+.ic V(Ct)=0 V(Vref)=5
+.ends tl494
+*
+*
+* Макромодель ШИМ контроллера UC3825
+* Создана для книги, описывающей программу LTspice/SwCAD III   
+.subckt uc3825 CLK RT CT RAMP EAOUT NI INV SS ILIM VCC 0 VC OUTA OUTB PGND VREF
+A7 N039 N021 0 0 0 0 N040 0 OR Vhigh=5.1 Trise=20n Rout=30
+A8 N034 N021 0 0 0 0 N035 0 OR Vhigh=5.1 Trise=20n Rout=30
+A9 N033 0 0 0 N027 0 N034 0 AND Vhigh=5.1 Trise=20n Rout=30
+A11 N040 N046 0 0 0 N038 N027 0 SRFLOP Vhigh=5.1 Trise=20n Rout=30
+A12 N035 N038 0 0 0 0 N037 0 SRFLOP Vhigh=5.1 Trise=20n Rout=30
+G1 VCC 0 VCC 0 table=(0 0,1 0.5m,8 1.5m,9 2.5m,10 22m)
+G2 SS 0 N037 0 49µ
+I1 0 SS 9µ
+A3 N017 N018 0 0 0 N022 0 0 OR Vhigh=5.1 Trise=20n Rout=30
+A10 N017 N009 0 0 0 0 N028 0 AND Vhigh=5.1 Trise=20n Rout=30
+A13 N009 N018 0 0 0 0 N029 0 AND Vhigh=5.1 Trise=20n Rout=30
+A14 N006 0 0 N022 0 0 N019 0 AND Vhigh=5.1 Trise=20n Rout=30
+A15 N028 N029 N027 N021 0 0 N030 0 OR Vhigh=5.1 Trise=20n Rout=30
+A16 N019 N030 0 0 0 N025 0 0 SRFLOP Vhigh=5.1 Trise=20n Rout=30
+A17 N006 N025 N027 0 0 0 N020 0 OR Vhigh=5.1 Trise=20n Rout=30
+A18 N015 0 N020 0 0 N015 N023 0 DFLOP Vhigh=5.1 Trise=20n Rout=30
+A19 0 0 N020 N021 N023 pra 0 0 OR Vhigh=5.1 Trise=30n Tfall=60n
+A20 N015 N020 N021 0 0 prb 0 0 OR Vhigh=5.1 Trise=30n Tfall=60n
+A21 N024 EAOUT 0 0 0 0 N017 0 SCHMITT Vt=0 Vh=0 Vhigh=5.1 Trise=20n Rout=30
+V1 N024 RAMP 1.25
+V3 N010 0 3
+F1 0 CT V3 -1
+S1 0 CT N006 0 OSC
+A2 SS 0 0 0 0 N046 0 0 BUF Ref=0.2 Vhigh=5.1 Trise=20n Rout=30
+A1 ILIM 0 0 0 0 0 N039 0 BUF Ref=1.2 Vhigh=5.1 Trise=20n Rout=30
+A6 ILIM 0 0 0 0 0 N018 0 BUF Ref=1.0 Vhigh=5.1 Trise=20n Rout=30
+A5 SS 0 0 0 0 0 N033 0 BUF Ref=5.0 Vhigh=5.1 Trise=20n Rout=30
+A22 CT 0 0 0 0 0 N006 0 SCHMITT Vhigh=5.1 Trise=10n Rout=30 Vt=1.9 Vh=0.9
+S2 CLK VREF N006 0 LEB
+E3 N036 0 SS 0 1
+D1 EAOUT N036 IDEAL
+A4 VCC 0 0 0 0 N021 N047 0 SCHMITT Vhigh=5.1 Trise=20n Rout=30 Vt=8.8 Vh=0.4
+A23 CLK 0 0 0 0 N009 0 0 SCHMITT Vhigh=5.1 Trise=10n Rout=30 Vt=2.8 Vh=0.1
+I2 CLK 0 400µ
+V5 N011 0 2.3
+D4 N011 CLK IDEAL
+D5 N010 RT IDEAL
+R15 EAOUT N045 500
+D3 0 SS Z5_1
+D11 0 VREF Z5_1
+G3 0 VREF N047 0 10m
+R2 N042 N043 1meg
+C1 N044 0 1.58n IC=0
+E2 N045 0 N044 0 table=(0,0 5,5)
+I3 N043 N044 16m load
+I4 N044 N043 16m load
+E1 N041 0 NI INV 56234
+D2 0 N044 DAMP
+R1 N041 N042 1k
+C2 N042 0 15.9p IC=0
+R4 INV 0 5meg
+R5 INV 0 5meg
+C3 N043 0 0.02p IC=0
+R3 prb 0 10k
+R6 pra 0 10k
+B1 N016 0 V=V(prb)*V(VC,PGND)/5.1
+B2 N004 0 V=V(pra)*V(VC,PGND)/5.1
+F2 VC PGND V7 1
+F3 VC PGND V6 1
+V2 N026 N032 0.155 Rser=1.29
+D6 N026 OUTB Ideal
+I5 OUTB N026 0.416
+R7 OUTB N026 5.86
+D12 OUTB N032 DF1_957
+I6 N012 OUTB 0.908
+D13 OUTB N012 Ideal
+R8 N012 OUTB 0.418
+V6 N014 N012 1.362 Rser=0.592
+E4 N031 PGND N016 0 1
+E5 N013 PGND N016 0 1
+D14 N013 N014 Ideal
+D15 N032 N031 Ideal
+V4 N005 N008 0.155 Rser=1.29
+D16 N005 OUTA Ideal
+I7 OUTA N005 0.416
+R9 OUTA N005 5.86
+D17 OUTA N008 DF1_957
+I8 N001 OUTA 0.908
+D18 OUTA N001 Ideal
+R10 N001 OUTA 0.418
+V7 N003 N001 1.362 Rser=0.592
+E6 N007 PGND N004 0 1
+E7 N002 PGND N004 0 1
+D19 N002 N003 Ideal
+D20 N008 N007 Ideal
+R11 N016 0 10k
+R12 N004 0 10k
+.MODEL Z5_1 D(Ron=0 Roff=1G Vfwd=0 Vrev=5.1)
+.model OSC SW(Ron=100 Roff=1meg Vt=2.5 Vh=-1.5 Ilimit=10m)
+.model LEB SW(Ron=10 Roff=1meg Vt=2.5 Vh=-1.5 Vser=0.6 Ilimit=5m)
+.MODEL IDEAL D(Ron=0 Roff=1G Vfwd=0)
+.MODEL IDEALIS D(Ron=100 Roff=1G Vfwd=0.6)
+.model DAMP D(Ron=0 Rrev=500 Roff=1G Vfwd=0 Vrev=4 Revepsilon=1)
+.MODEL DF1_957 D(Ron=1.37 Roff=1G Vfwd=1.957)
+.IC V(CT)=0 V(SS)=5.1 V(VREF)=5.1
+.ends uc3825
+*
+*
+* Модель ШИМ контроллера SG3525
+* создана 4 Марта 2009 года
+*  
+.subckt sg3525a INV NI SYN OSC CT RT DCH SS CMP SHD OUA GND VC OUB VIN VRF
+A2 N017 0 N009 0 0 N017 N020 0 DFLOP Vhigh=5.1 Trise=20n Rout=30
+A3 N018 N019 N009 0 N020 N005 N011 0 OR Vhigh=5.1 Trise=400n Rout=30
+A4 N017 N009 0 N019 N018 N023 N022 0 OR Vhigh=5.1 Trise=400n Rout=30
+S1 OUA N004 N005 0 HOUT
+S2 N012 OUA N011 0 LOUT
+S3 OUB N021 N023 0 HOUT
+S4 N028 OUB N022 0 LOUT
+I1 N031 0 21m
+D1 0 N031 IDEAL
+R2 N029 N031 8.93
+R3 N029 0 22.6
+D3 N029 N032 D1_75
+D4 0 N032 IDEAL
+I2 N032 0 188m
+R4 N032 0 2.28
+D5 N028 N029 IDEAL
+I3 N014 0 21m
+D2 0 N014 IDEAL
+R1 N013 N014 8.93
+R5 N013 0 22.6
+D6 N013 N015 D1_75
+D7 0 N015 IDEAL
+I4 N015 0 188m
+R6 N015 0 2.28
+D8 N012 N013 IDEAL
+D9 VC N021 IDEAL
+D10 VC N004 IDEAL
+G2 0 N024 NI N027 table=(-70m -100u,0 0,70m 100u)
+R16 N024 0 4meg
+C3 N024 0 100p
+R17 N024 CMP 30
+R7 INV 0 1meg
+R11 NI 0 1meg
+I7 0 VRF 80m
+R19 VRF 0 170
+D19 0 VRF Z5_1
+D20 0 VC Z40
+A6 VIN 0 0 0 0 N001 0 0 SCHMITT Vhigh=5.1 Vlow=0.45 Trise=20n Vt=7.25 Vh=0.25
+I8 VIN 0 TBL(0 0 3 3.8m 7 19m 8 20m 40 24.1m)
+D21 N030 N024 Z5_6
+V1 N030 0 0.2
+R20 N036 0 5k
+R21 SHD N002 5k
+Q1 SS N002 N036 0 NPN
+D22 N002 0 D1_2
+R22 N001 N002 60k
+D23 0 SS Z5_1
+I9 0 SS 50µ
+A7 N002 0 0 0 0 0 N019 0 SCHMITT Vhigh=5.1 Trise=400n Vt=634m Vh=1m
+A8 N026 N009 0 0 0 0 N018 0 SRFLOP Vhigh=5.1 Trise=20n Rout=30
+A9 0 N025 N019 0 0 0 N026 0 OR Vhigh=5.1 Trise=20n Rout=30
+A10 CT N034 0 0 0 0 N025 0 SCHMITT Vhigh=5.1 Trise=20n Vt=0 Vh=10m
+E1 N033 0 N024 0 1
+E2 N035 0 SS 0 1
+R23 N033 N034 500
+D24 N034 N035 IDEAL
+R24 INV N027 1k
+C1 NI N027 40p
+R8 SYN 0 2k
+R9 OSC N016 250
+V2 N003 0 3.64
+F1 0 CT V2 -1
+D11 N003 RT IDEAL
+R10 N016 0 3k
+D12 N009 N016 D1_6
+S5 0 DCH N009 0 LSW
+D13 0 CT Z5_1
+A1 N008 N010 0 0 0 0 N009 0 SRFLOP Vhigh=5.1 Ref=0.9 Trise=150n Tfall=250n
+A5 N006 N007 0 0 0 0 N008 0 OR Vhigh=5.1 Trise=20n
+A11 CT 0 0 0 0 0 N006 0 BUF Vhigh=5.1 Ref=3.2 Trise=20n
+A12 CT 0 0 0 0 N010 0 0 BUF Vhigh=5.1 Ref=0.9 Trise=20n
+A13 SYN 0 0 0 0 0 N007 0 BUF Vhigh=5.1 Ref=2 Trise=20n
+.model NPN NPN
+.model PNP PNP
+.model HOUT SW(Ron=2.7 Roff=175k Vt=2.8 Vh=-2.1 Vser=1.1 Ilimit=0.5)
+.model LOUT SW(Ron=10m Roff=175k Vt=2.8 Vh=-2.1 Vser=0 Ilimit=0.5)
+.model IDEAL D(Ron=0 Roff=1G Vfwd=0)
+.model D1_75 D(Ron=1.57 Roff=1G Vfwd=1.75)
+.model D1_6 D(Ron=0 Roff=1G Vfwd=1.6)
+.model Z5_1 D(Ron=1 Roff=1G Vrev=5.075)
+.model Z40 D(Ron=0 Roff=175k Vrev=40)
+.model Z5_6 D(Ron=1 Roff=1G Vrev=5.6)
+.model D1_2 D(Ron=0 Roff=1G Vfwd=1.2)
+.model LSW SW(Vt=2.55 Vh=-0.5 Ron=1 Roff=1meg Vser=0.6 Ilimit=40ma)
+.ends sg3525a
+*
+*
+* Модель ШИМ контроллера UC3527
+* создана из модели SG3525, 17 Января 2010 года
+*  
+.subckt uc3527a INV NI SYN OSC CT RT DCH SS CMP SHD OUA GND VC OUB VIN VRF
+A2 N017 0 N009 0 0 N017 N020 0 DFLOP Vhigh=5.1 Trise=20n Rout=30
+A3 N018 N019 N009 0 N020 N011 N005 0 OR Vhigh=5.1 Trise=400n Rout=30
+A4 N017 N009 0 N019 N018 N023 N022 0 OR Vhigh=5.1 Trise=400n Rout=30
+S1 OUA N004 N005 0 HOUT
+S2 N012 OUA N011 0 LOUT
+S3 OUB N021 N022 0 HOUT
+S4 N028 OUB N023 0 LOUT
+I1 N031 0 21m
+D1 0 N031 IDEAL
+R2 N029 N031 8.93
+R3 N029 0 22.6
+D3 N029 N032 D1_75
+D4 0 N032 IDEAL
+I2 N032 0 188m
+R4 N032 0 2.28
+D5 N028 N029 IDEAL
+I3 N014 0 21m
+D2 0 N014 IDEAL
+R1 N013 N014 8.93
+R5 N013 0 22.6
+D6 N013 N015 D1_75
+D7 0 N015 IDEAL
+I4 N015 0 188m
+R6 N015 0 2.28
+D8 N012 N013 IDEAL
+D9 VC N021 IDEAL
+D10 VC N004 IDEAL
+G2 0 N024 NI N027 table=(-70m -100u,0 0,70m 100u)
+R16 N024 0 4meg
+C3 N024 0 100p
+R17 N024 CMP 30
+R7 INV 0 1meg
+R11 NI 0 1meg
+I7 0 VRF 80m
+R19 VRF 0 170
+D19 0 VRF Z5_1
+D20 0 VC Z40
+A6 VIN 0 0 0 0 N001 0 0 SCHMITT Vhigh=5.1 Vlow=0.45 Trise=20n Vt=7.25 Vh=0.25
+I8 VIN 0 TBL(0 0 3 3.8m 7 19m 8 20m 40 24.1m)
+D21 N030 N024 Z5_6
+V1 N030 0 0.2
+R20 N036 0 5k
+R21 SHD N002 5k
+Q1 SS N002 N036 0 NPN
+D22 N002 0 D1_2
+R22 N001 N002 60k
+D23 0 SS Z5_1
+I9 0 SS 50µ
+A7 N002 0 0 0 0 0 N019 0 SCHMITT Vhigh=5.1 Trise=400n Vt=634m Vh=1m
+A8 N026 N009 0 0 0 0 N018 0 SRFLOP Vhigh=5.1 Trise=20n Rout=30
+A9 0 N025 N019 0 0 0 N026 0 OR Vhigh=5.1 Trise=20n Rout=30
+A10 CT N034 0 0 0 0 N025 0 SCHMITT Vhigh=5.1 Trise=20n Vt=0 Vh=10m
+E1 N033 0 N024 0 1
+E2 N035 0 SS 0 1
+R23 N033 N034 500
+D24 N034 N035 IDEAL
+R24 INV N027 1k
+C1 NI N027 40p
+R8 SYN 0 2k
+R9 OSC N016 250
+V2 N003 0 3.64
+F1 0 CT V1 -1
+D11 N003 RT IDEAL
+R10 N016 0 3k
+D12 N009 N016 D1_6
+S5 0 DCH N009 0 LSW
+D13 0 CT Z5_1
+A1 N008 N010 0 0 0 0 N009 0 SRFLOP Vhigh=5.1 Ref=0.9 Trise=150n Tfall=250n
+A5 N006 N007 0 0 0 0 N008 0 OR Vhigh=5.1 Trise=20n
+A11 CT 0 0 0 0 0 N006 0 BUF Vhigh=5.1 Ref=3.2 Trise=20n
+A12 CT 0 0 0 0 N010 0 0 BUF Vhigh=5.1 Ref=0.9 Trise=20n
+A13 SYN 0 0 0 0 0 N007 0 BUF Vhigh=5.1 Ref=2 Trise=20n
+.model NPN NPN
+.model PNP PNP
+.model HOUT SW(Ron=2.7 Roff=175k Vt=2.8 Vh=-2.1 Vser=1.1 Ilimit=0.5)
+.model LOUT SW(Ron=10m Roff=175k Vt=2.8 Vh=-2.1 Vser=0 Ilimit=0.5)
+.model IDEAL D(Ron=0 Roff=1G Vfwd=0)
+.model D1_75 D(Ron=1.57 Roff=1G Vfwd=1.75)
+.model D1_6 D(Ron=0 Roff=1G Vfwd=1.6)
+.model Z5_1 D(Ron=1 Roff=1G Vrev=5.075)
+.model Z40 D(Ron=0 Roff=175k Vrev=40)
+.model Z5_6 D(Ron=1 Roff=1G Vrev=5.6)
+.model D1_2 D(Ron=0 Roff=1G Vfwd=1.2)
+.model LSW SW(Vt=2.55 Vh=-0.5 Ron=1 Roff=1meg Vser=0.35 Ilimit=40ma)
+.ends uc3527a
+*
+*
+* MODEL HCPL3180
+* Моделирует входные и выходные параметры, 
+* а также временные задержки
+* Создана 10 Ноября 2008 года
+*
+.subckt hcpl3180 NC AN CA NC Vee Vo1 Vo Vcc
+V1 N005 CA 0
+D1 AN N005 DINP
+D2 Vcc N002 DOUT
+W1 N001 N004 V1 SWON
+W2 N004 Vee V1 SWOFF
+V2 Vee N001 5
+R1 N004 N003 1k
+C1 N003 Vee 250p
+S1 N002 Vo Vee N003 SWUP ON
+S2 Vo Vee Vee N003 SWDN OFF
+R2 NC 0 5meg
+R3 Vo Vo1 1m
+.model DINP D(Ron=5 Roff=10meg Vfwd=1.1 Vrev=5)
+.model DOUT D(Ron=0 Roff=10meg Vfwd=2)
+.model SWON CSW(It=2.9m Ih=-0,1m Ron=1 Roff=10meg)
+.model SWUP SW(Vt=2.5 Vh=-0,5 Ron=1.2 Roff=10meg)
+.model SWDN SW(Vt=2.5 Vh=-0,5 Ron=10meg Roff=2)
+.model SWOFF CSW(It=2.9m Ih=-0,1m Ron=10meg Roff=1)
+.ends hcpl3180
+*
+* MODEL HCPL316
+* Моделирует входные и выходные параметры, 
+* а также временные задержки
+* Создана 15 Июня 2010 года
+*
+.subckt HCPL316 Vin+ Vin- Vcc1 GN1 RESET FAULT Vled1+ Vled1- Vee Vee1 Vout Vc Vcc2 DESAT Vled2+ Ve
+A1 N005 N008 GN1 GN1 N013 N011 N009 GN1 AND Vhigh=5 Trise=50n Rout=10 tripdt=50n
+A4 N023 N027 GN1 GN1 GN1 N028 N026 GN1 SRFLOP Vhigh=5 Trise=50n Rout=10 tripdt=50n
+R1 Vcc1 GN1 820
+R2 N016 Vcc1 430
+D1 N016 N011 Ideal
+E1 N004 Ve Vled1+ Vled1- 16
+E2 N023 GN1 Vled2+ Ve 2.7
+D2 FAULT N028 Ideal
+R3 N012 Vcc1 10k
+C1 N012 GN1 390p
+D3 N012 N026 Ideal
+A2 N012 GN1 GN1 GN1 GN1 N013 GN1 GN1 SCHMITT Vhigh=5 Vt=1.4 Vh=0.6 Trise=50n Rout=10 tripdt=50n
+A3 Vin- GN1 GN1 GN1 GN1 N008 GN1 GN1 SCHMITT Vhigh=5 Vt=1.4 Vh=0.6 Trise=50n Rout=10 tripdt=50n
+A5 RESET GN1 GN1 GN1 GN1 N027 GN1 GN1 SCHMITT Vhigh=5 Vt=1.4 Vh=0.6 Trise=50n Rout=10 tripdt=50n
+A6 Vin+ GN1 GN1 GN1 GN1 GN1 N005 GN1 SCHMITT Vhigh=5 Vt=1.4 Vh=0.6 Trise=50n Rout=10 tripdt=50n
+A7 N002 N004 Ve Ve Ve Ve N001 Ve AND Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A8 N001 N003 Ve Ve Ve Ve N002 Ve OR Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A9 Ve Ve N007 Ve N001 Ve N006 Ve OR Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A10 N004 Ve Ve Ve Ve N007 Ve Ve BUF Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A13 N014 N004 Ve N019 N024 N020 N018 Ve AND Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A15 N001 Ve Ve Ve Ve N019 Ve Ve BUF Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A17 N021 Ve N001 Ve Ve N029 Ve Ve AND Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A18 N020 N029 N031 Ve Ve N024 N030 Ve AND Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A21 N015 Ve N032 Ve N001 Ve N031 Ve OR Vhigh=30 Trise=50n Rout=10 tripdt=50n
+A22 N004 Ve Ve Ve Ve N032 Ve Ve BUF Vhigh=30 Trise=50n Rout=10 tripdt=50n
+I1 Ve DESAT 250µ
+A11 DESAT Ve Ve Ve Ve Ve N003 Ve BUF Vhigh=30 Ref=7 Trise=50n Rout=10 tripdt=50n
+A12 Vcc2 Ve Ve Ve Ve N015 N014 Ve SCHMITT Vhigh=30 Vt=11.7 Vh=0.6 Trise=50n Rout=10 tripdt=50n
+S1 Ve DESAT N006 Ve 50m
+S2 Vout N025 N018 Ve darl
+S3 Vee Vout N030 Ve 50x
+S4 Vee Vout N001 Ve 1x
+D4 Vc N025 2V
+R4 Vc N025 20
+D5 Vee Vout SWD
+R5 Vee Vee1 1m
+R6 N021 N022 10k
+R7 Vcc2 N022 10k
+D6 N022 Vout Ideal
+D7 Ve N021 Ideal
+R8 Ve Vcc2 6k
+R9 Vc Vee 50k
+D8 N001 N017 Ideal
+R10 N017 Vled2+ 10k
+D9 Vled2+ Ve 2V
+D10 N009 N010 Ideal
+R11 N010 Vled1+ 10k
+D11 Vled1+ Vled1- 2V
+R12 Vcc1 RESET 10k
+D12 Ve DESAT SWD
+.model Ideal D(Ron=1m Roff=1Meg Vfwd=0)
+.model 50m SW(Ron=0.1 Roff=10Meg Vt=15 Vh=-5 Ilimit=50m)
+.model 2V D(Ron=0.1 Roff=1Meg Vfwd=1.8)
+.model darl SW(Ron=1m Roff=10Meg Vt=15 Vh=-5)
+.model 50x SW(Ron=1 Roff=10Meg Vt=15 Vh=-5)
+.model 1x SW(Ron=50 Roff=10Meg Vt=15 Vh=-5 Ilimit=170m)
+.model SWD D(Ron=0.1 Roff=1Meg Vfwd=0.6)
+.ends HCPL316
+*
+*
+* Модель операционного усилителя К544УД2. 
+* Эта модель позимствована из библиотеки r-opamp.lib Micro-Cap
+* created using Parts version 1.04 on 10/11/90 at 10:58
+*
+* connections:   non-inverting input
+*                | inverting input
+*                | | positive power supply
+*                | | | negative power supply
+*                | | | | output
+*                | | | | |  compensation
+*                | | | | | / \
+.subckt k544ud2  1 2 3 4 5 6 7
+*
+  c1   11 12 174.6E-15
+  dc    5 53 dx
+  de   54  5 dx
+  dlp  90 91 dx
+  dln  92 90 dx
+  dp    4  3 dx
+  egnd 99  0 poly(2) (3,0) (4,0) 0 .5 .5
+  fb    7 99 poly(5) vb vc ve vlp vln 0 127.3E6 -100E6 100E6 100E6 -100E6
+  ga    6  0 11 12 1.885E-3
+  gcm   0  6 10 99 188.5E-9
+  iss   3 10 dc 400.0E-6
+  hlim 90  0 vlim 1K
+  j1   11  2 10 jx
+  j2   12  1 10 jx
+  r2    6  9 100.0E3
+  rd1   4 11 530.5
+  rd2   4 12 530.5
+  ro1   8  5 50
+  ro2   7 99 25
+  rp    3  4 9.000E3
+  rss  10 99 500.0E3
+  vb    9  0 dc 0
+  vc    3 53 dc 2
+  ve   54  4 dc 2
+  vlim  7  8 dc 0
+  vlp  91  0 dc 20
+  vln   0 92 dc 20
+.model dx D(Is=800.0E-18)
+.model jx PJF(Is=15.00E-12 Beta=17.77E-3 Vto=-1)
+.ends
+* Тестовый узел для снятия траектории перемагничивания
+* сердечника гистерезисной модели нелинейной индуктивности.
+* Для настройки необходимо ввести параметры:
+* A, N и Lm тестируемой индуктивности.
+* Модель создал 30 Января 2010 года
+* Володин Валентин Яковлевич
+* e-mail: valvolodin@narod.ru
+* 
+.subckt g_loop L I1 I2 B COM H
+G1 COM N001 L I1 {1µ/(A*N)}
+C1 N001 COM 1µ
+E1 B COM N001 COM 1
+V1 I1 I2 0
+H1 H COM V1 {N/Lm}
+.ends g_loop
+*
+* MODEL MOC3082
+* Моделирует входные и выходные параметры 
+* Создана 15 Июня 2010 года
+*
+.subckt MOC3082 A C T2 T1
+D1 A C Led
+R3 N015 T2 1
+E1 N006 T2 A C 2.366864
+D2 N005 T1 Dout
+A1 N009 N012 T2 T2 T2 T2 N010 T2 SRFLOP Vhigh=5 Trise=2.5u
+E2 N014 T2 N015 T2 table=(-0.0003 0,-0.00025 5,0.00025 5,0.0003 0)
+R2 N013 N014 1k
+E3 N002 T2 T1 T2 table=(-801 5,-800 0,800 0,801 5)
+A2 N001 N008 T2 T2 T2 N011 N009 T2 OR Vhigh=5 Trise=15u
+R1 N006 N007 1k
+R4 N001 N002 1k
+A3 N004 N007 T2 T2 T2 T2 N008 T2 AND Vhigh=5 Trise=1u
+E4 N003 T2 T1 T2 table=(-20 0,-12 5,12 5,20 0)
+R5 N004 N003 1k
+S1 N015 N005 N010 T2 SW1
+A4 N011 N013 T2 T2 T2 T2 N012 T2 AND Vhigh=5 Trise=1u
+.model Led D(Ron=6.25 Roff=1Meg Vfwd=1.05)
+.model SW1 SW(Ron=1 Roff=1G Vt=2.5 Vh=-1)
+.model Dout D(Ron=3 Roff=1g Vfwd=1 Vrev=1)
+.ends MOC3082
+*
+* MODEL MOC3052
+* Моделирует входные и выходные параметры 
+* Создана 15 Июня 2010 года
+*
+.subckt MOC3052 A C T2 T1
+D1 A C Led
+R3 N012 T2 1
+E1 N004 T2 A C 2.366864
+D2 N003 T1 Dout
+A1 N006 N009 T2 T2 T2 T2 N007 T2 SRFLOP Vhigh=5 Trise=2.5u
+E2 N011 T2 N012 T2 table=(-0.0003 0,-0.00025 5,0.00025 5,0.0003 0)
+R2 N010 N011 1k
+E3 N002 T2 T1 T2 table=(-601 5,-600 0,600 0,601 5)
+A2 N001 N005 T2 T2 T2 N008 N006 T2 OR Vhigh=5 Trise=15u
+R1 N004 N005 1k
+R4 N001 N002 1k
+S1 N012 N003 N007 T2 SW1
+A4 N008 N010 T2 T2 T2 T2 N009 T2 AND Vhigh=5 Trise=1u
+.model Led D(Ron=6.25 Roff=1Meg Vfwd=1.05)
+.model SW1 SW(Ron=1 Roff=1G Vt=2.5 Vh=-1)
+.model Dout D(Ron=3 Roff=1g Vfwd=1 Vrev=1)
+.ends MOC3052
+*

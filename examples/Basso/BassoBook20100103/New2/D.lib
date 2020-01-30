@@ -1,0 +1,154 @@
+* PSpice Model Editor - Version 10.0.0
+*
+* DIODES:
+*   MYD
+*   UF4007
+*   1N4007
+*   1N4007-D
+*   1N4007G-D
+*   1N4007GL-D
+*   15ETH06 (IRF, TO-220AC, 600V, 15A, 57nC, 51ns, hyperfast)
+*   8ETH06 (IRF, TO-220AC, 600V, 8A, 120nC, 33ns, hyperfast)
+*   DSEP29-12A (Ixsys, TO-220, 1200V, 30A, 40ns, soft)
+*   HFA140NH60R (IRF, HALF-PAK, 600V, 140A, 490nC, 39ns, soft)
+*   US1G (Diodes, SMA, 400V, 1.00A, 50.0ns, 20pF, ultrafast)
+*   1N4148 (Philips, DO-35, 100V, 200mA, 4ns, 4pF, high-speed)
+
+*$
+* MYD
+* Name		    Model parameters						       Unit	 Default
+*******************************************************************************
+* AF			flicker noise exponent							     1.0	  *
+* BV			reverse breakdown knee voltage			       volt  infinite *
+* CJO			zero-bias p-n capacitance				       farad 0.0	  *
+* EG			bandgap voltage (barrier height)			   eV    .11	  *
+* FC			forward-bias depletion capacitance coefficient       0.5	  *
+* IBVL 		    low-level reverse breakdown knee current 	   amp	 0.0	  *
+* IBV			reverse breakdown knee current			       amp	 1E-10	  *
+* IKF			high-injection knee current				       amp	 infinite *
+* IS			saturation current					           amp	 1E-14	  *
+* ISR			recombination current parameter			       amp	 0.0	  *
+* KF			flicker noise coefficient					         0.0	  *
+* M			    p-n grading coefficient						         0.5	  *
+* N			    emission coefficient						         1.0	  *
+* NBV			reverse breakdown ideality factor			         1.0	  *
+* NBVL		    low-level reverse breakdown ideality factor	         1.0	  *
+* NR			emission coefficient for isr				         2.0	  *
+* RS			parasitic resistance					       ohm	 0.0	  *
+* TBV1		    bv temperature coefficient (linear)			   °C-1	 0.0	  *
+* TBV2		    bv temperature coefficient (quadratic)		   °C-2	 0.0	  *
+* TIKF		    ikf temperature coefficient (linear)		   °C-1	 0.0	  *
+* TRS1		    rs temperature coefficient (linear)			   °C-1	 0.0	  *
+* TRS2		    rs temperature coefficient (quadratic)		   °C-2	 0.0	  *
+* TT			transit time						           sec	 0.0	  *
+* T_ABS		    absolute temperature					       °C			  *
+* T_MEASURED	measured temperature					       °C			  *
+* T_REL_GLOBAL	relative to current temperature			       °C			  *
+* T_REL_LOCAL	Relative to AKO model temperature			   °C			  *
+* VJ			p-n potential						           volt	 1.0	  *
+* XTI			IS temperature exponent						         3.0	  *
+*******************************************************************************
+.SUBCKT MYD A C
+D1 A C MYD
+.MODEL MYD D
++ IS=10N N=1 BV=1200 IBV=10E-3 VJ=0.6
+.ENDS MYD
+
+.SUBCKT DN A C
+D1 A C DN
+.MODEL DN D
++ N={N}
+.ENDS DN
+
+.SUBCKT D100M A C
+D1 A C D100M
+.MODEL D100M D
++ N=0.01 RS=100m
+.ENDS D100M
+
+*$
+.SUBCKT UF4007 A C
+D1 A C UF4007
+.MODEL UF4007 D
++ N=3.97671  IS=3.28772E-006 RS=0.149734 EG=1.11 XTI=3 CJO=2.92655E-011  VJ=0.851862 M=0.334552 FC=0.5 TT=1.84973E-007 BV=1000 IBV=0.2 KF=0 AF=1
+.ENDS UF4007
+
+*$
+.SUBCKT 1N4007 A C
+D1 A C 1N4007
+.MODEL 1N4007 D
++ Is=14.11n N=1.984 Rs=33.89m Ikf=94.81 Xti=3 Eg=1.11 Cjo=25.89p M=.44 Vj=.3245 Fc=.5 Bv=1500 Ibv=10u Tt=5.7u
+.ENDS 1N4007
+
+*$
+.SUBCKT 1N4007-D A C
+D1 A C 1N4007-D
+.MODEL 1N4007-D D
++ IS=76.9p RS=42.0m BV=1.00k IBV=5.00u CJO=26.5p  M=0.333 N=1.45 TT=4.32u
+.ENDS 1N4007-D
+
+*$
+.SUBCKT 1N4007G-D A C
+D1 A C 1N4007G-D
+.MODEL 1N4007G-D D
++ IS=65.4p RS=42.2m BV=1.00k IBV=5.00u CJO=14.8p  M=0.333 N=1.36 TT=2.88u
+.ENDS 1N4007G-D
+
+*$
+.SUBCKT 1N4007GL-D A C
+D1 A C 1N4007GL-D
+.MODEL 1N4007GL-D D
++ IS=65.4p RS=42.2m BV=1.00k IBV=5.00u CJO=14.8p  M=0.333 N=1.36 TT=2.88u
+.ENDS 1N4007GL-D
+
+*$
+.SUBCKT 15ETH06 A C
+D1 A C 15ETH06
+.MODEL 15ETH06 D
++IS=2.2756e-08 RS=0.0177161 N=2 EG=0.6 XTI=0.500021 BV=600 IBV=0.0001 CJO=1.6387e-10 VJ=0.71953 M=0.37991 FC=0.5 TT=1e-09 KF=0 AF=1
+.ENDS 15ETH06
+
+*$
+.SUBCKT 8ETH06 A C
+D1 A C 8ETH06
+.MODEL 8ETH06 D
++ IS=6.92843e-10 RS=0.121017 N=2 EG=1.3 XTI=0.528448 BV=600 IBV=0.000 CJO=1.56732e-10 VJ=0.4 M=0.404011 FC=0.5 TT=1e-09 KF=0 AF=1
+.ENDS 8ETH06
+
+*$
+.SUBCKT DSEP29-12A A C
+D1 A C DSEP29-12A
+.MODEL DSEP29-12A D
++ IS=2.6918E-6 N=4.9950 RS=18.105E-3 IKF=999 CJO=1.0000E-12 M=.3333 VJ=.75 ISR=21.145E-6 BV=1.2001E3 IBV=2.1553E-3 TT=16.681E-9
+.ENDS
+
+*$
+.SUBCKT HFA140NH60R A C
+D1 A C HFA140NH60R
+.MODEL HFA140NH60R D
++IS=2.34895e-06 RS=0.0025 N=2 EG=1.3 XTI=0.5 BV=1000 IBV=0.0001 CJO=4.67077e-09 VJ=0.4 M=0.467713 FC=0.5 TT=1e-09 KF=0 AF=1
+.ENDS
+
+*$
+.SUBCKT US1G A C
+D1 A C US1G
+.MODEL US1G D
++ IS=540p RS=0.116 BV=400 IBV=5.00u CJO=37.0p  M=0.333 N=1.70 TT=72.0n
+.ENDS
+
+*$
+.SUBCKT 1N4148 A C
+D1 A C 1N4148
+.MODEL 1N4148 D
++ Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=Motorola type=silicon
+.ENDS
+
+*$
+.SUBCKT 30EPH06 A C
+D1 A C 30EPH06
+.MODEL 30EPH06 D
++ IS=3.75476e-10 RS=0.0182211 N=2 EG=0.626585 XTI=0.500695 BV=600 IBV=0.0001 CJO=3.68339e-10
++ VJ=1.27928 M=0.404368 FC=0.5 TT=1.23518e-08 KF=0 AF=1
+.ENDS 30EPH06
+
+*$

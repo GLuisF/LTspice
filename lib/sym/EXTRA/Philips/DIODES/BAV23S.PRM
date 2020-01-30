@@ -1,0 +1,25 @@
+*
+.SUBCKT BAV23S 1 2 3 
+*
+* The resistor does not reflect a
+* physical devices.  Instead it improves
+* modeling in the reverse mode of
+* operation.
+*
+R1 1 2 1.622E+10 
+D1 1 2 BAV23S
+R1 3 2 1.622E+10 
+D1 3 2 BAV23S
+*
+.MODEL BAV23S D 
++ IS = 3.648E-9 
++ N = 1.909 
++ BV = 260 
++ IBV = 2E-7 
++ RS = 0.7535 
++ CJO = 7.501E-13 
++ VJ = 0.1995 
++ M = 0.115 
++ FC = 0.5 
++ TT = 3.462E-8 
+.ENDS

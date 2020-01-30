@@ -1,0 +1,70 @@
+* CL2012 ACDrv2.1
+.subckt acdrv2_1 VCC Vsense PWM VREFO VREFI DGND S4 S3 S2 S1 G4 G3 G2 G1
+XU1 VREFI S1 P001 DGND N001 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+XU2 VREFI S2 VCC DGND N002 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+XU3 VREFI S3 VCC DGND N003 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+XU4 VREFI S4 VCC DGND N006 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+R1 G1 N001 200
+R2 G2 N002 200
+R3 G3 N003 200
+R4 G4 N006 200
+R5 VREFI DGND 5000k
+R7 VCC P001 10
+R11 VCC VREFO 70k
+S2 DGND PWM N005 DGND SW
+XU5 VSense N004 VCC DGND N005 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+V1 N004 DGND 2.56
+D1 DGND VREFO Z1V
+R6 VREFO DGND 12.1k
+D2 DGND VCC Z10V
+.model SW sw(Ron=10m Roff=100Meg Vt=5Vh=-.5)
+.model Z1V D(Is=164.04E-18 N=1.0167 Rs=.16158 Ikf=.23257 Cjo=21.570E-12 M=.38366 Vj=.80243 Isr=36.598E-12 Bv=1.02 Ibv=4.9900E-3 tt=173.12E-9 Nbv=0.2 Tbv1=0.0007 Nbvl=0.5 Ibvl=1.0000E-5 Vpk=9.1 mfg=Rohm type=Zener)
+.model Z10V D(Is=164.04E-18 N=1.0167 Rs=.16158 Ikf=.23257 Cjo=21.570E-12 M=.38366 Vj=.80243 Isr=36.598E-12 Bv=10.00 Ibv=4.9900E-3 tt=173.12E-9 Nbv=0.2 Tbv1=0.0007 Nbvl=0.5 Ibvl=1.0000E-5 Vpk=9.1 mfg=Rohm type=Zener)
+.lib UniversalOpamps2.sub
+.ends acdrv2_1
+
+* Single-Pole Double-Throw (SPDT) Analog Switch
+.subckt spdtg 1 2 3 4
+S1 1 3 4 0 SW
+S2 1 2 N001 0 SW
+A1 4 0 0 0 0 N001 0 0 BUF
+.model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
+.ends spdtg
+
+* Single-Pole Single-Throw (SPDT) Analog Switch
+.subckt spstg 1 2 3
+S1 2 1 3 0 SW
+.model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
+.ends spstg
+
+* Opamp Ideal
+.subckt OpampIdeal + - out
+E1 out 0 - + 1G
+.ends OpampIdeal
+
+* FL7701
+.subckt fl7701 CS OUT VCC RT ADIM GND NC HV
+R1 CS GND 1Meg
+R2 ADIM N001 10Meg
+V3 N001 GND 3.5
+I1 HV GND .85m
+V4 VCC GND 15.5
+R3 RT GND 10Meg
+R4 NC GND 100Meg
+A3 N002 N006 GND GND GND GND OUT GND SRFLOP VHIGH={VCC}
+V5 N002 GND PULSE(0 {VCC} 0 0 0 350n {1/fosc})
+B2 N004 GND V=if(v(CS2)>v(REF),{VCC},0)
+V6 N007 GND PULSE(0 {VCC} {1/fosc/2} 0 0 100n {1/fosc})
+A4 GND N004 N007 GND GND GND N005 GND OR VHIGH={VCC}
+B3 REF GND V=v(ADIM)*.5/3.5*abs(sin(2*pi*f*time))
+B4 CS2 GND V=delay(v(CS),350n)
+A5 N003 N005 0 0 0 0 N006 0 AND VHIGH={VCC}
+A6 N002 0 0 0 0 N003 0 0 BUF VHIGH={VCC}
+.param f=60 fosc=45k vcc=15.5
+.ends fl7701
+
+* VCC source conected to ground
+.subckt VCC VCC
+V1 VCC 0 {V}
+.param V=5
+.ends VCC

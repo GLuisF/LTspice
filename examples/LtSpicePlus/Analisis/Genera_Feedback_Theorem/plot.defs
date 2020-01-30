@@ -1,0 +1,25 @@
+* Define parameters and functions that you want to be able to use in 
+* data plots in this file with .param and .func statements.
+.func A() V(o)@2*(V(y)@1*I(Viy)@3-V(y)@3*I(Viy)@1)+V(o)@1*(V(y)@3*I(Viy)@2-V(y)@2*I(Viy)@3)+V(o)@3*(V(y)@2*I(Viy)@1-V(y)@1*I(Viy)@2)
+.func Dd() V(y)@1*I(Viy)@3-V(y)@3*I(Viy)@1
+.func H() V(o)@2
+.func Hinf() A()/Dd()
+.func T() 1/(1/Dd()-1)
+.func Dn() H()/A()
+.func Tn() 1/(Dn()-1)
+.func D0() 1-Dd()
+.func H0() (H()-A())/D0()
+.func Dp() H()/Hinf()
+.func Tp() 1/(1/Dp()-1)
+.func Tt() 1/(V(y)@1+I(Viy)@3-2*Dd())-1
+.func A_1() V(o)@2*V(y)@1-V(o)@1*V(y)@2
+.func Dd_1() V(y)@1
+.func H_1() V(o)@2
+.func Hinf_1() A_1()/Dd_1()
+.func T_1() 1/(1/Dd_1()-1)
+.func Dn_1() H_1()/A_1()
+.func Tn_1() 1/(Dn_1()-1)
+.func D0_1() 1-Dd_1()
+.func H0_1() (H_1()-A_1())/D0_1()
+.func Dp_1() H_1()/Hinf_1()
+.func Tp_1() 1/(1/Dp_1()-1)

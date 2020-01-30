@@ -1,0 +1,61 @@
+* File: D:\Program Files\LTspice\plot.defs
+*
+* Define parameters and functions that you which to be able to use in
+* data plots in this file with .param and .func statements.
+*****************************************************
+* general stuff
+*****************************************************
+* neg(-1,-2,-3 ... ) = 1   neg(0,1,2,3 ...)=0
+.func neg(a) ((sgn(a)*(sgn(a)-1))/2)
+* pos(-1,-2,-3 ... ) = 0   pos(0,1,2,3 ...)=1
+.func pos(a) (abs(neg(a)-1))
+* invsgn(-1,-2,-3 ... ) = 1  invsgn(0,1,2,3)= -1
+.func invsgn(a) -(sgn(a))
+* greater or equal (0 or 1)
+.func ge(a,b) (pos(a-b))
+* lower or equal (0 or 1)
+.func le(a,b) (pos(b-a))
+* lower than (0 or 1)
+.func lt(a,b) (neg(a-b))
+* greater than (0 or 1)
+.func gt(a,b) (neg(b-a))
+* equal (0 or 1)
+.func eq(a,b) (ge(a,b)*le(a,b))
+* not equal (0 or 1)
+.func neq(a,b) (gt(a,b)+lt(a,b))
+* if(1,a,b)  true=1 false=not 1   if true  a sonst b
+* e.g. if(gt(a,0),a*a,-(abs(a*a)))
+.func _if(a,b,c) ((eq(a,1)*b)+(neq(a,1)*c))
+* limit b=lower c=upper a=variable to limit
+.func limit(a,b,c) (_if(lt(a,b),b,_if(gt(a,c),c,a)))
+******************************************************
+* special loadflow stuff
+******************************************************
+.param vfactor=sqrt(3)
+.param sfactor=3.0
+* magnitude of real , imag
+.func mag2(a,b) (sqrt(a*a+b*b))
+* phase of real, imag with atanfunc ( -120..120 deg )
+.func ph2(a,b) (if(eq(mag2((a),(b)),0),0,(180*neg(a)*pos(b)-180*neg(b)*neg(a)+atan((b)/(a)))))
+* or with asinfunc .func ph2(a,b) (if(eq(mag2((a),(b)),0),0,(180*neg(a)*pos(b)-180*neg(b)*neg(a)+asin(b/mag2(a,b)))))
+* -180...180 > 0..360 conversion if(a<0,360-a,a)
+.func to360(a) (if(neg(a),360+(a),(a)))
+* phase difference clockwise - arguments are assumed to be always 0..360
+* be sure to convert -180..180 arguments with function to360(a) before !!!!!
+.func phdiffcw(a,b) (if(((a)-(b)+0.5),(b)-(a),(b)-(a)-360))
+* phase difference conterclockwise
+.func phdiffcc(a,b) (-phdiffcw(b,a))
+* p1 ( one phase real power ) a=v1r b=v1i c=i1r d=i1i
+.func p1(a,b,c,d) ((a)*(c)+(b)*(d))
+* p3 ( three phase real power )
+.func p3(a,b,c,d) (((a)*(c)+(b)*(d))*(sfactor))
+* q1 ( one phase imag power )
+.func q1(a,b,c,d) ((b)*(c)-(a)*(d))
+* q3 ( three phase imag power )
+.func q3(a,b,c,d) (((b)*(c)-(a)*(d))*(sfactor))
+* s1 ( one phase complex power )
+.func s1(a,b,c,d) (mag2(p1(a,b,c,d),q1(a,b,c,d)))
+* s3 ( three phase complex power )
+.func s3(a,b,c,d) (mag2(p3(a,b,c,d),q3(a,b,c,d)))
+* dp3 ( three phase power lost ) e=v2r f=v2i g=i2r h=i2i
+.func dp3(a,b,c,d,e,f,g,h) (p3(a,b,c,d)+p3(e,f,g,h))

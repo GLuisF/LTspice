@@ -1,0 +1,76 @@
+*
+.SUBCKT PBSS5540Z 1 2 3 4
+*
+* housing parasitics
+LBlead 1 11 1.63E-09
+LE 3 33 3.77E-09
+LC 2 22 4.1E-10
+LBbond 11 111 2.5E-09
+CBCG 22 111 1.76E-13
+CBEG 33 111 8.6E-14
+CCEG 22 33 1.76E-13
+*
+Q1 22 111 33 PBSS5540Z
++ AREA = 1
+D1 22 111 DIODE
+R1 2 4 0
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS5540Z PNP
++ IS = 2.366E-12
++ NF = 0.9792
++ ISE = 1.051E-13
++ NE = 1.342
++ BF = 350
++ IKF = 7.7
++ VAF = 35
++ NR = 0.98
++ ISC = 3.696E-13
++ NC = 1.127
++ BR = 150
++ IKR = 1.8
++ VAR = 8
++ RB = 3
++ IRB = 0.00075
++ RBM = 1.152
++ RE = 0.033
++ RC = 0.026
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 8.721E-10
++ VJE = 0.68
++ MJE = 0.365
++ TF = 2.3E-09
++ XTF = 15
++ VTF = 10
++ ITF = 1.5
++ PTF = 0
++ CJC = 2.76E-10
++ VJC = 0.6352
++ MJC = 0.4041
++ XCJC = 1
++ TR = 5E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.5
+.MODEL DIODE D
++ IS = 3.695E-15
++ N = 1
++ BV = 1000
++ IBV = 0.001
++ RS = 0.9
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 3
+.ENDS
+*

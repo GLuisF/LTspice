@@ -1,0 +1,54 @@
+*
+.SUBCKT PBSS5130T 1 2 3
+* 
+* housing parasitics
+LBlead 11 111 3.5E-10 
+LE 2 22 1.12E-09 
+LC 3 33 2.3E-10 
+LBbond 1 11 9E-10 
+CBCG 33 111 6.2E-14 
+CBEG 22 111 4.5E-14 
+CCEG 22 33 6.2E-14
+* 
+Q1 33 111 22 PBSS5130T 
+*
+.MODEL PBSS5130T PNP 
++ IS = 4.437E-013 
++ NF = 0.9804 
++ ISE = 4.91E-015 
++ NE = 1.329 
++ BF = 458 
++ IKF = 1.6 
++ VAF = 25.5 
++ NR = 0.979 
++ ISC = 2.768E-014 
++ NC = 1.138 
++ BR = 101.4 
++ IKR = 0.8 
++ VAR = 16 
++ RB = 8.1 
++ IRB = 8E-005 
++ RBM = 0.9 
++ RE = 0.075 
++ RC = 0.03 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 2.112E-010 
++ VJE = 0.8586 
++ MJE = 0.4226 
++ TF = 9.7E-010 
++ XTF = 25 
++ VTF = 2.2 
++ ITF = 1.5 
++ PTF = 0 
++ CJC = 7.137E-011 
++ VJC = 0.4836 
++ MJC = 0.3643 
++ XCJC = 1 
++ TR = 1.9E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.75 
+.ENDS

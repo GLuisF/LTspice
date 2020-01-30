@@ -1,0 +1,25 @@
+*
+.SUBCKT PMEG2010EJ 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1E+6
+D1 1 2 PMEG2010EJ
+*
+.MODEL PMEG2010EJ D
++ IS = 3.334E-6
++ N = 0.9791
++ BV = 22
++ IBV = 0.0001
++ RS = 0.08222
++ CJO = 1.266E-10
++ VJ = 0.3619
++ M = 0.5
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

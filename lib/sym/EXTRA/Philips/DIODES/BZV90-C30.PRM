@@ -1,0 +1,19 @@
+*DEVICE=BZV90C30,D
+* BZV90C30 D model
+* created using Parts release 7.1 on 01/13/98 at 11:52
+* Parts is a MicroSim product.
+.MODEL BZV90C30 D
++ IS=857.99E-18
++ N=.82675
++ RS=.31465
++ IKF=13.858E-6
++ CJO=21.774E-12
++ M=.33323
++ VJ=.68651
++ ISR=43.476E-12
++ NR=2.6052
++ BV=30.139
++ IBV=.43564
++ TT=144.27E-9
+*$
+

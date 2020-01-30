@@ -1,0 +1,3 @@
+This is the purpose of modeling my Fisher 500c. I wanted to add a true loudness control. Most, if not all, of the vintage amps just boost the bass with little regard for loudness contour curves. I used a 3 pole switch so the listener has the option of no loudness, mild loudness or full loudness control. Change the "sw" option to 1,2 or 3 to change the response chart. Please feel free to suggest, comment or correct. Email me at drew@pageright.com.
+
+You must have the original "LTSpice Fisher 500c.zip" installed. Unzip using the paths option. Goto the "LtSpice Fisher 500c" directory and open Fisher500c Mod0.asc. I have included a pdf file of a public domain schematic in the root of the directory tree for reference.

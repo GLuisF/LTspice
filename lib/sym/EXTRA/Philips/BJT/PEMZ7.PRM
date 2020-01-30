@@ -1,0 +1,90 @@
+*
+* PEMZ7
+*
+* 2 Complementary Transistors in SOT666
+*
+.SUBCKT PEMZ7 1 2 3 4 5 6
+*
+Q1 6 2 1 TR1
+Q2 3 5 4 TR2
+*
+.MODEL TR1 NPN
++ IS = 5.081E-14
++ NF = 0.9851
++ ISE = 3.304E-14
++ NE = 2.27
++ BF = 435
++ IKF = 0.75
++ VAF = 16.5
++ NR = 0.985
++ ISC = 9.959E-15
++ NC = 1.506
++ BR = 243
++ IKR = 0.188
++ VAR = 15.9
++ RB = 27
++ IRB = 0.00074
++ RBM = 0.05
++ RE = 0.11
++ RC = 0.19
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.863E-11
++ VJE = 0.8
++ MJE = 0.393
++ TF = 4.5E-10
++ XTF = 4
++ VTF = 0.9
++ ITF = 0.8
++ PTF = 0
++ CJC = 1.287E-11
++ VJC = 0.7021
++ MJC = 0.41
++ XCJC = 1
++ TR = 1.8E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL TR2 PNP
++ IS = 6.93E-14
++ NF = 1.002
++ ISE = 1.892E-14
++ NE = 1.457
++ BF = 250
++ IKF = 0.49
++ VAF = 13.72
++ NR = 1.002
++ ISC = 1.738E-14
++ NC = 1.164
++ BR = 90
++ IKR = 0.14
++ VAR = 13.24
++ RB = 27
++ IRB = 0.0005
++ RBM = 0.5
++ RE = 0.12
++ RC = 0.13
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.814E-11
++ VJE = 0.55
++ MJE = 0.3388
++ TF = 5.2E-10
++ XTF = 25
++ VTF = 0.5
++ ITF = 1.5
++ PTF = 0
++ CJC = 1.763E-11
++ VJC = 0.3595
++ MJC = 0.3692
++ XCJC = 1
++ TR = 1E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.ENDS
+*

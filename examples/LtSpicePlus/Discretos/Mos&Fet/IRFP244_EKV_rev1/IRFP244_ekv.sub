@@ -1,0 +1,52 @@
+* Pin 1 = gate
+* Pin 2 = drain
+* Pin 3 = source
+* Body = drain
+* This is a "pin-swapping subcircuit" compatible with FreePCB
+* "Normal" netlist order is D G S
+*
+.SUBCKT IRFP244 G D S
+M1 Di Gi S S IRFP244_DC L=2u W=500u
+RG Gi G 1m
+RD Di D 0.176
+* RD Di D 1e-8
+Cgs G S 1317.58p
+Cgd G D Q=if(x < 0, C*(x*atan(a*x)-1/(2*a)*ln(1+a*a*x*x))+b*x, C/a*ln(cosh(a*x))+B*x)
+DDS S D DDS
+*
+.model IRFP244_DC nmos (
++ level=12
++ cox=1.00E-06
++ xj=1.00E-08
++ vto=4.40535639
++ gamma=5.99988290
++ phi=3.46546207E-01
++ kp=1.12529011E-01
++ e0=2.66834176E+04
++ ucrit=1.38488749E+06
++ lambda=3.59162353E-02
++ weta=0
++ leta=0
++ q0=0
++ lk=2.9E-07
++ iba=0
++ ibb=3.0E+08
++ ibn=1.0
++ dw=0
++ dl=0
++ rsh=0)
+*
+.model DDS D(
++ N=1.35992673
++ IS=1.00000000E-09
++ RS=0.01408
++ CJO=1305.344501p
++ M=0.656367822
++ VJ=2.446169247)
+*
+.PARAM Cgdmin=0.1p
+.PARAM Cgdmax=2244.464p
+.PARAM a=0.3334926886
+.PARAM B=(Cgdmin + 0.5 * pi * Cgdmax) / (1 + 0.5 * pi)
+.PARAM C=(Cgdmax - Cgdmin) / (1 + 0.5 * pi)
+.ENDS IRFP244

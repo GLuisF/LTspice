@@ -1,0 +1,24 @@
+*
+.SUBCKT PMEG2005EL 1 2 
+*
+* The resistor R1 does not 
+* reflect a physical device. Instead it
+* improves modelling in the reverse
+* mode of operation.
+*
+D1 2 1 PMEG2005EL
+R1 2 1 3E+6 
+* 
+.MODEL PMEG2005EL D 
++ IS = 9.985E-7 
++ N = 0.9283 
++ BV = 32 
++ IBV = 0.001 
++ RS = 0.2146 
++ CJO = 6.105E-11 
++ VJ = 0.1 
++ M = 0.4159 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2 
+.ENDS

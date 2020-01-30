@@ -1,0 +1,8 @@
+There is an example of stepping sets of parameters. In this case the parameter
+voltage(Vds) and a set of prameter pairs(W,L) are stepped in a nested loop. 
+This requires to use the table()-function for W and for L.
+
+Files > Examples > Educational >MOSFET parameter sweep > MOS_gm_gmb_gds_ro.asc
+
+
+This example also shows the advanced usage of plot functions.

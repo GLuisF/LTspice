@@ -1,0 +1,59 @@
+.SUBCKT LT3845A3 Err Vfb Ifb Osc COM Out Vcc Ref
+
+* G:\SwCADIII\lib\sym\EXTRA\UC\UC384xA\LT3845A-5-test.asc
+I1 Vcc COM TBL(0 0 1 .2m)
+D1 COM Vcc 34V
+A1 Vcc COM COM COM COM COM N004 COM SCHMITT Vt=8.2 Vh=0.3 Vhigh=2.5 Rout=1k
+R1 Vcc N004 8e6
+C1 N004 COM 1p
+S1 N003 Vcc N004 2v5 ref
+D2 N003 Vcc V65
+C2 2v5 COM 1p Rpar=240
+R2 2v5 N003 240
+R3 Ref N003 280m
+C3 COM Ref 10p
+C4 Osc COM 5p
+C5 Vfb COM 1p
+R4 N009 Vfb 165k
+C6 Err N009 1p Rpar=10G
+A4 N009 2v5 COM COM COM COM Err COM OTA Vhigh=6 Vlow=0.7 Isrc=1m Isink=-6m Rclamp=1 g=5 Rout=25k Cout=5p eaclk=A2 powerup=!V(fault,Com)
+C7 Ifb COM 5p
+R5 N012 Ifb 75k
+C8 N012 COM 1p
+D3 Err N010 2R
+D4 N010 COM 1R
+C9 N010 COM 1p Rpar=1e6
+A6 Ref COM COM COM COM fault COM COM SCHMITT Vt=4.8 Vh=.1 trise=200n
+S2 Out Vcc T1 fault Ho
+S3 Com Out fault T1 Lo
+C10 Vcc COM 20p
+C11 Out Com 20p
+A5 N010 N012 COM COM COM COM N011 COM SCHMITT Vt=0.1 Vh=0.1 Trise=10n Tfall=10n tripdt=5n
+A7 N011 COM N006 COM N013 COM T1 COM DFLOP Trise=50n Tfall=50n tripdt=5n
+A8 N006 COM COM COM N011 N013 COM COM AND
+A3 N005 COM COM COM COM COM N007 COM Counter cycles=2 Trise=10n Tfall=10n tripdt=5n
+A2 Osc COM COM COM COM N005 COM COM SCHMITT Vhigh=5V Vt={(LT3845A_osc_high+LT3845A_osc_low)*0.5} Vh={(LT3845A_osc_high-LT3845A_osc_low)*0.5} Trise=10n Tfall=10n Rout=100m
+D6 Osc N005 OscILim
+I2 N005 COM 10m
+D7 N006 N005 DIdeal
+D8 N008 Osc DIdeal
+V2 N008 COM {LT3845A_osc_low-1m}
+R12 N006 N007 1k
+*.model D D
+*.lib G:\SwCADIII\lib\cmp\standard.dio
+.model 1R d(Vfwd=1 Ron=1)
+.model 2R d(Vfwd=1.3 Ron=2e6)
+.model 34V d(Ron=.5 Vfwd=.5 Vrev=34 Rrev=22 Roff=1MEG)
+.model ref sw(Vh=-11m Ilimit=100m)
+.model Ho sw(Vt= .48 Vh=-.25 Ron=2 Roff=100k Vser=0.1)
+.model Lo sw(Vt=-.52 Vh=-.25 Ron=6 Roff=300k)
+.model V65 d(Vfwd=0.65 Ron=1 Roff=1MEG)
+* >> UC3845A <<\nLTspice A-Device Behavioral Model\nCopyright 2004 by analog@ieee.org
+* NOTES:\nUC3842A: for A1 Vt=13  Vh=3.0 and bypass A3 (delete)\nUC3843A: for A1 Vt=8.2 Vh=0.3 and bypass A3 (delete)\nUC3844A: for A1 Vt=13  Vh=3.0; for A3 cycles=2\nUC3845A: for A1 Vt=8.2 Vh=0.3; for A3 cycles=2
+.model OscILim D(Vfwd=0.1 ilimit={LT3845A_osc_discharge} Ron=10 Roff=1MEG)
+.model DIdeal D(Vfwd=1m Ron=100 Roff=1MEG)
+.PARAM LT3845A_osc_low=1.625 LT3845A_osc_high=3.0
+.PARAM LT3845A_osc_discharge=8.2m
+.backanno
+
+.ENDS

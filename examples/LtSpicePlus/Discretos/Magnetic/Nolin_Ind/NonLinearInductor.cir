@@ -1,0 +1,7 @@
+*
+L1 N001 0 Hc=16. Bs=.44 Br=.10 A=0.0000251
++ Lm=0.0198 Lg=0.0006858 N=1000 Rser=0
+I1 0 N001 PWL(0 0 1 1)
+.tran .5
+.options maxstep=10u
+.end

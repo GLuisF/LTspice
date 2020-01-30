@@ -1,0 +1,20 @@
+*DEVICE=BZX84C47V,D
+
+* BZX84C47V D model
+* created using Parts release 7.1 on 03/31/98 at 09:32
+* Parts is a MicroSim product.
+.MODEL BZX84C47V D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=15.100E-12
++ M=.39802
++ VJ=.99859
++ ISR=51.813E-12
++ BV=47.125
++ IBV=.26134
++ TT=810.79E-9
+*$
+
+

@@ -1,0 +1,75 @@
+*** SPICE deck for cell _Fig9_25_MSD{sch} from library Ch9_MSD
+*** Created on Mon Apr 21, 2008 13:40:45
+*** Last revised on Sun Jan 11, 2009 10:55:10
+*** Written on Tue Mar 24, 2009 09:30:47 by Electric VLSI Design System, 
+*version 8.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.OPTIONS NOMOD NOPAGE
+
+*** CELL: Inv_100_50{sch}
+.SUBCKT Inv_100_50 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=15U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=30U
+.ENDS Inv_100_50
+
+*** CELL: Inv_20_10{sch}
+.SUBCKT Inv_20_10 In Out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Out In gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 vdd In Out vdd PMOS L=0.6U W=6U
+.ENDS Inv_20_10
+
+*** CELL: NAND_2{sch}
+.SUBCKT NAND_2 A AnandB B
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 AnandB A net@10 gnd NMOS L=0.6U W=3U
+Mnmos@1 net@10 B gnd gnd NMOS L=0.6U W=3U
+Mpmos@0 AnandB B vdd vdd PMOS L=0.6U W=3U
+Mpmos@1 AnandB A vdd vdd PMOS L=0.6U W=3U
+.ENDS NAND_2
+
+*** CELL: delay{sch}
+.SUBCKT delay inbot intop phi1 phi1i phi2 phi2i
+** GLOBAL gnd
+** GLOBAL vdd
+XInv_20_1@0 net@21 phi1 Inv_100_50
+XInv_20_1@1 phi1 phi1i Inv_100_50
+XInv_20_1@2 net@17 phi2 Inv_100_50
+XInv_20_1@3 phi2 phi2i Inv_100_50
+XInv_20_1@4 net@37 net@38 Inv_20_10
+XInv_20_1@5 net@38 net@21 Inv_20_10
+XInv_20_1@6 net@44 net@40 Inv_20_10
+XInv_20_1@7 net@40 net@17 Inv_20_10
+XNAND_2@0 intop net@37 net@17 NAND_2
+XNAND_2@1 inbot net@44 net@21 NAND_2
+.ENDS delay
+
+*** CELL: clock_gen{sch}
+.SUBCKT clock_gen p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 
++p2_4 p2i_1 p2i_2 p2i_3 p2i_4
+** GLOBAL gnd
+** GLOBAL vdd
+Xdelay@4 p2i_4 p1i_4 p1_1 p1i_1 p2_1 p2i_1 delay
+Xdelay@5 p2_1 p1_1 p1_2 p1i_2 p2_2 p2i_2 delay
+Xdelay@6 p2_2 p1_2 p1_3 p1i_3 p2_3 p2i_3 delay
+Xdelay@7 p2_3 p1_3 p1_4 p1i_4 p2_4 p2i_4 delay
+.ENDS clock_gen
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: _Fig9_25_MSD{sch}
+Xclock_ge@0 p1_1 p1_2 p1_3 p1_4 p1i_1 p1i_2 p1i_3 p1i_4 p2_1 p2_2 p2_3 p2_4 
++p2i_1 p2i_2 p2i_3 p2i_4 clock_gen
+
+* Spice Code nodes in cell cell '_Fig9_25_MSD{sch}'
+VDD VDD 0 DC 5
+Vgnd GND 0 DC 0
+.include C5_models.txt
+.ic v(p1_1)=0 v(p2_1)=5
+.tran 100p 25n
+.END

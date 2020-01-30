@@ -1,0 +1,20 @@
+*DEVICE=BZX84C36V,D
+
+* BZX84C36V D model
+* created using Parts release 7.1 on 03/31/98 at 09:25
+* Parts is a MicroSim product.
+.MODEL BZX84C36V D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=149.75
++ CJO=18.666E-12
++ M=.36733
++ VJ=.74368
++ ISR=42.919E-12
++ BV=36.134
++ IBV=.37878
++ TT=810.79E-9
+*$
+
+

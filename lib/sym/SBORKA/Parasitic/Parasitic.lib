@@ -1,0 +1,25 @@
+.subckt Rb P M params: Rmax=10 Tau=1u K=10
+* Accounting for the modulation of the base resistance of the diode.
+V1 P s 0
+B1 s M I=V(s,M)/(Rmax*(1-tanh(k*v(q))))
+B2 0 q I=i(v1) Rpar=1
+C1 q 0 {Tau}
+.ends Rb
+
+.subckt Rwire n1 n2 length=1 D=0 S=0 N=1 ro=0.0175u
+* Cu-0.0175u, Al=0.028u
+R n1 n2 {ro*length*N/(0.7854*d*d+S)}
+.ends Rwire
+.Subckt Lwire N1 N2 length=1 D=1m
+L1 N1 N2 {200n*length*(log(length/D)+0.389*D/length+0.636)}
+.ends Lwire
+.subckt Cparasitic 1 C=50F
+C 1 0 {c}
+.ends
+.subckt Lparasitic n1 n2 L=4n Rs=1m Rp=1k
+L n1 n2 {L} rser={Rs} Rpar={Rp}
+.ends
+.subckt resUS 1 2 R=1K Cp=0.1p Ls=1n
+C 1 2 {Cp} Lser={Ls} Rpar={R}
+.ends
+

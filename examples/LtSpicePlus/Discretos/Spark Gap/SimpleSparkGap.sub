@@ -1,0 +1,15 @@
+* Copyright Tammo Heeren 02/2005
+*
+.subckt simplesparkgap P1 P2
+S1 N003 N002 N002 P2 SW1
+W1 N002 N003 V1 SW2
+V1 N001 N002 0
+R1 N002 P2 {Roff}
+R2 N003 P2 {Ron}
+W2 N002 N003 V2 SW2
+V2 N001 P1 0
+S2 N002 N003 P2 N002 SW1
+.model SW1 SW(Ron=1m Roff=100Meg Vt={Vbd} Vh={-Vbd*0.05})
+.model SW2 CSW(Ron=1m Roff=100Meg It={Isus} Ih={-Isus*0.05})
+.param Vbd=100 Von=0 Roff=10Meg Ron=1
+.ends simplesparkgap

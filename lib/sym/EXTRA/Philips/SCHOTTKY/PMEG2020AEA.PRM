@@ -1,0 +1,25 @@
+*
+.SUBCKT PMEG2020AEA 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1E+006
+D1 1 2 PMEG2020AEA
+*
+.MODEL PMEG2020AEA D
++ IS = 5.409E-6
++ N = 1.02
++ BV = 22
++ IBV = 5E-5
++ RS = 0.05676
++ CJO = 1.908E-10
++ VJ = 0.3408
++ M = 0.4863
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

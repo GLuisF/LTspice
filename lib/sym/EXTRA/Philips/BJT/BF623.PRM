@@ -1,0 +1,52 @@
+*
+.SUBCKT BF623 1 2 3 
+* housing parasitics
+LB 2 22 3.454E-9 
+LE 3 333 3.543E-09 
+LC 1 11 1E-13 
+CBCG 22 11 1.705E-13 
+CBEG 22 333 5.5E-14 
+CCEG 11 333 1.705E-13 
+Q1 11 22 333 QBF623 AREA = 1 
+*
+.MODEL QBF623 PNP 
++ IS = 8.912E-15 
++ NF = 0.9978 
++ ISE = 1.62E-15 
++ NE = 1.45 
++ BF = 130 
++ IKF = 0.015 
++ VAF = 165 
++ NR = 0.9979 
++ ISC = 7.8E-13 
++ NC = 1.21 
++ BR = 2.018 
++ IKR = 0.07 
++ VAR = 86 
++ RB = 200 
++ IRB = 8.362E-06 
++ RBM = 0.001 
++ RE = 0.62 
++ RC = 0.255 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.552E-11 
++ VJE = 0.7704 
++ MJE = 0.3878 
++ TF = 1.2E-09 
++ XTF = 9 
++ VTF = 5 
++ ITF = 0.06 
++ PTF = 0 
++ CJC = 8.382E-12 
++ VJC = 0.9588 
++ MJC = 0.5687 
++ XCJC = 1 
++ TR = 1E-32 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.ENDS
+*

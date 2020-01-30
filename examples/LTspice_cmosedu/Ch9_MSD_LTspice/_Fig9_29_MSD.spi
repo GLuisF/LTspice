@@ -1,0 +1,37 @@
+*** SPICE deck for cell _Fig9_29_MSD{sch} from library Ch9_MSD
+*** Created on Wed May 21, 2008 17:48:05
+*** Last revised on Sun Jan 11, 2009 10:56:00
+*** Written on Tue Mar 24, 2009 09:30:57 by Electric VLSI Design System, 
+*version 8.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+.OPTIONS NOMOD NOPAGE
+
+*** CELL: amp{sch}
+.SUBCKT amp Inm Inp Outm Outp
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@4 Outm Outm gnd gnd NMOS L=0.6U W=30U
+Mnmos@5 Outp Outm gnd gnd NMOS L=0.6U W=30U
+Mpmos@4 net@113 Inp Outm vdd PMOS L=0.6U W=300U
+Mpmos@5 net@113 Inm Outp vdd PMOS L=0.6U W=300U
+Mpmos@6 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+Mpmos@8 vdd Outm net@113 vdd PMOS L=0.6U W=30U
+.ENDS amp
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: _Fig9_29_MSD{sch}
+Xamp@1 Vinm Vinp Voutm Voutp amp
+
+* Spice Code nodes in cell cell '_Fig9_29_MSD{sch}'
+VDD VDD 0 DC 5
+VGND GND 0 DC 0
+Vinp Vinp 0 DC 2.5
+Vinn Vinm 0 DC 2.5 PULSE 2.45 2.55 10n 100p 100p 5n
+Clp voutp 0 400f
+Clm voutm 0 400f
+.include C5_models.txt
+*.dc Vinp 2.4 2.6
+.tran 10p 25n 5n
+.END

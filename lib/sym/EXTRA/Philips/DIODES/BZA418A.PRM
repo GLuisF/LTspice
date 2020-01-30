@@ -1,0 +1,36 @@
+*
+.SUBCKT BZA418A 1 2 3 4 5 6
+*
+* The Resistors R1-R4 do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+D1 2 1 BZA418A
+R1 2 1 6.5E+08
+D2 2 3 BZA418A
+R2 2 3 6.5E+08
+D3 5 4 BZA418A
+R3 5 4 6.5E+08
+D4 5 6 BZA418A
+R4 5 6 6.5E+08
+*
+* The resistor R5 is only for 
+* pinning of the device
+*
+R5 2 5 0
+*
+.MODEL BZA418A D
++ IS = 2.26E-14
++ N = 1.135
++ BV = 17.9
++ IBV = 1E-09
++ RS = 0.2056
++ CJO = 4.079E-11
++ VJ = 0.5582
++ M = 0.381
++ FC = 0.5
++ TT = 7.502E-07
+.ENDS
+*

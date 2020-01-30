@@ -1,0 +1,33 @@
+*
+.SUBCKT PMEG2010BEV 1 2 3 4 5 6
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 3 1 1E+6
+D1 3 1 PMEG2010BEV
+*
+* The resistors R2...R5 are only for
+* pinning of the device
+*
+R2 3 4 0
+R3 1 2 0
+R4 1 5 0
+R5 1 6 0
+*
+.MODEL PMEG2010BEV D
++ IS = 3.334E-6
++ N = 0.9791
++ BV = 22
++ IBV = 0.0001
++ RS = 0.08222
++ CJO = 1.266E-10
++ VJ = 0.3619
++ M = 0.5
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

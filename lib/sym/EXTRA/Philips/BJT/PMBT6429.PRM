@@ -1,0 +1,75 @@
+*
+.SUBCKT PMBT6429 1 2 3
+* 
+* housing parasitics
+LB 2 22 1.25E-09
+LE 3 33 1.12E-09 
+LC 1 11 2.3E-10 
+CBCG 22 11 6.2E-14 
+CBEG 22 33 4.5E-14 
+CCEG 11 33 6.2E-14
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse
+* mode of operation.
+*
+Q1 11 22 33 PMBT6429 
+D1 22 11 DIODE
+*
+.MODEL PMBT6429 NPN 
++ IS = 3.591E-14 
++ NF = 0.997 
++ ISE = 1.17E-14 
++ NE = 1.95 
++ BF = 600 
++ IKF = 0.08 
++ VAF = 77 
++ NR = 0.9927 
++ ISC = 2.885E-18 
++ NC = 0.8 
++ BR = 20 
++ IKR = 4E+05 
++ VAR = 27 
++ RB = 478 
++ IRB = 2.5E-05 
++ RBM = 1 
++ RE = 0.35 
++ RC = 0.8 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.116E-11 
++ VJE = 0.6 
++ MJE = 0.3536 
++ TF = 3.8E-10 
++ XTF = 6 
++ VTF = 6.4 
++ ITF = 0.16 
++ PTF = 0 
++ CJC = 3.552E-12 
++ VJC = 0.3992 
++ MJC = 0.3822 
++ XCJC = 1 
++ TR = 2.5E-08 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.MODEL DIODE D 
++ IS = 1E-16 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1.02 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ XTI = 2 
++ EG = 1.11 
++ XTI = 2 
+.ENDS
+
+

@@ -1,0 +1,74 @@
+*
+.SUBCKT PBSS9110T 1 2 3 
+*
+* housing parasitics
+LB 1 11 1.3E-009 
+LE 2 22 1.3E-009 
+LC 3 33 2.3E-010 
+CBCG 11 33 6.2E-014 
+CBEG 11 22 4.5E-014 
+CCEG 22 33 6.2E-014
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse
+* mode of operation. 
+*
+Q1 33 11 22 PBSS9110T
+D 33 11 DIODE
+* 
+.MODEL PBSS9110T PNP 
++ IS = 3.155E-013 
++ NF = 0.9898 
++ ISE = 3.686E-014 
++ NE = 1.374 
++ BF = 300 
++ IKF = 0.4 
++ VAF = 25 
++ NR = 0.988 
++ ISC = 5E-014 
++ NC = 2.742 
++ BR = 18 
++ IKR = 5 
++ VAR = 15 
++ RB = 10 
++ IRB = 0.0007 
++ RBM = 1.85 
++ RE = 0.06 
++ RC = 0.11 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 2.165E-010 
++ VJE = 0.8147 
++ MJE = 0.4025 
++ TF = 1.125E-009 
++ XTF = 1.2 
++ VTF = 2.2 
++ ITF = 0.9 
++ PTF = 0 
++ CJC = 4.783E-011 
++ VJC = 1 
++ MJC = 0.53 
++ XCJC = 1 
++ TR = 4E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.99
+*
+.MODEL DIODE D 
++ IS = 9.765E-014 
++ N = 1.021 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1500 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

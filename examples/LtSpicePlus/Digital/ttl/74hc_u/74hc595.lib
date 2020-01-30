@@ -1,0 +1,37 @@
+.subckt 74hc595 OE ST_CP DS MR SH_CP Q0 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 VCC VGND  vcc1={vcc} speed1={speed} tripdt1={tripdt}
+.param vcc=5 speed=1 tripdt=1e-9
+.param vcc1={vcc} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(11-3-3)*4.0/({vcc1}-0.5)*{speed1}
+.param td2=1e-9*(14+4-3-3)*4.0/({vcc1}-0.5)*{speed1}
+A1 si 0 sck sclr 0 0 qi1 0 DFLOP td={td1}
+A2 qi1 0 sck sclr 0 0 qi2 0 DFLOP td={td1}
+A3 qi2 0 sck sclr 0 0 qi3 0 DFLOP td={td1}
+A4 qi3 0 sck sclr 0 0 qi4 0 DFLOP td={td1}
+A5 qi4 0 sck sclr 0 0 qi5 0 DFLOP td={td1}
+A6 qi5 0 sck sclr 0 0 qi6 0 DFLOP td={td1}
+A7 qi6 0 sck sclr 0 0 qi7 0 DFLOP td={td1}
+A8 qi7 0 sck sclr 0 0 qi8 0 DFLOP td={td1}
+A9 qi1 0 rck sclr 0 0 q1x 0 DFLOP td={td1}
+A10 qi2 0 rck sclr 0 0 q2x 0 DFLOP td={td1}
+A11 qi3 0 rck sclr 0 0 q3x 0 DFLOP td={td1}
+A12 qi4 0 sck sclr 0 0 q4x 0 DFLOP td={td1}
+A13 qi5 0 rck sclr 0 0 q5x 0 DFLOP td={td1}
+A14 qi6 0 rck sclr 0 0 q6x 0 DFLOP td={td1}
+A15 qi7 0 rck sclr 0 0 q7x 0 DFLOP td={td1}
+A16 qi8 0 rck sclr 0 0 q8x 0 DFLOP td={td1}
+XU1 DS si VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU2 SH_CP sck VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU3 MR N001 VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU4 ST_CP rck VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU5 oei q1x q1 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU6 oei q2x q2 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU7 oei q3x q3 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU8 oei q4x q4 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU9 oei q5x q5 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU10 oei q6x q6 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU11 oei q7x q7 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU12 oei q8x q8 VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU13 OE N002 VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+A17 N001 0 0 0 0 sclr 0 0 BUF
+A18 N002 0 0 0 0 oei 0 0 BUF
+.ends

@@ -1,0 +1,32 @@
+*
+.SUBCKT PMEG6010AED 1 2 3 4 5 6
+*
+* The resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse
+* mode of operation.
+*
+R1 3 1 1E+7
+D1 3 1 PMEG6010AED
+*
+* The resistors R2...R5 are only for 
+* pinning of the device
+*
+R2 1 2 0
+R3 3 4 0
+R4 1 5 0
+R5 1 6 0
+*
+.MODEL PMEG6010AED D
++ IS = 5E-7
++ N = 0.9751
++ BV = 66
++ IBV = 0.0004
++ RS = 0.3422
++ CJO = 1.75E-10
++ VJ = 0.3761
++ M = 0.4725
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS

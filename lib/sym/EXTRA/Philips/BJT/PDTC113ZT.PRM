@@ -1,0 +1,67 @@
+*
+.SUBCKT PDTC113ZT 1 2 3 
+*
+R1 1 22 1000
+Cres1 1 3 1.6E-013 
+R21 11 22 5000 
+R22 11 2 5000 
+Cres2 11 3 5E-014 
+* 
+Q1 3 22 2 TC213Z 
+D1 22 3 DIODE 
+*
+.MODEL TC213Z NPN 
++ IS = 1.947E-014 
++ NF = 0.9958 
++ ISE = 2.513E-014 
++ NE = 2.21 
++ BF = 377 
++ IKF = 0.22 
++ VAF = 76 
++ NR = 0.994 
++ ISC = 3E-013 
++ NC = 2 
++ BR = 20 
++ IKR = 0.16 
++ VAR = 16 
++ RB = 116 
++ IRB = 0.000145 
++ RBM = 4.5 
++ RE = 0.29 
++ RC = 0.58 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.01E-011 
++ VJE = 0.7749 
++ MJE = 0.377 
++ TF = 5.1E-010 
++ XTF = 6 
++ VTF = 2 
++ ITF = 0.2 
++ PTF = 0 
++ CJC = 2.89E-012 
++ VJC = 0.3 
++ MJC = 0.3026 
++ XCJC = 1 
++ TR = 2.3E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+*
+.MODEL DIODE D 
++ IS = 1.062E-015 
++ N = 0.9801 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1000 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

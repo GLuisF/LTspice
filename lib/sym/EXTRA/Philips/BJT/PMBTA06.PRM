@@ -1,0 +1,70 @@
+*
+.SUBCKT PMBTA06 1 2 3 
+* housing parasitics
+LB 2 22 1.25E-09 
+LE 3 33 1.12E-09 
+LC 1 11 2.3E-10 
+CBCG 22 11 6.2E-14 
+CBEG 22 33 4.5E-14 
+CCEG 11 33 6.2E-14 
+Q1 11 22 33 QPMBTA06 
+D1 22 11 DIODE 
+*
+* The diode does not reflect a physical
+* device but improves only modeling
+* in the reverse mode of operation
+*
+.MODEL QPMBTA06 NPN 
++ IS = 5.083E-14 
++ NF = 0.9903 
++ ISE = 3.284E-16 
++ NE = 1.2 
++ BF = 188 
++ IKF = 1.5 
++ VAF = 170 
++ NR = 0.9817 
++ ISC = 3.78E-15 
++ NC = 1.1 
++ BR = 16.51 
++ IKR = 0.12 
++ VAR = 33 
++ RB = 25 
++ IRB = 1E-05 
++ RBM = 0.2 
++ RE = 0.203 
++ RC = 0.25 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 6.661E-11 
++ VJE = 0.6716 
++ MJE = 0.3424 
++ TF = 6.5E-10 
++ XTF = 8 
++ VTF = 2 
++ ITF = 0.7 
++ PTF = 0 
++ CJC = 1.576E-11 
++ VJC = 0.5623 
++ MJC = 0.4561 
++ XCJC = 1 
++ TR = 2.5E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.68 
+.MODEL DIODE D 
++ IS = 7.58E-15 
++ N = 0.9585 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 400 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

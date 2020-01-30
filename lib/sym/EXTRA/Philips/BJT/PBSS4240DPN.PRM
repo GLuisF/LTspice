@@ -1,0 +1,90 @@
+*
+* PBSS4240DPN
+*
+* 2 Complementary BISS Transistors in SOT457 / SC-74
+*
+.SUBCKT PBSS4240DPN 1 2 3 4 5 6
+*
+Q1 6 2 1 TR1
+Q2 3 5 4 TR2
+*
+.MODEL TR1 NPN
++ IS = 1.967E-13
++ NF = 0.9876
++ ISE = 1.999E-13
++ NE = 2.5
++ BF = 480
++ IKF = 1
++ VAF = 85
++ NR = 0.9878
++ ISC = 1E-18
++ NC = 2.563
++ BR = 65
++ IKR = 5.5
++ VAR = 12
++ RB = 80
++ IRB = 3E-05
++ RBM = 0.6
++ RE = 0.051
++ RC = 0.073
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 1.158E-10
++ VJE = 0.5499
++ MJE = 0.3105
++ TF = 4.5E-10
++ XTF = 9
++ VTF = 3
++ ITF = 0.8
++ PTF = 0
++ CJC = 2.146E-11
++ VJC = 0.739
++ MJC = 0.4495
++ XCJC = 1
++ TR = 1.5E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.5
+.MODEL TR2 PNP
++ IS = 2.526E-13
++ NF = 0.9959
++ ISE = 1.056E-13
++ NE = 1.763
++ BF = 480
++ IKF = 0.49
++ VAF = 40
++ NR = 0.994
++ ISC = 5.238E-14
++ NC = 1.128
++ BR = 75
++ IKR = 0.3
++ VAR = 10
++ RB = 21
++ IRB = 0.00019
++ RBM = 0.2
++ RE = 0.048
++ RC = 0.085
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 9.2E-11
++ VJE = 0.8407
++ MJE = 0.4065
++ TF = 5.6E-10
++ XTF = 10
++ VTF = 1
++ ITF = 0.4
++ PTF = 0
++ CJC = 3.212E-11
++ VJC = 0.5149
++ MJC = 0.3901
++ XCJC = 1
++ TR = 6E-09
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.ENDS
+*

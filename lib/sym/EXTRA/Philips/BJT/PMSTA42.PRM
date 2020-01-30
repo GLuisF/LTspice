@@ -1,0 +1,66 @@
+*
+.SUBCKT PMSTA42 1 2 3
+*
+Q1 1 2 3 PMSTA42
++ AREA = 1
+D1 2 1 DIODE
+*
+* The diode does not reflect a
+* physical device but improves
+* only modeling in the reverse 
+* mode of operation.
+*
+.MODEL PMSTA42 NPN
++ IS = 1.969E-14
++ NF = 0.9875
++ ISE = 4.744E-16
++ NE = 1.099
++ BF = 300
++ IKF = 0.0064
++ VAF = 30.4
++ NR = 1
++ ISC = 1E-14
++ NC = 1.5
++ BR = 3.8
++ IKR = 0.055
++ VAR = 65.4
++ RB = 245
++ IRB = 2E-05
++ RBM = 3
++ RE = 0.1
++ RC = 0.7
++ XTB = 0
++ EG = 1.11
++ XTI = 3
++ CJE = 3.912E-11
++ VJE = 0.6495
++ MJE = 0.3282
++ TF = 1E-09
++ XTF = 10
++ VTF = 25
++ ITF = 0.15
++ PTF = 0
++ CJC = 4.5E-12
++ VJC = 0.3487
++ MJC = 0.3289
++ XCJC = 1
++ TR = 8E-07
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL DIODE D
++ IS = 1.1E-13
++ N = 1
++ BV = 1000
++ IBV = 2E-08
++ RS = 1500
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 2
+.ENDS
+*

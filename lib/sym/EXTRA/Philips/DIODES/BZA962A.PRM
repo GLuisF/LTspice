@@ -1,0 +1,19 @@
+*DEVICE=BZA962A,D
+
+* BZA962A D model
+* updated using Model Editor release 9.0 on 08/08/01 at 15:48
+* Model Editor is an OrCAD product.
+.MODEL BZA962A D
++ IS=322.57E-18
++ N=.9961
++ RS=.31568
++ IKF=7.9489
++ CJO=89.986E-12
++ M=.33327
++ VJ=.75415
++ ISR=55.253E-9
++ NR=3.2011
++ BV=6.4066
++ IBV=2.9783
++ TT=865.62E-9
+*$

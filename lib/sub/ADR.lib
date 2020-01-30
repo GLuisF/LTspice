@@ -1,0 +1,34 @@
+* Copyright © Analog Devices, Inc. 2019.  All rights reserved.
+*
+.subckt AD590 1 2
+D1 N003 2 X N=2.3
+R2 N002 0 T 1
+I2 0 N002 .3002m
+C1 1 N003 10p
+C2 N003 2 10p
+D2 2 1 S
+D3 N003 1 Y
+G1 1 N003 N002 0 1m
+.model X D(Eg=1.4 Rs=2.5K)
+.model Y D(Ron=1K Roff=1G Vfwd=-.1 epsilon=1
+.model S D(Ron=1 Roff=1T epsilon=1)
+.model T R(R=1K tc1=0.003331667499583541)
+.ends AD590
+*
+.subckt ADR225 1 2 3
+C2 1 2 10p
+C20 3 2 10p Rpar=250K
+A1 N005 3 1 1 1 1 N006 1 OTA Ref=0 Rclamp=1Meg Vhigh=.5 Vlow=-.5 en=400n enk=10 Rout=400Meg epsilon=1 Iout=1u G=3u
+M2 N003 N006 1 1 P temp=27
+D1 2 N006 X
+A2 1 2 2 2 2 2 N005 2 SCHMITT Vhigh=2.5 Vt=2. Vh=1m Rout=250 Cout=1n
+D2 2 3 S
+R2 1 N005 10Meg
+C3 1 N006 1p Rser=3Meg Cpar=.1p
+D3 N003 3 1V
+C4 N003 2 10p
+.model P VDMOS(Kp=2 Vto=0 Ksubthres=100m pchan)
+.model X D(Ron=1 Roff=1T epsilon=.5)
+.model S D(Ron=1 Roff=1G epsilon=1)
+.model 1V D(Ron=10 Roff=1G Vfwd=.8 epsilon=.1)
+.ends ADR225

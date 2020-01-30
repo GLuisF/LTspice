@@ -1,0 +1,8 @@
+.SUBCKT xopps in out psp psm vgnd  
+* Additional quiescent current if needed.
+* Example:  X1 xopps ....  IQ=1m
+.PARAM IQ=1p
+V1 in out 0
+G1 psp vgnd VALUE={if((I(V1)>0),(I(V1)+IQ),IQ)}
+G2 vgnd psm VALUE={if((I(V1)<0),(-I(V1)+IQ),IQ)}
+.ends

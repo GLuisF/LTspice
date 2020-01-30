@@ -1,0 +1,122 @@
+* MAX4173T MACROMODEL
+* ------------------------------
+* Revision 0, 9/2003
+* ------------------------------
+* The MAX4173 family of low cost, precision high side current sense amplifiers
+* feature a voltage output that eliminates need for gain setting resistors and
+* has an input common mode range of 0 to +28v which is independent of power 
+* supply voltage.
+* ------------------------------
+* Connections
+*      1  = GND
+*      2  = GND
+*      3  = VCC
+*      4  = RS+
+*      5  = RS-
+*      6  = OUT  
+*****************************
+.SUBCKT MAX4173T 1 2 3 4 5 6  
+ XAMP1 3 1 4 5 6 CSAMP
+ VS1 1 2 0V
+.ENDS
+*****************************
+
+*****************************
+.SUBCKT CSAMP 10 18 11 12 60
+* 10 = VCC
+* 18 = GND
+* 11 = IN+
+* 12 = IN-
+* 60 = OUT
+*****************
+*INPUT STAGE
+RIN 11 12 1MEG
+GIN1 11 14 11 12 500U  
+*50uA AT VSENSE=100MV 
+D1 14 13 DB
+D2 18 14 DB
+VIS1 13 18 2V   
+GIN2 12 18 11 12 1000U
+*****************
+*INPUT BIAS CURRENT WITH VRS+ <= 2V
+VR1 38 18 2.0V
+R3 39 38 100K
+D3 39 40 DA
+EV1 40 18 11 18 1
+GIN3 41 11 POLY(2) 38 39 11 12 0 0 0 0 2M
+GIN4 41 12 POLY(2) 38 39 11 12 0 0 0 0 4M
+VIS6 41 10 0V    
+*****************
+*GAIN STAGE
+FA 18 17 VIS1 20
+R1 17 18 2K
+C1 17 18 30.2P  
+*AMPLIFIER POLE AT 1.7MHz
+DVL11 17 46 DA
+RVL3 46 47 25
+VVL3 47 18 3V  
+*****************
+*OUTPUT VOLTAGE LIMIT
+GA 18 19 17 18 100U
+R2 19 18 10K
+DL3 19 20 DA
+VL3 43 20 0.8V
+EVCC 43 18 10 18 1
+*****************
+*OUTPUT STAGE
+GOUT 18 60 19 18 83.33U 
+ROUT 33 60 12K
+VIS4 33 18 0V
+*****************
+**MINIMUM SUPPLY VOLTAGE
+EVL1 21 18 10 18 1 
+DVL4 22 21 DB
+VIS2 23 22 0V
+RVL1 23 24 2K
+VVL1 24 18 3.3V
+DVL5 14 25 DB
+FVL1 25 18 VIS2 1
+*****************
+**MAXIMUM SUPPLY VOLTAGE
+EVL2 26 18 10 18 1
+DVL6 26 27 DB
+VIS3 27 28 0V
+RVL2 28 29 2.5K
+VVL2 29 18 27.75
+DVL7 14 30 DB
+FVL2 30 18 VIS3 1
+*****************
+**MAXIMUM SENSE CM VOLTAGE
+EVL3 32 18 11 18 1 
+DVL8 32 27 DB
+EVL4 31 18 12 18 1
+DVL9 31 27 DB
+*****************
+*MINIMUM CM VOLTAGE
+ECM1 44 18 11 18 1
+ECM2 45 18 12 18 1
+DVM1 42 44 DA 
+DVM2 42 45 DA
+RCM 42 34 100
+VIS5 18 34 0V
+DVL10 14 35 DB
+FVL3 35 18 VIS5 1 
+*****************
+*PSRR AC AND DC RESPONSE
+GPSRR 18 60 10 18 105.16N
+EPSRR 36 18 10 18 1
+CPSRR 36 37 10P
+RPSRR 37 18 50
+CPSRR1 37 18 40N
+GPSRR1 18 60 37 18 10M
+*****************
+*CMRR
+GCMRR 18 60 11 18 52.7N
+*****************
+*SUPPLY CURRENT
+ISUP 10 18 420U
+**********************************************************
+.MODEL DA D(N=0.1M) 
+.MODEL DB D(IS=100E-14)
+**********************************************************
+.ENDS

@@ -1,0 +1,66 @@
+*
+.SUBCKT PBSS5160DS 1 2 3 
+*
+* The diode does not reflect a 
+* physical device but improves 
+* only modeling in the reverse
+* mode of operation.
+*
+Q1 6 2 1 PBSS5160DS 
+D1 6 2 DIODE
+Q1 3 5 4 PBSS5160DS 
+D1 3 5 DIODE
+* 
+*.MODEL PBSS5160DS PNP 
++ IS = 1.695E-013 
++ NF = 0.9919 
++ ISE = 1.5E-014 
++ NE = 1.348 
++ BF = 370 
++ IKF = 0.4 
++ VAF = 40 
++ NR = 0.9912 
++ ISC = 1.541E-013 
++ NC = 1.821 
++ BR = 30 
++ IKR = 0.4 
++ VAR = 18 
++ RB = 12 
++ IRB = 0.001 
++ RBM = 1.12 
++ RE = 0.06 
++ RC = 0.105 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 9.466E-011 
++ VJE = 0.8044 
++ MJE = 0.3919 
++ TF = 9E-010 
++ XTF = 20 
++ VTF = 1.1 
++ ITF = 1.35 
++ PTF = 0 
++ CJC = 3.162E-011 
++ VJC = 0.7543 
++ MJC = 0.4479 
++ XCJC = 1 
++ TR = 3.2E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.8 
+.MODEL DIODE D 
++ IS = 1.651E-014 
++ N = 1.079 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 1000 
++ CJO = 0 
++ VJ = 1 
++ M = 0.7 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS

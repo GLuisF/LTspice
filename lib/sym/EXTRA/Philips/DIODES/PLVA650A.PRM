@@ -1,0 +1,19 @@
+*DEVICE=PLVA650A,D
+* PLVA650A D model
+* created using Parts release 7.1 on 12/16/98 at 12:03
+* Parts is a MicroSim product.
+.MODEL PLVA650A D
++ IS=535.74E-18
++ N=1.0029
++ RS=.29276
++ IKF=2.5050
++ CJO=119.42E-12
++ M=.32565
++ VJ=.62169
++ ISR=216.91E-9
++ NR=4.9950
++ BV=5.1893
++ IBV=.21213
++ TT=132.15E-9
+*$
+

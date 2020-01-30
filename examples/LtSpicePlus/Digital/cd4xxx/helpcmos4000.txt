@@ -1,0 +1,33 @@
+Version 1.01
+Please read the help file in the folder   "Digital 74HCxxx".
+The example circuit uses a device "dview5" which needs the symbol dview5.asy 
+and  the library file dview.lib. Both files are in the folder  "Digital 
+74HCxxx". The CD4000 devices use VDD instead of VCC for the supply voltage
+node and the supply voltage value.
+This is the only difference to the 74HC and 74HCT devices.
+
+I will upload a HEF4000 library later. This HEF4000 series from Philips is faster.  Therefore you have to set the paramter SPEED=1 to SPEED=0.6 when
+you use the HEF4000 devices with the CD4000 library. 
+
+
+
+
+One user reported a convergence problem with a CD4049 oscillator circuit.
+This problem could be solved in different ways. 
+
+Chance 1:
+Use the alternate solver:
+Control Panel->SPICE Solver-Alternate
+
+Chance 2:
+Reduce the value Gmin in the SPICE control panel:
+Control Panel->SPICE Gmin 1e-11
+
+Chance 3:
+Use the .TRAN ..... startup command instead of .TRAN ... .
+It hasn't helped in this case, but in some other cases.
+
+
+Version V1.02
+Symbol of CD4027B corrected. It had one pin too much.
+

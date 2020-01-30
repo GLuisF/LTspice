@@ -1,0 +1,19 @@
+*DEVICE=BZX84C9V1,D
+
+* BZX84C9V1 D model
+* created using Parts release 7.1 on 03/31/98 at 08:47
+* Parts is a MicroSim product.
+.MODEL BZX84C9V1 D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=149.75
++ CJO=49.094E-12
++ M=.33781
++ VJ=.69176
++ ISR=53.426E-12
++ BV=9.2329
++ IBV=1.0062
++ TT=2.7700E-6
+*$
+

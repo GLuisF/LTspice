@@ -1,0 +1,46 @@
+* AD626B SPICE Macro-model              Rev. A, 11/95
+*                                       ARG / ADSC
+*
+* This version of the AD626 model simulates the worst-case
+* parameters of the 'B' grade. The worst-case parameters
+* used correspond to those in the data sheet.
+*
+* Copyright 1995 by Analog Devices
+*
+* Refer to "README.DOC" file for License Statement. Use of
+* this model indicates your acceptance of the terms and pro-
+* visions in the License Statement.
+*
+* Node assignments
+*                non-inverting input
+*                |  inverting input
+*                |  |  positive supply
+*                |  |  |  negative supply
+*                |  |  |  |  gain=100
+*                |  |  |  |  |  filter
+*                |  |  |  |  |  |  ground
+*                |  |  |  |  |  |  |  output
+*                |  |  |  |  |  |  |  |
+.SUBCKT AD626B   1  2  99 50 30 31 90 49
+*
+* A1 INPUT ATTENUATORS, GAIN, AND OFFSET RESISTORS
+*
+R1 1 3 200K
+R2 2 4 200K
+RS1 3 16 1K
+RS2 4 18 1K
+R3 3 5 41K
+R4 4 6 41K
+R5 5 6 4.201K TC=-13.5U
+R6 5 0 540
+R7 6 0 540
+R9 6 7 10K
+R11 5 0 10K
+C1 16 0 5P
+C2 17 0 5P
+*
+* A1 INPUT STAGE AND POLE AT 1MHZ
+*
+I1 99 8 7.55U
+Q1 11 16 9 QP 1
+Q2 12

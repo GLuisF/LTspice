@@ -1,0 +1,20 @@
+*DEVICE=BZX84C4V7,D
+
+* BZX84C4V7 D model
+* created using Parts release 7.1 on 03/30/98 at 11:47
+* Parts is a MicroSim product.
+.MODEL BZX84C4V7 D
++ IS=110.88E-18
++ N=.92657
++ RS=.85899
++ IKF=147.68
++ CJO=171.18E-12
++ M=.32124
++ VJ=.57636
++ ISR=3.2814E-9
++ BV=4.7745
++ IBV=.10527
++ TT=108.78E-9
+*$
+
+

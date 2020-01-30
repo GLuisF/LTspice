@@ -1,0 +1,65 @@
+.include MCP616_MM_B.txt
+*
+* SUBCIRCUIT FOR SINGLE SUPPLY LOWPASS FILTER
+* CREATED USING FILTERLAB ON 12/25/2005 AT 21:10:37
+* |------------------------------------------------------------|
+* |This model is being supplied as an aid to circuit designs.  |
+* |While it reflects reasonable close similarity to the actual |
+* |filter in terms of performance, it is not suggested as a    |
+* |replacement for breadboarding. Simulation should be used as |
+* |a forerunner or a supplement to traditional lab testing.    |
+* |Neither this model nor any part may be copied without the   |
+* |express written consent of Microchip Technology, Inc.       |
+* |------------------------------------------------------------|
+*
+* 5TH ORDER BUTTERWORTH FILTER
+* GAIN EQUALS 1
+* CONNECTIONS:		INPUT
+*			 |    OUTPUT
+*			 |    |    POSITIVE POWER SUPPLY
+*			 |    |    |    NEGATIVE POWER SUPPLY
+*			 |    |    |    |
+*			 |    |    |    |
+*			 1    2    3    4
+.SUBCKT butter5sallen	 10   40   3    4
+
+
+*************** Stage 1 ***************
+R11	10	11	15800.000
+C11	11	0	0.00000001
+X11	11	20	3	4	20	MCP616
+
+*************** Stage 2 ***************
+R21	20	21	7870.000
+R22	21	22	17800.000
+C21	21	30	0.000000018
+C22	22	0	0.00000001
+X21	22	30	3	4	30	MCP616
+
+*************** Stage 3 ***************
+R31	30	31	3160.000
+R32	31	32	6650.000
+C31	31	40	0.00000012
+C32	32	0	0.00000001
+X31	32	40	3	4	40	MCP616
+
+.ENDS
+
+*Microchip Op Amp models are located on the Microchip website (www.microchip.com).
+*See the User's Guide for general guidelines to selecting an Op Amp.
+.SUBCKT MCP6xxx 1 2 3 4 5
+*               | | | | |
+*               | | | | Output
+*               | | | Negative Power Supply
+*               | | Positive Power Supply
+*               | Inverting Input
+*               Non-inverting Input
+R1 1 0 1T
+R2 2 0 1T
+R3 3 0 1T
+R4 4 0 1T
+E5 5 0 POLY(1) 1 2   0 1T
+R5 5 0 1T
+.ENDS MCP6xxx
+
+

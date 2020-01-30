@@ -1,0 +1,1 @@
+.model SPA11N60C3 VDMOS(Rg=1 Vto=3.8 Rd=130m Rs=100m Rb=170m Kp=50 Cgdmax=3n Cgdmin=0.4n Cgs=1n Cjo=0.90n Is=90p mfg=Infineon Vds=650 Ron=340m Qg=45n)

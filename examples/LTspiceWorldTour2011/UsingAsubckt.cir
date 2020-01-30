@@ -1,0 +1,14 @@
+* D:\LTspiceWorldTour2009\UsingAsubckt.asc
+V1 IN 0 SINE(0 1 1K)
+XX1 0 IN TAP pot params: R=10K W={x}
+
+* block symbol definitions
+.subckt pot BOT TOP WIP
+R1 TOP WIP {R*(1-limit(.01,w,.99))}
+R2 WIP BOT {R*limit(.01,w,.99)}
+.ends pot
+
+.tran 3m
+.step param X .2 .8 .2
+
+.end

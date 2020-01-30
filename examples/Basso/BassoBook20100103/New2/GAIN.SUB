@@ -1,0 +1,5 @@
+.SUBCKT GAIN 1 2 
+           * IN OUT
+E1 2 0 1 0 = {GAIN}
+ 
+.ENDS

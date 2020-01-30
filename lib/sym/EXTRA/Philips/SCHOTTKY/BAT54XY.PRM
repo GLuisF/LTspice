@@ -1,0 +1,32 @@
+*
+.SUBCKT BAT54XY 1 2
+*
+* The Resistors do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+R1 1 6 4.795E+7
+D1 1 6 BAT54XY
+R2 6 2 4.795E+7
+D2 6 2 BAT54XY
+R3 4 3 4.795E+7
+D3 4 3 BAT54XY
+R4 3 5 4.795E+7
+D4 3 5 BAT54XY
+*
+.MODEL BAT54XY D
++ IS = 2.019E-007
++ N = 1.003
++ BV = 33
++ IBV = 1.5E-006
++ RS = 2.759
++ CJO = 7.258E-012
++ VJ = 0.2049
++ M = 0.3577
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

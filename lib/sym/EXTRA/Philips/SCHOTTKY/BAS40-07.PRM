@@ -1,0 +1,27 @@
+*
+.SUBCKT BAS40-07 1 2 3 4
+*
+* The resistor does not reflect a
+* physical devices.  Instead it improves
+* modeling in the reverse mode of
+* operation.
+*
+R1 4 1 8E+08
+D1 4 1 BAS40-07
+R2 3 2 8E+08
+D2 3 2 BAS40-07
+*
+.MODEL BAS40-07 D
++ IS = 8.361E-09
++ N = 1.003
++ BV = 44
++ IBV = 8E-07
++ RS = 5.031
++ CJO = 3.8E-12
++ VJ = 0.1119
++ M = 0.2915
++ FC = 1
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

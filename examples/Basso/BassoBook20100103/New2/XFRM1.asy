@@ -1,0 +1,22 @@
+Version 4
+SymbolType BLOCK
+LINE Normal -17 -16 -47 -16
+LINE Normal -17 32 -17 -16
+LINE Normal -47 32 -17 32
+LINE Normal -47 32 -47 32
+LINE Normal 0 32 0 -16
+LINE Normal 32 -16 0 -16
+LINE Normal 32 32 0 32
+RECTANGLE Normal -12 48 -15 -31
+RECTANGLE Normal 32 68 -47 -43
+RECTANGLE Normal -5 36 -11 -21
+SYMATTR Prefix X
+SYMATTR Value XFMR1
+PIN -48 -16 LEFT 8
+PINATTR SpiceOrder 1
+PIN -48 32 LEFT 8
+PINATTR SpiceOrder 2
+PIN 32 -16 RIGHT 8
+PINATTR SpiceOrder 3
+PIN 32 32 RIGHT 8
+PINATTR SpiceOrder 4

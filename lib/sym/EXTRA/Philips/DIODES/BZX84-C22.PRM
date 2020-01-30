@@ -1,0 +1,19 @@
+*DEVICE=BZX84C22V,D
+
+* BZX84C22V D model
+* created using Parts release 7.1 on 03/31/98 at 09:05
+* Parts is a MicroSim product.
+.MODEL BZX84C22V D
++ IS=2.6665E-18
++ N=.82284
++ RS=.51617
++ IKF=11.760E-3
++ CJO=21.189E-12
++ M=.33428
++ VJ=.65115
++ ISR=39.038E-12
++ BV=22.100
++ IBV=.26549
++ TT=2.6690E-6
+*$
+

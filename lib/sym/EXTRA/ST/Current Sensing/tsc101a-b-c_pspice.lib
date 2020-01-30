@@ -1,0 +1,469 @@
+****************************************************************************
+*
+* WARNING : please consider following remarks before usage
+*
+* 1) All models are a tradeoff between accuracy and complexity (ie. simulation
+*    time).
+*
+* 2) Macromodels are not a substitute to breadboarding, they rather confirm the
+*    validity of a design approach and help to select surrounding component values.
+*
+* 3) A macromodel emulates the NOMINAL performance of a TYPICAL device within
+*    SPECIFIED OPERATING CONDITIONS (ie. temperature, supply voltage, etc.).
+*    Thus the macromodel is often not as exhaustive as the datasheet, its goal
+*    is to illustrate the main parameters of the product.
+*
+* 4) Data issued from macromodels used outside of its specified conditions
+*    (Vcc, Temperature, etc) or even worse: outside of the device operating
+*    conditions (Vcc, Vicm, etc) are not reliable in any way.
+*
+
+****************************************************************************
+****
+***  TSC101A  Spice macromodel subckt 
+***  September 2008
+****                      
+************ CONNECTIONS: 
+****             INVERTING INPUT
+****              |  NON-INVERTING INPUT
+****              |   |  OUTPUT 
+****              |   |   |  POSITIVE POWER SUPPLY
+****              |   |   |   |  NEGATIVE POWER SUPPLY 
+****              |   |   |   |   |     
+****              |   |   |   |   |  
+.SUBCKT TSC101A  VM  VP  VS  VCCP VCCN
+*
+* change all the "IF" ctrl statements with "IF" if you need to use Eldo.  
+*
+    XIAMP_SR VRG3_SR INBUF VRG3_SR NET185 NET257 OPAMP_SR
+    IIB_VP VP 0 DC {Iib}
+    IIB_VM VM 0 DC 4.32u
+    VREADI_ROUT NET191 NET225 DC 0
+    VREADI_RWAKE NET282 DELAY_GEN DC 0
+    VVLIM_LOW_VRG3 NET246 NET196 DC {Vd_compensazione}
+    VREADIO VB_3 VS DC 0
+    VVLIM_HIGH_VRG3 NET206 NET200 DC {Vd_compensazione}
+    DILIM_SINK VB_3_SINK VB_3 DIODE_ILIM
+    DILIM_SOURCE VB_3 VB_3_SOURCE DIODE_ILIM
+    DVLIM_HIGH_VRG3 VRG3 NET206 DIODE_NOVd
+    DVLIM_LOW_VRG3 NET196 VRG3 DIODE_NOVd
+    C86 VRG3_5 VCCN_REF {CBW_A}
+    C87 VRG3_6 VCCN_REF {CBW_A}
+    C_WAKE DELAY_GEN 0 60p
+    C84 VRG3_3 VCCN_REF {CBW_A}
+    C79 VRG3_2 VCCN_REF {CBW_A}
+    C85 VRG3_4 VCCN_REF {CBW_A}
+    CBW VRG3 VCCN_REF {CBW_A}
+    E_ROUT NET225 NET249 VALUE={ IF( V(VP,VM)>=0  , ( Ro_sink
+++(Ro_source - Ro_sink)*1/(1+exp( -alpha_switch_Ro*V(V_Io_val) ) )
++)*I(VreadI_ROUT)  , Ro_OFF*I(VreadI_ROUT) )}
+    E67 INBUF 0 VRG3_6 0 1.0
+    E59 VCCN_REF 0 VCCN 0 1.0
+    E_READIO V_IO_VAL 0 VALUE={I(VreadIo)}
+    E64 NET185 0 VCCP 0 1.0
+    E_VOL NET245 NET246 VALUE={ IF(I(VreadIo)<0 , 24.8*I(VreadIo) , 0 )
++}
+    EOUT NET249 0 VRG3_SR 0 1.0
+    E_IIB_VM_VAL IIB_VM_VAL 0 VALUE={IF( V(Vsense)<= -100m , (8.68e-6 -
++4.32e-6) , (-43e-6)*V(Vsense) )}
+    E65 NET257 0 VCCN 0 1.0
+    E_VOH NET261 NET200 VALUE={ IF(I(VreadIo)<5m , 640m , -0.031 +
++134.2*I(VreadIo) ) }
+    EILIM_SOURCE VB_3_SOURCE VDEP_SOURCE VB_3 0 1.0
+    
+* Eldo:
+*    E_RWAKE_VAL RWAKE_VAL 0 TABLE { V(VP,VM) } = ( 2m , 81k ) (3m , 60k)
+*+(4m , 48k) ( 5m , 40.5k ) (7m , 32k) ( 9m , 27.1k ) (12m 22.7k) ( 15m ,
+*+20k ) (17m 18.75k) ( 20m , 17.5k ) ( 25m , 15.7k ) ( 30m , 14.5k ) ( 35m
+*+, 13.7k ) ( 40m , 13.2k ) ( 50m , 12.4k ) ( 60m , 11.7k ) ( 70m , 11.35k
+*+) ( 80m , 11k ) ( 90m , 10.8k ) ( 100m , 10.61k ) ( 120m , 10.35k ) (
+*+150m , 10.15k )
+*
+* PSpice:
+    E_RWAKE_VAL RWAKE_VAL 0 VALUE={TABLE( V(VP,VM), 2m , 81k , 3m , 60k ,
++ 4m , 48k , 5m , 40.5k , 7m , 32k , 9m , 27.1k , 12m , 22.7k , 15m ,
++ 20k , 17m , 18.75k , 20m , 17.5k , 25m , 15.7k , 30m , 14.5k , 35m ,
++ 13.7k , 40m , 13.2k , 50m , 12.4k , 60m , 11.7k , 70m , 11.35k ,
++ 80m , 11k , 90m , 10.8k , 100m , 10.61k , 120m , 10.35k , 150m , 10.15k )}
+
+    E_VDEP_SOURCE_2 VAL_VDEP_SOURCE_FILTERED 0
++VALUE={IF(V(val_vdep_source)>=0, 0, V(val_vdep_source))}
+    EVIN_WAKE VSENSE_WAKE 0 VALUE={ V(Vsense)*V(waking-up_ctrl) }
+    E_WAKE NET277 0 VALUE={IF( V(VP,VM)>0 , 1 , 0 )}
+    E_RWAKE NET277 NET282 VALUE={ V(Rwake_val)*I(VreadI_Rwake) }
+    E_WAKING-UP_CTRL WAKING-UP_CTRL 0 VALUE={IF( V(delay_gen)>0.99 , 1
++, 0 )}
+    EILIM_SINK VB_3_SINK VDEP_SINK VB_3 0 1.0
+    E_VDEP_SINK_3 VDEP_SINK 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_sink_filtered))}
+    EVIN VSENSE 0 VALUE={IF( (V(VP)>=Vicm_LOW) & (V(VP)<=Vicm_HIGH) &
++(V(Vccp,Vccn)>=Vcc_LOW) & (V(Vccp,Vccn)<=Vcc_HIGH) , V(VP,VM) , 0)}
+    E_VDEP_SOURCE_3 VDEP_SOURCE 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_source_filtered))}
+    EVLIM_HIGH_VRG3 NET261 0 VCCP 0 1.0
+    E_VDEP_SINK_2 VAL_VDEP_SINK_FILTERED 0
++VALUE={IF(V(val_vdep_sink)<=0 , 0 , V(val_vdep_sink))}
+    EVLIM_LOW_VRG3 NET245 0 VCCN 0 1.0
+    E_VDEP_SOURCE_1 VAL_VDEP_SOURCE 0 VALUE={ 129.5  -5000*I(VreadIo)}
+    E_VDEP_SINK_1 VAL_VDEP_SINK 0 VALUE={ -299.5 -5000*I(VreadIo)}
+    R144 VCCN_REF VRG3_6 {Rg3_A}
+    R136 VCCN_REF VRG3_2 {Rg3_A}
+    R142 VCCN_REF VRG3_4 {Rg3_A}
+    RO2_2 NET191 VB_3 {Ro2_2}
+    R143 VCCN_REF VRG3_5 {Rg3_A}
+    R141 VCCN_REF VRG3_3 {Rg3_A}
+    R1 VCCN_REF VRG3 {Rg3_A}
+    G_ICC_VSENSE VCCP VCCN VALUE={IF( V(Vsense)>0 , 3.5e-5 +
++0.0015*V(Vsense) , 0 )}
+    G_IIB-VP_VSENSE VP 0 VALUE={IF( V(Vsense)>0 , V(Vsense)/Rg1 , 0 )}
+    G70 VCCN_REF VRG3_6 VRG3_5 VCCN_REF {1/Rg3_A}
+    G67 VCCN_REF VRG3_3 VRG3_2 VCCN_REF {1/Rg3_A}
+    G60 VM 0 VALUE={IF( V(Vsense)>0 , 0 , V(Iib_VM_val) )}
+    G68 VCCN_REF VRG3_4 VRG3_3 VCCN_REF {1/Rg3_A}
+    G62 VCCN_REF VRG3_2 VRG3 VCCN_REF {1/Rg3_A}
+    G69 VCCN_REF VRG3_5 VRG3_4 VCCN_REF {1/Rg3_A}
+    G_IOUT_SOURCED VCCP 0 VALUE={IF(I(VreadIo)>0, I(VreadIo),0)}
+    GM1 VCCN_REF VRG3 VALUE={IF( V(VP,VM)>=0 , V(Vsense_wake)/Rg1 , 0
++)}
+    G_ICC_VCC VCCP VCCN POLY(1) VCCP VCCN 1.26e-4 3.25e-6
+    G_IOUT_SINKED VCCN 0 VALUE={IF(I(VreadIo)>0, 0, I(VreadIo))}
+.ENDS
+*** End of subcircuit definition.
+
+
+
+****************************************************************************
+****
+***  TSC101B  Spice macromodel subckt 
+***  September 2008
+****                      
+************ CONNECTIONS: 
+****             INVERTING INPUT
+****              |  NON-INVERTING INPUT
+****              |   |  OUTPUT 
+****              |   |   |  POSITIVE POWER SUPPLY
+****              |   |   |   |  NEGATIVE POWER SUPPLY 
+****              |   |   |   |   |     
+****              |   |   |   |   |  
+.SUBCKT TSC101B  VM  VP  VS  VCCP VCCN
+*
+* change all the "IF" ctrl statements with "IF" if you need to use Eldo.  
+*
+    XIAMP_SR VRG3_SR INBUF VRG3_SR NET185 NET257 OPAMP_SR
+    IIB_VP VP 0 DC {Iib}
+    IIB_VM VM 0 DC 4.32u
+    VREADI_ROUT NET191 NET225 DC 0
+    VREADI_RWAKE NET282 DELAY_GEN DC 0
+    VVLIM_LOW_VRG3 NET246 NET196 DC {Vd_compensazione}
+    VREADIO VB_3 VS DC 0
+    VVLIM_HIGH_VRG3 NET206 NET200 DC {Vd_compensazione}
+    DILIM_SINK VB_3_SINK VB_3 DIODE_ILIM
+    DILIM_SOURCE VB_3 VB_3_SOURCE DIODE_ILIM
+    DVLIM_HIGH_VRG3 VRG3 NET206 DIODE_NOVd
+    DVLIM_LOW_VRG3 NET196 VRG3 DIODE_NOVd
+    C86 VRG3_5 VCCN_REF {CBW_B}
+    C87 VRG3_6 VCCN_REF {CBW_B}
+    C_WAKE DELAY_GEN 0 60p
+    C84 VRG3_3 VCCN_REF {CBW_B}
+    C79 VRG3_2 VCCN_REF {CBW_B}
+    C85 VRG3_4 VCCN_REF {CBW_B}
+    CBW VRG3 VCCN_REF {CBW_B}
+    E_ROUT NET225 NET249 VALUE={ IF( V(VP,VM)>=0  , ( Ro_sink
+++(Ro_source - Ro_sink)*1/(1+exp( -alpha_switch_Ro*V(V_Io_val) ) )
++)*I(VreadI_ROUT)  , Ro_OFF*I(VreadI_ROUT) )}
+    E67 INBUF 0 VRG3_6 0 1.0
+    E59 VCCN_REF 0 VCCN 0 1.0
+    E_READIO V_IO_VAL 0 VALUE={I(VreadIo)}
+    E64 NET185 0 VCCP 0 1.0
+    E_VOL NET245 NET246 VALUE={ IF(I(VreadIo)<0 , 24.8*I(VreadIo) , 0 )
++}
+    EOUT NET249 0 VRG3_SR 0 1.0
+    E_IIB_VM_VAL IIB_VM_VAL 0 VALUE={IF( V(Vsense)<= -100m , (8.68e-6 -
++4.32e-6) , (-43e-6)*V(Vsense) )}
+    E65 NET257 0 VCCN 0 1.0
+    E_VOH NET261 NET200 VALUE={ IF(I(VreadIo)<5m , 640m , -0.031 +
++134.2*I(VreadIo) ) }
+    EILIM_SOURCE VB_3_SOURCE VDEP_SOURCE VB_3 0 1.0
+
+* Eldo:
+*    E_RWAKE_VAL RWAKE_VAL 0 TABLE { V(VP,VM) } = ( 2m , 81k ) (3m , 60k)
+*+(4m , 48k) ( 5m , 40.5k ) (7m , 32k) ( 9m , 27.1k ) (12m 22.7k) ( 15m ,
+*+20k ) (17m 18.75k) ( 20m , 17.5k ) ( 25m , 15.7k ) ( 30m , 14.5k ) ( 35m
+*+, 13.7k ) ( 40m , 13.2k ) ( 50m , 12.4k ) ( 60m , 11.7k ) ( 70m , 11.35k
+*+) ( 80m , 11k ) ( 90m , 10.8k ) ( 100m , 10.61k ) ( 120m , 10.35k ) (
+*+150m , 10.15k )
+*
+* PSpice:
+    E_RWAKE_VAL RWAKE_VAL 0 VALUE={TABLE( V(VP,VM), 2m , 81k , 3m , 60k ,
++ 4m , 48k , 5m , 40.5k , 7m , 32k , 9m , 27.1k , 12m , 22.7k , 15m ,
++ 20k , 17m , 18.75k , 20m , 17.5k , 25m , 15.7k , 30m , 14.5k , 35m ,
++ 13.7k , 40m , 13.2k , 50m , 12.4k , 60m , 11.7k , 70m , 11.35k ,
++ 80m , 11k , 90m , 10.8k , 100m , 10.61k , 120m , 10.35k , 150m , 10.15k )}
+
+    E_VDEP_SOURCE_2 VAL_VDEP_SOURCE_FILTERED 0
++VALUE={IF(V(val_vdep_source)>=0, 0, V(val_vdep_source))}
+    EVIN_WAKE VSENSE_WAKE 0 VALUE={ V(Vsense)*V(waking-up_ctrl) }
+    E_WAKE NET277 0 VALUE={IF( V(VP,VM)>0 , 1 , 0 )}
+    E_RWAKE NET277 NET282 VALUE={ V(Rwake_val)*I(VreadI_Rwake) }
+    E_WAKING-UP_CTRL WAKING-UP_CTRL 0 VALUE={IF( V(delay_gen)>0.99 , 1
++, 0 )}
+    EILIM_SINK VB_3_SINK VDEP_SINK VB_3 0 1.0
+    E_VDEP_SINK_3 VDEP_SINK 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_sink_filtered))}
+    EVIN VSENSE 0 VALUE={IF( (V(VP)>=Vicm_LOW) & (V(VP)<=Vicm_HIGH) &
++(V(Vccp,Vccn)>=Vcc_LOW) & (V(Vccp,Vccn)<=Vcc_HIGH) , V(VP,VM) , 0)}
+    E_VDEP_SOURCE_3 VDEP_SOURCE 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_source_filtered))}
+    EVLIM_HIGH_VRG3 NET261 0 VCCP 0 1.0
+    E_VDEP_SINK_2 VAL_VDEP_SINK_FILTERED 0
++VALUE={IF(V(val_vdep_sink)<=0 , 0 , V(val_vdep_sink))}
+    EVLIM_LOW_VRG3 NET245 0 VCCN 0 1.0
+    E_VDEP_SOURCE_1 VAL_VDEP_SOURCE 0 VALUE={ 129.5  -5000*I(VreadIo)}
+    E_VDEP_SINK_1 VAL_VDEP_SINK 0 VALUE={ -299.5 -5000*I(VreadIo)}
+    R144 VCCN_REF VRG3_6 {Rg3_B}
+    R136 VCCN_REF VRG3_2 {Rg3_B}
+    R142 VCCN_REF VRG3_4 {Rg3_B}
+    RO2_2 NET191 VB_3 {Ro2_2}
+    R143 VCCN_REF VRG3_5 {Rg3_B}
+    R141 VCCN_REF VRG3_3 {Rg3_B}
+    R1 VCCN_REF VRG3 {Rg3_B}
+    G_ICC_VSENSE VCCP VCCN VALUE={IF( V(Vsense)>0 , 3.5e-5 +
++0.0015*V(Vsense) , 0 )}
+    G_IIB-VP_VSENSE VP 0 VALUE={IF( V(Vsense)>0 , V(Vsense)/Rg1 , 0 )}
+    G70 VCCN_REF VRG3_6 VRG3_5 VCCN_REF {1/Rg3_B}
+    G67 VCCN_REF VRG3_3 VRG3_2 VCCN_REF {1/Rg3_B}
+    G60 VM 0 VALUE={IF( V(Vsense)>0 , 0 , V(Iib_VM_val) )}
+    G68 VCCN_REF VRG3_4 VRG3_3 VCCN_REF {1/Rg3_B}
+    G62 VCCN_REF VRG3_2 VRG3 VCCN_REF {1/Rg3_B}
+    G69 VCCN_REF VRG3_5 VRG3_4 VCCN_REF {1/Rg3_B}
+    G_IOUT_SOURCED VCCP 0 VALUE={IF(I(VreadIo)>0, I(VreadIo),0)}
+    GM1 VCCN_REF VRG3 VALUE={IF( V(VP,VM)>=0 , V(Vsense_wake)/Rg1 , 0
++)}
+    G_ICC_VCC VCCP VCCN POLY(1) VCCP VCCN 1.26e-4 3.25e-6
+    G_IOUT_SINKED VCCN 0 VALUE={IF(I(VreadIo)>0, 0, I(VreadIo))}
+.ENDS
+*** End of subcircuit definition.
+
+
+
+****************************************************************************
+****
+***  TSC101C  Spice macromodel subckt 
+***  September 2008
+****                      
+************ CONNECTIONS: 
+****             INVERTING INPUT
+****              |  NON-INVERTING INPUT
+****              |   |  OUTPUT 
+****              |   |   |  POSITIVE POWER SUPPLY
+****              |   |   |   |  NEGATIVE POWER SUPPLY 
+****              |   |   |   |   |     
+****              |   |   |   |   |  
+.SUBCKT TSC101C  VM  VP  VS  VCCP VCCN
+*
+* change all the "IF" ctrl statements with "IF" if you need to use Eldo.  
+*
+    XIAMP_SR VRG3_SR INBUF VRG3_SR NET185 NET257 OPAMP_SR
+    IIB_VP VP 0 DC {Iib}
+    IIB_VM VM 0 DC 4.32u
+    VREADI_ROUT NET191 NET225 DC 0
+    VREADI_RWAKE NET282 DELAY_GEN DC 0
+    VVLIM_LOW_VRG3 NET246 NET196 DC {Vd_compensazione}
+    VREADIO VB_3 VS DC 0
+    VVLIM_HIGH_VRG3 NET206 NET200 DC {Vd_compensazione}
+    DILIM_SINK VB_3_SINK VB_3 DIODE_ILIM
+    DILIM_SOURCE VB_3 VB_3_SOURCE DIODE_ILIM
+    DVLIM_HIGH_VRG3 VRG3 NET206 DIODE_NOVd
+    DVLIM_LOW_VRG3 NET196 VRG3 DIODE_NOVd
+    C86 VRG3_5 VCCN_REF {CBW_C}
+    C87 VRG3_6 VCCN_REF {CBW_C}
+    C_WAKE DELAY_GEN 0 60p
+    C84 VRG3_3 VCCN_REF {CBW_C}
+    C79 VRG3_2 VCCN_REF {CBW_C}
+    C85 VRG3_4 VCCN_REF {CBW_C}
+    CBW VRG3 VCCN_REF {CBW_C}
+    E_ROUT NET225 NET249 VALUE={ IF( V(VP,VM)>=0  , ( Ro_sink
+++(Ro_source - Ro_sink)*1/(1+exp( -alpha_switch_Ro*V(V_Io_val) ) )
++)*I(VreadI_ROUT)  , Ro_OFF*I(VreadI_ROUT) )}
+    E67 INBUF 0 VRG3_6 0 1.0
+    E59 VCCN_REF 0 VCCN 0 1.0
+    E_READIO V_IO_VAL 0 VALUE={I(VreadIo)}
+    E64 NET185 0 VCCP 0 1.0
+    E_VOL NET245 NET246 VALUE={ IF(I(VreadIo)<0 , 24.8*I(VreadIo) , 0 )
++}
+    EOUT NET249 0 VRG3_SR 0 1.0
+    E_IIB_VM_VAL IIB_VM_VAL 0 VALUE={IF( V(Vsense)<= -100m , (8.68e-6 -
++4.32e-6) , (-43e-6)*V(Vsense) )}
+    E65 NET257 0 VCCN 0 1.0
+    E_VOH NET261 NET200 VALUE={ IF(I(VreadIo)<5m , 640m , -0.031 +
++134.2*I(VreadIo) ) }
+    EILIM_SOURCE VB_3_SOURCE VDEP_SOURCE VB_3 0 1.0
+
+* Eldo:
+*    E_RWAKE_VAL RWAKE_VAL 0 TABLE { V(VP,VM) } = ( 2m , 81k ) (3m , 60k)
+*+(4m , 48k) ( 5m , 40.5k ) (7m , 32k) ( 9m , 27.1k ) (12m 22.7k) ( 15m ,
+*+20k ) (17m 18.75k) ( 20m , 17.5k ) ( 25m , 15.7k ) ( 30m , 14.5k ) ( 35m
+*+, 13.7k ) ( 40m , 13.2k ) ( 50m , 12.4k ) ( 60m , 11.7k ) ( 70m , 11.35k
+*+) ( 80m , 11k ) ( 90m , 10.8k ) ( 100m , 10.61k ) ( 120m , 10.35k ) (
+*+150m , 10.15k )
+*
+* PSpice:
+    E_RWAKE_VAL RWAKE_VAL 0 VALUE={TABLE( V(VP,VM), 2m , 81k , 3m , 60k ,
++ 4m , 48k , 5m , 40.5k , 7m , 32k , 9m , 27.1k , 12m , 22.7k , 15m ,
++ 20k , 17m , 18.75k , 20m , 17.5k , 25m , 15.7k , 30m , 14.5k , 35m ,
++ 13.7k , 40m , 13.2k , 50m , 12.4k , 60m , 11.7k , 70m , 11.35k ,
++ 80m , 11k , 90m , 10.8k , 100m , 10.61k , 120m , 10.35k , 150m , 10.15k )}
+
+    E_VDEP_SOURCE_2 VAL_VDEP_SOURCE_FILTERED 0
++VALUE={IF(V(val_vdep_source)>=0, 0, V(val_vdep_source))}
+    EVIN_WAKE VSENSE_WAKE 0 VALUE={ V(Vsense)*V(waking-up_ctrl) }
+    E_WAKE NET277 0 VALUE={IF( V(VP,VM)>0 , 1 , 0 )}
+    E_RWAKE NET277 NET282 VALUE={ V(Rwake_val)*I(VreadI_Rwake) }
+    E_WAKING-UP_CTRL WAKING-UP_CTRL 0 VALUE={IF( V(delay_gen)>0.99 , 1
++, 0 )}
+    EILIM_SINK VB_3_SINK VDEP_SINK VB_3 0 1.0
+    E_VDEP_SINK_3 VDEP_SINK 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_sink_filtered))}
+    EVIN VSENSE 0 VALUE={IF( (V(VP)>=Vicm_LOW) & (V(VP)<=Vicm_HIGH) &
++(V(Vccp,Vccn)>=Vcc_LOW) & (V(Vccp,Vccn)<=Vcc_HIGH) , V(VP,VM) , 0)}
+    E_VDEP_SOURCE_3 VDEP_SOURCE 0 VALUE={IF( abs(I(VreadIo))<1m , 0 ,
++V(val_vdep_source_filtered))}
+    EVLIM_HIGH_VRG3 NET261 0 VCCP 0 1.0
+    E_VDEP_SINK_2 VAL_VDEP_SINK_FILTERED 0
++VALUE={IF(V(val_vdep_sink)<=0 , 0 , V(val_vdep_sink))}
+    EVLIM_LOW_VRG3 NET245 0 VCCN 0 1.0
+    E_VDEP_SOURCE_1 VAL_VDEP_SOURCE 0 VALUE={ 129.5  -5000*I(VreadIo)}
+    E_VDEP_SINK_1 VAL_VDEP_SINK 0 VALUE={ -299.5 -5000*I(VreadIo)}
+    R144 VCCN_REF VRG3_6 {Rg3_C}
+    R136 VCCN_REF VRG3_2 {Rg3_C}
+    R142 VCCN_REF VRG3_4 {Rg3_C}
+    RO2_2 NET191 VB_3 {Ro2_2}
+    R143 VCCN_REF VRG3_5 {Rg3_C}
+    R141 VCCN_REF VRG3_3 {Rg3_C}
+    R1 VCCN_REF VRG3 {Rg3_C}
+    G_ICC_VSENSE VCCP VCCN VALUE={IF( V(Vsense)>0 , 3.5e-5 +
++0.0015*V(Vsense) , 0 )}
+    G_IIB-VP_VSENSE VP 0 VALUE={IF( V(Vsense)>0 , V(Vsense)/Rg1 , 0 )}
+    G70 VCCN_REF VRG3_6 VRG3_5 VCCN_REF {1/Rg3_C}
+    G67 VCCN_REF VRG3_3 VRG3_2 VCCN_REF {1/Rg3_C}
+    G60 VM 0 VALUE={IF( V(Vsense)>0 , 0 , V(Iib_VM_val) )}
+    G68 VCCN_REF VRG3_4 VRG3_3 VCCN_REF {1/Rg3_C}
+    G62 VCCN_REF VRG3_2 VRG3 VCCN_REF {1/Rg3_C}
+    G69 VCCN_REF VRG3_5 VRG3_4 VCCN_REF {1/Rg3_C}
+    G_IOUT_SOURCED VCCP 0 VALUE={IF(I(VreadIo)>0, I(VreadIo),0)}
+    GM1 VCCN_REF VRG3 VALUE={IF( V(VP,VM)>=0 , V(Vsense_wake)/Rg1 , 0
++)}
+    G_ICC_VCC VCCP VCCN POLY(1) VCCP VCCN 1.26e-4 3.25e-6
+    G_IOUT_SINKED VCCN 0 VALUE={IF(I(VreadIo)>0, 0, I(VreadIo))}
+.ENDS
+*** End of subcircuit definition.
+
+
+
+*******************************************************************************
+*
+* MODELS/SUBCKTS and PARAMS used by TSC101A-B-C subckt:
+*
+
+.SUBCKT OPAMP_SR VM VP VS VCCP VCCN
+    M_NMOS2 VO_DIFF_MINUS VM VEE_N VCCN_ENHANCED MOS_N L={L} W={W}
+    M_NMOS1 VO_DIFF_PLUS VP VEE_N VCCN_ENHANCED MOS_N L={L} W={W}
+    IEE_N VEE_N VCCN_ENHANCED DC {IEE}
+    VVLIM_LOW_VB NET0109 NET0110 DC {Vd_compensazione}
+    VPROT_IN_P_VCCP NET0123 NET0134 DC {V_DPROT}
+    V_ENHANCE_VCCN VCCN_ENHANCED VCCN DC {VCCN_enhance}
+    VVLIM_HIGH_VB NET0187 NET0153 DC {Vd_compensazione}
+    V_ENHANCE_VCCP VCCP_ENHANCED VCCP DC {VCCP_enhance}
+    V_OUTVLIM_LOW NET0224 NET125 DC {Vd_compensazione}
+    VPROT_IN_M_VCCN NET0116 NET0192 DC {V_DPROT}
+    V_OUTVLIM_HIGH NET0201 NET0131 DC {Vd_compensazione}
+    VPROT_IN_P_VCCN NET0115 NET096 DC {V_DPROT}
+    VPROT_IN_M_VCCP NET0190 NET0135 DC {V_DPROT}
+    DVLIM_HIGH_VB VB NET0187 DIODE_NOVd
+    DPROT_IN_M_VCCP VM NET0135 DIODE_VLIM
+    DVLIM_LOW_VB NET0110 VB DIODE_NOVd
+    DPROT_IN_M_VCCN NET0116 VM DIODE_VLIM
+    D_OUTVLIM_LOW NET125 VB_3 DIODE_NOVd
+    DPROT_IN_P_VCCP VP NET0134 DIODE_VLIM
+    DPROT_IN_P_VCCN NET0115 VP DIODE_VLIM
+    D_OUTVLIM_HIGH VB_3 NET0201 DIODE_NOVd
+    CCOMP VB VB_2 {Ccomp}
+    EMEAS_VOUT_DIFF VOUT_DIFF 0 VO_DIFF_PLUS VO_DIFF_MINUS 1.0
+    EVLIM_HIGH_VB NET0153 0 VCCP 0 1.0
+    EVLIM_HIGH_VOUT NET0131 0 VCCP 0 1.0
+    EVLIM_LOW_VB NET0109 0 VCCN 0 1.0
+    E2_REF NET0238 0 VCCN 0 1.0
+    E_VREF VREF 0 NET0250 0 1.0
+    E1_REF NET0210 0 VCCP 0 1.0
+    EVLIM_LOW_VOUT NET0224 0 VCCN 0 1.0
+    RO2_2 VB_3 VB_2 {Ro2_2}
+    RPROT_IN_P_VCCP NET0123 VCCP 100
+    RPROT_IN_M_VCCP VCCP NET0190 100
+    RO1 VS VB_3 {Ro1}
+    RD1 VCCP_ENHANCED VO_DIFF_PLUS {RD}
+    RD2 VCCP_ENHANCED VO_DIFF_MINUS {RD}
+    RO2_1 VREF VB_2 {Ro2_1}
+    R1_REF NET0210 NET0250 1Meg
+    R1 VB VREF {R1}
+    RPROT_IN_M_VCCN VCCN NET0192 15K
+    R2_REF NET0250 NET0238 1Meg
+    RPROT_IN_P_VCCN NET096 VCCN 15K
+    G_I_VB VB_2 VREF VB VREF {GB}
+    GM1 VREF VB VOUT_DIFF 0 {1/RD}
+.ENDS
+*** End of subcircuit definition.
+
+
+.PARAM Vicm_LOW  = 2.8
+.PARAM Vicm_HIGH = 30
+.PARAM Vcc_LOW  = 4
+.PARAM Vcc_HIGH = 24
+.PARAM Iib = 5.5e-6
+.PARAM Rg1 = 5k
+.PARAM Av_A  = 20
+.PARAM Av_B  = 50
+.PARAM Av_C  = 100
+.PARAM Rg3_A = {Av_A*Rg1}
+.PARAM Rg3_B = {Av_B*Rg1}
+.PARAM Rg3_C = {Av_C*Rg1}
+.PARAM Ro_sink = 1m
+.PARAM Ro_source = 3
+.PARAM Ro_off = 0.82
+.PARAM alpha_switch_Ro = 1e4
+.PARAM CBW_A = 1.08p
+.PARAM CBW_B = 0.32p
+.PARAM CBW_C = 0.243p
+.PARAM RD=1k
+.PARAM VCCP_enhance=-100m
+.PARAM VCCN_enhance=-700m
+.PARAM Ccomp=11p 
+.PARAM IEE=10u
+.PARAM A0=97.93103448E3
+.PARAM Ro=17587.2
+.PARAM W=11u
+.PARAM L=1u
+.PARAM gm_mos=0.0002348021861505248
+.PARAM GB=10m  
+.PARAM Ro1=1
+.PARAM Ro2_2=1e-3
+.PARAM Ro2_1={Ro - Ro2_2 - Ro1}  
+.PARAM R1={A0/(gm_mos*GB*Ro2_1)}
+.PARAM V_DPROT=0.6
+.PARAM Vd_compensazione=-245.4u
+
+* Eldo:
+*.MODEL MOS_N  NMOS LEVEL=1 MODTYPE=ELDO VTO=+0.65  KP=500E-6
+*.MODEL DIODE_NOVd D LEVEL=1 MODTYPE=ELDO IS=10E-15 N=0.001
+*.MODEL DIODE_VLIM D LEVEL=1 MODTYPE=ELDO IS=0.8E-15  
+*.MODEL DIODE_ILIM D LEVEL=1 MODTYPE=ELDO IS=0.8E-15
+*.MODEL DX D LEVEL=1 MODTYPE=ELDO IS=1E-14 
+*
+* PSpice:
+.MODEL MOS_N  NMOS LEVEL=1  VTO=+0.65  KP=500E-6
+.MODEL DIODE_NOVd D LEVEL=1  IS=10E-15 N=0.001
+.MODEL DIODE_VLIM D LEVEL=1  IS=0.8E-15  
+.MODEL DIODE_ILIM D LEVEL=1  IS=0.8E-15
+.MODEL DX D LEVEL=1  IS=1E-14 
+*
+*******************************************************************************
+

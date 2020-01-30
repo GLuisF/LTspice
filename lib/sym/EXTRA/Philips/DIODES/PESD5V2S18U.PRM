@@ -1,0 +1,61 @@
+.SUBCKT PESD5V2S18U 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+*
+* The Resistors R1-R19 do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.
+*
+D1   6  1  PESD5V2S18U 
+R1   6  1  5E+7
+D2   6  2  PESD5V2S18U 
+R2   6  2  5E+7
+D3   6  3  PESD5V2S18U 
+R3   6  3  5E+7
+D4   6  4  PESD5V2S18U 
+R4   6  4  5E+7
+D5   6  5  PESD5V2S18U 
+R5   6  5  5E+7
+D6   6  7  PESD5V2S18U 
+R6   6  7  5E+7
+D7   6  8  PESD5V2S18U 
+R7   6  8  5E+7
+D8   6  9  PESD5V2S18U 
+R8   6  9  5E+7
+D9   6 10  PESD5V2S18U 
+R9   6 10  5E+7
+D10  6 11  PESD5V2S18U 
+R10  6 11  5E+7
+D11  6 12  PESD5V2S18U 
+R11  6 12  5E+7
+D12  6 13  PESD5V2S18U 
+R12  6 13  5E+7
+D13  6 14  PESD5V2S18U 
+R13  6 14  5E+7
+D14  6 15  PESD5V2S18U 
+R14  6 15  5E+7
+D15  6 17  PESD5V2S18U 
+R15  6 17  5E+7
+D16  6 18  PESD5V2S18U 
+R16  6 18  5E+7
+D17  6 19  PESD5V2S18U 
+R17  6 19  5E+7
+D18  6 20  PESD5V2S18U 
+R18  6 20  5E+7
+*
+* The resistor R19 is only for 
+* pinning of the device
+*
+R19 16  6  0
+*
+.MODEL PESD5V2S18U D 
++ IS = 2.779E-16 
++ N = 0.9976 
++ BV = 6.7 
++ IBV = 0.001 
++ RS = 0.2888 
++ CJO = 1.025E-10 
++ VJ = 0.7664 
++ M = 0.3438 
++ FC = 0.5 
+.ENDS

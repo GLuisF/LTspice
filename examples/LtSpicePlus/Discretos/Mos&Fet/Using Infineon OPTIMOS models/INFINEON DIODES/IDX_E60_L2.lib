@@ -1,0 +1,153 @@
+*****************************************************************
+* Level2 Version of 600V DIODE Models	December 2001           *
+*****************************************************************
+* INFINEON TECHNOLOGIES AG      	IDX_E60_L2.LIB		*
+*								*
+*  (V1.5a)     	12/01  						*
+*                                                               *
+*****************************************************************
+* simulation support:  simulate@infineon.com                    *
+*                                                               *
+* internet          :  www.infineon.com\simulate                * 
+*****************************************************************                                                               *
+*                                                               *
+* Models provided by INFINEON are not warranted by INFINEON as  *
+* fully representing all of the specifications and operating    *
+* characteristics of the semiconductor product to which the     *
+* model relates. The model describe the characteristics of a    * 
+* typical device.                                               * 
+* In all cases, the current data sheet information for a given  *
+* device is the final design guideline and the only actual      *
+* performance specification.                                    *
+* Altough models can be a useful tool in evaluating device      *
+* performance, they cannot model exact device performance under *
+* all conditions, nor are they intended to replace bread-       *
+* boarding for final verification. INFINEON therefore does not  *
+* assume any liability arising from their use.                  *
+* INFINEON reserves the right to change models without prior    * 
+* notice.                                                       *
+*                                                               *
+* This library contains Level 2 models for the following	* 
+* INFINEON Technologies 600 V EMCON HE Power Diodes		*
+* devices/chip-models including lead inductances related	*
+*								*
+* IDD03E60							*
+* IDP06E60 = IDB06E60 = IDD06E60				*
+* IDP09E60 = IDB09E60 = IDD09E60				*
+* IDP15E60 = IDB15E60 = IDD15E60				*
+* IDP23E60 = IDB23E60 = IDD23E60				*
+* IDP30E60 = IDB30E60						*
+* IDP45E60 = IDB45E60						*
+* 								*
+* the model is based on the publication:			*
+* 								*
+* R.Kraus, P.Türkes, J.Sigg					*
+* Physics-based Models Of Power Semiconductor Devices 		*
+* For The Circuit Simulator Spice				*
+* 								*
+* Power Electronics Specialists Conference, 1998.		* 
+* PESC 98 Record. 29th Annual IEEE				*
+*								*
+* SUPPORTemail:	simulate@infineon.com				*
+****************************************************************
+.SUBCKT IDD03E60_L2 ano kat PARAMS: TJ = 27
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.0079	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP06E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.0145	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP09E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.0207	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP15E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.0324	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP23E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.0512	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP30E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.067	N_ideal = 1.05
+.ENDS
+.SUBCKT IDP45E60_L2 ano kat PARAMS: TJ = 27 
+LANO	ano	anol		5n
+LKAT	katl	kat		7n	
+XDIO	anol     katl		L4XXX-ET	PARAMS: TJ = {TJ} A=0.098	N_ideal = 1.05
+.ENDS
+.SUBCKT	L4XXX-ET anode	kath PARAMS: TJ= 27 A = 1 N_ideal = 1
+.PARAM
++q = 1.602e-19		eps0 = 8.85e-14	epsi = 11.8
++kb = 1.38e-23		T0 = 273	ni0 = 1.45e10
++un = 1350		up = 450 tau = .9u	w0 = 70e-4
+.PARAM  Nd = 1.2e14
+.PARAM	BV = 600	Rc = .6m
+.PARAM	vlimit =1.5e7
+.PARAM  Vdiff=  397u
+.PARAM  Ut =	25.8m
+.PARAM  D =	17.44
+.PARAM  L =	3.96m
+.PARAM	Ise0 =	{A*391p}
+.PARAM	Ise_g  = {A*0.33p}
+.PARAM  Ism0 =	{A*20.46u}
+.PARAM	Ism_g = {A*3.204e-19}
+.PARAM  CJ0 =	{A*4.196n}
+.PARAM  QN =	{A*0.135u}
+.PARAM  XF =	3610
+.PARAM	VPT=	450
+.PARAM  a0 =	-0.71
+.PARAM  a1 =	{0.3*(1 + a0)/(1 - a0)}
+.PARAM  a2 =	{0.1/((1 - 0.5*(1 - a1*a1)*(1 - a0)) )}
+.PARAM  Rd0 =	{0.27/A} 
+.PARAM	Ra =	{0.74m/A} 
+RSERIE	anode	ano	{Ra}
+GDE	ano	mi	VALUE = {((ISE(TJ)**((t0 + TJ)/(t0 + 27)))/ISE(27))**((t0 + 27)/(t0 + TJ)) 
++ * MAX(I(VDE),0)**((t0 + 27)/(t0 + TJ)) - MAX(I(VDE),0)}
+GD0	ano	mi1	VALUE = {((ISM(TJ)**((t0 + TJ)/(t0 + 27)))/ISM(27))**((t0 + 27)/(t0 + TJ))
++ * MAX(I(VD0),0)**((t0 + 27)/(t0 + TJ)) - MAX(I(VD0),0)}
+CGDE	ano	mi	10p
+VDE	ano	ano1	0
+DE	ano1	mi	D1
+D0	ano2	mi1	D2
+VD0	ano	ano2	0
+.model	D1	D	(is={Ise0}, N= {N_ideal})
+.model  D2	D	(is={Ism0}, N=2)
+VID0	mi1	mi	0
+VITOT	kat	kathv	0
+EVDIFF	kathv	kath	VALUE = {(TJ + t0)* Vdiff}
+EGIR	mi	kat	VALUE = {I(VITOT)*Rd(V(q,0),TJ)}
+GID	ano	mi	VALUE = {IQ(V(ano,mi),I(VID0),V(q,0),I(VDXJ),I(VITOT),TJ) - I(VIJCT)}
+CQB	q	0	1u
+RHELP	q	0	1meg
+GRQB	q	0	VALUE = {1u*V(q,0)/(Tau*((TJ + t0)/300)**2) }
+GIQ	0	q	VALUE = {MAX(I(VID0),0) + IQ(V(ano,mi),I(VID0),V(q,0),I(VDXJ),I(VITOT),TJ)}
+EXJ	xj1 0	VALUE	{if(time> 25n,xj(V(ano,mi),I(VITOT)),0) }
+CXJ	xj  0	1
+VDXJ	xj1 xj	0
+EJUNCT	jct 0	VALUE = {LIMIT(V(kat,ano),0,VPT)}
+VIJCT	jct cp	0
+DJCT	0   cp	DXXX
+.MODEL  DXXX	D (is = 1p, CJO= {CJ0})
+.FUNC   EG(T)			{1.16 - 7.02e-4*(T + t0)**2/(T + t0 + 1108)}
+.FUNC	DA(T)			{2*kb*un*up/q/(un + up)*(T + t0)*(((T + t0)/300)**-1.5)}
+.FUNC   ISE(T)  		{(T + t0)*un*(((T + t0)/300)**-1.5)*((ise_g*(ni0*((T + t0)/300)**1.5*exp(1/(2*8.61e-5)
++ *(-300*EG(T)+(t0 + T)*EG(27))/(T + t0)/300)))
++ *(kb*(ni0*((T + t0)/300)**1.5*exp(1/(2*8.61e-5)*(-300*EG(T)+(t0 + T)*EG(27))/(T + t0)/300))))}
+.FUNC	ISM(T)			{Ism_g*(ni0*((T + t0)/300)**1.5*exp(1/(2*8.61e-5)*(-300*EG(T)+(t0 + T)*EG(27))/(T + t0)/300))
++ *sqrt(DA(T)/(Tau*((T + t0)/300)**2))}
+.FUNC	xj(V,Y2)		{(XF*SQRT(1-limit(V,-VPT,0)))/SQRT(Nd + MAX(up*(-Y2)/(un + up),0)/A/q/vlimit)}
+.FUNC	w(V,Y2)			{MAX(w0-xj(V,Y2)*(1 + a1),1e-4)}
+.FUNC	Rd(Z,T)			{w0*w0/(un*QN*(((T + t0)/300)**-1.5) + (un + up)*MAX(Z,1m*QN)*1e-6*(((T + t0)/300)**-1.5))}
+.FUNC	Td(V,U,Y2,T) 		{a2*w(V,Y2)*w(V,Y2)/DA(T)/(1 + w(V,Y2)*MAX(U,0)/4/DA(T))}
+.FUNC	IQ(V,Y,Z,U,Y2,T)	{((Tau*((T + t0)/300)**2)*Y - MAX(Z,1m*QN)*1e-6)/(Td(V,U,Y2,T))}
+.ends

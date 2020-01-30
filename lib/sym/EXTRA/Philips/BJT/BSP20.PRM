@@ -1,0 +1,71 @@
+*
+.SUBCKT BSP20 1 2 3 
+* housing parasitics
+LB 2 22 4.13E-9 
+LE 3 33 3.77E-09 
+LC 1 11 4.1E-13 
+CBCG 22 11 1.76E-13 
+CBEG 22 33 8.6E-14 
+CCEG 11 33 1.76E-13 
+Q1 11 22 33 QBSP20 AREA = 1 
+D1 22 11 DIODE 
+*
+* The diode does not reflect a physical
+* device but improves only modeling
+* in the reverse mode of operation
+*
+.MODEL QBSP20 NPN 
++ IS = 1.272E-14 
++ NF = 0.9815 
++ ISE = 1.929E-15 
++ NE = 1.278 
++ BF = 115.3 
++ IKF = 0.035 
++ VAF = 80 
++ NR = 0.975 
++ ISC = 1E-16 
++ NC = 4.472 
++ BR = 5.79 
++ IKR = 0.03 
++ VAR = 28 
++ RB = 390 
++ IRB = 2.94E-06 
++ RBM = 0.1 
++ RE = 0.194 
++ RC = 0.81 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.948E-11 
++ VJE = 0.755 
++ MJE = 0.3519 
++ TF = 1.3E-09 
++ XTF = 19 
++ VTF = 5 
++ ITF = 0.08 
++ PTF = 0 
++ CJC = 4.485E-12 
++ VJC = 0.1287 
++ MJC = 0.3746 
++ XCJC = 1 
++ TR = 5E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+*
+.MODEL DIODE D 
++ IS = 1E-13 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 621.1 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

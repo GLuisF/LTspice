@@ -1,0 +1,4 @@
+ Rotule la salida con Out
+.MEAS AC tmp max mag(V(out))
+.MEAS AC BW trig mag(V(out))=tmp/sqrt(2) rise=1
++ targ mag(V(out))=tmp/sqrt(2) fall=last

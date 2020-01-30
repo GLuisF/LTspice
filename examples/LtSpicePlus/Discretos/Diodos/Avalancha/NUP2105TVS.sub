@@ -1,0 +1,53 @@
+**************************************************************************************
+NUP2105 Macro-Model
+**************************************************************************************
+**************************************************************************************
+AND8254/D
+http://onsemi.com
+9
+* NUP2105 PSPICE macro-model
+* Bi-directional TVS avalanche diode, SOT-23 package, VBR = 26.4 V
+* Model simulates 1 of the 2 I/O lines
+**************************************************************************************
+* DA Cathode DB Cathode DA,B Common Anode
+.SUBCKT NUP2105 1 2 3
+* Bidirectional devices are formed from two uni-directional devices
+X1 3 1 HALFNUP2105
+X2 3 2 HALFNUP2105
+.ENDS NUP2105
+**************************************************************************************
+* Model HALFNUP2105 represents one bi-directional pair of a dual device
+* Anode Cathode
+.SUBCKT HALFNUP2105 7 1
+* Forward Region
+* D1’s CJO term models the capacitance
+D1 2 1 MDD1
+.MODEL MDD1 D IS=1.83708e-14 N=1 XTI=1 RS=0.2
++ CJO=26.4e-12 TT=1e-08
+**************************************************************************************
+* Leakage Region
+* RL models leakage current (IL)
+* MDR temp. coef. model ?IL / ?T
+RL 1 2 MDR 4.32244e+08
+.MODEL MDR RES TC1=0 TC2=0
+**************************************************************************************
+* Reverse Breakdown Region
+* RZ models the ?I / ?V slope
+RZ 2 3 1.28
+D2 4 3 MDD2
+.MODEL MDD2 D IS=2.5e-15 N=0.5
+* Breakdown Voltage (VBR) = IBV x RBV
+EV1 1 4 6 8 1
+IBV 0 6 0.001
+RBV 6 0 MDRBV 26357.1
+* MDRBV temp. coef. model ?VBR / ?T
+.MODEL MDRBV RES TC1=0.00096
+D3 8 0 MDD2
+IT 0 8 0.001
+**************************************************************************************
+* L models the lead-to-silicon connection package inductance
+* L is distributed between two diodes for bi-directional diodes
+L 7 2 1.24e-9
+**************************************************************************************
+.ENDS halfnup2105
+**************************************************************************************

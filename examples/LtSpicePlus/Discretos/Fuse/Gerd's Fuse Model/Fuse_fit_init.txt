@@ -1,0 +1,38 @@
+* Tolerance parameter defined below : if ftol=0 iteration stops only if itermax 
+* reached. 
+* If ftol <  2*(abs(f(worst)-f(best))/((abs(f(worst))+abs(f(best))) the 
+* algorithm stops. 
+ftol=0.01
+debug=1
+* Don't change
+tiny=1e-10
+* delt: Divider to obtain the initial simplex points from the limits lolimits,
+* uplimits and initvals ( dont change this ) -> range 2 .. 5
+delt=4
+* Max. number of iterations
+itermax=150
+ndim=4
+funcfile=fuse_fit.log
+* cmd line without cirfilename !
+spicecmdline=scad3 -b
+* Run your circuit one time before to generate the .net file.
+cirfile=fuse_fit.net
+* dependent from your perl configuration: choose
+simendfile=tinyperl simend_ltspice.pl
+* simendfile=simend_ltspice.exe
+* simendfile=perl simend_ltspice.pl
+ascfile=fuse_fit.asc
+* lower limits
+lolimits=0.1E-3 2E-3 .1 1.4
+* upper limits
+uplimits=10E-3 0.1 5 1.42
+* start values
+*could be chosen better, but this is for demo
+initvals=1.5e-3 3E-3 .2 1.405
+* variables' names
+varnames={tau1opt}_{tau2opt}_{tau3opt}_{IBopt}
+* don't change
+idum=1
+temptr=0
+epsilon=0.9
+nr_temp_iter=4

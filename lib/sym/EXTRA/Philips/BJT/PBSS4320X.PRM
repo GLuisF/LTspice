@@ -1,0 +1,47 @@
+*
+.SUBCKT PBSS4320X 1 2 3 
+*
+Q1 2 3 1 PBSS4320X 
++ AREA = 1
+*
+.MODEL PBSS4320X NPN 
++ IS = 4.761E-013 
++ NF = 0.9884 
++ ISE = 4.936E-015 
++ NE = 1.439 
++ BF = 390 
++ IKF = 6.5 
++ VAF = 60 
++ NR = 0.9867 
++ ISC = 9.526E-015 
++ NC = 1.353 
++ BR = 240 
++ IKR = 2.7 
++ VAR = 18 
++ RB = 12 
++ IRB = 0.0012 
++ RBM = 3.158 
++ RE = 0.03 
++ RC = 0.034 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 3.558E-010 
++ VJE = 0.738 
++ MJE = 0.3557 
++ TF = 7.5E-010 
++ XTF = 7 
++ VTF = 0.6 
++ ITF = 2 
++ PTF = 0 
++ CJC = 9.332E-011 
++ VJC = 0.235 
++ MJC = 0.3 
++ XCJC = 1 
++ TR = 8E-010 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.7211 
+.ENDS
+*

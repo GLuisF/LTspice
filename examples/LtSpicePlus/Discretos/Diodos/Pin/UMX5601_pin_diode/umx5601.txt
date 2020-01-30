@@ -1,0 +1,53 @@
+* subcircuit for UMX5601 PIN diode
+* http://www.microsemi.com/ 
+* 
+.subckt UMX5601 9 20 params:
++ is= 2.00E-8 n = 1.94 m=0.5 ikf=0.10
++ rs = 18m rmin = 18m
++ rdep=15k repi= 22k
++ bv = 3000 ibv = 10E-06 vreverse=6
++ vj = 0.6 phi=0.6
++ W = 175u tau=26u iknee=0.018
++ cepi = 0.6pf ci=2pf
++ lcontact = 900ph cpackage=1.70pf cjo=2.0pf
+.param to={125*w*w}
+.param vi={11.8*w*w/tau}
+.param beta={to/tau}
+cpackage 9 20 {cpackage}
+lcontact 9 10 {lcontact}
+ci 10 25 {ci}
+rconverge2 10 25 1e15
+rconverge1 12 25 1e15
+gdep 25 20 value={v(25,12)/(rdep*(1+(abs((v(9,20))/vreverse)**2.0)))}
+rmin 10 11 {rmin}
+gmod 11 12 value={2*(v(11,12)*v(2,3)/vi)}
+rconverge3 11 12 1e15
+gpin 12 20 value={i(vs2)}
+repi 10 12 {repi}
+cepi 9 20 {cepi}
+ej 30 0 value={v(12,20)}
+vs1 30 31 0
+* single diode model
+d1 31 0 dj
+.model dj d is={is} ikf={ikf} n={n} bv={bv} ibv={ibv} rs={rs} cjo={cjo} vj={vj} m={m}
+e1 1 0 value={i(vs1)}
+vs2 1 2 0
+* ge describes the current-dependent tau
+ge 2 0 value={(v(2)*v(2))/iknee}
+* 8th order approximation for base region
+rp1 2 3 1
+cp1 2 3 {tau}
+rs1 3 0 {beta/3}
+rp2 3 4 5
+cp2 3 4 {tau/5}
+rs3 4 0 {beta/7}
+rp4 4 5 9
+cp4 4 5 {tau/9}
+rs5 5 0 {beta/11}
+rp6 5 6 13
+cp6 5 6 {tau/13}
+rs6 6 0 {beta/15}
+rp7 6 7 17
+cp7 6 7 {tau/17}
+rs7 7 0 {beta/19}
+.ends

@@ -1,0 +1,27 @@
+*
+.SUBCKT BAS240 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it 
+* improves modeling in the reverse
+* mode of operation.
+*
+R1 1 2 6.659E+08 
+D1 1 2 BAS240
+*
+.MODEL BAS240 D 
++ IS = 1.419E-08 
++ N = 1.025 
++ BV = 44 
++ IBV = 1.255E-07 
++ RS = 4.942 
++ CJO = 3.89E-12 
++ VJ = 0.1217 
++ M = 0.2899 
++ FC = 0.5 
++ TT = 0 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*
+

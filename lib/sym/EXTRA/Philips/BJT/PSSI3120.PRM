@@ -1,0 +1,58 @@
+*
+.SUBCKT PSSI3120 1 2 3
+*
+* housing parasitics
+LBlead 2 22 3.45E-10
+LE 3 333 1.12E-09
+LC 1 11 1E-10
+LBbond 22 222 9E-10
+CBCG 222 11 6.2E-14
+CBEG 222 333 4.5E-14
+CCEG 11 333 6.2E-14
+*
+*Here comes the die!
+*
+*The first parallel Diode is between 11 222
+*and made of DiodeCT1, DiodeCT2 and R111 parallel
+D1 11 222 DIODECT1
+D11 11 222 DIODECT2
+R111 11 222 2.1E+09
+*The second parallel Diode is between 11 333
+*and made of DiodeCT1, DiodeCT2 and R222 parallel
+D2 11 222 DIODECT1
+D22 11 222 DIODECT2
+R222 11 222 2.1E+09
+R1 222 444 50
+R2 333 444 50
+R3 11 444 46.4
+C2 11 444 1.4E-10
+*
+.MODEL DIODECT1 D
++ IS = 5.217E-14
++ N = 1.318
++ BV = 13.15
++ IBV = 1.225E-06
++ RS = 0.5576
++ CJO = 2.354E-12
++ VJ = 0.287
++ M = 0.1191
++ FC = 493
++ TT = 0
++ EG = 0.69
++ XTI = 2
+.MODEL DIODECT2 D
++ IS = 1.6E-15
++ N = 0.5009
++ BV = 13.15
++ IBV = 1.225E-06
++ RS = 1.6E+06
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 0.69
++ XTI = 2
+.ENDS
+
+

@@ -1,0 +1,5 @@
+* arbitrary capacitance
+C1 0 N001 Q=1n*time
+R1 N001 0 1e9
+.tran 1
+.end

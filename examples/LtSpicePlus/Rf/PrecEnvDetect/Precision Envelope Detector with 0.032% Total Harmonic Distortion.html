@@ -1,0 +1,141 @@
+
+<HTML>
+<HEAD>
+
+<TITLE>
+ Precision Envelope Detector with 0.032% Total Harmonic Distortion
+</TITLE>
+
+<meta http-equiv="Content-Type" content="text/html;charset=windows-1252">
+</HEAD>
+
+<BODY BGCOLOR="#FFFBF0" TEXT="#000000" LINK="#0000FF" VLINK="#F00000">
+
+	<TABLE WIDTH="95%" BORDER="0" ALIGN="CENTER" CELLSPACING="0" CELLPADDING="3">
+
+	<TR>
+
+	<TD>
+
+	<CENTER>
+
+<IMG SRC="Precision Envelope Detector with 0.032% Total Harmonic Distortion_files/pstlogo0.gif" WIDTH="360" HEIGHT="60" ALT="PST Logo">
+
+<P>
+<A HREF="http://pstca.com/index.htm">Home</A>&nbsp;
+<A HREF="http://pstca.com/patents.htm">Patents</A>&nbsp;
+<A HREF="http://pstca.com/sampler/index.htm">Binary Sampler</A>&nbsp;
+<A HREF="http://pstca.com/articles.htm">Articles</A>&nbsp;
+<A HREF="http://pstca.com/contact.htm">Contact</A>
+
+<P>
+
+		<TABLE WIDTH="95%" BORDER="0" CELLSPACING="0" CELLPADDING="3">
+
+		<TR>
+
+		<TD>
+
+<HR NOSHADE SIZE=1>
+
+		<CENTER>
+
+<B>Precision Envelope Detector with 0.032% Total Harmonic Distortion</B>
+
+		</CENTER>
+
+<HR NOSHADE SIZE=1>
+
+<P><B>Introduction</B>
+
+<P>This circuit is based on the Constant Duty Cycle Peak Detector (CDC),
+<A HREF="http://pstca.com/pdfs/4603299.pdf">United States Patent 4,603,299</A>. Although the original was intended to measure the peak amplitude of a noisy readback signal from a hard disk drive, it also makes an excellent envelope detector for amplitude-modulated signals.
+
+<P>A typical uncompensated diode detector may give from 5% to 10% Total Harmonic Distortion (THD) for 30% amplitude modulated signals.
+
+<P>The CDC can deliver a THD of 0.032% for a 1KHz, 95% modulated signal. Using Synchronous Detection (Exalted Carrier) reduces the THD to 0.0168%. The schematic and plot files for this analysis are not shown here but are included in the archived files.
+
+<P>Fig 1 shows a LTspice schematic of the detector. The modulation signal is fed to the MOD input of A1. The sine, triangle, or square modulation is selected by moving the "MOD" label to the desired source. The output is taken at the "Audio" signal, but the plot shows the signal at Q2B so you can see how well it tracks the envelope.
+
+<P>You can obtain the harmonic distortion for sine wave modulation by viewing the error log in LTspice. Obviously, the distortion will be incorrect for triangle and square wave modulation.
+
+		<CENTER>
+
+<IMG SRC="Precision Envelope Detector with 0.032% Total Harmonic Distortion_files/3998699a.gif" WIDTH="946" HEIGHT="586" ALT="NoAlt">
+
+<P><B>Fig 1. Schematic</B>
+
+		</CENTER>
+
+<P>Fig 2 shows the result with sine wave modulation.
+
+		<CENTER>
+
+<IMG SRC="Precision Envelope Detector with 0.032% Total Harmonic Distortion_files/399869e8.gif" WIDTH="1032" HEIGHT="405" ALT="NoAlt">
+
+<P><B>Fig 2. Sine Wave at 95% Modulation Depth, with 0.032% THD</B>
+
+		</CENTER>
+
+		<CENTER>
+
+<IMG SRC="Precision Envelope Detector with 0.032% Total Harmonic Distortion_files/399869bc.gif" WIDTH="1032" HEIGHT="405" ALT="NoAlt">
+
+<P><B>Fig 3. Triangle Modulation</B>
+
+		</CENTER>
+
+<P>A triangle is particularly difficult for an envelope detector to track. Note how the output follows the envelope down into the notch, then right back out again.
+
+		<CENTER>
+
+<IMG SRC="Precision Envelope Detector with 0.032% Total Harmonic Distortion_files/399869d4.gif" WIDTH="1032" HEIGHT="405" ALT="NoAlt">
+
+<P><B>Fig 4. Square Wave</B>
+
+		</CENTER>
+
+<P>A diode detector gives a much faster risetime than fall time, which makes it overshoot on noisy signals and give an output voltage that is higher than the actual signal.
+
+<P>The CDC has minimal overshoot and settles quickly to the modulation envelope, with fairly symmetrical rise and fall times. This feature, plus the integration in the control loop, allows it to track noisy signals very accurately.
+
+<P>The noise-rejection properties of the CDC make it a predecessor to the
+<A HREF="http://pstca.com/sampler/index.htm">Binary Sampler</A>
+
+<P>The LTspice files are archived
+<A HREF="http://pstca.com/spice/ammod/39986da2.zip">here</A>
+
+<HR NOSHADE SIZE=1>
+
+		<CENTER>
+
+<P>
+<A HREF="http://pstca.com/index.htm">Home</A>&nbsp;
+<A HREF="http://pstca.com/patents.htm">Patents</A>&nbsp;
+<A HREF="http://pstca.com/sampler/index.htm">Binary Sampler</A>&nbsp;
+<A HREF="http://pstca.com/articles.htm">Articles</A>&nbsp;
+<A HREF="http://pstca.com/contact.htm">Contact</A>
+
+		</CENTER>
+
+<HR NOSHADE SIZE=1>
+
+		</TD>
+
+		</TR>
+
+		</TABLE>
+
+	</CENTER>
+
+	</TD>
+
+	</TR>
+
+	</TABLE>
+
+</BODY>
+</HTML>
+
+<!-- www.000webhost.com Analytics Code -->
+<script type="text/javascript" src="

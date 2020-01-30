@@ -1,0 +1,5 @@
+Estos ,odelos son los precursores de
+1Sw555 y 0Sw555
+Para que funcionen hacer negativo el
+signo de la histéresis.
+(LtSpice Only).

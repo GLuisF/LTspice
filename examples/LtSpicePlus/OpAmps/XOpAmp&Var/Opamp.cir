@@ -1,0 +1,45 @@
+*** SPICE Circuit File of OPAMP made by LASICKT 08/29/02 16:49:43
+
+* START OF Ophdr.lib
+.SUBCKT PSRC1 1C 2C 3C 4B 5E 
+Q6 1C 4B 5E PNP1 .5
+Q7 2C 4B 5E PNP1 .5
+Q8 3C 4B 5E PNP1
+.ENDS
+
+.model NPN1 NPN
+.model PNP1 PNP
+.model NPN2 NPN
+.model PNP2 PNP
+.model SPNP1 PNP
+
+.tran .0001 .0005
+*.AC dec 5 10k 1e8
+VSUP VCC 0 10
+VIN IN1 0 5V
++ AC SIN(5 .1V 10khz 0 0 0)
+VREF IN2 0 DC 5V
+
+*#run
+*#plot v(in1) v(out)* END OF Ophdr.lib
+
+*MAIN OPAMP
+Q1 vn1 vn1 0 NPN1
+Q10 vn11 vn11 0 NPN1
+Q11 vn4 vn11 0 NPN2
+Q12 vn3 vn10 vn4 NPN1
+Q13 0 vn4 OUT SPNP1
+Q14 VCC vn3 OUT NPN2
+Q2 vn2 vn1 0 NPN1
+Q3 vn8 vn2 0 NPN1
+Q4 vn1 vn5 vn6 PNP1
+Q5 vn2 vn7 vn6 PNP1
+Q9 VCC vn8 vn3 NPN1
+R1 vn9 vn11 200K
+R2 vn10 vn3 75K
+R3 vn4 vn10 75K
+R4 IN1 vn5 200
+R5 IN2 vn7 200
+R6 COMP vn8 200
+X1 vn6 vn8 vn9 vn9 VCC PSRC1
+.END

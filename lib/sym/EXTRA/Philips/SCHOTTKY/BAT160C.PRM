@@ -1,0 +1,27 @@
+*
+.SUBCKT BAT160C 1 2 3 4
+*
+* The resistors do not reflect 
+* physical devices. Instead they
+* improve modeling in the reverse 
+* mode of operation.
+*
+R1 1 4 1E+7
+D1 1 4 BAT160C
+R1 3 4 1E+7
+D1 3 4 BAT160C
+*
+.MODEL BAT160C D
++ IS = 5E-7
++ N = 0.9751
++ BV = 66
++ IBV = 0.0004
++ RS = 0.3422
++ CJO = 1.75E-10
++ VJ = 0.3761
++ M = 0.4725
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

@@ -1,0 +1,17 @@
+* Impedance Multiplier
+* 1,2 control voltage +/-
+* 3,0 reference impedance Zref
+* 4,5 output node, Z = V(1,2)*Zref
+* Condition: V(1,2) > 0
+*
+.subckt Z_mult 1 2 3 4 5
+
+*based on Ideal_Transformer.asc
+*but voltage_ratio = sqrt(V(1,2))
+G1 0 x1 0 3 1
+G3 0 3 x1 0 1
+R1 x1 0 1G
+B5 4 5 I=V(x1)/SQRT(V(1,2))
+B6 0 x1 I=V(4,5)/SQRT(V(1,2))
+
+.ends

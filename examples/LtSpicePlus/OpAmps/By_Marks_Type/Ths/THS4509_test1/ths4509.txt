@@ -1,0 +1,131 @@
+* THS4509 SUBCIRCUIT Rev-A
+* FULLY DIFFERENTIAL HIGH SPEED MONLITHIC OPERATIONAL AMPLIFIER 
+* WRITTEN 01-24-06
+* THIS MODEL SIMULATES TYPICAL VALUES FOR THE FOLLOWING:
+* FREQUENCY RESPONSE OF THE MAIN DIFFERENTIAL AMP, OUTPUT VOLTAGE LIMIT,   
+* INPUT VOLTAGE NOISE, INPUT CURRENT NOISE, INPUT BIAS CURRENT, INPUT OFFSET VOLTAGE, CM SET POINT, OFFSET, AND BANDWIDTH
+* THIS MODEL WILL NOT PROVIDE ACCURATE SIMULATION OF:  OUTPUT LOADING EFFECTS, SLEW RATE, SETTLING TIME
+* OUTPUT IMPEDANCE, DISTORTION, INPUT OFFSET vs INPUT COMMON-MODE VOLTAGE, CMRR AND PSRR
+* IN PSPICE THIS MODEL WILL NOT CONVERGE IN TRANSIENT ANALYSIS USING PULSES THAT CAUSE GREATER THAN 4000V/us SLEW RATE
+
+*$
+.SUBCKT THS4509 IN+ IN- Vs+ Vs- OUT- OUT+ CM
+
+*INPUT*
+Q9         Vs- 001 005 PNP_IN  2.5
+Q10         Vs- IN- 031 PNP_IN  2.505
+Q11         Vs+ IN- 006 NPN_IN  2.5
+Q12         Vs+ 001 002 NPN_IN  2.495
+Q19         039 005 008 NPN  5.198
+Q20         038 031 009 NPN  5
+Q21         033 006 009 PNP  5.198
+Q22         035 002 008 PNP  5
+R1          009 008  90  
+VI1         002 003 0.69995  
+VI2         004 005 0.701  
+VI3         006 007 0.701  
+VI10        036 031 0.70005  
+R20         036 Vs+  2.7k  
+R21         004 Vs+  2.7k  
+R22         Vs- 003  2.7k  
+R23         Vs- 007  2.7k  
+C1         0 001   0.3p  
+C2         0 IN-    0.3p  
+V1         001 IN+ 000u
+IB+	IN+ 0	8u
+IB-	IN- 0	8u
+
+*HIGH Z NODE*
+Q23         041 041 039 PNP  5
+Q24         027 041 038 PNP  5
+Q17         037 037 038 PNP  5
+Q18         029 037 039 PNP  5
+Q15         032 032 033 NPN  5
+Q16         034 034 035 NPN  5
+Q14         029 032 035 NPN  5
+Q13         027 034 033 NPN  5
+I8         Vs+ 032 DC 750u  
+I9         Vs+ 034 DC 750u  
+I11         037 Vs- DC 750u  
+I12         041 Vs- DC 750u  
+R30         029 027  1meg 
+C5         029 027  0.45p  
+R16         038 Vs+  500  
+R17         039 Vs+  500  
+R18         038 Vs+  500  
+R19         039 Vs+  500  
+R24         Vs- 035  500  
+R25         Vs- 033  500  
+R26         Vs- 035  500  
+R27         Vs- 033  500  
+
+*VOLTAGE LIMIT*
+Q116         027 027 128 NPN  5
+V116         Vs+ 128   1.75 
+Q118         027 027 138 PNP  5
+V118         138 Vs-   1.75  
+Q216         029 029 228 NPN  5
+V216         Vs+ 228   1.75 
+Q218         029 029 238 PNP  5
+V218         238 Vs-   1.75  
+RQ	Vs+ Vs- 475
+
+*FREQUENCY SHAPING*
+E2         028 0 027 0 1
+E3         030 0 029 0 1
+C3         0 024  3p  
+C4         0 017  3p  
+L1         025 028  2n  
+L2         030 026  2n  
+R10         024 025  25  
+R11         017 026  25  
+
+*OUTPUT BUFFER*
+Q1         Vs+ 012 013 NPN  50
+Q2         Vs- 015 016 PNP  50
+Q3         Vs+ 017 015 NPN  13
+Q4         Vs- 017 012 PNP  13
+Q5         Vs+ 019 020 NPN  50
+Q6         Vs- 021 023 PNP  50
+Q7         Vs+ 024 021 NPN  13
+Q8         Vs- 024 019 PNP  13
+I4         011 012 DC 2m  
+I5         015 014 DC 2m  
+I6         018 019 DC 2m  
+I7         021 022 DC 2m 
+R4         Vs- 014  100  
+R7         018 Vs+  100  
+R12         011 Vs+  100  
+R13         Vs- 022  100  
+R5         OUT- 013  1  
+R6         016 OUT-  1  
+R8         OUT+ 020  1  
+R9         023 OUT+  1  
+
+*CM CIRCUIT*
+R2         OUT+ 010  10k  
+R3         010 OUT-  10k  
+*C102 	OUT+ 010 100p
+*C103 	010 OUT- 100p
+R114       CM CM2  100 
+C114 	   CM2 0 2.3p
+R14         Vs+ CM2  50k  
+R15         Vs- CM2  50k  
+V3         043 CM2 3m
+F2         041 Vs- VF2 1
+VF2        040 Vs- 0V
+F1         037 Vs- VF1 1
+VF1        042 040 0V
+G1         042 Vs+ 010 043 .002
+*R100	042 0 1meg
+*C100 	042 0 10p
+
+.MODEL NPN_IN NPN KF=1E-11
+.MODEL PNP_IN PNP KF=1E-11
+.MODEL NPN NPN
+.MODEL PNP PNP
+.ENDS
+
+
+
+*$

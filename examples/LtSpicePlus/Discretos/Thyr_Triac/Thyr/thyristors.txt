@@ -1,0 +1,115 @@
+* C:\Program Files\LTC\LTspiceIV\My Drawings\My SCR master-1.asc
+
+******************************************************
+* Model generated on 17 Dec 2009
+* Model format: LTspice
+* Thyristor / SCR macro model
+* External node designations
+* Node A -> anode
+* Node G -> gate
+* Node K -> cathode
+*
+* The parameters are:
+* Vdrm - forward / reverse breakdown Voltage.
+* Itrms - r.m.s. anode current.
+* Itsm - max. non-repetitive peak anode current.
+* Igt - min. gate trigger current.
+* Vgt - min. gate Voltage.
+* Ihold - min. anode current below which device will
+* switch off.
+* Ileak - forward / reverse leakage current @ Vdrm.
+* Cak - anode to cathode capacitance.
+* GRratio - use to trim exact Vgt versus Igt.
+*
+* The params below are typical or worst case examples
+* as stated in the manufacturers datasheets. This
+* means if you design for that then a real one should
+* work!
+*
+* Double-click on the SpiceModel line in properties
+* box to see a drop-down select list of the following
+* types.
+******************************************************
+
+.SUBCKT 2N5061 A G K ; Motorola 2N5061 - model default
++params: Vdrm=60 Itrms=0.8A Itsm=10A Igt=200uA Vgt=0.8
++ Ihold=5mA Ileak=50uA Cak=50pF GRratio=4
+
+Q1 2 G K 0 QNG
+Q2 1 3 K 0 QNL OFF
+Q3 3 1 A 0 QPL OFF
+D1 1 2 Drev
+D2 A 4 DVA
+D3 K 4 DVA
+I1 A 1 {Ihold} load
+I2 3 K {Ihold} load
+RS A 1 1000k
+RL A K {Rleak}
+C1 A K {Cak}
+
+.param Grbe=(Vgt/Igt)/GRratio
+.param Ggain=Ihold/Igt
+.param Rleak=Vdrm/Ileak
+
+.model QNL NPN(IS=640F Bf=50 RC=.45 TF=5.95u)
+.model QNG NPN(Bf=Ggain Rb=Grbe Vje=Vgt Tf=.3nS Tr=6nS Cje=2pF Cjc=1pF)
+.model QPL PNP(IS=640F Bf=50 RC=.45 TF=5.95u)
+.model DVA D(Vj=.71 BV=Vdrm Cjo=1p)
+.model Drev D(Vfwd=.71)
+.ENDS
+
+.SUBCKT TYN225 A G K ; ST TYN225
+XSCR1 A G K 2N5061
++params: Vdrm=200 Itrms=25 Itsm=300 Igt=40mA Vgt=1.3
++ Ihold=50mA Ileak=4mA GRratio=2
+.ENDS
+
+
+.SUBCKT TYN825RG A G K ; ST TYN825RG
+XSCR1 A G K 2N5061
++params: Vdrm=800 Itrms=25 Itsm=300 Igt=40mA Vgt=1.3
++ Ihold=50mA Ileak=4mA GRratio=2
+.ENDS
+
+
+.SUBCKT C106D A G K ; Fagor C106D1 & ON Semiconductor C106D
+XSCR1 A G K 2N5061
++params: Vdrm=400 Itrms=4 Itsm=20 Igt=200uA Vgt=0.8
++ Ihold=5mA Ileak=400uA
+.ENDS
+
+
+.SUBCKT FS0831DH A G K ; Fagor FS0831DH
+XSCR1 A G K 2N5061
++params: Vdrm=400 Itrms=8 Itsm=95 Igt=15mA Vgt=1.3
++ Ihold=30mA Ileak=100uA GRratio=2
+.ENDS
+
+
+.SUBCKT C106M A G K ; ON Semiconductor C106M
+XSCR1 A G K 2N5061
++params: Vdrm=600 Itrms=4 Itsm=20 Igt=35uA Vgt=0.75
++ Ihold=6mA Ileak=100uA
+.ENDS
+
+
+.SUBCKT BT151-800R A G K ; Philips BT151-800R
+XSCR1 A G K 2N5061
++params: Vdrm=800 Itrms=12 Itsm=120 Igt=15mA Vgt=1.5
++ Ihold=20mA Ileak=500uA GRratio=3
+.ENDS
+
+
+.SUBCKT 2N6509G A G K ; ON Semiconductor 2N6509G
+XSCR1 A G K 2N5061
++params: Vdrm=800 Itrms=25 Itsm=250 Igt=75mA Vgt=1.5
++ Ihold=80mA Ileak=2mA GRratio=2
+.ENDS
+
+
+.SUBCKT FS2510NH A G K ; Fagor FS2510NH
+XSCR1 A G K 2N5061
++params: Vdrm=400 Itrms=25 Itsm=270 Igt=40mA Vgt=1.3
++ Ihold=50mA Ileak=2mA GRratio=2
+.ENDS
+

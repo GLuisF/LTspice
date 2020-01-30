@@ -1,0 +1,25 @@
+*
+.SUBCKT PMEG3015EJ 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 2E+5
+D1 1 2 PMEG3015EJ
+*
+.MODEL PMEG3015EJ D
++ IS = 1.05E-5
++ N = 0.998
++ BV = 33
++ IBV = 0.0004
++ RS = 0.08651
++ CJO = 1.189E-10
++ VJ = 0.3379
++ M = 0.4795
++ FC = 0.5
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

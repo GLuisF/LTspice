@@ -1,0 +1,184 @@
+
+.SUBCKT VCO2 FB1 A B params: fmin=100k fmax=1Meg DT=50n SS=100u
+*
+Rdum1 3 0 1G
+Rdum2 5 0 1G
+Rdum3 8 0 1G
+* 
+G4 0 3 Value = { {Fmin*2}*20p }
+G3 0 5 Value = { V(FBCC)*1.9*10p*({2*Fmax}/(1-{2*Fmax}*{DT})-{2*Fmin})/5 }
+G5 0 4 Value = { 2*10p/{DT} }
+C1 8 0 10p IC=0
+Xcomp 8 6 cmp COMPAR params: VHIGH=5
+E2 6 0 Value = { IF ( V(CMP) < 3, 3, 1 ) }
+G1 8 0 Value = { IF ( V(CMP) < 3, 0, I(VDT)+I(VFmin)+I(Vvco) ) }
+VDT 4 0
+X1 cmp 10 0 0 10 13 TOGGLE_A
+X2 13 14 A AND2
+X3 10 14 B AND2
+X4 cmp 14 INV
+R3 FB1 0 20k
+Vvco 5 8
+X10 20 19 FB AMPSIMP params: VHIGH=6 VLOW=1m
+V4 18 0 DC=100m
+R4 18 19 10k
+R5 19 FB 10k
+X12 FB1 17 GAIN
+R8 17 20 10k
+R9 20 0 10k
+Vfmin 3 8
+R6 29 FB 10k
+D1 29 28 _D1_mod
+V5 28 0 DC=5
+CSS 31 0 {10u*SS}
+I1 28 31 DC=50u
+D2 31 28 DN4148
+D3 29 FBCC _D1_mod
+D4 30 FBCC _D1_mod
+E1 30 0 28 31 1
+*
+.MODEL DN4148 D BV=100V CJO=4PF IS=7E-09 M=.45 N=2 RS=.8
++ TT=6E-09 VJ=.6V
+.MODEL _D1_mod D N=10m
+*
+.ENDS
+**********
+
+
+
+
+
+
+
+
+.SUBCKT FFLOP_A  6 8 2 1
+*             S R Q Q\
+A1 6 8 0 0 0 1 2 0 SRFLOP TD=10n Vhigh=5V REF=0.8
+* S R 0 0 0 QB Q 0
+.ENDS FFLOP
+
+**** TOGGLE CIRCUIT ****
+.SUBCKT TOGGLE_A 1  2 11 12 5  6
+*            CLK D R  S  QB Q 
+A1 2 0 1 11 12 5 6 0 DFLOP TD=10n VHIGH=5 REF=0.8
+* D 0 CLK S R QB Q 0 
+*A2 1 0 2 3 4 6 5 0 DFLOP
+.ENDS TOGGLE
+
+
+**** 2 INPUT NOR CIRCUIT ****
+.SUBCKT NOR2_A 1 2 3
+A1 1 2 0 0 0 3 0 0 OR TD=10n VHIGH=5 REF=0.8
+.ENDS NOR2
+*$
+
+**** 2 INPUT OR CIRCUIT ****
+.SUBCKT OR2_A 1 2 3
+A1 1 2 0 0 0 0 3 0 OR TD=10n VHIGH=5 REF=0.8
+.ENDS OR2
+
+**** 2 INPUT AND GATE ****
+.SUBCKT AND2_A 1 2 3
+A1 1 2 0 0 0 0 3 0
+.ENDS AND2
+
+.SUBCKT GAIN  1  2
+*Connections: In Out
+*Parameters: K Gain
+E1 2 0 1 0 1
+.ENDS
+*
+
+**********
+.SUBCKT FFLOP 6 8 2 1
+*             S R Q Q\
+E_BQB 10 0 VALUE = { IF ( (V(8)<2.5) & (V(2)>2.5), 0, 5V ) }
+E_BQ  20 0 VALUE = { IF ( (V(6)<2.5) & (V(1)>2.5), 0, 5V ) }
+RD1   10 1 100
+CD1   1 0 10P IC=5
+RD2   20 2 100
+CD2   2 0 10P IC=0
+.ENDS FFLOP
+*******
+.SUBCKT DFFLOP 1  2 11 12 5  6
+*            CLK D R  S  QB Q 
+A1 2 0 1 11 12 5 6 0 DFLOP TD=10n VHIGH=5 REF=0.8
+* D 0 CLK S R QB Q 0 
+*A2 1 0 2 3 4 6 5 0 DFLOP
+.ENDS DFFLOP
+***** INTERNAL F_FLOP DEFINITION ****
+
+.SUBCKT INV_64 1 2
+E1 3 0 VALUE = { IF ( V(1)>2.5, 100m, 10 ) }
+R1 3 2 10
+C1 2 0 10P IC=10
+.ENDS INV_64
+*******
+.SUBCKT OR2 1 2 3
+E_B1 4 0 VALUE = { IF ( (V(1)>2.5) | (V(2)>2.5), 5V, 0 ) }
+RD 4 3 10
+CD 3 0 10P
+.ENDS OR2
+*******
+.SUBCKT INV 1 2
+E1 3 0 VALUE = { IF ( V(1)>2.5V, 100m, 5 ) }
+R1 3 2 10
+C1 2 0 10P
+.ENDS INV
+*******
+.SUBCKT AND2 1 2 3
+E_B1 4 0 VALUE = { IF ( (V(1)>2.5) & (V(2)>2.5), 5V, 0 ) }
+RD 4 3 10
+CD 3 0 10P
+.ENDS AND2
+*******
+.SUBCKT 1395MOD in out params: Fmax=500k Fmin=50k
+*
+V16 1 0 DC=1
+R19 1 2 10k
+R20 2 out 10k
+R21 in 4 10k
+R22 4 0 10k
+X6 4 2 out AMPSIMP params: VHIGH={Fmax/100k} VLOW={Fmin/100k}
+.ENDS
+
+.model MBR6545  D(Is=183.5n Rs=1.6m Ikf=5.736 N=1 Xti=0 Eg=1.11 Cjo=4.498n
++                               M=.478 Vj=.75 Fc=.5 Isr=1.376u Nr=2)
+*                               Motorola        pid=MBR6535     case=DO5
+*                               88-09-21 rmn
+*$
+
+.SUBCKT COMPAR NINV INV OUT params: VHIGH=12 VLOW=100m
+E1 4 0 Value = { IF ( V(NINV,INV) > 0, {VHIGH}, {VLOW} ) }
+RO 4 OUT 10
+CO OUT 0 10PF
+.ENDS
+.SUBCKT AMPSIMP 1 5 7  params: POLE=30 GAIN=30000 VHIGH=4V VLOW=100mV
+*               + - OUT
+G1 0 4 1 5 100u
+R1 4 0 {GAIN/100u}
+C1 4 0 {1/(6.28*(GAIN/100u)*POLE)}
+E1 2 0 4 0 1
+Ro 2 7 10
+Vlow 3 0 DC={VLOW}
+Vhigh 8 0 DC={VHIGH}  
+Dlow 3 4 DCLP
+Dhigh 4 8 DCLP
+.MODEL DCLP D N=0.01
+.ENDS
+*
+.SUBCKT GAIN  1  2
+*Connections: In Out
+*Parameters: K Gain
+E1 2 0 1 0 1
+.ENDS
+*
+
+.SUBCKT NAND30_64 1 2 3 4
+A1 1 2 3 0 0 0 4 0 ANDTD=10N VHIGH=10 REF=0.8
+.ENDS NAND30_64
+
+.SUBCKT NAND31_64 1 2 3 4
+A1 1 2 3 0 0 0 4 0 ANDTD=10N VHIGH=10 REF=0.8
+.ENDS NAND31_64
+*

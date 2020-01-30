@@ -1,0 +1,32 @@
+*
+.SUBCKT BAT54CV 1 2 3 4 5 6
+*
+* The Resistors do not 
+* reflect physical devices. 
+* Instead they improve modeling
+* in the reverse mode of 
+* operation.*
+*
+R1 1 6 3.6E+7 
+D1 1 6 BAT54CV
+R2 2 6 3.6E+7 
+D2 2 6 BAT54CV
+R3 4 3 3.6E+7 
+D3 4 3 BAT54CV
+R4 5 3 3.6E+7 
+D4 5 3 BAT54CV
+*
+.MODEL BAT54CV D 
++ IS = 2.117E-7 
++ N = 1.016 
++ BV = 36 
++ IBV = 1.196E-6 
++ RS = 2.637 
++ CJO = 1.114E-11 
++ VJ = 0.2013 
++ M = 0.3868 
++ FC = 0.5 
++ EG = 0.69 
++ XTI = 2
+.ENDS
+*

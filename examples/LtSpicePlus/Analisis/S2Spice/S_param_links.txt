@@ -1,0 +1,10 @@
+http://wwwce.web.cern.ch/wwwce/ae/Maxwell/apps/2stripem/2stripem.html
+http://wwwce.web.cern.ch/wwwce/ae/Pspice/v8atCERN/index.htm
+http://wwwce.web.cern.ch/wwwce/ae/Maxwell/applications.html
+http://wwwce.web.cern.ch/wwwce/ae/Maxwell/Maxwell.html
+http://wwwce.web.cern.ch/wwwce/ae/Maxwell/apps/s2spice.doc
+
+Crosstalk article it-2000-006.doc
+http://doc.cern.ch/cgi-bin/mailDocument.sh?files=/archive/electronic/cern/preprints/it/it-2000-006.doc+
+
+S-Parameter Design (Agilent): www.sss-mag.com/pdf/AN154.pdf

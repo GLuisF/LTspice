@@ -1,0 +1,15 @@
+*El parámetro H define la cantidad de histéresis y es usado en la
+*fórmula de entrada a la tabla. La combinación de fórnula y tabla 
+*determina una banda muerta fuera de la cual la salida sigue a la 
+*entrada con un desplazamiento de H/2. El capacitor sirve como
+*memoria al circuito y es casi ideal excepto por el resistor de 
+*polarización que provee una constante de tiempo de 1e12 segundos!
+*El seguidor de tensión E1 impide problemas de sobrecargado y
+*puede tener una ganancia diferente de 1, si es necesario.
+.subckt HYS in out params: H=1
+B1 0 1 I=TABLE (V(IN,1)/{H/2}, -2,-1G, -1,0, 1,0, 2,1G)
+*Pspice: G1 0 1 TABLE {V(IN,1)/(H/2)} (-2,-1G) (-1,0) (1,0) (2,1G)
+C1 1 0 1
+R1 1 0 1G
+E1 out 0 1 0 1
+.ends

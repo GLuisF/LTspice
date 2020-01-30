@@ -1,0 +1,22 @@
+*
+.SUBCKT 1N4735A 1 2 
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 3E+9 
+D1 1 2 1N4735A
+*
+.MODEL 1N4735A D 
++ IS = 1.803E-14 
++ N = 1.167 
++ BV = 6.2 
++ IBV = 0.041 
++ RS = 0.3264 
++ CJO = 6.85E-11 
++ VJ = 0.6947 
++ M = 0.3439 
++ FC = 0.5 
+.ENDS

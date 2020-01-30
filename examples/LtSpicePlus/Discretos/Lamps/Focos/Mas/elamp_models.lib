@@ -1,0 +1,286 @@
+* Helmut Sennewald, Date 12/14/2003
+* SPICE Model Of A Electrical Lamp
+*
+* Calling Parameters:
+* -------------------
+* UNOM: nominal Voltage
+* PNOM: nominal Power
+* RCOLD: unpowered(cold) resistance at TCOLD
+* TCOLD: temperature where RCOLD was measured, e.g. 25 degree Celsius
+* TAU: time constant of filament temperature
+* TAMB: ambient temperature
+*
+* The lamp models can provide up to six control outputs. The difference
+* between the models is the number of control outputs.
+* Outputs
+* -------
+* Res: resistance of filament  
+* Ptot: total electrical power 
+* Light(Poptavg): light power 
+* Tfilament: temperature of filament   
+* Tbulb: temperature of bulb      *not supported
+* Tsocket: temperature of socket  *not supported
+*
+* The model uses a formula for the resistance versus temperature and one 
+* thermal * resistance wth a time constant. 
+* All temperatures within the model are in Kelvin. 
+* The basic formula: 
+*        Tfilament = TAmbient + (Ptot-Popt) * Rth
+*                R = Rcold*(Tfilament/Tcold)^1.2
+* The ambient temperature TEMP is also included in the model.
+* ALPHA: total emitted light conversion efficiency
+* RTH: Thermal resistance of filament
+*
+.SUBCKT lamp0 1 2 
++ UNOM={UNOM} PNOM={PNOM} RCOLD={RCOLD} TCOLD={TCOLD} TAU={TAU} TAMB={TAMB}
+*
+.PARAM INOM=PNOM/UNOM
+.PARAM RHOT=UNOM/INOM
+.PARAM TCOLD1=TCOLD+273
+.PARAM TEMP1=TCOLD1+(TAMB-(TCOLD1-273))
+.PARAM THOT=TCOLD1*(RHOT/RCOLD)**(1/1.2)
+.PARAM ALPHA=MIN(0.8, 0.8*(THOT/3300))
+.PARAM POPTNOM=ALPHA*PNOM
+.PARAM RTH=(THOT-TCOLD1)/(PNOM*(1-ALPHA))
+.PARAM CTAU={IF((RTH<=1m), 1m, (TAU/RTH))}
+.PARAM TAU2=0.1*TAU
+.PARAM C0=1pF
+.PARAM L0=1nH
+*
+L1 1 N001 {L0}
+CS N001 2 {C0}
+G1 N001 3 VALUE={V(1,2)/V(res)}
+V1 3 2 0
+G4 0 ptot VALUE={I(V1)*V(1,2)}
+R4 ptot 0 1
+G3 0 popt VALUE={V(ptot)*MIN(0.8,(ALPHA*(V(tfil)**4-V(tamb)**4)/(THOT**4-V(tamb)**4)))}
+R3 popt 0 1
+G2 0 tfil VALUE={V(ptot)-V(popt)}
+RTH1 tfil tamb {Rth}
+CTAU1 tfil tamb {CTAU}
+VTAMB tamb 0 {TEMP1}
+R6 poptavg 0 1
+G6 0 poptavg VALUE={V(popt)}
+G5 0 res VALUE={RCOLD*V(tfil)**1.2/TCOLD1**1.2}
+R5 res 0 1
+CTAU2 poptavg 0 {TAU2}
+E1 tbulb 0 VALUE={V(tamb)-273}
+E2 tsock 0 VALUE={V(tamb)-273}
+E3 tfil1 0 VALUE={V(tfil)-273}
+.ends lamp0
+
+
+
+
+
+* D:\SHARE\ltc\Ltc_spice\Lamp\elamp_models.asc
+* Helmut Sennewald, Date 12/14/2003
+* SPICE Model Of A Electrical Lamp
+*
+* Calling Parameters:
+* -------------------
+* UNOM: nominal Voltage
+* PNOM: nominal Power
+* RCOLD: unpowered(cold) resistance at TCOLD
+* TCOLD: e.g. 25 degree Celsius
+* TAU: time constant of TFIL
+* TEMP: ambient temperature
+*
+* The lamp models can provide up to six control outputs.
+* Res: resistance of filament  
+* Ptot: total electrical power 
+* Light(Poptavg): light power 
+* Tfilament: temperature of filament   
+* Tbulb: temperature of bulb      *not supported
+* Tsocket: temperature of socket  *not supported
+*
+* It uses a formula for the resistance versus temperature and one thermal 
+* resistance wth a time constant. All temperatures are in Kelvin degree
+* Celsius. The basic formula: 
+*        Tfilament = TAmbient + (Ptot-Popt) * Rth
+*                R = Rcold*(Tfilament/Tcold)^1.2
+* The ambient temperature TEMP is also included in the model.
+* ALPHA: Light conversion efficiency
+* RTH: Thermal resistance of filament
+*
+.SUBCKT lamp6 1 2 res ptot poptavg tfil1 tbulb tsock
++ UNOM={UNOM} PNOM={PNOM} RCOLD={RCOLD} TCOLD={TCOLD} TAU={TAU} TAMB={TAMB}
+*
+.PARAM INOM=PNOM/UNOM
+.PARAM RHOT=UNOM/INOM
+.PARAM TCOLD1=TCOLD+273
+.PARAM TEMP1=TCOLD1+(TAMB-(TCOLD1-273))
+.PARAM THOT=TCOLD1*(RHOT/RCOLD)**(1/1.2)
+.PARAM ALPHA=MIN(0.8, 0.8*(THOT/3300))
+.PARAM POPTNOM=ALPHA*PNOM
+.PARAM RTH=(THOT-TCOLD1)/(PNOM*(1-ALPHA))
+.PARAM CTAU={IF((RTH<=1m), 1m, (TAU/RTH))}
+.PARAM TAU2=0.1*TAU
+.PARAM C0=1pF
+.PARAM L0=1nH
+*
+L1 1 N001 {L0}
+CS N001 2 {C0}
+G1 N001 3 VALUE={V(1,2)/V(res)}
+V1 3 2 0
+G4 0 ptot VALUE={I(V1)*V(1,2)}
+R4 ptot 0 1
+G3 0 popt VALUE={V(ptot)*MIN(0.8,(ALPHA*(V(tfil)**4-V(tamb)**4)/(THOT**4-V(tamb)**4)))}
+R3 popt 0 1
+G2 0 tfil VALUE={V(ptot)-V(popt)}
+RTH1 tfil tamb {Rth}
+CTAU1 tfil tamb {CTAU}
+VTAMB tamb 0 {TEMP1}
+R6 poptavg 0 1
+G6 0 poptavg VALUE={V(popt)}
+G5 0 res VALUE={RCOLD*V(tfil)**1.2/TCOLD1**1.2}
+R5 res 0 1
+CTAU2 poptavg 0 {TAU2}
+E1 tbulb 0 VALUE={V(tamb)-273}
+E2 tsock 0 VALUE={V(tamb)-273}
+E3 tfil1 0 VALUE={V(tfil)-273}
+.ends lamp6
+
+
+
+
+
+* D:\SHARE\ltc\Ltc_spice\Lamp\elamp_models.asc
+* Helmut Sennewald, Date 12/14/2003
+* SPICE Model Of A Electrical Lamp
+*
+* Calling Parameters:
+* -------------------
+* UNOM: nominal Voltage
+* PNOM: nominal Power
+* RCOLD: unpowered(cold) resistance at TCOLD
+* TCOLD: e.g. 25 degree Celsius
+* TAU: time constant of TFIL
+* TEMP: ambient temperature
+*
+* The lamp models can provide up to six control outputs.
+* Res: resistance of filament  
+* Ptot: total electrical power 
+* Light(Poptavg): light power 
+* Tfilament: temperature of filament   
+* Tbulb: temperature of bulb      *not supported
+* Tsocket: temperature of socket  *not supported
+*
+* It uses a formula for the resistance versus temperature and one thermal 
+* resistance wth a time constant. All temperatures are in Kelvin degree
+* Celsius. The basic formula: 
+*        Tfilament = TAmbient + (Ptot-Popt) * Rth
+*                R = Rcold*(Tfilament/Tcold)^1.2
+* The ambient temperature TEMP is also included in the model.
+* ALPHA: Light conversion efficiency
+* RTH: Thermal resistance of filament
+*
+.SUBCKT lamp3 1 2 res ptot poptavg 
++ UNOM={UNOM} PNOM={PNOM} RCOLD={RCOLD} TCOLD={TCOLD} TAU={TAU} TAMB={TAMB}
+*
+.PARAM INOM=PNOM/UNOM
+.PARAM RHOT=UNOM/INOM
+.PARAM TCOLD1=TCOLD+273
+.PARAM TEMP1=TCOLD1+(TAMB-(TCOLD1-273))
+.PARAM THOT=TCOLD1*(RHOT/RCOLD)**(1/1.2)
+.PARAM ALPHA=MIN(0.8, 0.8*(THOT/3300))
+.PARAM POPTNOM=ALPHA*PNOM
+.PARAM RTH=(THOT-TCOLD1)/(PNOM*(1-ALPHA))
+.PARAM CTAU={IF((RTH<=1m), 1m, (TAU/RTH))}
+.PARAM TAU2=0.1*TAU
+.PARAM C0=1pF
+.PARAM L0=1nH
+*
+L1 1 N001 {L0}
+CS N001 2 {C0}
+G1 N001 3 VALUE={V(1,2)/V(res)}
+V1 3 2 0
+G4 0 ptot VALUE={I(V1)*V(1,2)}
+R4 ptot 0 1
+G3 0 popt VALUE={V(ptot)*MIN(0.8,(ALPHA*(V(tfil)**4-V(tamb)**4)/(THOT**4-V(tamb)**4)))}
+R3 popt 0 1
+G2 0 tfil VALUE={V(ptot)-V(popt)}
+RTH1 tfil tamb {Rth}
+CTAU1 tfil tamb {CTAU}
+VTAMB tamb 0 {TEMP1}
+R6 poptavg 0 1
+G6 0 poptavg VALUE={V(popt)}
+G5 0 res VALUE={RCOLD*V(tfil)**1.2/TCOLD1**1.2}
+R5 res 0 1
+CTAU2 poptavg 0 {TAU2}
+E1 tbulb 0 VALUE={V(tamb)-273}
+E2 tsock 0 VALUE={V(tamb)-273}
+E3 tfil1 0 VALUE={V(tfil)-273}
+.ends lamp3
+
+
+
+
+
+* D:\SHARE\ltc\Ltc_spice\Lamp\elamp_models.asc
+* Helmut Sennewald, Date 12/14/2003
+* SPICE Model Of A Electrical Lamp
+*
+* Calling Parameters:
+* -------------------
+* UNOM: nominal Voltage
+* PNOM: nominal Power
+* RCOLD: unpowered(cold) resistance at TCOLD
+* TCOLD: e.g. 25 degree Celsius
+* TAU: time constant of TFIL
+* TEMP: ambient temperature
+*
+* The lamp models can provide up to six control outputs.
+* Res: resistance of filament  
+* Ptot: total electrical power 
+* Light(Poptavg): light power 
+* Tfilament: temperature of filament   
+* Tbulb: temperature of bulb      *not supported
+* Tsocket: temperature of socket  *not supported
+*
+* It uses a formula for the resistance versus temperature and one thermal 
+* resistance wth a time constant. All temperatures are in Kelvin degree
+* Celsius. The basic formula: 
+*        Tfilament = TAmbient + (Ptot-Popt) * Rth
+*                R = Rcold*(Tfilament/Tcold)^1.2
+* The ambient temperature TEMP is also included in the model.
+* ALPHA: Light conversion efficiency
+* RTH: Thermal resistance of filament
+*
+.SUBCKT lamp2 1 2 res ptot 
++ UNOM={UNOM} PNOM={PNOM} RCOLD={RCOLD} TCOLD={TCOLD} TAU={TAU} TAMB={TAMB}
+*
+.PARAM INOM=PNOM/UNOM
+.PARAM RHOT=UNOM/INOM
+.PARAM TCOLD1=TCOLD+273
+.PARAM TEMP1=TCOLD1+(TAMB-(TCOLD1-273))
+.PARAM THOT=TCOLD1*(RHOT/RCOLD)**(1/1.2)
+.PARAM ALPHA=MIN(0.8, 0.8*(THOT/3300))
+.PARAM POPTNOM=ALPHA*PNOM
+.PARAM RTH=(THOT-TCOLD1)/(PNOM*(1-ALPHA))
+.PARAM CTAU={IF((RTH<=1m), 1m, (TAU/RTH))}
+.PARAM TAU2=0.1*TAU
+.PARAM C0=1pF
+.PARAM L0=1nH
+*
+L1 1 N001 {L0}
+CS N001 2 {C0}
+G1 N001 3 VALUE={V(1,2)/V(res)}
+V1 3 2 0
+G4 0 ptot VALUE={I(V1)*V(1,2)}
+R4 ptot 0 1
+G3 0 popt VALUE={V(ptot)*MIN(0.8,(ALPHA*(V(tfil)**4-V(tamb)**4)/(THOT**4-V(tamb)**4)))}
+R3 popt 0 1
+G2 0 tfil VALUE={V(ptot)-V(popt)}
+RTH1 tfil tamb {Rth}
+CTAU1 tfil tamb {CTAU}
+VTAMB tamb 0 {TEMP1}
+R6 poptavg 0 1
+G6 0 poptavg VALUE={V(popt)}
+G5 0 res VALUE={RCOLD*V(tfil)**1.2/TCOLD1**1.2}
+R5 res 0 1
+CTAU2 poptavg 0 {TAU2}
+E1 tbulb 0 VALUE={V(tamb)-273}
+E2 tsock 0 VALUE={V(tamb)-273}
+E3 tfil1 0 VALUE={V(tfil)-273}
+.ends lamp2

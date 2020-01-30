@@ -1,0 +1,33 @@
+*
+.SUBCKT BAT960 1 2 3 4 5 6
+*
+* The resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse
+* mode of operation.
+*
+R1 3 1 2E+06
+D1 3 1 BAT960
+*
+* The resistors R2...R5 are only for 
+* pinning of the device
+*
+R2 1 2 0
+R3 3 4 0
+R4 1 5 0
+R5 1 6 0
+*
+.MODEL BAT960 D (
++ IS = 1.686E-06
++ N = 1.015
++ BV = 21
++ IBV = 1E-06
++ RS = 0.1249
++ CJO = 9.086E-11
++ VJ = 0.1939
++ M = 0.4542
++ FC = 1
++ TT = 0
++ EG = 0.69
++ XTI = 2 )
+.ENDS

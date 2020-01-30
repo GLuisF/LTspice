@@ -1,0 +1,8 @@
+******Thyristor Notes**********
+
+
+**DIAC**
+The DIAC model consists of two Transistor Pairs (Two Shockley Diodes), one pair conducting positive half-cycles, the other conducting negative half-cycles.  Two parameters must be defined when using this symbol/model: "Rs" which is the series resistance of the DIAC when fired, and "Vbr" which is the breakover (firing) voltage of the DIAC.
+
+This model contains a simple voltage divider circuit that fires when "Rk" drops the transistor's threshold voltage.  "Rk" is calculated automatically from the "Rs" and "Vbr" parameters entered.  The result is a close breakover voltage approximation.  When testing this model, lower "Vbr" values resulted in actual Breakover Voltages that were off slightly (1 or 2 Volts).  Higher "Vbr" values tended to be more accurate.  This was the best I could do but anybody who has a better calculation/method please feel free to modify. This will get you close enough for now.
+

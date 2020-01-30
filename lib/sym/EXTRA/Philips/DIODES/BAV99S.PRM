@@ -1,0 +1,19 @@
+*DEVICE=BAV99S,D
+
+* BAV99S D model
+* created using Model Editor release 9.0 on 02/16/01 at 09:43
+* Model Editor is an OrCAD product.
+.MODEL BAV99S D
++ IS=7.4960E-9
++ N=2.0077
++ RS=.80464
++ IKF=.1058
++ CJO=515.09E-15
++ M=.115
++ VJ=.6389
++ ISR=1.4182E-9
++ NR=4.9950
++ BV=90.375
++ IBV=10
++ TT=2.1640E-9
+*$

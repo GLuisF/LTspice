@@ -1,0 +1,13 @@
+*SRC=AZ23C3V3;DI_AZ23C3V3;Diodes;Zener <=10V; 3.30V  0.300W   
+*Diodes Inc. Per node.  Device contains two
+*SYM=HZEN
+.SUBCKT DI_AZ23C3V3  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 0.787
+.MODEL DF D ( IS=37.5p RS=34.7 N=1.10
++ CJO=397p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=7.49f RS=79.5 N=3.00 )
+.ENDS
+

@@ -1,0 +1,28 @@
+           --- Bill of Materials ---
+
+                                         Reference
+Quantity     Description                Designator(s)
+   1     Capacitor, 10pF                 C3
+   1     Capacitor, 30pF                 C6
+   3     Capacitor, 100pF                C2, C4, C5
+   2     Capacitor, 300pF                C8, C10
+   1     Capacitor, 330pF                C7
+   1     Capacitor, 500pF                C11
+   2     Capacitor, 1µF                  C1, C9
+   5     Diode, 1N4148                   D1, D2, D3, D5, D6
+   1     Diode, IR Transmitter           D4
+   1     PIN photo diode, e.g., BPV23NFL D8
+   4     Transistor, 2N3904              Q1, Q2, Q3, Q4
+   1     Resistor, 249                   R15
+   1     Resistor, 2K                    R4  
+   2     Resistor, 4.99K                 R6, R22      
+   3     Resistor, 10K                   R3, R16, R19
+   3     Resistor, 24.9K                 R2, R9, R14
+   1     Resistor, 90.9K                 R1
+   1     Resistor, 121K                  R21    
+   2     Resistor, 162K                  R5, R13
+   1     Resistor, 221K                  R18
+   3     Resistor, 249K                  R7, R12, R20
+   1     Resistor, 499K                  R17
+   3     Resistor, 1.1Meg                R8, R10, R11
+   1     LT1018                          U1

@@ -1,0 +1,102 @@
+
+Homemade Serial MARES I.R.I.S. to AirLab Dive Computer Interface Cable
+
+       Mike Engelhardt           Version 2               01/22/07
+
+This is the second version of my I.R.I.S. serial Interface Cable.
+While the first version works fine, I wanted to make an optimized
+version with fewer and yet more generic parts.  Now I have two
+working cables.  This 2nd version is simplified from my 1st version.
+The transmitter side of this cable is now very simple, powering
+itself directly off the Tx pin and using only two generic
+transistors, 5 resistors, 3 capacitors, a diode, and an IR
+emitter -- instead of a Xtal and some high voltage CMOS devices.
+
+When I did the first version, I didn't know that the baudrate was
+9600.  I simulated Edward Cardew's receiver design and it looked
+marginal for 9600, though it does certainly also work.  But I felt
+that it would be better if the cable was designed to have smaller
+timing errors.
+
+The simulation file, Timing.asc, shows this receiver running side-
+by-side with the Edward Cardew design so you can see the improved
+timing characteristics with a random bitsteam. The Edward Cardew
+design is fine for a square wave, but for random data, it has
+pretty large timing errors.  Notice that the start bit can be
+40% too narrow.
+
+The transmitter works from 0" to 5"(13 cm).  The receiver can be
+adjusted to work also to this distance, but I've adjusted the
+design to only work to 2 cm for improved rejection of ambient
+light.
+
+1. The cable was tested with IRIS version 2.2.2 and an AirLab.
+
+2. The baud rate is 9600 baud, 8 bit, no parity, one stopbit,
+   no hardware handshake, no software handshake.  DTR must
+   be set high.  IRIS sets your port to these settings.
+
+3. The IR is 56KHz CW or ASK(Amplitude Shifted Keying).  A
+   multivibrator type oscillator made with 2 cross-coupled 2N3904's
+   powered directly by the Tx signal works fine and saves procurement
+   of the high voltage CMOS devices and Xtal.
+
+4. The cable must echo data transmitted from the IRIS software back
+   to IRIS. The signal echoed back is mostly due to capacitive
+   coupling between the transmit and receive IR diodes.  The original
+   version of my design had a bipolar signal for Rx because that
+   is the RS232C spec.  I was going to use the Tx pin as a negative
+   supply, an idea I got from the Mouse Systems serial mouse I
+   cannibalized for this project, but as this echo occurs during
+   the Transmit, I just used the comparator to bring Rx to ground
+   -- a technique one can usually get away with -- because this
+   negative supply would not be available during this echo.
+
+   The photograph Cstray.jpg is an oscillogram of Q4's collector
+   voltage with the Tx pin is high showing the coupling between
+   the transmitter and receiver that causes the echo.  The simulation
+   file Cstray.asc shows that 0.2pF can cause this.
+
+5. You can debug the receiver to some extent with a consumer
+   electronic IR remote control, though these seem to usually run at
+   a 40KHz instead of 56KHz and at much lower baudrate.  This allows
+   you to at least see if you can detect IR without the transmitter
+   side runing and capacitively leaking signal into the receiver.
+
+6. If the AirLab receives a command it doesn't understand, it
+   sends <?3F> to IRIS.
+
+7. IRIS and AirLab transmit data as ASCSII Hex characters enclosed in
+   angle brackets. Below is how the dialog starts out with an AirLab:
+
+   IRIS to AirLab: <5180000DA2>
+   AirLab to IRIS: <5180000DA2><000100001A50000000000D0E0021>
+   IRIS to AirLab: <512000078F>
+   AirLab to IRIS: <512000078F><00000000000000A0>
+   IRIS to AirLab: <5100013C9D>
+   AirLab to IRIS: <5100013C9D><07D30701021A001A014D12700
+   0A0201000000064FFFF0000000000040A3B0
+   F6E0F6E0F6E0F6E0F6E0F6E0F6E0F6E0F6E0
+   F6E32640C1A000000000F00C3>
+   IRIS to AirLab: <513C013CB3>
+
+   The file Eavesdrop.txt contains the entire log from downloading
+   the dummy dive that is in the AirLab as it leaves the factory.
+   The file is acquired by eavesdropping on the RS232C connection with
+   another PC.  Multiple runs showed that the cable runs shows this
+   cable makes no bit errors.  It takes 1min 20sec to read this file.
+   BTW, it'd be nice if someone could figure out how to read it, or
+   at least how the last two character checksum is computed.
+
+8. Its extremely useful to have a terminal program so you can
+   send <5180000DA2> down the cable and listen for
+   <5180000DA2><000100001A50000000000D0E0021> to come back to
+   see when the cable and positioning is correct.  Once the
+   cable is working correctly, it's quite insensitive to position
+   and aim.  The console program CommTest.exe supplied in this
+   release works great for this.
+
+Regards,
+
+--Mike
+

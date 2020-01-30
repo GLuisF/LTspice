@@ -1,0 +1,19 @@
+*DEVICE=PMBD7000,D
+* PMBD7000 D model
+* created using Parts release 6.2i on 03/26/97 at 13:51
+* Parts is a MicroSim product.
+.MODEL PMBD7000 D
++ IS=6.0289E-9
++ N=2.1283
++ RS=1.0000E-3
++ IKF=37.638E-3
++ CJO=593.63E-15
++ M=.1
++ VJ=.68774
++ ISR=2.0646E-9
++ NR=4.9950
++ BV=113.60
++ IBV=10
++ TT=5.7708E-9
+*$
+

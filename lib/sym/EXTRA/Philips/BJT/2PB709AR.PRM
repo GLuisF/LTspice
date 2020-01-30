@@ -1,0 +1,46 @@
+*
+.SUBCKT 2PB709AR 1 2 3
+* 
+Q1 3 1 2 Q2PB709AR 
+* 
+.MODEL Q2PB709AR PNP 
++ IS = 1.489E-14 
++ NF = 0.9902 
++ ISE = 2.952E-15 
++ NE = 1.381 
++ BF = 270 
++ IKF = 0.055 
++ VAF = 50 
++ NR = 0.99 
++ ISC = 8.349E-15 
++ NC = 1.126 
++ BR = 7.5 
++ IKR = 0.023 
++ VAR = 20 
++ RB = 237 
++ IRB = 5E-05 
++ RBM = 1 
++ RE = 0.4 
++ RC = 0.85 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.205E-11 
++ VJE = 0.7414 
++ MJE = 0.3803 
++ TF = 5.1E-10 
++ XTF = 5 
++ VTF = 5 
++ ITF = 0.14 
++ PTF = 0 
++ CJC = 6.263E-12 
++ VJC = 0.5872 
++ MJC = 0.3726 
++ XCJC = 1 
++ TR = 1.3E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.ENDS
+*

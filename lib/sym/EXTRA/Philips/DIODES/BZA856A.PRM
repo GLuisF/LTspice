@@ -1,0 +1,18 @@
+*DEVICE=BZA856A,D
+
+* BZA856A D model
+* updated using Model Editor release 9.0 on 07/03/00 at 16:02
+* Model Editor is an OrCAD product.
+.MODEL BZA856A D
++ IS=323.83E-18
++ N=.97963
++ RS=.24251
++ IKF=6.4502
++ CJO=156.61E-12
++ M=.28517
++ VJ=.98457
++ ISR=9.2948E-9
++ NR=2.4186
++ BV=5.7918
++ IBV=.18506
++ TT=116.14E-9

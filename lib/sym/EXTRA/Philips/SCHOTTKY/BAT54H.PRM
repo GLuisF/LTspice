@@ -1,0 +1,25 @@
+*
+.SUBCKT BAT54H 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device.  Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 3.5E+07
+D1 1 2 BAT54H
+*
+.MODEL BAT54H D 
++ IS = 2.36E-07 
++ N = 1.009 
++ BV = 33 
++ IBV = 0.001 
++ RS = 2.633 
++ CJO = 9.53E-12 
++ VJ = 0.2034 
++ M = 0.3811 
++ FC = 0.6435 
++ EG = 0.69 
++ XTI = 2 
+.ENDS
+*

@@ -1,0 +1,26 @@
+*
+.SUBCKT BAS521 1 2
+*
+* The Resistor R1 does not reflect 
+* a physical device. Instead it
+* improves modeling in the reverse 
+* mode of operation.
+*
+R1 1 2 1.2E+10
+D1 1 2 BAS521
+*
+.MODEL BAS521 D
++ IS = 7.219E-9
++ N = 2
++ BV = 310
++ IBV = 0.0001
++ RS = 0.63
++ CJO = 4.074E-13
++ VJ = 0.6538
++ M = 0.05409
++ FC = 0.5
++ TT = 2.1987E-8
++ EG = 0.69
++ XTI = 2
+.ENDS
+*

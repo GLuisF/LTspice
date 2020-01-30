@@ -1,0 +1,74 @@
+*
+*.SUBCKT PBSS8110Z 1 2 3 4
+*
+* housing parasitics
+LB 1 11 4.13E-09
+LE 3 33 3.77E-09
+LC 2 22 4.1E-10
+CBCG 22 11 1.76E-13
+CBEG 33 11 8.6E-14
+CCEG 22 33 1.76E-13
+*
+Q1 22 11 33 PBSS8110Z
+D1 11 22 DIODE
+R1 2 4 0
+*
+*The diode does not reflect a 
+*physical device but improves 
+*only modeling in the reverse 
+*mode of operation.
+*
+.MODEL PBSS8110Z NPN 
++ IS = 3.138E-013 
++ NF = 0.9857 
++ ISE = 4.405E-015 
++ NE = 1.299 
++ BF = 300 
++ IKF = 0.38 
++ VAF = 23 
++ NR = 0.9809 
++ ISC = 1.35E-016 
++ NC = 0.998 
++ BR = 55 
++ IKR = 2.8 
++ VAR = 48 
++ RB = 10 
++ IRB = 0.000431 
++ RBM = 5.92 
++ RE = 0.05 
++ RC = 0.058 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 2.86E-010 
++ VJE = 0.7299 
++ MJE = 0.3486 
++ TF = 6E-010 
++ XTF = 27 
++ VTF = 1.5 
++ ITF = 0.6 
++ PTF = 0 
++ CJC = 2.39E-011 
++ VJC = 0.2734 
++ MJC = 0.3734 
++ XCJC = 1 
++ TR = 5.1E-008 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.78 
+.MODEL DIODE D 
++ IS = 1.185E-013 
++ N = 1 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 500 
++ CJO = 0 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 0 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

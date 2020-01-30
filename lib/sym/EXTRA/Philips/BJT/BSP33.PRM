@@ -1,0 +1,72 @@
+*
+.SUBCKT BSP33 1 2 3 
+* housing parasitics
+LB 2 22 4.13-09 
+LE 3 33 3.77E-09 
+LC 1 11 4.1E-10 
+CBCG 22 11 1.76E-13 
+CBEG 22 33 8.6E-14 
+CCEG 11 33 1.76E-13 
+Q1 11 22 33 QBSP33
+D1 11 22 DIODE 
+*
+* The diode does not reflect
+* a physical device. instead it
+* improves modeling in the
+* reverse mode of operation
+*
+.MODEL QBSP33 PNP 
++ IS = 9.479E-14 
++ NF = 0.9941 
++ ISE = 3.842E-14 
++ NE = 1.45 
++ BF = 159.6 
++ IKF = 1.25 
++ VAF = 60 
++ NR = 0.9918 
++ ISC = 1E-14 
++ NC = 1.3 
++ BR = 14.96 
++ IKR = 0.1 
++ VAR = 22 
++ RB = 13 
++ IRB = 0.0002 
++ RBM = 0.1 
++ RE = 0.1007 
++ RC = 0.12 
++ XTB = 0 
++ EG = 1.11 
++ XTI = 3 
++ CJE = 1.043E-10 
++ VJE = 0.8422 
++ MJE = 0.4153 
++ TF = 7.2E-10 
++ XTF = 3.2 
++ VTF = 6 
++ ITF = 1 
++ PTF = 0 
++ CJC = 4.616E-11 
++ VJC = 0.7383 
++ MJC = 0.5119 
++ XCJC = 1 
++ TR = 3.1E-07 
++ CJS = 0 
++ VJS = 0.75 
++ MJS = 0.333 
++ FC = 0.98 
+*
+.MODEL DIODE D 
++ IS = 1.307E-13 
++ N = 1.078 
++ BV = 1000 
++ IBV = 0.001 
++ RS = 243.7 
++ CJO = 1E-15 
++ VJ = 1 
++ M = 0.5 
++ FC = 0 
++ TT = 3E-07 
++ EG = 1.11 
++ XTI = 3 
+.ENDS
+*

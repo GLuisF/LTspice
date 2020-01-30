@@ -1,0 +1,13 @@
+.lib MIN
+.model QABC NPN(BF=100)
+.endl MIN
+
+.lib NOM
+.model QABC NPN(BF=200)
+.endl NOM
+
+.lib MAX
+.model QABC NPN(BF=400)
+.endl MAX
+
+ 

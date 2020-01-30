@@ -4,10 +4,6 @@
 .model 2T0301CW11000012 D(IS=4.8807E-22 N=4.5508 RS=4.9673 Iave=150m Vpk=6.3 mfg=Edison type=LED)
 .model SAW8C72A D(IS=9.5431E-24 N=15.2235 RS=58.7176 Iave=40m Vpk=23 mfg=Seulsemicon type=LED)
 .model SAW8CF2A D(IS=8.7204E-16 N=54.3698 RS=106.3124 Iave=20m Vpk=46 mfg=Seulsemicon type=LED)
-.model LED_EDISON_3V ako:2T03X2CW11000002
-.model LED_EDISON_6V ako:2T0301CW11000012
-.model LED_SEUL_23V: ako:SAW8C72A
-.model LED_SEUL_46V: ako:SAW8CF2A
 .model 1N914 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
 .model 1N4148 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
 .model MMSD4148 D(Is=2.52n Rs=.568 N=1.752 Cjo=.64p M=.4 tt=5n Iave=200m Vpk=100 mfg=Onsemi type=silicon)

@@ -25,12 +25,12 @@ LINE Normal 96 -96 15 -96
 RECTANGLE Normal -96 -113 96 64
 ARC Normal -13 11 3 -9 -1 -1 -13 -1
 ARC Normal -30 8 -13 -13 -30 0 -13 -1
-WINDOW 3 -6 75 Center 0
+WINDOW 3 -6 75 Center 2
+SYMATTR Value 4N35
 SYMATTR Description General Purpose Photocoupler
 SYMATTR Prefix X
 SYMATTR ModelFile OptoAcop.lib
 SYMATTR SpiceModel 4N35
-SYMATTR Value 4N35
 PIN -96 -48 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1

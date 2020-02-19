@@ -1,0 +1,530 @@
+* triode models have parm for degradation over life .PARAM EMISSIONRANGE = 1
+
+.SUBCKT TETRODE A S G K
+* dummy
+.ENDS TETRODE
+
+.MODEL DX D(IS=1N RS=1 CJO=1PF TT=1N)
+
+
+.SUBCKT 2E24 A S G K
+Eat	at	0	VALUE={.636*ATAN(V(A,K)/8.5)}					; /# is sharpness of knee
+Egsg	gsg	0	VALUE={LIMIT(V(S,K)/1+PWRS(V(G,K),0.87)/.09+V(A,K)/22,0,1E6)}	; s,k/#=peak current  g,k/# is mu  a,k/# is plate res
+Egss	gss	0	VALUE={LIMIT(V(S,K)/1.5+PWRS(V(G,K),1.0)/.09+V(A,K)/80,0,1E6)}	; separating gsg,gss allows cutoff to be different
+Egs2	gs2	0	VALUE={PWRS(V(gsg),1.45)}
+Egs3	gs3	0	VALUE={PWRS(V(gss),1.45)}
+Ecath 	cc    	0 	VALUE={V(gs2)*V(at)+V(gs3)*V(at)}
+Ga     	A     	K     	VALUE={3.05E-5*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={2.0E-5*V(sc)*LIMIT(V(S,K),0,10)/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*280E-6}
+Cg1	G	K	8.5p
+Cak	A	K	6.5p
+Cg1a	G	A	1.1p
+.ENDS
+
+.SUBCKT 6AC7 1 4 2 3
++ PARAMS: MU=49.9 EX=1.47 KG1=435 KP=162 KVB=12.3 ; KG2=415
++         CCG=11P CPG1=.015P CCP=5P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*100/(V(1,3) + 100))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+*.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6AK6 1 4 2 3
++ PARAMS: MU=9.84 EX=1.386 KG1=4400 KP=67.2 KVB=8.1 ; KG2=8400
++         CCG=3.6P CPG1=.12P CCP=4.2P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/(KVB)),0,v(1,3)/650)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*47/(V(1,3) + 90))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+*.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6AN8P 1 4 2 3 ;  ; PENTODE SECTION
++ PARAMS: MU=45 EX=1.35 KG1=520 KP=120 KVB=18 ; kg2=120
++         CCG=8P CPG1=.8P CCP=3P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*67/(V(1,3) + 100))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+*.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6AQ5 P S G K
+Esp 	2  	0  	VALUE={V(P,K)+13.49*V(S,K)+130.4*V(G,K)}
+E1  	3  	2  	VALUE={5.521E-7*(PWR(V(2),1.5)+PWRS(V(2),1.5))/2}
+E2  	3  	4  	VALUE={5.521E-7*PWR(13.49*V(S,K),1.5)*V(P,K)/25}
+E3  	5  	4  	VALUE={(1-V(4,2)/ABS(V(4,2)+0.001))/2}
+R1  	5  	0  	1.0K
+Gk  	S  	K  	VALUE={V(3,2)}
+Gp  	P  	S  	VALUE={0.92*(V(3,4)*(1-V(5,4))+V(3,2)*V(5,4))}
+R3   	G 	10  	3k   	; FOR GRID CURRENT
+D3   	10 	K	DX      ; FOR GRID CURRENT
+Cgk 	G  	K  	8P
+Cgs 	G  	S  	4P
+Cgp 	G  	P  	0.4P
+Cpk 	P 	K 	8.5P
+.ENDS
+
+.SUBCKT 6AU6 1 4 2 3
++ PARAMS: MU=39.3 EX=1.596 KG1=1340 KP=127 KVB=6.6 ; kg2=1000
++         CCG=5.5P CPG1=.0035P CCP=5P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*140/(V(1,3) + 130))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6BH6 1 4 2 3
++ PARAMS: MU=45.9 EX=1.638 KG1=1750 KP=127 KVB=15 ; kg2=1300
++         CCG=5.4P CPG1=.0035P CCP=4.4P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*150/(V(1,3) + 130))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6BM8_ A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/15)}
+Egs	gs	0	VALUE={LIMIT{V(S,K)/7+V(G,K)*1.3+V(A,K)/700,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.24)}
+Ecath  	cc    	0 	VALUE={V(gs2)*V(at)}
+Ga     	A     	K     	VALUE={3.45E-3*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={3.7E-3*V(sc)*LIMIT{V(S,K),0,10}/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*300E-6}
+Cg1	G	K	9.6p
+Cak	A	K	9.3p
+Cg1a	G	A	0.35p
+.ENDS 6BM8_
+
+.SUBCKT 6BQ5_EL84 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/15)}
+Egs	gs	0	VALUE={LIMIT(V(S,K)/19+V(G,K)+V(A,K)/1400,0,1E6)}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)}
+Ecath  	cc    	0 	VALUE={V(gs2)*V(at)}
+Ga     	A     	K     	VALUE={3.2E-3*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={2.0E-3*V(sc)*LIMIT(V(S,K),0,10)/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*300E-6}
+Cg1	G	K	10.8p
+Cak	A	K	6.5p
+Cg1a	G	A	0.5p
+.ENDS 6BQ5
+
+.SUBCKT 6CA7_EL34 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/23)}
+Egs	gs	0	VALUE={LIMIT(V(S,K)/9.3+V(G,K)*0.95,0,1E6)}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)}
+Ecath  	cc    	0 	VALUE={V(gs2)*V(at)}
+Ga     	A     	K     	VALUE={1.86E-3*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={1.518E-3*V(sc)*LIMIT(V(S,K),0,10)/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*450E-6}
+Cg1	G	K	15.4p
+Cak	A	K	8.4p
+Cg1a	G	A	1.1p
+.ENDS 6CA7
+
+.SUBCKT 6E5P 1 4 2 3 
++ PARAMS: MU= 44 EX= 1.40 KG1=212 KP=200 ; KG2= 4500 kg2 isn't used, kg1 models overall gm
++ KVB= 20 VCT= 0.00 RGI=1000 ; kvb models plate resistance
++ CCG=15P CPG1=0.6P CCP=2.5P 
+RE1 7 0 1MEG 
+E1 7 0 VALUE= ; E1 BREAKS UP LONG EQUATION FOR G1. 
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))} 
+G1 1 3 VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*1.57*ATAN(2*V(1,3)/(KVB*3.14159)),0,v(1,3)/840)} ; added limit-better models lower plate voltage limit condion
+*G2 4 3 VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2} * this equation sucks
+G2 4 3 value= {(I(G1)*32/(V(1,3) + 6))} ; this models change in current with change in plate first var changes ig2, second pushes right/left
+RCP 1 3 1G ; FOR CONVERGENCE 
+C1 2 3 {CCG} ; CATHODE-GRID 1 
+C2 1 2 {CPG1} ; GRID 1-PLATE 
+C3 1 3 {CCP} ; CATHODE-PLATE 
+R1 2 5 {RGI} ; FOR GRID CURRENT 
+D3 5 3 DX ; FOR GRID CURRENT 
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N) 
+.ENDS 
+
+.SUBCKT 6KG6_EL509 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/20)}
+Eme	me	0	VALUE={PWR(LIMIT{V(A,K),0,10000},1.5)/17}
+Emu	mu	0	VALUE={PWRS(V(G,K),1-(LIMIT{-V(G,K),5,9999}-5)/1150)}
+Egs	gs	0	VALUE={LIMIT{V(S,K)/19+V(mu)/4.3+V(A,K)/800,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)}
+Ecath  	cc    	0 	VALUE={LIMIT{V(gs2)*V(at),0,V(me)}}
+Elim	el	0	VALUE={LIMIT{V(gs2)*V(at)-V(cc),0,99999}}
+Ga     	A     	K     	VALUE={6E-2*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))+1.2*V(el)}
+Gs     	S     	K	VALUE={1.2E-2*V(sc)*LIMIT{V(S,K),0,10}/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*350E-6}
+Cg1	G	K	37p
+Cak	A	K	18.5p
+Cg1a	G	A	2.5p
+.ENDS 
+
+.SUBCKT 6L6 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/5)}
+Eme	me	0	VALUE={PWR(LIMIT{V(A,K),0,2000},1.5)/1750}
+Emu	mu	0	VALUE={PWRS(V(G,K),1-(LIMIT{-V(G,K),30,9999}-30)/2000)}
+Egs	gs	0	VALUE={LIMIT{V(A,K)/2.5+V(S,K)*15.15+V(mu)*134,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)*0.8E-6}
+Ecath  	cc    	0 	VALUE={LIMIT{V(gs2)*V(at),0,V(me)}}
+Ga     	A     	K     	VALUE={V(cc)}
+Escrn	sc	0	VALUE={0.76*V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={V(sc)*LIMIT{V(S,K),0,10}/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*650E-6}
+Cg1	G	K	5.0p
+Cgs	G	S	5.0p
+Cak	A	K	6.5p
+Cg1a	G	A	0.6p
+.ENDS 
+
+.SUBCKT 6L6GC 1 4 2 3 ;  P g2 G1 c
++ PARAMS: MU=8.7 EX=1.35 KG1=1460 KP=48 KVB=12 ; kg2=4500
++         CCG=14P CPG1=.85P CCP=12P RGI=1.5K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/(KVB)),0,v(1,3)/225)}
+*G2   4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*17/(V(1,3) + 20))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}    ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6SJ7 1 4 2 3
++ PARAMS: MU=17.4 EX=1.414 KG1=3840 KP=142 KVB=10 ; kg2=4000
++         CCG=7P CPG1=.005P CCP=7P RGI=4K 
+RE1  7 0  10MEG   ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*90/(V(1,3) + 200))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 6V6 P S G K
+Esp 	2  	0  	VALUE={V(P,K)+13.49*V(S,K)+130.4*V(G,K)}
+E1  	3  	2  	VALUE={5.521E-7*(PWR(V(2),1.5)+PWRS(V(2),1.5))/2}
+E2  	3  	4  	VALUE={5.521E-7*PWR(13.49*V(S,K),1.5)*V(P,K)/25}
+E3  	5  	4  	VALUE={(1-V(4,2)/ABS(V(4,2)+0.001))/2}
+R1  	5  	0  	1.0K
+Gk  	S  	K  	VALUE={V(3,2)}
+Gp  	P  	S  	VALUE={0.92*(V(3,4)*(1-V(5,4))+V(3,2)*V(5,4))}
+R3   	G 	10  	3k   	; FOR GRID CURRENT
+D3   	10 	K	DX      ; FOR GRID CURRENT
+Cgk 	G  	K  	4.5P
+Cgs 	G  	S  	4.5P
+Cgp 	G  	P  	0.7P
+Cpk 	P 	K 	7.5P
+.ENDS
+
+.SUBCKT 12BY7 1 4 2 3
++ PARAMS: MU=28 EX=1.526 KG1=635 KP=132 KVB=23.7 ; kg2=1000
++         CCG=10.2P CPG1=.12P CCP=5.5P RGI=2.5K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/(KVB)),0,v(1,3)/910)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*70/(V(1,3) + 100))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 12GN7A A G2 G1 K
+BGG   GG   0 V=V(G1,K)+-0.52499611
+BEP   EP   0 V=URAMP(V(A,K))+1e-10
+BEG   EG   0 V=URAMP(V(G1,K))+1e-10
+BEG2  EG2  0 V=URAMP(V(G2,K))+1e-10
+BM1   M1   0 V=(0.0070794303*(URAMP(V(EG2)-1e-10)+1e-10))**-0.51284817
+BM2   M2   0 V=(0.74521269*(URAMP(V(GG)+V(EG2)/35.989804)+1e-10))**2.0128482
+BP    P    0 V=0.032317671*(URAMP(V(GG)+V(EG2)/48.294674)+1e-10)**1.5
+BIK   IK   0 V=U(V(GG))*V(P)+(1-U(V(GG)))*0.018638041*V(M1)*V(M2)
+BIG   IG   0 V=0.016158835*V(EG)**1.5*(V(EG)/(V(EP)+V(EG))*1.2+0.4)
+BIK2  IK2  0 V=V(IK,IG)*(1-0.4*(EXP(-V(EP)/V(EG2)*15)-EXP(-15)))
+BIG2T IG2T 0 V=V(IK2)*(0.81776253*(1-V(EP)/(V(EP)+10))**1.5+0.18223747)
+BIK3  IK3  0 V=V(IK2)*(V(EP)+1950)/(V(EG2)+1950)
+BIK4  IK4  0 V=V(IK3)-URAMP(V(IK3)-(0.017167779*(V(EP)+URAMP(V(EG2,EP)))**1.5))
+BIP   IP   0 V=URAMP(V(IK4,IG2T)-URAMP(V(IK4,IG2T)-(0.017167779*V(EP)**1.5)))
+BIAK  A    K I=V(IP)+1e-10*V(A,K)
+BIG2  G2   K I=URAMP(V(IK4,IP))
+BIGK  G1   K I=V(IG)
+* CAPS
+CGA   G1  A  0.12p
+CGK   G1  K  10.4p
+C12   G1  G2 7p
+CAK   A   K  3.9p
+.ENDS
+
+.SUBCKT 807 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/5)}
+Eme	me	0	VALUE={PWR(LIMIT{V(A,K),0,2000},1.5)/1750}
+Emu	mu	0	VALUE={PWRS(V(G,K),1-(LIMIT{-V(G,K),30,9999}-30)/2000)}
+Egs	gs	0	VALUE={LIMIT{V(A,K)/2.5+V(S,K)*15.15+V(mu)*134,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)*0.8E-6}
+Ecath  	cc    	0 	VALUE={LIMIT{V(gs2)*V(at),0,V(me)}}
+Ga     	A     	K     	VALUE={V(cc)}
+Escrn	sc	0	VALUE={0.76*V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={V(sc)*LIMIT{V(S,K),0,10}/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*650E-6}
+Cg1	G	K	7.5p
+Cgs	G	S	5.0p
+Cak	A	K	8.2p
+Cg1a	G	A	0.2p
+.ENDS 
+
+
+.SUBCKT 813 1 4 2 3
++ PARAMS: MU=8.5 EX=1.414 KG1=2720 KP=46.2 KVB=132
++         CCG=16.3P CPG1=.25P CCP=14P RGI=3.3K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+* G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*50/(V(1,3) + 2))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+
+.SUBCKT 6146 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/10)}
+Eme	me	0	VALUE={LIMIT{V(A,K),0,10000}/130}
+Emu	mu	0	VALUE={PWRS(V(G,K),1-(LIMIT{-V(G,K),30,9999}-30)/2000)}
+Egs	gs	0	VALUE={LIMIT{V(A,K)/10+V(S,K)*4.5+V(mu)*19,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)*16E-6}
+Ecath  	cc    	0 	VALUE={LIMIT{V(gs2)*V(at),0,V(me)}}
+Esd	sd	0	VALUE={LIMIT{V(gs2)*V(at)-V(me),0,99999}}
+Ga     	A     	K     	VALUE={V(cc)}
+Escrn	sc	0	VALUE={2.5E-4*PWRS(V(S,K),1.5)*V(gs2)*(1.1-V(at))+V(sd)}
+Gs     	S     	K	VALUE={V(sc)}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*870E-6}
+Cg1	G	K	13.0p
+Cak	A	K	8.5p
+Cg1a	G	A	0.24p
+.ENDS 
+
+.SUBCKT 6550 1 4 2 3 ;  P g2 G1 C
++ PARAMS: MU=7.9 EX=1.35 KG1=890 KP=60 KVB=24 kg2=4200
++         CCG=14P CPG1=.85P CCP=12P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/(KVB)),0,v(1,3)/250)}
+*G2   4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+* G2   4 3  VALUE={PWR(V(4,3)/MU+V(2,3),EX)/KG2}
+g2   4 3  value= {(I(G1)*20/(V(1,3) + 10))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 7754_7695 1 4 2 3
++ PARAMS: MU=4.8 EX=1.736 KG1=3200 KP=48 KVB=18.1 ;kg2=6000
++         CCG=14P CPG1=.25P CCP=12P RGI=2K 
+RE1  7 0  1MEG    ; DUMMY SO NODE 7 HAS 2 CONNECTIONS
+E1   7 0  VALUE=  ; E1 BREAKS UP LONG EQUATION FOR G1.
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))}
+G1   1 3  VALUE={(PWR(V(7),EX)+PWRS(V(7),EX))/KG1*ATAN(V(1,3)/KVB)}
+*G2     4 3  VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2}
+g2   4 3  value= {(I(G1)*7/(V(1,3) + 2))} ; models change in current with change in plate
+RCP  1 3  1G      ; FOR CONVERGENCE
+C1   2 3  {CCG}   ; CATHODE-GRID 1
+C2   1 2  {CPG1}  ; GRID 1-PLATE
+C3   1 3  {CCP}   ; CATHODE-PLATE
+R1   2 5  {RGI}   ; FOR GRID CURRENT
+D3   5 3  DX      ; FOR GRID CURRENT
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N)
+.ENDS
+
+.SUBCKT 7788/E810F 1 4 2 3 
++ PARAMS: MU= 57 EX= 1.40 KG1=102 KP=200 ; KG2= 4500 kg2 isn't used, kg1 models overall gm
++ KVB= 8 VCT= 0.00 RGI=1000 ; kvb models plate resistance
++ CCG=14.5P CPG1=0.036P CCP=3.5P 
+RE1 7 0 1MEG 
+E1 7 0 VALUE= ; E1 BREAKS UP LONG EQUATION FOR G1. 
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))} 
+G1 1 3 VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*1.57*ATAN(2*V(1,3)/(KVB*3.14159)),0,v(1,3)/710)} ; added limit-better models lower plate voltage limit condion
+*G2 4 3 VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2} * this equation sucks
+G2 4 3 value= {(I(G1)*39/(V(1,3) + 30))} ; this models change in current with change in plate first var changes ig2, second pushes right/left
+RCP 1 3 1G ; FOR CONVERGENCE 
+C1 2 3 {CCG} ; CATHODE-GRID 1 
+C2 1 2 {CPG1} ; GRID 1-PLATE 
+C3 1 3 {CCP} ; CATHODE-PLATE 
+R1 2 5 {RGI} ; FOR GRID CURRENT 
+D3 5 3 DX ; FOR GRID CURRENT 
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N) 
+.ENDS 
+
+.SUBCKT 7722/E280F 1 4 2 3 
++ PARAMS: MU= 62 EX= 1.40 KG1=254 KP=250 ; KG2= 4500 kg2 isn't used, kg1 models overall gm
++ KVB= 8 VCT= 0.00 RGI=1000 ; kvb models plate resistance
++ CCG=9.4P CPG1=0.035P CCP=3.6P 
+RE1 7 0 1MEG 
+E1 7 0 VALUE= ; E1 BREAKS UP LONG EQUATION FOR G1. 
++{V(4,3)/KP*LOG(1+EXP((1/MU+V(2,3)/V(4,3))*KP))} 
+G1 1 3 VALUE={limit((PWR(V(7),EX)+PWRS(V(7),EX))/KG1*1.57*ATAN(2*V(1,3)/(KVB*3.14159)),0,v(1,3)/1.25k)} ; added limit-better models lower plate voltage limit condion
+*G2 4 3 VALUE={(EXP(EX*(LOG((V(4,3)/MU)+V(2,3)))))/KG2} * this equation sucks
+G2 4 3 value= {(I(G1)*72/(V(1,3) + 55))} ; this models change in current with change in plate first var changes ig2, second pushes right/left
+RCP 1 3 1G ; FOR CONVERGENCE 
+C1 2 3 {CCG} ; CATHODE-GRID 1 
+C2 1 2 {CPG1} ; GRID 1-PLATE 
+C3 1 3 {CCP} ; CATHODE-PLATE 
+R1 2 5 {RGI} ; FOR GRID CURRENT 
+D3 5 3 DX ; FOR GRID CURRENT 
+.MODEL DX D(IS=1N RS=1 CJO=10PF TT=1N) 
+.ENDS 
+
+.SUBCKT 7721/D3a A S Gi K
+Ea Gi G value= {-.09} ; grid offset
+Eat	at	0	VALUE={.636*ATAN(V(A,K)/15)}					; /# is sharpness of knee
+Egsg	gsg	0	VALUE={LIMIT(V(S,K)/1+PWRS(V(G,K),1)/.014+V(A,K)/80000,0,1E6)}	; s,k/#=peak current  g,k/# is mu  a,k/# is plate res mu was too low
+Egss	gss	0	VALUE={LIMIT(V(S,K)/10000000000+PWRS(V(G,K),1.0)/.03+V(A,K)/80,0,1E6)}	; separating gsg,gss allows cutoff to be different
+Egs2	gs2	0	VALUE={PWRS(V(gsg),1.4)}
+Egs3	gs3	0	VALUE={PWRS(V(gss),1.4)}
+Ecath 	cc    	0 	VALUE={V(gs2)*V(at)+V(gs3)*V(at)}
+Ga     	A     	K   VALUE={limit(6.4E-5*V(cc),0,v(a,k)/1.2k)}  ; added knee limit 3-17-10 sb
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={limit(9.8E-5*V(sc)*LIMIT(V(S,K),0,10)/10,0,v(a,k)/800)} ; screen current was too low, added limit sb
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*450E-6}
+Cg1	G	K	9.5p
+Cak	A	K	4.5p
+Cg1a	G	A	0.04p
+.ENDS D3a
+
+.SUBCKT D3a A S G K ; old model
+Eat	at	0	VALUE={.636*ATAN(V(A,K)/20)}					; /# is sharpness of knee
+Egsg	gsg	0	VALUE={LIMIT(V(S,K)/1+PWRS(V(G,K),1)/.0146+V(A,K)/80000,0,1E6)}	; s,k/#=peak current  g,k/# is mu  a,k/# is plate res
+Egss	gss	0	VALUE={LIMIT(V(S,K)/10000000000+PWRS(V(G,K),1.0)/.03+V(A,K)/80,0,1E6)}	; separating gsg,gss allows cutoff to be different
+Egs2	gs2	0	VALUE={PWRS(V(gsg),1.45)}
+Egs3	gs3	0	VALUE={PWRS(V(gss),1.45)}
+Ecath 	cc    	0 	VALUE={V(gs2)*V(at)+V(gs3)*V(at)}
+Ga     	A     	K     	VALUE={5.4E-5*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={5.0E-5*V(sc)*LIMIT(V(S,K),0,10)/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*450E-6}
+Cg1	G	K	8.5p
+Cak	A	K	6.5p
+Cg1a	G	A	1.1p
+.ENDS D3a
+
+.SUBCKT EF86 A S G K
+Emu	mu	0	VALUE={LIMIT{V(G,K),-3,999}+LIMIT{V(G,K)+3,-999,0}*0.714}
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/15)}
+Egs	gs	0	VALUE={LIMIT{V(S,K)/27.5+V(mu)*1.32+1,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)}
+Ecath  	cc    	0 	VALUE={V(gs2)*V(at)}
+Ga     	A     	K     	VALUE={5.83E-4*V(cc)}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={0.5E-3*V(sc)}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*450E-6}
+Cg1	G	K	3.8p
+Cak	A	K	5.3p
+Cg1a	G	A	0.05p
+.ENDS 
+
+.SUBCKT   KT88 P S G K
+Esp 2  0  VALUE={V(P,K)+24.49*V(S,K)+189.9*V(G,K)}
+E1  3  2  VALUE={8.301E-7*(PWR(V(2),1.5)+PWRS(V(2),1.5))/2}
+E2  3  4  VALUE={8.301 E-7*PWR(24.49*V(S,K),1.5)*V(P,K)/40}
+E3  5  4  VALUE={(1-V(4,2)/ABS(V(4,2)+0.001))/2}
+R1  5  0  1.0K
+Gk  S  K  VALUE={V(3,2)}
+Gp  P  S  VALUE={0.95*(V(3,4)*(1-V(5,4))+V(3,2)*V(5,4))}
+R3  G  10 3k   	; FOR GRID CURRENT
+D3  10 	K DX    ; FOR GRID CURRENT
+Cgk G  K  8.0P
+Cgs G  S  8.0P
+Cgp G  P  1.2P
+Cpk P  K  12P
+.ENDS KT88
+
+.SUBCKT SV83 A S G K
+Eat	at	0	VALUE={0.636*ATAN(V(A,K)/15)}
+Egs	gs	0	VALUE={LIMIT{V(S,K)/19+V(G,K)*1.2+V(A,K)/1400,0,1E6}}
+Egs2	gs2	0	VALUE={PWRS(V(gs),1.5)*1.6}
+Ecath  	cc    	0 	VALUE={V(gs2)*V(at)}
+Ga     	A     	K     	VALUE={LIMIT{3.5E-3*V(cc),0,9999}}
+Escrn	sc	0	VALUE={V(gs2)*(1.1-V(at))}
+Gs     	S     	K	VALUE={2.0E-3*V(sc)*LIMIT{V(S,K),0,10}/10}
+Gg	G	K	VALUE={PWR(LIMIT{V(G,K)+1,0,1E6},1.5)*(1.25-V(at))*350E-6}
+Cg1	G	K	13.5p
+Cak	A	K	7.0p
+Cg1a	G	A	0.07p
+.ENDS 
+
+
+

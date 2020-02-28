@@ -25,10 +25,10 @@ LINE Normal -28 32 28 32
 ARC Normal -48 -48 48 48 48 0 -48 0
 ARC Normal -48 -32 48 64 -48 16 48 16
 WINDOW 0 8 -64 Left 2
-WINDOW 38 47 80 Center 2
+WINDOW 3 -24 80 Left 2
+SYMATTR Value Tetrode
 SYMATTR Prefix X
-SYMATTR ModelFile tetrode.lib
-SYMATTR SpiceModel Tetrode
+SYMATTR Description This symbol is for use with a subcircuit macromodel that you supply.
 PIN 0 -48 NONE 0
 PINATTR PinName Anode
 PINATTR SpiceOrder 1

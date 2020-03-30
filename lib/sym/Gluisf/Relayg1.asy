@@ -1,0 +1,28 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 64 -48 64 -34
+LINE Normal 94 24 66 -26
+LINE Normal 64 33 64 48
+LINE Normal 0 -32 0 -16
+LINE Normal 0 16 0 32
+RECTANGLE Normal 32 -16 -32 16
+CIRCLE Normal 68 -25 59 -34
+CIRCLE Normal 69 33 60 24
+WINDOW 0 -40 0 Right 2
+SYMATTR Prefix X
+SYMATTR Description 1 NA Relay
+SYMATTR ModelFile gluisf.lib
+SYMATTR SpiceModel Relay
+SYMATTR Value L=1.97m RS=123 VDC=5 RON=100m
+PIN 0 -32 NONE 8
+PINATTR PinName A1
+PINATTR SpiceOrder 1
+PIN 0 32 NONE 8
+PINATTR PinName A2
+PINATTR SpiceOrder 2
+PIN 64 -48 NONE 8
+PINATTR PinName NA1
+PINATTR SpiceOrder 3
+PIN 64 48 NONE 8
+PINATTR PinName NA2
+PINATTR SpiceOrder 4

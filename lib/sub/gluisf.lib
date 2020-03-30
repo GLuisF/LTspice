@@ -31,7 +31,7 @@ A1 4 0 0 0 0 N001 0 0 BUF
 .model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
 .ends spdtg
 
-* Single-Pole Single-Throw (SPDT) Analog Switch
+* Single-Pole Single-Throw (SPST) Analog Switch
 .subckt spstg 1 2 3
 S1 2 1 3 0 SW
 .model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
@@ -68,3 +68,13 @@ A6 N002 0 0 0 0 N003 0 0 BUF VHIGH={VCC}
 V1 VCC 0 {V}
 .param V=5
 .ends VCC
+
+* 1 NA Relay
+.subckt relay A1 A2 NA1 NA2
+L1 A1 A2 {L} Rser={RS}
+B1 N001 0 V=DELAY(ABS(V(A1,A2))>0.75*VDC,15m)
+S1 NA2 NA1 N002 0 SW
+A1 N001 N003 0 0 0 0 N002 0 SRFLOP
+B2 N003 0 V=DELAY(ABS(V(A1,A2))<0.05*VDC,5m)
+.model SW SW(Ron={RON} Roff=100Meg Vt=0.5 Vh=-0.1)
+.ends relay

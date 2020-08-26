@@ -1,0 +1,2 @@
+.model NMOS NMOS(Cgdo=10p Cgso=10p)
+.model PMOS PMOS(Cgdo=10p Cgso=10p)

@@ -1,0 +1,42 @@
+*
+.subckt 4046 Ppout CAout Comp Vcout Inh Ce1 Ce2 Vss Vcoin Demout r1 r2 CBout Sigin Zener Vdd
+ADff1 Vdd 0 N002 Vss N001 N003 N006 0 DFLOP
+ADff2 Vdd 0 N010 Vss N001 N011 N004 0 DFLOP
+An1 0 0 N003 N004 0 N005 0 0 OR td=20n
+An2 0 N006 0 N011 0 N009 0 0 OR td=20n
+Axor N002 0 0 0 N010 0 N007 0 XOR
+An3 N005 0 0 0 N009 N008 0 0 OR
+And N006 0 0 0 N004 0 N001 0 AND td=20n tripdt=20n
+SH CBout Vdd N005 Vss Std
+SL Vss CBout N009 Vss Std
+Spout Ppout Vdd N008 Vss Std
+Rpout Vss Ppout 10k
+Sca CAout Vdd N007 Vss Std
+Rcpa Vss CAout 10k
+Acmp Comp 0 0 0 0 0 N010 0 SCHMITT vt={Vdd/2} vh={(Vdd/2)-.5} td=20n tripdt=50n
+Ain Sigin 0 0 0 0 0 N002 0 SCHMITT vt={Vx/2} vh=100m td=20n tripdt=50n
+Rin Vcoin Vss {Rin}
+Er2 Vss r2 Vdd r2 2e8
+Er1 Vss r1 Vcoin r1 2e8
+Badj Adj Vss V=TABLE ((abs((V(vdd)/I(Er2))/(V(Vcoin)/I(Er1)))),.5,1.43, 1,1.6, 10,1.04, 50,.67, 100,.84, 101,1, 102,1, 1000,1)
+Radj Adj Vss 1g
+Bim Ce1 Vss I=((M1*I(Er1)*V(adj)+M2*I(Er2))*Kc*V(sqr))
+vcext Ce2 Vss 0
+Cstray Ce1 Ce2 5p
+Rcext Ce1 Ce2 1g
+Bsqr Pul Vss V=(1.2e6*V(sqr)-1e7*V(Ce1))
+Rint Sqr Pul .1T
+Cint Sqr Vss 10f
+Dlimh Sqr Vdd Dio
+Dliml 14 Sqr Dio
+Vliml Vss 14 {Vdd}
+BOut Vcout Vss V=table ((1-u(v(inh)))*(v(sqr)),.1,.1, v(vdd),v(vdd))
+Rinh Inh Vss 1e6
+Dz Vss Zener Zen
+Rz Zener Vss 1g
+bdem Demout Vss V=v(vcoin)*(1-u(v(inh)))
+Rdem Demout Vss 1g
+.model Zen  D(Is=1e-12 Rs=40 BV=7 IBV=.5m)
+.model Dio D (IS=100u N=.1 CJO=80f RS=1m)
+.model Std Sw(Ron=10 Roff=1t Vt=.5 Vh=.4
+.ends

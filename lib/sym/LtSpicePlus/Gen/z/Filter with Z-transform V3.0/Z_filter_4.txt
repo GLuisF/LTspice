@@ -1,0 +1,46 @@
+Simulation Of Sampled Systems
+-----------------------------
+Please copy all files into one working diectory.
+The .TRAN simulation gives an oversampled output. This is no problem
+as long as you only plot the data.
+If you need one value per system time step (e.g. 100us), then you
+need some pot processing.
+
+You could export the data with LTSPICE and undersample with your own
+program or you use the "ltsputil.exe" tool. This program can undersample 
+the LTSPICE output file in steps of 100us and export this data to a text file.
+Files > Util > ltsputil 2.0 > ltsputil.exe
+
+
+Instructions for sampling a .raw file
+-------------------------------------
+Goal: Undersample the rawfile at the midpoint of each system step.
+This requires two runs of ltsputil.exe, equalize(subsample) and export.
+
+Step-1: Undersample with the equalize-function.
+
+You can still look to this "x.raw" file with LTSPICE.
+If you enable "mark data points", you will see it exactly at every 0.1ms.
+
+The start time should be set to half(here 0.05e-3) the system time step.
+tstop = tstart + (n-1)*tsystem            tsystem=0.1e-3
+n = 150 = (tstop-tstart)/tsystem + 1
+
+Each variable name in the new rawfile will be extended by "_e".
+
+  ltsputil.exe -eo z_filter_4_time_sh.raw x.raw 150 "_e" 0.05e-3 14.95e-3
+
+
+
+Step-2: Export selected data to a text file
+Export the time and V(out_e). Variable 0 stands for time.
+
+  ltsputil.exe -xo0 x.raw x.txt "%14.6e" "," "" 0 V(out_e)
+
+
+
+Another example:
+Export index, time, and V(out_e). 
+An additional running index from 0 to n is placed in the first column.
+
+  ltsputil.exe -xoi0 x.raw x.txt "%14.6e" "," "" 0 V(out_e)

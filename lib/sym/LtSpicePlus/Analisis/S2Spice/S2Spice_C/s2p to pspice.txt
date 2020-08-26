@@ -1,0 +1,53 @@
+Evaluation project "s-parameter to spice conversion (free/low-cost)"
+--------------------------------------------------------------------
+HK/03-08-31
+
+included files:
+
+G7V7570M.S2P
+Infineon s-parameter file for BFG196 at operation point V(CE)=0.75V and I(C)=70mA
+
+BFG196_EM.MDL (1)
+Infineon s-parameter for BFG196 converted to PSPICE with EMtoSPICE.exe
+
+G7V7570M.LIB (2)
+Infineon s-parameter for BFG196 converted to PSPICE with S2p2lib1.zip
+
+T395.TXT (3)
+Infineon original BFG196 PSPICE file (only the die data without parasitic package).
+
+Description of circuit:
+- rf amplifier class-c (usable for constant amplitude modulation schemes, like FM) with output low-pass filter
+- dc operation point approx. 70mA
+- frequency = 145MegHz
+- input saturation level about 300mV
+- power gain approx. 10dB
+- input/output impedance = 50 Ohm
+- small, low-cost, SMD devices
+- air-coils
+- lossy circuit elements
+- not full optimized, but almost
+
+For gain evaluation please add 3dB to resulting gain because of the loss of the rf input resistor 50 Ohm already included (needed to allow simulation). At the output there is another 50 Ohm resistor to terminate the circuit (In reality this resistor is the next stage).
+
+Differences between the 3 simulation devices (1, 2, 3):
+I made no effort to generate a new symbol for the BFG196 transistor. I simply used a FET symbol and made a reference to the external file. If you change the DUT1 model, you must change the file name with right-click on DUT1. The same name must be included as done on the upper left circuit diagram for Spice.
+
+If you get higher in input level, the harmonic content at the output increases. You can see this if you compare the voltage at the collector/drain terminal of DUT1 - and - the circuit output doing each a FFT.
+For convience I wrote pin descriptor text at the terminals of DUT1.
+
+How to convert s-parameters to PSPICE models:
+For (1) you need the program EMtoSPICE.exe from www.emwonder.com Download if you really want this (Free evaluation is available for one month. Product price is $3000). Open the resulting PSPICE model file and change the pinning from (1,2,ref) to (2,1,ref). Name the subckt as BFG196_EM.MDL . You should have the same file as here.
+
+For (2) you need the program S2P2LIB1.EXE . You can download it at www.spice-club.com as S2P2LIB1.ZIP . Unzip the EXE file and drag the BFG196 s-parameter file on it. The result is the *.LIB file in the same directory as the original file. Similar change the pinning from (1,2,3) to (2,1,3) and subckt as made in (1). You should end with the same file as here.
+
+For (3) replace the FET symbol with a npn symbol and add to the LTspice library file (root level of LTspice under lib\sch\) named standard.bjt the (3) content. You must restart LTspice to take changes effect.
+
+Saturation effects (other than battery voltage level clipping) cannot be seen if s-parameters are used. If you use (3) Spice model you will see them at about 300mV or higher input level. Be aware of the harmonic content suppression because of the output low-pass filter!
+
+For running ac sweep, transition or noise simulation you can use the already written Spice directives. Just choose and activate...
+
+Surely I left over some explanation :)
+
+Regards -
+Henry

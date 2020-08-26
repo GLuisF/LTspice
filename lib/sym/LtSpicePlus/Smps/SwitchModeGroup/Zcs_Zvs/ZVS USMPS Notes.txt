@@ -1,0 +1,425 @@
+9-4-2006
+
+One thing I like about the USMPS ZVS is that it has
+appeared much more stable than the original, non-ZVS
+version of the USMPS.  I feel that the ZVS supercedes
+the original, but I am planning to keep all past information
+of my switching power supply design work displayed
+at this group.  Eventually, I may have to make some
+changes to some picture files to regain some space,
+though.
+
+I added the new oscillator circuit to the test ZVS USMPS
+unit on my bench.  Now it behaves quite stably even
+though it is all point-to-point wired without a circuit
+board.
+
+I no longer use breadboards, though, just the
+method known as dead-bug.  The 74C14 controller
+and IR211x MOSFET driver IC chips lay upside down
+on some electrical tape on a flat-surfaced heatsink.
+The output pins of the 74C14 chip line up exactly with
+the input pins of the IR2110, IR2113, or even the
+IR2112.  The lower current outputs of the IR2112 IC
+should not matter much since the MOSFET gates
+are enhanced more gradually than in hard-switched
+power supply circuits.
+
+The heatsink has a hole drilled in it near a corner.
+The controller/driver assembly are held in place
+by soldering the IR211x to the MOSFETs.  The MOSFETs
+are then held down on top of some thermally conductive
+insulators by means of a piece of wood or metal which
+spans between their plastic TO-220 packages.  The
+screw goes through a hole drilled in the spanner
+between the two MOSFETs. 
+
+The transformer generally does not need to be
+wired to limit leakage inductance.  In fact, for most
+windings leakage inductance not only does
+nor hurt, it actually boosts efficiency.  For higher
+power units, some of this efficiency may need to be
+exchanged for lower EMI.  Even though the ZVS
+USMPS has reduced EMI in relation to more standard
+hard-switched designs, like them as the power level is
+increased, the EMI tends to increase as well.
+
+Probably the one reason I ended up needing the ZVS
+approach so much is that my surplus-purchased ferrite
+toroids probably do not have very high permeability.
+I always had problems with turn-off spikes even when
+they were wound evenly around the core for lower
+leakage inductance.  The lower the coupling coefficient,
+the less the transformer drive can damp the spikes.
+
+I still plan to upload a more updated diagram later.
+I may wait until the cold weather ends this year's
+work in the tinkering room, though.
+
+8-25-2006
+Well, since that last really great change to the oscillator,
+I think the design of the ZVS half bridge circuit is very
+good indeed.
+
+One thing I am not sure that I mentioned is that with the
+extra inductance permissible in series with the secondary
+side if the transformer, there is really no need for active
+current limiting in the circuit.  It limits the power without
+stress on the primary side.
+
+This winter season I hope to upload new diagrams of the
+ZVS USMPS circuit.  Really, just about the only disadvantage
+of the approach is that the frequency does not remain constant.
+But in the test circuits I have built, I have found that it
+does not vary too much between light load and full load.
+
+
+8-25-2006
+I have redesigned the oscillator circuit.  By adding an extra
+timing resistor and capacitor, the ZVS timing can be much more
+precise  Also, instead of the circuit starting up at a very
+high frequency depending on the value of the formerly single
+timing resistor, now the default frequency setting is low
+instead of very high.  If the ZVS drops out now, the power
+MOSFETs can run cooler at a lower frequency.
+
+Simply pass the output of the oscillator section of the 74C14
+through a resistor/capacitor low pass filter before it goes
+to the other components of the timing circuit.  Now the original
+timing resistor can be decreased is value greatly because there
+is no longer a need to use it to depress the frequency.  The 
+feedback winding on the transformer can be reduced in turn
+number too.
+
+3-28-2006
+Some of the latest changes to the circuit have made it test
+well so far.  I have changed the secondary from single to
+dual secondaries with two single rectifiers instead of a
+bridge.  I have wound each secondary in a small window so
+that leakage inductance is increased.  Then
+a .22uF capacitor connects between the anodes of the
+rectifiers.
+
+I have increased the gate turn-on resistor to each IRF840 to
+1k ohm.  Efficiency is high and up to a few tens of watts, the
+MOSFETs can be run without a heatsink.
+
+10-27-2005
+So right now it seems that it is OK to leave out the series resonant
+capacitor on the secondary side.  Then, make the parallel resonant
+capacitor on the primary side small.  A possible value may range
+from no external capacitor to something like .01uf.
+
+Concerning the 9-23-2005 note, I think it is possible to get more
+stable circuit operation with a more aggressive feedback circuit as
+in the simulated version, though.
+
+9-30-2005
+Well, here are some thoughts I have been having concerning ZVS
+and power supply design in general.  If the primary side is stiffened
+against transients with a capacitor on a half bridge totem pole, and
+there is not much series inductance on the secondary side or the
+leakage inductance of the transformer is low, meaning there is a
+coupling coefficient fairly close to one, then (finally) the transients
+will transfer from the primary to the secondary side.  I can see
+merit in trying two techniques.  One is to use as low a frequency
+as component space and weight will permit to allow a slower circuit
+with good efficiency.  The second is to strive for the transformer
+not to kick energy back to the primary circuit.  I have observed that
+EMI develops when the primary voltage flies by inductive kick from
+one power supply rail to the other.  Well, that phenomenon is the
+essence of ZVS!
+
+9-23-2005
+Try increasing the value of the turn-off resistor at the junction of
+the turn-off feedback diodes to even out and smooth the operation
+of the feedback.  I found that 330k seems like a good value.  Then
+the emitter turn-off resistor can be increased to 10k as well as the
+resistor in series with the zener diode on the diode side of the
+optocoupler.  Increasing the value of at least the emitter resistor
+conserves the already small amount power the control side of the
+circuit draws.
+
+If the result of these changes is that the regulation will not hold
+down the output voltage under a light a load, lower the value of the
+default load resistor a little.  I found that on the simulator that
+making its value around 620 ohms when the output voltage is set
+up to be 15.5v does the trick there.
+
+
+6-20-2005
+
+I have been experimenting with a physical ZVS-USMPS circuit over last few months.  I am trying to get as close to the ideal of no EMI without much or any need to include extra filtering or shielding measures.  It involves keeping the frequency of all harmonics and transients as low as possible.  I am tending to observe a direct correspondence between power level and quantity of EMI generated, which is as one would expect.
+
+Lately, I have been designing such a circuit for a battery charger on an electric motor assisted bicycle.   Its output current will be about 7 amps, and I am planning to use a switching frequency below 20khz to allow for lower switching transients and harmonics while maintaining good efficiency.   I aim for light weight and compactness.
+
+The main trick to use for keeping the frequencies of transients as low as possible is to construct the transformer with as many turns as possible for the output power needed.   On the battery charger project, the primary is comprised of about 150 turns of 24 gauge wire applied in two separate windings connected in series.  This allows the resonant capacitance to be made smaller while still maintaining a low switching frequency.  It also keeps the circulating current no larger than necessary.
+
+The ZVS circuit can be considered somewhat the opposite of spread spectrum.  It tends to concentrate any EMI generation in lower frequency bands.  So by making the transformer impedance as high as possible, the resonant current, and therefore the power escaping any lossy areas, are lower.
+
+
+
+4-30-2005
+
+Since I like the transformer winding phase feedback method much
+more than the capacitive feedback method, I have deleted the
+LTspice circuit of the capacitive method but have not ruled out
+experimenting further with it.
+
+4-29-2005
+
+I still like the method that uses the transformer winding for phase
+feedback much more than the capacitive method.  To the former
+circuit, I have added a 430k ohm resistor, R8, to limit the maximum
+on-time.  That resistor is needed to set the minimum frequency under full load and to enable the ZVS process under that condition.
+
+4-23-2005
+
+I am considering removing the circuit described directly below
+in the 4-19 note because I overlooked an important function of the
+variable voltage supplied to the timing circuit capacitor charge.
+I think it is required to adjust the duty cycle to maintain the output
+state at either high, low, or transition level.  I plan to do
+more LTspice experimentation on it and then edit this
+note and maybe remove the 4-19 note and the capacitive phase
+feedback circuit from the files section. 
+
+4-23-2005
+
+I am experimenting with the two different phase feedback
+approaches.  After some contemplation, I suspect, for now at least,
+that the transformer way may be superior.  It may not be
+detrimental for the resonance of the output filter to delay the turn
+on of each MOSFET since the critical requirement is that the
+voltage peak be great enough to take the output of the MOSFET
+totem pole to each power supply rail.
+
+
+4-19-2005
+
+In the latest LTspice circuit construct, I have altered the
+phase feedback from transformer winding to capacitive.
+The capacitor couples the changing voltage at the actual MOSFET
+totem pole output to the oscillator.  The resonance associated
+with the output inductor no longer interferes with the zero voltage
+switching this way.  Since there is no longer any choice of
+switching winding polarity to achieve proper phasing,
+I've switched the input signals to the IR2110.
+
+4-4-2005
+
+I am uploading the improved LTspice circuit of the ZVS  USMPS
+with changes mentioned in the 3-29 note.  I have also increased
+the filter capacitor from 1000uF to 2000uF since that restores loop
+stability because of the increased maximum ripple due to the higher
+over current protection level I have added.  Before I felt it
+necessary to limit the power to around 500w, but with the improved
+operation, I have been able to raise it to 800w.  I have also
+reduced the MOSFET turn-on resistor since the ZVS operation is
+now more even, so the quicker turn-on has less risk of dropping the
+operation out of ZVS mode, the occurrence of which could cause
+the MOSFETs to overheat after a short time.
+
+3-29-2005
+
+I seemed to have found a major improvement in the current
+limiting circuit which appears to improve four
+simulation aspects of the LTspice construct of the ZVS
+USMPS a lot.  By adding a separate current limiting transistor
+parallel to the regulator one, the output current gradually ramps
+up as in soft start, the feedback response is much smoother,
+the transformer drive waveform remains much more balanced
+in respect to duty cycle and zero voltage switching,
+and now virtual full duty cycle protection is apparent.
+After more testing, I hope to post a revised diagram.
+
+3-27-2005
+
+Something to watch out for is power dissipation in the secondary
+resonant circuit from losses in the resonant capacitor there as well
+as in the inductor and somewhat in the secondary winding.
+The greatest losses could come from the skin effect, which is the
+tendency of electrons to flow along the surface of a wire at high frequencies.  The normal remedial approach is to compose
+windings of multiple strands of thinner gauge wire where needed.
+Other times just using a single thicker strand than otherwise
+needed may suffice.
+
+3-25-2005
+
+I have uploaded the version of the ZVS USMPS with the largest
+resonant capacitance parallel to the primary of the transformer
+that I found will work acceptably according to the simulator.
+Also, I have  improved the feedback a little.  I have added
+half-cycle current limiting as well.  For now, I will leave rev1
+available, but may delete it later.
+
+3-16-2005
+
+The feedback circuit cannot cope with a output filter
+capacitor smaller than 1000uF due to the slowness of the
+optocoupler--my guess.
+
+The maximum size of the resonant capacitor seems to be around
+.022uF.  An actual power supply will use one that
+ ranges between that value and zero (no parallel capacitor.)
+It may be best to use up to .01uF across the lower MOSFET
+and the same value across the upper one (drains to sources).
+Then they will act as decouplers, I think.  But that way may
+also lower the impedance a little too much causing ringing, which
+I am not sure will not happen anyway.  Hopefully, the transients
+are kept so slow that ringing will not be induced in any
+parasitic inductances.
+
+
+3-14-2005
+
+So far I have gotten good results after reducing the output filter capacitor to 1000uF.  Now I wish to try a lower value too.
+
+3-13-2005
+
+I seem to have great news in that I have been able to get good
+performance now with a much larger resonant capacitance
+shunting the output MOSFETs.  Something in the ballpark of
+.02uF works because I decided to try to get a tank circuit on
+the transformer secondary side to add some power back to
+the primary side during flyback.  I almost gave up on the idea
+because I had been wrongly trying to rely solely on the
+inductance of the secondary in the LC tank.  When I placed
+the capacitor across the secondary and the output inductor
+in series, it seemed to solve the problem.  Now my confidence
+that the circuit concept functional is high.
+
+Now the no load frequency is only around 120khz, a great
+improvement as far as efficiency is concerned.  Now EMI
+can be low too.  It is probably best to divide the resonant
+capacitance in half and place half across the drain to source
+of each MOSFET.  So, that would mean .01uF across the
+upper and .01uF across the lower one.  The secondary
+resonant storage capacitor is approximated according to
+the turns ratio of the transformer.  For 10 to 1, it needs to
+be at least .22uf, but I think right now that making it larger
+gives more boost for the primary flyback.  Too large causes too
+much circuit losses from high circulating current and can actually
+cause the destructive dropping out of the ZVS mode.  I have
+simulated it at 1uF well so far.
+
+I would like to do more tests and try things like lowering the
+output filter capacitor before replacing the Rev1 circuit with
+the new one.  The output loop stability still seems good with
+the 10000uF capacitor, but I would try to lower it and observe
+the results.
+
+3-11-2005
+
+What I've simulated is the Rev1 circuit with a few changes
+to greatly decrease the response time of the ZVS feedback.
+I have totally removed the resonant capacitor that was
+bypassing the MOSFET totem pole middle point and am
+relying solely on the
+output capacitance of the MOSFETs.  I have also increased
+the transformer coupling capacitors to 1uf each.  The no load
+frequency increases to around 700khz.  The frequency at full
+power of around 500w is close to 35khz.  The stability of the
+DC feedback shows remarkable improvement.  I wonder
+how the EMI will be if I put together this circuit.
+
+I have also been able to add half-cycle current limiting.
+It was impractical before since it interfered with the ZVS
+and would overheat the MOSFETs to their destruction.
+If the parallel capacitor to the MOSFETs is relatively large,
+half-cycle current limiting cannot be used.  It is safe to use
+with no such external capacitor.
+
+Another addition to the Rev1 circuit is differential proportional
+integrative control in the feedback loop (edit: but I changed
+it to simple phase lead on 3-14-2005). 
+
+
+3-11-2005
+
+I discovered a problem with the 3-8-2005 noted methodology.
+The voltages on the transformer coupling capacitor(s) can
+become unrealistically high during resonance.  Those
+capacitors will usually only handle 250v, but the simulation
+was showing them charging at  over a kilovolt.  So the boost
+was really operating, but was unrealistic at those levels.
+Maybe the best thing to try will be to greatly lower the value of the resonant capacitor connecting  the middle of the MOSFET
+totem pole to ground.  Then, half-cycle current limiting may also work.
+
+3-8-2005
+
+I think that the ZVS USMPS may not require as aggressive of regulation as hard switched topologies.  The inductor in series with the secondary winding of the transformer appears to react with the coupling capacitor in series with the primary to boost the voltage by means of phase shift under a load, partially offsetting the usual voltage drop.  Admittedly, I  have to try to get a lot of physical circuit experimentation done.   
+
+2-07-2005
+
+Theory of Operation of the ZVS USMPS
+
+When power is applied to the circuit, The control IC, the
+74C14 receives 10v from the 15v supply through a dropping
+resistor.  A 10v zener diode regulates and a .1uF monolithic
+ceramic capacitor filters and bypasses noise.
+
+The timing capacitor and charge/discharge resistor initially provide
+a starting period of under 5 microseconds.  However, one of  the
+MOSFETs is soon turned on, causing the secondary winding, L3,
+in series with the resistor to develop a polarity which increases
+the current passing through the capacitor very quickly turning that
+MOSFET back off.  Now is when the needed action of the phase
+control winding begins its very important work.  When that
+MOSFET turns off the voltage on the transformer phase winding increasingly opposes the voltage on the series resistor as the
+primary voltage flies toward the opposite rail.  Once that waveform
+quits traveling--either because it reaches the other supply rail or
+because the energy stored in the transformer core can no longer
+charge the resonant capacitor parallel to the primary winding, the
+charge process on the timing capacitor is no longer being inhibited,
+and the period quickly times out, causing the gate to switch states,
+turning on the MOSFET on the voltage rail to where the flying
+waveform had been going.
+
+Now that one of the MOSFETs is on, the appropriate gate coupling
+capacitor is discharged either by the on-time limiting resistor or by
+the feedback circuit.  When the MOSFET turns off, the primary
+voltage flies toward the other power supply rail all the while inhibiting
+the voltage change on the oscillator capacitor.  When it peaks out, it
+quits its inhibition of current entering or leaving the capacitor, the
+capacitor quickly times out, the gate switches state, and the
+appropriate MOSFET on the voltage rail where the waveform either
+reached or tried to reach turns on.  The process continues over and
+over.
+
+The output of the IR2110/IR2113 is buffered by the relatively large
+series resistor, which directly turns each MOSFET slowly through
+the diode, but turns it off much faster through the PNP transistor.
+Usually, the transformer primary winding voltage is already at the
+same power rail supplying the MOSFET turning on.  The slow
+turn-on time is extra assurance that if the waveform had not flown
+far enough, the inrush current into the resonant capacitor is
+gradually increased in order to reduce spiking.
+
+Another important EMI reducing component is the capacitor across
+the AC inputs of the output bridge rectifier.  It absorbs transients and
+ringing produced by the output voltage snapping away from the
+bridge rectifier diodes.
+
+I will plan to offer the basic circuit for cycle-by-cycle overload
+protection later.  The ZVS USMPS cannot use only single rail limiting
+as the normal USMPS can, or the ZVS process will be severely
+compromised.  What it means is that the overload protection needs
+to rather symmetrically work with both MOSFETs.
+
+I am considering changing the oscillator charge/discharge resistor
+from 220k to 120k to reduce the length of time that the waveform
+lingers at each power supply rail before the appropriate MOSFET
+turns on.  The smaller value would cause each half cycle of the
+oscillator to time out faster once the primary waveform reaches its
+peak.
+
+The transformer coupling capacitors play a crucial role in helping the
+resonant action occur.  By means of their phase shift, they give the
+primary waveform an additional boost in its attempt to reach the
+power supply rails during flyback.
+
+Please check back for new editions of this explanation.   
+
+
+

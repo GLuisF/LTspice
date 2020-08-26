@@ -1,0 +1,40 @@
+*Ideal transformers subcircuits.
+*Design by Christophe Basso
+*Adapted for LTSpice by Yuri Krivtsov
+*Last modified April 2008
+***************************************
+
+.SUBCKT XFMR1 1 2 3 4 PARAMS: {RATIO}=1
+RP 1 2 1MEG
+E1 5 4 1 2 {RATIO}
+F1 1 2 VM  {RATIO}
+RS 6 3 1U
+VM 5 6 
+.ENDS XFMR1
+
+.SUBCKT XFMR2 1 2 3 4 10 11 PARAMS: {RATIO1}=1 {RATIO2}=1
+RP 1 2 1MEG
+E1 5 4 1 2 {RATIO1}
+F1 1 2 VM1 {RATIO1}
+RS1 6 3 1U
+VM1 5 6
+E2 20 11 1 2 {RATIO2}
+F2 2 1 VM2 {RATIO2}
+RS2 21 10 1U
+VM2 20 21 
+.ENDS XFMR2
+
+.SUBCKT XFMR-TAP 1 2 3 4 5 PARAMS: {RATIOT}=1
+* RATIO is the ratio of the output voltage across each tap V(3,4) or V(4,5)
+* divided by the input voltage V(1,2). The voltage gain across each tap is
+* RATIO and the gain across both taps is 2*RATIO.
+E1 7 8 1 2 {RATIOT}
+F1 1 2 VM1 {RATIOT}
+RP 1 2 1MEG
+RS 6 3 1U
+VM1 7 6
+E2 9 5 1 2 {RATIOT} 
+F2 1 2 VM2 {RATIOT}
+R5 8 4 1U
+VM2 9 8
+.ENDS XFMR-TAP

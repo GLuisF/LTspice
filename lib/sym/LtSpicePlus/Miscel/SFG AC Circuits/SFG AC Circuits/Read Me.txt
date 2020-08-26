@@ -1,0 +1,50 @@
+SFG Sonic Resonator, a Tesla Technology with the SFG prinicples of D.R. Jackson applied through out.  The circuit is an original concept of D.R. Jackson using prinicples gained from some unique theoretical views of the stationary field generator by D.R. Jackson.
+
+  LTspice IV circuit files included in this folder, please use LTspice IV (aka Switcher CAD III) which you can Google and download for free from Linear Technologies.
+
+  I don't know, but if the software file herein is not subject to allot of software error in analysis we might have something now.
+
+  You will have to run the file in LTspcie IV/Swithcer CAD III to measure the currents and compare them all.  If the software has it all fairly right to within 10% then we might have something now.
+
+  Tesla Buffs will like this applicaiton of the SFG ideas to AC circuits.
+
+Daniel Jackson
+danieljackson@netzero.com
+
+  This section is from and email I sent my engineer friend Miki at our Yahoo Group.  It details the way this circuit works and you can analyze it yourself and run its performance in software.
+
+**********************************
+
+  Hello, forgive me for giving up and throwing it all to the wind.  But I have something for you that works in LTspice software and I have been able to analyze the various math views and make some interesting theoretical conclusions that when I try based upon the math, all turned out to work in the Spice software.  And the more insight I got working along with it all helped me to follow the development and when I saw that my conclusions all worked and made it all better, step by step.  It blew my mind.  And I have one circuit that operates up to 50 watts in LTspice using a 2N3055 transitor.  So it all has to be looked at from an engineers point of view.  And I am sure it will make you go around and around for a good long while.
+
+ I was pretty much ready to forget all about my ideas for the SFG circuit.  And so, I just forgot it all and put it out of my mind.  And I turned to my radio circuits, and then to modeling them more and more in LTspice IV software.
+
+ Then I decided one day to use my ideas, and those things we tried to do with coils, and other parts in a sfg device strictly for AC points of view.  Knowing a coil can induce current and voltage into series circuit devices.  Also knowing I can make the most of coil energy by also using the magnetic energy generated, to recover that energy in a secondary winding.  Also, energy stored into a capacitor can all be returned back into the system without resistance losses.  (Well we have that small leakage current loss, but we are talking uA terms here. Which is nothing as you will see, so to say the energy in a capacitor is all returned into the system of an AC circuit is pretty much how it goes in these circuits.  And how the ARRL handbook defines the energy stored in a cap.  So just take that at its face value and its a good thing to know too.  A resistor will just dissipate away the energy.)
+
+  It seems then that given a large enough inductance, to induce a counter electormotive force in our circuit and to act as a choke as well as source of energy via large mass~energy terms.  (A very large mass of 1 Henry.)  We can make our circuit do things in LTspice software.  And please keep in mind that 1 Henry is way more inductance than we will ever find in the typical commercially made Tesla Coil.
+
+  And so, if the coil is made to resonate either by a direct input frequency or via one of its harmonics or sub harmonics, as well as have allot of rich frequency (energy) byproducts.  Some of the induced energy creates enough force to move more charge in coulombs via the induce force of a higher voltage.  So the induced higher voltage increases the amoutn of force ~ which in turn can move more electrons in coulomb terms.  The energy for the force then is the large mass of a 1 Henry coil excited into oscillation.
+
+  In the tranistor circuits that uses my sfg views, I use the choke also as a voltage divider as well as transformer.  The primary chokes off allot of energy from the power supply.  Yet, is also induces a counter emf that on the (-) negative half cycle, returns the same amount of current back to the power supply as it pulls out on the (+) forward peak.  So the alteration of the coil, puls and push electrons back and forth into the power supply.  The transistor rectifies this current for the most part.  So the current that is drawn on the postive half cycle and then replentished back to the power suply on the negative half cycle of the primary coil.
+
+  So the choke is a choke, and a voltage divider as well as transformer, in addition the secondary has a parallel capacitor that acts to peak up the secondary as well as make the secondary into a band absorption filter (notch) filter that sucks a certain resonant frequency out of the primary.  So it also makes for a better energy absorption device.  Hence losses across the seconadry are reduced.  So we have all of these views working in just the transformer section.  And so, the current of the secondary is rectified via our notorious idea Dx.
+
+  Dx adds a negative going charge back to ground that can only travel back up into the circuit via the transistors emitter and base.  So noting the polarity of V1, this current from Dx can not go there.  It can only travel up thourgh the transistor and be added to the collector current.  And then the collector current is split off into L1 and L2 as well as RL.  So the current is divided into three parts.  And this means that only half of the current to the transformer windings can go back to the power supply.  However the extra current induced into Q1 goes to L2 and external load. I(Q1) = I(L1) + I(L2) + I(RL)  RL at the moment is a reactive load (-Xc).  Which means that the circuit wants to see a reactance here and so, we can add another transformer here which works better than a pure resistance since we maintain our peak signal voltage.  I have tried the transformer at the load and it works well.
+
+  Atempting to tune the resonance is hard since the transistor alters the loading as well as drives the circuit and thus procudes harmonic content which is ok, the energy consist of the fundamental 1kHz input as well as products produced as low as a few Hz up to around 8 kHz.  So, attempting to fine tune it all up does not seem to be something we have to do, though someone might try it and see how well it works all strictly tuned. But it might not work as well.  All of the various harmonic products that the circuit naturally produces is energy that we recitify in the circuit.
+
+ Dx as well as diodes I use to rectify the energy, should all be Schottky diodes since analysis of them reveals that they pass more current per voltathan conventional diodes and so, do not require as much force (potential, energy or joules jQ = nm/Q ~ j = joules, Q = charge, nm = newtons per meter).
+
+  Also, the coefficient of coupling for L1 and L2 in this circuit appears to be high for it to work properly (0.95).  However in common emitter versions of the circuit the coefficient of coupling can be as low a 0.7.  The common emitter circuit however wants too much driving input energy to drive the circuit and so, it will be lost across the base emitter as dissipation as well as across the base biasing resistors.  So the most efficient way to drive the transistor is to apply the input drive energy of 1 kHz to the emitter in a common base configuration.  Which is analogous to a ground grid vacuum tube amp.  
+
+  The input energy in this configuration suffers less loss and is added to the output energy in that its current drives the collector current.  The input drive energy is a bit higher in this configuration but less of it is lost percentage wise, than in the common collector circuit.
+
+  And in this configuration the input energy is added into the output energy equation with less losses.  The common collector on the other hand, waste the input drive energy across the base biasing network.
+
+  The problem with the common collector circuit is that there is allot of base current.  Even the common base wants allot of base current but not as much.  So the transistors then have to be up dated to ones that handle allot of base input power current as well as collector current.  The remedy is perhaps the 2N3055 which in software can really drive some current across Dx.
+
+  Since the input wants to drive allot of base current, it is better to drive allot of current into the emitter which can handle a higher amount of dissipation more safely.  And we know that most of the drive input energy is passed on through to the collector from the emitter.
+
+  The DC power supply provides us with the intitial operating point solution for our transistor.  Upon intial charge up of the circuit, as the charges travel to charge up everything.  The transistor reaches a intial operating point at which it fires up and the currents are induced into the coils which in turn add their energy back into the circuit.  Both L1 and L2 add a voltage transformation to the collector voltage, and the induced current of L2 is added back to the transistor circuit.  To circulate around only in Dx to Q1 and split back off to L2 again.  So this current is always being divided off into L2. And this prevents this amount of current being drawn out of the power supply.
+
+  The transistor is operated Class C with extreme cut off.  In fact the emitter is feed with a coil from emitter to the ground.  This places the emitter at DC ground potential and so, the base is also at this potential when no signal is applied.  But the input energy from a primary input winding or capacitor to the emitter to ground coil.  biases the coil so, a peak AC voltage of 1 V with enough current to equal what the collector needs.  Is the input power.  Lets say we need 600mA @ 1 V ~ AC, then the driving input power is 600mW.

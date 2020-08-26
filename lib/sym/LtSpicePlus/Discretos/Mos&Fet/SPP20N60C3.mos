@@ -1,0 +1,3 @@
+* Copyright © 2000, 2001, 2002, 2003, 2004, 2005 Linear Technology Corporation.   All rights reserved.
+*
+.model SPP20N60C3 VDMOS(Rg=0.54 Rd=100.0m Rs=90.0m Vto=3 Kp=17.5 Cgdmax=2.4n Cgdmin=0.08n Cgs=1.0n Cjo=0.30n Is=30p Rb=90.0m mfg=Infineon Vds=600 Ron=190m Qg=30n)

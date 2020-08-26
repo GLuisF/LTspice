@@ -1,0 +1,12 @@
+* source of model
+* Philips
+.PARAM PHI=1
+* Diodes Inc.
+.PARAM DIO=2
+* Infineon
+.PARAM INF=3
+* On Semiconductors
+.PARAM ONS=4
+* Zetex
+.PARAM ZTX=5
+

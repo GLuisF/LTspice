@@ -1,0 +1,352 @@
+*
+* Changes for LTspice
+* The original "Pulse_rising" and "Pulse_falling" subcircuits have been 
+* disabled. * I have replaced them with my own LTspice specific versions.
+*
+
+* PSpice Model Editor - Version 10.3.0
+
+*$
+* source NCP2820
+
+.subckt NCP2820 INN INP OUTM OUTP PGND VP /SD GND PVP
+X_U3         CURRENT_BREAK N182659  $G_DPWR $G_DGND INV
+R_VAR_R1_R15         0 VAR_R1_N34914370  0.2meg  
+X_VAR_R1_Gain_control_S5    VAR_R1_Gain_control_3 0 VAR_R1_N3491449
++  VAR_R1_Gain_control_N3545319 Gain_control_VAR_R1_Gain_control_S5 
+V_VAR_R1_Gain_control_V3         VAR_R1_Gain_control_N3319121 0 10Vdc
+X_VAR_R1_Gain_control_U72         SHT_DWN VAR_R1_Gain_control_/RISE
++  VAR_R1_Gain_control_/FALL VAR_R1_Gain_control_1 $G_DPWR $G_DGND AND3
+I_VAR_R1_Gain_control_I5         VAR_R1_Gain_control_N3568910 0 DC 20mAdc  
+X_VAR_R1_Gain_control_U59         SHT_DWN VAR_R1_Gain_control_FALL
++  PULSE_FALLING PARAMS:  WIDTH=5ms
+X_VAR_R1_Gain_control_U65         VAR_R1_Gain_control_1
++  VAR_R1_Gain_control_N3565039  $G_DPWR $G_DGND INV
+X_VAR_R1_Gain_control_U73         VAR_R1_Gain_control_N35460122
++  VAR_R1_Gain_control_/FALL VAR_R1_Gain_control_2  $G_DPWR $G_DGND AND2
+X_VAR_R1_Gain_control_U60         SHT_DWN VAR_R1_Gain_control_RISE PULSE_RISING
++  PARAMS:  WIDTH=5ms
+C_VAR_R1_Gain_control_C3         0 VAR_R1_N3491449  10u IC=0 
+X_VAR_R1_Gain_control_U61         SHT_DWN VAR_R1_Gain_control_RISE
++  VAR_R1_Gain_control_N3545992  $G_DPWR $G_DGND AND2
+X_VAR_R1_Gain_control_U74         VAR_R1_Gain_control_/SHT_DWN
++  VAR_R1_Gain_control_/RISE VAR_R1_Gain_control_FALL VAR_R1_Gain_control_3
++  $G_DPWR $G_DGND AND3
+X_VAR_R1_Gain_control_S3    VAR_R1_Gain_control_2 0 VAR_R1_N3491449 0
++  Gain_control_VAR_R1_Gain_control_S3 
+X_VAR_R1_Gain_control_U58         VAR_R1_Gain_control_RISE
++  VAR_R1_Gain_control_/RISE  $G_DPWR $G_DGND INV
+X_VAR_R1_Gain_control_S7    VAR_R1_Gain_control_N3565337 0
++  VAR_R1_Gain_control_N3545319 0 Gain_control_VAR_R1_Gain_control_S7 
+X_VAR_R1_Gain_control_U62         VAR_R1_Gain_control_/SHT_DWN
++  VAR_R1_Gain_control_/RISE VAR_R1_Gain_control_N3546028  $G_DPWR $G_DGND AND2
+X_VAR_R1_Gain_control_M1         VAR_R1_Gain_control_N3545311
++  VAR_R1_Gain_control_N3568910 VAR_R1_Gain_control_N3319121 BSS84/ZTX 
+X_VAR_R1_Gain_control_M2         VAR_R1_Gain_control_N3568910
++  VAR_R1_Gain_control_N3568910 VAR_R1_Gain_control_N3319121 BSS84/ZTX 
+X_VAR_R1_Gain_control_S4    VAR_R1_Gain_control_1 0
++  VAR_R1_Gain_control_N3545311 VAR_R1_N3491449
++  Gain_control_VAR_R1_Gain_control_S4 
+X_VAR_R1_Gain_control_U63         VAR_R1_Gain_control_N3545992
++  VAR_R1_Gain_control_N3546028 VAR_R1_Gain_control_N35460122 $G_DPWR $G_DGND OR2
+X_VAR_R1_Gain_control_U57         SHT_DWN VAR_R1_Gain_control_/SHT_DWN  $G_DPWR
++  $G_DGND INV
+X_VAR_R1_Gain_control_U66         VAR_R1_Gain_control_3
++  VAR_R1_Gain_control_N3565337  $G_DPWR $G_DGND INV
+I_VAR_R1_Gain_control_I4         VAR_R1_Gain_control_N3545319 0 DC 20mAdc  
+X_VAR_R1_Gain_control_U64         VAR_R1_Gain_control_FALL
++  VAR_R1_Gain_control_/FALL  $G_DPWR $G_DGND INV
+X_VAR_R1_Gain_control_S6    VAR_R1_Gain_control_N3565039 0
++  VAR_R1_Gain_control_N3545311 0 Gain_control_VAR_R1_Gain_control_S6 
+X_VAR_R1_X1         VAR_R1_N3491449 0 VAR_R1_N34914370 INN ZX2_N ZX
+E_U9         ZX2_N 0 VALUE {LIMIT(V(GND,INN)*1E5,-5V,+5V)} 
+R_U9 GND INN 1G
+
+X_U5         MOSL N3615407  $G_DPWR $G_DGND INV
+X_hysteresis_U30         hysteresis_N3265617 hysteresis_N3265623  $G_DPWR
++  $G_DGND INV
+X_hysteresis_U31         hysteresis_N3265623 SHT_DWN  $G_DPWR $G_DGND INV
+E_hysteresis_E2         hysteresis_N3265617 0 VALUE { if ( V(/SD, 0)<0.4,0,if(
++  V(/SD, 0)>1.2,V(VP),0.9) ) }
+X_D9         GND OUTP D1N4500 
+X_U4         N182659 OUTR MOSR_INT $G_DPWR $G_DGND OR2
+V_V9         N3312364 GND  
++PULSE 0 5 0 1n 1n 2u 4u
+X_U2         OUTL N182659 MOSL_INT $G_DPWR $G_DGND OR2
+X_S3    N3609927 GND PVP OUTP NCP2820_S3 
+X_S2    MOSL GND N3265283 GND NCP2820_S2 
+E_E9         MOSR GND VALUE { if ( V(MOSR_INT, GND)<0.4,0,if( V(MOSR_INT,
++  GND)>1.2,V(VP),0.9) ) }
+C_C3         GND VRAMP  4p IC=0 
+E_U8         ZX2_P 0 VALUE {LIMIT(V(GND,INP)*1E5,-5V,+5V)} 
+R_U8 GND INP 1G
+
+X_D8         OUTP PVP D1N4500 
+E_E6         N3633097 GND VALUE { 0.34*V(VP) }
+E_E8         MOSL GND VALUE { if ( V(MOSL_INT, GND)<0.4,0,if( V(MOSL_INT,
++  GND)>1.2,V(VP),0.9) ) }
+E_E5         VRAMP N3338568 VALUE { 0.08*V(VP) }
+R_Rf2         INN ZX2_N  222.5k  
+X_D7         GND N3265283 D1N4500 
+E_E4         CURRENT_BREAK GND VALUE { IF(V(N3287729, N3287823)>0.1u,V(VP),0) }
+X_F1    N3265283 OUTM PVP CURRENT_SENSE NCP2820_F1 
+R_R14         GND CURRENT_SENSE  1  
+R_Rf1         INP ZX2_P  222.5k  
+G_G3         PVP GND VALUE { if(V(SHT_DWN, GND)<=0.1,1u,2.5m) }
+X_D6         N3265283 PVP D1N4500 
+E_ABM2         N3648951 0 VALUE { V(ZX2_N)  
++ +V(N3647451)    }
+G_G1         PVP N3313902 VALUE { 1.2*1e-6*V(VP) }
+E_ABM1         N3401620 0 VALUE { V(ZX2_P)  
++ +V(N3633097)    }
+X_S1    N3615407 GND PVP N3265283 NCP2820_S1 
+X_S4    MOSR GND OUTP GND NCP2820_S4 
+R_R15         GND /SD  300K  
+E_ABS1         N3287823 0 VALUE {ABS(V(CURRENT_SENSE))}
+V_V6         N3287729 GND 1.5
+E_E3         OUTR GND VALUE { IF(V(N3648951, VRAMP)>1u,V(VP),0) }
+E_E7         N3647451 GND VALUE { 0.34*V(VP) }
+X_U6         MOSR N3609927  $G_DPWR $G_DGND INV
+R_VAR_R_R15         0 VAR_R_N34914370  0.2meg  
+X_VAR_R_Gain_control_S5    VAR_R_Gain_control_3 0 VAR_R_N3491449
++  VAR_R_Gain_control_N3545319 Gain_control_VAR_R_Gain_control_S5 
+V_VAR_R_Gain_control_V3         VAR_R_Gain_control_N3319121 0 10Vdc
+X_VAR_R_Gain_control_U72         SHT_DWN VAR_R_Gain_control_/RISE
++  VAR_R_Gain_control_/FALL VAR_R_Gain_control_1 $G_DPWR $G_DGND AND3
+I_VAR_R_Gain_control_I5         VAR_R_Gain_control_N3568910 0 DC 20mAdc  
+X_VAR_R_Gain_control_U59         SHT_DWN VAR_R_Gain_control_FALL PULSE_FALLING
++  PARAMS:  WIDTH=5ms
+X_VAR_R_Gain_control_U65         VAR_R_Gain_control_1
++  VAR_R_Gain_control_N3565039  $G_DPWR $G_DGND INV
+X_VAR_R_Gain_control_U73         VAR_R_Gain_control_N35460122
++  VAR_R_Gain_control_/FALL VAR_R_Gain_control_2  $G_DPWR $G_DGND AND2
+X_VAR_R_Gain_control_U60         SHT_DWN VAR_R_Gain_control_RISE PULSE_RISING
++  PARAMS:  WIDTH=5ms
+C_VAR_R_Gain_control_C3         0 VAR_R_N3491449  10u IC=0 
+X_VAR_R_Gain_control_U61         SHT_DWN VAR_R_Gain_control_RISE
++  VAR_R_Gain_control_N3545992  $G_DPWR $G_DGND AND2
+X_VAR_R_Gain_control_U74         VAR_R_Gain_control_/SHT_DWN
++  VAR_R_Gain_control_/RISE VAR_R_Gain_control_FALL VAR_R_Gain_control_3 $G_DPWR
++  $G_DGND AND3
+X_VAR_R_Gain_control_S3    VAR_R_Gain_control_2 0 VAR_R_N3491449 0
++  Gain_control_VAR_R_Gain_control_S3 
+X_VAR_R_Gain_control_U58         VAR_R_Gain_control_RISE
++  VAR_R_Gain_control_/RISE  $G_DPWR $G_DGND INV
+X_VAR_R_Gain_control_S7    VAR_R_Gain_control_N3565337 0
++  VAR_R_Gain_control_N3545319 0 Gain_control_VAR_R_Gain_control_S7 
+X_VAR_R_Gain_control_U62         VAR_R_Gain_control_/SHT_DWN
++  VAR_R_Gain_control_/RISE VAR_R_Gain_control_N3546028  $G_DPWR $G_DGND AND2
+X_VAR_R_Gain_control_M1         VAR_R_Gain_control_N3545311
++  VAR_R_Gain_control_N3568910 VAR_R_Gain_control_N3319121 BSS84/ZTX 
+X_VAR_R_Gain_control_M2         VAR_R_Gain_control_N3568910
++  VAR_R_Gain_control_N3568910 VAR_R_Gain_control_N3319121 BSS84/ZTX 
+X_VAR_R_Gain_control_S4    VAR_R_Gain_control_1 0 VAR_R_Gain_control_N3545311
++  VAR_R_N3491449 Gain_control_VAR_R_Gain_control_S4 
+X_VAR_R_Gain_control_U63         VAR_R_Gain_control_N3545992
++  VAR_R_Gain_control_N3546028 VAR_R_Gain_control_N35460122 $G_DPWR $G_DGND OR2
+X_VAR_R_Gain_control_U57         SHT_DWN VAR_R_Gain_control_/SHT_DWN  $G_DPWR
++  $G_DGND INV
+X_VAR_R_Gain_control_U66         VAR_R_Gain_control_3
++  VAR_R_Gain_control_N3565337  $G_DPWR $G_DGND INV
+I_VAR_R_Gain_control_I4         VAR_R_Gain_control_N3545319 0 DC 20mAdc  
+X_VAR_R_Gain_control_U64         VAR_R_Gain_control_FALL
++  VAR_R_Gain_control_/FALL  $G_DPWR $G_DGND INV
+X_VAR_R_Gain_control_S6    VAR_R_Gain_control_N3565039 0
++  VAR_R_Gain_control_N3545311 0 Gain_control_VAR_R_Gain_control_S6 
+X_VAR_R_X1         VAR_R_N3491449 0 VAR_R_N34914370 INP ZX2_P ZX
+X_integrateur_S5    integrateur_N1206063 0 N3313902 0
++  integrateur_integrateur_S5 
+X_integrateur_S6    N3312364 0 0 N3316268 integrateur_integrateur_S6 
+X_integrateur_S3    integrateur_N1206063 0 N3338568 N3316268
++  integrateur_integrateur_S3 
+X_integrateur_U1         N3312364 integrateur_N1206063  $G_DPWR $G_DGND INV
+X_integrateur_S2    N3312364 0 N3313902 N3338568 integrateur_integrateur_S2 
+G_G2         N3316268 GND VALUE { 1.2*1e-6*V(VP) }
+E_E2         OUTL GND VALUE { IF(V(N3401620, VRAMP)>1u,V(VP),0) }
+
+.ENDS NCP2820
+*$
+
+*****************************************
+* Creation: Thierry SUTTO               *
+*     Date: 18 SEP 2003                 *
+* Based on: n/a                         *
+*****************************************
+* The pulse is generated when a falling *
+* edge is detected on IN pin.           *
+* The width of the pulse is an          *
+* adjustable param.                     *
+*****************************************
+
+.SUBCKT Pulse_Falling_ IN Pulse params: Width=100ns
+
+X_U2         N383922 N383908 PULSE  $G_DPWR $G_DGND AND2
+X_U1         N383828 N383908 $G_DPWR $G_DGND DELAY PARAMS: DELAY=30ns TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U4         IN N383828 $G_DPWR $G_DGND DELAY PARAMS: DELAY={Width} TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U5         N383828 IN N383922 $G_DPWR $G_DGND XOR
+
+.ENDS
+*$
+
+*****************************************
+* Creation: Thierry SUTTO               *
+*     Date: 18 SEP 2003                 *
+* Based on: n/a                         *
+*****************************************
+* The pulse is generated when a rising  *
+* edge is detected on IN pin.           *
+* The width of the pulse is an          *
+* adjustable param.                     *
+*****************************************
+
+.SUBCKT Pulse_Rising_ In Pulse params: Width=100ns
+
+X_U2         N200223 IN N385549 $G_DPWR $G_DGND XOR
+X_U3         N385493 IN PULSE  $G_DPWR $G_DGND AND2
+X_U4         N385549 N385493 $G_DPWR $G_DGND DELAY PARAMS: DELAY=5n TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+X_U1         IN N200223 $G_DPWR $G_DGND DELAY PARAMS: DELAY={Width} TOL=10 IO_LEVEL=0 MNTYMXDLY=0
+
+.ENDS
+*$
+
+.subckt Gain_control_VAR_R1_Gain_control_S5 1 2 3 4  
+S_VAR_R1_Gain_control_S5         3 4 1 2 _VAR_R1_Gain_control_S5
+RS_VAR_R1_Gain_control_S5         1 2 1G
+.MODEL         _VAR_R1_Gain_control_S5 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R1_Gain_control_S5
+*$
+
+.subckt Gain_control_VAR_R1_Gain_control_S3 1 2 3 4  
+S_VAR_R1_Gain_control_S3         3 4 1 2 _VAR_R1_Gain_control_S3
+RS_VAR_R1_Gain_control_S3         1 2 1G
+.MODEL         _VAR_R1_Gain_control_S3 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R1_Gain_control_S3
+*$
+
+.subckt Gain_control_VAR_R1_Gain_control_S7 1 2 3 4  
+S_VAR_R1_Gain_control_S7         3 4 1 2 _VAR_R1_Gain_control_S7
+RS_VAR_R1_Gain_control_S7         1 2 1G
+.MODEL         _VAR_R1_Gain_control_S7 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R1_Gain_control_S7
+*$
+
+.subckt Gain_control_VAR_R1_Gain_control_S4 1 2 3 4  
+S_VAR_R1_Gain_control_S4         3 4 1 2 _VAR_R1_Gain_control_S4
+RS_VAR_R1_Gain_control_S4         1 2 1G
+.MODEL         _VAR_R1_Gain_control_S4 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R1_Gain_control_S4
+*$
+
+.subckt Gain_control_VAR_R1_Gain_control_S6 1 2 3 4  
+S_VAR_R1_Gain_control_S6         3 4 1 2 _VAR_R1_Gain_control_S6
+RS_VAR_R1_Gain_control_S6         1 2 1G
+.MODEL         _VAR_R1_Gain_control_S6 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R1_Gain_control_S6
+*$
+
+.subckt NCP2820_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e7 Ron=0.3 Voff=0.1V Von=2.0V
+.ends NCP2820_S3
+*$
+
+.subckt NCP2820_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e7 Ron=0.3 Voff=0.1V Von=2.0V
+.ends NCP2820_S2
+*$
+
+.subckt NCP2820_F1 1 2 3 4  
+F_F1         3 4 VF_F1 1
+VF_F1         1 2 0V
+.ends NCP2820_F1
+*$
+
+.subckt NCP2820_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e7 Ron=0.3 Voff=0.1V Von=2.0V
+.ends NCP2820_S1
+*$
+
+.subckt NCP2820_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=1e7 Ron=0.3 Voff=0.1V Von=2.0V
+.ends NCP2820_S4
+*$
+
+.subckt Gain_control_VAR_R_Gain_control_S5 1 2 3 4  
+S_VAR_R_Gain_control_S5         3 4 1 2 _VAR_R_Gain_control_S5
+RS_VAR_R_Gain_control_S5         1 2 1G
+.MODEL         _VAR_R_Gain_control_S5 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R_Gain_control_S5
+*$
+
+.subckt Gain_control_VAR_R_Gain_control_S3 1 2 3 4  
+S_VAR_R_Gain_control_S3         3 4 1 2 _VAR_R_Gain_control_S3
+RS_VAR_R_Gain_control_S3         1 2 1G
+.MODEL         _VAR_R_Gain_control_S3 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R_Gain_control_S3
+*$
+
+.subckt Gain_control_VAR_R_Gain_control_S7 1 2 3 4  
+S_VAR_R_Gain_control_S7         3 4 1 2 _VAR_R_Gain_control_S7
+RS_VAR_R_Gain_control_S7         1 2 1G
+.MODEL         _VAR_R_Gain_control_S7 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R_Gain_control_S7
+*$
+
+.subckt Gain_control_VAR_R_Gain_control_S4 1 2 3 4  
+S_VAR_R_Gain_control_S4         3 4 1 2 _VAR_R_Gain_control_S4
+RS_VAR_R_Gain_control_S4         1 2 1G
+.MODEL         _VAR_R_Gain_control_S4 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R_Gain_control_S4
+*$
+
+.subckt Gain_control_VAR_R_Gain_control_S6 1 2 3 4  
+S_VAR_R_Gain_control_S6         3 4 1 2 _VAR_R_Gain_control_S6
+RS_VAR_R_Gain_control_S6         1 2 1G
+.MODEL         _VAR_R_Gain_control_S6 VSWITCH Roff=1e8 Ron=0.001 Voff=100mV
++  Von=3V
+.ends Gain_control_VAR_R_Gain_control_S6
+*$
+
+.subckt integrateur_integrateur_S5 1 2 3 4  
+S_integrateur_S5         3 4 1 2 _integrateur_S5
+RS_integrateur_S5         1 2 1G
+.MODEL         _integrateur_S5 VSWITCH Roff=1e8 Ron=0.1 Voff=0 Von=4
+.ends integrateur_integrateur_S5
+*$
+
+.subckt integrateur_integrateur_S6 1 2 3 4  
+S_integrateur_S6         3 4 1 2 _integrateur_S6
+RS_integrateur_S6         1 2 1G
+.MODEL         _integrateur_S6 VSWITCH Roff=1e8 Ron=0.1 Voff=0 Von=4
+.ends integrateur_integrateur_S6
+*$
+
+.subckt integrateur_integrateur_S3 1 2 3 4  
+S_integrateur_S3         3 4 1 2 _integrateur_S3
+RS_integrateur_S3         1 2 1G
+.MODEL         _integrateur_S3 VSWITCH Roff=1e8 Ron=0.1 Voff=0 Von=4
+.ends integrateur_integrateur_S3
+*$
+
+.subckt integrateur_integrateur_S2 1 2 3 4  
+S_integrateur_S2         3 4 1 2 _integrateur_S2
+RS_integrateur_S2         1 2 1G
+.MODEL         _integrateur_S2 VSWITCH Roff=1e8 Ron=0.1 Voff=0 Von=4
+.ends integrateur_integrateur_S2
+*$

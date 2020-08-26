@@ -1,0 +1,52 @@
+* http://www.dvd-software.info/forums/ftopic11544.html
+*
+* http://frank.pocnet.net/sheets/049/6/6HZ6.pdf
+* http://frank.pocnet.net/sheets/127/6/6HZ6.pdf
+*
+
+*Vacuum Tube dual control
+.SUBCKT X6HZ6 A 3 S G K
+
+*work in progress, not final
+* Calculate contribution to cathode current
+*
+*the number at the right end determines sharpness of knee
+Bat at 0 V=0.636*ATAN(V(A,K)/24)
+*the URAMP(V(S,K)/# mostly determines peak plate current, grid line spacing nearly constant
+*the number at the right end determines slope of grid lines (plate resistance)
+Bgs gs 0 V=URAMP((V(S,K)*1.1964+V(G,K)*43.75+V(A,K)*0))
+
+*this next line will probably wrap. remove the < and > at both
+*ends
+
+Bgss gss 0 V=URAMP((V(S,K)*0.0005)+(-(URAMP((SQRT(URAMP(V(K,3))**2.7)))/((((SQRT(V(A,K))**1.5)/5)**1)))*0.0405+V(A,K)/9400))*1+((URAMP(V(3,K))/((SQRT(V(A,K))*11)))*1)*1
+
+*the exponent sets the linearity of grid line spacing, and big impact on peak plate currrent
+Bgs2 gs2 0 V=V(gs)**1.5
+Bgs3 gs3 0 V=V(gss)**1.5
+Bcath cc 0 V=V(gs2)*(V(at))
+Ban an 0 V=V(gs2)*(V(gs3))*(V(at))
+*
+* Calculate anode current, grid line spacing adjust and peak plate current
+*
+Ba A K I=0.345E-3*V(an)
+*
+* Calculate screen current
+*
+Bscrn sc 0 V=V(gs2)*(1.0-V(at)*0.9)
+Bs S K I=(URAMP(0.34E-3*V(sc)-(0.95E-3*(V(an)))))*0.29*(V(at))*0.37
+*
+* Grid current (approximation - does not model low va/vs)
+*
+Bg G K I=(URAMP(V(G,K)+1)**1.5)*50E-6
+*
+* Capacitances
+*
+Cg1 G K 5.5p
+Cak A K 7.5p
+Cg3 3 S 5.6p
+Cg1g3 G 3 0.09p
+Cg1a G A 0.02p
+Cg3a 3 A 1.6p
+
+.ENDS X6HZ6

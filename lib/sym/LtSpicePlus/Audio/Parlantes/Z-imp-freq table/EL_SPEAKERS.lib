@@ -1,0 +1,31 @@
+* Electrostatic speaker models
+*
+*
+.subckt ELS100 1 2 
+R1 1 10  0.01
+V1 10 11 0
+B1 11 2 V=I(V1)  MAG FREQ=
++ 1e2, 0.893, -26.7 
++ 1e3, 0.705, -45.2 
++ 1e4, 0.37, -68.3 
++ 1e5, 0.195, -78.7
+.ends
+*
+*
+.subckt ELS101 1 2 
+R1 1 10  0.01
+V1 10 11 0
+B1 11 2 V=I(V1)  MAG FREQ=
+.include ELS101_data.txt
+.ends
+*
+*
+.subckt ELS200 1 2 
+R1 1 10  0.01
+V1 10 11 0
+B1 11 2 V=I(V1)  MAG FREQ=
++ (1e2, 1.893, -26.7) 
++ (1e3, 1.0705, -45.2) 
++ (1e4, 0.7, -68.3) 
++ (1e5, 0.2, -78.7)
+.ends

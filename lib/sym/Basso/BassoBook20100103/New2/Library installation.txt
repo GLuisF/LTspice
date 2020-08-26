@@ -1,0 +1,16 @@
+Library installation
+
+You should install these libraries in TINA in order to make your own circuits with the models in this book.
+Note that you need a higher version than the demo to build and run your own circuits.
+
+To install the libraries do the following:
+
+  1.Copy Basso.ddb into TINA's root folder.
+
+  2.Copy all *.lib, *.tld files into  TINA's Spicelib folder.
+
+  3.Start TINA, in  most cases TINA will rebuild the libraries. You will a message.
+    If no message is displayed you should rebuild the libraries using the Tools/Re-build Library command.
+
+  4.Now you can select the new models as TINA components by clicking on the 
+    Spice macros/SMPS and Other Components icons.

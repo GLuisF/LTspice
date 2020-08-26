@@ -1564,45 +1564,43 @@ I63 0 63 1E-6
 .MODEL DN2 D IS=1E-16 AF=1 KF=7.715E-018
 .ENDS ADA4622
 *
+* Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
+* BR 06/03/2020
+*
 .subckt ADA4625-1 1 2 3 4 5
 D6 4 1 DX
 Cdm 1 2 8.6p Rser=200 noiseless
 D9 3 4 Dburn
 R10 3 Mid 100Meg noiseless
-B1 0 N005 I=10u*dnlim(uplim(V(1),V(3)+.3,.1), V(4)-.3, .1)+1n*V(1) + 2.93p
-B2 N005 0 I=10u*dnlim(uplim(V(2),V(3)+.31,.1), V(4)-.31, .1)+1n*V(2)
-C1 N005 0 1f Rpar=100K noiseless
+B1 0 N004 I=10u*dnlim(uplim(V(1),V(3)-3.48,10m), V(4)-.3, .1)+100p*V(1) + 332f
+B2 N004 0 I=10u*dnlim(uplim(V(2),V(3)-3.48,10m), V(4)-.3, .1)+100p*V(2)
+C1 N004 0 1f Rpar=200K noiseless
 C8 3 5 1p Rpar=100Meg noiseless
 C9 5 4 1p Rpar=100Meg noiseless
 C10 Mid 4 50p Rser=1Meg Rpar=100Meg noiseless
-A4 0 N005 0 0 0 0 N008 0 OTA g=1m linear en=3.3n enk=17 vlow=-1e308 vhigh=1e308
+A4 0 N004 0 0 0 0 N007 0 OTA g=1m linear en=3.3n enk=17 vlow=-1e308 vhigh=1e308
 D4 4 2 DX
-Q1 XDUM N006 3 0 PNPout1 temp=27
-Q2 XDUM N010 4 0 NPNout1 temp=27
-A1 0 N003 4 4 4 4 N006 4 OTA g=1m asym isource=10u isink=-500u ref=6.8m vlow=0 vhigh=42
-D8 N006 4 DoutBias1
-D11 3 N010 DoutBias1
-A2 0 N003 3 3 3 3 N010 3 OTA g=1m asym isource=500u isink=-10u ref=-6.8m vlow=-42 vhigh=0
+Q1 XDUM N005 3 0 PNPout1 temp=27
+Q2 XDUM N009 4 0 NPNout1 temp=27
+A1 X3 0 4 4 4 4 N005 4 OTA g=1m asym isource=10u isink=-500u ref=6.8m vlow=0 vhigh=42
+D8 N005 4 DoutBias1
+D11 3 N009 DoutBias1
+A2 X3 0 3 3 3 3 N009 3 OTA g=1m asym isource=500u isink=-10u ref=-6.8m vlow=-42 vhigh=0
 C4 X3 0 100f
-G1 0 N003 0 X3 100m
-C3 N003 0 1p Rpar=10 noiseless
-G2 0 N003 0 N012 100m
-Q3 5 N007 3 0 PNPout2 temp=27
-R5 3 N007 10Meg noiseless
-Q4 5 N011 4 0 NPNout2 temp=27
-A6 0 N003 4 4 4 4 N007 4 OTA g=1m asym isource=10u isink=-500u ref=6.8m vlow=0 vhigh=42
-D12 N007 4 DoutBias1
-D13 3 N011 DoutBias1
-A7 0 N003 3 3 3 3 N011 3 OTA g=1m asym isource=500u isink=-10u ref=-6.8m vlow=-42 vhigh=0
+Q3 5 N006 3 0 PNPout2 temp=27
+R5 3 N006 10Meg noiseless
+Q4 5 N010 4 0 NPNout2 temp=27
+A6 X3 0 4 4 4 4 N006 4 OTA g=1m asym isource=10u isink=-500u ref=6.8m vlow=0 vhigh=42
+D12 N006 4 DoutBias1
+D13 3 N010 DoutBias1
+A7 X3 0 3 3 3 3 N010 3 OTA g=1m asym isource=500u isink=-10u ref=-6.8m vlow=-42 vhigh=0
 C14 3 XDUM 5p
-C16 N008 0 4p Rpar=1K noiseless
-C2 X3 0 3p Rser=20 Rpar=100Meg noiseless
+C16 N007 0 2p Rpar=1K noiseless
+C2 X3 0 3p Rser=20 Rpar=200Meg noiseless
 C15 XDUM 4 5p
-C6 N007 5 100f Rser=100 noiseless
-C5 N012 0 5p Rpar=1k Rser=50 noiseless
-G6 0 N012 N013 0 1m
-B3 X3 0 I=dnlim(1m*(V(X3)-V(3,Mid)-3),0,100u)
-B4 0 X3 I=dnlim(1m*(V(4,Mid)-5-V(X3)),0,100u)
+C6 N006 5 100f Rser=100 noiseless
+B3 X3 0 I=dnlim(1m*(V(X3)-.52-97m*V(3,4)),0,100u)
+B4 0 X3 I=dnlim(1m*(-2.26-48m*V(3,4)-V(X3)),0,100u)
 C7 5 XDUM 1p Rpar=10k noiseless
 D2 2 3 DX
 D3 1 3 DX
@@ -1612,48 +1610,48 @@ C21 2 4 5.65p Rser=100 noiseless
 D5 5 3 DESD
 D7 4 5 DESD
 C20 1 4 5.65p Rser=100 noiseless
-C13 5 N011 100f Rser=100 noiseless
-R4 N011 4 10Meg noiseless
-R6 3 N006 10Meg noiseless
-R7 N010 4 10Meg noiseless
-CF2 X3 N017 10p Rser=100 noiseless
-G3 0 N017 Mid 5 10m
-C22 N017 0 1p Rpar=100 noiseless
-C18 N006 XDUM 100f
-C23 XDUM N010 100f
-R12 N006 4 100Meg noiseless
+C13 5 N010 100f Rser=100 noiseless
+R4 N010 4 10Meg noiseless
+R6 3 N005 10Meg noiseless
+R7 N009 4 10Meg noiseless
+CF2 X3 N014 10p Rser=100 noiseless
+G3 0 N014 Mid 5 10m
+C22 N014 0 1p Rpar=100 noiseless
+C18 N005 XDUM 100f
+C23 XDUM N009 100f
+R12 N005 4 100Meg noiseless
 A5 0 2 0 0 0 0 0 0 OTA g=0 in=4.5f
 A8 0 1 0 0 0 0 0 0 OTA g=0 in=4.5f
-G5 0 N014 N009 0 1m
-C24 N014 0 2p Rpar=1k noiseless
-L1 N013 0 227m Rser=142.8m Rpar=1K noiseless
-G7 0 N013 Mid XDUM 1m
-A9 0 N014 N016 0 0 0 X3 0 OTA g=2m linear vlow=-1e308 vhigh=1e308
-I1 0 N016 1µ
-S1 N016 0 2 3 SGKILL
-S2 N016 0 1 3 SGKILL
-C25 N016 0 1p Rpar=1Meg noiseless
-G8 0 N009 N008 0 1m
-C26 N009 0 3p Rpar=1k noiseless
-D10 N014 0 DSLW1
-D14 N014 N018 DSLW2
-S3 N018 0 4 3 SVARSLW
-C17 N018 0 1p
+G5 0 N012 N008 0 1m
+C24 N012 0 2p Rpar=1k noiseless
+G8 0 N008 N007 0 1m
+C26 N008 0 2p Rpar=1k noiseless
 C27 3 4 20p
 A3 XDUM 5 5 5 5 5 XDUM 5 OTA g=12.5m iout=14.6m vlow=-1e308 vhigh=1e308
+G4 0 N011 Mid XDUM 10m
+C28 X3 N011 13.5p Rser=10 noiseless
+R9 N011 0 100 noiseless
+G1 0 X3 N012 0 2m
+D14 N012 0 DSLW1
+B5 0 N004 I=dnlim(V(1,2)-100m,0,10m)*100u*V(1,2)**2- dnlim(V(2,1)-100m,0,10m)*100u*V(2,1)**2
+D10 N004 0 DSLW0
+S1 N015 0 4 3 SVARSLW
+C3 N015 0 1p
+D15 N012 N015 DSLW2
 .model DX D(IS=1e-16 RS=100 noiseless)
 .model DESD D(Ron=100 Roff=1G vfwd=600m epsilon=500m noiseless)
-.model DBURN D(Ron=100 Roff=1G vfwd=600m epsilon=600m ilimit=3.076m noiseless)
+.model DBURN D(Ron=100 Roff=1G vfwd=600m epsilon=600m ilimit=2.908m noiseless)
 .model PNPout1 PNP(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f  noiseless)
 .model NPNout1 NPN(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f noiseless)
-.model PNPout2 PNP(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f RC=6  noiseless)
-.model NPNout2 NPN(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f  RC=6  noiseless)
+.model PNPout2 PNP(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f RC=6 VAF=50  noiseless)
+.model NPNout2 NPN(Is=1e-18 Isc=3e-11 NC=1.7  BF=75 BR=10 CJE=100f  RC=6 VAF=50  noiseless)
 .model DoutBias1 D(Ron=1k Roff=1G vfwd=600m epsilon=500m ilimit=12u noiseless)
-.model SGKILL SW(level=2 Ron=5k Roff=1G vt=-2 vh=-300m noiseless)
-.model DSLW1 D(Ron=1 Roff=100k vfwd=538m epsilon=100m vrev=538m revepsilon=100m noiseless)
-.model DSLW2 D(Ron=1 Roff=100k vfwd=375m epsilon=100m vrev=375m revepsilon=100m noiseless)
+.model DSLW0 D(Ron=100 Roff=200k vfwd=5 epsilon=100m vrev=5 revepsilon=100m noiseless)
+.model DSLW1 D(Ron=1 Roff=100k vfwd=550m epsilon=100m vrev=550m revepsilon=100m noiseless)
+.model DSLW2 D(Ron=1 Roff=100k vfwd=320m epsilon=100m vrev=320m revepsilon=100m noiseless)
 .model SVARSLW SW(Ron=1 Roff=500 vt=-15 vh=-30 noiseless)
 .ends ADA4625-1
+
 *
 .subckt ADA4625-2 1 2 3 4 5
 D6 4 1 DX

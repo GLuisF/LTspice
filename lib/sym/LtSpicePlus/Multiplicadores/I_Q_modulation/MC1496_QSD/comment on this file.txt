@@ -1,0 +1,60 @@
+Original Circuit Concept And Design By: 
+Dannie Jackson KA9RZA
+Copyright 2007
+Wavelegnths Research Limited
+2058 Turkey Creek Road
+Baughman KY 40906
+
+This circuit will blow your mind if you know anything about radio and Software Defined Radio.
+
+NOTE:  This circuit is for hobbiest uses only and not for use in a product.  The intellectual property rights for use belong to Dannie Jackson of Wavelengths Research.
+
+A fully working QSD model: a 12 kHz offset demo
+
+This is a fully working Software Defined Radio quadrature sampling detector one one chip, that can also double as a quadrature phase modulator for broadcasting DRM or for use in two way SDR radio equipment.
+
+Include the MC1496 symbol and the MC1496x.mod file in the folder with the circuit file else it will not work in simulating the circuit.
+
+This herein idea of splitting the Gilbert Cell balanced modulator, is to turn the balanced modulator/demodulator into two seperate rf mixers from which we can make a simple QSD or QPM (quadrature phase modulator).  Although we can do the same with two of these chips, this idea is for the economy of using one chip.  Well, we might find we have  a few more caps and resistors than usual but many of these are for pennies on the dollar.
+
+This concept of splitting the MC1496 Gilbert Cell into two for creating a dual mixer for phase demodulation and modulation is an original concept of Dannie Jackson published elsewhere.
+
+In this test model, the MC1496 split and working with a 1 MHz I - Q, mixed with a 1.012 MHz mixer input for a modulation offset frequency of 12 kHz to simulate a QSD demodulator.
+
+Use a Transient Analysis plot stop time of 500 u sec.
+
+For faster plot times, set "Time To Start Saving Data" to 1u.  This should already be the case in the file.
+
+The features of this circuit idea include a means to balance the I and Q levels at output for better dB convergence at the center frequency.  You might even make this adustment come out to the front panel of the enclosure so you can make a balance adjustment at will.
+
+Note On Bias Adjustment:  R6 which is a bias resistor, if made adjustable by a potentiometer for R6, will make incremental bias adjustments in tenths of a volt.  This will come in handy on the  test bench when you want to start to clean up the waveforms.  Also the same is sugguested for use in place of R7.  You may add a 500 ohm potentiometer between R7 and R8 for making a minute adjustment.
+
+Waveform performance will be better seen by test equipment than through the software, although the software does a good job of analyzing and looking for transient signals and spikes etc.
+
+If used as a phase modulator this circuit will operate from 1 to 100 MHz.  With some diminished output up around 200 MHz if you want 
+to use it that high.
+
+I use a simple to devise in the model, phase splitting transformer as a means to get a I/Q signal going.  This might make the circuit look a liitle complicated but it is not really. In your model you can add any method of I/Q generation you want.
+
+The circuit incorporates some feed back for compenstation of the gain and better mixer products.  This gives the circuit more constant gain by adding a little expansion and compression through the feed back means.
+
+The best gain seems to occur with an output impedance of 32k to 50k.  And I advise not making a large change in the loading resistors to the V+ supply.  These are resistor R11 and R12.  You can change them a little but not much.
+
+I have quite a few other models for use with various input impedances.
+
+I have checked the waveforms in the mixer functions up to 100 MHz and even as high as 200 MHz on Pin 8.  The chip is rated for use at and under 100 MHz.  It however appears that this circuit I have here will work up to 2 meters.
+
+* I have compensated the overall bandwidth gain with some feed back for expansion and then compression of the gain.  The makes the gain more consistent over a wider bandwidth.  So it appears that this ideas has expanded its bandwidth considerably.  As I said it appears to be useful up to 2 meters.  Of course the gain decrease after 100 MHz but some amplification will make up for that.
+
+The feed back also helps the introduction of the mixer products.  In other words, it mixes better.
+
+I should not say this circuit itself has gain, it is not an amplifier as much as it is a mixer and so, it has insertion losses in dB's.  But the circuit insertion loss is not bad at all.
+
+Note the output phase angles may fall on the 270 degree difference as referenced to the original input source.  360-270 = 90.  So the smaller angle is the important relationship.  Don;t get confused with the actual plot of the phase angle, you can be mistaken so please do the math before you conclude something in error.  Just note the visible 90 degree phase shift of the waveform in the Transisent analysis.
+
+You can better see the phase angle of the sine wave in the Transient plots than in keeping track of it in the AC Analysis plot.
+
+Well more about this later on.
+
+Dan ka9rza
+26/Feb/2008 8:53

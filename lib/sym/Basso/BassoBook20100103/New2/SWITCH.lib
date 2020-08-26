@@ -1,0 +1,26 @@
+* SWITCH
+
+*$
+* Syntax:  Sxxx n1 n2 nc+ nc- <model> [on,off]
+* 
+* like: S1 out 0 in 0 SWITCH
+*
+* name   parameter            units   default
+*---------------------------------------------
+* Vt     threshold voltage    Volts   0.
+* Vh     hysteresis voltage   Volts   0.
+* Ron    on resistance        Ohms    1.
+* Roff   off resistance       Ohms    1/gmin
+* Lser   series inductance    Henry   0.
+* Vser   series voltage       Volts   0.
+* ilimit current limit        Amps    infin.
+*
+* trip points at Vt-Vh and Vt+Vh
+
+.SUBCKT SWITCH n1 n2 nc+ nc-
+S1 n1 n2 nc+ nc- SWITCH
+.MODEL SWITCH SW
++ Ron=1m Roff=10meg Vt=.5 Vh=0
+.ENDS SWITCH
+
+*$

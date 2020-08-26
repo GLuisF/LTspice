@@ -1,0 +1,6 @@
+* random functions in LTspice
+B1 N001 0 V=random(1000*time)
+B2 N002 0 V=rand(1000*time)
+.tran 1
+.options maxstep=10u
+.end

@@ -1,0 +1,11 @@
+* sENSITIVITY ANALYSIS PROBES
+* jIM MEECH FEB 2006
+.subckt v_probe INPUT+ INPUT-
+B1 $G_Vnominal 0 V=if({run}==0,V(INPUT+)-V(INPUT-),0V)
+B2 $G_Test_NET 0 V=V(INPUT+)-V(INPUT-)  
+.ends v_probe
+.subckt I_probe INPUT+ INPUT-
+B1 $G_Vnominal 0 V=if({run}==0,I(V1)*1R,0V)
+V1 INPUT+ INPUT- 0V
+B2 $G_Test_NET 0 V=I(V1)*1R  
+.ends I_probe

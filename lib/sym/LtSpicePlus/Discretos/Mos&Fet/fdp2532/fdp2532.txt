@@ -1,0 +1,31 @@
+Mosfet datasheet values
+FDP2532
+dc parameters
+0.014
+0
+0.5
+3
+120
+5.75
+ac parameters
+5870
+615
+3500
+135
+1000
+50
+body diode parameters
+1e-14
+33
+1.25
+25
+10
+105
+NMOS
+6
+25
+16
+75
+25
+0
+

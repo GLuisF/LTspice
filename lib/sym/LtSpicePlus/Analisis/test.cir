@@ -1,0 +1,6 @@
+
+.tran 10m
+Vin 2 0 SINE(0 1 1k) AC 0 0
+r1 2 0 1e9
+r2 0 5 10k
+E3 0 5 POLY(1) 2 0 0 1 1 1

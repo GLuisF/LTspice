@@ -1,0 +1,43 @@
+************ Discrete Power Bipolar Electrical Model **************
+** Product: MPSA14 / MPSA14_NL
+** Package: TO-92
+**-----------------------------------------------------------------
+* connections:    Collector
+*                 |  Base
+*                 |  |  Emitter
+*                 |  |  |
+.SUBCKT MPSA92    1  2  3
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 2.873
+D1 3 1 Dmodel
+R1 2 4 200.0E6
+R2 4 3 200.0E6
+
+.MODEL Dmodel D
++ IS=1.00E-14      RS=1.000E-3    N=1          XTI=3
++ CJO=1.00E-20     VJ=1           M=0.5        FC=0.5
+
+.MODEL Q1model NPN
++ IS=1.34E-14     BF=340          NF=1         VAF=136.7
++ IKF=0.38        ISE=7.84E-14    NE=1.5       BR=0.657
++ NR=1            VAR=92          IKR=1.87     ISC=9.0E-13
++ NC=2.0          RB=86.610       RE=0.08      NK=0.9
++ RE=0.58         RC=0.25         EG=1.180     FC=0.5
++ CJE=1.19288E-11 VJE=1.12097     MJE=0.301248 CJC=1.25659E-11
++ VJC=0.70336     MJC=0.325457    XCJC=0.9     TF=1.27E-9 
++ XTB=2.12        XTI=3
+ 
+.MODEL Q2model NPN
++ IS=1.34E-14     BF=340          NF=1         VAF=136.7
++ IKF=0.38        ISE=7.84E-14    NE=1.5       BR=0.657
++ NR=1            VAR=92          IKR=1.87     ISC=9.0E-13
++ NC=2.0          RB=86.610       RE=0.08      NK=0.9
++ RE=0.58         RC=0.25         EG=1.180     FC=0.5
++ CJE=1.19288E-11 VJE=1.12097     MJE=0.301248 CJC=1.25659E-11
++ VJC=0.70336     MJC=0.325457    XCJC=0.9     TF=1.27E-9 
++ XTB=2.12        XTI=3
+              
+.ENDS
+**-----------------------------------------------------------------
+** Creation: Dec.-27-2004
+** Fairchild Semiconductor

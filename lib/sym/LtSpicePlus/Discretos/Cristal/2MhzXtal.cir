@@ -1,0 +1,12 @@
+* 2-MHz Crystal model
+l1 1 2 512m
+r1 2 3 100
+c1 3 0 0.012p
+c2 1 0 4p
+v1 1 0 sin(0 3.0 2032000)
+
+* Single inductor
+l2 4 0 10m
+v2 4 0 sin(0 3.0 2032000)
+.tran 100u 10u
+.end

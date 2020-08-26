@@ -1,0 +1,9 @@
+The LTspice files are a starting point for people to experiment and discover more about the interactions between regulators, trackwork, decoupling/bypass caps and amplifiers.
+
+In my system, the simulator is installed in c:\program files\LTC\SwCADIII and this is the installation default place where the .asc schematic files go, though you can put them wherever is convenient for you.
+
+The install directory has subdirectories \sub and \sym and in those I set up additional subdirectories respectively for the models that came from other vendors and for the symbols you'll use in SwCAD for them.  As an example, you'll see that the AVX library is .included in the schematic with AVX\ prepended to it.  All very straightforward stuff.
+
+The schematics are all really variants of the same circuit which is used to determine progressively more 'interesting' things about the interactions as the series of articles goes on.  Several different excitation sources are shown, connected to the supply rails and the amplifier input; these aren't all used at once.
+
+best / Kendall Castor-Perry

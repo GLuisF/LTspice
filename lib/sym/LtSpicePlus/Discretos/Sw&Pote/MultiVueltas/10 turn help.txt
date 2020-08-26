@@ -1,0 +1,7 @@
+Note:
+
+1)You may use the potentiometer.asy symbol
+
+2) Use the spice directive ( .inc potentiometer_10T.sub)
+
+3) The wiper param is now number of turns. It is a number between 0.1 and 9.99.

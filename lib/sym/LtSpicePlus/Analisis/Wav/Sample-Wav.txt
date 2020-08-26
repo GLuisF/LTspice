@@ -1,0 +1,10 @@
+LTSPICE interpolates any loaded .wav-file. This is a problem when digital filtering will be applied.
+
+There are two chances to get "staircase" voltages.
+
+1. Sample the wav-source with short gate times. 
+   This is what's done in the example file "Wav-SH1.asc".
+
+2. Make a PWL source file from the .wav file. This will require to write a
+   program which translates the .wav-format to SPICE PWL-format.
+

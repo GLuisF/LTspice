@@ -1,0 +1,26 @@
+This file: coherent-rx-e.txt
+Notes for: coherent-rx-e.zip
+
+Two simulations for the IF path of a I-Q-receiver.
+The design connects to the outputs of the RF-mixers which combine
+the sin- and cos-carriers from the LO with the input signal.
+
+coherent-rx-1e:
+  Receiver block diagram, input is a simple continuous wave (CW) signal.
+  You may play with the frequency parameters fs, ft, fm and fg, to test
+  different setups.
+  Two default settings for a CW and a SSB receiver are included.
+  (See middle of the sheet and the two sources on the left side)
+
+coherent-rx-3e:
+  The same circuitry, but the input is taken from the file "iqdemod.wav"
+  (Stereo, preferrable 16 bits and 22050 Hz or 44100 Hz sample rate).
+  The signal is demodulated and the resulting audio is written to the
+  file "nfsignal.wav".
+
+The zip-file also contains some simple re-usable blocks for adition,
+subtraction, multiplication and an adjustable 7th-order Butterworth
+low-pass filter (use parameter fg to set the 3dB corner frequency).
+
+Have fun,
+Andreas (DL4SDC).

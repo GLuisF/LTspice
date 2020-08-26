@@ -1,0 +1,11 @@
+*AM0.CIR 
+* 	
+*NODES
+*(11) AM0 irradiance in (W/m^2*micron)
+*(0) reference
+xam0 11 0 am0
+r1 11 0 1
+.include am0_ltc.lib
+.tran 0.1u 4u
+.measure tran v(11)
+.end

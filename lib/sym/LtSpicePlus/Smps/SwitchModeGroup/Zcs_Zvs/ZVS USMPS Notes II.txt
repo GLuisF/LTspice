@@ -1,0 +1,138 @@
+6-19-2007
+
+An additional part may be added to the PNP
+feedback transistor on the isolated side to improve it.
+Place a switching diode
+in series with the upper resistor of the
+voltage divider for temperature compensation.
+That transistor can have the double duty of also
+providing current limiting if a very ;low value resistor
+is placed in the positive output current path and sensed
+with that PNP transistor.
+
+
+3-12-2007
+
+I have discovered two additions to the ZVS USMPS circuit
+which may help performance in many cases.  The first
+change resulted from my trying to improve loop stability.  
+The second was to address the weakness of the
+charging/discharging of the resonant capacitor on the
+primary side during light output load.
+
+I have traced much of the loop stability trouble to the slow
+response of the optocoupler.   A couple of years ago I
+placed an extra transistor after the optocoupler.  That
+made the optocoupler drive a lower impedance at its
+collector.  It also increased the gain of the circuit, allowing
+tighter regulation.  But it was the harder voltage tug
+on its collector which helped the frequency compensation.
+
+Recently, I decided that there still was not enough frequency
+compensation.  I then had to concentrate on the diode side
+of the optocoupler.  I simulated the addition of a TL431 but
+was not happy with the result.  Instead, I have used a PNP
+transistor combined with a zener diode.  An NPN transistor
+should also have worked with a rearranging of the
+ancillary components, but I have a lot of extra PNPs on
+hand.
+
+The old circuit configuration on the diode side provided a
+certain asymmetrical application of the frequency
+compensation (often referred to as phase compensation and
+phase lead).  The asymmetrical action tends to
+damp oscillation and provide quick over-voltage protection.
+The phase compensation capacitor can charge through the
+transistor base but it can discharge only through the upper
+voltage divider resistor.  That situation is somewhat like the
+one before I added the new components.  Then, the
+capacitor charged directly through the optocoupler diode, but
+could only discharge through the feedback resistor in
+series with the zener diode.
+
+I did simulate the feedback improvement on both the ZVS
+and non-ZVS versions. I hope to also get the opportunity to
+try it on the real bench-test circuit.  In fact, I plan on adding 
+both of the improvements to the bench-test circuit to see
+how they really work.
+
+The second main recent improvement to the USMPS
+pertains only to the ZVS version.  The problem was that
+under light load there was not enough energy stored in the
+leakage inductance of the transformer to charge/discharge
+the resonant capacitor in parallel with the primary all the
+way to each DC voltage rail.  Then the MOSFET had to
+finish the task when it turned on, wasting energy as heat.
+
+The best solution is not only to place an inductor in parallel
+with the secondary of the power transformer, but to place a
+capacitor in series with that extra inductor.  Without
+the series capacitor, the inductor draws more energy linearly
+when we do not want it to.  The extra energy then only
+works to increase the slew rate on the primary side of the
+transformer under heavy load when we do not want it.
+
+The extra capacitor in series with the inductor limits the
+energy the inductor can store.  What's more, it saves it until
+the end of the duty cycle when the primary side
+resonant capacitor needs its energy boost!
+
+I have also added two anti-resonant diodes to go along with
+that extra secondary-side capacitor as I have likewise done
+for the coupling capacitor in series with the primary
+transformer winding.
+
+Now, I must admit that I have studied these two major new
+ideas only on the LTspice simulator.  I hope to bench test
+both of them during the summer of 2007 by adding them.
+to the circuit I have been trying different configurations
+on.  But already as of now, I am very pleased with the
+ZVS USMPS circuit, at least in its theory.
+
+The ZVS addition to the original USMPS has the main
+purpose of reducing electromagnetic interference(EMI) production.  A remaining source of such interference
+from it now is the diodes.  They produce interference mainly
+when their junctions are recovering during current reversal.
+To reduce that problem, they still may need
+snubbing in some cases.  They don't need extra snubbing if
+they are sandwiched between two capacitors as in the case
+of the primary coupling capacitor clamping
+diodes.   Additional high frequency harmonic generation in
+the circuit, as with all square wave transformer drive circuits,
+occurs when the drive waveform hits each power rail.  The
+slower rise times of the ZVS USMPS reduces this
+interference source.
+
+The clamping diodes on the primary side prevent
+resonance of the primary winding with the coupling
+capacitor.  Besides, without these, the capacitors cannot be
+used in current limiting since they will be able to
+charge/discharge beyond the power rails.  The current would
+be able to gradually increase as the voltage
+swings progressively extend further and further beyond the
+power rails with each half cycle.  Eventually the voltage
+rating of the capacitor would be exceeded, too.  
+
+
+10-27-06
+
+My bench test circuit became more stable in the feedback
+loop when I connected the phase compensation capacitor
+to bypass only the feedback resistor instead of both the
+feedback resistor and the zener diode series combination.
+I was surprised at the improvement and am unsure if it holds
+for all circuit implementations.
+
+I still see no real need for active current limiting in the ZVS
+USMPS.  The output inductor alone can provide enough
+current limiting.  Additional current limiting action can occur
+if the transformer primary winding coupling capacitor is
+small enough in value.  In that case, shunt diodes need to
+clamp capacitor/transformer resonance peaks to the power
+supply rails.  If implemented well, as current through the
+primary winding increases, the slew rate of the primary
+voltage can actually begin to decrease,
+as the circuit moves toward zero current switching,
+theoretically lowering EMI.  However,
+the switching noise of  the extra
+diodes may negate this reduction to a certain degree.  

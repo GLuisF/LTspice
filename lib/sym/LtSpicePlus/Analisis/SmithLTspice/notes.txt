@@ -1,0 +1,30 @@
+smith chart artwork function
+
+V=V(vu)*{scale_chart}*0.999999 laplace=(2-{psel})*(((cos((pi/36)*(s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize}))+sqrt(-1)*sin((pi/36)*(s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})))*(3-abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-72.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-72.5))/4+(1+abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-72.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-72.5))/4)*(1-abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-144.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-144.5))/2-(1+abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-144.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-144.5))/2)+({psel}-1)*(((1-abs(cos((pi/36)*(s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize}))))+sqrt(-1)*(1-sin((pi/36)*(s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})))*abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-18.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-18.5))*(1-abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-36.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-36.5))/2+sqrt(-1)*(1+abs((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-36.5)/((s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})-36.5))/2)
+
+Fn = (s/(sqrt(-1)*2*pi)-{fmin})/({fstepsize})  --   range is 0 to nsteps-1
+sign(Fn-72.5) = abs(Fn-72.5)/(Fn-72.5)
+sign(Fn-144.5) = abs(Fn-144.5)/(Fn-144.5)
+sign(Fn-18.5) = abs(Fn-18.5)/(Fn-18.5)
+sign(Fn-36.5) = abs(Fn-36.5)/(Fn-36.5)
+
+V=V(vu)*{scale_chart}*0.999999 laplace=(2-{psel})*(((cos((pi/36)*Fn)+sqrt(-1)*sin((pi/36)*Fn))*(3-sign(Fn-72.5))/4+(1+sign(Fn-72.5))/4)*(1-sign(Fn-144.5))/2-(1+sign(Fn-144.5))/2)+({psel}-1)*(((1-abs(cos((pi/36)*Fn)))+sqrt(-1)*(1-sin((pi/36)*Fn))*sign(Fn-18.5))*(1-sign(Fn-36.5))/2+sqrt(-1)*(1+sign(Fn-36.5))/2)
+
+for psel=1
+Fn = 0 to 72 steps around a circle, 5deg per step, center at 0+j0, radius 1
+Fn = 72 to 144 steps around a circle, 5deg per step, center at 0.5+j0, radius 0.5
+Fn = 144 to 145 draws X axis from 1+j0 to -1+j0
+Fn > 145 stays at -1+j0
+for psel=2
+Fn = 0 to 18 steps arc, 5deg per step, center at 1-j1, radius 1, start at 0-j1, end 1+j0
+Fn = 18 to 36 steps arc, 5deg per step, center at 1+j1, radius 1, start at 1+j0, end 0+j1
+Fn > 36 stays at 0+j1
+
+V=V(vu)*{scale_chart}*0.999999 laplace=
+(2-{psel})*
+(((cos((pi/36)*Fn)+sqrt(-1)*sin((pi/36)*Fn))*(3-sign(Fn-72.5))/4+(1+sign(Fn-72.5))/4)*(1-sign(Fn-144.5))/2-(1+sign(Fn-144.5))/2)
+  ^-----------------circle-----------------^ ^------radius-----^ ^-----center------^
++
+({psel}-1)*
+(((1-abs(cos((pi/36)*Fn)))+sqrt(-1)*(1-sin((pi/36)*Fn))*sign(Fn-18.5))*(1-sign(Fn-36.5))/2+sqrt(-1)*(1+sign(Fn-36.5))/2)
+

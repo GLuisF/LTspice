@@ -1,0 +1,48 @@
+.model n1150 NMOS VTO=-1150m KP=1u lambda=0.1
+
+.model n1100 NMOS VTO=-1100m KP=1u lambda=0.1
+
+.model n1050 NMOS VTO=-1050m KP=1u lambda=0.1
+
+.model n1000 NMOS VTO=-1000m KP=1u lambda=0.1
+
+.model n950 NMOS VTO=-950m KP=1u lambda=0.1
+
+.model n900 NMOS VTO=-900m KP=1u lambda=0.1
+
+.model n850 NMOS VTO=-850m KP=1u lambda=0.1
+
+.model n800 NMOS VTO=-800m KP=1u lambda=0.1
+
+.model n750 NMOS VTO=-750m KP=1u lambda=0.1
+
+.model n700 NMOS VTO=-700m KP=1u lambda=0.1
+
+.model n650 NMOS VTO=-650m KP=1u lambda=0.1
+
+.model n600 NMOS VTO=-600m KP=1u lambda=0.1
+
+.model n550 NMOS VTO=-550m KP=1u lambda=0.1
+
+.model n500 NMOS VTO=-500m KP=1u lambda=0.1
+
+.model n450 NMOS VTO=-450m KP=1u lambda=0.1
+
+.model n400 NMOS VTO=-400m KP=1u lambda=0.1
+
+.model n350 NMOS VTO=-350m KP=1u lambda=0.1
+
+.model n300 NMOS VTO=-300m KP=1u lambda=0.1
+
+.model n250 NMOS VTO=-250m KP=1u lambda=0.1
+
+.model n200 NMOS VTO=-200m KP=1u lambda=0.1
+
+.model n150 NMOS VTO=-150m KP=1u lambda=0.1
+
+.model n100 NMOS VTO=-100m KP=1u lambda=0.1
+
+.model n50 NMOS VTO=-50m KP=1u lambda=0.1
+
+.model n0 NMOS VTO=-0m KP=1u lambda=0.1
+

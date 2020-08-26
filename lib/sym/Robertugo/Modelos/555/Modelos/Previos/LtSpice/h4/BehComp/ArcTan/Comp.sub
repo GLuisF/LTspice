@@ -1,0 +1,8 @@
+ArctanComp
+.SUBCKT COMPTR  1    2    3    
++       PARAMS:K1=62.831E3, K2=.3183, VOFF=.5
+
+	RDI    1     2    1E6
+        E1     3     0    value = {(k2*atan(K1*v(1,2)))+VOFF}
+
+.ENDS

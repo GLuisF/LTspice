@@ -1,0 +1,325 @@
+Written by Helmut Sennewald,  03/21/2008 V2.0
+
+A Step by Step Symbol And Subciruit Creation.
+---------------------------------------------
+
+Goal: We want create a "universal symbol" and a subcircuit.
+      The subcircuit should perform a weighted sum of the inputs A and B.
+      The weighting factors A and B should be editable on the schematic.
+      Target function is V(O+,O-) = A*V(A+,A-) + B*V(B+,B-)
+
+       U1
+   ___________
+  |           |
+  |A+         |
+  |A-       O+|
+  |           |
+  |B+       O-|
+  |B-         |
+  |___________|
+    ADDER2W
+    A=1 B=1
+
+
+Let's draw the symbol first.
+----------------------------
+Start LTSPICE
+
+File->New Symbol
+
+First we add the pins. They are the connection points for the 
+wires(lines) in our schematic.
+
+Edit->Add Pin/port
+   Label: A+
+   Netlist Order: 1
+   Pin Label Position   x Left
+   OK
+
+Edit->Add Pin/port
+   Label: A-
+   Netlist Order: 2
+   Pin Label Position   x Left
+   OK
+
+Edit->Add Pin/port
+   Label: B+
+   Netlist Order: 3
+   Pin Label Position   x Left
+   OK
+
+Edit->Add Pin/port
+   Label: B-
+   Netlist Order: 4
+   Pin Label Position   x Left
+   OK
+
+Edit->Add Pin/port
+   Label: +O
+   Netlist Order: 5
+   Pin Label Position   x Right
+   OK
+
+Edit->Add Pin/port
+   Label: -O
+   Netlist Order: 6
+   Pin Label Position   x Right
+   OK
+
+Add lines, arcs, rectangles and text to make it an eye catcher.
+---------------------------------------------------------------
+Draw->Rect
+   Draw a rectangle(box)
+Draw-> Aany other shapes/lines you like.
+They all have no meaning for the SPICE netlist.
+
+Now we add the attributes.
+--------------------------
+Edit->Attributes->Edit Attributes
+   Symbol Type: Cell
+   Prefix: X 
+   SpiceModel: 
+   Value:  ADDER2W 
+   Value2:  
+   SpiceLine: A=1 B=1  
+   SpiceLine2:
+   Description: Weighted Sum of A and B
+   ModelFile:
+   OK
+
+You can additionally add more parameters into SpiceLine and SpiceLine2.
+You can also add hidden supply pins like  VDD VGND as attribute
+value into the line SpiceModel.
+Please take a look to the hints at the end of this document 
+for a different usage to make hidden nodes(e.g. supply pins).
+
+There is nothing visible of these attributes until now.
+
+Let's make some of the attributes visible.
+------------------------------------------
+Edit->Attributes->Attribute Window
+   Click on Instname
+   OK
+   Place the text above the symbol body.
+
+Edit->Attributes->Attribute Window
+   Click on Value
+   OK
+   Place the text below the symbol body.
+
+Edit->Attributes->Attribute Window
+    Click on SpiceLine
+    OK
+    Place the text below the the symbol
+
+Now these three attributes are visible together with your symbol.
+
+OK, sometimes you want make them invisible later.
+-------------------------------------------------
+Click the right mouse button over the attribute in the symbol editor.
+Choose in the popup box    Justification: (not visible)  .
+
+
+Save your symbol.
+-----------------
+You can save it either in the LTSPICE lib\sym\... installation path or 
+even better in your working directory where you have your schematic.
+File->Save As
+   Adder2w.asy
+   Save
+
+Close LTSPICE!!!
+It is important that you be aware that LTSPICE reads the symbols in 
+its installation path only during the start up.
+
+
+Writing the subcircuit file.
+----------------------------
+Take your favorite text editor.
+Add the following text in the empty window.
+Every line starting with * is comment only for (LT)SPICE.
+
+* ADDER2W.SUB
+* z = A*x + B*y
+* V(O+, O-) = V(A+,A-)*A + V(B+,B-)*B  
+* 
+.SUBCKT  ADDER2W  A+ A-  B+ B-  O+ O-
+.PARAM A=1 B=1
+E1 O+ O- VALUE={A*V(A+,A-) + B*V(B+,B-)}
+*B1 O+ O- V =A*V(A+,A-) + B*V(B+,B-)
+.ENDS ADDER2W
+
+Save this text as file "Adder2w.sub" into your working directory. 
+You can choose any name you like as long as you use the same in
+your .include statement in the later schematic. A subcircuit file
+may contain many subcircuits.
+
+
+The new symbol can be used in your schematic now.
+--------------------------------------------------
+
+Start LTSPICE again!
+
+File->Open or File->New Schematic
+
+If you have saved the symbol in your working directory, then save 
+the even empty schematic into this directory. LTSPICE can now
+offer you the path to that directory in the components menu.
+If the symbol has been saved in the LTSPICE installation 
+lib\sym\... path, you can forget this hint.
+
+Click on the Component Symbol
+   Top Directory: Choose your directory
+   Click on "Adder2w" in the selection menu.
+   Place it on your schematic.
+
+Add the line ".include Adder2w.sub" to your schematic.
+LTSPICE needs this file to add the contents to your SPICE netlist.
+
+Connect your instance(symbol) to the rest of the circuit.
+
+You can change the parameters of the instance with a right click 
+of your mouse.
+
+Hope that all helps. I know that this description it is by far not
+exhaustive.
+
+
+
+ ------------------------
+| Some Important Hints.  |
+ ------------------------
+
+What is an instance
+------------------- 
+A symbol becomes an instance after it is placed on the
+schematic. Then it has its unique reference designator and its
+individual parameters(properties), if you change it. It's the way,
+the big CAD packages name such a thing. 
+
+
+What makes an instance editable in the schematic?
+-------------------------------------------------
+The basic rule for that is not to fill anything into the "Value2"
+field, because it becomes a special meaning in some cases.
+All the opamps from LT have filled in the model name into "Value"
+and "Value2". This is the reason why they are not editable. This has
+been intended by LT for the reason that nobody can corrupt their
+symbols in the schematic.
+
+
+What is the maximum number of passed parameter lines to an instance?
+---------------------------------------------------------------------
+
+We have up to two lines for parameters with our example above.
+
+Prefix: X
+SpiceModel: 
+Value: ADDER2W
+Value2:
+SpiceLIne:  A=1 B=2 ...
+SpiceLine2: C=1 D=2 ...
+
+
+We can have have up to three lines for parameters if we move the 
+model name to SpiceModel.
+
+Prefix: X
+SpiceModel: ADDER2W
+Value: A=1 B=2
+Value2:
+SpiceLIne:  C=1 D=2 ...
+SpiceLine2: E=3 F=2 ...
+
+The netlist of such an instance looks like 
+  X1 n1 n2 ... ADDER2W (SpiceModel) (SpiceLine) (SpiceLine2)
+  () means value of this attribute.
+  X1 n1 n2 ... ADDER2W  A=1 B=2 C=1 D=2  E=3 F=2
+
+
+How can we make hidden supply pins for my model?
+-----------------------------------------------
+Make your symbol attributes in this way:
+
+Prefix: X
+SpiceModel: VDD VGND
+Value: ADDER2W
+Value2:
+SpiceLIne:  C=1 D=2 ...
+SpiceLine2: E=3 F=2 ...
+
+
+The attribute field SpiceModel is inserted in front of ADDER2W.
+The netlist of such an instance looks like 
+  X1 n1 n2 ... (SpiceModel) ADDER2W (SpiceLine) (SpiceLine2)
+  () means value of this attribute.
+  X1 n1 n2 ... VDD VGND ADDER2W  C=1 D=2  E=3 F=2
+This feature has been used in the 74HCxxx library to pass hidden
+supply pins with the attribute (SpiceModel). 
+Please note that Value2 is again not used to keep the parameters
+editable in the schematic.
+
+
+
+
+Search path for .include
+------------------------
+
+.include name.xxx (except name.lib)
+
+Search path:
+   Absolute path name
+   <SwCADIII> \lib\sub
+   <Path of schematic/netlist
+
+Circuit elements/lines of global scope are included.
+That means that any line of this file becomes part of the whole
+netlist.
+
+.include name.lib
+
+Search path priority:
+   Absolute path name
+   <SwCADIII>\lib\cmp
+   <SwCADIII>\lib\sub
+   Path of schematic/netlist
+
+Circuit elements/lines of global scope are ignored.
+That means that any line not part of a .SUBCKT, a .MODEL or a .FUNC
+will be ignored.
+
+Parameter passing to subcircuits.
+---------------------------------
+A calling command line could look like
+X1 na1 0 nb1 0 ns1 0 ADDER2W  A=2.5 B=1.9
+
+It is not necessary to define the passed parameters A and B in the 
+.SUBCKT line. Both circuit definitions below are ok for LTSPICE.
+
+.SUBCKT  ADDER2W  A+ A-  B+ B-  O+ O-
+.PARAM A=1 B=1 ; default
+E1 O+ O- VALUE={A*V(A+,A-) + B*V(B+,B-)}
+.ENDS ADDER2W
+
+Equivalent definition:
+.SUBCKT  ADDER2W  A+ A-  B+ B-  O+ O-  A={A} B={B}
+.PARAM A=1 B=1 ; default
+E1 O+ O- VALUE={A*V(A+,A-) + B*V(B+,B-)}
+.ENDS ADDER2W
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

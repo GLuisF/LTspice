@@ -1,0 +1,11 @@
+* D:\Spice.Test\PWM.asc
+
+.subckt pwm P N
+B1 P N V=Round(V(S1))*A
+V1 S1 N001 PULSE(0 0.5 0 {T1*0.5} {T1*0.5} 0 {T1})
+V2 N001 0 PULSE(0 0.5 0 {T2*0.5} {T2*0.5} 0 {T2})
+.param T1=20m
+.param T2=1
+.param A=1
+.ends pwm
+

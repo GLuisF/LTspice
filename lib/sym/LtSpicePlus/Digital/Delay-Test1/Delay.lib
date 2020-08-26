@@ -1,0 +1,48 @@
+*
+* Timing: Delay
+*
+* Author:	Michael Haub
+* Date:		11.02.2005
+*
+**********
+.SUBCKT DelayLaplace In Out Vss PARAMS: Tdel=1us
+* mathematisch: L(f(t-a))=e^(-a*s)*L(f(t))
+E1 Out Vss In Vss Laplace=exp(-{Tdel}*s) ;mtol=0.1
+.ENDS DelayLaplace
+**********
+*
+.SUBCKT DelayTransmissionline In Out Vss PARAMS: Tdel=1us
+E1 1 0 In Vss 1
+R1 2 0 1
+T1 1 0 2 0 Td={Tdel} Z0=1
+E2 Out Vss 2 0 1
+.ENDS DelayTransmissionline
+**********
+*!
+*! Tdel needs to be shorter than input pulse with!
+*! Pulses that are shorter than Tdel will be filterd out!
+*!
+.SUBCKT DelayDigital In Out Vss PARAMS: Tdel=1us
+A1 In 0 0 0 0 0 Out 0 BUF Td={Tdel}
+.ENDS DelayDigital
+**********
+*
+.SUBCKT DelayBehavioral In Out Vss PARAMS: Tdel=1us
+B1 Out Vss V=delay(V(In,Vss),{Tdel})
+;tripdv=10m tripdt=1n
+.ENDS DelayBehavioral
+**********
+*!
+*! Tdel needs to be shorter than input pulse with!
+*! Pulses that are shorter than Tdel will be filterd out!
+*!
+.SUBCKT DelayTimer In Out Vss PARAMS: Tdel=1us
+B1 1 0 V=U(V(In,Vss)-0.5)
+C1 2 0 {1/0.5}
+; rising edge
+B2 0 2 I=if(V(1)>0&V(2)<1,1/{Tdel},0)
+; falling edge
+B3 0 2 I=if(V(1)<1&V(2)>0,-1/{Tdel},0)
+B4 Out Vss V=U(V(2)-0.5)
+.ENDS DelayTimer
+**********

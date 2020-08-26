@@ -1,0 +1,15 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal 80 52 -63 -52
+SYMATTR Prefix X
+SYMATTR Value VCO2
+SYMATTR SpiceLine fmin=100k fmax=1Meg DT=50n SS=100u
+PIN -64 0 LEFT 8
+PINATTR PinName FB1
+PINATTR SpiceOrder 1
+PIN 80 -32 RIGHT 8
+PINATTR PinName A
+PINATTR SpiceOrder 2
+PIN 80 32 RIGHT 8
+PINATTR PinName B
+PINATTR SpiceOrder 3

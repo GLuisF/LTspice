@@ -1,0 +1,344 @@
+* Control Theory Library
+* Regelungstechnik Bibliothek
+* Helmut Sennewald
+* 06.04.2009
+*
+*
+*** ADD *******************************
+*
+* Add Two Signals
+* G(s)=in1+in2
+*
+.subckt CT___ADD in1 in2 out
+G1 0 out1 in1 0 1
+G2 0 out1 in2 0 1
+R1 out1 0 1
+E1 out 0 out1 0 1
+.ends
+
+*** AP1 *******************************
+*
+* All-Pass Filter First Order
+* G(s) = Kp*(1-sT)/(1+sT)
+* tg = T/pi 
+*
+.subckt CT___AP1 in out
+.param Kp=1 T=1		; parameters
+E1 in1 0 in 0 1
+R1 in1 1 1k
+C1 in1 2 {T/1k}
+R2 2 0 1k
+C2 1 0 {T/1k}
+E2 out 0 1 2 {Kp}
+.ends
+
+*** AP2 *******************************
+*
+* All-Pass Filter Second Order
+* G(s) = Kp*((s/w0)^2-2*D*s/w0+1)/((s/w0)^2+2*D*s/w0+1)
+* tg = 2*D/(pi*w0)
+*
+.subckt CT___AP2 in out
+.param Kp=1 D=1 w0=1	; parameters
+.param Q=1/(2*D)
+.param C2=C1/4
+.param R1=1k
+.param C1=Q/(4*w0*R1)
+.param L1=R1/(w0*Q)
+E1 1 0 in 0 1
+C1 1 2 {C1}
+L1 1 3 {L1}
+L2 3 2 {L1}
+R1 3 0 {R1}
+K1 L1 L2 1
+E2 out 0 2 0 {Kp}
+.ends
+
+*** D ********************************* 
+*
+* Differentiator
+* G(s)=Kd*s 
+*
+.subckt CT___D in out
+.param Kd=1    	; parameters
+E1 11 0 in 0 1
+C1 11 12 {Kd/1000}
+V1 12 0 0
+H1 out 0 V1 1000
+.ends
+
+*** DT1 ******************************* 
+*
+* Highpass Filter
+* G(s)=Kd*s/(1+sT1)
+*
+.subckt CT___DT1 in out
+.param Kd=1  T1=1 	; parameters
+.param K1=Kd/T1 
+E1 1 0 in 0 1
+C1 1 2 {T1/1000}
+R1 2 0 1000
+E2 out 0 2 0 {K1}
+.ends
+
+*** I ********************************* 
+*
+* Integrator
+* G(s)=Ki/(Ti*s)
+*
+.subckt CT___I in out
+.param Ki=1 Ti=1 		; parameters
+G1 0 1 in 0 1
+C1 1 0 {Ti} IC=0
+R1 1 0 1e10
+E1 out 0 1 0 {Ki}
+.ends
+
+*** IT1 ******************************* 
+*
+* Integrator Followed by Lowpass 
+*
+* F(s)= Kp/(sTi) * 1/(1+sT1)
+*
+.subckt CT___IT1 in out
+.param Kp=1 Ti=1 T1=1	; parameters
+G1 0 1 in 0 1
+C1 1 0 {Ti}
+R1 1 0 1e10
+G2 0 2 1 0 1
+R2 2 0 1
+C2 2 0 {T1}
+E2 out 0 2 0 {Kp}
+.ends
+
+*** P ******************************** 
+*
+* Proportional
+* G(s)=Kp
+*
+.subckt CT___P in out
+.param Kp=1 		; parameters
+E1 out 0 in 0 {Kp}
+.ends
+
+*** P2 ******************************* 
+*
+* Proportional with two inputs 
+* G(s)=Kp1+Kp2
+*
+.subckt CT___P2 in1 in2 out
+.param Kp1=1 Kp2=1		; parameters
+G1 0 1 in1 0 {Kp1}
+G2 0 1 in2 0 {Kp2}
+R1 1 0 1
+E1 out 0 1 0 1
+.ends
+
+*** P3 ******************************* 
+*
+* Proportional with three inputs  
+* G(s)=Kp1+Kp2+Kp3
+*
+.subckt CT___P3 in1 in2 in3 out
+.param Kp1=1 Kp2=1 Kp3=1	; parameters
+G1 0 1 in1 0 {Kp1}
+G2 0 1 in2 0 {Kp2}
+G3 0 1 in3 0 {Kp3}
+R1 1 0 1
+E1 out 0 1 0 1
+.ends
+
+*** PD ******************************** 
+*
+* Proportional-Derivative Control
+* G(s)=Kp*(1+s*Tv)
+*
+.subckt CT___PD in out
+.param Kp=1 Tv=1	; parameters
+G1 0 out1 in 0 {Kp}
+R1 out1 out2 1
+L1 out2 0 {Tv}
+E1 out 0 out1 0 1
+.ends
+
+*** PDT1 ****************************** 
+*
+* Proportional-Derivative Control  
+* PDT1 Tv>T1 Lead-Element
+* PDT1 Tv<T1 Lag-Element
+* 
+* G(s)=Kp*(1+Tv*s)/(1+T1*s)
+*
+.subckt CT___PDT1 in out
+.param Kp=1 Tv=1 T1=1	; parameters
+E1 1 0 in 0 1
+C0 1 2 {Tv/1k}
+R0 1 2 1k
+V0 2 0 0
+F1 0 3 V0 1
+R1 3 0 1k
+C1 3 0 {T1/1k}
+E2 out 0 3 0 {Kp}
+.ends
+
+*** PI ******************************** 
+*
+* Proportional-Integral Control
+* G(s )= Kr + Kr/(sTn) = Kr*(1+sTn)/(sTn)
+*
+.subckt CT___PI in out
+.param Kr=1 Tn=1	 ; parameters
+.param RN=1
+G1 0 1 in 0 1
+R1 1 2 {RN}
+C1 2 0 {TN} IC=0
+R2 1 0 1e10
+E1 out 0 1 0 {Kr}
+.ends
+
+*** PID ******************************* 
+*
+* Proportional-Integral-Derivative Control
+* G(s) = Kr*( 1 + 1/(s*Tn) + s*Tv )
+*
+.subckt CT___PID in out
+.param Kr=1 Tn=1 Tv=1  	; parameter
+* P
+G4 0 3 in 0 1
+* I
+G1 0 2 in 0 1
+C1 2 0 {Tn} IC=0
+R1 2 0 1e10
+G2 0 3 2 0 1
+* D
+E1 4 0 in 0 1
+C2 4 5 {Tv/1k}
+V1 5 0 0
+F1 0 3 V1 1k
+* sum
+R3 3 0 1
+E4 out 0 3 0 {Kr}
+.ends
+
+*** PIDT1 ***************************** 
+*
+* * Proportional-Integral-Derivative-T1 Control  
+* G(s) = Kr*( 1 + 1/(s*Tn) + s*Tv/(1+s*T1) )
+*
+.subckt CT___PIDT1 in out
+.param Kr=1 Ti=1 Td=1 T1=1	; parameters
+* I
+G1 0 2 in 0 1
+C1 2 0 {Tn}
+R1 2 0 1e10
+G2 0 3 2 0 1
+* D
+E1 4 0 in 0 1
+C2 4 1 {T1}
+R2 1 0 1
+G3 0 3 1 0 {Tv/T1}
+* P
+G4 0 3 in 0 1
+*
+R3 3 0 1
+E4 out 0 3 0 {Kr}
+.ends
+
+*** PPT1 ****************************** 
+*
+* PPT1 Tv<T1 
+* PDT1 Tv>T1
+* * * 
+* G(s)=Kp*(1+Tv*s)/(1+T1*s)
+*
+.subckt CT___PPT1 in out
+.param Kp=1 Tv=1 T1=1	; parameters
+E1 1 0 in 0 1
+C0 1 2 {Tv/1k}
+R0 1 2 1k
+V0 2 0 0
+F1 0 3 V0 1
+R1 3 0 1k
+C1 3 0 {T1/1k}
+E2 out 0 3 0 {Kp}
+.ends
+
+*** PT1 ******************************* 
+*
+* Lowpass First Order
+* G(s) = Kp/(1+s*T1)
+* 1/T1 is the Radian Corner Frequency
+* 
+.subckt CT___PT1 in out
+.param T1=1 Kp=1	   ; parameters
+G1 0 1 in 0 1
+C1 1 0 {T1}  
+R1 1 0 1
+E2 out 0 1 0 {Kp}
+.ends
+
+*** PT2 ******************************* 
+*
+* Lowpass Second Order, real poles
+* 
+* G(s)=Kp/((1+sT1)*(1+sT2))
+* 
+* 1/T1 and 1/T2 are the radian corner frequencies.
+*
+.subckt CT___PT2 in out
+.param Kp=1 T1=1 T2=1	; parameters
+G1 0 1 in 0 1
+C1 1 0 {T1}  
+R1 1 0 1
+G2 0 2 1 0 1
+C2 2 0 {T2}
+R2 2 0 1
+E2 out 0 2 0 {Kp}
+.ends
+
+*** PT2S ****************************** 
+*
+* Lowpass Second Order, real or complex poles
+* 
+* G(s)=Kp/(1+2*D/w0*s+s*s/(w0*w0))
+* Kp=gain, D=damping factor, w0=radian frequency
+*
+.subckt CT___PT2S in out
+.param Kp=1 D=1 w0=1 	; parameters
+.param C1={1/(w0*100)}
+.param L1={100/w0}
+.param R1=2*D*100
+E1 1 0 in 0 1	    
+R1 1 2 {R1} 
+L1 2 3 {L1}
+C1 3 0 {C1}
+E2 out 0 3 0 {Kp}
+.ends
+
+*** SUB ******************************* 
+*
+* Subtract Two Signals
+* G(s)=inp-inm
+*
+.subckt CT___SUB inp inm out
+G1 0 out1 inp inm 1
+R1 out1 0 1
+E1 out 0 out1 0 1
+.ends
+
+*** TT ******************************** 
+*
+* Delay, Dead Time 
+* G(s)= Kp*exp(-sTt) = Kp*delay(Tt)
+* 
+* Tt dead time (delay), Kp gain
+*
+.subckt CT___TT in out
+.param Kp=1 Tt=1 		; parameters    
+B1 0 out1 I=delay(V(in),{Tt}) 
+R1 out1 0 1
+E1 out 0 out1 0 {Kp}
+.ends
+ 
+
+

@@ -1,0 +1,27 @@
+* C:\LTspice\anno.asc
+L1 N006 OUT 10µ Rser=0.02
+M1 N002 N007 N006 N006 Si4412DY
+V1 IN 0 12 RSER=.01
+C2 N003 0 100p
+C4 N004 N001 470p
+R1 N002 IN 0.033
+R4 N003 0 11K
+R3 OUT N003 35.7K
+R2 N001 0 6.8K
+D2 0 N006 MBRS340
+C3 N005 N006 .1µ
+C5 OUT N003 100p
+C7 IN N002 1000p
+Iload OUT 0 3000mA LOAD
+C9 OUT 0 100µ Rser=50m
+C6 OUT 0 100µ Rser=50m
+C8 IN 0 22µ
+C1 IN 0 22µ
+XU1 N002 N004 N003 0 N006 N007 N005 IN LTC1624
+.model D D
+.lib C:\xp\lib\cmp\standard.dio
+.lib C:\xp\lib\cmp\standard.mos
+.tran 1 steady nodiscard startup
+.lib LTC1624.sub
+.save V(out) I(L1) ; this .raw file ships with handout.zip -- make it smaller
+.end

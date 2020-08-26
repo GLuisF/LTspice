@@ -10,7 +10,7 @@ SYMATTR Prefix X
 SYMATTR Value2 LTC3888-1
 SYMATTR Description Dual Output 8-Phase Step-Down DC/DC Controller with Digital Power System Management
 SYMATTR ModelFile LTC3888-1.sub
-SYMATTR SpiceLine2 Toff_Delay1=0 Rith0=5k Rith1=5k  OC_Limit0=20 OC_Limit1=20 Ton_Min=45n UV_Fault_Limit0=2.2 UV_Fault_Limit1=2.8 OV_Fault_Limit0=2.6 OV_Fault_Limit1=3.1 Iout_Cal_Gain=5m
+SYMATTR SpiceLine2 Toff_Delay1=0 Rith0=5k Rith1=5k  OC_Limit0=20 OC_Limit1=20 Ton_Min=45n VOUT_UV_Fault_Limit0=2.2 VOUT_UV_Fault_Limit1=2.8 VOUT_OV_Fault_Limit0=2.6 VOUT_OV_Fault_Limit1=3.1 Iout_Cal_Gain=5m Slave0=0 Slave1=0
 PIN -144 -352 LEFT 8
 PINATTR PinName PWM0
 PINATTR SpiceOrder 1
@@ -33,7 +33,7 @@ PIN -144 -144 LEFT 8
 PINATTR PinName Vsense0+
 PINATTR SpiceOrder 7
 PIN -144 48 LEFT 8
-PINATTR PinName DACout0
+PINATTR PinName DAout0
 PINATTR SpiceOrder 8
 PIN -144 240 LEFT 8
 PINATTR PinName Ith0
@@ -45,7 +45,7 @@ PIN -144 -544 LEFT 8
 PINATTR PinName Pgood0
 PINATTR SpiceOrder 11
 PIN 144 48 RIGHT 8
-PINATTR PinName DACout1
+PINATTR PinName DAout1
 PINATTR SpiceOrder 12
 PIN -144 144 LEFT 8
 PINATTR PinName FB0

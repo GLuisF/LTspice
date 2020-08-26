@@ -1,0 +1,38 @@
+* sfh2400.sub
+* Helmut Sennewald, 16.05.2005
+
+* A=Anode, K=Cathode, L=control current input
+* Pin L: apply a current I = Efficiency(lambda)*Optical_power
+*        This input is referenced to common ground("0").
+*
+.subckt sfh2400 A K L
+R0 L 0 1T
+C0 K A 1.8p
+Rsh K A 25G
+V1 L 0 0
+F1 0 N001 value={if(I(V1)>0, 2e4*I(V1),0)}
+R1 N001 0 1
+C1 N002 0 4.5n
+G1 K A N002 0 1e-4
+L1 N001 N002 0.8n
+R2 N002 0 1
+D1 A K SFH2400DIO
+.model SFH2400DIO D(Is=100p  N=1.3 Eg=1.0 Rs=8 Bv=35 Ibv=1u Cjo=9.2p Vj=0.6 M=0.9 )
+.ends sfh2400 
+
+* The same model but with a reference pin for the control input current
+.subckt sfh2400_4 A K L G
+R0 L G 1T
+C0 K A 1.8p
+Rsh K A 25G
+V1 L G 0
+F1 0 N001 value={if(I(V1)>0, 2e4*I(V1),0)}
+R1 N001 0 1
+C1 N002 0 4.5n
+G1 K A N002 0 1e-4
+L1 N001 N002 0.8n
+R2 N002 0 1
+D1 A K SFH2400DIO
+.model SFH2400DIO D(Is=100p  N=1.3 Eg=1.0 Rs=8 Bv=35 Ibv=1u Cjo=9.2p Vj=0.6 M=0.9 )
+.ends sfh2400_4
+

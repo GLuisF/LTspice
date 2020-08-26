@@ -1,0 +1,172 @@
+* Non-inverting buffer
+* tpd 100n
+* tr 160n/60n
+.SUBCKT CMOSBUFF  A Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(100-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai 0 0 0 0  0 Yp 0  BUF  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_2X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOSBUFF
+*
+* Inverting buffer
+* tpd 100n
+* tr 160n/60n
+.SUBCKT CMOS_INV  A Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(100-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai 0 0 0 0  Yn 0 0  BUF  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yn Y  VDD VGND  CD40_OUT_2X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOS_INV
+*
+* 2-input AND gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_AND  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  0 Yp 0  AND  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOS_AND
+*
+* 2-input NAND gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_NAND  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  Yi 0 0  AND  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yi Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ends CMOS_NAND
+*
+* 2-input OR gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_OR  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  0 Yp 0  OR  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ends CMOS_OR
+*
+* 2-input NOR gate
+* tpd 125n
+* tr 100n
+.SUBCKT CMOS_NOR  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(125-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  Yi 0 0  OR  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yi Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOS_NOR
+*
+* 2-input exclusive OR-gate
+* tpd 140n
+* tr 100n
+.SUBCKT CMOSEXOR  A B Y  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(140-40-10)*5/{vdd1}*{speed1}
+*
+XIN1  A Ai  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  B Bi  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+A1  Ai Bi 0 0 0  0 Yp 0  XOR  tripdt={tripdt1}  td={td1}  
+*
+XOUT  Yp Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.END CMOSEXOR
+*
+* D-flip-flop with asynchronous set and reset
+* CP->Q Tpd 200n
+* R/S->Q Tpd 150n
+* CP/R/S Tw 50n
+* D->CP Ts 20n
+* D->CP Th 0n
+* R,S Trem 40n		Set	Clock	Data	Reset	Q	_Q
+.SUBCKT CMOS_DFF  S 		C		D		R		Q	QN  VDD VGND  vdd1={vdd} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(150-10-40-10)*5/{vdd1}*{speed1}
+.param td2=1e-9*(150-10-40-10)*5/{vdd1}*{speed1}
+.param td3=1e-9*(150+20-10-40-10)*5/{vdd1}*{speed1}
+.param td4=1e-9*(10)*5/{vdd1}*{speed1}
+*
+XIN1  S Si  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN2  C Ci  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN3  D Di  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+XIN4  R Ri  VDD VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1} 
+*
+ACDEL  Ci 0 0  0  0   0   Cp 0  BUF  tripdt={tripdt1}  td={td1} 
+ADDEL  Di 0 0  0  0   0   Dp 0  BUF  tripdt={tripdt1}  td={td3} 
+ARINV  Ri 0 0  0  0   0   Rp  0  BUF  tripdt={tripdt1}  td={td2}
+ASINV  Si 0 0  0  0   0   Sp  0  BUF  tripdt={tripdt1}  td={td2}
+A1     Di Dp Cp Sp Rp  QNi Qi 0  DFLOP  tripdt={tripdt1} td={td4}
+*
+XOUT1  Qi  Q   VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+XOUT2  QNi QN  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1}
+.ENDS CMOS_DFF
+*
+*
+.SUBCKT  CD40_IN_1  in out  VDD VGND  vdd3={vdd2} speed3={speed2}  tripdt3={tripdt2} 
+* 3ns input delay
+*.param Cval = 0.55e-12*4/({vdd3}-0.5)*{speed3}
+* 10ns delay @5V
+.param Cval = 1.8e-12*5/{vdd3}*{speed3}
+.param vt1=0.5
+.param gain=(1/{vdd3})
+*
+*D1 0   in  CD40DIO1 
+D2 in VDD  CD40DIO1
+R1 in out10 10k
+C1 out10 VGND {Cval}
+R2 in VGND 1e8
+*E1 out20 0 out10 VGND {gain}
+B1 out20 0 V=LIMIT(0,V(out10,VGND)*{gain},1)
+AE1  out20 0 0 0 0  0 out 0  BUF  ref={vt1}  vhigh=1  tripdt={tripdt3}
+.MODEL CD40DIO1 D(Is=1e-12 Rs=100)
+.ends
+*
+*
+* Standard output driver
+.SUBCKT  CD40_OUT_1X  in out  VDD VGND  vdd3={vdd2} speed3={speed2}  tripdt3={tripdt2}
+.param trise1=80e-9*5.0/{vdd3}*{speed3}
+.param Rout=500*5.0/{vdd3}*{speed3}
+*
+AE1  in 0 0 0 0  0 out10 0  BUF  tripdt={tripdt3}  trise={trise1}
+*
+E1 out20 VGND out10 0 {vdd3}
+Rout out20 out {Rout}
+D1 0   out  DIO2 
+D2 out VDD  DIO2
+.ends
+*
+*
+* Strong output driver
+.SUBCKT  CD40_OUT_2X  in out  VDD VGND  vdd3={vdd2} speed3={speed2}  tripdt3={tripdt2}
+.param trise1=80e-9*5/{vdd3}*{speed3}
+.param Rout=250*5.0/{vdd3}*{speed3}
+*
+AE1  in 0 0 0 0  0 out10 0  BUF  tripdt={tripdt3}  trise={trise1}
+*
+E1  out20 VGND out10 0 {vdd3}
+Rout  out20 out {Rout}
+D1 0   out  DIO2 
+D2 out VDD  DIO2
+.ends
+.MODEL DIO2 D(Is=1e-12 Rs=10)

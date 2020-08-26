@@ -1,0 +1,12 @@
+* simple opamp
+*
+* CONNECTIONS:   +i -i V+ V- Out
+
+.subckt nkq      1  2  3  4  5
+E1 0i 4 3 4 0.2
+* ratio +ve to -ve psg is (1-0.2)/0.2 = 4
+G1 0i 5 1 2 {Aol}
+R1 5 0i 1
+C1 5 0i {Aol/GBW/6.28319}
+I1 3 4 5m
+.ends nkq

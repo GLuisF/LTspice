@@ -1,0 +1,79 @@
+Re: Solutions for Microchip Opamps ?? ( MCP6001, MCP601, MCP616 )
+
+--- In LTspice@yahoogroups.com, "matthiasltspice"
+<matthias.hoffmann@...> wrote:
+>
+> Hello,
+> I've read several messages about the problem with these
+> Microchip - Parts. Even the NTC - Test - Circuit in the
+> files section ( with the mcp601 ) doesn't work on my
+> ltspice.
+
+Hello Matthias,
+I have tried a lot in the past and finally gave up
+at that time.
+
+> At the moment i am examining some small circuits
+> ( differential amplifiers, various current sources )
+> with several different opamps, especially the temperature
+> drift of these opamps.
+
+The models don't really contain useful models for
+temperature. The reason is very simple. It would require
+to use the worst case bias current and temperature drift
+in the subcircuit model. No company want make their parts
+looking bad, if the competition only provides models with
+much better looking typical behavior.
+
+Don't give a cent on any .TEMP with opamp models.
+It will be totally wasted time and wrong too.
+It can also corrupt the whole model behavior.
+If you want model temperature behavior, you have to add
+that externally using voltage and current sources.
+
+If you look into the subircuit, you will see resistors
+with TC=1 and TC=2. This means the resistors using this TC
+will become negative resistance at negative temperature.
+That can be another source for convergence problems if
+you use a temperature below the SPICE nominal value(27°C).
+
+> The result is the comparison
+> between simulation and my smd-circuits. If there is no
+> solution i will try to model these with pspice student
+> edition (...in identical schematics it has exactly
+> [10e-9V] the same results like LTspice...very fine...
+> thank you LT...) but this accepts not 2 of these
+> opampmodels because of the node limitation. Has anybody
+> found a solution for using these models in ltspice?
+
+I tried now again and had success. See my procedure below.
+
+> I'll put a small test-circuit (voltage follower and
+> non inverting amplifier) and the microchip.lib
+> (including mcp6001,mcp601,mcp616) in the temp folder.
+> Excuse my english and thank you for reading!!!
+>
+> regards,
+> matthias
+
+
+The procedure is as following.
+
+Control Panel -> SPICE -> Reset to default settings
+
+1. Make a transient simulation and save the steady state
+bias point of all nodes in a file.
+
+2. Use the data of this file in the .AC and .TEMP simulation.
+
+3.
+The temperature simulation has required an additional clamp
+circuit at the opamps' output to achieve convergence above
+94 degree.
+
+I have added much more help text into my example schematic.
+
+Files > Temp > microchip_conv_solution.zip
+
+Best regards,
+Helmut

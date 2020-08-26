@@ -2215,12 +2215,14 @@ A7 N008 0 On 0 0 0 N011 0 OTA g=800u asym isrc=87u isink=-82u vlow=-1e308 vhigh=
 .model Nout VDMOS(Vto=1 Kp=5m lambda=1m ksubthres=.1 Rb=10 noiseless)
 .ends LTC2058
 *
+* Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
+*
 .subckt LT6372-1 1 2 3 4 5 6 7 8 9 10 11 12 13
 G2 0 N002 N003 0 1m
 C3 N002 0 27p Rpar=1k noiseless
 C5 7 2 7.95p
 C6 7 1 .1p
-R1 A1out INNF 10K
+R1 A1out INNF 10k
 CG4 7 6 1p
 CG5 6 4 1p
 M3 7 N002 A1out A1out NINT temp=27
@@ -2232,10 +2234,10 @@ C17 N017 0 27p Rpar=1k noiseless
 C20 2 3 .9p
 DB2 7 4 DP
 C4 7 N003 180p Rpar=200Meg noiseless
-A1 9 2X 0 0 0 0 N003 0 OTA g=30m iout=2.5m en=4.9n enk=2.5 Vhigh=1e308 Vlow=-1e308
+A1 9 2X 0 0 0 0 N003 0 OTA g=30m iout=5m en=4.9n enk=2.5 Vhigh=1e308 Vlow=-1e308
 G4 N003 0 N003 7 100m vto=-600m dir=1
 G6 0 N003 4 N003 100m vto=-600m dir=1
-A2 10 3X 0 0 0 0 N016 0 OTA g=30m iout=2.5m en=4.9n enk=2.5 Vhigh=1e308 Vlow=-1e308
+A2 10 3X 0 0 0 0 N016 0 OTA g=30m iout=5m en=4.9n enk=2.5 Vhigh=1e308 Vlow=-1e308
 D11 1 7 DESD
 D12 4 1 DESD
 D13 8 7 DESD
@@ -2281,7 +2283,7 @@ C7 3 4 7.95p
 A3 2 0 0 0 0 0 0 0 OTA g=0 in=93.4f ink=3
 A8 3 0 0 0 0 0 0 0 OTA g=0 in=93.4f ink=3
 A9 2 3 0 0 0 0 0 0 OTA g=0 incm=176.8f incmk=1.8
-R13 A1out 1 12.1K
+R13 A1out 1 12.1k
 A10 N005 0 4 4 4 4 9 4 OTA g=200u iout=300u vlow=-1e309 vhigh=1e309
 L3 N005 0 102.3µ Rser=4.5k Rpar=1.286k noiseless
 C9 1 4 .1p
@@ -2290,9 +2292,9 @@ C12 8 4 .1p
 D4 2 7 DESD
 D5 4 2 DESD
 G9 0 N005 9 2X 1m
-R14 2X 0 1K noiseless
+R14 2X 0 1k noiseless
 I3 0 2X 600µ
-R15 A2out 8 12.1K
+R15 A2out 8 12.1k
 A11 N013 0 4 4 4 4 10 4 OTA g=200u iout=300u vlow=-1e309 vhigh=1e309
 L1 N013 0 102.3µ Rser=4.5k Rpar=1.286k noiseless
 I4 0 3X 600µ
@@ -2300,10 +2302,10 @@ G15 0 N013 10 3X 1m
 B9 0 2X I=999.9u*dnlim(uplim(V(2),V(7)-1.25,.1), V(4)+1.7, .1)+100n*V(2)
 B10 0 3X I=999.9u*dnlim(uplim(V(3),V(7)-1.25,.1), V(4)+1.7, .1)+100n*V(3)
 D6 4 5 DESD
-R6 3X 0 1K noiseless
-R2 INNF 6 10K
-R3 A2out INPF 10K
-R4 INPF 5 20K
+R6 3X 0 1k noiseless
+R2 INNF 6 10k
+R3 A2out INPF 10k
+R4 INPF 5 20k
 D7 3 7 DESD
 D8 4 3 DESD
 D9 9 7 DESD
@@ -2315,7 +2317,7 @@ D18 4 10 DESD
 C32 7 10 .1p
 C33 10 4 .1p
 D16 4 11 DESD
-R7 INPF 11 20K
+R7 INPF 11 20k
 C30 CactH 0 1p Rpar=3k noiseless
 G8 0 CactH 6 12 1m
 S1 CactH 0 12 7 SCLMPOH
@@ -2351,3 +2353,4 @@ R19 13 4 1G
 .model SCLMP1 SW(level=2 Ron=100 Roff=100Meg vt=455m vh=-10m noiseless)
 .model SCLMP2 SW(level=2 Ron=1 Roff=300Meg vt=450m vh=-10m noiseless)
 .ends LT6372-1
+

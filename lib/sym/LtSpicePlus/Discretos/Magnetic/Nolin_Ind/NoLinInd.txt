@@ -1,0 +1,32 @@
+Using LTspice's new arbitrary inductor, a simple linear inductor may
+be modeled as Phi=L*i or in LTspice terminology:
+
+Flux = {L}*x ; (no saturation)
+Note: L is the parametrized inductance and x is the current through L.
+
+Simple hard saturation can be modeled with a limit function:
+
+Flux = {L}*limit(x,{-Is},{Is}) ; (hard saturation)
+Note: Is is the parametrized saturation current.
+
+A residual saturated inductance can easily be added to the model:
+
+Flux = {L-Ls}*limit(x,{-Is},{Is})+{Ls}*x ; (stepped saturation)
+Note: Ls is the parametrized saturation inductance.
+
+The soft limit of the hyperbolic tangent can add more realism:
+
+Flux ={(L-Ls)*Is}*tanh(x/{Is})+{Ls}*x ; (soft saturation)
+
+For a very soft characteristic, use the arc tangent function:
+
+Flux = {L*Is*2/Pi}*atan(x/{Is*2/Pi}) ; (very soft saturation)
+Note: Ls is not really needed due to the very soft nature of atan.
+
+A circuit file, saturating_inductor.asc, demonstrating these
+techniques and more may be found in the files section of this Yahoo
+Group under "adventures with analog". This file explores LTspice's
+new arbitrary inductor model and compares it to other methods of
+modeling inductor saturation, such as the B-source inductance
+multiplier method, the generalized impedance converter method, and
+a method with current controlled switches. -- analogspiceman

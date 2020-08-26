@@ -1,0 +1,16 @@
+*The current source, G1, squares the signal, which is then
+*integrated in the capacitor. The voltage on the capacitor is time
+*averaged, and the square-root is taken (the resistor is a dummy
+*load that satisfies the SPICE algorithms). The voltage source E1
+*shows that the value of simulated "time" is available in Analog
+*Behavioral Modeling, and may be used as a variable in a
+*formula. Notice that the if-than-else function is used. If time is
+*less than or equal to zero then the output of E1 is 0, else sqrt(v(1)/time).
+*This prevents convergence problems. When sqrt(v(1)/time) is
+*evaluated at time = 0.
+.subckt RMS in out
+G1 0 1 VALUE={V(IN)*V(IN)};== B1 0 1 I={V(IN)**2}
+C1 1 0 1
+R1 1 0 1G
+E1 out 0 VALUE={IF(TIME<=0, 0, SQRT(V(1)/TIME))};== B2 Out 0 V={IF(TIME<=0, 0, SQRT(V(1)/TIME))}
+.ends

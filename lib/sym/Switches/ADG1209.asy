@@ -40,10 +40,10 @@ TEXT -102 -64 Bottom 2 S4
 TEXT 102 -160 Bottom 2 D
 WINDOW 0 64 -320 Bottom 2
 WINDOW 3 0 32 Center 2
-SYMATTR Value ADG1208
+SYMATTR Value ADG1209
 SYMATTR Prefix X
-SYMATTR SpiceModel ADG.lib
-SYMATTR Value2 ADG1208
+SYMATTR SpiceModel ADG1209.sub
+SYMATTR Value2 ADG1209
 SYMATTR Description Low Capacitance, 8-Channel,  ±15V/+12V iCMOS Multiplexer
 PIN -128 0 LEFT 8
 PINATTR PinName A0

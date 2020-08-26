@@ -1,0 +1,161 @@
+* Additional subcircuits required for NCP2820_1.lib
+* Most of these functions use LTspice specific features.
+
+
+* Digital support circuits
+*
+* The reset voltage is required to suppress a startup pulse in Pulse_falling.
+V_dig_reset7 $g_reset 0 PULSE(5 0 1u .1u .1u)
+*
+* Global digital nets often used in NCP2820.lib
+V_dig_supply7 $g_dpwr $g_dgnd 5
+R_dig_supply7 $g_dgnd 0 1µ
+
+
+* Outputs a pulse on the rising edge with a length WIDTH
+*
+.subckt pulse_rising in out
+.param width=100n
+A3 out 0 0 0 0 0 N003 0 BUF Td={width} Ref=2.5 Vhigh=5
+A2 0 0 N001 0 N002 0 out 0 DFLOP Td=5n Ref=2.5 Vhigh=5  trise=2n tfall=2n
+A1 in 0 0 0 0 0 N001 0 SCHMITT Vt=1.5 Vh=0.1 Vhigh=5
+A4 0 N003 0 $g_reset 0 0 N002 0 OR Ref=2.5 Vhigh=5
+.ends
+
+* Outputs a pulse on the falling edge with a length WIDTH
+*
+.subckt pulse_falling in out
+.param width=100n
+A3 out 0 0 0 0 0 N003 0 BUF Td={width} Ref=2.5 Vhigh=5
+A2 0 0 N001 0 N002 0 out 0 DFLOP Td=5n Ref=2.5 Vhigh=5 trise=2n tfall=2n
+A1 in 0 0 0 0 N001 0 0 SCHMITT Vt=1.5 Vh=0.1 Vhigh=5
+A4 0 N003 0 $g_reset 0 0 N002 0 OR Ref=2.5 Vhigh=5
+.ends
+
+
+
+* LTspice specific digital logic circuits
+*
+.SUBCKT INV in out vcc vgnd
+A1 in vgnd vgnd vgnd vgnd out vgnd vgnd BUF Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( (V(in,vgnd)>1.5), 0, V(vcc,vgnd) )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT AND2 in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd AND Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5)&(V(in2,vgnd)>1.5)), V(vcc,vgnd), 0) 
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT AND3 in1 in2 in3 out vcc vgnd
+A1 in1 in2 in3 vgnd vgnd vgnd out vgnd AND Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5)&(V(in2,vgnd)>1.5)&(V(in3,vgnd)>1.5)), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+.SUBCKT OR2 in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd OR Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ((V(in1,vgnd)>1.5) | (V(in2,vgnd)>1.5)), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+
+* IMPEDANCE MULTIPLIER
+* Can be used in any SPICE which understands POLY syntax.
+*
+* My oldest source of this impedance multilplier circuit is from a book.
+* Book title: Simulieren mit PSPICE , Dietmar Erhardt, Jürgen Schulte,
+* ISBN 3-528-14921-3, 1995
+* I have also seen it in newer library files from PSPICE as well. This the
+* source of the comments.
+*
+* Example uses:
+*   - voltage-controlled capacitor ...	use "variable admittance"
+*   - voltage-controlled inductor ...	use "variable impedance"
+*
+* Variable admittance: Yout = Yref * V
+*           control input: voltage
+*           |  reference capacitor/conductance (connect other lead to ground)
+*          / \ |  output: floating admittance
+*          + - | / \
+.subckt yx 1 2 3 4 5
+ecopy  3 6 poly(2) (1,2) (4,5) 0 0 0 0 1
+fout   4 5 vsense 1
+rin    1 2 1G
+vsense 0 6 0
+.ends
+
+* Variable impedance: Zout = Zref * V
+*           control input: voltage
+*           |  reference inductor/resistor (connect other lead to ground)
+*          / \ |  output: floating impedance
+*          + - | / \
+.subckt zx 1 2 3 4 5
+eout   4 6 poly(2) (1,2) (3,0) 0 0 0 0 1
+fcopy  0 3 vsense 1
+rin    1 2 1G
+vsense 6 5 0
+.ends
+
+
+* Other parts
+*
+*ZETEX BSS84 Spice Model v1.1 Last Revised 3/5/00
+*              
+.SUBCKT BSS84/ZTX 3 4 5
+* NODES: DRAIN GATE SOURCE
+M1 3 2 5 5 MOD1
+RG 4 2 167
+RL 3 5 50E6
+C1 2 5 26P
+C2 3 2 4P 
+D1 3 5 DIODE1
+*
+.MODEL MOD1 PMOS VTO=-1.709 RS=3.091 RD=0.979 IS=1E-15 KP=0.146 CBD=12P PB=1
+.MODEL DIODE1 D IS=1.072E-13 RS=0.527 N=1.077
+.ENDS BSS84
+
+* Just invented. I never looked in a data book for it.
+.subckt D1N4500 plus minus
+D1 plus minus DN
+.model DN D(Is=1e-12 Rs=1 Cjo=10p)
+.ends
+
+
+* I tried at the beginning with delay functions, but then I gave up 
+* because a 5ns delay slow downs simulation too much. I replaced the 
+* original "pulse_rising" and "pulse_falling" circuit with a LTspice 
+* specific implementaion. Now there is no more a delay circuit necessary.
+* I left it here just for historical reason.
+
+.subckt delay1 in out vcc vgnd   
+B2 out vgnd V=delay(V(in,vgnd), {delay})
+*B1 out0 vgnd  V=if( (V(in,vgnd)>1.5), V(vcc,vgnd), 0 )
+*B2 out vgnd V=delay(V(out0,vgnd), {delay})
+.ends
+
+.subckt delay2 in out vcc vgnd
+E1 1 vgnd in vgnd 1
+R1 1 2 1k
+C1 2 vgnd 10p
+E2 out vgnd 2 vgnd 1
+.ends
+
+.subckt delay in out vcc vgnd   
+B2 out vgnd V=delay(V(in,vgnd), {delay})
+.ends
+
+
+.SUBCKT XOR in1 in2 out vcc vgnd
+A1 in1 in2 vgnd vgnd vgnd vgnd out vgnd XOR Ref=1.5 Vhigh=5  trise=2n tfall=2n
+*B1 out1 vgnd  V=IF( ( ((V(in1,vgnd)>1.5)&(V(in2,vgnd)<1.5)) | ((V(in1,vgnd)<1.5)&(V(in2,vgnd)>1.5)) ), V(vcc,vgnd), 0 )
+*R1 out1 out 100
+*C1 out vgnd 10p
+.ENDS
+
+

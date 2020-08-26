@@ -1,0 +1,11 @@
+* Isolated Circuit Common
+* Impedance to ground set by Value of R1
+*
+*        ----/\/\/\----
+*        |     R1     |
+*       GND        IsoCom
+*
+R1 IsoCom 0 100 Meg
+.backanno
+.end
+

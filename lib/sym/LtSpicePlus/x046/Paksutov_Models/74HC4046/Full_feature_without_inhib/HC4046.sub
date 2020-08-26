@@ -1,0 +1,37 @@
+*(MC74/HC)4046 Model
+*author Paksutov Konstantin, aka Pogankin@yahoo.com
+*0.6.12.2010
+.subckt HC4046 14 16 3 9 1 10 11 12 13 15 2 4 6 7 8
+*SR-PFD-corrected
+.subckt hc4046 14 16 3 9 1 10 11 12 13 15 2 4 6 7 8
+S1 6 N003 7 8 SW
+S2 8 7 7 8 SW
+S3 7 N003 6 8 SW
+S4 8 6 6 8 SW
+C1 7 6 10p
+B1 8 N003 I=I(R1)*36
+B2 4 8 V=ddt(V(6,7))>0 ? 5 : 0 Tripdt=0.007u Tripdv=0.007m
+R3 4 8 1G
+R_by-pass-1 N002 8 2.7k
+G1 8 N002 9 N002 TABLE(0.05, 0.001m) (0.31, 0.005m) (0.5, 0.011m) (2.29V, 0.091m) (3V, 0.12m)
+R_by-pass-2 N005 8 2.7k
+G2 8 N005 16 N005 TABLE(0.05, 0.001m) (0.31, 0.005m) (0.5, 0.011m) (2.29V, 0.091m) (3V, 0.12m)
+B3 8 N003 I=I(R2)*90
+A1 14 3 0 0 0 0 13 0 PHASEDET Vhigh={Vhigh1} Td={td1} ref={ref1}
+R_by-pass-3 10 8 2.7k
+G3 8 10 9 10 1
+A2 0 14 0 3 0 0 2 0 XOR Vhigh={Vhigh1} TD=10n
+A3 S R 0 0 0 0 15 0 SRFLOP Vhigh={Vhigh1} ref={ref1} Td={td1}
+A4 16 0 N001 8 S 0 S 0 DFLOP Vhigh={Vhigh1} ref=0.1 Td={td1}
+A6 16 0 N004 8 R 0 R 0 DFLOP Vhigh={Vhigh1} ref=0.1 Td={td1}
+A10 14 0 0 0 0 N001 0 0 BUF Vhigh={Vhigh1} ref={ref1}
+A11 3 0 0 0 0 N004 0 0 BUF Vhigh={Vhigh1} ref={ref1} Td={48*td1}
+R1 N002 11 1n
+R2 N005 12 1n
+B4 1 8 V=inv(V(S))*5 Tripdt=0.007u Tripdv=0.007m
+R4 1 8 1G
+.ic V(6)=0.5
+.params: Vhigh1=5 ref1=2.5 Td1=50n
+.model SW SW(Ron=5 Roff=1Meg Vt=500m Vh=600m)
+.ic V(15)=0 V(R)=0 V(S)=5
+.ends hc4046

@@ -1,0 +1,34 @@
+Version 4
+SymbolType CELL
+LINE Normal -32 -32 32 0
+LINE Normal -32 32 32 0
+LINE Normal -32 -32 -32 32
+LINE Normal -28 -16 -20 -16
+LINE Normal -28 16 -20 16
+LINE Normal -24 -12 -24 -20
+LINE Normal 0 -32 0 -16
+LINE Normal 0 32 0 16
+LINE Normal 4 -20 12 -20
+LINE Normal 8 -24 8 -16
+LINE Normal 4 20 12 20
+WINDOW 0 22 -32 Left 0
+WINDOW 3 23 22 Left 0
+SYMATTR Value LMC6462B/NS
+SYMATTR Prefix X
+SYMATTR Value2 LMC6462B/NS
+SYMATTR SpiceModel LMC6462B.sub
+PIN -32 -16 NONE 0
+PINATTR PinName In+
+PINATTR SpiceOrder 1
+PIN -32 16 NONE 0
+PINATTR PinName In-
+PINATTR SpiceOrder 2
+PIN 0 -32 NONE 0
+PINATTR PinName V+
+PINATTR SpiceOrder 3
+PIN 0 32 NONE 0
+PINATTR PinName V-
+PINATTR SpiceOrder 4
+PIN 32 0 NONE 0
+PINATTR PinName OUT
+PINATTR SpiceOrder 5

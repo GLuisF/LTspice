@@ -1,0 +1,150 @@
+* ================================================================================= *
+*                       LTSpice Netlist Created : 9/12/2009                         *
+*                       © Peter Kapas, Ventura, CA, USA                             *
+*                       e-mail: pkapas@sbcglobal.net                                *
+* ----------------------------------------------------------------------------------*
+
+* ================================================================================= *
+*                         BLDC (3-Phase) Motor's Subcircuits                        *
+* ================================================================================= *
+*            Phase_A ...................................................... Input   *
+*            | Phase_B .................................................... Input   *
+*            | | Phase_C .................................................. Input   *
+*            | | | External Load Inertia .................................. Input   *
+*            | | | |           External Load Dumping ...................... Input   *
+*            | | | |           |        External Torque ................... Input   *
+*            | | | |           |        |   Internal Torque on the Rotor .. Output  *
+*            | | | |           |        |   |    Angular Velocity ......... Output  *
+*            | | | |           |        |   |    | Rotor's Angle .......... Output  *
+*            | | | |           |        |   |    | |     Hall1 ............ Output  *
+*            | | | |           |        |   |    | |     |  Hall2 ......... Output  *
+*            | | | |           |        |   |    | |     |  |  Hall3 ...... Output  *
+*            | | | |           |        |   |    | |     |  |  |                    *
+*                                                                                   *
+.subckt BLDC A B C LoadInertia LoadDump Tin Tout W Angle H1 H2 H3
+* --------------------------------------------------------------------------------- *
+.param Npp=4 Ph=0           ; Npp     - Number of Pole-Pairs         [-]
+                            ; Ph      - Phasing (0: 120°/60: 60°)
+.param w0=0 Angle0=0        ; w0      - Initial Angular Velocity     [rad/s]
+                            ; Angle0  - Initial Angle                [rad]
+.param Jm=.0002 Dm=0.0016   ; Jm      - Rotor's Inertia              [N*m/(rad/s²)] 
+                            ; Dm      - Viscose Dumping              [N*m/(rad/s)]
+.param R=0.0395 L=30uH      ; R       - Motor's Winding Resistance   [ohm]
+                            ; L       - Motor's Winding Inductance   [henry]  
+.param Kt=46.47m            ; Kt      - Torque Constant              [N*m/A]
+.param Ke={Kt}              ; Ke      - BEMF Constant                [V/(rad/s)]
+.param ia0=0  ib0=0  ic0=0  ; i0a,b,c - Initial Phase Currents       [A]
+.param Ra={R} Rb={R} Rc={R} ; Ra,b,c  - Single Phase Resistance      [ohm]
+.param La={L} Lb={L} Lc={L} ; La,b,c  - Single Phase Inductance      [henry]
+.param Tfs=0.005 Tfk=0.0045 ; Tfs     - Start Friction               [N*m]
+                            ; Tfk     - Kinetic Friction             [N*m]
+* --------------------------------------------------------------------------------- *
+XX1 A B C w Angle Tout ELMGStage
++ params: Ra={R} Rb={R} Rc={R} La={L} Lb={L} Lc={L} 
++ ia0={ia0} ib0={ib0} ic0={ic0} Npp={Npp} Ke={Ke} 
+XX2 Tin Tout Angle w LoadDump LoadInertia DynStage 
++   params: Tfs={Tfs} Tfk={Tfk} Jm={Jm} Dm={Dm} w0={w0} Angle0={Angle0}
+XX3 H1 H2 H3 Angle HallStage params: Npp={Npp} Ph={Ph}
+.ends BLDC
+
+* ================================================================================= *
+*              Electro-Dynamic Stage of the BLDC Motor (3-Phase System)             *
+* ================================================================================= *
+*                 Phase_A .................................................. Input  *
+*                 |      Phase_B ........................................... Input  *
+*                 |      |      Phase_C .................................... Input  *
+*                 |      |      |      Rotors's Angular Velocity ........... Input  *
+*                 |      |      |      | Rotors's Angle .................... Input  *
+*                 |      |      |      | |     Electro-Dynamical Torque .... Output *
+*                 |      |      |      | |     |                                    *
+*
+.subckt ELMGStage APhase BPhase CPhase w Angle Torque
+* --------------------------------------------------------------------------------- *
+.param Npp=4                ; Npp     - Number of Pole-Pairs                [-]
+.param R=39.5m L=30uH       ; R       - Motor's Winding Resistance          [ohm]
+                            ; L       - Motor's Winding Inductance          [henry]  
+.param Kt=46.47m            ; Kt      - Torque Constant                     [N*m/A]
+.param ia0=0  ib0=0  ic0=0  ; i0a,b,c - Initial Phase Currents              [A]
+.param Ra={R} Rb={R} Rc={R} ; Ra,b,c  - Single Phase Resistance             [ohm]
+.param La={L} Lb={L} Lc={L} ; La,b,c  - Single Phase Inductance             [henry]
+* --------------------------------------------------------------------------------- *
+XX1 N004 N005 int params: y0={ia0}
+XX2 N014 N015 int params: y0={ib0}
+XX3 N023 N024 int params: y0={ic0}
+XX4 N003 const params: c=1/{La}
+XX5 N013 const params: c=1/{Lb}
+XX6 N022 const params: c=1/{Lc}
+XX7 N008 const params: c={-Ra}
+XX8 N018 const params: c={-Rb}
+XX9 N027 const params: c={-Rc}
+XX10 N001 N006 N009 N007 sum3 params: k1=-1
+XX11 N010 N016 N019 N017 sum3 params: k1=-1
+XX12 N020 N025 N028 N026 sum3 params: k1=-1
+XX13 Angle N002 sin params: N={Npp} A={Ke} Fi=-30
+XX14 Angle N012 sin params: N={Npp} A={Ke} Fi=90
+XX15 Angle N021 sin params: N={Npp} A={Ke} Fi=-150
+XX16 N003 N007 N004 mul2
+XX17 N008 N005 N009 mul2
+XX18 N013 N017 N014 mul2
+XX19 N018 N015 N019 mul2
+XX20 N022 N026 N023 mul2
+XX21 N027 N024 N028 mul2
+XX22 w N002 N001 mul2
+XX23 w N012 N010 mul2
+XX24 w N021 N020 mul2
+XX25 N002 N005 ma mul2
+XX26 N012 N015 mb mul2
+XX27 N021 N024 mc mul2
+XX28 ma mb mc Torque sum3
+E1 N006 0 APhase N011 1
+G1 APhase N011 N005 0 1
+E2 N016 0 BPhase N011 1
+G2 BPhase N011 N015 0 1
+E3 N025 0 CPhase N011 1
+G3 CPhase N011 N024 0 1
+R1 APhase N011 1G
+R2 BPhase N011 1G
+R3 CPhase N011 1G
+R4 N011 0 1G
+*
+.ends ELMGStage
+
+* ================================================================================= *
+*                    Mechanical-Dynamic Stage of the BLDC Motor                     *
+* ================================================================================= *
+*                External Torque ........................................... Input  *
+*                |         Internal Torque on the Rotor Shaft .............. Input  *
+*                |         |          Rotors's Turning Angle ............... Output *
+*                |         |          |     Rotors's Angular Velocity ...... Output *
+*                |         |          |     | Ext. Load's Dumping .......... Input  *
+*                |         |          |     | |        Ext. Load's Inertia . Output *
+*                |         |          |     | |        |                            *
+*
+.subckt DynStage ExtTorque ELMGTorque Angle w LoadDump LoadInertia
+* --------------------------------------------------------------------------------- *
+.param Tfs=0.005 Tfk=0.0045 ; Tfs     - Start Friction                        [N*m]
+                            ; Tfk     - Kinetic Friction                      [N*m]
+* --------------------------------------------------------------------------------- *
+XX1 w Angle int params: y0={Angle0}
+XX2 N005 w int params: y0={w0}
+XX3 w N007 gain params: k={Dm}
+XX4 N001 Ts N007 N004 sum3 params: k1=-1 k3=-1
+XX5 N002 w N001 mul2
+XX6 ELMGTorque ExtTorque Tx sum2
+XX7 N003 N006 N005 N004 div12
+XX8 N003 const params: c={Jm}
+XX9 LoadDump N002 abs
+XX10 LoadInertia N006 abs
+XX11 Tx TF Ts sum2
+XX12 w Tx TF SK_Friction params: Tfs={Tfs} Tfk={Tfk}
+*
+.ends DynStage
+
+* --------------------------------------------------------------------------------- *
+.lib BLDCSupport.LIB
+.lib SK_Friction.MOD
+* --------------------------------------------------------------------------------- *
+.end
+
+
+

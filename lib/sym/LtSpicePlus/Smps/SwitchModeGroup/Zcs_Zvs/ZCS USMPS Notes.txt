@@ -1,0 +1,23 @@
+2-14-2007
+I have decided the ZCS LTspice circuit works pretty well now.
+It regulates by increasing the frequency for more power
+output.  I have added a resistor in series with a diode
+to give positive current feedback.  The current is sensed
+across the resistor in series with the output.  It also
+contains a transformer voltage sense winding like in my
+ZVS circuits.  The MOSFET switching timing seems to be
+enhanced that way.
+
+8-25-2006
+I have built a test version of a ZCS (zero current switching)
+circuit to charge the
+battery on my electric assisted bicycle project.  I wanted
+to use the ZVS USMPS topology, but since the secondary side
+is also the booster/controller for the electric motor, the
+configuration is too far from optimal.  The ZCS USMPS topology
+on the primary side is much more forgiving beside being 
+simpler.
+
+I also have done the basic circuit in LT spice.  When I am
+fairly confident about it being pretty good, I plan to upload
+an LTspice rendition of the concept.

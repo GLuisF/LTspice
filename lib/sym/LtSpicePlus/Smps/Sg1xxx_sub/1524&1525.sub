@@ -1,0 +1,634 @@
+* Library of Switchmode Regulator Controller Chips
+
+*  Copyright Cadence Design Systems, Inc. 2000 All Rights Reserved.
+*
+*
+* $Revision:   1.3  $
+* $Author:   HIRASUNA  $
+* $Date:   26 Jan 2001 $
+
+*----------------------------------------------------------------------------
+* Cadence Design Systems, Inc. would like to acknowledge Sandia National 
+* Laboratories for the contribution of their measurement-based models 
+* included in this library.
+*----------------------------------------------------------------------------
+
+
+* BEFORE USING ANY OF THE MODELS IT IS IMPORTANT TO READ THE COMMENTS
+* PRECEDING EACH MODEL DEFINITION.  ALSO, THERE IS A CIRCUIT EXAMPLE
+* FOLLOWING EACH MODEL DEFINITION.
+
+* It will rapidly become obvious that cycle by cycle simulation is
+* expensive, so considerable thought should be given before beginning
+* a simulation sequence.  A good tip would be to set up intitial conditions
+* so that the power supply is close to steady state i.e. output voltage
+* is set to regulated value.  With this achieved a few cycles should be
+* adequate to check the overall functionality of the loop.  With the loop
+* checked out for stability, other start up and response tests can be done
+* overnight.  Also, a good idea is to do an open loop check on the power
+* stage and filter.
+
+* Data sheets for parts modeled in this library are available from:
+*
+* Silicon General
+* 11861 Western Avenue
+* Garden Grove, CA 92641
+* (714) 898-8121
+*
+*$
+*** SG1524B ***
+
+* The following model for the 1524B was obtained by consulting the data sheets
+* and corresponding with Silicon General.  A number of simplifications were
+* made to speed up the model, among these we have:
+* (a) replaced th oscillator with ideal voltage sources,
+* (b) simplified the output stage (only two bipolars per output driver),
+* (c) made the shutdown pin respond to digital stimulus, and
+* (d) used digital simulation for the internal logic.
+
+* The impact of that these simplifications must be considered in the context
+* of the parameters of the circuit, and the circuit being examined.  The
+* above list might change as we get feedback.
+
+.subckt SG1524B ; note: the node numbers are equivalent to chip pinout
++  1    ; - input of error amp
++  2    ; + input of error amp
++  3    ; oscillator output
++  4    ; + current loop sense
++  5    ; - current loop sense
++  7    ; oscillator ramp output, capacitor NOT NECESSARY due to (a) above.
++  8    ; ground
++  9    ; compensation pin
++ 10    ; shutdown pin
++ 11    ; emitter A
++ 12    ; collector A
++ 13    ; collector B
++ 14    ; emitter B
++ 15    ; vin
++ 16    ; vref
++ params:
++ period   = 1ms ; internal clock period
++ deadtime = 1us ; internal clock deadtime
+
+* Pin 6 (RT pin) NOT NECESSARY due to (a) above.
+
+  xdigpwr 8 DPWR DGND DIGIFPWR
+  xbufpwr 8 bufpwr bufgnd digifpwr params: voltage=5.7v
+  rextcl1 4 15 6.7meg
+  rextcl2 5 15 6.7meg
+* stanby current
+  gp 15 DGND table {v(15)} (0 0) (6 5m)
+  v_clkset 7 DGND pulse(1 3 .1ns
++ {period-deadtime-2*deadtime/100} {deadtime} {deadtime/100} {period} )
+  u99 BUF bufPWR DGND dclk 3 d0_gate io_std
+  x15 7 dclk DPWR DGND gen_clk 
+* current limit section
+  ecurlim 909 DGND table {((v(4)-.2)-v(5))*1200} (0 0) (5 5)
+  rlim 909 911 43k
+  qclim 9 911 DGND q_pwm
+  rext 16 0 1G
+  rout 116 16 1
+  e18 116 0  table={v(15)} (0 0) (6 5)
+  x91 116 55 DPWR DGND uvsch 
+  sreset1 9 DGND 55 DGND sreset
+.model sreset vswitch (ron=500 roff=100meg von=2 voff=1.9)
+  x6 1 2 9  DPWR DGND erramp
+  o6 9 7 compmod dgtlnet=39 io_std
+.model compmod doutput(
++ s0name=0 s0vlo=-15 s0vhi=0
++ s1name=1 s1vlo=  0 s1vhi=7 )
+  un1 and(2) DPWR DGND 510 39 4110 d0_gate io_std
+  uinv inv DPWR DGND 10 510 dshutd io_std
+  uinvd1 inv DPWR DGND 4110 4113 delgate io_std ; organizes the delay through cl
+  uinvd2 inv DPWR DGND 4113   40 delgate io_std ; comparator
+.model dshutd  ugate(tplhty=100ns, tphlty=100ns)
+.model delgate ugate(tplhty= 62ns, tphlty= 62ns)
+  eintern 115 0 15 0 1
+  x1 115  dclk 40 31 32  DPWR DGND log1524b 
+  x2  31 32 12 13 11 14 DPWR DGND ppout 
+.ends
+*+----------------------------------------------------------------------------
+*|* POWER SUPPLY CONTAINING SG1524B
+*|*
+*|* THE FOLLOWING LINES CONFIGURE A BUCK REGULATOR AROUND A 1524B
+*|* AND DEMONSTRATES THE USE OF THE 1524B MACROMODEL.
+*|
+*|.LIB "swit_reg.lib"
+*|.LIB "digital.lib"
+*|
+*|.IC V(711)=4.8                ; INITIALIZE THE OUTPUT TO 5 VOLTS 
+*|                              ; (CLOSE TO STEADY)
+*|
+*|VIN 15 0 20                   ; INPUT VOLTAGE SET TO 15 VOLTS
+*|RLOAD 711 0 5                 ; 1.25A LOAD CURRENT AT OUTPUT 
+*|UPRS STIM(1,1) $G_DPWR $G_8 10 IO_STM 0S 0    ; DIGITAL SHUTDOWN 
+*|                                              ; SIGNAL DISABLED
+*|VEMMITS EMMITS 0 0            ; TIE THE EMITTERS OF THE OUTPUT DRIVERS 
+*|                              ; TO GND
+*|VREF 2 0 2.5                  ; REFERENCE INPUT TO +IN OF ERROR AMP
+*|X8  12 711 1 15  BUCK         ; CALL TO BUCK CCT
+*|V4 4 0 PULSE(0 1 6MS 1U 1U 1M 1)             ; CURRENT OVERLOAD 
+*|                                             ; SHUTDOWN TEST
+*|VCLIM  5 0 0                  ; -IN OF CURRENT LIMIT AMP GNDED
+*|RCOMP 50 0 20K                ; COMPENSATION RESISTOR
+*|CCOMP 9 50 100N               ; COMPENSATION CAPACITANCE
+*|
+*|X1  1 2 3 4 5 7 0 9 10 EMMITS 12 12 EMMITS 15 16  SG1524B
+*|+ PARAMS: PERIOD=22U DEADTIME=0.5U
+*|
+*|* BUCK CONVERTER
+*|.SUBCKT BUCK 7 5 21 1
+*|R1   2 7 150
+*|Q1   4 2 1  QX2
+*|C1   5 88    4840UF
+*|RZERO 88 0 .0002
+*|RSNUB 4 5 1.5K
+*|L1   4 5    500UH
+*|D1   0 4    DX
+*|RO1 5 21   10
+*|RO2 21 0  10
+*|.ENDS
+*|
+*|.MODEL DX     D(IS=0.1P RS=16 CJO=2P TT=12N BV=100 IBV=0.1P)
+*|.MODEL QX2    PNP(IS=1.34F XTI=3 EG=1.11 VAF=74.03 BF=65.62 NE=1.208
+*|+             ISE=19.48F IKF=5.385 XTB=1.5 BR=9.715 NC=2 ISC=0 IKR=0 RC=1
+*|+             CJC=1.393P MJC=.3416 VJC=.75 FC=.5 CJE=2.01P MJE=.377 VJE=.75
+*|+             TR=.1N TF=408.8P ITF=.6 VTF=1.7 XTF=3 RB=10)
+*|
+*|.TRAN 10U 5MS 
+*|.PROBE V(711) V(1) I(L1) V(7) D(3) V(12) V(10) V(4)
+*|.END
+*+----------------------------------------------------------------------------
+*$
+
+
+*** SG1525 ***
+
+* The following model for the 1525 was obtained by consulting the data sheets
+* and corresponding with Silicon General.  A number of simplifications were
+* made to speed up the model, among these we have:
+* (a) replaced th oscillator with ideal voltage sources,
+* (b) simplified the output stage (only two bipolars per output driver),
+* (c) the sync pin is ignored (can drive clock directly if needs be),
+* (d) made the shutdown pin respond to digital stimulus, and
+* (e) used digital simulation for the internal logic.
+
+* The impact of that these simplifications must be considered in the context
+* of the parameters of the circuit, and the circuit being examined.  The
+* above list might change as we get feedback.
+
+.subckt SG1525  ; note: the node numbers are equivalent to chip pinout
++  1    ; - input of error amp
++  2    ; + input of error amp
++  4    ; oscillator output
++  5    ; ramp output
++  8    ; soft start pin
++  9    ; compensation pin
++ 10    ; shutdown pin
++ 11    ; output A
++ 12    ; ground
++ 13    ; collector of the output drivers
++ 14    ; output B
++ 15    ; vin
++ 16    ; vref
++ params:
++ period   = 25us ; internal clock period
++ deadtime = 0.5us ; internal clock deadtime
+
+* Pin  3 (sync) NOT USED due to (a) above. 
+* Pin  6 (oscillator time resistor) NOT INCLUDED due to (a) above.
+* Pin  7 (discharge resistor pin) NOT INCLUDED due to (a) above.
+
+  xdigpwr 12 DPWR DGND DIGIFPWR
+
+  v_clkset 5 DGND  pulse(0.9 3.3 .1ns
++ {period-deadtime-2*deadtime/100} {deadtime} {deadtime/100} {period} )
+  u99 BUF DPWR DGND dclk 4 d0_gate io_std
+  x15 5 dclk  DPWR DGND gen_clk 
+  uinvds1 inv DPWR DGND    10 1110 delgate io_std       ; organizes the delay
+  uinvds2 inv DPWR DGND  1110 1010 delgate io_std       ; through loop
+  .model dshutd  ugate(tplhty=2ns, tphlty=2ns)
+
+.model delgate ugate(tplhty=60ns, tphlty=60ns)
+  uinvd1 inv DPWR DGND   22 2220 dshutd io_std  ; organizes the delay
+  uinvd2 inv DPWR DGND 2220 2222 dshutd io_std  ; through loop
+  v16 26 DGND 5.1
+  r16 16 DGND 1G
+  rser1 26 16 1
+*model standby current
+  gp 15 DGND table {v(15)} (0 0) (8 14m)        ; 0mA at 0V, 14mA at 8V
+* erramp
+  x4 1 2 60 9 DPWR DGND eamp3 
+* soft st section
+  x1 5 60 8 22  DPWR DGND softst
+  ustst stim(1,1) DPWR DGND  57 io_stm 0s 0 1us 1
+* toggle flip flop
+  uhigh stim(1,1) DPWR DGND  51 io_stm 0s 1
+  u10 dff(1) DPWR DGND  51,57,dclk,21 20 21 d0_eff io_std
+  x16 8 713 1010  DPWR DGND uvlock 
+  ouvlock 15 DGND uvl dgtlnet=713 io_std
+.model uvl doutput(
++ s0name=0 s0vlo= 7 s0vhi=50
++ s1name=1 s1vlo= 0 s1vhi=7.2 )
+  eintern 115 DGND 15 DGND 1
+  roc4 DPWR 7114 10
+  roc3 DPWR 7113 10
+  roc1 115 7111 10
+  roc2  115 7112 10
+  u1 nor(5)  DPWR DGND 713 20 dclk 77 1010 7111 d_00 io_pwm_oc
+  u2 nor(5)  DPWR DGND 713 21 dclk 77 1010 7112 d_00 io_pwm_oc
+  u3 or(5)   DPWR DGND 713 20 dclk 77 1010 7113 d_00 io_pwm_oc
+  u4 or(5)   DPWR DGND 713 21 dclk 77 1010 7114 d_00 io_pwm_oc
+
+* set-dominant latch
+  u5 srff(1) DPWR DGND  51 51 51 2222 101 77 78 d0_gff io_dft
+  u6 inv DPWR DGND dclk 100 d0_gate io_std
+  u7 nor(2) DPWR DGND 100 2222 101 d0_gate io_std
+
+  rblim1 7111 731 900
+  rblim2 7112 732 900
+  rblim3 7113 733 1.2k
+  rblim4 7114 734 1.2K
+  qo1 735 731 11 q_pwm1
+  qo2 735 732 14 q_pwm1
+  qo3  11 733 DGND q_pwm1
+  q04  14 734 DGND q_pwm1
+  vdrop 13 735 1
+.model sw iswitch (ron=1 roff=1e8 ion=400e-3 ioff=350e-3)
+.model q_pwm1    npn(is=1.34f bf=65.62 ikf=.5385 rc=9
++               cjc=1.393p mjc=.3416 vjc=.75 cje=2.01p mje=.377 vje=.75
++               tf=408.8p rb=10)
+.ends
+*+----------------------------------------------------------------------------
+*|* POWER SUPPLY CONTAINING SG1525
+*|*
+*|* THE FOLLOWING LINES DEMONSTRATE A BUCK REGULATOR USING THE SG1525 MODEL.
+*|
+*|.LIB 
+*|
+*|VREF 2 0 2.5          ; SET UP REFERENCE VOLTAGE
+*|CCOMP 9 50 500P       ; COMPENSATION CAPACITANCE
+*|RCOMP 50 0 2K         ; COMPENSATION RESISTANCE
+*|X8  13 711 1 15  BUCK ; CALL TO BUCK SUBCKT
+*|CSS 8 0 100P          ; SOFT-START CAPACITANCE
+*|VIN 15 0 20           ; SUPPLY VOLTAGE
+*|V11 11 0 0            ; GND OUTPUT A
+*|V14 14 0 0            ; GND OUTPUT B
+*|VSHUT 10 0 0          ; DISABLE SHUTDOWN
+*|
+*|X1 1 2 4 5 8 9  10 11 0 13 14 15 16 SG1525
+*|+ PARAMS: PERIOD=25U DEADTIME=0.5U
+*|
+*|* BUCK CONVERTER
+*|.SUBCKT BUCK 7 5 21 1
+*|* 7=VC
+*|* 5=OUT
+*|* 21=FEEDBACK
+*|* 1=VIN
+*|
+*|R1   2 7 150
+*|R2   1 2 50
+*|Q1   4 2 1  QX2
+*|C1   5 88    200UF
+*|RZERO 88 0 .0002
+*|RSNUB 4 5 1.5K
+*|L1   4 5    500UH
+*|D1   0 4    DX
+*|RO1 5 21   10
+*|RO2 21 0  10
+*|.ENDS
+*|
+*|.MODEL DX     D(IS=0.1P RS=16 CJO=2P TT=12N BV=100 IBV=0.1P)
+*|.MODEL QX2    PNP(IS=1.34F XTI=3 EG=1.11 VAF=74.03 BF=65.62 NE=1.208
+*|+             ISE=19.48F IKF=5.385 XTB=1.5 BR=9.715 NC=2 ISC=0 IKR=0 RC=1
+*|+             CJC=1.393P MJC=.3416 VJC=.75 FC=.5 CJE=2.01P MJE=.377 VJE=.75
+*|+             TR=.1N TF=408.8P ITF=.6 VTF=1.7 XTF=3 RB=10)
+*|
+*|.TRAN 50U 1500U
+*|.PROBE V(711) V(5) V(9)
+*|* V(711)=OUTPUT, V(5)=RAMP, V(9)=COMP
+*|.END
+*+----------------------------------------------------------------------------
+*$
+*
+* MANUFACTURERS PART NO. = SG1525AJ  (SILICON GENERAL)  
+* SUBTYPE: REGULATOR  
+*******************************************************************************  
+* THIS FILE CONTAINS 1 MODEL OF THE SG1525AJ PULSE WIDTH MODULATOR, 
+* PRERAD 25C  
+*  
+***************************************************  
+*  
+* THIS MODEL HAS BEEN TESTED IN A PUSH-PULL QUADRUPLER FIRESET CKT  
+* AND IN A BUCK REGULATOR CONFIGURATION.  MEASURED VS SIMULATED DATA 
+* WAS  COMPARED AND THE MODEL WORKS WELL OVER ALL FREQUENCIES.  
+*  
+******USE THE FOLLOWING .OPTION STATEMENT WHEN USING THIS MODEL.  
+*SET ITL5=0 FOR INFINITE NUMBER OF ITERATIONS. THE DEFAULT IS 5000.  CKTS  
+***WITH TRANSFORMERS OR OTHER REGULATORS REQUIRE THIS.  
+*  
+.OPTIONS ITL5=0  
+*****  
+*  
+* USE THE FOLLOWING .IC CONDITION IN YOUR CKT NETLIST.  IT SETS THE INITIAL  
+* CONDITIONS FOR THE TOGGLE FLIP-FLOP.  THE OUTPUT OF THE TOGGLE FLIP-FLOP  
+***IS UNSTABLE W/OUT THESE CONDITIONS.  
+******  
+*****  
+**X5 IS THE SUBCKT CALL # FOR THE TOGGLE FLIP-FLOP WITHIN SUBCKT SG1525A  
+*        |            |  
+.IC V(X1.X5.2)=5 V(X1.X5.3)=0  
+*     |            |  
+* X1 IS SUBCKT CALL # FOR SG1525A - ASSUMES YOU LABEL IT X1 IN YOUR NETLIST  
+* CHANGE THIS PART OF THE NODE # TO CORRELATE TO THE SUBCKT CALL # THAT YOU  
+* ASSIGN SUBCKT SG1525A IN YOUR CKT NETLIST  
+*  
+.SUBCKT SG1525A/25C 18 6  1  2   9  111 40  15  114  16 116  
++ params:  period = 25u   deadtime = 0.5u
+*************      -IN |  |  |   |   |   |   |   |   |   |  
+*****************     +IN |  |   |   |   |   |   |   |   |  
+********************     OSC |   |   |   |   |   |   |   |  
+***********************     RAMP |   |   |   |   |   |   |  
+**************************     COMP  |   |   |   |   |   |  
+*******************************     OUTA |   |   |   |   |  
+************************************     GND |   |   |   |  
+***************************************     VC   |   |   |  
+******************************************     OUTB  |   |  
+***********************************************     VIN  |  
+**************************************************     VREF  
+* SYNC - PIN3 IS NOT USED  
+**PINS 5,6, AND 7 ARE COMBINED INTO PIN2, THE RAMP.  THERE IS NO NEED TO  
+**CONNECT CAPACITORS AND RESISTORS AT THESE PINS FOR RAMP GENERATION 
+* BECAUSE  THIS WAVEFORM IS DEFINED BY THE USER IN THE OSCILLATOR SECTION
+* THROUGH TWO MODEL PARAMETERS:  PERIOD, DEADTIME.
+* THE  IDEAL OSCILLATOR IN THIS MODEL IS DEFINED BY TWO VOLTAGE PULSE 
+* WAVEFORMS  (VPULSE).  ONE SETS THE OSCILLATOR OUTPUT AND THE OTHER 
+* DEFINES THE SAWTOOTH  WAVEFORM.  PLEASE SEE THE OSCILLATOR SUBCKT 
+* SECTION FOR INSTRUCTIONS ON  DEFINING THESE WAVEFORMS.  
+**PIN8, SOFT-START, AND PIN10, SHUTDOWN, ARE NOT USED IN THIS MODEL  
+**PIN9, THE COMPENSATION PIN, REQUIRES TWO RESISTORS IN PARALLEL WHEN 
+* USED  BECAUSE PSPICE GENERATES AN ERROR MESSAGE IF THERE ARE NOT TWO 
+* CONNECTIONS  AT EVERY NODE.  
+r9a 9 0 1G
+r9b 9 0 1G
+X1 1 2 40 OSC  PARAMS: PERIOD={PERIOD} DEADTIME={DEADTIME} 
+X4 5 1 11 10 4 40 SR  
+X5 1 13 12 4 40 TFF_SG1525A
+X8 16 15 116 11 1 13 20 111 40 PWMOUT  
+X9 16 15 116 11 1 12 20 114 40 PWMOUT  
+EOPAMPUVL 20 40 25 16 1 ;UNDER VOLTAGE LOCKOUT  
+VIN25 25 40 8.7V  
+RIN25 25 40 1MEG  
+VFIVE 4 40 5V ;POWER TO INTERNAL CKTS  
+VREF 116 40 5.1V ;OUTPUT OF REFERENCE SECTION  
+EOPAMP1  3 40 6 18 10K ;THIS IS THE ERROR AMPLIFIER  
+RIN6 6 40 10E12  
+RIN18 18 40 10E12  
+EOPAMP2  5 40 2 3 1 ;THIS IS THE COMPARATOR  
+RIN2 2 40 10E12  
+RIN3 3 40 10E12  
+*********************************************  
+.ENDS SG1525A/25C  
+*********************************************  
+.SUBCKT OSC    1         2       40   PARAMS: PERIOD=25U DEADTIME=0.5U
+*           OSC OUT     RAMP    GROUND  
+*  
+* THE USER DEFINES THE OSCILLATOR OUTPUT WAVEFORM AS A PULSE TRAIN.  THIS 
+* PULSE TRAIN IS USED FOR INTERNAL SIGNALS TO THE TOGGLE FLIP-FLOP, SR 
+* LATCH, AND  4 INPUT NOR GATES OF THE OUTPUT SECTION.  
+* THE USER DEFINES THE CAPACITOR RAMP WAVEFORM WHICH IS USED AS AN 
+* INTERNAL  SIGNAL TO THE PULSE WIDTH MODULATOR COMPARATOR.  
+*  
+* SET THE OSC PULSE WITH THE VOSC STATEMENT:  
+*  
+* T=PERIOD   D=DEADTIME    DELAY=T-D  
+*  
+* I.E. PULSE(0      5    T-D    20E-9  20E-9  D-(TR & TF)   T ) OSC WAVEFORM  
+*            |      |     |      |      |        |          |  
+*         (VBEGIN  VEND  DELAY  TRISE  TFALL  PULSEWIDTH   PERIOD)  
+*  
+*  
+VOSC 1 40 PULSE(0 5  {period-deadtime} 20N 20N {deadtime-40n} {period} )  
+*  
+* SET THE RAMP PULSE WITH THE VCAP STATEMENT:  
+*  
+* T=PERIOD   D=DEADTIME    RISETIME OF SAWTOOTH = T-D  
+*  
+* PULSE(1      3     0      T-D   D-(5E-9)    5E-9        T) CAP VOLT WAVEFORM  
+*       |      |     |       |       |         |          |  
+*    (VBEGIN  VEND  DELAY  TRISE  TFALL    PULSEWIDTH   PERIOD)  
+*  
+*  
+VCAP 2 40 PULSE(1 3.5 0 {period-deadtime} {deadtime-5n} 5n {period} )  
+R1 1 40 1E6  
+R2 2 40 1E6  
+.ENDS OSC  
+**********************************************  
+*-----------------------------------------------------------------------------  
+.SUBCKT SR    1     4     5   6     10    40  
+*             S     R     Q  QBAR   VCC   GROUND  
+X1 1 2 3 10 40 NAND  
+X2 3 4 2 10 40 NAND  
+X3 3 6 5 10 40 NAND  
+X4 5 2 6 10 40 NAND  
+R6 6 40 10E6  
+C3 3 40 0.5E-12 IC=0.5  
+CQ 5 40 0.5E-12 IC=5  
+C6 6 40 0.5E-12 IC=0.5  
+.ENDS SR  
+**********************************************  
+* NAND GATE USING TWO DIODES AND A TRANSISTOR  
+.SUBCKT NAND 1  2  3  4  40  
+************IN  |  |  |  |  
+************** IN  |  |  |  
+******************OUT |  |  
+******************** VCC |  
+*********************** GND  
+D1 8 6 D1  
+D2 8 7 D1  
+Q1 9 11 40 NP; Q222200 CAUSES OSCILLATIONS AT 250HZ ; USE NP HERE  
+R1 4 8 1E3  
+R2 4 9 1E3  
+R3 10 11 1E3  
+R4 1 40 1E6  
+R5 2 40 1E6  
+E1 6 40 1 40 1  
+E2 7 40 2 40 1  
+E3 10 40 8 40 0.75  
+E4 20 40 9 40 1  
+R20 20 12 1E3  
+C12 12 40 1E-12  
+E5 30 40 12 40 1  
+ROUT 30 3 40  
+.ENDS NAND  
+**********************************************  
+.SUBCKT TFF_SG1525A 1 10 20 50 40  
+*********** |  |  |  |  |  
+*********** |  |  |  | GND  
+*********** |  |  | VCC  
+*********** |  |  QNOT  
+*********** |  Q  
+*********** INPUT  
+****************************  
+**** 2 INPUT NAND2 GATE ****  
+****************************  
+R3 2 50 1E3  
+R4 50 3 1E3  
+R5 2 6 10E3  
+R6 3 5 10E3  
+Q1 2 5 40 Q222200  
+Q2 3 6 40 Q222200  
+D1 5 7 D1  
+D2 6 8 D1  
+C1 1 7 100E-12  
+C2 1 8 100E-12  
+R1 2 7 10000  
+R2 3 8 10000  
+X1 2 2 10 50 40 NAND  
+*NAND AS INVERTER TO BUFFER OUTPUT.  
+X2 3 3 20 50 40 NAND  
+*NAND AS INVERTER TO BUFFER OUTPUT.  
+.ENDS TFF_SG1525A
+******************************  
+**      SG1525A OUTPUT STAGE (X7, X8)     **  
+********************************************  
+.SUBCKT PWMOUT 1 2 17 12 13 14 20 5 40  
+**             | | |  |  |  |  |  | |  
+**             | | |  |  |  |  |  | GND  
+**             | | |  |  |  |  |  OUTPUT  
+**             | | |  |  |  |  UVL  
+**             | | |  |  |  Q  
+**             | | |  |  OSC  
+**             | | |  NOT PWM  
+**             | | VREF  
+**             | VC  
+**             VIN  
+*****************************************  
+I3MA 1 6 3MA  
+I3MA2 1 3 3MA  
+RI3 1 6 10MEG  
+RI32 1 3 10MEG  
+Q1 8 9 40 Q222200  
+Q2 8 10 40 Q222200  
+Q3 8 11 40 Q222200  
+Q4 6 8 40 Q222200  
+Q5 3 6 7 Q222200  
+Q6 2 3 4 Q222200  
+Q7 2 4 5 Q222200  
+Q8 5 7 40 Q222200  
+Q9 8 20 40 Q222200  
+R1 4 5 5K  
+R2 7 40 2K  
+R3 12 9 10K  
+R4 13 10 10K  
+R5 14 11 10K  
+D1 4 3 D1  
+D2 5 3 D1  
+IREF 17 8 500UA  
+RIREF 17 8 10MEG  
+.ENDS  PWMOUT  
+********************* MODELS FOR THE PWM SUBCKTS  ******  
+.MODEL NP NPN(
++         IS = 1E-16
++         BF = 50
++         NF = 1
++        VAF = 50
++        IKF = 9.9999E+13
++        ISE = 0
++         NE = 1.5
++         BR = 1
++         NR = 1
++        VAR = 9.9999E+13
++        IKR = 9.9999E+13
++        ISC = 0
++         NC = 2
++         RB = 70
++        IRB = 9.9999E+13
++        RBM = 0
++         RE = 0
++         RC = 40
++        CJE = 0.9PF
++        VJE = .75
++        MJE = .33
++         TF = 0.1NS
++        XTF = 0
++        VTF = 9.9999E+13
++        ITF = 0
++        PTF = 0
++        CJC = 1.5PF
++        VJC = 0.85
++        MJC = .33
++       XCJC = 1
++         TR = 10NS
++        CJS = 2PF
++        VJS = .75
++        MJS = 0
++        XTB = 0
++         EG = 1.11
++        XTI = 3
++         KF = 0
++         AF = 1
++         FC = .5
++ )
+*
+.MODEL D1 D(
++         IS = 1E-14
++         RS = 40
++          N = 1
++         TT = 0.1NS
++        CJO = 0.9PF
++         VJ = 1
++          M = .5
++         EG = 1.11
++        XTI = 3
++         KF = 0
++         AF = 1
++         FC = .5
++         BV = 9.9999E+13
++        IBV = .001
++ )
+*BETTER SWITCHING TIME W/2N2222 THAN QNOM FROM LIBRARY-THE DEFAULT IS 0 - 
+* TOO  FAST  
+.MODEL Q222200 NPN      (
++         IS = 3.97589E-14
++         BF = 195.3412
++         NF = 1.0040078
++        VAF = 53.081
++        IKF = 0.976
++        ISE = 1.60241E-14
++         NE = 1.4791931
++         BR = 1.1107942
++         NR = 0.9928261
++        VAR = 11.3571702
++        IKR = 2.4993953
++        ISC = 1.88505E-12
++         NC = 1.1838278
++         RB = 56.5826472
++        IRB = 1.50459E-4
++        RBM = 5.2592283
++         RE = 0.0402974
++         RC = 0.4208
++        CJE = 2.56E-11
++        VJE = 0.682256
++        MJE = 0.3358856
++         TF = 3.3E-10
++        XTF = 6
++        VTF = 0.574
++        ITF = 0.32
++        PTF = 25.832
++        CJC = 1.40625E-11
++        VJC = 0.5417393
++        MJC = 0.4547893
++       XCJC = 1
++         TR = 3.2E-7
++        CJS = 0
++        VJS = .75
++        MJS = 0
++        XTB = 1.6486
++         EG = 1.11
++        XTI = 5.8315
++         KF = 0
++         AF = 1
++         FC = 0.83
++ )
+*$

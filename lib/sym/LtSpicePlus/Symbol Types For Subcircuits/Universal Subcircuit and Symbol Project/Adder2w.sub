@@ -1,0 +1,10 @@
+* ADDER2W.SUB
+* z = A*x + B*y
+* V(O+, O-) = V(A+,A-)*A + V(B+,B-)*B  
+* 
+.SUBCKT  ADDER2W  A+ A-  B+ B-  O+ O-
+.PARAM A=1 B=1 ; default
+E1 O+ O- VALUE={A*V(A+,A-) + B*V(B+,B-)}
+*B1 O+ O- V =A*V(A+,A-) + B*V(B+,B-)
+.ENDS ADDER2W
+

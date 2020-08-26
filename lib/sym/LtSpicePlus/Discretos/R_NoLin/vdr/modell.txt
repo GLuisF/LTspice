@@ -1,0 +1,50 @@
+VARISTOR MODEL
+==============   
+
+The varistor model basically consists of 4 elements:
+
+	   O                    
+	   |            The resistance R_SERIES is required for
+           |            mathematical reasons and has the
+           |            constant value of R_SERIES = 100 nOHM.
+	 +-+-+ 
+         |   |      
+	 |   |
+R_SERIES |   |          In accordance with the equivalent circuit the 
+         |   |          elements L_SERIES and C_PAR represent
+         |   |          the lead inductance L and the parallel capacitance C.
+         +-+-+          The values of L and C differ from type to type and
+           |            are defined as parameters in file SIOV.LIB.
+           |
+           |            
+	   |             
+	 +-+-+          
+	 |XXX|          The "resistance" R_VAR describes the non-linear
+	 |XXX|          characteristic of the varistor and takes into 
+L_SERIES |XXX|          account the elements R_V, R_Z and R_B of the
+	 |XXX|          equivalent circuit. The voltage-current dependence 
+	 |XXX|          is simulated by a current-controlled voltage source 
+	 +-+-+          and is described by the following approximation.
+	   |            
+	   |            
+  +--------+--------+   
+  |                 |                                          
+  |                 |             log(u) = P1 + P2 + P3 + P4
++-+-+               |                             
+\   |               |                 P1 = b1   
+|\  |            ---+---                          
+| \ | R_VAR               C_PAR       P2 = b2 * log(i)
+|  \|            ---+---                    
+|   \               |                 P3 = b3 * exp(-log(i))
++-+-+\ U            |                            
+  |  |              |                 P4 = b4 * exp(log(i))
+  |                 |                              
+  +--------+--------+   b1, b2, b3 and be are parameters of the
+           |            characteristic defined in file SIOV.LIB.
+	   |                    
+	   |                    
+	   |                      
+	   O                      
+
+                     
+

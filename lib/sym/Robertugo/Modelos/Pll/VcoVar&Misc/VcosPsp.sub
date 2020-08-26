@@ -1,0 +1,24 @@
+Libreria de Vco's Pspice:
+.subckt vco_tri in out
+X1 1 2 vco_sqr
+Eintg	out	0	Value {SDT(V(sqr)*2*V(freq))}
+*gain calculation used in Eintg
+Efreq   freq    0       Value {Table(V(in),Vmin,Fcenter-Frange,Vmax,Fcenter+Frange)}
+Rfreq	Freq    0       1G
+.ends
+.subckt vco_sqr in out
+X1 1 2 vco_sin
+Esqr  	out	0	table {V(sine)} (0,0) (1n,1)
+.ends
+*
+.subckt vco_sin in out Params: Fcenter=1k Frange=50 Vmin=0 Vmax=5 phase=0 
+
+Rin	in	0	1G
+
+Rtable	table	0	1G
+
+Etable	table	0	Value {Table(V(in),Vmin,-1,Vmax,1)}
+
+Esin	out	0	
++Value {sin(6.28318*(Fcenter*time+Frange*SDT(V(table)))+phase*(3.14159/180))}
+.ends

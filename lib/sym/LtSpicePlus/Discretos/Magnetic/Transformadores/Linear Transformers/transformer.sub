@@ -1,0 +1,28 @@
+* This is the transformer
+*        (--3
+*  1--)  (
+*     )  (
+*     )  (--4 (CT)
+*     )  (
+*  2--)  (
+*        (--11
+*
+.SUBCKT transformer.sub 3 4 5
+RP 1 0 1MEG
+E1 7 0 1 0 {RATIO_1}
+F1 1 0 VM1 {RATIO_1}
+E2 20 5 1 0 {RATIO_2}
+F2 1 0 VM2 {RATIO_2}
+VM1 7 3 0 Rser=1u
+VM2 20 0 0 Rser=1u
+L1 prim1 0 {Lprimary} Rpar=1Meg
+L2 sec1 0 {Lprimary*RATIO_1*RATIO_1} Rser=1u
+L3 0 sec2 {Lprimary*RATIO_2*RATIO_2} Rser=1u
+Vdrive prim1 0 SINE(0 120 60) AC 1 Rser=1u
+Edrive 1 0 prim1 0 1
+K L1 L2 L3 1
+.param RATIO_1={1/6}
+.param RATIO_2={1/6}
+.param Lprimary=500u
+.backanno
+.end

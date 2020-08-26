@@ -1,0 +1,19 @@
+* 2 to 1 switch with selection
+* sel=1  selects in1
+* sel=2  selects in2
+*
+*             in1
+*              | in2
+*              | | out
+*              | | | 
+*              | | | 
+*              | | | 
+*              | | |
+.subckt sw_2_1 1 2 3 sel={sel}
+.param sel=1 ; default
+S1 1 3  11 0 My_sw21
+S2 2 3  12 0 My_sw21
+B1 11 0 V=IF({sel}<1.5, 1, -1)
+B2 12 0 V=IF({sel}>=1.5, 1, -1)
+.model My_sw21 SW(Ron=.01 Roff=1e10 Vt=0)
+.ENDS sw_2_1

@@ -1,0 +1,1 @@
+.meas CLKrise TRIG v(CLK)=(0.2*v(vhigh)) RISE=1 TARG v(CLK)=(0.8*V(vhigh)) RISE=1

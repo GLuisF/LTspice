@@ -1,0 +1,17 @@
+Basso PWMswitch
+SUBCKT PWMCCMVM        a c p d   Basso:PWMVM  [SMPS]  ; No processable comment
+SUBCKT PWMDCMVM        a c p d   Basso:PWMVM  [SMPS]  ; No processable comment
+SUBCKT PWMVM           a c p d   Basso:PWMVM  [SMPS]  ; No processable comment
+SUBCKT PWMDCMCM        a c p vc dc   Basso:PWMCM  [SMPS]  ; No processable comment
+SUBCKT PWMCM           a c p vc dc   Basso:PWMCM  [SMPS]  ; No processable comment
+SUBCKT PWMBCMVM        a c p vc dc fsw ip   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT PWMCMX          a c p vc dc   Basso:PWMCM  [SMPS]  ; No processable comment
+SUBCKT PWMBCMCM        a c p vc dc fsw ip   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT PWMBCMCM2       a c p vc dc fsw ip   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT PWMCM_L         a c p vc dc SW DIO   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT PWMCM_LX        a c p vc dc SW DIO   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT PWMVM_L         a c p d SW DIO   <AutoShape>  [SMPS]  ; No processable comment
+SUBCKT Rseries         1 2 3  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT limit           d dc   <AutoShape>  [Misc]  ; No processable comment
+SUBCKT limit2          d2nc d d2c  <AutoShape>  [Misc]  ; No processable comment
+SUBCKT VARICAP         1 2 CTRL  <AutoShape>  [Misc]  ; No processable comment

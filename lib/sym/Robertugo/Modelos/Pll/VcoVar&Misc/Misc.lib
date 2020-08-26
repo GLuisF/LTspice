@@ -1,0 +1,50 @@
+*
+*.model Sw Vswitch Roff=1e6 Ron=1 Voff=0 Von=1
+*.model Wbreak ISWITCH  Ioff=0 Ion=1e-3 Roff=1e6 Ron=1
+*
+* For DC and AC analyses, the switch will be Open.
+.SUBCKT  Sw_tClose  1  2  PARAMS: 
++ tClose=0     ; time at which switch begins to close
++ ttran=1u     ; time required to switch states (must be realistic, not 0)
++ Rclosed=0.01 ; Closed state resistance
++ Ropen=1Meg   ; Open state resistance (Ropen/Rclosed < 1E10)
+V1 3 0 pulse(0 1 {tClose} {ttran} 1 10k 11k)
+S1 1 2 3 0 Smod
+.model Smod Vswitch(Ron={Rclosed} Roff={Ropen})
+.ends
+* For DC and AC analyses, the switch will be Closed.
+.SUBCKT  Sw_tOpen   1  2  PARAMS: 
++ tOpen=0      ; time at which switch begins to open
++ ttran=1u     ; time required to switch states (must be realistic, not 0)
++ Rclosed=0.01 ; Closed state resistance
++ Ropen=1Meg   ; Open state resistance (Ropen/Rclosed < 1E10)
+V1 3 0 pulse(1 0 {tOpen} {ttran} 1 10k 11k)
+S1 1 2 3 0 Smod
+.model Smod Vswitch(Ron={Rclosed} Roff={Ropen})
+.ends
+* Example uses:
+*   - voltage-controlled capacitor ...	use "variable admittance"
+*   - voltage-controlled inductor ...	use "variable impedance"
+
+* Variable admittance: Yout = Yref * V
+*           control input: voltage
+*           |  reference capacitor/conductance (connect other lead to ground)
+*          / \ |  output: floating admittance
+*          + - | / \
+.subckt yx 1 2 3 4 5
+  ecopy  3 6 poly(2) (1,2) (4,5) 0 0 0 0 1
+  fout   4 5 vsense 1
+  rin    1 2 1G
+  vsense 0 6 0
+.ends
+* Variable impedance: Zout = Zref * V
+*           control input: voltage
+*           |  reference inductor/resistor (connect other lead to ground)
+*          / \ |  output: floating impedance
+*          + - | / \
+.subckt zx 1 2 3 4 5
+  eout   4 6 poly(2) (1,2) (3,0) 0 0 0 0 1
+  fcopy  0 3 vsense 1
+  rin    1 2 1G
+  vsense 6 5 0
+.ends

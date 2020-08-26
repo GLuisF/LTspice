@@ -1,0 +1,4 @@
+Here is a spdt switch set to work with the 74Hc devices. I'm sure it would work just fine using the A devices. It would be a simple matter to add as many poles as you would like.
+This is my first attempt at uploading so please be gentle if I screwed up.
+
+Regards, Art Lippel

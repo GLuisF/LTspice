@@ -1,0 +1,50 @@
+A Collection Of Tapped Potentiometers              Helmut Sennewald,  V1.1
+ 
+A new symbol "potentiometer_tapped.asy" has been generated for all the new potentiometers.
+Put this file into the LTSPICE installation path lib\sym \... or into your working directory.
+The file "potentiometer_tapped.lib" contains the X-subcircuits of all these potentiometers.
+There is a linear, log. and an arbitrary model with a fixed tap.
+Put the file "potentiometer_tapped.lib" into the folder 
+...\Progams\Ltc\SwCADIII\lib\sub
+or into the directory where your schematic "potentiometer_tapped.asc" is.
+ 
+pot_tap_lin : ideal linear resistance dependency
+pot_tap_pow : ideal power function resistance dependency
+pot_tap_plog : ideal logarithm function resistance dependency
+pot_tap_nlog : ideal logarithm function resistance dependency
+pot_tap_tab: arbitrary(table) based resistance dependency
+
+LTSPICE have to be restarted before the new symbol can be used.
+
+How to select the model?
+Move the cursor over the potentiometer then click the right mouse button. 
+Then the the model name and the parameters can be changed. 
+The model file has to be loaded with a  .include potentiometer_tapped.lib 
+statement to the schematic.
+
+
+* =====================================
+* Helmut Sennewald,                          12/23/2003         V1.1
+*
+*    Models:
+*       pot_tap_lin       k*x
+*       pot_tap_pow       x^k
+*       pot_tap_plog      exp(k*(1-x))
+*       pot_tap_nlog      exp(k*x)
+*       pot_tap_tab       table(x)
+*    
+*
+*       1 ____    1.0=wiper   
+*             |  
+*            | |  3
+*            | |<---- wiper 0..1
+*   Tap  4 --| |
+*   Rtap     | |
+*            | |
+*       2 ____|   0.0=wiper
+*
+* 
+*     RTOT = total resistance
+*     WIPER = ratio of travel of the wiper
+*     RTAP = resistance between "4" and "2" at position TAP.
+*     TAP = ratio of travel when the wiper reaches the tap, e.g. 0.5

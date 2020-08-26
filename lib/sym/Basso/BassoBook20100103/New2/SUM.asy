@@ -1,0 +1,22 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 95 0 -16 -64
+LINE Normal -16 63 95 0
+LINE Normal -43 -48 -63 -48
+LINE Normal -43 32 -63 32
+RECTANGLE Normal -16 63 -48 -64
+TEXT -85 -63 Left 0 IN1
+TEXT 80 0 Right 0 OUT
+TEXT -88 14 Left 0 IN2
+TEXT -31 18 VLeft 0 SUM
+SYMATTR Prefix X
+SYMATTR Value SUM
+SYMATTR SpiceLine K1=1 K2=1
+PIN -64 -48 NONE 8
+PINATTR PinName In
+PINATTR SpiceOrder 1
+PIN 96 0 NONE 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 2
+PIN -64 32 NONE 8
+PINATTR SpiceOrder 3

@@ -1,0 +1,37 @@
+Montecarlo toolbox info:
+zip archive montecarlo toolbox.zip contains the latest vesions of the files already in this folder.
+Contents:
+
+c_mc_1.asy Capacitor, drop down symbol for cmc.lib
+c_mc_2.asy Capacitor, {M} parameter switch symbol for cmc.lib
+L_mc_1.asy Inductor, drop down symbol for lmc.lib
+L_mc_2.asy Inductor, {M} parameter switch symbol for lmc.lib
+r_mc_1.asy Resistor, drop down symbol for rmc.lib
+r_mc_2.asy Resistor, {M} parameter switch symbol for rmc.lib
+v_mc_1.asy Voltage, drop down symbol for vmc.lib
+v_mc_2.asy Voltage, {M} parameter switch symbol for vmc.lib
+
+Libraries cmc.lib,lmc.lib,rmc.lib and vmc.lib contain min,nominal,max,uniform random distribution, minmax binary distribution and gausian distribution models.
+
+
+Use these symbols to apply minmax and/or gaussin distribution to subcircuits.
+
+EPS=1e-6 TOLC=TOL/50  w=2**(seed-1)  RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+EPS))>(w-0.5),1,0)  minmax=if((run==0),1,1-TOLC/2+TOLC*RN) A1=(1+TOLC*(rand(seed*100000+run)-.5)) A2=(1+TOLC*(rand(seed*100000+10000+run)-.5)) A3=(1+TOLC*(rand(seed*100000+20000+run)-.5)) A4=(1+TOLC*(rand(seed*100000+30000+run)-.5)) A5=(1+TOLC*(rand(seed*100000+40000+run)-.5)) gaussian=(a1+a2+a2+a4+a5)/5
+
+Only example with mosfet- more to follow later.
+
+xdgnmos_mc.asy  
+xdiode_mc.asy
+xnjf_mc.asy
+xnmos_mc.asy
+xnpn_mc.asy
+xnpndarlington_mc.asy
+xopamp_mc.asy
+xpjf_mc.asy
+xpmos_mc.asy
+xpnp_mc.asy
+xpnpdarlington_mc.asy
+xreg_mc.asy
+xzener_mc.asy
+
+Various test schematics included.

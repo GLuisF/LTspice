@@ -1,0 +1,28 @@
+transformer with center-tap secondary
+v1 1 0 ac 120 sin       
+rbogus1 1 2 1e-3
+l1 2 0 10
+l2 5 4 0.025
+l3 4 3 0.025
+k1 l1 l2 0.999
+k2 l2 l3 0.999
+k3 l1 l3 0.999
+rbogus2 3 0 1e12
+rload1 5 4 1k
+rload2 4 3 1k
+
+* Sets up AC analysis at 60 Hz:
+.ac lin 1 60 60
+
+* Prints primary voltage between nodes 2 and 0:
+.print ac v(2,0) 
+
+* Prints (top) secondary voltage between nodes 5 and 4:
+.print ac v(5,4) 
+
+* Prints (bottom) secondary voltage between nodes 4 and 3:
+.print ac v(4,3) 
+
+* Prints (total) secondary voltage between nodes 5 and 3:
+.print ac v(5,3) 
+.end

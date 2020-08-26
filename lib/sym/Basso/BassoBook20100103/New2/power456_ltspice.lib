@@ -1,0 +1,1469 @@
+**** Lib files for Christophe BASSO's book
+**** OrCAD PSpice compatible
+**** Corrected on July 5th 2001
+* ---------------------------------------------------------- *
+* PSpice generic models library for PWM controllers working in
+* Voltage Mode (PWMVM) or Current Mode (PWMCM)
+* Models developped by Christophe BASSO, Toulouse (FRANCE)
+* Please report any bugs or non-convergence problems to:
+* CBASSO@WANADOO.FR
+* These models require PSpice version 6.2a or higher
+* ---------------------------------------------------------- *
+******
+*$
+.SUBCKT PWMCM 1   2   3    4  5	    6 	PARAMS:
+*	          OUT GND COMP FB SENSE VOSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333
+*	
+*	Generic Model for Current Mode PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: October 25th 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+* RATIO		; maximum peak current at max output error level
+			; (CM only)
+***********************************************
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++				VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+ELIM 500 2 VALUE = { V(3)*RATIO }				; max peak current = VOH*RATIO / Rsense
+XCOM 5 500 12 COMP				; limit comparator
+XFFL 11 82 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD} ; max. duty cycle (=delay/period) delay=period-(tr+tf+tpuls)
+XOR1 11 14 81 OR2_A				; Clock OR FFlopD
+XOR2 80 12 82 OR2_A				; IMAX OR MAXduty Reset
+E_BOUT 15 2 VALUE = { IF ( V(81) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT 15 1 {ROUT}				; output resistor
+.ENDS PWMCM
+*$
+******
+.SUBCKT PWMCMS out1   2   3    4  5	    6 	out2 PARAMS:
+*	          OUT GND COMP FB SENSE VOSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, RAMP=5V, VOUTHI=15V, 
++RO1=10, RO2=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333, DT=100N
+*	
+*	Generic Model for Current Mode PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: December 18th 2005
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+* RATIO		; maximum peak current at max output error level
+			; (CM only)
+***********************************************
+.PARAM Rd={DT/(0.693*1n)}
+
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++				VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+ELIM 500 2 VALUE = { V(3)*RATIO }				; max peak current = VOH*RATIO / Rsense
+XCOM 5 500 12 COMP				; limit comparator
+XFFL 11 82 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD} ; max. duty cycle (=delay/period) delay=period-(tr+tf+tpuls)
+XOR1 11 14 81 OR2_A				; Clock OR FFlopD
+XOR2 80 12 82 OR2_A				; IMAX OR MAXduty Reset
+E_BOUT din 2 VALUE = { IF ( V(81) > 3.5, 5, 0 ) }
+
+X1 550 din out10 AND2DT
+X2 700 800 out20 AND2DT
+EB100 300 0 Value = { IF ( V(out10) > 2.5, {VOUTHI}, {VOUTLO} ) }
+EB200 310 0 Value = { IF ( V(out20) > 2.5, {VOUTHI}, {VOUTLO} ) }
+Rout1 300 out1 {Ro1}
+Rout2 310 out2 {Ro2}
+R3 din 550 {Rd}
+C1 550 0 1n
+R4 800 700 {Rd}
+C2 700 0 1n
+X3 din 800 INVDT
+
+.ENDS PWMCMS
+
+
+
+.SUBCKT 2SWITCHCM 1    8   7    2   3    4  5    6 PARAMS:
+* 				  OUT1 GNF OUT2 GND COMP FB SENS OSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333
+*			  	
+*	Generic Model for 2 switch Current Mode PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: October 1999
+*
+VREF 10 2 {REF}							; reference voltage
+XCOM 5 500 12 COMP						; limit comparator
+ELIM 500 2 VALUE = { V(3)*RATIO }		; max peak current = VOH*RATIO / Rsense
+XFFL 11 82 14 13 FFLOP_A					; RS latch flipflop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}; Clock set pulses
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD}
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+XOR1 11 14 81 OR2_A						; Clock OR FFlopD
+XOR2 80 12 82 OR2_A						; IMAX OR MAXduty Reset
+EOUT1 25 8 VALUE = { IF ( V(81) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 25 1 {ROUT}							; Output resistor 1
+RDUMF 8 2 10MEG
+EOUT2 250 2 VALUE = { IF ( V(81) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}						; Output resistor 2
+CP1 110 0 {1/(6.28*(GAIN/100U)*POLE)}
+E1 50 0 110 0 1
+R9 50 200 5
+D14 200 130 DMOD
+IS1 130 0 {ISINK/100}
+Q1 0 130 160 QPMOD
+IS2 70 3 {ISOURCE}
+D12 3 70 DMOD
+D15 0 110 DCLAMP
+G1 0 110 10 4 100U
+V1 70 0 {VHIGH-0.6}
+V2 3 160 {VLOW-40M}
+RP1 110 0 {GAIN/100U}
+.MODEL QPMOD PNP
+.MODEL DCLAMP D (RS=10 BV=10 IBV=0.01)
+.MODEL DMOD D
+.ENDS
+*$
+******
+.SUBCKT PWMVM 1   2   3    4  5		PARAMS:
+*	      	  OUT GND COMP FB IMAX
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, IMAX=2.5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, DUTYMIN=0.1, VOUTLO=100M
+*	
+*	Generic Model for Voltage Mode PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: October 26th 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* DUTYMIN	; minimum duty cycle
+* IMAX		; max voltage upon (external) RSENSE resistor 
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+.PARAM VP = { (VLOW*DUTYMAX-VHIGH*DUTYMIN+VHIGH-VLOW)/(DUTYMAX-DUTYMIN) }	; valley ramp voltage
+.PARAM VV = { (VLOW-DUTYMIN*VP)/(1-DUTYMIN)}								; peak ramp voltage
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+VRAMP 16 2 PULSE {VV} {VP} 0 {PERIOD-2N} 1N 1N {PERIOD} ; comparison ramp
+XCOM1 16 3 18 COMP				; PWM comparator
+XCOM2 5 19 12 COMP				; I limit comparator
+VLIMT 19 2 {IMAX}				; I limit level (Max voltage upon external sense resistor)
+XOR2 12 18 20 OR2_A				; Reset by IMAX OR PWM
+XFFL 11 20 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+E_BOUT 15 2 VALUE = { IF ( V(14) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT 15 1 {ROUT}				; output resitor
+.ENDS PWMVM
+*$
+************
+.SUBCKT PUSH_CM 1    7    2   3    4  5    6 PARAMS:
+*			    OUT1 OUT2 GND COMP FB SENS OSC
++REF=2.5, PERIOD=5U, DEAD=0.95, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=1
+*	
+*	Generic Model for Current Mode Push-Pull PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: July 5th 2001
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DEAD	 	; dead time between OUT1 and OUT2
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+VREF 10 2 {REF}							; reference voltage
+XCOM 5 500 12 COMP						; limit comparator
+EBLIM 500 2 Value = { V(3)*{RATIO} }				; max peak current = VOH*RATIO / Rsense
+XFFL1 82 11 14 13 FFLOP_A					; RS latch flipflop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}; Clock reset pulses
+VDUT 80 2 PULSE 0 5 {PERIOD*DEAD} 1N 1N {(PERIOD-PERIOD*DEAD)-2N} {PERIOD}
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+XOR1 11 14 81 OR2_A						; Clock OR FFlopD
+XOR2 80 12 82 OR2_A						; IMAX OR MAXduty set
+XFFL2 81 300 2 2 300 301 TOGGLE_A
+XNOR1 301 81 303 NOR2_A 
+XNOR2 300 81 304 NOR2_A
+EBOUT1 15 2 Value = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 15 1 {ROUT}							; Output resistor 1
+EBOUT2 250 2 Value = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}						; Output resistor 2
+RDUM1 10 4 8MEG
+CP1 110 0 {1/(6.28*(GAIN/100U)*POLE)}
+E1 50 0 110 0 1
+R9 50 200 5
+D14 200 130 DMOD
+IS1 130 0 {ISINK/100}
+Q1 0 130 160 QPMOD
+IS2 70 3 {ISOURCE}
+D12 3 70 DMOD
+D15 0 110 DCLAMP
+G1 0 110 10 4 100U
+V1 70 0 {VHIGH-0.6}
+V2 3 160 {VLOW-40M}
+RP1 110 0 {GAIN/100U}
+.MODEL QPMOD PNP
+.MODEL DCLAMP D (RS=10 BV=10 IBV=0.01)
+.MODEL DMOD D
+.ENDS PUSH_CM
+*$
+******
+.SUBCKT PUSH_VM 1    7    2   3    4  5		PARAMS:
+*	      	    OUT1 OUT2 GND COMP FB IMAX
++REF=2.5, PERIOD=5U, DUTYMAX=0.95, IMAX=2.5, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, DUTYMIN=0.1, VOUTLO=100M
+*	
+*	Generic Model for Voltage Mode Push-Pull PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: November 18th 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle (naturally limited at 0.5 or less)
+* DUTYMIN	; minimum duty cycle
+* IMAX		; max voltage upon (external) RSENSE resistor 
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+.PARAM VP = { (VLOW*DUTYMAX-VHIGH*DUTYMIN+VHIGH-VLOW)/(DUTYMAX-DUTYMIN) }	; valley ramp voltage
+.PARAM VV = { (VLOW-DUTYMIN*VP)/(1-DUTYMIN)}								; peak ramp voltage
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+VRAMP 16 2 PULSE {VV} {VP} 0 {PERIOD-2N} 1N 1N {PERIOD} ; comparison ramp
+XCOM1 16 3 18 COMP				; PWM comparator
+XCOM2 5 19 12 COMP				; I limit comparator
+VLIMT 19 2 {IMAX}				; I limit level (Max voltage upon external sense resistor)
+XOR2 12 18 20 OR2_A				; Set by IMAX OR PWM
+XFFL 20 11 14 13 FFLOP_A			; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock Reset pulses
+XNOR1 301 14 303 NOR2_A 
+XNOR2 300 14 304 NOR2_A
+XFFL2 14 300 2 2 300 301 TOGGLE_A
+E_BOUT1 15 2 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1	15 1 {ROUT}				; output resitor
+E_BOUT2 250 2 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}				; output resitor
+.ENDS PUSH_VM
+*$
+********
+.SUBCKT HALF_CM 1   8   7      2   3    4  5	    6 	PARAMS:
+*	            OUT GNF OUT2   GND COMP FB SENSE VOSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.95, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333
+*	
+*	Generic Model for Current Mode Half-bridge PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: November 21st 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle on both outputs
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++				VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+ELIM 500 2 VALUE = { V(3)*RATIO }				; max peak current = VOH*RATIO / Rsense
+XCOM 5 500 12 COMP				; limit comparator
+XFFL 82 11 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD} ; max. duty cycle (=delay/period) delay=period-(tr+tf+tpuls)
+XOR1 11 14 81 OR2_A				; Clock OR FFlopD
+XOR2 80 12 82 OR2_A				; IMAX OR MAXduty Reset
+XNOR1 301 81 303 NOR2_A
+XNOR2 300 81 304 NOR2_A
+XFFL2 81 300 2 2 300 301 TOGGLE_A
+E_BOUT1 25 8 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 25 1 {ROUT}							; Output resistor 1
+RDUMF 8 2 10MEG
+E_BOUT2 250 2 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}
+.ENDS HALF_CM
+*$
+***********
+.SUBCKT HALF_VM 1    8   7    2   3    4  5		PARAMS:
+*	      	    OUT1 GNF OUT2 GND COMP FB IMAX
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, IMAX=2.5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, DUTYMIN=0.1, VOUTLO=100M
+*	
+*	Generic Model for Voltage Mode Half-Bridge PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: November 21st 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* DUTYMIN	; minimum duty cycle
+* IMAX		; max voltage upon (external) RSENSE resistor 
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+.PARAM VP = { (VLOW*DUTYMAX-VHIGH*DUTYMIN+VHIGH-VLOW)/(DUTYMAX-DUTYMIN) }	; valley ramp voltage
+.PARAM VV = { (VLOW-DUTYMIN*VP)/(1-DUTYMIN)}								; peak ramp voltage
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+VRAMP 16 2 PULSE {VV} {VP} 0 {PERIOD-2N} 1N 1N {PERIOD} ; comparison ramp
+XCOM1 16 3 18 COMP				; PWM comparator
+XCOM2 5 19 12 COMP				; I limit comparator
+VLIMT 19 2 {IMAX}				; I limit level (Max voltage upon external sense resistor)
+*XOR2 12 18 20 OR2_A				; Reset by IMAX OR PWM
+XOR2 12 18 20 OR2_A				; Reset by IMAX OR PWM
+*XFFL 20 11 14 13 FFLOP_A				; flip-flop
+XFFL 20 11 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+*XNOR1 301 14 303 NOR2_A
+XNOR1 301 14 303 NOR2_A
+*XNOR2 300 14 304 NOR2_A
+XNOR2 300 14 304 NOR2_A
+*XFFL2 14 300 2 2 300 301 TOGGLE_A
+XFFL2 14 300 2 2 300 301 TOGGLE_A
+E_BOUT1 25 8 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 25 1 {ROUT}							; Output resistor 1
+RDUMF 8 2 10MEG
+E_BOUT2 250 2 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}						; Output resistor 2
+.ENDS HALF_VM
+*$
+***********
+.SUBCKT FULL_CM 1    8    7    9    16   15   2   3    4  5    6  PARAMS:
+*			    OUT1 GNF1 OUT2 OUT3 GNF3 OUT4 GND COMP FB SENS OSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.95, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333
+*	
+*	Generic Model for Current Mode full-bridge PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: November 21st 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle on both outputs
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++				VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+XCOM 5 500 12 COMP				; limit comparator
+ELIM 500 2 VALUE = { V(3)*RATIO }				; max peak current = VOH*RATIO / Rsense
+XFFL 82 11 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD} ; max. duty cycle (=delay/period) delay=period-(tr+tf+tpuls)
+XOR1 11 14 81 OR2_A				; Clock OR FFlopD
+XOR2 80 12 82 OR2_A				; IMAX OR MAXduty Reset
+XNOR1 301 81 303 NOR2_A
+XNOR2 300 81 304 NOR2_A
+XFFL2 81 300 2 2 300 301 TOGGLE_A
+E_BOUT1 25 8 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 25 1 {ROUT}							; Output resistor 1
+RDUMF1 8 2 10MEG
+E_BOUT2 250 2 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}						; Output resistor 2
+E_BOUT3 255 16 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT3 255 9 {ROUT}						; Output resistor 3
+RDUMF3 16 2 10MEG
+E_BOUT4 256 2 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT4 256 15 {ROUT}
+.ENDS FULL_CM
+*$
+************
+.SUBCKT FULL_VM 1    8    7    9    16   15   2   3    4  5 PARAMS:
+*			    OUT1 GNF1 OUT2 OUT3 GNF3 OUT4 GND COMP FB IMAX
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, IMAX=2.5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, DUTYMIN=0.1, VOUTLO=100M
+*	
+*	Generic Model for Voltage Mode Full-Bridge PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: November 21st 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* DUTYMIN	; minimum duty cycle
+* IMAX		; max voltage upon (external) RSENSE resistor 
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+***********************************************
+.PARAM VP = { (VLOW*DUTYMAX-VHIGH*DUTYMIN+VHIGH-VLOW)/(DUTYMAX-DUTYMIN) }	; valley ramp voltage
+.PARAM VV = { (VLOW-DUTYMIN*VP)/(1-DUTYMIN)}								; peak ramp voltage
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+VRAMP 16 2 PULSE {VV} {VP} 0 {PERIOD-2N} 1N 1N {PERIOD} ; comparison ramp
+XCOM1 16 3 18 COMP				; PWM comparator
+XCOM2 5 19 12 COMP				; I limit comparator
+VLIMT 19 2 {IMAX}				; I limit level (Max voltage upon external sense resistor)
+XOR2 12 18 20 OR2_A				; Reset by IMAX OR PWM
+XFFL 20 11 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+XNOR1 301 14 303 NOR2_A
+XNOR2 300 14 304 NOR2_A
+XFFL2 14 300 2 2 300 301 TOGGLE
+E_BOUT1 25 8 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT1 25 1 {ROUT}							; Output resistor 1
+RDUMF1 8 2 10MEG
+E_BOUT2 250 2 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT2 250 7 {ROUT}						; Output resistor 2
+E_BOUT3 255 36 VALUE = { IF ( V(304) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT3 255 9 {ROUT}						; Output resistor 3
+RDUMF3 36 2 10MEG
+E_BOUT4 256 2 VALUE = { IF ( V(303) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT4 256 15 {ROUT}
+.ENDS FULL_VM
+*$
+**** ERROR AMPLIFIER MODEL ****
+.SUBCKT ERRAMP 20 8  3  21 PARAMS: ISINK= 15M, ISOURCE=500U, VHIGH=2.8, VLOW=100M, POLE=30, GAIN=31622
+*   	       +  - OUT GND
+RIN 20 8 8MEG
+CP1 11 21 {1/(6.28*(GAIN/100U)*POLE)}
+E1 5 21 11 21 1
+R9 5 2 5
+D14 2 13 DMOD
+IS 13 21 {ISINK/100}	; mA
+Q1 21 13 16 QPMOD
+ISRC 7 3 {ISOURCE}		; uA
+D12 3 7 DMOD
+D15 21 11 DCLAMP
+G1 21 11 20 8 100U
+V1 7 21 {VHIGH-0.6V}
+V4 3 16 {VLOW-38MV}
+RP1 11 21 {GAIN/100U}
+.MODEL QPMOD PNP
+.MODEL DCLAMP D (RS=10 BV=10 IBV=0.01)
+.MODEL DMOD D (TT=1N CJO=10P)
+.ENDS ERRAMP
+*$
+**** 2 INPUT COMPARATOR ****
+.SUBCKT COMP 1 2 3
+*            + - S
+E_B1 4 0 VALUE = { IF ( V(1) > V(2), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS COMP
+*$
+**** 2 INPUT OR CIRCUIT ****
+.SUBCKT OR2 1 2 3
+E_B1 4 0 VALUE = { IF ( (V(1)>800M) | (V(2)>800M), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS OR2
+*$
+****
+**** 2 INPUT NOR CIRCUIT ****
+.SUBCKT NOR2 1 2 3
+E_B1 4 0 VALUE = { IF ( (V(1)>800M) | (V(2)>800M), 0, 5V ) }
+RD 4 3 100
+CD 3 0 10P
+.ENDS NOR2
+*$
+****
+.SUBCKT FFLOP 6 8 2 1
+*             S R Q Q\
+E_BQB 10 0 VALUE = { IF ( (V(8)<800M) & (V(2)>800M), 0, 5V ) }
+E_BQ  20 0 VALUE = { IF ( (V(6)<800M) & (V(1)>800M), 0, 5V ) }
+RD1   10 1 100
+CD1   1 0 10P IC=5
+RD2   20 2 100
+CD2   2 0 10P IC=0
+.ENDS FFLOP
+*$
+**** 2 INPUT AND CIRCUIT ****
+.SUBCKT AND2 1 2 3
+E_B1 4 0 VALUE = { IF ( (V(1)>800M) & (V(2)>800M), 5V, 0 ) }
+RD 4 3 100
+CD 3 0 100P
+.ENDS AND2
+*$
+****
+.SUBCKT NAND3_0 1 2 3 4
+E_B1 5 0 VALUE = { IF ( (V(1)>800M) & (V(2)>800M) & (V(3)>800M), 0V, 5V ) }
+R1 5 4 400
+C1 4 0 20P IC=0
+.ENDS NAND3_0
+*$
+*****
+.SUBCKT NAND3_1 1 2 3 4
+E_B1 5 0 VALUE = { IF ( (V(1)>800M) & (V(2)>800M) & (V(3)>800M), 0V, 5V ) }
+R1 5 4 400
+C1 4 0 20P IC=5
+.ENDS NAND3_1
+*$
+*****
+.SUBCKT INV 1 2
+E_B1 3 0 VALUE = { IF ( V(1)>800M, 0, 5V ) }
+R1 3 2 100
+C1 2 0 10P IC=5
+.ENDS INV
+*$
+**** TOGGLE CIRCUIT ****
+.SUBCKT TOGGLE 1  2 11 12 5  6
+*            CLK D R  S  QB Q 
+X1 7 4 2 8 NAND3_0
+X2 8 3 10 9 NAND3_0
+X3 1 8 10 7 NAND3_1
+X4 4 9 1 10 NAND3_0
+X5 4 7 6 5 NAND3_1
+X6 5 10 3 6 NAND3_0
+X7 11 4 INV
+X8 12 3 INV
+.ENDS TOGGLE
+*$
+**** MULTI-WINDING TRANSFORMER ****
+.SUBCKT XFMR2 1 2 3 4 10 11 PARAMS: RATIO1=1 RATIO2=1
+RP 1 2 1MEG
+E1 5 4 VALUE = { V(1,2)*RATIO1 }
+G1 1 2 VALUE = { I(VM1)*RATIO1 }
+RS1 6 3 1U
+VM1 5 6
+E2 20 11 VALUE = { V(2,1)*RATIO2 }
+G2 2 1 VALUE = { I(VM2)*RATIO2 }
+RS2 21 10 1U
+VM2 20 21 
+.ENDS XFMR2
+*$
+**** SINGLE WINDING TRANSFORMER ****
+.SUBCKT XFMR1 1 2 3 4 PARAMS: RATIO=1
+RP 1 2 1MEG
+E 5 4 VALUE = { V(1,2)*RATIO }
+G 1 2 VALUE = { I(VM)*RATIO }
+RS 6 3 1U
+VM 5 6
+.ENDS XFMR1
+********
+.SUBCKT irf7413 1 2 3
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*Commercial Use or Resale Restricted *
+*   by Symmetry License Agreement    *
+**************************************
+* Model generated on Apr 23, 96
+* Model format: SPICE3
+* Symmetry POWER MOS Model (Version 1.0)
+* External Node Designations
+* Node 1 -> Drain
+* Node 2 -> Gate
+* Node 3 -> Source
+M1 9 7 8 8 MM L=100u W=100u
+RS 8 3 0.00853462
+D1 3 1 MD
+RDS 3 1 2.4e+07
+RD 9 1 0.0001
+RG 2 7 6.86824
+D2 4 5 MD1
+D3 0 5 MD2
+RL 5 10 1
+FI2 7 9 VFI2 -1
+VFI2 4 0 0
+EV16 10 0 9 7 1
+CAP 11 10 1.28e-09
+FI1 7 9 VFI1 -1
+VFI1 11 6 0
+RCAP 6 10 1
+D4 0 6 MD3
+.MODEL MD3 D IS=1e-10 N=0.4
+.MODEL MD D IS=7.69994e-08 RS=0.0402311 N=1.5 BV=30
++IBV=0.00025 EG=1.06591 XTI=3.99512 TT=1e-07
++CJO=2.25643e-09 VJ=0.5 M=0.420315 FC=0.1
+.MODEL MD1 D IS=1e-32 N=50
++CJO=1.28e-09 VJ=2.11133 M=0.9 FC=1e-08
+.MODEL MD2 D IS=1e-10 N=0.4 RS=3.00001e-06
+.MODEL MM NMOS LEVEL=1 IS=1e-32
++VTO=2.66432 LAMBDA=0.0048933 KP=89.0396
++CGSO=1.68868e-05 CGDO=1.33184e-06
+.ENDS irf7413
+*$
+.MODEL mbrs20100 d
++IS=0.000210108 RS=0.0123882 N=2 EG=0.817576
++XTI=0.500001 BV=1000 IBV=0.0001 CJO=1e-11
++VJ=0.7 M=0.5 FC=0.5 TT=0
++KF=0 AF=1
+**********
+.SUBCKT XFMR-TAP 1 2 3 4 5 PARAMS: RATIO=3.91
+E1 7 8 VALUE = { V(1,2)*RATIO }
+G1 1 2 VALUE = { I(VM1)*RATIO }
+RP 1 2 1MEG
+RS 6 3 1U
+VM1 7 6
+E2 9 5 VALUE = { V(1,2)*RATIO }
+G2 1 2 VALUE = { I(VM2)*RATIO }
+R5 8 4 1U
+VM2 9 8
+.ENDS XFMR-TAP
+*********
+.MODEL mbrs340t3 d
++IS=0.000182183 RS=0.0312608 N=1.40283 EG=0.576586
++XTI=0.000499955 BV=1000 IBV=0.0001 CJO=4.92728e-10
++VJ=0.573693 M=0.464284 FC=0.5 TT=1e-09
++KF=0 AF=1
+**********
+.MODEL 1n5388a d 
++BV=197.7 CJO=38.7P 
++IBV=5M IS=165P M=.33
++N=1 RS=475 TT=50.1N VJ=1
+**********
+.MODEL 1n5820 d 
++IS=88U N=1.29 BV=2.00E+01 
++IBV=300E-06 RS=2.54E-02 
++CJO=5.99E-10 VJ=4.698 M=.514 
++TT=2.16E-11 XTI=2 EG=.69
+**********
+.MODEL mur160 d 
++IS=1.08U RS=55.5M 
++N=2.59 BV=800 IBV=5U
++CJO=15.7P VJ=.75 M=.310 TT=108N
+*** The below MOSFET models were downloaded from ON Semiconductor web site: www.onsemi.com ***
+.subckt mtp6n60/mc 10 20 30 
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*                                                                             *
+*        #############################################################        *
+*        #                                                           #        *
+*        #                        MTP6N60E                           #        *
+*        #                                                           #        *
+*        #                 Motorola TMOS Power FET                   #        *
+*        #                        6 AMPERES                          #        *
+*        #                        600 VOLTS                          #        *
+*        #                     RDS(on) = 1.2 OHMS                    #        *
+*        #                     Package = TO-220AB                    #        * 
+*        #                                                           #        *
+*        #               This model was developed by                 #        *
+*        #                      Analogy, Inc.                        #        *
+*        #                    9205 SW Gemini Dr.                     #        *
+*        #                   Beaverton, OR  97005                    #        *
+*        #               Copyright 1994 Analogy, Inc.                #        *
+*        #                  All Rights Reserved                      #        *
+*        #                                                           #        *
+*        #    The content of this model is subject to change         #        *
+*        #    without notice and may not be modified or altered      #        *
+*        #    without permission from Motorola, Inc.  This model     #        *
+*        #    has been carefully checked and is believed to be       #        *
+*        #    accurate, however neither Analogy nor Motorola         #        *
+*        #    assume liability for the use of this model or the      #        *
+*        #    results obtained from using it.                        #        *
+*        #                                                           #        *
+*        #    For more information regarding modeling services,      #        *
+*        #    model libraries or simulation products, please         #        *
+*        #    Analogy, Inc. (503) 626-9700.                          #        *
+*        #                                                           #        *
+*        #############################################################        *
+*                                                                             *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+*
+* 10 = Drain 20 = Gate 30 = Source
+*
+******************************************************************************
+*
+*------------------------ EXTERNAL PARASITICS --------------------------------
+* PACKAGE INDUCTANCE
+*
+LDRAIN  10  11  4.5e-09
+LGATE   20  21  7.5e-09
+LSOURCE 30  31  7.5e-09
+*
+* RESISTANCES
+*
+RDRAIN1    4  11 RDRAIN 0.8036
+RDRAIN2    4   5 RDRAIN 0.0084
+RSOURCE   31   6 RSOURCE 0.02018  
+RDBODY     8  30 RDBODY  0.0135
+*
+RGATE      21   2 5
+*
+*--------------------------------------------------------------------------
+*
+*--------------- CAPACITANCES AND BODY DIODE ------------------------------
+*
+DBODY       8  11 DBODY
+DGD         3  11 DGD
+CGDMAX      2   3 2.7e-09
+RGDMAX      2   3 1e+08
+CGS         2   6 1.31e-09 
+*
+*--------------------------------------------------------------------------
+*
+*----------------------- CORE MOSFET --------------------------------------
+*
+M1       5  2  6  6  MAIN
+*
+*--------------------------------------------------------------------------
+*
+.MODEL RDRAIN RES  (
++TC1    = 0.008891
++TC2    = 3.056e-05)
+*
+.MODEL RSOURCE RES  (
++TC1    = -0.003198
++TC2    = 2.60004e-05)
+*
+.MODEL RDBODY RES  (
++TC1    = 0.003945
++TC2    = 9.54752e-06)
+*
+*
+.MODEL MAIN NMOS  ( 
++LEVEL   = 3
++VTO     = 3.8
++KP      = 13
++GAMMA   = 2.6
++PHI     = 0.6
++LAMBDA  = 0.0019
++RD      = 0
++RS      = 0
++CBD     = 0
++CBS     = 0
++IS      = 1e-14
++PB      = 0.8
++CGSO    = 0
++CGDO    = 0
++CGBO    = 0
++RSH     = 0
++CJ      = 0
++MJ      = 0.5
++CJSW    = 0
++MJSW    = 0.33
++JS      = 1e-14
++TOX     = 1e-07
++NSUB    = 1e+15
++NSS     = 0
++NFS     = 6.59e+11
++TPG     = 1
++XJ      = 0
++LD      = 0
++UO      = 600
++UCRIT   = 1000
++UEXP    = 0
++UTRA    = 0
++VMAX    = 0
++NEFF    = 1
++KF      = 0
++AF      = 1
++FC      = 0.5
++DELTA   = 0
++THETA   = 0
++ETA     = 0
++KAPPA   = 0.2)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DGD D  ( 
++IS      = 1e-15
++RS      = 0
++N       = 1000
++TT      = 0
++CJO     = 1.129e-09
++VJ      = 1.943
++M       = 1.476
++EG      = 1.11
++XTI     = 3
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 10000
++IBV     = 0.001)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DBODY D  ( 
++IS      = 1.532e-11
++RS      = 0
++N       = 1.062
++TT      = 2.5e-07
++CJO     = 9.725e-10
++VJ      = 1.127
++M       = 0.6627
++EG      = 1.11
++XTI     = 5
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 671
++IBV     = 0.00025)
+.ENDS
+************
+.SUBCKT MTP3055E/MC      10 20 30
+*                         |  |  |
+*                         |  |  SOURCE
+*                         |  GATE
+*                         DRAIN
+********************************************************************************************
+*                                                                                          *
+*                     #################################################                    *
+*                     #                                               #                    *
+*                     #           MTP3055EL BY MOTOROLA               #                    *
+*                     #                                               #                    *
+*                     #           MODEL DEVELOPED BY                  #                    *
+*                     #           ALLIANCE TECHNOLOGIES               #                    *
+*                     #           10510 RESEARCH RD SE                #                    *
+*                     #           ALBUQUERQUE  NM 87123               #                    *
+*                     #           (505) 299-9591                      #                    *
+*                     #           07-28-93 A. NUNEZ                   #                    *
+*                     #                                               #                    *
+*                     #################################################                    *
+*                                                                                          *
+********************************************************************************************
+********************************************************************************************
+*                                                                                          *
+*------------------------------ EXTERNAL PARASITICS OF DEVICE -----------------------------*
+RD1     2       4       RD  17.5E-03 
+RD2     4       5       RD  17.5E-03 
+RS      3       9       RS  34.2E-03 
+RG      1       8       17
+LD      5       10      3.5E-09
+LG      8       20      7.5E-09
+LS      9       30      7.5E-09
+********************************************************************************************                                                                                          
+*---------------------------- END EXTERNAL PARASITICS OF DEVICE ---------------------------*
+********************************************************************************************
+********************************************************************************************
+*                                                                                          *
+*--------------------- DRAIN SOURCE CAPACITANCE AND BREAKDOWN CIRCUIT ---------------------*
+DDS     9       11      DDS1     
+RDIO    11      5       RDIO  0.0251     
+*-------------------- END DRAIN SOURCE CAPACITANCE AND BREAKDOWN CIRCUIT ------------------*
+*                                                                                          *
+********************************************************************************************
+********************************************************************************************
+*                                                                                          *
+*---------------------------- DRAIN GATE CAPACITANCE SIMULATOR ----------------------------*
+*-------------------- FIRST SECTION FOR NON-LINEAR CGD INCLUDES FOLLOWING -----------------*
+********************************************************************************************
+*     VOLTAGE CONTROLLED SWITCHES CAN BE USED IN PLACE OF M2 AND M3 IN THE EVENT           *
+*     THE SIMULATOR SUPPORTS VOLTAGE CONTROLLED SWITCHES.  USE OF VOLTAGE CONTROLLED       *
+*     SWITCHES WILL REDUCE EXECUTION TIME FOR THIS MODEL                                   *
+********************************************************************************************
+*
+DGD     6       4       DGD
+RDGD    4       6       1E10
+M2      6       4       1       100     MSW1                    
+RSUB1   1       100     1E12
+*----------------------------- LAST SECTION FOR CONSTANT CGD  -----------------------------*
+CGDMAX  4       7       0.60E-9
+RCGD    4       7       1E10
+M3      7       4       1       101     MSW2
+RSUB2   1       101     1E12        
+*---------------------------- END GATE CAPACITANCE SIMULATOR ------------------------------*
+*                                                                                          *
+********************************************************************************************
+********************************************************************************************
+*                                                                                          *
+*--------------------------- LEVEL 3 MOS MODEL CORE OF SUBCKT -----------------------------*
+M1      2       1       3       9       MAIN    W=1.22  L=1E-6
+*------------------------------ END LEVEL THREE MOS MODEL ---------------------------------*
+*                                                                                          *
+********************************************************************************************
+*------------------------------ PARAMETER SETS FOR MODELS ---------------------------------*
+.MODEL   MSW1    NMOS    (LEVEL = 1         VTO  = 0       KP    = 1                       )
+.MODEL   MSW2    PMOS    (LEVEL = 1         VTO  = 0       KP    = 1                       )
+.MODEL   MAIN    NMOS    (LEVEL = 3                 TOX    = 1E-7               
++ NSUB   = 4.5612E14       VTO    = 1.803           PHI    = 0.6                
++ UO     = 158.17          KAPPA  = 0               NFS    = 4.256081E11                   )  
+.MODEL   DDS1   D        (                          IS     = 5.400306E-11       
++ N      = 1.1855231       BV     = 60.00           IBV    = 0.001          
++ EG     = 1.1435          XTI    = 2.529           TT     = 1E-9            
++ CJO    = 6.090755E-10    VJ     = 0.4851704       M      = 0.3716474       
+* FC     = 0.5                                                                             )
+.MODEL   DGD    D        (                          CJO    = 0.54E-09 
++ VJ     = 0.350           M      = 0.650           FC     = 0.5                           )
+.MODEL   RD     RES      ( TC1    = 13.8374E-3      TC2    = 6.38887E-5                    )
+.MODEL   RS     RES      ( TC1    = -4.71836E-3     TC2    = -1.39768E-5                   )
+.MODEL   RDIO   RES      ( TC1    = 1.560642E-3     TC2    = 4.60643E-6                    )
+.ENDS
+**************
+.model mbrs140t3 d
++ is= 4.41547e-06
++ rs= 0.103922
++ n= 1.03751
++ tt= 1e-12
++ cjo= 1.598e-10
++ vj= 0.4934
++ m= 0.4258
++ eg= 0.6
++ xti= 3.29768
++ fc= 0.5
++ bv= 48
++ ibv= 0.01
++ kf= 0
++ af= 1
+********
+.subckt mtp4n50/mc 10 20 30 
+*
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*Commercial Use or Resale Restricted *
+*   by Symmetry License Agreement    *
+**************************************
+* Model generated on Feb 12, 98
+* MODEL FORMAT: PSpice
+* Symmetry POWER MOS Model (Version 1.0)
+* External Node Designations
+* Node 1 -> Drain
+* Node 2 -> Gate
+* Node 3 -> Source
+* 10 = Drain 20 = Gate 30 = Source
+*
+******************************************************************************
+*
+*------------------------ EXTERNAL PARASITICS --------------------------------
+* PACKAGE INDUCTANCE
+*
+LDRAIN  10  11  4.5e-09
+LGATE   20  21  7.5e-09
+LSOURCE 30  31  7.5e-09
+*
+* RESISTANCES
+*
+RDRAIN1    4  11 RDRAIN 1.077
+RDRAIN2    4   5 RDRAIN 0.2692
+RSOURCE   31   6 RSOURCE 0.03  
+RDBODY     8  30 RDBODY  0.02132
+*
+RGATE      21   2 10
+*
+*--------------------------------------------------------------------------
+*
+*--------------- CAPACITANCES AND BODY DIODE ------------------------------
+*
+DBODY       8  11 DBODY
+DGD         3  11 DGD
+CGDMAX      2   3 2e-09
+RGDMAX      2   3 1e+08
+CGS         2   6 7e-10 
+*
+*--------------------------------------------------------------------------
+*
+*----------------------- CORE MOSFET --------------------------------------
+*
+M1       5  2  6  6  MAIN
+*
+*--------------------------------------------------------------------------
+*
+.MODEL RDRAIN RES  (
++TC1    = 0.008365
++TC2    = 1.582e-05)
+*
+.MODEL RSOURCE RES  (
++TC1    = -0.002385
++TC2    = 3.04052e-05)
+*
+.MODEL RDBODY RES  (
++TC1    = 0.002158
++TC2    = 3.1623e-06)
+*
+*
+.MODEL MAIN NMOS  ( 
++LEVEL   = 3
++VTO     = 3.867
++KP      = 6.624
++GAMMA   = 3
++PHI     = 0.6
++LAMBDA  = 0.001834
++RD      = 0
++RS      = 0
++CBD     = 0
++CBS     = 0
++IS      = 1e-14
++PB      = 0.8
++CGSO    = 0
++CGDO    = 0
++CGBO    = 0
++RSH     = 0
++CJ      = 0
++MJ      = 0.5
++CJSW    = 0
++MJSW    = 0.33
++JS      = 1e-14
++TOX     = 1e-07
++NSUB    = 1e+15
++NSS     = 0
++NFS     = 6.712e+11
++TPG     = 1
++XJ      = 0
++LD      = 0
++UO      = 600
++UCRIT   = 1000
++UEXP    = 0
++UTRA    = 0
++VMAX    = 0
++NEFF    = 1
++KF      = 0
++AF      = 1
++FC      = 0.5
++DELTA   = 0
++THETA   = 0
++ETA     = 0
++KAPPA   = 0.2)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DGD D  ( 
++IS      = 1e-15
++RS      = 0
++N       = 1000
++TT      = 0
++CJO     = 6.282e-10
++VJ      = 1.373
++M       = 1.166
++EG      = 1.11
++XTI     = 3
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 10000
++IBV     = 0.001)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DBODY D  ( 
++IS      = 5.639e-12
++RS      = 0
++N       = 1.055
++TT      = 2e-07
++CJO     = 5.616e-10
++VJ      = 1
++M       = 0.6261
++EG      = 1.11
++XTI     = 3.5
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 569.1
++IBV     = 0.00025)
+.ENDS
+********
+.subckt mtp8n50e 10 20 30
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*Commercial Use or Resale Restricted *
+*   by Symmetry License Agreement    *
+**************************************
+* Model generated on Feb 12, 98
+* MODEL FORMAT: PSpice
+* Symmetry POWER MOS Model (Version 1.0)
+* External Node Designations
+* Node 1 -> Drain
+* Node 2 -> Gate
+* Node 3 -> Source
+*
+* 10 = Drain 20 = Gate 30 = Source
+*
+******************************************************************************
+*
+*------------------------ EXTERNAL PARASITICS --------------------------------
+* PACKAGE INDUCTANCE
+*
+LDRAIN  10  11  4.5e-09
+LGATE   20  21  7.5e-09
+LSOURCE 30  31  7.5e-09
+*
+* RESISTANCES
+*
+RDRAIN1    4  11 RDRAIN 0.594
+RDRAIN2    4   5 RDRAIN 0.001
+RSOURCE   31   6 RSOURCE 0.025  
+RDBODY     8  30 RDBODY  0.0131
+*
+RGATE      21   2 5
+*
+*--------------------------------------------------------------------------
+*
+*--------------- CAPACITANCES AND BODY DIODE ------------------------------
+*
+DBODY       8  11 DBODY
+DGD         3  11 DGD
+CGDMAX      2   3 2.5e-09
+RGDMAX      2   3 1e+08
+CGS         2   6 1.29e-09 
+*
+*--------------------------------------------------------------------------
+*
+*----------------------- CORE MOSFET --------------------------------------
+*
+M1       5  2  6  6  MAIN
+*
+*--------------------------------------------------------------------------
+*
+.MODEL RDRAIN RES  (
++TC1    = 0.009715
++TC2    = 3.866e-05)
+*
+.MODEL RSOURCE RES  (
++TC1    = 0
++TC2    = 0)
+*
+.MODEL RDBODY RES  (
++TC1    = 0.003858
++TC2    = 5.974e-06)
+*
+*
+.MODEL MAIN NMOS  ( 
++LEVEL   = 3
++VTO     = 4.1
++KP      = 14
++GAMMA   = 3
++PHI     = 0.6
++LAMBDA  = 0.001982
++RD      = 0
++RS      = 0
++CBD     = 0
++CBS     = 0
++IS      = 1e-14
++PB      = 0.8
++CGSO    = 0
++CGDO    = 0
++CGBO    = 0
++RSH     = 0
++CJ      = 0
++MJ      = 0.5
++CJSW    = 0
++MJSW    = 0.33
++JS      = 1e-14
++TOX     = 1e-07
++NSUB    = 1e+15
++NSS     = 0
++NFS     = 7.071e+11
++TPG     = 1
++XJ      = 0
++LD      = 0
++UO      = 600
++UCRIT   = 1000
++UEXP    = 0
++UTRA    = 0
++VMAX    = 0
++NEFF    = 1
++KF      = 0
++AF      = 1
++FC      = 0.5
++DELTA   = 0
++THETA   = 0
++ETA     = 0
++KAPPA   = 0.2)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DGD D  ( 
++IS      = 1e-15
++RS      = 0
++N       = 1000
++TT      = 0
++CJO     = 1.166e-09
++VJ      = 1.093
++M       = 0.9941
++EG      = 1.11
++XTI     = 3
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 10000
++IBV     = 0.001)
+*
+*--------------------------------------------------------------------------
+*
+.MODEL DBODY D  ( 
++IS      = 1.053e-11
++RS      = 0
++N       = 1.052
++TT      = 2.5e-07
++CJO     = 1.032e-09
++VJ      = 1
++M       = 0.6441
++EG      = 1.11
++XTI     = 4.9
++KF      = 0
++AF      = 1
++FC      = 0.5
++BV      = 569.1
++IBV     = 0.00025)
+.ENDS
+*** The below model was downloaded from International-Rectifier web site: www.irf.com ***
+.SUBCKT irfp044n 1 2 3
+**************************************
+*      Model Generated by MODPEX     *
+*Copyright(c) Symmetry Design Systems*
+*         All Rights Reserved        *
+*    UNPUBLISHED LICENSED SOFTWARE   *
+*   Contains Proprietary Information *
+*      Which is The Property of      *
+*     SYMMETRY OR ITS LICENSORS      *
+*Commercial Use or Resale Restricted *
+*   by Symmetry License Agreement    *
+**************************************
+* Model generated on Apr 24, 96
+* Model format: SPICE3
+* Symmetry POWER MOS Model (Version 1.0)
+* External Node Designations
+* Node 1 -> Drain
+* Node 2 -> Gate
+* Node 3 -> Source
+M1 9 7 8 8 MM L=100u W=100u
+* Default values used in MM:
+* The voltage-dependent capacitances are
+* not included. Other default values are:
+*   RS=0 RD=0 LD=0 CBD=0 CBS=0 CGBO=0
+.MODEL MM NMOS LEVEL=1 IS=1e-32
++VTO=3.81531 LAMBDA=0 KP=35.6687
++CGSO=1.40569e-05 CGDO=3.21208e-07
+RS 8 3 0.0143504
+D1 3 1 MD
+.MODEL MD D IS=6.65214e-09 RS=0.00681888 N=1.44936 BV=55
++IBV=0.00025 EG=1 XTI=2.81713 TT=1e-07
++CJO=1.32544e-09 VJ=1.29661 M=0.493619 FC=0.5
+RDS 3 1 2.2e+06
+RD 9 1 0.0001
+RG 2 7 4.21415
+D2 4 5 MD1
+* Default values used in MD1:
+*   RS=0 EG=1.11 XTI=3.0 TT=0
+*   BV=infinite IBV=1mA
+.MODEL MD1 D IS=1e-32 N=50
++CJO=1.5055e-09 VJ=0.5 M=0.677697 FC=1e-08
+D3 0 5 MD2
+* Default values used in MD2:
+*   EG=1.11 XTI=3.0 TT=0 CJO=0
+*   BV=infinite IBV=1mA
+.MODEL MD2 D IS=1e-10 N=0.426578 RS=3e-06
+RL 5 10 1
+FI2 7 9 VFI2 -1
+VFI2 4 0 0
+EV16 10 0 9 7 1
+CAP 11 10 1.86655e-09
+FI1 7 9 VFI1 -1
+VFI1 11 6 0
+RCAP 6 10 1
+D4 0 6 MD3
+* Default values used in MD3:
+*   EG=1.11 XTI=3.0 TT=0 CJO=0
+*   RS=0 BV=infinite IBV=1mA
+.MODEL MD3 D IS=1e-10 N=0.426578
+.ENDS
+**********
+.MODEL MBR20100 D
++IS=0.000210108 RS=0.0123882 N=2 EG=0.817576
++XTI=0.500001 BV=1000 IBV=0.0001 CJO=1e-11
++VJ=0.7 M=0.5 FC=0.5 TT=0
++KF=0 AF=1
+**********
+
+.SUBCKT FFLOP_A 6 8 2 1
+*             S R Q Q\
+A1 6 8 0 0 0 1 2 0 SRFLOP TD=10n Vhigh=5V REF=0.8
+* S R 0 0 0 QB Q 0
+.ENDS FFLOP
+
+**** TOGGLE CIRCUIT ****
+.SUBCKT TOGGLE_A 1  2 11 12 5  6
+*            CLK D R  S  QB Q 
+A1 2 0 1 11 12 5 6 0 DFLOP TD=10n VHIGH=5 REF=0.8
+* D 0 CLK S R QB Q 0 
+*A2 1 0 2 3 4 6 5 0 DFLOP
+.ENDS TOGGLE
+
+
+**** 2 INPUT NOR CIRCUIT ****
+.SUBCKT NOR2_A 1 2 3
+A1 1 2 0 0 0 3 0 0 OR TD=10n VHIGH=5 REF=0.8
+.ENDS NOR2
+*$
+
+**** 2 INPUT OR CIRCUIT ****
+.SUBCKT OR2_A 1 2 3
+A1 1 2 0 0 0 0 3 0 OR TD=10n VHIGH=5 REF=0.8
+.ENDS OR2
+*$
+.SUBCKT PWMCM1 1   2   3    4  5	    6 	PARAMS:
+*	          OUT GND COMP FB SENSE VOSC
++REF=2.5, PERIOD=5U, DUTYMAX=0.8, RAMP=5V, VOUTHI=15V, 
++ROUT=10, VHIGH=3, ISINK=15M, ISOURCE=500U, 
++VLOW=100M, POLE=30, GAIN=31622, VOUTLO=100M, RATIO=0.333
+*	
+*	Generic Model for Current Mode PWM controller
+*	Developed by Christophe BASSO, France
+*	PSpice compatible format
+*	Last modified: October 25th 1996
+*
+***** Generic PWM controller parameters *******
+* REF 		; internal reference voltage
+* PERIOD	; switching period
+* DUTYMAX 	; maximum duty cycle
+* RAMP		; ramp amplitude for compensation
+* VOUTHI	; driver output voltage high
+* VOUTLO	; driver output voltage low
+* ROUT		; driver output resistor
+***** Internal error amplifier parameters *****
+* VHIGH		; maximum output voltage
+* VLOW		; minimum output voltage
+* ISINK		; sink capability
+* ISOURCE	; source capability
+* POLE		; first pole in Hertz
+* GAIN		; DC open-loop gain (default=90dB)
+* RATIO		; maximum peak current at max output error level
+			; (CM only)
+***********************************************
+XERR 10 4 3 2 ERRAMP PARAMS:	VHIGH={VHIGH} ISINK={ISINK} ISOURCE={ISOURCE} ; error amplifier
++				VLOW={VLOW} POLE={POLE} GAIN={GAIN}
+VREF 10 2 {REF}					; reference voltage
+ELIM 500 2 VALUE = { V(3)*RATIO }				; max peak current = VOH*RATIO / Rsense
+XCOM 5 500 12 COMP				; limit comparator
+XFFL 11 82 14 13 FFLOP_A				; flip-flop
+RDUM 13 2 1MEG
+VCLK 11 2 PULSE 0 5 0 1N 1N 10N {PERIOD}	; Clock set pulses
+VRAMP 6 2 PULSE 0 {RAMP} 0 {PERIOD-2N} 1N 1N {PERIOD}
+VDUT 80 2 PULSE 0 5 {PERIOD*DUTYMAX} 1N 1N {(PERIOD-PERIOD*DUTYMAX)-2N} {PERIOD} ; max. duty cycle (=delay/period) delay=period-(tr+tf+tpuls)
+XOR1 11 14 81 OR2_A				; Clock OR FFlopD
+XOR2 80 12 82 OR2_A				; IMAX OR MAXduty Reset
+E_BOUT 15 2 VALUE = { IF ( V(81) > 3.5, {VOUTHI}, {VOUTLO} ) }
+ROUT 15 1 {ROUT}				; output resistor
+.ENDS PWMCM1
+*$
+******

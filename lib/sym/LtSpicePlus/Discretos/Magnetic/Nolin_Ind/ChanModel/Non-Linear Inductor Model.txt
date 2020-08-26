@@ -1,0 +1,50 @@
+This Non-Linear Inductor (Behavioral) Model based on the Hysteretic core model by John Chan (See LTSpice Help/ L: Inductor).
+
+The initial parameters of the Magnetic Core are from the Example in LTSpice Help File. You can compare the results to simulate 
+
+[1.]
+
+L1 N001 0 Hc=16. Bs=.44 Br=.10 A=0.0000251
++ Lm=0.0198 Lg=0.0006858 N=1000
+I1 0 N001 PWL(0 0 1 1)
+.tran .5
+.options maxstep=10u
+.end
+
+and after it 
+
+[2.]
+
+Version 4
+SHEET 1 880 680
+WIRE 160 144 -112 144
+WIRE -112 160 -112 144
+WIRE 160 160 160 144
+WIRE 128 192 112 192
+WIRE 128 208 64 208
+WIRE 128 224 0 224
+WIRE -112 256 -112 240
+WIRE 160 256 160 240
+FLAG -112 256 0
+FLAG 160 256 0
+FLAG 112 192 B
+IOPIN 112 192 Out
+FLAG 64 208 Hf
+IOPIN 64 208 Out
+FLAG 0 224 Hg
+IOPIN 0 224 Out
+SYMBOL Custom\\Transformer\\Lbeh 160 208 R0  ; < -- Change it !!!
+SYMATTR InstName U1
+SYMBOL current -112 160 M0
+WINDOW 123 0 0 Left 0
+WINDOW 39 0 0 Left 0
+SYMATTR InstName I1
+SYMATTR Value PWL(0 0 1 1)
+TEXT -64 506 Left 0 !.tran 500m
+TEXT -280 336 Left 0 ;Note : Dynamic Inductance Value Choose from "Add Trace" : V(u1:Ld)
+
+---------------------------------------
+
+B  - Magnetic Flux Density [Tesla] - (1T = 1V)
+Hf - Intensity of the Magnetic Field in the Core [A/m]  (1 A/m = 1V)
+Hg - Intensity of the Magnetic Field in the Air Gap [A/m] (1 A/m = 1V)

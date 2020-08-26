@@ -1,0 +1,30 @@
+*
+* PWM-Modulator
+*
+* Author:	Michael Haub
+* Date:		30.11.2004
+*
+*                     modulating voltage (0...1V = 0...100%)
+*                     |   Output
+*                     |   |
+.SUBCKT pwm-modulator Mod Out PARAMS: f={400Hz}
+VOsc Osc 0 PULSE(0 1 0 {1/f/2} {1/f/2} 0 {1/f})
+BOut Out 0 V=IF(V(Osc)>(1-V(Mod)),1,0)
+RDummy Mod 0 1G
+.ENDS pwm-modulator
+*
+.SUBCKT pwm-modulator-bv1-left Mod Out PARAMS: f={400Hz}
+BOut Out 0 V=if(V(Mod)>idtmod({f},0,1),1,0)
+RDummy Mod 0 1G
+.ENDS pwm-modulator-bv1-left
+*
+.SUBCKT pwm-modulator-bv1-right Mod Out PARAMS: f={400Hz}
+BOut Out 0 V=if(V(Mod)>(1-idtmod({f},0,1)),1,0)
+RDummy Mod 0 1G
+.ENDS pwm-modulator-bv1-right
+*
+.SUBCKT pwm-modulator-bv2-centered Mod Out PARAMS: f={400Hz}
+VOsc Osc 0 PWL(repeat forever(0,0) ({1/f/2},1) ({1/f},0)) endrepeat)
+BOut Out 0 V=if(V(Mod)>V(Osc),1,0)
+RDummy Mod 0 1G
+.ENDS pwm-modulator-bv2-centered

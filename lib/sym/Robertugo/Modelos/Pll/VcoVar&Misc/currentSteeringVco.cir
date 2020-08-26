@@ -1,0 +1,24 @@
+* current-steering VCO
+s1 2 1 4 0 mod1
+s2 3 2 4 0 mod2
+s3 1 0 4 0 mod2
+s4 3 0 4 0 mod1
+gt 5 3 value = {v(ctrl) * 1ma}
+gd 1 0 value = {v(ctrl) * 1ma}
+vs 5 0 20v
+ct 2 0 500p
+* Schmitt, behavioral model:
+et 7 0 table {1e3*(0.91 + 0.55*v(4) -v(2))} (0 0) (4 4)
+ro 7 4 100
+co 4 0 10p
+vctrl ctrl 0 pwl(0,1v 9u,1v 10u,2v)
+rctrl ctrl 0 1G
+* output buffers:
+esq sqr 0 value = {v(4)}
+rsq sqr 0 1G
+etri tri 0 value = {v(2)}
+rtri tri 0 1G
+.model mod1 vswitch(von=2.5 voff=2.6)
+.model mod2 vswitch(von=2.6 voff=2.5)
+.tran 1u 20u
+.ic v(2)=1.5, v(4)=4

@@ -1,0 +1,36 @@
+Compare Examples NONLINTR.asc and LINEARTR.asc to see the differences between them at different V1 voltages.
+
+From LTSpice Help:
+
+" ... There other non-linear inductor available in LTspice is a hysteretic core model based on a model first proposed in by John Chan et la. in IEEE Transactions On Computer-Aided Design, Vol. 10. No. 4, April 1991.  This model defines the hysteresis loop with only three parameters:
+
+
+   name |    parameter            | units
+   -----+-------------------------+------------
+    Hc  | Coercive force          | Amp-turns/meter
+    Br  | Remnant Flux Density    | Tesla
+    Bs  | Saturation Flux Density | Tesla
+
+The upper and lower branches of the hysteresis major loop are given by
+
+
+                        H + Hc
+   Bup(H) = Bs · --------------------- + µ0·H 
+                 |H+Hc| + Hc·(Bs/Br-1)
+
+and
+
+
+                        H - Hc
+   Bdn(H) = Bs · --------------------- + µ0·H 
+                 |H-Hc| + Hc·(Bs/Br-1)
+
+The initial magnetization curve is given by
+
+   Bmag(H) = .5 · (Bup(H) + Bdn(H))  ...   "
+
+Bmag(H) used for modeling of the non-linearity of used core. Because of the behavioral model the simulation is slower than in case of the linear mutual inductances (LINEARTR.asc). The effect of non-linearity is conspicuous in situation when the V1 voltage is higher (try for example 60V). Convergence problems try to solve by changing of the "Kint" parameter in TR2.mod / SUBCKT INT.
+
+Good luck,
+Peter KAPAS
+e-mail: pkapas@sbcglobal.net

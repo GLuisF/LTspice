@@ -1,0 +1,112 @@
+* Capacitor for use in montecarlo simulations J meech 0ct 2004
+* Binary min max model thanks to Helmut Sennewald
+* No parasitics have been included in this library.
+* Minimum Value
+.subckt C_min_0 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+C1 A B {C*ran}
+.ends C_min
+
+* Nominal Value
+.subckt C_nom_1 A B
+C1 A B {C} 
+.ends C_nom
+
+* Maximum Value
+.subckt C_max_2 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+C1 A B {C*ran}
+.ends C_max_2
+
+
+* Uniform distribution
+.subckt C_uniform_3 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+C1 A B {C*ran}  
+.ends C_uniform
+
+* Binary min/max distribution
+* Requires "run" = (0)1...
+* run==0 uses nominal value
+* Requires "seed" = 1 ... N  ->  Bit-n 0...N-1
+.subckt C_minmax_bin_4 A B
+.param EPS=1e-6
+.param TOLC=TOL/50
+.param w=2**(seed-1)
+* Test if Bit-n is 1   n=0..N-1
+.param RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+{EPS}))>(w-0.5),1,0)
+.param ran={if((run==0),1,1-TOLC/2+TOLC*RN)} 
+C1 A B {C*ran} 
+.ends C_minmax_bin_4
+
+* Gausian distribution with average of 5
+.subckt C_Gausian_5 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+C1 A B {C*ran}
+.ends C_Gausian_5
+
+
+* Minimum Value
+.subckt 40 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*-.5
+C1 A B {C*ran}
+.ends 40
+
+* Nominal Value
+.subckt 41 A B
+C1 A B {C} 
+.ends 41
+
+* Maximum Value
+.subckt 42 A B
+.param TOLC=TOL/50
+.param ran=1+TOLC*.5
+C1 A B {C*ran} 
+.ends 42
+
+* Uniform distribution
+.subckt 43 A B
+.param TOLC=TOL/50
+.param ran=(1+TOLC*(rand(seed*100000+run)-.5))
+C1 A B {C*ran} 
+.ends 43
+
+* Binary min/max distribution
+* Requires "run" = (0)1...
+* run==0 uses nominal value
+* Requires "seed" = 1 ... N  ->  Bit-n 0...N-1
+.subckt 44 A B
+.param EPS=1e-6
+.param TOLC=TOL/50
+.param w=2**(seed-1)
+* Test if Bit-n is 1   n=0..N-1
+.param RN=if(((run-1)-(2*w)*int((run-1)/(2*w)+{EPS}))>(w-0.5),1,0)
+.param ran={if((run==0),1,1-TOLC/2+TOLC*RN)} 
+C1 A B {C*ran} 
+.ends 44
+
+* Gausian distribution with average of 5
+.subckt 45 A B
+.param TOLC=TOL/50
+.param A1=(1+TOLC*(rand(seed*100000+run)-.5))
+.param A2=(1+TOLC*(rand(seed*100000+10000+run)-.5))
+.param A3=(1+TOLC*(rand(seed*100000+20000+run)-.5))
+.param A4=(1+TOLC*(rand(seed*100000+30000+run)-.5))
+.param A5=(1+TOLC*(rand(seed*100000+40000+run)-.5))
+.param ran={(a1+a2+a2+a4+a5)/5}
+C1 A B {C*ran} 
+.ends 45
+
+
+
+

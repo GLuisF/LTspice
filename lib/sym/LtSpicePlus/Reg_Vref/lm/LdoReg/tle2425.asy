@@ -1,0 +1,19 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal 16 16 -15 -16
+WINDOW 0 -26 -32 Right 0
+WINDOW 3 -24 1 Right 0
+SYMATTR Description TLE2425 Precision Virtual Ground
+SYMATTR Prefix X
+SYMATTR Value TLE2425
+SYMATTR Value2 TLE2425
+SYMATTR SpiceModel TLE2425.5_2.sub
+PIN 0 -16 NONE 8
+PINATTR PinName IN
+PINATTR SpiceOrder 1
+PIN 0 16 NONE 8
+PINATTR PinName GND
+PINATTR SpiceOrder 2
+PIN 16 0 NONE 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 3

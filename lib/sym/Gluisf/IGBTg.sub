@@ -1,0 +1,8 @@
+* C:\Users\User\Documents\LTspiceXVII\lib\sym\Gluisf\IGBTg.asc
+.subckt IGBTg C G E
+D1 E C D
+S1 E C G E SW
+.model D D
+.model SW SW(Ron={RON} Roff=1G Vt=5 Vh=-1)
+.backanno
+.end

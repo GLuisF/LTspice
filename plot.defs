@@ -1,0 +1,4 @@
+* File: C:\Users\User\Documents\LTspiceXVII\plot.defs
+*
+* Define parameters and functions that you which to be able to use in
+* data plots in this file with .param and .func statements.

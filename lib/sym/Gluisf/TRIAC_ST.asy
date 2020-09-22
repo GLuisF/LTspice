@@ -14,10 +14,10 @@ LINE Normal 0 64 -16 64
 LINE Normal 0 64 20 44
 WINDOW 0 48 0 Left 2
 WINDOW 38 115 70 Center 2
-SYMATTR Prefix X
-SYMATTR Description Generic TRIAC symbol for use with a model that you supply.
-SYMATTR ModelFile triac_st.lib
 SYMATTR SpiceModel TRIAC_ST
+SYMATTR Prefix X
+SYMATTR Description TRIAC
+SYMATTR ModelFile triac_st.lib
 PIN 32 0 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1

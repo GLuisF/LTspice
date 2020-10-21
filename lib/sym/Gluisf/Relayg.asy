@@ -9,6 +9,7 @@ RECTANGLE Normal 32 -16 -32 16
 CIRCLE Normal 68 -25 59 -34
 CIRCLE Normal 69 33 60 24
 WINDOW 0 -40 0 Right 2
+WINDOW 3 -109 30 Center 0
 SYMATTR Description 1 NA Relay
 SYMATTR ModelFile gluisf.lib
 SYMATTR SpiceModel Relay

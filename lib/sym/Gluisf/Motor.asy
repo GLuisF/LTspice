@@ -1,0 +1,10 @@
+Version 4
+SymbolType BLOCK
+CIRCLE Normal 32 32 -32 -32
+TEXT -10 0 Left 2 M
+PIN -32 0 NONE 8
+PINATTR PinName 1
+PINATTR SpiceOrder 1
+PIN 32 0 NONE 8
+PINATTR PinName 2
+PINATTR SpiceOrder 2

@@ -6,7 +6,7 @@ WINDOW 0 0 -80 Center 2
 WINDOW 3 12 77 Left 2
 SYMATTR Value LTC6655-2.048
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6655.lib
+SYMATTR SpiceModel LTC6655-2.048.sub
 SYMATTR Value2 LTC6655-2.048
 SYMATTR Description .25ppm Noise, Low Drift Precision Reference
 PIN -144 32 LEFT 8

@@ -6,15 +6,18 @@ LINE Normal 209 -1 96 144
 LINE Normal 96 -144 209 -1
 LINE Normal -160 -144 96 -144
 TEXT 0 0 Center 2 ADI
-WINDOW 0 0 -48 Center 2
-WINDOW 3 4 42 Center 2
-WINDOW 39 3 66 Center 0
+WINDOW 0 0 -47 Center 2
+WINDOW 3 6 42 Center 2
+WINDOW 39 7 74 Center 0
+WINDOW 40 7 86 Center 0
+WINDOW 123 6 63 Center 0
 SYMATTR Value AD5766
+SYMATTR SpiceLine dither_scale=0
+SYMATTR SpiceLine2 dither_inv=0
+SYMATTR Value2 Range=8
 SYMATTR Prefix X
-SYMATTR Value2 AD5766
 SYMATTR Description 16-Channel, 16Bit Voltage Output denseDACs (one channel, output stage modeled)
 SYMATTR ModelFile AD5766.sub
-SYMATTR SpiceLine Range=8
 PIN -160 -64 LEFT 8
 PINATTR PinName Vdac
 PINATTR SpiceOrder 1

@@ -1,9 +1,9 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal -192 -320 192 352
-TEXT -1 3 Center 2 LT
-WINDOW 0 -1 -61 Center 2
-WINDOW 3 2 85 Center 2
+TEXT 0 1 Center 2 LT
+WINDOW 0 0 -63 Center 2
+WINDOW 3 3 83 Center 2
 SYMATTR Value LT3950
 SYMATTR Prefix X
 SYMATTR SpiceModel LT3950.sub
@@ -21,7 +21,7 @@ PINATTR SpiceOrder 3
 PIN 128 352 BOTTOM 8
 PINATTR PinName GND
 PINATTR SpiceOrder 4
-PIN -192 -32 LEFT 8
+PIN -192 -48 LEFT 8
 PINATTR PinName _Fault
 PINATTR SpiceOrder 5
 PIN 0 -320 TOP 8

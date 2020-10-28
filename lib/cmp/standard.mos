@@ -1111,3 +1111,5 @@
 .model PSMN040100MSE VDMOS(Rg=1.65 Vto=3.6 Rd=19.7m Rs=.1m Rb=3m Kp=5.5 Ksubthres=180m Mtriode=3 Lambda=10m Cgdmin=50p Cgdmax=1.3n A=.8 Cgs=1.2n Cjo=600p M=.5 Is=5e-13 VJ=100m N=1 mfg=NXP Vds=100 Ron=29.4m Qg=30n)
 .model PSMN075100MSE VDMOS(Rg=1.65 Vto=3.5 Rd=39m Rs=10m Rb=6m Kp=6 Ksubthres=160m Mtriode=3.2 Lambda=10m Cgdmin=40p Cgdmax=550p A=.8 Cgs=700p Cjo=300p M=.5 Is=3.2e-13 VJ=100m N=1 mfg=NXP Vds=100 Ron=57m Qg=16.4n)
 .model 3N163 VDMOS(pchan Vto=-3.0 Rd=10 Rs=100 Kp=4.0m Lambda=21m Cgdmin=0.2p Cgdmax=1.9p A=0.26 Cgs=1.9p N=1.02 M=0.68 Cjo=3.5p Is=0.05p VJ=2.5 TT=24n ksubthres=150m mtriode=0.6 mfg=Linear_Systems Vds=40 Ron=400)
+.model IPT015N10N5 VDMOS(Rg=1.4 Vto=3.8 Rd=500u Rs=600u Rb=400u Mtriode=1.6 Kp=480 ksubthres=100m Lambda=.07 Cgdmin=1p Cgdmax=4n A=.5 Cgs=12n Cjo=9n M=.4 Is=60p VJ=.5 N=1.1 mfg=Infineon Vds=100 Ron=1.3m Qg=169n)
+.model PSMN3R7-100BSE VDMOS(Rg=1 Mtriode=1.53 Vto=3.6 ksubthres=80m theta=.01 Rd=.1m Rs=.1m Rb=.9m Kp=35 Lambda=.01 Cgdmin=120p Cgdmax=5n A=.5 Cgs=10n Cjo=5n M=0.45 Is=5p VJ=0.25 mfg=NXP Vds=100 Ron=3.36m Qg=176n)

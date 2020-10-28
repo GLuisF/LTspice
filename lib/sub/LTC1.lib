@@ -2195,6 +2195,9 @@ A7 PowOK 0 0 0 N014 0 ONF 0 AND trise=111.5n tfall=110.5n
 .model DSHT D(Ron=10k Roff=100Meg vfwd=2.2 epsilon=500m ilimit=.8u)
 .ends LTC6754
 *
+*
+* Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
+*
 .subckt LT6018 1 2 3 4 5 6 7
 B1 0 N004 I=10u*dnlim(uplim(V(1),V(3)-2.9,.1), V(4)+2.9, .1)+1n*V(1)
 B2 N004 0 I=10u*dnlim(uplim(V(2),V(3)-2.89,.1), V(4)+2.89, .1)+1n*V(2)
@@ -2279,10 +2282,10 @@ A6 3 7 0 0 0 0 N017 0 SCHMITT vt=2.9 vh=0 trise=45u
 .model  ENB  D(Ron=100k Roff=1G vfwd=1 epsilon=500m ilimit=700n noiseless)
 .model DPROT D(Ron=1k Roff=24G Vfwd=1 epsilon=500m noiseless)
 .model SCAP SW(Ron=1k  Roff=1G vt=.5 vh=-.3 noiseless)
-.model SBIAS1 SW(level=2 Ron=100k Roff=1G vt=.5 vh=-200m ilimit=5u oneway epsilon=100m noiseless)
-.model SBIAS2 SW(level=2 Ron=50k Roff=1G vt=4.5 vh=-200m ilimit=95u oneway epsilon=100m noiseless)
+.model SBIAS1 SW(level=2 Ron=100k Roff=1G vt=.5 vh=-200m ilimit=10u noiseless)
+.model SBIAS2 SW(level=2 Ron=50k Roff=280Meg vt=4.5 vh=-200m ilimit=95u oneway epsilon=100m noiseless)
 .model SbiasOff SW(Ron=1 Roff=1k vt=-.5 vh=-.3 noiseless)
-.model DBIAS1 D(Ron=8k Roff=1G vfwd=600m epsilon=500m noiseless)
+.model DBIAS1 D(Ron=4.5k Roff=1G vfwd=600m epsilon=500m noiseless)
 .model DBIASZ D(Ron=50k Roff=1G vfwd=4.5 epsilon=500m vrev=4.5 revepsilon=300m noiseless)
 .ends LT6018
 *

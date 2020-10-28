@@ -11,10 +11,10 @@ SYMATTR Value2 LT8653S
 SYMATTR Description Dual Channel 2A, 42V, Synchronous Step-Down Silent Switcher with 6.2µA Quiescent Current
 PIN -64 384 BOTTOM 8
 PINATTR PinName D0
-PINATTR SpiceOrder 1
+PINATTR SpiceOrder 19
 PIN 64 384 BOTTOM 8
 PINATTR PinName D1
-PINATTR SpiceOrder 2
+PINATTR SpiceOrder 20
 PIN 144 144 RIGHT 8
 PINATTR PinName PG2
 PINATTR SpiceOrder 3
@@ -65,7 +65,7 @@ PINATTR PinName EN
 PINATTR SpiceOrder 18
 PIN -64 -384 TOP 8
 PINATTR PinName Vin
-PINATTR SpiceOrder 19
+PINATTR SpiceOrder 1
 PIN 144 336 RIGHT 8
 PINATTR PinName GND
-PINATTR SpiceOrder 21
+PINATTR SpiceOrder 2

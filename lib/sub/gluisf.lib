@@ -69,6 +69,18 @@ V1 VCC 0 {V}
 .param V=5
 .ends VCC
 
+* V+ source conected to ground
+.subckt V+ V+
+V1 V+ 0 {V}
+.param V=15
+.ends V+
+
+* V+ source conected to ground
+.subckt V- V-
+V1 V- 0 {V}
+.param V=-15
+.ends V-
+
 * 1 NA Relay
 .subckt relay A1 A2 NA1 NA2
 L1 A1 A2 {L} Rser={RS}

@@ -13,11 +13,11 @@ LINE Normal 8 40 8 48
 LINE Normal 4 84 12 84
 WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
-SYMATTR Value AD823a
+SYMATTR Value AD823
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
-SYMATTR Value2 AD823a
-SYMATTR Description Wide Supply Dual 17 MHz Rail-toRail FET Input Amplifier
+SYMATTR SpiceModel ADI.lib
+SYMATTR Value2 AD823
+SYMATTR Description Dual 16 MHz Rail-toRail FET Input Amplifier
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

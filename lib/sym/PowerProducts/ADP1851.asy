@@ -1,13 +1,14 @@
 Version 4
-SymbolType BLOCK
+SymbolType CELL
 RECTANGLE Normal 159 384 -160 -384
 TEXT 0 0 Center 2 ADI
-TEXT 0 169 Center 2 ADP1851
 WINDOW 0 0 -168 Center 2
-SYMATTR Prefix X
+WINDOW 3 1 160 Center 2
 SYMATTR Value ADP1851
-SYMATTR Description Synchronous, Step-Down DC-to-DC Controller with Voltage Tracking and Synchronization
-SYMATTR ModelFile ADP1851.sub
+SYMATTR Prefix X
+SYMATTR Description Wide Range Input, Synchronous, Step-Down DC-to-DC Controller
+SYMATTR SpiceModel ADP1851.sub
+SYMATTR Value2 ADP1851
 PIN 160 336 RIGHT 8
 PINATTR PinName Comp
 PINATTR SpiceOrder 1

@@ -5,7 +5,7 @@ TEXT 0 0 Center 2 LT
 WINDOW 0 0 -512 Center 2
 WINDOW 3 1 580 Center 2
 SYMATTR Value LTC3888-1
-SYMATTR SpiceLine Frequency_Switch=250 Vout0=2.5 Vout1=3 PWM_config=3 GM0=3m GM1=3m Vout_Trans_Rate0=1m Vout_Trans_Rate1=1m Vout_Scale_Loop0=2.507 Vout_Scale_Loop1=4.487 Ton_Delay0=0 Ton_Delay1=0 Toff_Delay0=0
+SYMATTR SpiceLine Frequency_Switch=250 Vout0=2.5 Vout1=3 PWM_config=3 GM0=3m GM1=3m Vout_Trans_Rate0=7.5 Vout_Trans_Rate1=9 Vout_Scale_Loop0=2.507 Vout_Scale_Loop1=4.487 Ton_Delay0=0 Ton_Delay1=0 Toff_Delay0=0
 SYMATTR Prefix X
 SYMATTR Value2 LTC3888-1
 SYMATTR Description Dual Output 8-Phase Step-Down DC/DC Controller with Digital Power System Management

@@ -28,10 +28,10 @@ ARC Normal -28 -20 -4 -44 -28 -28 -4 -32
 WINDOW 0 0 -96 Center 2
 WINDOW 3 0 64 Center 2
 SYMATTR Value 4N25
+SYMATTR Prefix X
 SYMATTR SpiceModel 4N25.sub
 SYMATTR Value2 4N25
 SYMATTR Description Optoisolator, Transistor Output
-SYMATTR Prefix X
 PIN -96 -64 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1

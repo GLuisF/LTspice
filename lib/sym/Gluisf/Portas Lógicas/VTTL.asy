@@ -1,0 +1,8 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal -20 -10 0 10
+WINDOW 3 30 -11 Center 1
+SYMATTR Value LVL=1
+PIN 0 0 NONE 8
+PINATTR PinName Y
+PINATTR SpiceOrder 1

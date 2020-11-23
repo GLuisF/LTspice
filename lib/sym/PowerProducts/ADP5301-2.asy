@@ -8,7 +8,7 @@ SYMATTR Value ADP5301-2
 SYMATTR Prefix X
 SYMATTR SpiceModel ADP5301.sub
 SYMATTR Description 50mA/500mA High Efficiency Ultralow Power Step-Down Regulator\n\nOutput Voltage Option0 without Output Discharge
-SYMATTR Value2 ADP5301 OVO=1 OD=1
+SYMATTR Value2 ADP5301 OVO=0 OD=1
 PIN -128 -48 LEFT 8
 PINATTR PinName EN
 PINATTR SpiceOrder 1

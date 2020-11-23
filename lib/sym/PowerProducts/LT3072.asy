@@ -6,10 +6,9 @@ WINDOW 0 0 -64 Center 2
 WINDOW 3 0 64 Center 2
 SYMATTR Value LT3072
 SYMATTR Prefix X
-SYMATTR SpiceModel LT3072.sub
-SYMATTR Value2 LT3072
 SYMATTR Description Dual, Low Noise, 2.5A Programmable Output, 80mV Low Dropout Linear Regulator
 SYMATTR SpiceLine TA=25 Rth=42
+SYMATTR ModelFile LT3072.sub
 PIN 0 416 BOTTOM 8
 PINATTR PinName GND
 PINATTR SpiceOrder 1

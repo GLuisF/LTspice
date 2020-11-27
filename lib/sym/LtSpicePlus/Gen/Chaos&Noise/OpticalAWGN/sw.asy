@@ -13,8 +13,8 @@ LINE Normal -48 40 -40 40
 CIRCLE Normal -32 24 32 88
 CIRCLE Normal -4 76 4 68
 CIRCLE Normal 16 56 24 64
-WINDOW 0 24 16 Left 0
-WINDOW 3 24 104 Left 0
+WINDOW 0 24 16 Left 2
+WINDOW 3 24 104 Left 2
 SYMATTR Value SW
 SYMATTR Prefix S
 SYMATTR Description Voltage controlled switch

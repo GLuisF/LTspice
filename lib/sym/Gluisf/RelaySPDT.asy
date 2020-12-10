@@ -1,0 +1,33 @@
+Version 4
+SymbolType CELL
+LINE Normal 64 -48 64 -34
+LINE Normal 78 24 66 -26
+LINE Normal 48 33 48 48
+LINE Normal 0 -32 0 -16
+LINE Normal 0 16 0 32
+LINE Normal 80 33 80 48
+RECTANGLE Normal 32 -16 -32 16
+CIRCLE Normal 68 -25 59 -34
+CIRCLE Normal 53 33 44 24
+CIRCLE Normal 85 33 76 24
+WINDOW 0 -40 0 Right 2
+WINDOW 3 -109 30 Center 0
+SYMATTR Value L=1.97m RS=123 VDC=5 RON=100m
+SYMATTR Description 1 NA Relay
+SYMATTR ModelFile gluisf.lib
+SYMATTR SpiceModel Relay
+PIN 0 -32 NONE 8
+PINATTR PinName A1
+PINATTR SpiceOrder 1
+PIN 0 32 NONE 8
+PINATTR PinName A2
+PINATTR SpiceOrder 2
+PIN 64 -48 NONE 8
+PINATTR PinName C
+PINATTR SpiceOrder 3
+PIN 48 48 NONE 8
+PINATTR PinName NA
+PINATTR SpiceOrder 4
+PIN 80 48 NONE 8
+PINATTR PinName NF
+PINATTR SpiceOrder 5

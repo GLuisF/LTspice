@@ -1,4 +1,4 @@
-* Copyright (c) 2000-2020 Analog Devices, Inc.   All rights reserved.
+* Copyright (c) 2000-2021 Analog Devices, Inc.   All rights reserved.
 *
 .model 2N7000 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p mfg=Fairchild Vds=60 Ron=2 Qg=1.5n)
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1 mfg=Fairchild Vds=60 Ron=2 Qg=1.5n)
@@ -1113,3 +1113,6 @@
 .model VN10KM NMOS (LEVEL=1 VTO=1.4 KP=1.55E-01 PHI=0.75 LAMBDA=2.9E-04 RD=7.60E-01 RS=7.60E-01 IS=6.46E-14 CBD=3.28E-11 CBS=3.94E-11 PB=0.80 MJ=.46 CGSO=2.40E-08 CGDO=2.00E-08 CGBO=3.36E-07 mfg=Siliconix Vds=60 Ron=4 )
 .model XP161A1355PR VDMOS(KP=21.5031 RS=0.0101 RD=0.0051 RG=1 VTO=0.85 LAMBDA=0.001 CGDMAX=1202p CGDMIN=40p CGS=280p TT=720n a=1.11 IS=20f N=1 RB=15m m=0.424 Vj=0.65 Cjo=450pF mfg=Torex Vds=60 Ron=100m Qg=5n)
 .model ZXM62P02E6 VDMOS(pchan Rg=2 Vto=-1 Rd=0 Rs=0 Rb=40m Kp=2 lambda=0.01 Cgs=300p Cgdmin=10p Cgdmax=500p Cjo=500p Is=3p ksubthres=.1 mfg=Zetex Vds=-20 Ron=.2 Qg=5.8n)
+.model IRLML6402 VDMOS (pchan Vto=-0.55 Kp=12.79 Lambda=11.14m BV=20 IBV=0.25m Rd=0.1m Rs=24.67m Rg=29.22 Rb=0 Cjo=112p Cgs=520p Cgdmin=100p Cgdmax=140p Is=20.3n N=1.5 Vj=0.5 M=0.3 mfg=Infineon Vds=-20 Ron=65m Qg=8n)
+.model BSC022N04LS6 VDMOS(Rg=1.2 Vto=2.38 Rd=1.21m Rs=327u Rb=641u Kp=519.3 Lambda=0.09 Cgdmin=16p Cgdmax=0.39n A=0.6 Cgs=1.94n Cjo=0.76n M=0.68 Is=12.1p VJ=2.5 N=1.04 TT=3n ksubthres=.1 mfg=infineon Vds=40 Ron=2.2m Qg=28n)
+.model BSC059N04LS6 VDMOS(Rg=2.2 Vto=2.38 Rd=3.64m Rs=252u Rb=1.28m Kp=171 Lambda=0.09 Cgdmin=10p Cgdmax=0.12n A=0.6 Cgs=0.64n Cjo=0.25n M=0.68 Is=4p VJ=2.5 N=1.04 TT=3n ksubthres=.1 mfg=infineon Vds=40 Ron=5.9m Qg=4.6n)

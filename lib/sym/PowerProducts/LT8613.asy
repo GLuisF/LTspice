@@ -8,7 +8,7 @@ SYMATTR Value LT8613
 SYMATTR Prefix X
 SYMATTR SpiceModel LT8613.sub
 SYMATTR Value2 LT8613
-SYMATTR Description 42V, 6A Synchronous Step-Down Regulator with Current Sense and 3µA Quiescent Current\n\nNote: Sync function is not modeled.
+SYMATTR Description 42V, 6A Synchronous Step-Down Regulator with Current Sense and 3µA Quiescent Current
 PIN -144 -96 LEFT 8
 PINATTR PinName Imon
 PINATTR SpiceOrder 1
@@ -40,7 +40,7 @@ PIN 144 192 RIGHT 8
 PINATTR PinName Isn
 PINATTR SpiceOrder 10
 PIN -144 -192 LEFT 8
-PINATTR PinName Mode
+PINATTR PinName Sync
 PINATTR SpiceOrder 11
 PIN 144 -96 RIGHT 8
 PINATTR PinName BST

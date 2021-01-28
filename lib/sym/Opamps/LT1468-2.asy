@@ -17,7 +17,7 @@ SYMATTR Value LT1468-2
 SYMATTR Prefix X
 SYMATTR SpiceModel LTC4.lib
 SYMATTR Value2 LT1468-2
-SYMATTR Description 90MHz, 22V/µs, 16-Bit Accurate Operational Amplifier
+SYMATTR Description 200MHz, 22V/µs, 16-Bit Accurate Operational Amplifier
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

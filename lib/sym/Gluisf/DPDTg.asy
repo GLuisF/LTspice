@@ -1,0 +1,43 @@
+Version 4
+SymbolType BLOCK
+LINE Normal -48 0 -34 0
+LINE Normal 48 -32 32 -32
+LINE Normal 24 -30 -26 -2
+LINE Normal 0 -17 0 -160 2
+LINE Normal 33 32 48 32
+LINE Normal -48 -112 -34 -112
+LINE Normal 48 -144 32 -144
+LINE Normal 24 -142 -26 -114
+LINE Normal 33 -80 48 -80
+CIRCLE Normal -25 -4 -34 5
+CIRCLE Normal 33 27 24 36
+CIRCLE Normal 33 -35 24 -26
+CIRCLE Normal -25 -116 -34 -107
+CIRCLE Normal 33 -85 24 -76
+CIRCLE Normal 33 -147 24 -138
+WINDOW 0 -33 58 Left 2
+SYMATTR Prefix X
+SYMATTR Description Single-Pole Double-Throw (SPDT) Analog Switch
+SYMATTR Value spdtg
+SYMATTR ModelFile gluisf.lib
+PIN -48 0 NONE 8
+PINATTR PinName COM1
+PINATTR SpiceOrder 1
+PIN 48 -32 NONE 8
+PINATTR PinName NF1
+PINATTR SpiceOrder 2
+PIN 48 32 NONE 8
+PINATTR PinName NA1
+PINATTR SpiceOrder 3
+PIN 0 -160 NONE 8
+PINATTR PinName T
+PINATTR SpiceOrder 7
+PIN -48 -112 NONE 8
+PINATTR PinName COM2
+PINATTR SpiceOrder 4
+PIN 48 -144 NONE 8
+PINATTR PinName NF2
+PINATTR SpiceOrder 5
+PIN 48 -80 NONE 8
+PINATTR PinName NA2
+PINATTR SpiceOrder 6

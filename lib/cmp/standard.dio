@@ -48,6 +48,7 @@
 .model 1N5373B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=68 IBV=20m NBV=50 Vpk=68 mfg=OnSemi type=Zener)
 .model 1N5375B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=82 IBV=15m NBV=35 Vpk=82 mfg=OnSemi type=Zener)
 .model 1N5378B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=100 IBV=12m NBV=48 Vpk=100 mfg=OnSemi type=Zener)
+.model 1N5402 D IS=2.61339e-12 RS=0.0110501 N=1.20576 EG=0.6 XTI=3.1271 BV=200 IBV=1e-05 CJO=1e-11 VJ=0.7 M=0.5 FC=0.5 TT=1e-09 KF=0 AF=1 type=Silicon
 .model 1N5711 D(IS=19.7n N=1.51 BV=93.3 IBV=50n RS=6.27 CJO=1.8p VJ=0.75 M=0.333 XTI=2 EG=0.69 TT=10.8p type=Schottky)
 .model 1N5806 D(IS=23.3N RS=33.7M N=1.67 BV=150 IBV=1U CJO=66.3P VJ=0.75 M=0.333 TT=43.2N Iave=5 Vpk=150 type=silicon)
 .model 1N5806US D(IS=13.14n N=1.607 RS=28.6m Ikf=0.336 Xti=3 Eg=1.11 Cjo=60.7p Isr=168.5n Bv=160 Ibv=100u Tt=36.1n Vpk=150 Iave=5 mfg=Microsemi)

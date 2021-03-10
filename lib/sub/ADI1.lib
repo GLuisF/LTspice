@@ -8900,7 +8900,6 @@ S4	104	313	113	106	Switch
 *     current on output will be reflected to the supplies
 *     vnoise, referred to the input
 *     inoise, referred to the input
-
 * END Notes
 *
 *$

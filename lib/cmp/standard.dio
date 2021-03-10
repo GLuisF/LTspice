@@ -1560,3 +1560,4 @@
 .model ZLLS350 D IS=14E-8 N=1.03 ISR=90n NR=2 IKF=0.043 BV=56 IBV=0.1m RS=1.2 TT=1n CJO=13.5p VJ=0.6 M=0.33 EG=0.63 XTI=2 TRS1=4m Iave=650m Vpk=40 mfg=Zetex type=Schottky
 .model XP-E2-WHT D(IS=5.01824E-16 N=3.36413016 RS=0.244130334 XTI=40.92995615 IKF=0 EG=2.5000 mfg=CREE)
 .model CMDSH-4E D(Is=82.9n Rs=2.02 N=1.04 Cjo=12.802p M=.47462 Eg=0.69 Xti=2 Iave=200m Vpk=40 mfg=Central type=Schottky)
+.model DFLS160 D(Is=736n Rs=63.0m Bv=60.0 ibv=100u Cjo=163p M=0.333 N=1.01 tt=14.4n )

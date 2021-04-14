@@ -8,10 +8,10 @@ ARC Normal 24 -17 -8 16 -8 0 24 0
 ARC Normal -40 17 -8 -16 -8 0 -40 0
 WINDOW 0 -8 -32 Center 2
 WINDOW 38 -8 34 Center 2
-SYMATTR SpiceModel Fusivel
+SYMATTR SpiceModel Fuse
 SYMATTR Prefix X
 SYMATTR Description A working fuse, goes OC when current rating exceeded.
-SYMATTR ModelFile gluisf.lib
+SYMATTR ModelFile fuse2.lib
 PIN -48 0 NONE 8
 PINATTR PinName in
 PINATTR SpiceOrder 1

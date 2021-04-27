@@ -7795,21 +7795,26 @@ G4 0 N009 N008 0 1m
 .param X=2.5
 .ends ADA4177
 *
-* ADA4637 SPICE Macro-model
+
+*
+*
+* ADA4637 SPICE Macro-model                   
+* Description: Amplifier
 * Generic Desc: 8/30V, JFET, OP, Low Noise, Low Ib, 1X
 * Developed by: HH / ADSJ
 * Revision History: 08/10/2012 - Updated to new header style
+* 04/15/2021 - Corrected output voltage limit versus supply voltage.
 * 1.0 (08/2010)
-* Copyright 2010, 2012 by Analog Devices
+* Copyright 2010, 2012, 2021 by Analog Devices
 *
 * Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement.  Use of this model
 * indicates your acceptance of the terms and provisions in the License Statement.
 *
-* BEGIN Notes:
+* BEGIN Notes: 
 *  CAUTION!!  To aid in convergence, most Spice simulators add a
 *  conductance on every node to insure that no node is floating.
-*  This is GMIN, and the default value is usually 1E-12.  To properly
-*  simulate the low input bias current and low current noise, the
+*  This is GMIN, and the default value is usually 1E-12.  To properly 
+*  simulate the low input bias current and low current noise, the 
 *  Spice simulator options have to be set to the following:
 *  .OPTIONS GMIN=0.01p
 *  .OPTIONS ABSTOL=0.01pA
@@ -7818,22 +7823,21 @@ G4 0 N009 N008 0 1m
 *  .OPTIONS ITL4=100
 *
 * Not Modeled:
-*
-* Parameters modeled include:
-*  This model simulates typical values at Vs=+/-15V
+*    
+* Parameters modeled include: 
+*  This model simulates typical values at Vs=±15V
 *  The ADA4637 is decompensated. Operate at a noise gain >5
 *
 * END Notes
 *
 * Node assignments
-*                 non-inverting input
+*            	  non-inverting input
 *                 |   inverting input
 *                 |   |    positive supply
 *                 |   |    |    negative supply
 *                 |   |    |    |    output
 *                 |   |    |    |    |
 .SUBCKT ADA4637   1   2   99   50   30
-*#ASSOC Category="Op-amps" symbol=opamp
 *
 * INPUT STAGE
 *
@@ -7854,24 +7858,24 @@ EOS  7   1    POLY(3)  (17,24) (73,98) (42,0) 110E-6  1 1 1 1
 *
 EREF 98  0    24  0   1
 *
-* SECOND STAGE
+* SECOND STAGE 
 *
 R5   9  98    3.974E+05
 C3   9  98    1.000E-9
 G1   98  9    5  6  1.700E-01
-V2   8  98    12.18; source
-V3   98 10    12.704;  sink
-D1   9   8    DX
-D2   10  9    DX
+V2   99  8    2.7; source
+V3   10  50   2.3;  sink
+D1   9   8    DX2
+D2   10  9    DX2
 *
-* 2nd
+* 2nd 
 *
 G5   98 18    9  98  1E-03
 R13  18 19    1.0E+03
-R13a 19 98    4.0E-3
+R13a 19 98    4.0E-3	
 C13a 18 98    2E-13
 *
-* COMMON-MODE GAIN NETWORK
+* COMMON-MODE GAIN NETWORK 
 *
 R11  16 17     1.447E+01
 R12  17 98     1.768E-03
@@ -7901,7 +7905,7 @@ R14  24 99     500E3
 R15  24 50     500E3
 R16  29 99     100
 R17  29 50     100
-G8   29 99  POLY(1)    99 18  1E-16 1.00E-2
+G8   29 99  POLY(1)    99 18  1E-16 1.00E-2 
 G9   50 29  POLY(1)    18 50  1E-16 1.00E-2
 *
 V4   25 29     2.02; Isc high side
@@ -7909,7 +7913,7 @@ V5   29 26     1.83
 D3   18 25     DX
 D4   26 18     DX
 *
-G6   27 50 18 29  10.0E-03
+G6   27 50 18 29  10.0E-03 
 G7   28 50 29 18  10.0E-03
 D5   99 27     DX
 D6   99 28     DX
@@ -7925,19 +7929,16 @@ R24  30a 30  1m;  30 is output pin
 *
 .MODEL JX NJF(BETA=1.699E-02  VTO=-1.500  IS=7E-13 RD=1m
 + RS=1m CGD=1.5E-14 CGS=1.5E-14  LAMBDA=0.01 )
-* .MODEL JX PJF(BETA=1.4E-3  VTO=-1.000  IS=20E-12 RD=0
+*.MODEL JX PJF(BETA=1.4E-3  VTO=-1.000  IS=20E-12 RD=0
 *+ RS=0 CGD=3E-12 CGS=3E-12)
 .MODEL DX   D(IS=1E-15 RS=0 CJO=1E-12)
 .MODEL DY   D(IS=1E-15 BV=50 RS=10 CJO=1E-12)
 .MODEL DEN  D(IS=1E-12 RS=2.4E3, KF=3.7E-15 AF=1)
 .MODEL DIN  D(IS=1E-12 RS=12090 KF=0 AF=1)
+.MODEL DX2  D(Ron=1m Roff=1G Vfwd=0 Epsilon=0.3)
 *
 .ENDS ADA4637
 *
-
-
-
-
 
 * ADA4661-2 SPICE Macro-model
 * Typical Values
@@ -8874,189 +8875,78 @@ S4	104	313	113	106	Switch
 .model	Rideal	res(T_ABS=-273)
 *
 .ends
-
-
-* ADA4860 SPICE Macro-model
-* Developed by:
-* Revision History: 08/10/2012 - Updated to new header style
 *
-* Copyright 2012 by Analog Devices, Inc.
 *
-* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement. Use of this model
-* indicates your acceptance of the terms and provisions in the License Statement.
+* Copyright (c) 1998-2021 Analog Devices, Inc.  All rights reserved.
 *
-* BEGIN Notes:
-*     distortion is not characterized
-*
-* Not Modeled:
-*
-* Parameters modeled include:
-*     closed loop gain and phase vs bandwidth
-*     output current and voltage limiting
-*     offset voltage (is static, will not vary with vcm)
-*     ibias (again, is static, will not vary with vcm)
-*     slew rate and step response performance
-*     (slew rate is based on 10-90% of step response)
-*     current on output will be reflected to the supplies
-*     vnoise, referred to the input
-*     inoise, referred to the input
-* END Notes
-*
-*$
-* This model was developed for Analog Devices by:
-* AEI Systems, LLC
-* 5777 W. Century Blvd., Suite 876
-* Los Angeles, California  90045-5677
-*
-* The model is Copyright © 2007, AEi Systems, LLC. All Rights Reserved.
-*
-* Users may not directly or indirectly display, re-sell or
-* re-distribute this model or any derivative work therefore
-* without the prior written consent of both AEi Systems and
-* Analog Devices. This model is subject to change without
-* notice. Neither Analog Devices nor AEi Systems is responsible
-* for updating this model.
-*
-* For more information regarding modeling services, model
-* libraries and simulation products, please call AEi Systems
-* at (310) 216-1144, or contact AEi Systems by
-* email: info@aeng.com. Or visit AEi Systems on the web
-* at http://www.AENG.com
-*$
-* Node assignments
-*                non-inverting input
-*                | inverting input
-*                | |  positive supply
-*                | |  |  negative supply
-*                | |  |  |    output
-*                | |  |  |    |     Power down
-*                | |  |  |    |     |
-.SUBCKT ADA4860  1 2 Vcc Vee Vout  PD
+.subckt ADA4860 1 2 3 4 5 6
+Cinp INp 0 {Cinp} Rpar={Rinp} Noiseless
+Ibp INp 0 {Ibp}
+Ibn N003 0 {Ibn}
+Berr 0 Err I=(V(Binp,Binn)/{Rinn})*V(GO) Rpar=1
+Ro N007 N003 {Rinn} Noiseless
+G1 0 N004 Zol5 0 10
+R1 N004 0 100m Noiseless
+A1 6 4 0 0 0 _PD 0 0 SCHMITT Vt={PDVt} Vh=10m Trise={PDTon*2} Tfall={PDToff*2} Vlow=0 Vhigh=1
+A2 0 N003 0 0 0 0 0 0 OTA G=0 In={Inn} Ink={Inkn}
+A3 0 INp 0 0 0 0 0 0 OTA G=0 In={Inp} Ink={Inkp}
+G3 0 Zol2 Vclamp 0 1m
+C1 Zol2 0 {Cfp2} Rpar=1k Noiseless
+G4 0 Zol3 Zol2 0 1m
+C2 Zol3 0 {Cfp2} Rpar=1k Noiseless
+Cinn N003 0 {Cinn}
+Binp 0 Binp I=Uplim(Dnlim(V(INp)+{Vos}, V(Vcm_min), 0.3), V(Vcm_max), 0.3) Rpar=1
+Binn 0 Binn I=Uplim(Dnlim(V(2), V(Vcm_min), 0.3), V(Vcm_max), 0.3) Rpar=1
+R2 Zol1 0 {Zol} Noiseless
+R3 N003 2 1µ Noiseless
+R4 INp 1 1µ Noiseless
+Bpd 6 0 I={Ipd_off}+V(_PD)* {Ipd_on-Ipd_off}
+Bq 3 4 I={Iq_off}+V(_PD)* {Iq_on-Iq_off}+V(Imon)
+G7 0 Vs 3 4 1m
+R9 Vs 0 1k Noiseless
+A7 VminGD 0 _PD 0 VmaxGD 0 GO 0 AND Tau=1n
+A5 Vs 0 0 0 0 0 VminGD 0 SCHMITT Vt={Vsmin-50m} Vh=10m Tau=1n
+A6 Vs 0 0 0 0 VmaxGD 0 0 SCHMITT Vt={Vsmax-50m} Vh=10m Tau=1n
+R_Iout N004 N002 1µ
+Bimon 0 Imon I=1m*I(R_Iout) Rpar=1k Cpar=1p
+Bhi 0 Hi I=1m*(V(3)-Table(V(Imon), 4m, 0.9, 20m, 1.9, 27m, 3, 85m, 5)) Rpar=1k
+Blo 0 Lo I=1m*(V(4)+Table(-V(Imon), 4m, 0.9, 20m, 1.9, 27m, 3, 85m, 5)) Rpar=1k
+A4 0 Err 0 0 0 0 Zol1 0 OTA G=1 Cout={Cfp1} Asym Isrc={Isrc} Isink={Isink} En={En} Enk={Enk} Vhigh=1e308 Vlow=-1e308
+BVclamp 0 Vclamp I=1m*Uplim(Dnlim(V(ZOL1), V(Lo), 0.3), V(Hi), 0.3) Rpar=1k
+D2 N002 5 Iscp
+D1 5 N002 Iscn
+G11 0 Zol4 Zol3 0 1m
+C8 Zol4 0 {Cfp2} Rpar=1k Noiseless
+G12 0 Zol5 Zol4 0 1m
+C9 Zol5 0 {Cfp2} Rpar=1k Noiseless
+Bbuf 0 N007 I=(V(INp) +{Vos})*V(GO)
+R11 N007 0 1
+BVcm_min 0 Vcm_min I=V(4)+{Vcm_min} Rpar=1
+BVcm_max 0 Vcm_max I=V(3)+{Vcm_max} Rpar=1
+.param Rinp=12Meg Cinp=1.5p
+.param Rinn=90 Cinn=680f
+.param Zol=700k fp1=260k fp2=3.2G fp3=1T
+.param SRp=980 SRn=-790
+.param En=4n Enk=450
+.param Inp=1.5p Inkp=7k
+.param Inn=7.7p Inkn=1.75k
+.param Vcm_min=1.2 Vcm_max=-1.3
+.param Vos=-3.5m
+.param Ibp=-1u Ibn=1.5u
+.param PDVt=0.6 PDTon=200n PDToff=3.5u
+.param Ipd_on=130u Ipd_off=-250n
+.param Iq_on=6m Iq_off=250u
+.param Vsmin=5 Vsmax=12
+.param Iscp=85m Iscn=-85m
+.param Cfp1 = {1 / (2 * pi * fp1 * Zol)}
+.param Cfp2 = {1 / (2 * pi * fp2 * 1k)}
+.param Cfp3 = {1 / (2 * pi * fp3 * 1k)}
+.param Isrc = {Cfp1 * SRp * 1e6}
+.param Isink= {Cfp1 * SRn * 1e6}
+.model Iscp D(Ron=1m Roff=1G Ilimit={Iscp} Epsilon=50m)
+.model Iscn D(Ron=1m Roff=1G Ilimit={-Iscn} Epsilon=50m)
+.ends ADA4860
 
-* Input Stage
-Q1 34 3 5 _Q
-.MODEL _Q PNP
-Q2 43 5 4 _Q1
-.MODEL _Q1 NPN
-Q4 34 6 4 _Q
-Q3 43 3 6 _Q1
-CIN1 1 98 0.5P
-CIN2 2 98 0.01P
-V1 4 2 DC=0
-VCMM 34 VEE DC=1.05
-VCMP VCC 43 DC=1.155
-GBBIAS1 43 5 Value = {IF(V(PDOWN) < .75*V(VCC) , 0 , 1.625M)}
-GBBIAS2 6 34 Value = {IF(V(PDOWN) < .75*V(VCC) , 0 , 1.625M)}
-
-* Input Error Source
-EBEOS 3 1 Value = {V(20,98) + 3.51M}
-GBFBN 2 98 Value = {I(VNOISE3)*1M + 1U}
-GBFBP 1 98 Value = {I(VNOISE3)*1M + 1U}
-
-* Gain Stage
-F1 98 7 VSL 2
-RGAIN 7 98 500E3
-CGAIN 7 98 .15P
-DCL1 7 12 _D6_MODX
-.MODEL _D6_MODX D N=1
-DCL2 14 7 _D6_MODX
-VCL1 VCC 12 DC=2.485
-VCL2 14 VEE DC=2.485
-GBGCM 98 7 Value = {V(98)*10U + V(30)*10U}
-DSL1 98 16 _D1_MOD
-.MODEL _D1_MOD D
-FSL 98 16 V1 1
-DSL2 16 98 _D1_MOD
-DSL3 16 9 _D1_MOD
-DSL4 9 16 _D1_MOD
-RSL 9 19 850
-VSL 19 98 DC=0
-
-* Vnoise Stage
-RNOISE1 10 98 1.045M
-VNOISE1 10 98 DC=0
-VNOISE2 18 98 DC=0.53
-DNOISE1 18 10 _D8_MODX
-.MODEL _D8_MODX D KF=1.25E-9
-FNOISE1 20 98 VNOISE1 1
-RNOISE2 20 98 1
-
-* Inoise Stage
-RNOISE4 8 98 1
-RNOISE3 21 98 1m
-VNOISE3 21 98 DC=0
-VNOISE4 23 98 DC=0.625
-DNOISE2 23 21 _D8_MOD
-.MODEL _D8_MOD D KF=3E-10
-FNOISE2 8 98 VNOISE3 1
-
-* Power Down
-X1 VCC PDOWN PDA 0 33 36 SWHYSTE2
-R15 PDOWN 0 1MEG
-VH 36 0 DC=1M
-VT 33 0 DC=2.5
-GBIPOWDN VEE VCC Value = {IF(V(PDOWN) < 0.75*V(VCC) , 0.95M , 0)}
-EB10 PDA 0 Value = {IF(V(PD) > -4.3 , 0 ,5)}
-
-* Reference Stage
-EBEREF 98 0 Value = {V(VCC)*0.5 + V(VEE)*0.5}
-EBECMREF 30 0 Value = {V(1)*0.5 + V(2)*0.5}
-
-* Buffer Stage
-GBUF 98 13 15 98 0.01
-RBUF 98 13 100
-
-* Second Pole
-EPOLE 17 98 7 98 1
-RPOLE 17 15 1
-CPOLE 15 98 1500P
-
-* Output Current Reflection
-FCURR 98 26 VOC 1
-VCUR1 27 98 DC=0
-VCUR2 98 22 DC=0
-DCUR2 22 26 _D1_MOD
-DCUR1 26 27 _D1_MOD
-
-* Output Stage
-VO1 VCC 24 DC=0
-VO2 VEE 28 DC=0
-GOUT1 24 11 13 VCC 0.5
-GOUT2 28 11 13 VEE 0.5
-ROUT1 11 24 2
-ROUT2 11 28 2
-VOC 11 47 DC=0
-ROUT3 47 98 1MEG
-DCL3 13 32 _D1_MOD
-DCL4 38 13 _D1_MOD
-VCL3 32 11 DC=-0.6
-VCL4 11 38 DC=-0.6
-GBFOUT1 0 VCC Value = {I(VO1) - I(VCUR1) - 1.2M}
-GBFOUT2 VEE 0 Value = {I(VO2) - I(VCUR2) - 1.2M}
-ERout VRVAR 0 Value={ IF (V(PDOWN) < .75*V(Vcc) , 1Meg , 1M)}
-XRout 47 Vout VRVAR 0 Rvar
-CG10 2 VOUT 0.9P
-
-.SUBCKT SWHYSTE2 NODEMINUS NODEPLUS PLUS MINUS VT VH
-S5 NODEPLUS NODEMINUS 8 0 SMOOTHSW
-EBCRTL 8 0 Value = {IF(V(PLUS)-V(MINUS) > V(REF) , 1 , 0)}
-EBREF REF1 0 Value = {IF(V(8) > 0.5 , V(VT)-V(VH) , V(VT)+V(VH))}
-RDEL REF1 REF 100
-CDEL REF 0 100P  IC=1.0000
-RCONV1 8 0 10MEG
-RCONV2 PLUS 0 10MEG
-RCONV3 MINUS 0 10MEG
-.MODEL SMOOTHSW VSWITCH (RON=1.0000  ROFF=1.0000MEG VON=1 VOFF=0)
-.ENDS SWHYSTE2
-*$
-.subckt Rvar 101 102 201 202
-rin 201 202 1G
-r 301 0 1
-fcopy 0 301 vsense 1
-eout 101 106 poly(2) 201 202 301 0 0 0 0 0 1
-vsense 106 102 0; sense iout
-.ends Rvar
-.ENDS ADA4860
 *
 *
 .subckt ADA4530-1 1 2 3 4 5 6

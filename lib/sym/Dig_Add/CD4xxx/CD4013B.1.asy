@@ -21,6 +21,7 @@ SYMATTR Prefix X
 SYMATTR SpiceModel VDD 0
 SYMATTR Description D-type filp-flop wit set and reset; positive edge triggered
 SYMATTR SpiceLine VDD=5  SPEED=1.0  TRIPDT=5e-9
+SYMATTR ModelFile CD4000.LIB
 PIN -96 64 LEFT 40
 PINATTR PinName S
 PINATTR SpiceOrder 1

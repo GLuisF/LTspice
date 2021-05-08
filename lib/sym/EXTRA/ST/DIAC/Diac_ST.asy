@@ -10,7 +10,7 @@ LINE Normal 28 44 64 44
 LINE Normal 28 44 44 20
 LINE Normal 44 20 60 44
 LINE Normal 36 20 64 20
-WINDOW 0 48 0 Left 0
+WINDOW 0 48 0 Left 2
 SYMATTR Prefix X
 SYMATTR Description Generic Bi-directional Trigger Device symbol for use with a model that you supply
 SYMATTR SpiceModel Diac

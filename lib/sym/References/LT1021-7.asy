@@ -6,7 +6,7 @@ WINDOW 0 0 -48 Bottom 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1021-7
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC3.lib
+SYMATTR SpiceModel LT1021-7.sub
 SYMATTR Value2 LT1021-7
 SYMATTR Description Precision 7V Reference
 PIN -112 0 LEFT 8

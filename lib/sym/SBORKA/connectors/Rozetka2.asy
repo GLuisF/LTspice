@@ -12,6 +12,7 @@ TEXT -16 -42 Left 0 1
 TEXT -17 -10 Left 0 2
 SYMATTR SpiceModel rozetka2
 SYMATTR ModelFile Sborka.lib
+SYMATTR Prefix X
 PIN 16 -32 NONE 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1

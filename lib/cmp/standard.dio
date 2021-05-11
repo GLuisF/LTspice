@@ -37,7 +37,7 @@
 .model 1N34A D(IS=2.6u RS=6.5 N=1.6 CJO=0.8p EG=0.67 BV=25 IBV=0.003 Type=GePunctualContact)
 .model 1N4001 D(IS=14.11n N=1.984 RS=33.89m Ikf=94.81 Xti=3 Eg=1.11 Cjo=25.89p M=0.44 Vj=0.3245 Fc=0.5 Bv=75 Ibv=10u Tt=5.7u Iave=1 Vpk=50 mfg=GI type=silicon)
 .model 1N4002 D(IS=14.11n N=1.984 RS=33.89E-3 Ikf=94.81 Xti=3 Eg=1.110 Cjo=51.17E-12 M=0.2762 Vj=0.3905 Fc=0.5 Isr=100.0E-12 Nr=2 Bv=100.1 Ibv=10 Tt=4.761E-6 Iave=1 Vpk=100 mfg=GI type=silicon)
-.model 1N4007 D(IS=7.02767n RS=0.0341512 N=1.80803 EG=1.05743 XTI=5 BV=1000 IBV=5e-08 CJO=1e-11 VJ=0.7 M=0.5 FC=0.5 TT=1e-07 mfg=OnSemi type=silicon)
+.model 1N4007 D(IS=7.02767n RS=0.0341512 N=1.80803 EG=1.05743 XTI=5 BV=1000 IBV=5e-08 CJO=1e-11 VJ=0.7 M=0.5 FC=0.5 TT=1e-07 mfg=OnSemi type=silicon Iave=1 Vpk=1000)
 .model 1N4106 D(BV=12 CJO=107.101P IBV=50U IS=5.72393F M=501.929M RS=100 VJ=750M)
 .model 1N4148 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
 .model 1N4448HWT D(IS=137f RS=0.168 BV=80 IBV=100n CJO=3.56p M=0.333 N=1.11 TT=5.76n Vpk=80V Iave=0.25 Tt=4ns mfg=DiodesInc type=silicon)

@@ -1,10 +1,11 @@
 Version 4
 SymbolType BLOCK
 RECTANGLE Normal -96 -120 112 120
+TEXT 9 121 Top 2 ACDrv 2.1
 WINDOW 0 8 -120 Bottom 2
 SYMATTR Prefix X
 SYMATTR ModelFile gluisf.lib
-SYMATTR Value acdrv2_1
+SYMATTR SpiceModel ACDrv2_1
 PIN -96 -96 LEFT 8
 PINATTR PinName VCC
 PINATTR SpiceOrder 1

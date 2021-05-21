@@ -17,7 +17,7 @@ RPTC 1 2 R={mc(470,tol)}*TBL(temp,-20,1.068,-15,1.022,-10,978.5m,-5,944.8m,0,918
 .param tol 0.5
 .ends
 
-*PTC with resistence varying global note $G_temp voltage
+*PTC with resistence varying global node $G_temp voltage
 *PRF18BE471RB5RB
 .subckt BE471R_ 1 2
 RPTC 1 2 R={mc(470,tol)}*TBL(V($G_temp),-20,1.281,-15,1.221,-10,1.164,-5,1.122,0,1.081,5,1.05,10,1.027,15,1.008,20,1.004,25,1.002,30,1.011,35,1.034,40,1.064,45,1.109,50,1.166,55,1.239,60,1.36,65,1.556,70,1.954,75,2.948,80,5.215,85,9.99,90,20.98,95,45.55,100,95.77)

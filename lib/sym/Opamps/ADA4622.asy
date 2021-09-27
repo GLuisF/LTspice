@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4622
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel ADA4622.lib
 SYMATTR Value2 ADA4622
 SYMATTR Description 30V 8 MHz Low Bias Current Single-Supply RRO Precision Single/Dual/Quad Op Amp
 PIN -32 80 NONE 0

@@ -6,8 +6,8 @@ WINDOW 0 0 -64 Center 2
 WINDOW 3 0 64 Center 2
 SYMATTR Value ADP2303
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP2302_3.sub
-SYMATTR Value2 ADP2302_3 FREQ=0 CSGain=0.12 CL=0.66
+SYMATTR SpiceModel ADP2303.sub
+SYMATTR Value2 ADP2303 FREQ=0 CSGain=0.12 CL=0.66
 SYMATTR Description 3 A, 20 V, 700kHz Nonsynchronous Step-Down Regulator
 PIN -128 -128 LEFT 8
 PINATTR PinName Vin

@@ -9,7 +9,7 @@ SYMATTR Prefix X
 SYMATTR SpiceModel LT3741.sub
 SYMATTR Value2 LT3741
 SYMATTR Description High Power, Constant Current, Constant Voltage, Step-Down Controller
-PIN 0 352 BOTTOM 8
+PIN -64 352 BOTTOM 8
 PINATTR PinName GND
 PINATTR SpiceOrder 1
 PIN -176 -288 LEFT 8
@@ -60,3 +60,6 @@ PINATTR SpiceOrder 27
 PIN -64 -352 TOP 8
 PINATTR PinName Vin
 PINATTR SpiceOrder 28
+PIN 64 352 BOTTOM 8
+PINATTR PinName SYNC
+PINATTR SpiceOrder 29

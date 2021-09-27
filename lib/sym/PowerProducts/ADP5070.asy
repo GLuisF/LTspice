@@ -6,9 +6,9 @@ WINDOW 0 0 -280 Center 2
 WINDOW 3 0 279 Center 2
 SYMATTR Value ADP5070
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP5070_1.sub
-SYMATTR Value2 ADP5070_1 CL1=1.1 CS1=151.83m Ron1=175m CL2=0.6 CS2=151.83m Ron2=350m IQ=3.5m SS=1 CL_INBK1=1 CL_INBK2=2
-SYMATTR Description 1A/0.6A, DC to DC Switching Regulator with Independent Positive and Negative Outputs
+SYMATTR SpiceModel ADP5070.sub
+SYMATTR Value2 ADP5070
+SYMATTR Description 1A/0.6A, DC to DC Switching Regulator with Independent Positive and Negative Outputs\n\n Slew pin is not modelled
 PIN -144 336 LEFT 8
 PINATTR PinName Sync/Freq
 PINATTR SpiceOrder 1

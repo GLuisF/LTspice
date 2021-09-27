@@ -111,3 +111,7 @@ R4 T1 N005 {RS}
 .model PN NPN Cjc=10p Cje=10p
 .model NP PNP Cjc=10p Cje=10p
 .ends DIAC
+
+.subckt Jumper A B
+V1 A B 0
+.ends Jumper

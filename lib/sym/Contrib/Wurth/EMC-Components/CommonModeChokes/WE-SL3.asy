@@ -34,17 +34,17 @@ WINDOW 38 -102 84 Left 2
 SYMATTR SpiceModel 9065_744252101_0.1m
 SYMATTR Prefix X
 SYMATTR InstName L
-SYMATTR Description Wurth Electronic eiSos
+SYMATTR Description SMT Common Mode Line Filter // After inserting, right-click on the symbol to select the part number.
 SYMATTR ModelFile Contrib/Wurth/WE-SL3.lib
-PIN -96 -48 NONE 8
+PIN -96 -48 BOTTOM 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1
-PIN -96 48 NONE 8
-PINATTR PinName 2
-PINATTR SpiceOrder 2
-PIN 96 48 NONE 8
+PIN -96 48 BOTTOM 8
 PINATTR PinName 3
-PINATTR SpiceOrder 3
-PIN 96 -48 NONE 8
+PINATTR SpiceOrder 2
+PIN 96 48 BOTTOM 8
 PINATTR PinName 4
+PINATTR SpiceOrder 3
+PIN 96 -48 BOTTOM 8
+PINATTR PinName 6
 PINATTR SpiceOrder 4

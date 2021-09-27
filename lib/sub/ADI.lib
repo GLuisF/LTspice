@@ -665,17 +665,14 @@ vo2 60 71 -0.05
 .model qn1 npn(bf=500 vaf=100)
 .model qp1 pnp(bf=500 vaf=60)
 .ends AD8044a
-
-
-
-
-
-
-* AD8047 SPICE Macro-model
+*
+* AD8047 SPICE Macro-model 
 * Description: Amplifier
 * Generic Desc: 250MHz (G=1) voltage feedback op amp
 * Developed by: JCH / ADI
 * Revision History: 08/10/2012 - Updated to new header style
+* 05/10/2021 - improved convergence performance
+* 05/12/2021 - corrected current draw at startup
 * 1.0 (11/1997)
 * Copyright 1997, 2012 by Analog Devices, Inc.
 *
@@ -685,11 +682,11 @@ vo2 60 71 -0.05
 * BEGIN Notes:
 *
 * Not Modeled:
-*
+*    
 * Parameters modeled include:
 *
 * END Notes
-*
+*	
 * CAUTION: NOISE PERFORMANCE IS NOT INCLUDED IN THIS MODEL.  NOISE
 * MODELING WILL BE INCLUDED IN A LATER REVISION.
 *
@@ -701,7 +698,6 @@ vo2 60 71 -0.05
 *               |  |  |  |  output
 *               |  |  |  |  |
 .SUBCKT AD8047  3  1  99 50 44
-*#ASSOC Category="Op-amps" symbol=opamp
 *
 * INPUT STAGE AND POLE AT 800MHZ
 *
@@ -716,7 +712,9 @@ R4   7    8    810.5
 RCM1 1    20   5G
 RCM2 3    20   5G
 IOS  1    3    3u
-EOS  3    2    POLY(1) (16,98) 1E-3 1
+GOS  3    2    VALUE={1m+V(16,98)}
+ROS  3    2    1
+*EOS  3    2    POLY(1) (16,98) 1E-3 1
 CIN1 1   99    1.5PF
 CIN2 2   99    1.5PF
 *
@@ -726,8 +724,8 @@ EREF 98   0    POLY(2) (99,0) (50,0) 0 0.5 0.5
 G1   98   9    (4,5) 1.16E-3
 R5   9    98   1.085E6
 C2   9    98   1.333E-12
-D1   9    10   DX
-D2   11   9    DX
+*D1   9    10   DX
+*D2   11   9    DX
 H1   99   10   POLY(1) Vout 1.87  37.9 -3.94E2  2.44E3
 H2   11   50   POLY(1) Vout 1.93 -40.3 -4.51E2 -2.70E3
 *
@@ -741,7 +739,7 @@ CP1  98   12    0.14N
 *
 GP2  98   13    (12,98) 1
 RP2  98   13    1
-CP2  98   13    0.14N
+CP2  98   13    0.14N 
 *
 *POLE AT 1.1GHZ
 *
@@ -772,7 +770,7 @@ RO1  99   45   0.4
 RO2  45   50   0.4
 G7   45   99   (99,40) 2.5
 G8   50   45   (40,50) 2.5
-G9   98   60   (45,40) 2.5
+G9   98   60   (45,40) 2.5 
 D7   60   61   DX
 D8   62   60   DX
 V7   61   98   DC 0
@@ -787,15 +785,12 @@ LO   46   44   .06E-9
 *
 * MODELS USED
 *
-.MODEL DX D
+.MODEL DX D(Ilimit=1 Revilimit=1 Epsilon=0.1 Revepsilon=0.1)
 .MODEL QN NPN(BF=500)
 .ENDS AD8047
-
-
-
-
-
-
+*
+*
+*
 *AD8065 Macro-model
 *Function:Amplifier
 *
@@ -2621,128 +2616,6 @@ EG2 47 50 POLY(1) (30,98) 1.217E+00 1
 .ENDS AD8539
 *
 *$
-
-
-
-
-
-* AD8541 SPICE Macro-model Typical Values
-* Description: Amplifier
-* Generic Desc: 2.7/5V, CMOS, OP, Low Pwr, RRIO, 1X
-* Developed by: TAM / ADSC
-* Revision History: 08/10/2012 - Updated to new header style
-* 1.0 (06/1998)
-* Copyright 1998, 2012 by Analog Devices
-*
-* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement. Use of this model
-* indicates your acceptance of the terms and provisions in the License Statement.
-*
-* BEGIN Notes:
-*
-* Not Modeled:
-*
-* Parameters modeled include:
-*
-* END Notes
-*
-* Node Assignments
-*      noninverting input
-*      |   inverting input
-*      |   |    positive supply
-*      |   |    |    negative supply
-*      |   |    |    |    output
-*      |   |    |    |    |
-*      |   |    |    |    |
-.SUBCKT AD8541   1   2   99   50   45
-*#ASSOC Category="Op-amps" symbol=opamp
-*
-* INPUT STAGE
-*
-M1   4  1 8 8 PIX L=0.6E-6 W=16E-6
-M2   6  7 8 8 PIX L=0.6E-6 W=16E-6
-M3  11  1 10 10 NIX L=0.6E-6 W=16E-6
-M4  12  7 10 10 NIX L=0.6E-6 W=16E-6
-RC1  4 50 20E3
-RC2  6 50 20E3
-RC3 99 11 20E3
-RC4 99 12 20E3
-C1   4  6 1.5E-12
-C2  11 12 1.5E-12
-I1  99  8 1E-5
-I2  10 50 1E-5
-V1  99  9 0.2
-V2  13 50 0.2
-D1   8  9 DX
-D2  13 10 DX
-EOS  7  2 POLY(3) (22,98) (73,98) (81,0) 1E-3 1 1 1
-IOS  1  2 2.5E-12
-*
-* CMRR 64dB, ZERO AT 20kHz
-*
-ECM1 21 98 POLY(2) (1,98) (2,98) 0 .5 .5
-RCM1 21 22 79.6E3
-CCM1 21 22 100E-12
-RCM2 22 98 50
-*
-* PSRR=90dB, ZERO AT 200Hz
-*
-RPS1 70  0 1E6
-RPS2 71  0 1E6
-CPS1 99 70 1E-5
-CPS2 50 71 1E-5
-EPSY 98 72 POLY(2) (70,0) (0,71) 0 1 1
-RPS3 72 73 1.59E6
-CPS3 72 73 500E-12
-RPS4 73 98 25
-*
-* VOLTAGE NOISE REFERENCE OF 35nV/rt(Hz)
-*
-VN1 80 0 0
-RN1 80 0 16.45E-3
-HN  81 0 VN1 35
-RN2 81 0 1
-*
-* INTERNAL VOLTAGE REFERENCE
-*
-VFIX 90 98 DC 1
-S1   90 91 (50,99) VSY_SWITCH
-VSN1 91 92 DC 0
-RSY  92 98 1E3
-EREF 98  0 POLY(2) (99,0) (50,0) 0 .5 .5
-GSY  99 50 POLY(1) (99,50) 0 3.7E-6
-*
-* ADAPTIVE GAIN STAGE
-* AT Vsy>+4.2, AVol=45  V/mv
-* AT Vsy<+3.8, AVol=450 V/mv
-*
-G1  98 30 POLY(2) (4,6) (11,12) 0 2.5E-5 2.5E-5
-VR1 30 31 DC 0
-H1  31 98 POLY(2) VR1 VSN1 0 5.45E6 0 0 49.05E9
-CF  45 30 10E-12
-D3  30 99 DX
-D4  50 30 DX
-*
-* OUTPUT STAGE
-*
-M5  45 46 99 99 POX L=0.6E-6 W=375E-6
-M6  45 47 50 50 NOX L=0.6E-6 W=500E-6
-EG1 99 46 POLY(1) (98,30) 1.05 1
-EG2 47 50 POLY(1) (30,98) 1.04 1
-*
-* MODELS
-*
-.MODEL POX PMOS (LEVEL=2,KP=20E-6,VTO=-1,LAMBDA=0.067)
-.MODEL NOX NMOS (LEVEL=2,KP=20E-6,VTO=1,LAMBDA=0.067)
-.MODEL PIX PMOS (LEVEL=2,KP=20E-6,VTO=-0.7,LAMBDA=0.01,KF=1E-31)
-.MODEL NIX NMOS (LEVEL=2,KP=20E-6,VTO=0.7,LAMBDA=0.01,KF=1E-31)
-.MODEL DX D(IS=1E-14)
-.MODEL VSY_SWITCH VSWITCH(ROFF=100E3,RON=1,VOFF=-4.2,VON=-3.5)
-.ENDS AD8541
-
-
-
-
-
 * AD8542 SPICE Macro-model Typical Values
 * Description: Amplifier
 * Generic Desc: 2.7/5V, CMOS, OP, Low Pwr, RRIO, 2X
@@ -8401,7 +8274,7 @@ S4    104    313    106    113    Switch
 .model    DIPnoisy    D(IS=1.86e-017 KF=9.41e-017)
 .model    Rideal    res(T_ABS=-273)
 .ends ADA4805
-^
+
 *
 * Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
 *

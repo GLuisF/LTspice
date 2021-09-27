@@ -31,19 +31,20 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -145 80 Left 2
+SYMATTR Description Common Mode Power Line Choke // After inserting, right-click on the symbol to select the part number.
 SYMATTR SpiceModel S_7448225007_0.7m
 SYMATTR Prefix X
 SYMATTR InstName L
 SYMATTR ModelFile Contrib/Wurth/WE-CMBHC.lib
-PIN -96 -48 NONE 8
+PIN -96 -48 BOTTOM 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1
-PIN -96 48 NONE 8
+PIN -96 48 BOTTOM 8
 PINATTR PinName 2
 PINATTR SpiceOrder 2
-PIN 96 48 NONE 8
+PIN 96 -48 BOTTOM 8
 PINATTR PinName 4
-PINATTR SpiceOrder 4
-PIN 96 -48 NONE 8
-PINATTR PinName 3
 PINATTR SpiceOrder 3
+PIN 96 48 BOTTOM 8
+PINATTR PinName 3
+PINATTR SpiceOrder 4

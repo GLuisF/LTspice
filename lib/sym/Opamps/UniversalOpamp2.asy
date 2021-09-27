@@ -12,13 +12,13 @@ LINE Normal 4 -20 12 -20
 LINE Normal 8 -24 8 -16
 LINE Normal 4 20 12 20
 WINDOW 0 16 -32 Left 2
-SYMATTR SpiceModel level.2
+SYMATTR SpiceModel level3a
 SYMATTR Prefix X
-SYMATTR Description Universal Opamp model that allows 4 different levels of simulation accuracy.  See ./examples/Educational/UniversalOpamp2.asc for details.  En and in are equivalent voltage and current noises.  Enk and ink are the respective corner frequencies.  Phimargin is used to set the 2nd pole or delay to the approximate phase margin for level.3a and level.3b.  This version uses the new, experimental level 2 switch as the output devices.
+SYMATTR Description Universal op amp model that allows 4 different levels of simulation accuracy.  See test fixture for details.
 SYMATTR Value2 Avol=1Meg GBW=10Meg Slew=10Meg
-SYMATTR SpiceLine ilimit=25m rail=0 Vos=0 phimargin=45
-SYMATTR SpiceLine2 en=0 enk=0 in=0 ink=0 Rin=500Meg
-SYMATTR ModelFile UniversalOpamps2.sub
+SYMATTR SpiceLine Ilimit=25m Rail=0 Vos=0 Phimargin=45
+SYMATTR SpiceLine2 En=0 Enk=0 In=0 Ink=0 Rin=500Meg Ro=1k Ccm=1p Cdiff=2p
+SYMATTR ModelFile UniversalOpamp.lib
 PIN -32 16 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

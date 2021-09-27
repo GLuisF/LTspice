@@ -7,12 +7,12 @@ WINDOW 0 0 -72 Center 2
 SYMATTR Prefix X
 SYMATTR SpiceModel ADP1614-1.3.sub
 SYMATTR Value ADP1614-1.3
-SYMATTR Description 1.3MHz, Adjustable up to 4A, Step-Up PWM DC-to-DC Switching Regulator\n\nNote: SS pin is not modeled.
+SYMATTR Description 1.3MHz, Adjustable up to 4A, Step-Up PWM DC-to-DC Switching Regulator.
 SYMATTR Value2 ADP1614-1.3
-PIN -144 112 LEFT 8
+PIN 144 112 RIGHT 8
 PINATTR PinName Comp
 PINATTR SpiceOrder 1
-PIN 144 48 RIGHT 8
+PIN 144 0 RIGHT 8
 PINATTR PinName FB
 PINATTR SpiceOrder 2
 PIN -144 -112 LEFT 8
@@ -21,12 +21,15 @@ PINATTR SpiceOrder 3
 PIN 0 176 BOTTOM 8
 PINATTR PinName Gnd
 PINATTR SpiceOrder 4
-PIN 144 -80 RIGHT 8
+PIN 144 -112 RIGHT 8
 PINATTR PinName SW
-PINATTR SpiceOrder 5
+PINATTR SpiceOrder 6
 PIN 0 -176 TOP 8
 PINATTR PinName Vin
-PINATTR SpiceOrder 6
+PINATTR SpiceOrder 8
 PIN -144 0 LEFT 8
 PINATTR PinName Clres
-PINATTR SpiceOrder 7
+PINATTR SpiceOrder 9
+PIN -144 112 LEFT 8
+PINATTR PinName SS
+PINATTR SpiceOrder 10

@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LTC6228
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1.lib
+SYMATTR SpiceModel LTC6228.lib
 SYMATTR Value2 LTC6228
 SYMATTR Description 0.88nV/rHz 730 MHz, 500V/us, Low Distortion Rail-to-Rail Output Op Amp with Shutdown
 PIN -32 32 NONE 0

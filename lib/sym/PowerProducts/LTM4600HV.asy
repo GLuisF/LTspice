@@ -6,9 +6,9 @@ WINDOW 3 0 55 Center 2
 WINDOW 0 0 -48 Center 2
 SYMATTR Value LTM4600HV
 SYMATTR Prefix X
-SYMATTR SpiceModel LTM4600.sub
-SYMATTR Value2 LTM4600
-SYMATTR Description 10A High Efficiency DC/DC µModule
+SYMATTR SpiceModel LTM4600HV.sub
+SYMATTR Value2 LTM4600HV
+SYMATTR Description 10A, 28Vin High Efficiency DC/DC µModule
 PIN 64 -112 TOP 8
 PINATTR PinName Fset
 PINATTR SpiceOrder 1

@@ -14,8 +14,8 @@ LINE Normal 4 20 12 20
 WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value ADA4177-1
-SYMATTR Value2 ADA4177-1
-SYMATTR SpiceModel ADI1.lib
+SYMATTR Value2 ADA4177
+SYMATTR SpiceModel ADA4177.lib
 SYMATTR Prefix X
 SYMATTR Description OVP and EMI Protected, Precision, Low Noise and Bias Op Amp
 PIN -32 16 NONE 0

@@ -1441,154 +1441,6 @@ S4    104    313    106    113    Switch
 *
 .ends ADA4610
 *
-* ADA4622 SPICE Macro-model
-* Description: Amplifier
-* Generic Desc: 30V, JFET, OP, S SPLY, RRO
-* Developed by:  DB/ ADSJ
-* Revision History:
-* 1.0 (11/2015)
-* 2.0 (12/2017)
-* 12/2017 - corrected pin order to standard by AR / ADGT
-* 3.0 (8/2020)
-* 8/2020 - added CMRR, PSRR, Input Clamp, Fixed the ff: Vos, Ib, Input Impedance, Short circuit current by AR/ADGT
-* Copyright 2015 by Analog Devices, Inc.
-*
-* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement.  Use of this model
-* indicates your acceptance with the terms and provisions in the License Statement.
-*
-*
-* Notes: This model simulates typical values @ Vsy=±15V, T=25°C.
-*        Ibias and Vos are static and will not vary with Vcm.
-*        Distortion is not modelled.
-*        (ada4622 DMod model)
-*
-* Usage:-
-
-*X1 3 2 7 4 6 ADA4622
-*   | | | | |
-*   | | | | Output
-*   | | | Negative Supply
-*   | | Positive Supply
-*   | Inverting Input
-*   Non-Inverting Input
-
-.SUBCKT ADA4622 3 2 7 4 6
-
-* Input Impedances
-
-GI1 3b 0 VALUE = {IF(V(7,0)>5, 14.600E-012, 4.600E-012)}
-GI2 2 0 VALUE = {IF(V(7,0)>5, 11.800E-012, 5.800E-012)}
-EOS  3b  3 POLY(4) (14,0) (72,0) (60,0) (63,0) 1E-6 1 1 1 1
-R3 3b 2 1.333E+013
-R4 3b 0 2.000E+013
-R5 2 0 2.000E+013
-C1 3b 0 3.600E-012
-C2 2 0 3.600E-012
-C3 3b 2 4.000E-013
-D5a 3b 43x DL
-E1a 43x 0 VALUE = {V(7)- 1.2}
-D5b 2 43y DL
-E1b 43y 0 VALUE = {V(7)- 1.2}
-
-* CMRR
-*
-ECM   13 0 POLY(2) (3,0) (2,0) 0 10.999E-02 10.999E-02
-RCM1  13 14 1.021E+02
-RCM2  14 0 10.842E-03
-CCM1  13 14 1E-6
-*
-* PSRR
-*
-EPSY 71 0 POLY(1) (7,4) -2.4375E-00 14.1250E-02
-RPS1 71 72 9.947E+05
-RPS2 72 0 1.224E+02
-CPS1 71 72  1E-9
-
-* Preconditioning Gain Stage and Sum Node for
-* Transconductance Control and Noise Insertion
-
-G1 0 41 POLY(4) 3 2 60 63 14 0 72 0 0.000E+000 2.377E-003 1.947E-003 0.436E-003 0.436E-003
-
-* Limiting Section for Slew-Rate Control
-
-D5 41 43 DL
-V1 43 0 1.082E+002
-D6 42 41 DL
-V2 0 42 8.170E+001
-G2 41 0 41 0 1.0E-5
-E6 20 0 POLY(1) 41 0 0 1
-+0 -6.562164E-006 0 -5.302485E-012
-+0 3.817254E-016 0 -1.371241E-021
-
-.MODEL DL D IS=1E-18 EG=0.1 N=0.2
-
-* Second-Order Frequency Shaping
-
-R50 20 21 5
-C50 21 0 1.224E-009
-R52 21 23 35
-C51 23 0 5.350E-011
-R54 23 25 245
-C52 25 0 7.642E-012
-R56 25 27 1715
-C53 27 0 1.031E-012
-R58 27 40 12005
-C54 40 0 1.105E-013
-
-* Primary Gain Block and Dominant Pole/Zero
-
-G3 0 44 POLY(3) 45 6 40 0 0 54 0 -1.033E-003 1E-5 5E-4
-G4 44 0 44 0 1.981E-011
-C4 44 4 4.348E-013
-
-* Output Stage and Swing Limiting Network
-
-E2 46 0 POLY(1) 7 0 -1.178E+000 1.000E+002
-E3 47 0 POLY(1) 4 0 2.801E-001 1.000E+002
-D7 44 46 DL
-D8 47 44 DL
-G7 45 6 45 6 100
-E5 55 0 6 0 1.00E+002
-C5 55 50 4.348E-013
-R7 50 44 1.150E+005
-E4 53 0 45 6 2.863E+005
-V7 53 56 11.734E+001
-D9 56 54 DL
-V8 57 53 144.2
-D10 54 57 DL
-G5 54 0 54 0 9.1E-6
-G8 45 7 POLY(2) 7 0 0 44 0 2.500E-002 2.500E-004
-G9 45 4 POLY(2) 4 0 0 44 0 2.500E-002 2.500E-004
-R12 7 45 4.000E+001
-R13 4 45 4.000E+001
-G10 58 59 POLY(2) 0 45 44 0 0 2.500E-002 2.500E-004
-G11 51 0 51 0 100
-G12 52 0 52 0 100
-G13 4 7 POLY(2) 51 0 52 0 0 100 100
-D11 59 0 DX
-D12 51 59 DX
-D13 52 58 DX
-D14 58 0 DX
-R10 58 0 7.00E+003
-R11 59 0 7.00E+003
-
-.MODEL DX D IS=1E-14 EG=0.6
-
-* Quiescent Supply Current
-
-GI9 7 4 VALUE = {IF(V(7,0)>5, 7.15E-004, 6.500E-004)}
-
-* Noise Modeling
-
-D60 60 0 DN1 1000
-I60 0 60 1E-3
-D63 63 0 DN2
-I63 0 63 1E-6
-
-.MODEL DN1 D IS=1E-16
-.MODEL DN2 D IS=1E-16 AF=1 KF=7.715E-018
-
-.ENDS ADA4622
 *
 * Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
 * BR 06/03/2020
@@ -7795,15 +7647,13 @@ G4 0 N009 N008 0 1m
 .param X=2.5
 .ends ADA4177
 *
-
-*
-*
 * ADA4637 SPICE Macro-model                   
 * Description: Amplifier
 * Generic Desc: 8/30V, JFET, OP, Low Noise, Low Ib, 1X
 * Developed by: HH / ADSJ
 * Revision History: 08/10/2012 - Updated to new header style
 * 04/15/2021 - Corrected output voltage limit versus supply voltage.
+* 05/10/2021 - Corrected open-loop gain/phase behavior.
 * 1.0 (08/2010)
 * Copyright 2010, 2012, 2021 by Analog Devices
 *
@@ -7861,7 +7711,7 @@ EREF 98  0    24  0   1
 * SECOND STAGE 
 *
 R5   9  98    3.974E+05
-C3   9  98    1.000E-9
+C3   9  98    1.050E-9
 G1   98  9    5  6  1.700E-01
 V2   99  8    2.7; source
 V3   10  50   2.3;  sink
@@ -7873,7 +7723,7 @@ D2   10  9    DX2
 G5   98 18    9  98  1E-03
 R13  18 19    1.0E+03
 R13a 19 98    4.0E-3	
-C13a 18 98    2E-13
+C13a 18 98    1E-13
 *
 * COMMON-MODE GAIN NETWORK 
 *
@@ -7922,7 +7772,38 @@ D8   50 28     DY
 F1   29  0     V4  1
 F2   0  29     V5  1
 *
-L1   29 30a     1E-15
+*
+* HIGHER-ORDER POLES
+*
+.param C0=437p
+GO1 0 29a 29 0 1
+RO1 29a 0 1 Temp=-273.15
+CO1 29a 0 {C0}
+GO2 0 29b 29a 0 1
+RO2 29b 0 1 Temp=-273.15
+CO2 29b 0 {C0}
+GO3 0 29c 29b 0 1
+RO3 29c 0 1 Temp=-273.15
+CO3 29c 0 {C0}
+GO4 0 29d 29c 0 1
+RO4 29d 0 1 Temp=-273.15
+CO4 29d 0 {C0}
+GO5 0 29e 29d 0 1
+RO5 29e 0 1 Temp=-273.15
+CO5 29e 0 {C0}
+GO6 0 29f 29e 0 1
+RO6 29f 0 1 Temp=-273.15
+CO6 29f 0 {C0}
+GO7 0 29g 29f 0 1
+RO7 29g 0 1 Temp=-273.15
+CO7 29g 0 {C0}
+GO8 0 29h 29g 0 1
+RO8 29h 0 1 Temp=-273.15
+CO8 29h 0 {C0}
+*
+* OUTPUT
+*
+L1   29h 30a     1E-15
 R24  30a 30  1m;  30 is output pin
 *
 * MODELS USED
@@ -7939,7 +7820,6 @@ R24  30a 30  1m;  30 is output pin
 *
 .ENDS ADA4637
 *
-
 * ADA4661-2 SPICE Macro-model
 * Typical Values
 * 07/13, Version 0

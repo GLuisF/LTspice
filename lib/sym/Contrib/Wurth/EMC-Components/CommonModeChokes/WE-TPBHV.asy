@@ -29,23 +29,23 @@ WINDOW 38 -16 64 Top 2
 SYMATTR SpiceModel 744835021220
 SYMATTR Prefix X
 SYMATTR InstName L
-SYMATTR Description WE-TPBHV
+SYMATTR Description Three-Phase Common Mode Power Line Choke // After inserting, right-click on the symbol to select the part number.
 SYMATTR ModelFile Contrib/Wurth/WE-TPBHV.lib
-PIN -112 -48 NONE 8
-PINATTR PinName Port_1
+PIN -112 -48 BOTTOM 8
+PINATTR PinName 1
 PINATTR SpiceOrder 1
-PIN -112 0 NONE 8
-PINATTR PinName Port_2
+PIN -112 0 BOTTOM 8
+PINATTR PinName 2
 PINATTR SpiceOrder 2
-PIN -112 48 NONE 8
-PINATTR PinName Port_3
+PIN -112 48 BOTTOM 8
+PINATTR PinName 3
 PINATTR SpiceOrder 3
-PIN 80 -48 NONE 8
+PIN 80 -48 BOTTOM 8
 PINATTR PinName 4
 PINATTR SpiceOrder 4
-PIN 80 0 NONE 8
-PINATTR PinName Port_5
+PIN 80 0 BOTTOM 8
+PINATTR PinName 5
 PINATTR SpiceOrder 5
-PIN 80 48 NONE 8
+PIN 80 48 BOTTOM 8
 PINATTR PinName 6
 PINATTR SpiceOrder 6

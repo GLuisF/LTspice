@@ -6,7 +6,7 @@ WINDOW 3 0 96 Center 2
 WINDOW 0 0 -96 Center 2
 SYMATTR Value ADP7156-2.8
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP7156-1.2.sub
+SYMATTR SpiceModel ADP7156_7.sub
 SYMATTR Value2 ADP7156_7 Vreg=3.211 Vref=2.816
 SYMATTR Description 1.2A, Ultralow Noise, High PSRR, RF Linear Regulator
 PIN 160 -144 RIGHT 8

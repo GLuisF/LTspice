@@ -1,0 +1,21 @@
+Version 4
+SymbolType CELL
+LINE Normal 32 0 4 0
+LINE Normal 32 32 4 32
+LINE Normal 32 64 4 64
+LINE Normal 33 96 5 96
+LINE Normal 33 128 5 128
+LINE Normal 33 160 5 160
+RECTANGLE Normal 32 192 -32 -32
+CIRCLE Normal 4 4 -4 -4
+CIRCLE Normal 4 36 -4 28
+CIRCLE Normal 4 68 -4 60
+CIRCLE Normal 5 100 -3 92
+CIRCLE Normal 5 132 -3 124
+CIRCLE Normal 5 164 -3 156
+TEXT 0 0 Bottom 2 1
+TEXT 0 32 Bottom 2 2
+TEXT 0 64 Bottom 2 3
+TEXT 1 96 Bottom 2 4
+TEXT 1 128 Bottom 2 5
+TEXT 1 160 Bottom 2 6

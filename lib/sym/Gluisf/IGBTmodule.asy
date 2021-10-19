@@ -1,0 +1,45 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 8 16 8 0
+LINE Normal -8 0 -8 16
+LINE Normal 64 16 8 16
+LINE Normal 80 0 64 16
+LINE Normal 80 -176 80 0
+LINE Normal 63 -192 80 -176
+LINE Normal -64 -192 63 -192
+LINE Normal -80 -176 -64 -192
+LINE Normal -80 0 -80 -176
+LINE Normal -64 16 -80 0
+LINE Normal -8 16 -64 16
+LINE Normal 79 -144 48 -144
+LINE Normal 80 -112 48 -112
+LINE Normal 79 -64 48 -64
+LINE Normal 80 -32 48 -32
+LINE Normal -79 -32 -48 -32
+LINE Normal -80 -64 -48 -64
+LINE Normal -79 -112 -48 -112
+LINE Normal -80 -144 -48 -144
+CIRCLE Normal -8 -168 8 -184
+CIRCLE Normal 38 -119 57 -137
+CIRCLE Normal 38 -39 57 -57
+CIRCLE Normal -58 -119 -39 -137
+CIRCLE Normal -58 -39 -39 -57
+ARC Normal 8 8 -8 -8 8 0 -9 0
+ARC Normal 32 -112 65 -144 48 -144 48 -109
+ARC Normal 32 -32 65 -64 48 -64 48 -29
+ARC Normal -32 -64 -65 -32 -48 -32 -48 -67
+ARC Normal -32 -144 -65 -112 -48 -112 -48 -147
+WINDOW 0 97 -85 VCenter 2
+SYMATTR Prefix X
+PIN 48 -48 RIGHT 20
+PINATTR PinName C
+PINATTR SpiceOrder 1
+PIN -48 -48 LEFT 20
+PINATTR PinName G
+PINATTR SpiceOrder 2
+PIN 48 -128 RIGHT 20
+PINATTR PinName E
+PINATTR SpiceOrder 3
+PIN -48 -128 LEFT 20
+PINATTR PinName E
+PINATTR SpiceOrder 4

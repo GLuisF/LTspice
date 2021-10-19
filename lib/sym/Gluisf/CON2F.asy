@@ -1,0 +1,19 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 28 0 44 0
+LINE Normal 28 32 44 32
+RECTANGLE Normal 0 48 48 -16
+CIRCLE Normal 20 4 28 -4
+CIRCLE Normal 20 36 28 28
+ARC Normal 44 -4 52 4 48 -5 48 3
+ARC Normal 44 28 52 36 48 27 48 35
+TEXT 16 0 Right 1 1
+TEXT 16 32 Right 1 2
+WINDOW 0 23 -24 Center 1
+SYMATTR Prefix X
+PIN 0 0 NONE 6
+PINATTR PinName 1
+PINATTR SpiceOrder 1
+PIN 0 32 NONE 6
+PINATTR PinName 2
+PINATTR SpiceOrder 2

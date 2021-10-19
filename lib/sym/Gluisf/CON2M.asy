@@ -1,0 +1,13 @@
+Version 4
+SymbolType CELL
+LINE Normal 32 0 -8 0
+LINE Normal 32 32 -8 32
+RECTANGLE Normal 32 48 -16 -16
+RECTANGLE Normal -8 1 -16 -1
+RECTANGLE Normal -8 33 -16 31
+PIN 32 0 NONE 8
+PINATTR PinName 1
+PINATTR SpiceOrder 1
+PIN 32 32 NONE 8
+PINATTR PinName 2
+PINATTR SpiceOrder 2

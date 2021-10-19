@@ -1,0 +1,28 @@
+Version 4
+SymbolType CELL
+LINE Normal -16 44 16 44
+LINE Normal -16 20 16 20
+LINE Normal 16 20 0 44
+LINE Normal -16 20 0 44
+LINE Normal 0 0 0 20
+LINE Normal 0 44 0 64
+LINE Normal -16 108 16 108
+LINE Normal -16 84 16 84
+LINE Normal 16 84 0 108
+LINE Normal -16 84 0 108
+LINE Normal 0 64 0 84
+LINE Normal 0 108 0 128
+WINDOW 0 32 54 Left 2
+WINDOW 3 32 80 Left 2
+SYMATTR Value D
+SYMATTR Prefix D
+SYMATTR Description Diode
+PIN 0 0 RIGHT 8
+PINATTR PinName 3
+PINATTR SpiceOrder 3
+PIN 0 64 RIGHT 8
+PINATTR PinName 1
+PINATTR SpiceOrder 1
+PIN 0 128 RIGHT 8
+PINATTR PinName 2
+PINATTR SpiceOrder 2

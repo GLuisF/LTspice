@@ -34,7 +34,8 @@ A1 4 0 0 0 0 N001 0 0 BUF
 * Single-Pole Single-Throw (SPST) Analog Switch
 .subckt spstg 1 2 3
 S1 2 1 3 0 SW
-.model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
+.model SW SW(Ron={Ron} Roff=1G Vt=0.5 Vh=-0.1)
+.param Ron=1m
 .ends spstg
 
 * Opamp Ideal

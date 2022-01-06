@@ -16,7 +16,7 @@ WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4625-1
 SYMATTR Prefix X
 SYMATTR Description 36V, 18MHz, Low Noise, Fast Settling Single Supply, RRO, JFET Op Amp
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel ADA4625-1.lib
 SYMATTR Value2 ADA4625-1
 PIN -32 80 NONE 0
 PINATTR PinName In+

@@ -14,11 +14,10 @@ LINE Normal 4 84 12 84
 WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4077-2
-SYMATTR SpiceModel ADA4077-2
 SYMATTR Prefix X
-SYMATTR ModelFile ADI.lib
+SYMATTR SpiceModel ADI.lib
 SYMATTR Value2 ADA4077-2
-SYMATTR Description 5/30V, BIP, OP, Low Vos, Low Drift
+SYMATTR Description Dual 4 MHz, 7 nV/rt-Hz, Low Offset and Drift, High Precision Amplifiers
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

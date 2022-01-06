@@ -49,7 +49,7 @@ WINDOW 0 32 -32 Left 2
 WINDOW 3 32 32 Left 2
 SYMATTR Value LT6018
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1.lib
+SYMATTR SpiceModel LT6018.lib
 SYMATTR Value2 LT6018
 SYMATTR Description 36V, Ultralow Noise, Precision Op Amp
 PIN -48 16 NONE 0

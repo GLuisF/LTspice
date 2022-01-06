@@ -1,4 +1,4 @@
-* Copyright (c) 2000-2021 Analog Devices, Inc.   All rights reserved.
+* Copyright (c) 2000-2022 Analog Devices, Inc.   All rights reserved.
 *
 .model LedBlue D(IS=93.2P RS=42M N=7.47 BV=5 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=5 type=LED)
 .model LedGreen D(IS=93.2P RS=42M N=4.61 BV=4 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=4 type=LED)

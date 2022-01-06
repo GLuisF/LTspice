@@ -15,9 +15,9 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4522-1
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
+SYMATTR SpiceModel ADA4522-1.lib
 SYMATTR Value2 ADA4522-1
-SYMATTR Description Single 55V Low Noise Zero Drift OpAmp
+SYMATTR Description 55 V, EMI Enhanced, Zero Drift, Ultralow Noise, Rail-to-Rail Output Op Amp
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

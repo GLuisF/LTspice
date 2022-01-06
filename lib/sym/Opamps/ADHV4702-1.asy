@@ -47,7 +47,7 @@ WINDOW 0 64 -32 Left 2
 WINDOW 3 64 32 Left 2
 SYMATTR Value ADHV4702-1
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
+SYMATTR SpiceModel ADHV4702-1.lib
 SYMATTR Value2 ADHV4702-1
 SYMATTR Description 24V to 220V Precision Operational Amplifier
 PIN -48 32 NONE 0

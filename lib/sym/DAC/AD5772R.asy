@@ -9,14 +9,14 @@ TEXT 0 0 Center 2 ADI
 WINDOW 0 0 -48 Center 2
 WINDOW 3 4 42 Center 2
 WINDOW 39 1 66 Center 1
-WINDOW 40 -3 89 Center 1
+WINDOW 40 0 85 Center 1
 SYMATTR Value AD5772R
 SYMATTR SpiceLine Range=1
+SYMATTR SpiceLine2 isink_en=0
 SYMATTR Prefix X
 SYMATTR Value2 AD5772R
 SYMATTR Description 7-Channel, 14/16Bit Current Output DACs (one channel, output stage modeled)
-SYMATTR SpiceModel AD5772R.sub
-SYMATTR SpiceLine2 isink_en=0
+SYMATTR ModelFile AD5772R.sub
 PIN -160 0 LEFT 8
 PINATTR PinName Vdac
 PINATTR SpiceOrder 1

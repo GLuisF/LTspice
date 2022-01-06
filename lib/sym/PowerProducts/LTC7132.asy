@@ -9,7 +9,7 @@ SYMATTR Prefix X
 SYMATTR Description 25A, Dual PolyPhase Step-Down DC/DC Regulator with Sub-Milliohm DCR Sensing and Digital Power System Management\n\nNote: SDA, SCL, _Alert, Share_clk, WP, GPIOs, ASEL, TSNSs are not modeled
 SYMATTR ModelFile LTC7132.sub
 SYMATTR SpiceLine VIN_ON=5.5 VIN_OFF=5 Vout_0=1.6 Vout_1=2.5 Ilim0_range=0 Ilim1_range=0 OC_limit0=1 OC_limit1=1 Mode_ll=2 Fault_response=0 Retry_delay=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K LowDcr=1
-SYMATTR SpiceLine2 Freq=500K PHs_0=0 PHs_1=180 Ton0_delay=.3m Ton0_rise=.5m Ton1_delay=.3m Ton1_rise=.5m Toff0_delay=.2m Toff0_fall=.3m Toff1_delay=.2m Toff1_fall=.3m Vout0_range=0 Vout1_range=0 Sync=0
+SYMATTR SpiceLine2 Freq=500K Sync=0 Ton0_delay=.3m Ton0_rise=.5m Ton1_delay=.3m Ton1_rise=.5m Toff0_delay=.2m Toff0_fall=.3m Toff1_delay=.2m Toff1_fall=.3m Vout0_range=0 Vout1_range=0
 PIN 256 0 RIGHT 8
 PINATTR PinName Vsense0+
 PINATTR SpiceOrder 1

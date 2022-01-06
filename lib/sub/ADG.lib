@@ -1,4 +1,4 @@
-* Copyright © Analog Devices, Inc. 2019.  All rights reserved.
+* Copyright ï¿½ Analog Devices, Inc. 2019.  All rights reserved.
 *
 *
 .subckt ADG1611 1 2 3 4 5 6 7 8 9 10 11 12 13
@@ -26,32 +26,6 @@ D4 4 3 S
 .model BP SW(Ron=500 Roff=1G Vt=-.4 Vh=-.1)
 .model S D(Ron=5 Roff=1G Vfwd=.4 epsilon=1)
 .ends ADG1611
-*
-.subckt ADG1612 1 2 3 4 5 6 7 8 9 10 11 12 13
-C1 1 5 5p
-C2 4 5 63p
-C5 13 5 63p
-A1 1 5 5 5 5 N002 5 5 SCHMITT Vt=1.4 Vh=1m tripdt=10n Trise=250n Tfall=500n
-S1 N004 13 5 N002 TN
-S2 4 N004 N002 5 BN
-S3 13 N006 N002 5 TP
-S4 N006 4 5 N002 BP
-C6 2 5 63p
-C7 3 5 63p
-M1 2 N004 3 3 N
-M2 3 N006 2 2 P
-D1 3 13 S
-D2 4 2 S
-D3 2 13 S
-D4 4 3 S
-.model N VDMOS(Kp=.12 Vto= .5 Is=0 mtriode=1.3 Cgs=24p Ksubthres=.4 nlev=3 gdsnoi=2)
-.model P VDMOS(Kp=.12 Vto=-.5 pchan Is=0 mtriode=1.3 Cgs=24p Ksubthres=.4 nlev=3 gdsnoi=2)
-.model TN SW(Ron=500 Roff=1G Vt=-.4 Vh=-.1)
-.model BN SW(Ron=500 Roff=1G Vt=.6 Vh=-.1)
-.model TP SW(Ron=500 Roff=1G Vt=.6 Vh=-.1)
-.model BP SW(Ron=500 Roff=1G Vt=-.4 Vh=-.1)
-.model S D(Ron=5 Roff=1G Vfwd=.4 epsilon=1)
-.ends ADG1612
 *
 .subckt ADG1633 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 C1 15 16 8p
@@ -210,8 +184,8 @@ D61 F1 N015 OR
 D62 S1 N015 OR
 B1 14 FX2 I=(!V(S1,14) & V(S1L,14))|(!V(S2,14)&V(S2L,14))|(!V(S3,14)&V(S3L,14))|(!V(S4,14)&V(S4L,14))|(!V(S5,14)&V(S5L,14))|(!V(S6,14)&V(S6L,14))|(!V(S7,14)&V(S7L,14))|(!V(S8,14)&V(S8L,14)) Rpar=1 Cpar=1n NoJacob
 B2 14 FX1 I=(!V(S1,14)&V(S1H,14))|(!V(S2,14)&V(S2H,14))|(!V(S3,14)&V(S3H,14))|(!V(S4,14)&V(S4H,14))|(!V(S5,14)&V(S5H,14))|(!V(S6,14)&V(S6H,14))|(!V(S7,14)&V(S7H,14))|(!V(S8,14)&V(S8H,14)) Rpar=1 Cpar=1n NoJacob
-S35 8 18 N019 14 20µA
-S36 8 17 N023 14 20µA
+S35 8 18 N019 14 20ï¿½A
+S36 8 17 N023 14 20ï¿½A
 D63 S2 N024 OR
 D64 S3 N035 OR
 D65 S4 N042 OR
@@ -310,7 +284,7 @@ B5 _ON 14 I=smallsig()
 .model OR D(Ron=1 Roff=1G epsilon=.25)
 .model OUT SW(Ron=150 Roff=10Meg Vt=.5 Vh=-.4)
 .model 3V VDMOS(Kp=200m Vto=-3 Ksubthres=.1)
-.model 20µA SW(Ron=20K Roff=10T Vt=.5 Vh=-10m Ilimit=20u level=2)
+.model 20ï¿½A SW(Ron=20K Roff=10T Vt=.5 Vh=-10m Ilimit=20u level=2)
 .model DC SW(Ron=190 Roff=1G Vt=-.5 Vh=-.4)
 .ends ADG5248F
 *
@@ -427,8 +401,8 @@ D61 F1 N015 OR
 D62 S1 N015 OR
 B1 14 FX2A I=(!V(S1,14)&V(S1L,14))|(!V(S2,14)&V(S2L,14))|(!V(S3,14)&V(S3L,14))|(!V(S4,14)&V(S4L,14)) Rpar=1 Cpar=1n NoJacob
 B2 14 FX1A I=(!V(S1,14)&V(S1H,14))|(!V(S2,14)&V(S2H,14))|(!V(S3,14)&V(S3H,14))|(!V(S4,14)&V(S4H,14)) Rpar=1 Cpar=1n NoJacob
-S35 8 18 N019 14 20µA
-S36 8 17 N023 14 20µA
+S35 8 18 N019 14 20ï¿½A
+S36 8 17 N023 14 20ï¿½A
 D63 S2 N024 OR
 D64 S3 N035 OR
 D65 S4 N042 OR
@@ -519,8 +493,8 @@ D1 F8 N061 OR
 C31 15 14 12p
 B5 14 FX2B I=(!V(S5,14)&V(S5L,14))|(!V(S6,14)&V(S6L,14))|(!V(S7,14)&V(S7L,14))|(!V(S8,14)&V(S8L,14)) Rpar=1 Cpar=1n NoJacob
 B6 14 FX1B I=(!V(S5,14)&V(S5H,14))|(!V(S6,14)&V(S6H,14))|(!V(S7,14)&V(S7H,14))|(!V(S8,14)&V(S8H,14)) Rpar=1 Cpar=1n NoJacob
-S47 15 18 N056 14 20µA
-S48 15 17 N063 14 20µA
+S47 15 18 N056 14 20ï¿½A
+S48 15 17 N063 14 20ï¿½A
 B7 SX2 0 V= !V(S5) ? V(12) : (!V(S6) ? V(11) : (!V(S7) ? V(10) : V(9)))
 R1 15 N059 R=1Meg*(V(SX2,15)/V(13,3))**10+10
 A11 14 FX1B 14 ON 14 14 N056 14 AND Trise=100n
@@ -536,7 +510,7 @@ B8 _ON 14 I=smallsig()
 .model OR D(Ron=1 Roff=1G epsilon=.25)
 .model OUT SW(Ron=150 Roff=10Meg Vt=.5 Vh=-.4)
 .model 3V VDMOS(Kp=200m Vto=-3 Ksubthres=.1)
-.model 20µA SW(Ron=20K Roff=10T Vt=.5 Vh=-10m Ilimit=20u level=2)
+.model 20ï¿½A SW(Ron=20K Roff=10T Vt=.5 Vh=-10m Ilimit=20u level=2)
 .model DC SW(Ron=190 Roff=1G Vt=-.5 Vh=-.4)
 .ends ADG5249F
 *

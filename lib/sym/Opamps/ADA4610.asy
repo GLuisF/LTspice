@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4610
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel ADA4610.lib
 SYMATTR Value2 ADA4610
 SYMATTR Description Low Noise Precision Rail to Rail Output JFET Single/Dual/Quad Op Amp
 PIN -32 80 NONE 0

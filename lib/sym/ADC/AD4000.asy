@@ -5,10 +5,10 @@ LINE Normal -128 -144 -272 0
 LINE Normal 96 -144 -128 -144
 LINE Normal 96 144 -127 144
 LINE Normal -272 0 -127 144
-TEXT -66 -1 Center 2 ADI
-WINDOW 3 -56 -59 Center 3
-WINDOW 0 -84 -34 Left 2
-WINDOW 39 -49 38 Center 1
+TEXT -64 0 Center 2 ADI
+WINDOW 3 -63 39 Center 2
+WINDOW 0 -64 -41 Center 2
+WINDOW 39 -64 69 Center 1
 SYMATTR Value AD4000
 SYMATTR SpiceLine EN_Hi_Z=1
 SYMATTR Description 16-Bi Pseudo Differential, 2 Msps SAR ADC

@@ -8,8 +8,8 @@ SYMATTR Value LTM4681
 SYMATTR Prefix X
 SYMATTR Description Dual Output  50A Polyphase Step-Down Power Supply Module with Digital Power System Management\n\nNote: SDA, SCL, _Alert, Share_clk, WP, GPIOs, ASEL, TSNSs are not modeled
 SYMATTR ModelFile LTM4681.sub
-SYMATTR SpiceLine Vin01ON=5.5 Vin01OFF=5 Vo0=1 Vo1=1 ILM0=0 ILM1=0 OC0=1 OC1=1 Mode01=1 Fault01=0 Retry01=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K Sync01=0 Fsw01=500K PH0=0 PH1=180 Ton0=.3m Ton0r=.5m Ton1=.3m Ton1r=.5m Toff0=.2m Toff0f=.3m Toff1=.2m Toff1f=.3m Vo0r=0 Vo1r=0
-SYMATTR SpiceLine2 Vin23ON=5.5 Vin23OFF=5 Vo2=1 Vo3=1 ILM2=0 ILM3=0 OC2=1 OC3=1 Mode23=1 Fault23=0 Retry23=.1m gm2=3m gm3=3m Rth2=5K Rth3=5K Sync23=0 Fsw23=500K PH2=0 PH3=180 Ton2=.3m Ton2r=.5m Ton3=.3m Ton3r=.5m Toff2=.2m Toff2f=.3m Toff3=.2m Toff3f=.3m Vo2r=0 Vo3r=0
+SYMATTR SpiceLine Vi01n=5.5 Vi01of=5 Vo0=1 Vo1=1 ILM0=0 ILM1=0 OC0=1 OC1=1 MD01=1 FLT01=0 RTY01=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K SYC01=0 F01=500K PH0=0 PH1=180 Tn0=.3m Tn0r=.5m Tn1=.3m Tn1r=.5m Tof0=.2m Tof0f=.3m Tof1=.2m Tof1f=.3m Vo0r=0 Vo1r=0
+SYMATTR SpiceLine2 Vi23n=5.5 Vi23of=5 Vo2=1 Vo3=1 ILM2=0 ILM3=0 OC2=1 OC3=1 MD23=1 FLT23=0 RTY23=.1m gm2=3m gm3=3m Rth2=5K Rth3=5K SYC23=0 F23=500K PH2=0 PH3=180 Tn2=.3m Tn2r=.5m Tn3=.3m Tn3r=.5m Tof2=.2m Tof2f=.3m Tof3=.2m Tof3f=.3m Vo2r=0 Vo3r=0
 PIN -256 0 LEFT 8
 PINATTR PinName Vosns0+
 PINATTR SpiceOrder 1

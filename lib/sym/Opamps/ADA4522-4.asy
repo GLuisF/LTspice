@@ -15,9 +15,9 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4522-4
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
-SYMATTR Value2 ADA4522-1
-SYMATTR Description Quad 55V Low Noise Zero Drift OpAmps
+SYMATTR SpiceModel ADA4522-4.lib
+SYMATTR Value2 ADA4522-4
+SYMATTR Description Quad 55 V, EMI Enhanced, Zero Drift, Ultralow Noise, Rail-to-Rail Output Op Amp
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1720
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1720.sub
 SYMATTR Value2 LT1720
 SYMATTR Description Dual 4.5ns, Single Supply 3V/5V Comparator with Rail-to-Rail Outputs
 PIN -32 80 NONE 0

@@ -72,7 +72,6 @@ C5 2 N010 30.25p
 S1 1 N010 On 0 SCAP
 S7 3 4 ON 0 SP
 A6 3 7 0 0 0 0 N017 0 SCHMITT vt=2.9 vh=0 trise=45u
-R4 3 5 176.912 Noiseless
 .model NPN1 NPN(IS=1E-14 VAF=100 BF=80 IKF=20m BR=1 ISC=1e-11 NC=2 IKR=15m CJC=100f CJE=100f noiseless)
 .model DILIM D(Ron=600 Roff=600 ilimit=4.8m noiseless)
 .model DLK D(Ron=600 Roff=1G vfwd=400m epsilon=300m ilimit=300u noiseless)

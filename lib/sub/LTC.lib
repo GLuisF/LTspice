@@ -5708,57 +5708,6 @@ S4 2 3 N002 0 SBIASC
 .model DSIOFFP D(Is=1e-10 N=1 TT=1e-9)
 .ends LT1719
 *
-.subckt LT1720 1 2 3 4 5
-B1 0 N001 I=10u*dnlim(uplim(V(1),V(3)-1.1,.1), V(4)-.2 ,.1)+1n*V(1)+144n*V(VDH)
-B2 N001 0 I=10u*dnlim(uplim(V(2),V(3)-1.09,.1), V(4)-.21, .1)+1n*V(2)
-C1 N001 0 1f Rpar=100K
-A1 0 N001 0 0 0 0 VDH 0 OTA g=10m iout=100u Vlow=-1e308 Vhigh=1e308 Cout=30f
-D5 0 VDH DLAT
-C4 2 4 .2p
-C10 1 4 .2p
-D13 3 4 DP
-M3 5 N008 N009 N009 NI temp=27
-M4 5 N006 N004 N004 PI temp=27
-C7 3 5 1p
-C8 5 4 1p
-D8 3 N004 DILIMU1
-D16 N009 4 DILIMD
-C9 3 N004 100f
-C14 N009 4 100f
-R7 N008 4 2G
-D3 N008 4 DSIONN temp=27
-D7 4 N008 DSIOFFN temp=27
-G2 0 N008 0 VDH 90n
-C2 5 N008 .06f
-D1 N006 3 DSIOFFP temp=27
-D15 3 N006 DSIONP temp=27
-R1 3 N006 2G
-C15 N006 5 .08f
-A2 VDH 0 0 0 0 0 N008 0 OTA g=60n asym isource=0 isink=-100n Vlow=-1e308 Vhigh=1e308 Cout=.05f
-A3 VDH 0 0 0 0 0 N006 0 OTA g=50n asym isource=100n isink=0 Vlow=-1e308 Vhigh=1e308 Cout=.05f
-C5 3 2 .2p
-C6 3 1 .2p
-D2 3 2 DBIAS
-D4 3 1 DBIAS
-D6 1 2 DBIASC
-G3 0 N006 0 VDH 120n
-D9 3 N004 DILIMU2
-R2 3 4 2k
-.model NI VDMOS(Vto=100m kp=100m mtriode= 1 rds=1Meg)
-.model PI VDMOS(Vto=-100m Kp=300m  mtriode=1 rds=1Meg pchan)
-.model DP  D(Ron=100 Roff=1Meg Vfwd=1 ilimit=1.49m epsilon=.1)
-.model DBIAS D(Ron=1k Roff=10G Vfwd=1 epsilon=.1 ilimit=2.5u)
-.model DBIASC D(Ron=10k Roff=10G Vfwd= 1u Vrev=1u
-+ epsilon=10u revepsilon=10u ilimit=2.5u revilimit=2.5u)
-.model DLAT D(Ron=1 Roff=10k Vfwd=1 Vrev=1 epsilon=.9 revepsilon=.9)
-.model DILIMU1 D(Ron=15 Roff=100k Vfwd=180m ilimit=11m epsilon=50m Vrev=-180m revepsilon=50m)
-.model DILIMU2 D(Ron=70 Roff=100k Vfwd=.3  epsilon=100m)
-.model DILIMD D(Ron=7 Roff=100k Vfwd=170m ilimit=40m epsilon=50m Vrev=-170m revepsilon=50m)
-.model DSIONN D(Is=1e-30 N=2 TT=2e-10)
-.model DSIOFFN D(Is=1e-10 N=1 TT= 1e-10)
-.model DSIONP D(Is=1e-30 N=2 TT=1e-10)
-.model DSIOFFP D(Is=1e-10 N=1 TT=1e-9)
-.ends LT1720
 *
 .subckt LT1722 1 2 3 4 5
 A1 2 1 0 0 0 0 0 0 OTA g=0 in=1.2p ink=17.8

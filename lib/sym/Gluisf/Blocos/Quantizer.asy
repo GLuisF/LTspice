@@ -1,0 +1,15 @@
+Version 4
+SymbolType BLOCK
+LINE Normal -32 -4 -28 0
+LINE Normal -28 0 -32 4
+LINE Normal 0 11 -9 11
+LINE Normal 0 -11 0 11
+LINE Normal 10 -11 0 -11
+RECTANGLE Normal 32 32 -32 -32
+SYMATTR SpiceLine Delta=10 W=0.1
+PIN -32 0 NONE 8
+PINATTR PinName IN
+PINATTR SpiceOrder 1
+PIN 32 0 NONE 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 2

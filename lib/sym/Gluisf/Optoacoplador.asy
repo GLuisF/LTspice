@@ -16,27 +16,33 @@ LINE Normal 96 48 80 48
 LINE Normal 80 48 64 40
 LINE Normal 80 48 72 32
 LINE Normal 64 40 72 32
-LINE Normal 24 0 12 -4
-LINE Normal 24 0 20 -12
-LINE Normal 20 -4 24 0
-RECTANGLE Normal -96 -64 96 64
-ARC Normal -4 12 20 -12 16 -4 -4 0
-ARC Normal -28 12 -4 -12 -28 4 -4 0
-WINDOW 0 0 -80 Center 2
-WINDOW 39 -1 77 Center 2
+LINE Normal 6 0 -3 -3
+LINE Normal 6 0 5 -9
+LINE Normal 2 -4 6 0
+LINE Normal 15 0 32 0
+LINE Normal 15 -96 15 0
+LINE Normal 96 -96 15 -96
+RECTANGLE Normal -96 -113 96 64
+ARC Normal -13 11 3 -9 -1 -1 -13 -1
+ARC Normal -30 8 -13 -13 -30 0 -13 -1
+WINDOW 38 3 75 Center 2
 SYMATTR SpiceModel BJT_10mA
-SYMATTR ModelFile ..\sym\Gluisf\BJT_10mA_V2.sub
-SYMATTR SpiceLine REL_CTR=1
+SYMATTR Description General Purpose Photocoupler
 SYMATTR Prefix X
+SYMATTR ModelFile OptoAcop.lib
+SYMATTR SpiceLine REL_CTR=1
 PIN -96 -48 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1
 PIN -96 48 NONE 0
 PINATTR PinName K
 PINATTR SpiceOrder 2
-PIN 96 -48 NONE 0
-PINATTR PinName C
-PINATTR SpiceOrder 3
 PIN 96 48 NONE 0
 PINATTR PinName E
+PINATTR SpiceOrder 3
+PIN 96 -48 NONE 0
+PINATTR PinName C
 PINATTR SpiceOrder 4
+PIN 96 -96 NONE 8
+PINATTR PinName B
+PINATTR SpiceOrder 5

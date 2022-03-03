@@ -15,7 +15,7 @@ R1 ctrl1 4 1
 C1 ctrl1 4 10µ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
-B1 ctrl1 4 I=-500*I(D1)*3m/Itrig 
+B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
 R6 vd2 vb2 {RH2}
 D3 vd2 3 D1
 Q3 vb2 vb2p 4 0 PNP1
@@ -47,7 +47,7 @@ R1 ctrl1 4 1
 C1 ctrl1 4 10µ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
-B1 ctrl1 4 I=-500*I(D1)*3m/Itrig 
+B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
 R6 vd2 vb2 {RH2}
 D3 vd2 3 D1
 Q3 vb2 vb2p 4 0 PNP1
@@ -80,7 +80,7 @@ R1 ctrl1 4 1
 C1 ctrl1 4 10µ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
-B1 ctrl1 4 I=-500*I(D1)*3m/Itrig 
+B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
 R6 vd2 vb2 {RH2}
 D3 vd2 3 D1
 Q3 vb2 vb2p 4 0 PNP1
@@ -113,7 +113,7 @@ R1 ctrl1 4 1
 C1 ctrl1 4 10µ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
-B1 ctrl1 4 I=-500*I(D1)*3m/Itrig 
+B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
 R6 vd2 vb2 {RH2}
 D3 vd2 3 D1
 Q3 vb2 vb2p 4 0 PNP1
@@ -130,7 +130,7 @@ C34 3 4 30p
 .MODEL DL D(Is=1e-20 Rs=5)
 .ENDS
 *
-* Sharp Optocoupler PC357NT 
+* Sharp Optocoupler PC357NT
 .Subckt Pc357nt A K E C
 D1 A N001 LED
 Q1 C 5 E 0 NPN1 1
@@ -314,36 +314,66 @@ CPD2 5 6 8P
 
 .ENDS HCNR200
 *IL300 from Siemens * RAP 5/97:
-* A - Anode of LED
-* C - Cathode of LED
-* A1 - Anode of photodetector 1
-* C1 - Cathode of photodetector 1
-* A2 - Anode of photodetector 2
-* C2 - Cathode of photodetector 2
-* K1 - Servo gain
-* K2 - Forward gain
-* K3 - Transfer gain
-*
-.Subckt IL300 A C A1 C1 A2 C2 PARAMS: K1=0.007 K2=0.007 K3=1
-DLED A E Demit
-VE E C 0
-E2 D1 0 TABLE ; {Ip2 vs IF}
-+ {(0.955414823*0.999409809**(1/(abs(I(VE))+0.1p))*I(VE)**0.963133681)}
-+ (0,0) (1,1)
-Rdly1 D1 D2 1K
-Cdly1 D2 0 0.17N
-Rdly2 D2 D3 1K
-Cdly2 D3 0 0.17N
-Gdly1 C1 A1 VALUE {K1*V(D3)}
-D1 A1 C1 Dtect
-RD1 A1 C1 15G
-Gdly2 C2 A2 VALUE {K3*K2*V(D3)}
-D2 A2 C2 Dtect
-RD2 A2 C2 15G
-..model Demit D IS=1.51E-16 N=1.495822 RS=2.624361 BV=5 IBV=1U
-+ CJO=15P VJ=1 M=0.5 EG=1.424 TT=500N
-..model Dtect D IS=0.5p N=1 RS=0.001 BV=50 IBV=1U
-+ CJO=14P VJ=0.159621 M=0.344264 EG=1.11 TT=10N
+* A - Anode of LED
+
+* C - Cathode of LED
+
+* A1 - Anode of photodetector 1
+
+* C1 - Cathode of photodetector 1
+
+* A2 - Anode of photodetector 2
+
+* C2 - Cathode of photodetector 2
+
+* K1 - Servo gain
+
+* K2 - Forward gain
+
+* K3 - Transfer gain
+
+*
+
+.Subckt IL300 A C A1 C1 A2 C2 PARAMS: K1=0.007 K2=0.007 K3=1
+
+DLED A E Demit
+
+VE E C 0
+
+E2 D1 0 TABLE ; {Ip2 vs IF}
+
++ {(0.955414823*0.999409809**(1/(abs(I(VE))+0.1p))*I(VE)**0.963133681)}
+
++ (0,0) (1,1)
+
+Rdly1 D1 D2 1K
+
+Cdly1 D2 0 0.17N
+
+Rdly2 D2 D3 1K
+
+Cdly2 D3 0 0.17N
+
+Gdly1 C1 A1 VALUE {K1*V(D3)}
+
+D1 A1 C1 Dtect
+
+RD1 A1 C1 15G
+
+Gdly2 C2 A2 VALUE {K3*K2*V(D3)}
+
+D2 A2 C2 Dtect
+
+RD2 A2 C2 15G
+
+..model Demit D IS=1.51E-16 N=1.495822 RS=2.624361 BV=5 IBV=1U
+
++ CJO=15P VJ=1 M=0.5 EG=1.424 TT=500N
+
+..model Dtect D IS=0.5p N=1 RS=0.001 BV=50 IBV=1U
+
++ CJO=14P VJ=0.159621 M=0.344264 EG=1.11 TT=10N
+
 .ends
 
 
@@ -367,3 +397,49 @@ Q1    5  6  4 QNPN
 .MODEL QNPN NPN(IS=3.33E-11 NF=1.35 CJC=4.74E-11 CJE=167E-12 TF=9.23E-10
 + TR=1.48E-7 BF=150 BR=10 IKF=.1 VAF=100
 .ENDS OPTOISO
+
+* ==== BJT_10mA ====
+* A = diode anode
+* K = diode cathode
+* C = BJT collector
+* E = BJT emitter
+*$
+.SUBCKT BJT_10mA A K E C B PARAMS: REL_CTR=1
+D1 A D DIRED	;IRED
+Vsense D K 0 ;IF Current sense
+Hd R 0 Vsense 1	;I-V
+Rd R T 10K
+Cd T 0 0.2n
+Rdummy B 0 4G
+Q1 C B E [E] QBJT ;phototransistor
+* V-I
+Gpcg C B TABLE  ;Photodetector {(IC vs IF) / Q1 BF}
++ {0.34*REL_CTR*(V(T)**1.658*exp(limit(4.3-60*V(T),-50,50))*
++ ((4*10**(-9)*(REL_CTR**6))-(7*10**(-7)*(REL_CTR**5))+(5*10**(-5)*(REL_CTR**4))-(0.0015*(REL_CTR**3))+
++ (0.023*(REL_CTR**2))-(0.155*(REL_CTR))+2.2261)/100)}
++ (0,0) (10,10)
+.model DIRED D IS=1P N=1.948621 BV=6 IBV=10U
++ CJO=18.8P EG=1.424 TT=500N
+.model QBJT NPN IS=3.64P BF=100 NF=1.193293 BR=10 TF=13N TR=350n
++ CJE=5.16P CJC=18P VAF=65 ISS=0 CJS=7.74p
+.ends
+
+.SUBCKT Darlington_10mA A K E C B PARAMS: REL_CTR=1
+D1 A D DIRED	;IRED
+Vsense D K 0 ;IF Current sense
+Hd R 0 Vsense 1	;I-V
+Rd R T 30K
+Cd T 0 0.1n
+Rdummy B 0 4G
+Q1 C B E [E] QBJT ;phototransistor
+* V-I
+Gpcg C B TABLE  ;Photodetector {(IC vs IF) / Q1 BF}
++ {1.37*REL_CTR*(V(T)**1.658*exp(limit(4.3-60*V(T),-50,50))*
++ ((4*10**(-9)*(REL_CTR**6))-(7*10**(-7)*(REL_CTR**5))+(5*10**(-5)*(REL_CTR**4))-(0.0015*(REL_CTR**3))+
++ (0.023*(REL_CTR**2))-(0.155*(REL_CTR))+2.2261)/100)}
++ (0,0) (10,10)
+.model DIRED D IS=1P N=1.948621 BV=6 IBV=10U
++ CJO=18.8P EG=1.424 TT=500N
+.model QBJT NPN IS=3.64P BF=100 NF=1.193293 BR=10 TF=13N TR=550n
++ CJE=5.16P CJC=18P VAF=65 ISS=0 CJS=7.74p
+.ends

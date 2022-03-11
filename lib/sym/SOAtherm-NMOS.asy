@@ -37,7 +37,7 @@ ARC Normal 64 -112 48 -96 64 -103 56 -112 1
 WINDOW 0 -8 -128 Right 2
 WINDOW 38 11 75 Left 2
 SYMATTR SpiceModel BSC600N25NS3
-SYMATTR Description SOAtherm Thermal Model for N-channel power MOSFET.  Used with a VDMOS device.  See the example in examples/Educational directory.  Intended to be useful for hotswap simulation.
+SYMATTR Description SOAtherm Thermal Model for N-channel power MOSFET.  Used with a VDMOS device.  See the LTspice SOAtherm Tutorial on www.analog.com for details or see the example in examples/jigs directory.  Intended to be useful for hotswap simulation
 SYMATTR ModelFile SOAtherm-NMOS.lib
 SYMATTR Prefix X
 SYMATTR Value2 Tambient=85

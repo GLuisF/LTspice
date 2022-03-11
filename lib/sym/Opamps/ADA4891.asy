@@ -15,9 +15,9 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADA4891
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
-SYMATTR Value2 ADA4891
-SYMATTR Description Low Cost CMOS High Speed R-R Amp
+SYMATTR SpiceModel ADA4891-1.lib
+SYMATTR Value2 ADA4891-1
+SYMATTR Description Low Cost CMOS, High Speed, Rail-to-Rail Amplifier
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

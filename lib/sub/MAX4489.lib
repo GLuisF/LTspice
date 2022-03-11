@@ -193,8 +193,8 @@ CGRN GRni 0 10p
 CGRP GRpi 0 10p
 CGP 34 N007 1f
 CGN 34 N008 1f
-BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3))
-BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
+BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3)+{GRlim})
+BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-{GRlim})
 * Models
 .MODEL ESDO SW (Ron=50 Roff=1G Vt=0.5 Vh=-0.1 Vser=0.6 Ilimit=4m Lser=1n Noiseless)
 .MODEL DN1 D   IS=1P KF=35.0P AF=1
@@ -204,6 +204,7 @@ BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
 .MODEL DO D(Vfwd=1k Vrev=0 Revepsilon=0.1 Ron=1m Noiseless)
 .MODEL DG D(Vfwd=10k Vrev=0 Revepsilon=0.5 Noiseless Ron=1m)
 .MODEL DI D(Vfwd=1k Vrev=0 Revepsilon=0.1 Noiseless)
+.param GRlim=7
 .param Vcm_min=-0.2 Vcm_max=-1.6
 .param Zo_dc=40
 .param Cfp1=3.7u

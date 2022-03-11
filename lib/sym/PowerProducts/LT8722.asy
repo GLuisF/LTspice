@@ -1,7 +1,7 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal 192 352 -208 -352
-TEXT 0 0 Center 2 ADI
+TEXT 0 0 Center 2 LT
 WINDOW 0 0 -96 Center 2
 WINDOW 3 0 96 Center 2
 SYMATTR Value LT8722

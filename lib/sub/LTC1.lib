@@ -473,59 +473,6 @@ G3 0 N007 0 VDH 90n
 + epsilon=10u revepsilon=10u ilimit=2.5u revilimit=2.5u)
 .ends LT1715
 *
-.subckt LT1716 1 2 3 4 5
-B1 0 N002 I=10u*dnlim(uplim(V(1),V(4)+44,.1), V(4)-.6,.1)+1n*V(1)-370p
-B2 N002 0 I=10u*dnlim(uplim(V(2),V(4)+44.1,.1), V(4)-.61, .1)+1n*V(2)
-C1 N002 0 1f Rpar=100K noiseless
-A1 0 N002 0 0 0 0 N009 0 OTA g=11m iout=1.1m Vlow=-1e308 Vhigh=1e308 Cout=1p
-C5 3 5 5p
-C6 5 4 5p
-D5 0 N009 DLAT
-C4 2 4 .1p
-C10 1 4 .1p
-C11 3 2 .1p
-C12 3 1 .1p
-D2 2 1 DBIASC
-D6 3 1 DBIAS
-D9 3 2 DBIAS
-M1 5 N008 N011 N011 N temp=27
-D7 N011 4 DOUTN2
-D8 N011 4 DOUTN1
-D10 3 N003 DOUTP
-D11 4 N007 XD
-C2 5 N008 2.3e-16 Rser=1G
-D15 N008 N007 DASYM
-R2 N008 4 100G
-C7 N008 0 1e-16
-G2 4 N007 0 N009 55n
-C8 N007 4 40f
-GP1 3 4 N011 4 100µ
-C9 N011 4 1p Rpar=100Meg
-C13 3 N003 1p
-D3 3 5 DTRICKLE
-SW1 4 N004 5 4 SPFB
-M3 5 N004 N003 N003 P temp=27
-D12 3 N004 DLIMP
-C3 3 N004 1p Rpar=10Meg
-D4 4 5 DSI temp=27
-D1 3 4 DP
-.model DP D(Ron=10k Roff=1G Vfwd=2 epsilon=.1 ilimit=34.4u)
-.model DBIAS D(Ron=1k Roff=10G Vfwd=0 epsilon=.1 ilimit=1.75n)
-.model DBIASC D(Ron=10Meg Roff=10G Vfwd= 1u Vrev=1u
-+ epsilon=10u revepsilon=10u ilimit=1.75n revilimit=1.75n)
-.model XD D(Ron=1k Roff=1G Vfwd=2.5 Vrev=2.5 epsilon=.1 revepsilon=.1)
-.model DLAT D(Ron=100 Roff=10k Vfwd=1 Vrev=1.3 epsilon=.9 revepsilon=1.2)
-.model N VDMOS(Vto=100m kp=63m  rds=200Meg)
-.model DOUTN1 D(Vfwd=15m  Ron=500 Roff=100k epsilon=10m Vrev=0 revepsilon=10m)
-.model DOUTN2 D(Vfwd=75m Ron=90 Roff=100k epsilon=20m)
-.model DSI D(cjo=70p  m=.5 vj=1 is=1e-30 n=5)
-.model DASYM D(Ron=2.5G Roff=2G Vfwd=0 epsilon=100m)
-.model SPFB sw(Ron=10Meg Roff=10G vt=.2 vh=-.05)
-.model DTRICKLE D(Ron=1k Roff=50Meg Vfwd=.5 ilimit=5.5u epsilon=.1)
-.model P VDMOS(Vto=-20m kp=18m rds=100Meg pchan)
-.model DLIMP D(Vfwd=.26 Ron=10k Roff=1G epsilon=.1)
-.model DOUTP D(Vfwd=29m Ron=1.6k Roff=1G epsilon=10m Vrev=-29m revepsilon=10m)
-.ends LT1716
 *
 .subckt LT1794 1 2 3 4 5 6 7
 A1 2 1 0 0 0 0 0 0 OTA g=0 in=800f ink=100

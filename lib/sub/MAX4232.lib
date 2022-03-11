@@ -196,8 +196,8 @@ CGRN GRni 0 10p
 CGRP GRpi 0 10p
 CGP 34 N007 1f
 CGN 34 N008 1f
-BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3)+37.5)
-BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-37.5)
+BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3)+37.5+{GRlim})
+BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-37.5-{GRlim})
 * Models
 .MODEL DG D(Vfwd=10k Vrev=0 Revepsilon=0.5 Noiseless Ron=1m)
 .MODEL DO D(Vfwd=1k Vrev=0 Revepsilon=0.1 Ron=1m Noiseless)
@@ -206,6 +206,7 @@ BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-37.5)
 .MODEL REXP  RES TCE= 4.74559
 .MODEL DIDL2 D()
 .MODEL DI D(Vfwd=1k Vrev=0 Revepsilon=0.1 Noiseless)
+.param GRlim=140
 .param Vcm_min=0 Vcm_max=0
 .param Zo_dc=100
 .param Cfp1=1.59u

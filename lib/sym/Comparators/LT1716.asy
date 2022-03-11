@@ -15,7 +15,7 @@ WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value LT1716
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1.lib
+SYMATTR SpiceModel LT1716.sub
 SYMATTR Value2 LT1716
 SYMATTR Description SOT-23, 44V, Over-the-Top, µPower, Precision, Rail-to-Rail Comparator
 PIN -32 16 NONE 0

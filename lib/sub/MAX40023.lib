@@ -134,8 +134,9 @@ C57A 141 0  5.89U
 GR57A 141 0 141 0 1 
 *
 * OP Amp Output Gain / Response 
-G3A  0 30A IVR 2 1 
-RG3A 30A 0 1 
+A_G3A 2 IVR 0 0 0 0 30A 0 OTA G=1 Vhigh=1k Vlow=-1k Iout=1k En=table(freq, 1, 30n, 5, 25n, 10, 37n, 20.5, 29n, 30, 32n, 97, 27.5n, 500, 17n, 1k, 12n, 5k, 8n, 10.6k, 11n, 17.3k, 13n, 29.2k, 28n, 37.9k, 39n, 48.8k, 51n) ;G=1u, Iout=1m
+RG3A 30A 0 1 Noiseless
+CG3A 30A 0 1f
 G3  0 30 30A 0 1 
 R3 30  0 1.00K
 G6  0 33 30 0 1m
@@ -201,9 +202,9 @@ R1001 1002 1003 1k
 S_D4 3 5 5 3 ESDO
 S_D3 5 4 4 5 ESDO
 DOP Vsatp 57 DO
-COP 57 Vsatp 1f
 DON 57 Vsatn DO
 CON 57 Vsatn 1f
+COP 57 Vsatp 1f
 GSATP 0 Vsatp 55 0 1k
 RSATP Vsatp 0 1m
 GSATN 0 Vsatn 56 0 1k
@@ -220,10 +221,10 @@ RGRP GRpi 0 1k Noiseless
 RGRN GRni 0 1k Noiseless
 CGRN GRni 0 10p
 CGRP GRpi 0 10p
-CGP 34 N007 1f
-CGN 34 N008 1f
-BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3))
-BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
+;CGP 34 N007 1f
+;CGN 34 N008 1f
+BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3)+{GRlim})
+BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-{GRlim})
 * Models
 .MODEL ESDO SW (Ron=50 Roff=1G Vt=0.5 Vh=-0.1 Vser=0.6 Ilimit=4m Lser=1n Noiseless)
 .MODEL SSHUT SW RON=1m ROFF=100MEG VT=0 VH=-10m
@@ -237,6 +238,7 @@ BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
 .MODEL DO D(Vfwd=1k Vrev=0 Revepsilon=0.1 Ron=1m Noiseless)
 .MODEL DG D(Vfwd=10k Vrev=0 Revepsilon=0.5 Noiseless Ron=1m)
 .MODEL DI D(Vfwd=1k Vrev=0 Revepsilon=0.1 Noiseless)
+.param GRlim=10
 .param Vcm_min=-0.1 Vcm_max=0.1
 .param Zo_dc=100
 .param Cfp1=548u

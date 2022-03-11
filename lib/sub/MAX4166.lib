@@ -212,8 +212,8 @@ RGRP GRpi 0 1k Noiseless
 RGRN GRni 0 1k Noiseless
 CGRN GRni 0 10p
 CGRP GRpi 0 10p
-CGP 34 N007 1f
-CGN 34 N008 1f
+;CGP 34 N007 1f
+;CGN 34 N008 1f
 BGRP 0 GRpi I=1m*({Zo_max}* {Iscp}+V(3))
 BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
 * Models
@@ -230,7 +230,7 @@ BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4))
 .MODEL REXP  RES TCE=-27.25662M
 .MODEL REXPM  RES TCE= 32.82061M
 .MODEL DIDL2 D() 
-.param Vcm_min=0.1 Vcm_max=-0.1
+.param Vcm_min=-0.25 Vcm_max=0.25
 .param Zo_dc=50
 .param Cfp1=26.5u
 .param SRp=2.28 SRn=-2.28

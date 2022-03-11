@@ -166,7 +166,7 @@ BGRN 0 GRni I=1m*({Zo_max}* {Iscn}+V(4)-450)
 .param Zo_dc=100
 .param Zo_max={Zo_dc}
 .param Iscp=30m Iscn=-40m
-.param IZop={Rx_Zo*Iscp} IZon={Rx_Zo*Iscn}
+.param IZop={1.5*Rx_Zo*Iscp} IZon={1.5*Rx_Zo*Iscn}
 .param Cfp1=7.57m
 .param SRp=4.25 SRn=-4.25
 .param Isrc = {Cfp1 * SRp * 1Meg} Isink = {Cfp1 * SRn * 1Meg}

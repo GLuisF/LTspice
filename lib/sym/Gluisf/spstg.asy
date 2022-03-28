@@ -11,6 +11,7 @@ SYMATTR Prefix X
 SYMATTR SpiceModel spstg
 SYMATTR Description Single-Pole Single-Throw (SPST) Analog Switch
 SYMATTR ModelFile gluisf.lib
+SYMATTR SpiceLine Ron=1m Roff=1G
 PIN -48 0 NONE 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1

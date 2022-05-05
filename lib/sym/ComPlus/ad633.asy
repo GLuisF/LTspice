@@ -1,12 +1,12 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal 80 96 -96 -96
-WINDOW 0 -32 -16 Left 0
-WINDOW 38 -2 32 Center 0
+WINDOW 0 -91 -112 Left 2
+WINDOW 38 1 1 Center 2
 SYMATTR SpiceModel AD633
 SYMATTR Prefix X
 SYMATTR Description AD 4 quadrant multiplier
-SYMATTR ModelFile AD633.SUB
+SYMATTR ModelFile AD633.CIR
 PIN -96 -64 LEFT 8
 PINATTR PinName X1
 PINATTR SpiceOrder 1

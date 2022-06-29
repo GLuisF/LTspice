@@ -5,7 +5,7 @@
 *        3
 *
 .SUBCKT potentiometer 1 2 3
-.param w=limit(SET,1m,.999)
+.param w=limit(SET,.1m,.9999)
 R0 1 3 {Rt*(1-w)}
 R1 3 2 {Rt*(w)}
 .ENDS
@@ -32,18 +32,18 @@ R1 3 2 {Rt*0.1*(w)}
 *       pot_tab          table(x)
 *       pot_piher_plog   piecewise linear, datasheet
 *       pot_radiohm_plog piecewise linear, measured
-*    
 *
-*       1 ____    Set=1 
-*             |  
+*
+*       1 ____    Set=1
+*             |
 *            | |  3
 *            | |<---- Set 0..1
 *            | |
-*       Rtap | |  Tap 
+*       Rtap | |  Tap
 *            | |
 *       2 ____|   Set=0
 *
-* 
+*
 *     RT = total resistance
 *     Set = ratio of travel of the wiper
 *     RTAP = reference resistance at wiper=Tap
@@ -51,12 +51,12 @@ R1 3 2 {Rt*0.1*(w)}
 *            RTAP is measured between pin-2 and wiper.
 *     TAP = ratio of travel when Rtap is reached
 *--------------------- The Linear Potentiometer ---------------------
-*      
+*
 * 1.0 <----- 0.0
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 .SUBCKT PotLin 1 2 3
@@ -70,14 +70,14 @@ R2 3 2 {Rt*(w)}
 *------------- The Ideal Power Function Potentiometer ---------------
 *
 * It is interesting to know that the power log. curve is a
-* good fit to so called "log"-potentiometers, because most of 
+* good fit to so called "log"-potentiometers, because most of
 * them have not true logarithm dependency in reality.
 *
 * 1.0 <----- 0.0
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 *  RTAP is resistance at travel TAP
@@ -101,7 +101,7 @@ R2 3 2 {Rt*(ratio)}
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 *  RTAP is resistance at travel TAP
@@ -124,11 +124,11 @@ R2 3 2 {Rt*(ratio)}
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 *  RTAP is resistance at travel TAP
-*  Example: Rt=10k, R=1 @ 0.001  
+*  Example: Rt=10k, R=1 @ 0.001
 *           RTAP=1, TAP=0.001
 *  RTAP and TAP define a point of the curve resistance versus ratio.
 *
@@ -151,11 +151,11 @@ R2 3 2 {Rt*(ratio)}
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 *  RTAP is resistance at travel TAP
-*  Example: Rt=10k, R=1 @ 0.999  
+*  Example: Rt=10k, R=1 @ 0.999
 *           RTAP=1, TAP=0.999
 *  RTAP and TAP define a point of the curve resistance versus ratio.
 *
@@ -178,16 +178,16 @@ R2 3 2 {Rt*(ratio)}
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 .SUBCKT pot_tab 1 2 3
 * Parameters: Rt, Set
 .param w=limit(0.01m,Set,0.99999)
 *
-.param ratio=TABLE(w, 0,0.01m, 0.1, 0.001, 0.2, 0.003, 0.3, 0.01, 
+.param ratio=TABLE(w, 0,0.01m, 0.1, 0.001, 0.2, 0.003, 0.3, 0.01,
 + 0.4, 0.05, 0.5, 0.1, 0.6, 0.2, 0.7, 0.35,
-+ 0.8, 0.6, 0.9, 0.9, 0.95, 0.98, 1.0, 0.99999) 
++ 0.8, 0.6, 0.9, 0.9, 0.95, 0.98, 1.0, 0.99999)
 *
 R1 1 3 {Rt*(1-ratio)}
 R2 3 2 {Rt*(ratio)}
@@ -204,14 +204,14 @@ R2 3 2 {Rt*(ratio)}
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 .SUBCKT pot_piher_plog 1 2 3
 * Parameters: Rt, Set
 .param w=limit(0.01m,Set,0.99999)
 *
-.param ratio=TABLE(w, 0,0.01m, 0.05,0.01m, 0.33,0.04, 0.66,0.16, 
+.param ratio=TABLE(w, 0,0.01m, 0.05,0.01m, 0.33,0.04, 0.66,0.16,
 + 0.95,0.99, 1.0,0.99999)
 *
 R1 1 3 {Rt*(1-ratio)}
@@ -222,22 +222,22 @@ R2 3 2 {Rt*(ratio)}
 
 *--------- A Positive "Logarithm" Potentiometer from RADIOHM. -------
 *
-* RADIOHM shows a smooth "logarithm/power" curve in the datasheet. 
+* RADIOHM shows a smooth "logarithm/power" curve in the datasheet.
 * My own measurements on a 100kOhm stero pot has shown that it
-* consists of five piecwise linear sections. 
+* consists of five piecwise linear sections.
 *
 * 1.0 <----- 0.0
 *        |3
 *      __V__
 *  1--|_____|--2
-*        
+*
 *  o--R1-o-R2--o
 *
 .SUBCKT pot_radiohm_plog 1 2 3
 * Parameters: Rt, Set
 .param w=limit(0.01m,Set,0.99999)
 *
-.param ratio=TABLE(w, 0,0.01m, 0.1,0.01m, 0.3,0.012, 0.42,0.047, 
+.param ratio=TABLE(w, 0,0.01m, 0.1,0.01m, 0.3,0.012, 0.42,0.047,
 + 0.52,0.105, 0.64,0.25, 0.95,0.99999, 1.0,0.99999)
 *
 R1 1 3 {Rt*(1-ratio)}
@@ -253,10 +253,10 @@ R2 3 2 {Rt*(ratio)}
 *       pot_tap_plog      exp(k*(1-x))
 *       pot_tap_nlog      exp(k*x)
 *       pot_tap_tab       table(x)
-*    
+*
 *
 *       1 ____    1.0=Set
-*             |  
+*             |
 *            | |  3
 *            | |<---- Set 0..1
 *   Tap  4 --| |
@@ -264,7 +264,7 @@ R2 3 2 {Rt*(ratio)}
 *            | |
 *       2 ____|   0.0=Set
 *
-* 
+*
 *     RT = total resistance
 *     SET = ratio of travel of the wiper
 *     RTAP = resistance between "4" and "2" at position TAP.
@@ -283,7 +283,7 @@ R2 3 2 {Rt*(ratio)}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -293,7 +293,7 @@ R2 3 2 {Rt*(ratio)}
 *     Rt=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_pow 1 2 3 4 
+.SUBCKT pot_tap_pow 1 2 3 4
 * Parameters RT, SET, RTAP, TAP
 *
 .param w=limit(Set,0.01m,.99999)
@@ -330,7 +330,7 @@ vsw 7 0 {w}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -340,7 +340,7 @@ vsw 7 0 {w}
 *     Rt=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_plog 1 2 3 4 
+.SUBCKT pot_tap_plog 1 2 3 4
 * Parameters RT, SET, RTAP, TAP
 *
 .param w=limit(Set,0.01m,.99999)
@@ -377,7 +377,7 @@ vsw 7 0 {w}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -387,7 +387,7 @@ vsw 7 0 {w}
 *     Rt=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_nlog 1 2 3 4 
+.SUBCKT pot_tap_nlog 1 2 3 4
 * Parameters RT, SET, RTAP, TAP
 *
 .param w=limit(Set,0.01m,.99999)
@@ -425,7 +425,7 @@ vsw 7 0 {1-w}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -435,7 +435,7 @@ vsw 7 0 {1-w}
 *     Rt=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_lin 1 2 3 4  
+.SUBCKT pot_tap_lin 1 2 3 4
 * Parameters RT, SET, RTAP
 *
 .param ratio=limit(Set,0.01m,.99999)
@@ -470,7 +470,7 @@ vsw 7 0 {ratio}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -480,15 +480,15 @@ vsw 7 0 {ratio}
 *     Rt=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_tab 1 2 3 4 
+.SUBCKT pot_tap_tab 1 2 3 4
 * Parameters RT, SET, RTAP, TAP
 *
 .param w=limit(Set,0.01m,.99999)
 .param TAP1=limit(0.01m, TAP, 0.99999)
 *
-.param ratio=TABLE(w, 0,0, 0.1, 0.001, 0.2, 0.003, 0.3, 0.01, 
+.param ratio=TABLE(w, 0,0, 0.1, 0.001, 0.2, 0.003, 0.3, 0.01,
 + 0.4, 0.05, 0.48, 0.1, 0.52, 0.1, 0.6, 0.2, 0.7, 0.35,
-+ 0.8, 0.6, 0.9, 0.9, 0.95, 0.98, 1.0, 1.0) 
++ 0.8, 0.6, 0.9, 0.9, 0.95, 0.98, 1.0, 1.0)
 *
 .param RD=Rt*ratio
 *
@@ -515,7 +515,7 @@ vsw 7 0 {w}
 *
 *          3  wiper
 *          V
-* 1.0 <------------------------- 0.0       
+* 1.0 <------------------------- 0.0
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -525,7 +525,7 @@ vsw 7 0 {w}
 *     Rtot=R1+R2+R3+R4
 *     Rtap=R3+R4
 *
-.SUBCKT pot_tap_audio 1 2 3 4  RT={RT} SET={SET} RTAP={RTAP} TAP={TAP} 
+.SUBCKT pot_tap_audio 1 2 3 4  RT={RT} SET={SET} RTAP={RTAP} TAP={TAP}
 .param w=limit(set,0.1m,.9999)
 
 .param pwrexp=ln(RTAP/RT)/ln(TAP)
@@ -544,7 +544,7 @@ sw6 6 3 7 0 sw2
 vsw 7 0 {w}
 .model sw1 SW(Ron=1m, Roff=1T vt=0.5)
 .model sw2 SW(Ron=1T, Roff=1m vt=0.5)
-.ENDS 
+.ENDS
 
 * Potentiometer with a linear characteristic and a tap.
 * The tap value is defined by RTAP.
@@ -557,7 +557,7 @@ vsw 7 0 {w}
 *
 *          3
 *          V
-*      ------------------------>        
+*      ------------------------>
 *      ___  5 ___     ___  6 ___
 *  1--|___|--|___|-o-|___|--|___|--2
 *                  |
@@ -567,7 +567,7 @@ vsw 7 0 {w}
 *     Rtap=R1+R2
 *
 .SUBCKT pot_tap_linear 1 2 3 4  RT={RT} SET={SET} RTAP={RTAP} TAP={TAP}
-* Parameter TAP has been ignored 
+* Parameter TAP has been ignored
 .param w=limit(set,0.1m,.9999)
 *
 .param ratio=w
@@ -597,7 +597,7 @@ vsw 7 0 {w}
 *                 | in2
 *                 | | in3
 *                 | | | out
-*                 | | | | 
+*                 | | | |
 .subckt sw_3_to_1 1 2 3 4 sel={sel}
 S1 1 4  11 0 My_sw_3_to_1
 S2 2 4  12 0 My_sw_3_to_1
@@ -607,7 +607,7 @@ B2 12 0 V=IF({sel}>1.5 & {sel}<2.5, 1, -1)
 B3 13 0 V=IF({sel}>2.5 & {sel}<3.5, 1, -1)
 .model My_sw_3_to_1 SW(Ron=.1 Roff=1e9 Vt=0)
 .ENDS
-.subckt 1P3T 1 2 3 4 
+.subckt 1P3T 1 2 3 4
 R12 1 2 { IF ( SET < 2, 1u, 1T) }
 R13 1 3 { IF ( SET <= 2 & SET >= 2, 1u, 1T) }
 R14 1 4 { IF ( SET > 2, 1u, 1T) }

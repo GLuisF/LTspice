@@ -1,8 +1,12 @@
+*Dummy Zener Diode made by GLuisF
+.SUBCKT ZENER 1 2
+.ENDS
+
 *SRC=1N4728A;1N4728A;Diodes;Zener <=10V; 3.30V  1.00W   Diodes Inc.Zener
 .SUBCKT 1N4728A_3.3V_1W  1 2
 D1 1 2 DF
 DZ 3 1 DR
-VZ 2 3 0.972 
+VZ 2 3 0.972
 .MODEL DF D ( IS=125p RS=0.620 N=1.10 CJO=364p VJ=0.750 M=0.330 TT=50.1n )
 .MODEL DR D ( IS=25.0f RS=1.24 N=3.00 )
 .ENDS
@@ -357,26 +361,26 @@ VZ 2 3 2.62
 .MODEL DR D ( IS=8.08f RS=13.1 N=3.00 )
 .ENDS
 
-*SRC=1N5233B;1N5233B;Diodes;Zener <=10V; 6.00V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT 1N5233B  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 5.11 
-.MODEL DF D ( IS=34.3p RS=1.24 N=1.10  CJO=74.2p VJ=0.750 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=6.87f RS=0.460 N=1.19 ) 
+*SRC=1N5233B;1N5233B;Diodes;Zener <=10V; 6.00V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT 1N5233B  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 5.11
+.MODEL DF D ( IS=34.3p RS=1.24 N=1.10  CJO=74.2p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=6.87f RS=0.460 N=1.19 )
 .ENDS
 
-*SRC=1N5235B;1N5235B;Diodes;Zener <=10V; 6.80V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT 1N5235B  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 4.56 
-.MODEL DF D ( IS=30.3p RS=1.24 N=1.10  CJO=61.5p VJ=0.750 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=6.06f RS=1.15 N=2.97 ) 
+*SRC=1N5235B;1N5235B;Diodes;Zener <=10V; 6.80V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT 1N5235B  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 4.56
+.MODEL DF D ( IS=30.3p RS=1.24 N=1.10  CJO=61.5p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=6.06f RS=1.15 N=2.97 )
 .ENDS
 
 *SRC=1N5239B;1N5239B;Diodes;Zener <=10V; 9.10V  0.500W   Diodes Inc. Zener
@@ -389,15 +393,15 @@ VZ 2 3 6.72
 .MODEL DR D ( IS=4.53f RS=6.11 N=3.00 )
 .ENDS
 
-*SRC=1N5241B;1N5241B;Diodes;Zener 10V-50V; 11.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT 1N5241B  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 9.12 
-.MODEL DF D ( IS=18.7p RS=1.24 N=1.10  CJO=58.2p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=3.75f RS=0.949 N=2.45 ) 
+*SRC=1N5241B;1N5241B;Diodes;Zener 10V-50V; 11.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT 1N5241B  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 9.12
+.MODEL DF D ( IS=18.7p RS=1.24 N=1.10  CJO=58.2p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=3.75f RS=0.949 N=2.45 )
 .ENDS
 
 *SRC=AZ23C10;AZ23C10;Diodes;Zener <=10V; 10.0V  0.300W   Diodes Inc. Per node.  Device contains two
@@ -779,15 +783,15 @@ VZ 2 3 8.00
 .MODEL DR D ( IS=2.72f RS=2.30 N=1.49 )
 .ENDS
 
-*SRC=BZT52C10;BZT52C10;Diodes;Zener <=10V; 10.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C10  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 7.84 
-.MODEL DF D ( IS=20.6p RS=1.22 N=1.10  CJO=45.6p VJ=0.750 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=4.12f RS=4.60 N=2.97 ) 
+*SRC=BZT52C10;BZT52C10;Diodes;Zener <=10V; 10.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C10  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 7.84
+.MODEL DF D ( IS=20.6p RS=1.22 N=1.10  CJO=45.6p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=4.12f RS=4.60 N=2.97 )
 .ENDS
 
 *SRC=BZT52C9V1LP;BZT52C9V1LP;Diodes;Zener <=10V; 9.10V  0.250W   Diodes Inc. QFN Zener
@@ -810,15 +814,15 @@ VZ 2 3 7.76
 .MODEL DR D ( IS=1.65f RS=4.60 N=2.97 )
 .ENDS
 
-*SRC=BZT52C10T;BZT52C10T;Diodes;Zener <=10V; 10.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C10T  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 7.84 
-.MODEL DF D ( IS=20.6p RS=1.22 N=1.10  CJO=45.6p VJ=0.750 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=4.12f RS=4.60 N=2.97 ) 
+*SRC=BZT52C10T;BZT52C10T;Diodes;Zener <=10V; 10.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C10T  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 7.84
+.MODEL DF D ( IS=20.6p RS=1.22 N=1.10  CJO=45.6p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=4.12f RS=4.60 N=2.97 )
 .ENDS
 
 *SRC=BZT52C11;BZT52C11;Diodes;Zener 10V-50V; 11.0V  0.500W   Diodes Inc.
@@ -901,15 +905,15 @@ VZ 2 3 9.78
 .MODEL DR D ( IS=3.43f RS=9.46 N=3.00 )
 .ENDS
 
-*SRC=BZT52C13;BZT52C13;Diodes;Zener 10V-50V; 13.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C13  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 12.4 
-.MODEL DF D ( IS=15.8p RS=1.24 N=1.10  CJO=51.5p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=3.17f RS=1.26 N=0.814 ) 
+*SRC=BZT52C13;BZT52C13;Diodes;Zener 10V-50V; 13.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C13  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 12.4
+.MODEL DF D ( IS=15.8p RS=1.24 N=1.10  CJO=51.5p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=3.17f RS=1.26 N=0.814 )
 .ENDS
 
 *SRC=BZT52C13LP;BZT52C13LP;Diodes;Zener 10V-50V; 13.0V  0.250W   Diodes Inc. QFN Zener
@@ -932,15 +936,15 @@ VZ 2 3 10.7
 .MODEL DR D ( IS=1.27f RS=14.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C13T;BZT52C13T;Diodes;Zener 10V-50V; 13.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C13T  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 12.4 
-.MODEL DF D ( IS=15.8p RS=1.24 N=1.10  CJO=51.5p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=3.17f RS=1.26 N=0.814 ) 
+*SRC=BZT52C13T;BZT52C13T;Diodes;Zener 10V-50V; 13.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C13T  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 12.4
+.MODEL DF D ( IS=15.8p RS=1.24 N=1.10  CJO=51.5p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=3.17f RS=1.26 N=0.814 )
 .ENDS
 
 *SRC=BZT52C15;BZT52C15;Diodes;Zener 10V-50V; 15.0V  0.500W   Diodes Inc.
@@ -1235,7 +1239,7 @@ VZ 2 3 0
 .MODEL DR D ( IS=20.6f RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C2V4;BZT52C2V4;Diodes;Zener <=10V; 2.40V  0.500W   Diodes Inc. 
+*SRC=BZT52C2V4;BZT52C2V4;Diodes;Zener <=10V; 2.40V  0.500W   Diodes Inc.
 .SUBCKT BZT52C2V4  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -1255,7 +1259,7 @@ VZ 2 3 0
 .MODEL DR D ( IS=6.87f RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C2V4T;BZT52C2V4T;Diodes;Zener <=10V; 2.40V  0.15W   Diodes Inc. 
+*SRC=BZT52C2V4T;BZT52C2V4T;Diodes;Zener <=10V; 2.40V  0.15W   Diodes Inc.
 .SUBCKT BZT52C2V4T  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -1335,15 +1339,15 @@ VZ 2 3 30.7
 .MODEL DR D ( IS=4.99e-016 RS=41.1 N=3.00 )
 .ENDS
 
-*SRC=BZT52C36;BZT52C36;Diodes;Zener 10V-50V; 36.0V  0.500W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C36  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 33.7 
-.MODEL DF D ( IS=5.72p RS=1.27 N=1.10  CJO=18.9p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=1.14f RS=51.1 N=3.00 ) 
+*SRC=BZT52C36;BZT52C36;Diodes;Zener 10V-50V; 36.0V  0.500W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C36  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 33.7
+.MODEL DF D ( IS=5.72p RS=1.27 N=1.10  CJO=18.9p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=1.14f RS=51.1 N=3.00 )
 .ENDS
 
 *SRC=BZT52C36S;BZT52C36S;Diodes;Zener 10V-50V; 36.0V  0.200W   Diodes Inc. ZENER
@@ -1498,25 +1502,25 @@ VZ 2 3 1.44
 .MODEL DR D ( IS=10.6f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C43;BZT52C43;Diodes;Zener 10V-50V; 43.0V  0.410W   Diodes Inc. Zener 
-*SYM=HZEN 
-.SUBCKT BZT52C43  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 40.3 
-.MODEL DF D ( IS=3.93p RS=1.51 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=7.86e-016 RS=84.5 N=3.00 ) 
+*SRC=BZT52C43;BZT52C43;Diodes;Zener 10V-50V; 43.0V  0.410W   Diodes Inc. Zener
+*SYM=HZEN
+.SUBCKT BZT52C43  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 40.3
+.MODEL DF D ( IS=3.93p RS=1.51 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=7.86e-016 RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C47;BZT52C47;Diodes;Zener 10V-50V; 47.0V  0.410W   Diodes Inc. Zener 
-.SUBCKT BZT52C47  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 44.3 
-.MODEL DF D ( IS=3.59p RS=1.48 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=7.19e-016 RS=84.5 N=3.00 ) 
+*SRC=BZT52C47;BZT52C47;Diodes;Zener 10V-50V; 47.0V  0.410W   Diodes Inc. Zener
+.SUBCKT BZT52C47  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 44.3
+.MODEL DF D ( IS=3.59p RS=1.48 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=7.19e-016 RS=84.5 N=3.00 )
 .ENDS
 
 *SRC=BZT52C4V3;BZT52C4V3;Diodes;Zener <=10V; 4.30V  0.500W   Diodes Inc.
@@ -1579,14 +1583,14 @@ VZ 2 3 2.27
 .MODEL DR D ( IS=8.77f RS=64.5 N=3.00 )
 .ENDS
 
-*SRC=BZT52C51;BZT52C51;Diodes;Zener >50V; 51.0V  0.410W   Diodes Inc. Zener 
-.SUBCKT BZT52C51  1 2 
-*        Terminals    A   K 
-D1 1 2 DF 
-DZ 3 1 DR 
-VZ 2 3 48.3 
-.MODEL DF D ( IS=3.31p RS=1.45 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n ) 
-.MODEL DR D ( IS=6.62e-016 RS=84.5 N=3.00 ) 
+*SRC=BZT52C51;BZT52C51;Diodes;Zener >50V; 51.0V  0.410W   Diodes Inc. Zener
+.SUBCKT BZT52C51  1 2
+*        Terminals    A   K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 48.3
+.MODEL DF D ( IS=3.31p RS=1.45 N=1.10  CJO=24.1p VJ=1.00 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=6.62e-016 RS=84.5 N=3.00 )
 .ENDS
 
 *SRC=BZT52C51S;BZT52C51S;Diodes;Zener >50V; 51.0V  0.200W   Diodes Inc. Zener
@@ -1869,7 +1873,7 @@ VZ 2 3 7.48
 .MODEL DR D ( IS=4.53f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=BZX84C10;BZX84C10;Diodes;Zener <=10V; 10.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C10;BZX84C10;Diodes;Zener <=10V; 10.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C10  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -1919,7 +1923,7 @@ VZ 2 3 7.76
 .MODEL DR D ( IS=1.65f RS=4.60 N=2.97 )
 .ENDS
 
-*SRC=BZX84C11;BZX84C11;Diodes;Zener 10V-50V; 11.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C11;BZX84C11;Diodes;Zener 10V-50V; 11.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C11  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -1969,7 +1973,7 @@ VZ 2 3 8.76
 .MODEL DR D ( IS=1.50f RS=4.60 N=2.97 )
 .ENDS
 
-*SRC=BZX84C12;BZX84C12;Diodes;Zener 10V-50V; 12.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C12;BZX84C12;Diodes;Zener 10V-50V; 12.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C12  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2019,7 +2023,7 @@ VZ 2 3 9.71
 .MODEL DR D ( IS=1.37f RS=9.46 N=3.00 )
 .ENDS
 
-*SRC=BZX84C13;BZX84C13;Diodes;Zener 10V-50V; 13.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C13;BZX84C13;Diodes;Zener 10V-50V; 13.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C13  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2069,7 +2073,7 @@ VZ 2 3 10.7
 .MODEL DR D ( IS=1.27f RS=14.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C15;BZX84C15;Diodes;Zener 10V-50V; 15.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C15;BZX84C15;Diodes;Zener 10V-50V; 15.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C15  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2119,7 +2123,7 @@ VZ 2 3 12.7
 .MODEL DR D ( IS=1.10f RS=14.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C16;BZX84C16;Diodes;Zener 10V-50V; 16.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C16;BZX84C16;Diodes;Zener 10V-50V; 16.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C16  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2169,7 +2173,7 @@ VZ 2 3 13.6
 .MODEL DR D ( IS=1.03f RS=24.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C18;BZX84C18;Diodes;Zener 10V-50V; 18.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C18;BZX84C18;Diodes;Zener 10V-50V; 18.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C18  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2219,7 +2223,7 @@ VZ 2 3 15.6
 .MODEL DR D ( IS=9.16e-016 RS=29.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C20;BZX84C20;Diodes;Zener 10V-50V; 20.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C20;BZX84C20;Diodes;Zener 10V-50V; 20.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C20  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2269,7 +2273,7 @@ VZ 2 3 17.5
 .MODEL DR D ( IS=8.24e-016 RS=39.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C22;BZX84C22;Diodes;Zener 10V-50V; 22.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C22;BZX84C22;Diodes;Zener 10V-50V; 22.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C22  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2319,7 +2323,7 @@ VZ 2 3 19.5
 .MODEL DR D ( IS=7.49e-016 RS=39.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C24;BZX84C24;Diodes;Zener 10V-50V; 24.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C24;BZX84C24;Diodes;Zener 10V-50V; 24.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C24  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2369,7 +2373,7 @@ VZ 2 3 21.4
 .MODEL DR D ( IS=6.87e-016 RS=54.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C27;BZX84C27;Diodes;Zener 10V-50V; 27.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C27;BZX84C27;Diodes;Zener 10V-50V; 27.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C27  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2419,7 +2423,7 @@ VZ 2 3 24.7
 .MODEL DR D ( IS=6.10e-016 RS=41.1 N=3.00 )
 .ENDS
 
-*SRC=BZX84C2V4;BZX84C2V4;Diodes;Zener <=10V; 2.40V  0.350W   Diodes Inc. 
+*SRC=BZX84C2V4;BZX84C2V4;Diodes;Zener <=10V; 2.40V  0.350W   Diodes Inc.
 .SUBCKT BZX84C2V4  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2469,7 +2473,7 @@ VZ 2 3 0
 .MODEL DR D ( IS=6.87f RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C2V7;BZX84C2V7;Diodes;Zener <=10V; 2.70V  0.350W   Diodes Inc. 
+*SRC=BZX84C2V7;BZX84C2V7;Diodes;Zener <=10V; 2.70V  0.350W   Diodes Inc.
 .SUBCKT BZX84C2V7  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2519,7 +2523,7 @@ VZ 2 3 0.146
 .MODEL DR D ( IS=6.10f RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C30;BZX84C30;Diodes;Zener 10V-50V; 30.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C30;BZX84C30;Diodes;Zener 10V-50V; 30.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C30  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2569,7 +2573,7 @@ VZ 2 3 27.7
 .MODEL DR D ( IS=5.49e-016 RS=41.1 N=3.00 )
 .ENDS
 
-*SRC=BZX84C33;BZX84C33;Diodes;Zener 10V-50V; 33.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C33;BZX84C33;Diodes;Zener 10V-50V; 33.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C33  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2619,7 +2623,7 @@ VZ 2 3 30.7
 .MODEL DR D ( IS=4.99e-016 RS=41.1 N=3.00 )
 .ENDS
 
-*SRC=BZX84C36;BZX84C36;Diodes;Zener 10V-50V; 36.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C36;BZX84C36;Diodes;Zener 10V-50V; 36.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C36  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2669,7 +2673,7 @@ VZ 2 3 33.6
 .MODEL DR D ( IS=4.58e-016 RS=51.1 N=3.00 )
 .ENDS
 
-*SRC=BZX84C39;BZX84C39;Diodes;Zener 10V-50V; 39.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C39;BZX84C39;Diodes;Zener 10V-50V; 39.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C39  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2719,7 +2723,7 @@ VZ 2 3 36.5
 .MODEL DR D ( IS=4.23e-016 RS=91.1 N=3.00 )
 .ENDS
 
-*SRC=BZX84C3V0;BZX84C3V0;Diodes;Zener <=10V; 3.00V  0.350W   Diodes Inc. 
+*SRC=BZX84C3V0;BZX84C3V0;Diodes;Zener <=10V; 3.00V  0.350W   Diodes Inc.
 .SUBCKT BZX84C3V0  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2769,7 +2773,7 @@ VZ 2 3 0.463
 .MODEL DR D ( IS=5.49f RS=79.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C3V3;BZX84C3V3;Diodes;Zener <=10V; 3.30V  0.350W   Diodes Inc. 
+*SRC=BZX84C3V3;BZX84C3V3;Diodes;Zener <=10V; 3.30V  0.350W   Diodes Inc.
 .SUBCKT BZX84C3V3  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2819,7 +2823,7 @@ VZ 2 3 0.756
 .MODEL DR D ( IS=4.99f RS=79.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C3V6;BZX84C3V6;Diodes;Zener <=10V; 3.60V  0.350W   Diodes Inc. 
+*SRC=BZX84C3V6;BZX84C3V6;Diodes;Zener <=10V; 3.60V  0.350W   Diodes Inc.
 .SUBCKT BZX84C3V6  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2869,7 +2873,7 @@ VZ 2 3 1.07
 .MODEL DR D ( IS=4.58f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C3V9;BZX84C3V9;Diodes;Zener <=10V; 3.90V  0.350W   Diodes Inc. 
+*SRC=BZX84C3V9;BZX84C3V9;Diodes;Zener <=10V; 3.90V  0.350W   Diodes Inc.
 .SUBCKT BZX84C3V9  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2919,7 +2923,7 @@ VZ 2 3 1.37
 .MODEL DR D ( IS=4.23f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C43;BZX84C43;Diodes;Zener 10V-50V; 43.0V  0.350W   Diodes Inc. 
+*SRC=BZX84C43;BZX84C43;Diodes;Zener 10V-50V; 43.0V  0.350W   Diodes Inc.
 .SUBCKT BZX84C43  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2939,7 +2943,7 @@ VZ 2 3 43.9
 .MODEL DR D ( IS=6.14e-016 RS=154 N=3.00 )
 .ENDS
 
-*SRC=BZX84C4V3;BZX84C4V3;Diodes;Zener <=10V; 4.30V  0.350W   Diodes Inc. 
+*SRC=BZX84C4V3;BZX84C4V3;Diodes;Zener <=10V; 4.30V  0.350W   Diodes Inc.
 .SUBCKT BZX84C4V3  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -2989,7 +2993,7 @@ VZ 2 3 1.76
 .MODEL DR D ( IS=3.83f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C4V7;BZX84C4V7;Diodes;Zener <=10V; 4.70V  0.350W   Diodes Inc. 
+*SRC=BZX84C4V7;BZX84C4V7;Diodes;Zener <=10V; 4.70V  0.350W   Diodes Inc.
 .SUBCKT BZX84C4V7  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3049,7 +3053,7 @@ VZ 2 3 48.5
 .MODEL DR D ( IS=5.65e-016 RS=141 N=3.00 )
 .ENDS
 
-*SRC=BZX84C5V1;BZX84C5V1;Diodes;Zener <=10V; 5.10V  0.350W   Diodes Inc. 
+*SRC=BZX84C5V1;BZX84C5V1;Diodes;Zener <=10V; 5.10V  0.350W   Diodes Inc.
 .SUBCKT BZX84C5V1  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3099,7 +3103,7 @@ VZ 2 3 2.70
 .MODEL DR D ( IS=3.23f RS=44.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C5V6;BZX84C5V6;Diodes;Zener <=10V; 5.60V  0.350W   Diodes Inc. 
+*SRC=BZX84C5V6;BZX84C5V6;Diodes;Zener <=10V; 5.60V  0.350W   Diodes Inc.
 .SUBCKT BZX84C5V6  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3149,7 +3153,7 @@ VZ 2 3 3.29
 .MODEL DR D ( IS=2.94f RS=24.5 N=3.00 )
 .ENDS
 
-*SRC=BZX84C6V2;BZX84C6V2;Diodes;Zener <=10V; 6.20V  0.350W   Diodes Inc. 
+*SRC=BZX84C6V2;BZX84C6V2;Diodes;Zener <=10V; 6.20V  0.350W   Diodes Inc.
 .SUBCKT BZX84C6V2  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3199,7 +3203,7 @@ VZ 2 3 5.10
 .MODEL DR D ( IS=2.66f RS=2.30 N=1.49 )
 .ENDS
 
-*SRC=BZX84C6V8;BZX84C6V8;Diodes;Zener <=10V; 6.80V  0.350W   Diodes Inc. 
+*SRC=BZX84C6V8;BZX84C6V8;Diodes;Zener <=10V; 6.80V  0.350W   Diodes Inc.
 .SUBCKT BZX84C6V8  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3249,7 +3253,7 @@ VZ 2 3 5.15
 .MODEL DR D ( IS=2.42f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=BZX84C7V5;C;Diodes;Zener <=10V; 7.50V  0.350W   Diodes Inc. 
+*SRC=BZX84C7V5;C;Diodes;Zener <=10V; 7.50V  0.350W   Diodes Inc.
 .SUBCKT BZX84C7V5  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3299,7 +3303,7 @@ VZ 2 3 5.84
 .MODEL DR D ( IS=2.20f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=BZX84C8V2;BZX84C8V2;Diodes;Zener <=10V; 8.20V  0.350W   Diodes Inc. 
+*SRC=BZX84C8V2;BZX84C8V2;Diodes;Zener <=10V; 8.20V  0.350W   Diodes Inc.
 .SUBCKT BZX84C8V2  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -3349,7 +3353,7 @@ VZ 2 3 6.53
 .MODEL DR D ( IS=2.01f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=BZX84C9V1;BZX84C9V1;Diodes;Zener <=10V; 9.10V  0.350W   Diodes Inc. 
+*SRC=BZX84C9V1;BZX84C9V1;Diodes;Zener <=10V; 9.10V  0.350W   Diodes Inc.
 .SUBCKT BZX84C9V1  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5498,7 +5502,7 @@ VZ 2 3 7.96
 .MODEL DR D ( IS=9.05f RS=0.230 N=1.49 )
 .ENDS
 
-*SRC=DZ23C10;DZ23C10;Diodes;Zener <=10V; 10.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C10;DZ23C10;Diodes;Zener <=10V; 10.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C10  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5508,7 +5512,7 @@ VZ 2 3 7.81
 .MODEL DR D ( IS=2.88f RS=4.60 N=2.97 )
 .ENDS
 
-*SRC=DZ23C11;DZ23C11;Diodes;Zener 10V-50V; 11.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C11;DZ23C11;Diodes;Zener 10V-50V; 11.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C11  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5518,7 +5522,7 @@ VZ 2 3 8.80
 .MODEL DR D ( IS=2.62f RS=4.60 N=2.97 )
 .ENDS
 
-*SRC=DZ23C12;DZ23C12;Diodes;Zener 10V-50V; 12.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C12;DZ23C12;Diodes;Zener 10V-50V; 12.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C12  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5528,7 +5532,7 @@ VZ 2 3 9.75
 .MODEL DR D ( IS=2.40f RS=9.46 N=3.00 )
 .ENDS
 
-*SRC=DZ23C13;DZ23C13;Diodes;Zener 10V-50V; 13.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C13;DZ23C13;Diodes;Zener 10V-50V; 13.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C13  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5538,7 +5542,7 @@ VZ 2 3 10.7
 .MODEL DR D ( IS=2.22f RS=14.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C15;DZ23C15;Diodes;Zener 10V-50V; 15.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C15;DZ23C15;Diodes;Zener 10V-50V; 15.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C15  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5548,7 +5552,7 @@ VZ 2 3 12.7
 .MODEL DR D ( IS=1.92f RS=14.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C16;DZ23C16;Diodes;Zener 10V-50V; 16.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C16;DZ23C16;Diodes;Zener 10V-50V; 16.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C16  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5558,7 +5562,7 @@ VZ 2 3 13.7
 .MODEL DR D ( IS=1.80f RS=24.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C18;DZ23C18;Diodes;Zener 10V-50V; 18.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C18;DZ23C18;Diodes;Zener 10V-50V; 18.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C18  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5568,7 +5572,7 @@ VZ 2 3 15.6
 .MODEL DR D ( IS=1.60f RS=29.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C20;DZ23C20;Diodes;Zener 10V-50V; 20.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C20;DZ23C20;Diodes;Zener 10V-50V; 20.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C20  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5578,7 +5582,7 @@ VZ 2 3 17.6
 .MODEL DR D ( IS=1.44f RS=39.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C22;DZ23C22;Diodes;Zener 10V-50V; 22.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C22;DZ23C22;Diodes;Zener 10V-50V; 22.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C22  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5588,7 +5592,7 @@ VZ 2 3 19.6
 .MODEL DR D ( IS=1.31f RS=39.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C24;DZ23C24;Diodes;Zener 10V-50V; 24.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C24;DZ23C24;Diodes;Zener 10V-50V; 24.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C24  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5598,7 +5602,7 @@ VZ 2 3 21.5
 .MODEL DR D ( IS=1.20f RS=54.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C27;DZ23C27;Diodes;Zener 10V-50V; 27.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C27;DZ23C27;Diodes;Zener 10V-50V; 27.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C27  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5608,7 +5612,7 @@ VZ 2 3 24.4
 .MODEL DR D ( IS=1.07f RS=64.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C2V7;DZ23C2V7;Diodes;Zener <=10V; 2.70V  0.300W   Diodes Inc. 
+*SRC=DZ23C2V7;DZ23C2V7;Diodes;Zener <=10V; 2.70V  0.300W   Diodes Inc.
 .SUBCKT DZ23C2V7  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5618,7 +5622,7 @@ VZ 2 3 0.190
 .MODEL DR D ( IS=10.7f RS=84.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C30;DZ23C30;Diodes;Zener 10V-50V; 30.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C30;DZ23C30;Diodes;Zener 10V-50V; 30.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C30  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5628,7 +5632,7 @@ VZ 2 3 27.4
 .MODEL DR D ( IS=9.61e-016 RS=64.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C33;DZ23C33;Diodes;Zener 10V-50V; 33.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C33;DZ23C33;Diodes;Zener 10V-50V; 33.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C33  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5638,7 +5642,7 @@ VZ 2 3 30.4
 .MODEL DR D ( IS=8.74e-016 RS=64.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C36;DZ23C36;Diodes;Zener 10V-50V; 36.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C36;DZ23C36;Diodes;Zener 10V-50V; 36.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C36  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5648,7 +5652,7 @@ VZ 2 3 33.3
 .MODEL DR D ( IS=8.01e-016 RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C39;DZ23C39;Diodes;Zener 10V-50V; 39.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C39;DZ23C39;Diodes;Zener 10V-50V; 39.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C39  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5658,7 +5662,7 @@ VZ 2 3 36.1
 .MODEL DR D ( IS=7.39e-016 RS=114 N=3.00 )
 .ENDS
 
-*SRC=DZ23C3V0;DZ23C3V0;Diodes;Zener <=10V; 3.00V  0.300W   Diodes Inc. 
+*SRC=DZ23C3V0;DZ23C3V0;Diodes;Zener <=10V; 3.00V  0.300W   Diodes Inc.
 .SUBCKT DZ23C3V0  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5668,7 +5672,7 @@ VZ 2 3 0.507
 .MODEL DR D ( IS=9.61f RS=79.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C3V3;DZ23C3V3;Diodes;Zener <=10V; 3.30V  0.300W   Diodes Inc. 
+*SRC=DZ23C3V3;DZ23C3V3;Diodes;Zener <=10V; 3.30V  0.300W   Diodes Inc.
 .SUBCKT DZ23C3V3  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5678,7 +5682,7 @@ VZ 2 3 0.799
 .MODEL DR D ( IS=8.74f RS=79.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C3V6;DZ23C3V6;Diodes;Zener <=10V; 3.60V  0.300W   Diodes Inc. 
+*SRC=DZ23C3V6;DZ23C3V6;Diodes;Zener <=10V; 3.60V  0.300W   Diodes Inc.
 .SUBCKT DZ23C3V6  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5688,7 +5692,7 @@ VZ 2 3 1.12
 .MODEL DR D ( IS=8.01f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C3V9;DZ23C3V9;Diodes;Zener <=10V; 3.90V  0.300W   Diodes Inc. 
+*SRC=DZ23C3V9;DZ23C3V9;Diodes;Zener <=10V; 3.90V  0.300W   Diodes Inc.
 .SUBCKT DZ23C3V9  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5698,7 +5702,7 @@ VZ 2 3 1.41
 .MODEL DR D ( IS=7.39f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C43;DZ23C43;Diodes;Zener 10V-50V; 43.0V  0.300W   Diodes Inc. 
+*SRC=DZ23C43;DZ23C43;Diodes;Zener 10V-50V; 43.0V  0.300W   Diodes Inc.
 .SUBCKT DZ23C43  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5718,7 +5722,7 @@ VZ 2 3 43.9
 .MODEL DR D ( IS=6.14e-016 RS=154 N=3.00 )
 .ENDS
 
-*SRC=DZ23C4V3;DZ23C4V3;Diodes;Zener <=10V; 4.30V  0.300W   Diodes Inc. 
+*SRC=DZ23C4V3;DZ23C4V3;Diodes;Zener <=10V; 4.30V  0.300W   Diodes Inc.
 .SUBCKT DZ23C4V3  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5728,7 +5732,7 @@ VZ 2 3 1.80
 .MODEL DR D ( IS=6.71f RS=74.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C4V7;DZ23C4V7;Diodes;Zener <=10V; 4.70V  0.300W   Diodes Inc. 
+*SRC=DZ23C4V7;DZ23C4V7;Diodes;Zener <=10V; 4.70V  0.300W   Diodes Inc.
 .SUBCKT DZ23C4V7  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5748,7 +5752,7 @@ VZ 2 3 48.5
 .MODEL DR D ( IS=5.65e-016 RS=141 N=3.00 )
 .ENDS
 
-*SRC=DZ23C5V1;DZ23C5V1;Diodes;Zener <=10V; 5.10V  0.300W   Diodes Inc. 
+*SRC=DZ23C5V1;DZ23C5V1;Diodes;Zener <=10V; 5.10V  0.300W   Diodes Inc.
 .SUBCKT DZ23C5V1  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5758,7 +5762,7 @@ VZ 2 3 2.74
 .MODEL DR D ( IS=5.65f RS=44.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C5V6;DZ23C5V6;Diodes;Zener <=10V; 5.60V  0.300W   Diodes Inc. 
+*SRC=DZ23C5V6;DZ23C5V6;Diodes;Zener <=10V; 5.60V  0.300W   Diodes Inc.
 .SUBCKT DZ23C5V6  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5768,7 +5772,7 @@ VZ 2 3 3.33
 .MODEL DR D ( IS=5.15f RS=24.5 N=3.00 )
 .ENDS
 
-*SRC=DZ23C6V2;DZ23C6V2;Diodes;Zener <=10V; 6.20V  0.300W   Diodes Inc. 
+*SRC=DZ23C6V2;DZ23C6V2;Diodes;Zener <=10V; 6.20V  0.300W   Diodes Inc.
 .SUBCKT DZ23C6V2  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5778,7 +5782,7 @@ VZ 2 3 5.12
 .MODEL DR D ( IS=4.65f RS=2.30 N=1.49 )
 .ENDS
 
-*SRC=DZ23C6V8;DZ23C6V8;Diodes;Zener <=10V; 6.80V  0.300W   Diodes Inc. 
+*SRC=DZ23C6V8;DZ23C6V8;Diodes;Zener <=10V; 6.80V  0.300W   Diodes Inc.
 .SUBCKT DZ23C6V8  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5788,7 +5792,7 @@ VZ 2 3 5.18
 .MODEL DR D ( IS=4.24f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=DZ23C7V5;DZ23C7V5;Diodes;Zener <=10V; 7.50V  0.300W   Diodes Inc. 
+*SRC=DZ23C7V5;DZ23C7V5;Diodes;Zener <=10V; 7.50V  0.300W   Diodes Inc.
 .SUBCKT DZ23C7V5  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5798,7 +5802,7 @@ VZ 2 3 5.87
 .MODEL DR D ( IS=3.85f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=DZ23C8V2;DZ23C8V2;Diodes;Zener <=10V; 8.20V  0.300W   Diodes Inc. 
+*SRC=DZ23C8V2;DZ23C8V2;Diodes;Zener <=10V; 8.20V  0.300W   Diodes Inc.
 .SUBCKT DZ23C8V2  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5808,7 +5812,7 @@ VZ 2 3 6.57
 .MODEL DR D ( IS=3.52f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=DZ23C9V1;DZ23C9V1;Diodes;Zener <=10V; 9.10V  0.300W   Diodes Inc. 
+*SRC=DZ23C9V1;DZ23C9V1;Diodes;Zener <=10V; 9.10V  0.300W   Diodes Inc.
 .SUBCKT DZ23C9V1  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5818,7 +5822,7 @@ VZ 2 3 7.46
 .MODEL DR D ( IS=3.17f RS=3.45 N=2.23 )
 .ENDS
 
-*SRC=MMBZ5221B;MMBZ5221B;Diodes;Zener <=10V; 2.40V  0.350W   Diodes Inc. 
+*SRC=MMBZ5221B;MMBZ5221B;Diodes;Zener <=10V; 2.40V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5221B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5877,7 +5881,7 @@ VZ 2 3 0
 .MODEL DF D ( IS=57.7p RS=36.0 N=1.10 CJO=255p VJ=0.750 M=0.330 TT=50.1n )
 .ENDS
 
-*SRC=MMBZ5223B;MMBZ5223B;Diodes;Zener <=10V; 2.70V  0.350W   Diodes Inc. 
+*SRC=MMBZ5223B;MMBZ5223B;Diodes;Zener <=10V; 2.70V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5223B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5927,7 +5931,7 @@ VZ 2 3 0
 .MODEL DR D ( IS=6.10f RS=26.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5225B;MMBZ5225B;Diodes;Zener <=10V; 3.00V  0.350W   Diodes Inc. 
+*SRC=MMBZ5225B;MMBZ5225B;Diodes;Zener <=10V; 3.00V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5225B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -5977,7 +5981,7 @@ VZ 2 3 0.230
 .MODEL DR D ( IS=5.49f RS=26.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5226B;MMBZ5226B;Diodes;Zener <=10V; 3.30V  0.350W   Diodes Inc. 
+*SRC=MMBZ5226B;MMBZ5226B;Diodes;Zener <=10V; 3.30V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5226B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6026,7 +6030,7 @@ VZ 2 3 0.563
 .MODEL DR D ( IS=4.99f RS=24.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5227B;MMBZ5227B;Diodes;Zener <=10V; 3.60V  0.350W   Diodes Inc. 
+*SRC=MMBZ5227B;MMBZ5227B;Diodes;Zener <=10V; 3.60V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5227B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6076,7 +6080,7 @@ VZ 2 3 0.936
 .MODEL DR D ( IS=4.58f RS=20.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5228B;MMBZ5228B;Diodes;Zener <=10V; 3.90V  0.350W   Diodes Inc. 
+*SRC=MMBZ5228B;MMBZ5228B;Diodes;Zener <=10V; 3.90V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5228B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6126,7 +6130,7 @@ VZ 2 3 1.25
 .MODEL DR D ( IS=4.23f RS=19.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5229B;MMBZ5229B;Diodes;Zener <=10V; 4.30V  0.350W   Diodes Inc. 
+*SRC=MMBZ5229B;MMBZ5229B;Diodes;Zener <=10V; 4.30V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5229B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6176,7 +6180,7 @@ VZ 2 3 1.66
 .MODEL DR D ( IS=3.83f RS=18.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5230B;MMBZ5230B;Diodes;Zener <=10V; 4.70V  0.350W   Diodes Inc. 
+*SRC=MMBZ5230B;MMBZ5230B;Diodes;Zener <=10V; 4.70V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5230B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6226,7 +6230,7 @@ VZ 2 3 2.12
 .MODEL DR D ( IS=3.51f RS=15.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5231B;MMBZ5231B;Diodes;Zener <=10V; 5.10V  0.350W   Diodes Inc. 
+*SRC=MMBZ5231B;MMBZ5231B;Diodes;Zener <=10V; 5.10V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5231B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6276,7 +6280,7 @@ VZ 2 3 2.55
 .MODEL DR D ( IS=3.23f RS=13.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5232B;MMBZ5232B;Diodes;Zener <=10V; 5.60V  0.350W   Diodes Inc. 
+*SRC=MMBZ5232B;MMBZ5232B;Diodes;Zener <=10V; 5.60V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5232B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6326,7 +6330,7 @@ VZ 2 3 3.16
 .MODEL DR D ( IS=2.94f RS=7.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5233B;MMBZ5233B;Diodes;Zener <=10V; 6.00V  0.350W   Diodes Inc. 
+*SRC=MMBZ5233B;MMBZ5233B;Diodes;Zener <=10V; 6.00V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5233B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6356,7 +6360,7 @@ VZ 2 3 3.64
 .MODEL DR D ( IS=2.75f RS=3.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5234B;MMBZ5234B;Diodes;Zener <=10V; 6.20V  0.350W   Diodes Inc. 
+*SRC=MMBZ5234B;MMBZ5234B;Diodes;Zener <=10V; 6.20V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5234B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6406,7 +6410,7 @@ VZ 2 3 3.83
 .MODEL DR D ( IS=2.66f RS=3.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5235B;MMBZ5235B;Diodes;Zener <=10V; 6.80V  0.350W   Diodes Inc. 
+*SRC=MMBZ5235B;MMBZ5235B;Diodes;Zener <=10V; 6.80V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5235B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6456,7 +6460,7 @@ VZ 2 3 4.49
 .MODEL DR D ( IS=2.42f RS=1.15 N=2.97 )
 .ENDS
 
-*SRC=MMBZ5236B;MMBZ5236B;Diodes;Zener <=10V; 7.50V  0.350W   Diodes Inc. 
+*SRC=MMBZ5236B;MMBZ5236B;Diodes;Zener <=10V; 7.50V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5236B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6506,7 +6510,7 @@ VZ 2 3 5.14
 .MODEL DR D ( IS=2.20f RS=2.12 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5237B;MMBZ5237B;Diodes;Zener <=10V; 8.20V  0.350W   Diodes Inc. 
+*SRC=MMBZ5237B;MMBZ5237B;Diodes;Zener <=10V; 8.20V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5237B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6556,7 +6560,7 @@ VZ 2 3 5.79
 .MODEL DR D ( IS=2.01f RS=4.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5238B;MMBZ5238B;Diodes;Zener <=10V; 8.70V  0.350W   Diodes Inc. 
+*SRC=MMBZ5238B;MMBZ5238B;Diodes;Zener <=10V; 8.70V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5238B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6586,7 +6590,7 @@ VZ 2 3 6.29
 .MODEL DR D ( IS=1.89f RS=4.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5239B;MMBZ5239B;Diodes;Zener <=10V; 9.10V  0.350W   Diodes Inc. 
+*SRC=MMBZ5239B;MMBZ5239B;Diodes;Zener <=10V; 9.10V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5239B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6636,7 +6640,7 @@ VZ 2 3 6.64
 .MODEL DR D ( IS=1.81f RS=6.11 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5240B;MMBZ5240B;Diodes;Zener <=10V; 10.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5240B;MMBZ5240B;Diodes;Zener <=10V; 10.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5240B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6686,7 +6690,7 @@ VZ 2 3 7.40
 .MODEL DR D ( IS=1.65f RS=13.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5241B;MMBZ5241B;Diodes;Zener 10V-50V; 11.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5241B;MMBZ5241B;Diodes;Zener 10V-50V; 11.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5241B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6736,7 +6740,7 @@ VZ 2 3 8.29
 .MODEL DR D ( IS=1.50f RS=18.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ524B;MMBZ5242B;Diodes;Zener 10V-50V; 12.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ524B;MMBZ5242B;Diodes;Zener 10V-50V; 12.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5242B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6786,7 +6790,7 @@ VZ 2 3 9.12
 .MODEL DR D ( IS=1.37f RS=26.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5243B;MMBZ5243B;Diodes;Zener 10V-50V; 13.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5243B;MMBZ5243B;Diodes;Zener 10V-50V; 13.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5243B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6846,7 +6850,7 @@ VZ 2 3 11.7
 .MODEL DR D ( IS=2.06f RS=6.37 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5245B;MMBZ5245B;Diodes;Zener 10V-50V; 15.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5245B;MMBZ5245B;Diodes;Zener 10V-50V; 15.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5245B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6896,7 +6900,7 @@ VZ 2 3 12.6
 .MODEL DR D ( IS=1.10f RS=6.86 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5246B;MMBZ5246B;Diodes;Zener 10V-50V; 16.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5246B;MMBZ5246B;Diodes;Zener 10V-50V; 16.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5246B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6946,7 +6950,7 @@ VZ 2 3 13.6
 .MODEL DR D ( IS=1.03f RS=7.04 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5248B;MMBZ5248B;Diodes;Zener 10V-50V; 18.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5248B;MMBZ5248B;Diodes;Zener 10V-50V; 18.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5248B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -6996,7 +7000,7 @@ VZ 2 3 15.6
 .MODEL DR D ( IS=9.16e-016 RS=9.90 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5250B;MMBZ5250B;Diodes;Zener 10V-50V; 20.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5250B;MMBZ5250B;Diodes;Zener 10V-50V; 20.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5250B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7046,7 +7050,7 @@ VZ 2 3 17.6
 .MODEL DR D ( IS=8.24e-016 RS=12.5 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5251B;MMBZ5251B;Diodes;Zener 10V-50V; 22.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5251B;MMBZ5251B;Diodes;Zener 10V-50V; 22.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5251B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7096,7 +7100,7 @@ VZ 2 3 19.6
 .MODEL DR D ( IS=7.49e-016 RS=15.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5252B;MMBZ5252B;Diodes;Zener 10V-50V; 24.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5252B;MMBZ5252B;Diodes;Zener 10V-50V; 24.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5252B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7146,7 +7150,7 @@ VZ 2 3 21.6
 .MODEL DR D ( IS=6.87e-016 RS=18.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5254B;MMBZ5254B;Diodes;Zener 10V-50V; 27.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5254B;MMBZ5254B;Diodes;Zener 10V-50V; 27.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5254B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7196,7 +7200,7 @@ VZ 2 3 24.6
 .MODEL DR D ( IS=6.10e-016 RS=25.5 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5255B;MMBZ5255B;Diodes;Zener 10V-50V; 28.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5255B;MMBZ5255B;Diodes;Zener 10V-50V; 28.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5255B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7246,7 +7250,7 @@ VZ 2 3 25.6
 .MODEL DR D ( IS=5.89e-016 RS=26.7 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5256B;MMBZ5256B;Diodes;Zener 10V-50V; 30.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5256B;MMBZ5256B;Diodes;Zener 10V-50V; 30.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5256B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7296,7 +7300,7 @@ VZ 2 3 27.6
 .MODEL DR D ( IS=5.49e-016 RS=30.5 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5257B;MMBZ5257B;Diodes;Zener 10V-50V; 33.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5257B;MMBZ5257B;Diodes;Zener 10V-50V; 33.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5257B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7346,7 +7350,7 @@ VZ 2 3 30.6
 .MODEL DR D ( IS=4.99e-016 RS=37.6 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5258B;MMBZ5258B;Diodes;Zener 10V-50V; 36.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5258B;MMBZ5258B;Diodes;Zener 10V-50V; 36.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5258B  1 2
 *        Terminals    A   K
 D1 1 2 DF
@@ -7396,7 +7400,7 @@ VZ 2 3 33.5
 .MODEL DR D ( IS=4.58e-016 RS=47.1 N=3.00 )
 .ENDS
 
-*SRC=MMBZ5259B;MMBZ5259B;Diodes;Zener 10V-50V; 39.0V  0.350W   Diodes Inc. 
+*SRC=MMBZ5259B;MMBZ5259B;Diodes;Zener 10V-50V; 39.0V  0.350W   Diodes Inc.
 .SUBCKT MMBZ5259B  1 2
 *        Terminals    A   K
 D1 1 2 DF

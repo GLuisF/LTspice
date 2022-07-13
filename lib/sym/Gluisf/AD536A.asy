@@ -6,6 +6,7 @@ WINDOW 38 1 96 Top 2
 SYMATTR SpiceModel AD536A
 SYMATTR Prefix X
 SYMATTR ModelFile AD536A.cir
+SYMATTR Description True RMS-to-DC Converter
 PIN -96 32 LEFT 8
 PINATTR PinName VIN
 PINATTR SpiceOrder 1

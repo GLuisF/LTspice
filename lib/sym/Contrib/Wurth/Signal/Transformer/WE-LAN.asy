@@ -1,6 +1,6 @@
 Version 4
 SymbolType CELL
-SYMATTR Description LAN Transformer // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-LAN LAN Transformer \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-LAN \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-LAN.lib.
 LINE Normal 32 5 -32 5
 LINE Normal 32 -5 -32 -5
 LINE Normal -32 -24 -32 -48

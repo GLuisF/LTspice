@@ -86,7 +86,7 @@ WINDOW 0 -2 -70 Bottom 2
 WINDOW 38 -7 71 Top 2
 SYMATTR SpiceModel 810911001
 SYMATTR Prefix X
-SYMATTR Description WE-CLFS-Single-Stage
+SYMATTR Description WE-CLFS Line Filter - Single-Stage \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-CLFS \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-CLFS-Single-Stage.lib.
 SYMATTR ModelFile Contrib/Wurth/WE-CLFS-Single-Stage.lib
 PIN -144 0 NONE 8
 PINATTR SpiceOrder 1

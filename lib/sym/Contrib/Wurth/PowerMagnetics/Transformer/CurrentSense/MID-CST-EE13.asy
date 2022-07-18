@@ -1,6 +1,6 @@
 Version 4
 SymbolType Block
-SYMATTR Description Current Sense Transformer - EE13/7/4 // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description Current Sense Transformer - EE13/7/4\nAfter inserting, right-click on the symbol to select the part number.\nwww.we-online.com/catalog/MID-CST\n\nPlease note disclaimer in lib/sub/Contrib/Wurth/MID-CST-EE13.lib.
 SYMATTR SpiceModel 7492540020
 SYMATTR Prefix X
 SYMATTR InstName T

@@ -1,28 +1,23 @@
-*$
-* BEGIN ANSOFT HEADER
-* node 1    Port1
-* node 2    Port2
-* node 3    Port3
-* node 4    Port4
-*  Project: Project1
-*   Format: Spice
-*   Topckt: WE_CCMF_748020024
-*     Date: Fri Oct 11 16:26:18 2019
-*    Notes: Frequency range: 1.5e+007 to 1.5e+010 Hz, 1000 points
-*         : Maximum number of poles: 10000
-*         : S-Matrix fitting error tolerance: 0.005
-*         : Causality check tolerance: auto
-*         : Passivity enforcement: off
-*         : Causality enforcement: off
-*         : Fitting method: TWA
-*         : Matrix fitting: By entire matrix
-*         : Ensure Z-parameter accuracy: on
-*         : Relative error control: off
-*         : Common ground option: on
-*         : Final fitting error: 0.511468
-*         : Final model order: 88
-* END ANSOFT HEADER
-
+**************************************************
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  Ceramic Common Mode Filter
+* Matchcode:              WE-CCMF 
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-05-25
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
 .subckt WE_CCMF_748020024 1 2 3 4
 Vam1 1 n2 dc 0
 Rport1 n2 0 50

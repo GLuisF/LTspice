@@ -31,7 +31,7 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -102 84 Left 2
-SYMATTR Description Common Mode Power Line Choke // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-FCL Common Mode Power Line Choke \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-FCL \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-FCL.lib.
 SYMATTR SpiceModel ET35_744866103_10m
 SYMATTR Prefix X
 SYMATTR InstName L

@@ -34,7 +34,7 @@ WINDOW 38 -126 84 Left 2
 SYMATTR SpiceModel UU_744861018_1.8m
 SYMATTR Prefix X
 SYMATTR InstName L
-SYMATTR Description Common Mode Power Line Choke // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-TFC Common Mode Power Line Choke \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-TFC \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-TFCH.lib.
 SYMATTR ModelFile Contrib/Wurth/WE-TFCH.lib
 PIN -96 -48 NONE 8
 PINATTR PinName 1

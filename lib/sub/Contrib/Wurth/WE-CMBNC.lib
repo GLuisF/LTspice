@@ -1,14 +1,23 @@
-*********************************************************
-* Manufacturer: 		Wurth Elektronik 
-* Kinds:			Common Mode Power Line Choke
-* Matchcode: 		WE-CMBNC
-* Library Type:		Pspice
-* Version: 		rev17b
-* Created/modified by:	Fredo		
-* Date and Time   :		2017-12-19
-* Team: 			eiSos EDA Service  
-* Contact: 		libraries@we-online.com
-********************************************************
+**************************************************
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  Common Mode Power Line Choke Nanocrystalline 
+* Matchcode:              WE-CMBNC 
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-05-26
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
 .SUBCKT  CMBNC  1  2  3  4  PARAMS:
 +  L1=0.00060538
 +  L2=0.00010035
@@ -1279,31 +1288,4 @@ X1  1  2  3  4  CMBNC  PARAMS:
 +  L5=1.29639533952286E-06
 +  RS5=1.57858121395111
 .ends S_7448027001_1m
-********
-.subckt XL_7448051307_7m 1 2 3 4
-X1  1  2  3  4  CMBNC  PARAMS:
-+  Rdc=0.0130000002682209
-+  ck=1.29404375669856E-12
-+  DC4=6.80166375650344E-12
-+  DL4=4.51214205895812E-07
-+  DR5=1.7590198516846
-+  DR6=3457.47265625
-+  DC3=5.50737125974498E-12
-+  DL3=2.78807057441099E-08
-+  DR3=1.97621190547943
-+  DR4=164737248
-+  L1=0.0075416963472962
-+  L2=0.000347881024936214
-+  L3=0.00103540430366993
-+  L4=0.000174639615579508
-+  RS1=2931.60400390625
-+  RS2=3059.2822265625
-+  RS3=3576.35083007813
-+  RS4=3537.236328125
-+  C1=8.05642104987005E-12
-+  R2=0.539597749710083
-+  C2=4.17126173601901E-08
-+  L5=1.18381808533741E-06
-+  RS5=1.67514705657959
-.ends XL_7448051307_7m
 ********

@@ -1,6 +1,5 @@
 Version 4
 SymbolType BLOCK
-SYMATTR Description SMT Mono-color Side View Waterclear // After inserting, right-click on the symbol to select the part number.
 LINE Normal 16 -29 -16 -29
 LINE Normal 0 -3 16 -29
 LINE Normal -16 -29 0 -3
@@ -18,9 +17,10 @@ ARC Normal 38 -27 49 -16 39 -24 48 -19
 ARC Normal 38 -11 49 0 39 -8 48 -3
 WINDOW 38 17 15 Left 2
 WINDOW 0 17 -44 Left 2
+SYMATTR Description WL-SMSW SMT Mono-color Side View Waterclear \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WL-SMSW \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WL-SMSW.lib.
 SYMATTR Prefix X
 SYMATTR InstName D
-SYMATTR SpiceModel 1204_155124BS73200
+SYMATTR SpiceModel 0603_155060AS73200
 SYMATTR ModelFile Contrib/Wurth/WL-SMSW.lib
 PIN 0 -48 NONE 8
 PINATTR PinName 1

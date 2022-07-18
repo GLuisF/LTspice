@@ -34,7 +34,7 @@ WINDOW 38 -102 84 Left 2
 SYMATTR SpiceModel 1087_744272102_1m
 SYMATTR Prefix X
 SYMATTR InstName L
-SYMATTR Description SMT Common Mode Line Filter // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-SL5 SMT Common Mode Line Filter \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-SL5  \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-SL5.lib.
 SYMATTR ModelFile Contrib/Wurth/WE-SL5.lib
 PIN -96 -48 BOTTOM 8
 PINATTR PinName 1

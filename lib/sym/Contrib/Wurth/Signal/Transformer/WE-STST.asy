@@ -1,6 +1,6 @@
 Version 4
 SymbolType CELL
-SYMATTR Description Super Tiny Signal Transformer // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-STST Super Tiny Signal Transformer \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-STST \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-STST.lib.
 LINE Normal -5 32 -5 -32
 LINE Normal 5 32 5 -32
 LINE Normal 24 48 48 48

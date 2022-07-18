@@ -31,7 +31,7 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -127 81 Left 2
-SYMATTR Description Ceramic Common Mode Filter // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-CCMF Ceramic Common Mode Filter \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-CCMF \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-CCMF.lib.
 SYMATTR SpiceModel WE_CCMF_748020024
 SYMATTR Prefix X
 SYMATTR InstName L

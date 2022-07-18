@@ -31,8 +31,8 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -102 84 Left 2
-SYMATTR Description SMT Common Mode Line Filter // After inserting, right-click on the symbol to select the part number.
 SYMATTR SpiceModel 1310_744202_1m
+SYMATTR Description WE-SL SMT Common Mode Line Filter \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-SL \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-SL.lib.
 SYMATTR Prefix X
 SYMATTR InstName L
 SYMATTR ModelFile Contrib/Wurth/WE-SL.lib
@@ -44,7 +44,7 @@ PINATTR PinName 1
 PINATTR SpiceOrder 2
 PIN 96 48 BOTTOM 8
 PINATTR PinName 8
-PINATTR SpiceOrder 3
+PINATTR SpiceOrder 4
 PIN 96 -48 BOTTOM 8
 PINATTR PinName 5
-PINATTR SpiceOrder 4
+PINATTR SpiceOrder 3

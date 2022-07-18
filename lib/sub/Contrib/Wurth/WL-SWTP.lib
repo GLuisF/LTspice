@@ -1,155 +1,174 @@
 **************************************************
-* Manufacturer:       Wurth Elektronik
-* Kinds:     White PLCC LED
-* Matchcode:         WL-SWTP SMD White Top view PLCC
-* Library Type:       Pspice
-* Version:        rev18a       
-* Date and Time   :       2018-8-4
-* Team:           eiSos EDA Service  
-* Contact:        libraries@we-online.com
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  SMT White Top view PLCC
+* Matchcode:              WL-SWTP
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-03-02
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
 **************************************************
-.subckt  3014_158301230  1  2
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
+.subckt 3014_158301227  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=176.68E-12
-+ N=5
-+ RS=.72005
-+ IKF=251.31E-6
++ IS=91.819E-12
++ N=4.0378
++ RS=11.199E-6
++ IKF=1.1025E-6
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=5.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301227  1  2
+.subckt 3014_158301230  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=176.68E-12
-+ N=5
-+ RS=.72005
-+ IKF=251.31E-6
++ IS=91.819E-12
++ N=4.0378
++ RS=11.199E-6
++ IKF=1.1025E-6
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=5.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301240  1  2
+.subckt 3014_158301240  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=118.37E-12
-+ N=4.8869
-+ RS=2.9124
-+ IKF=311.99E-6
++ IS=91.819E-12
++ N=4.0378
++ RS=11.199E-6
++ IKF=1.1025E-6
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=5.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301250  1  2
+.subckt 3014_158301250  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=118.37E-12
-+ N=4.8869
-+ RS=2.9124
-+ IKF=311.99E-6
-+ CJO=1.0000E-12
-+ M=.3333
-+ VJ=.755
-+ BV=5
-+ TT=5.0000E-9
-.ends
-******
-.subckt  3014_158301260  1  2
-D1 1 2 led
-.MODEL led D
-+ IS=118.37E-12
-+ N=4.8869
-+ RS=2.9124
-+ IKF=311.99E-6
-+ CJO=1.0000E-12
-+ M=.3333
-+ VJ=.755
-+ BV=5
-+ TT=5.0000E-9
-.ends
-******
-.subckt  5630_158563427  1  2
-D1 1 2 led
-.MODEL led D
-+ IS=561.10E-12
-+ N=4.9950
-+ RS=4.4821
-+ IKF=999
-+ CJO=1.0000E-12
-+ M=.3333
-+ VJ=.755
-+ BV=5
-+ TT=5.0000E-9
-.ends
-******
-.subckt  5630_158563430  1  2
-D1 1 2 led
-.MODEL led D
-+ IS=561.10E-12
-+ N=4.9950
-+ RS=4.4821
-+ IKF=999
++ IS=91.819E-12
++ N=4.0378
++ RS=11.199E-6
++ IKF=1.1025E-6
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=5.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  5630_158563440  1  2
+.subckt 3014_158301260  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=13.734E-3
-+ N=4.9950
-+ RS=2.2036
-+ IKF=303.44E-12
++ IS=91.819E-12
++ N=4.0378
++ RS=11.199E-6
++ IKF=1.1025E-6
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=5.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  5630_158563450  1  2
+.subckt 3014_158301227A  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=561.10E-12
-+ N=4.9950
-+ RS=4.4821
-+ IKF=999
++ IS=10.000E-21
++ N=2.4944
++ RS=3.0032
++ IKF=12.971
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=100.00E-6
 + TT=5.0000E-9
 .ends
 ******
-.subckt  5630_158563460  1  2
+.subckt 3014_158301230A  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=561.10E-12
-+ N=4.9950
-+ RS=4.4821
-+ IKF=999
++ IS=12.191E-21
++ N=2.5089
++ RS=3.9815
++ IKF=153.74
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
++ IBV=100.00E-6
 + TT=5.0000E-9
 .ends
 ******
-
-.subckt  3022_158302227  1  2
+.subckt 3014_158301240A  1  2
+D1 1 2 led
+.MODEL led D
++ IS=10.041E-21
++ N=2.4504
++ RS=2.0038
++ IKF=35.169E-3
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 3014_158301250A  1  2
+D1 1 2 led
+.MODEL led D
++ IS=10.000E-21
++ N=2.4382
++ RS=2.6416
++ IKF=12.576
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 3014_158301260A  1  2
+D1 1 2 led
+.MODEL led D
++ IS=10.000E-21
++ N=2.4382
++ RS=2.6416
++ IKF=12.576
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 3022_158302227  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.010E-21
@@ -163,7 +182,7 @@ D1 1 2 led
 + IBV=100.00E-6
 .ends
 ******
-.subckt  3022_158302230  1  2
+.subckt 3022_158302230  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.010E-21
@@ -177,7 +196,7 @@ D1 1 2 led
 + IBV=100.00E-6
 .ends
 ******
-.subckt  3022_158302240  1  2
+.subckt 3022_158302240  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.010E-21
@@ -191,7 +210,7 @@ D1 1 2 led
 + IBV=100.00E-6
 .ends
 ******
-.subckt  3022_158302250  1  2
+.subckt 3022_158302250  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.010E-21
@@ -205,7 +224,7 @@ D1 1 2 led
 + IBV=100.00E-6
 .ends
 ******
-.subckt  3022_158302260  1  2
+.subckt 3022_158302260  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.010E-21
@@ -219,7 +238,7 @@ D1 1 2 led
 + IBV=100.00E-6
 .ends
 ******
-.subckt  3030_158303227A  1  2
+.subckt 3030_158303227A  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.000E-21
@@ -233,7 +252,7 @@ D1 1 2 led
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3030_158303230A  1  2
+.subckt 3030_158303230A  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.000E-21
@@ -247,7 +266,7 @@ D1 1 2 led
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3030_158303240A  1  2
+.subckt 3030_158303240A  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.000E-21
@@ -261,7 +280,7 @@ D1 1 2 led
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3030_158303250A  1  2
+.subckt 3030_158303250A  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.000E-21
@@ -275,7 +294,7 @@ D1 1 2 led
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3030_158303260A  1  2
+.subckt 3030_158303260A  1  2
 D1 1 2 led
 .MODEL led D
 + IS=10.000E-21
@@ -289,74 +308,79 @@ D1 1 2 led
 + TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301227A  1  2
+.subckt 5630_158563427  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=10.000E-21
-+ N=2.4466
-+ RS=1.9921
-+ IKF=31.051E-3
++ IS=441.24E-6
++ N=5
++ RS=1.8266
++ IKF=6.5223E-9
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
-+ IBV=100.00E-6
++ IBV=5.00E-6
++ TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301230A  1  2
+.subckt 5630_158563430  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=10.000E-21
-+ N=2.4466
-+ RS=1.9921
-+ IKF=31.051E-3
++ IS=441.24E-6
++ N=5
++ RS=1.8266
++ IKF=6.5223E-9
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
-+ IBV=100.00E-6
++ IBV=5.00E-6
++ TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301240A  1  2
+.subckt 5630_158563440  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=10.000E-21
-+ N=2.4466
-+ RS=1.9921
-+ IKF=31.051E-3
++ IS=441.24E-6
++ N=5
++ RS=1.8266
++ IKF=6.5223E-9
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
-+ IBV=100.00E-6
++ IBV=5.00E-6
++ TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301250A  1  2
+.subckt 5630_158563450  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=330.17E-21
-+ N=2.6943
-+ RS=2.3544
-+ IKF=278.04
++ IS=441.24E-6
++ N=5
++ RS=1.8266
++ IKF=6.5223E-9
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
-+ IBV=100.00E-6
++ IBV=5.00E-6
++ TT=5.0000E-9
 .ends
 ******
-.subckt  3014_158301260A  1  2
+.subckt 5630_158563460  1  2
 D1 1 2 led
 .MODEL led D
-+ IS=10.000E-21
-+ N=2.4466
-+ RS=1.9921
-+ IKF=31.051E-3
++ IS=441.24E-6
++ N=5
++ RS=1.8266
++ IKF=6.5223E-9
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
-+ IBV=100.00E-6
++ IBV=5.00E-6
++ TT=5.0000E-9
 .ends
 ******
 .subckt 5630_158563227A 1 2 
@@ -376,15 +400,16 @@ D1 1 2 led
 .subckt 5630_158563230A 1 2 
 D1 1 2 led
 .MODEL led D
-+ IS=10.000E-21
-+ N=2.4336
-+ RS=1.7192
-+ IKF=39.690
++ IS=10.010E-21
++ N=2.4354
++ RS=1.6815
++ IKF=102.53
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75
 + BV=5
 + IBV=100.00E-6
++ TT=5.0000E-9
 .ends
 ******
 .subckt 5630_158563240A 1 2 

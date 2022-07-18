@@ -1,13 +1,22 @@
 **************************************************
-* Manufacturer:       Wurth Elektronik
-* Kinds:     Multi-Tum Ratio Coupled Inductor
-* Matchcode:          WE-MTCI
-* Library Type:       Ltspice
-* Version:        rev18a
-* Created/modified by:    Fredo
-* Date and Time   :       10/15/2018
-* Team:           eiSos EDA Service
-* Contact:        libraries@we-online.com
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  SMT Multi-Turn Ratio coupled Inductor 
+* Matchcode:              WE-MTCI 
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-05-25
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
 **************************************************
 .subckt  5030_744889015100_10u  1  2  3  4  PARAMS:
 +  Cww=9.5p

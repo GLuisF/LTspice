@@ -1,6 +1,6 @@
 Version 4
 SymbolType BLOCK
-SYMATTR Description Auxiliary Gate Drive Transformer // EP7, SMT, 1.5W, Flyback
+SYMATTR Description WE-AGDT Auxiliary Gate Drive Transformer \nEP7, SMT, 1.5W, Flyback\nwww.we-online.com/redexpert/article/7503190773?al\n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-AGDT.lib.
 LINE Normal 61 0 61 225
 LINE Normal 67 0 67 225
 LINE Normal 0 0 32 0
@@ -34,7 +34,7 @@ ARC Normal 112 128 80 160 96 128 96 160
 ARC Normal 112 160 80 192 96 160 96 192
 ARC Normal 112 192 80 224 96 192 96 224
 ARC Normal 112 64 80 96 96 64 96 96
-TEXT 64 -32 Center 2 WE 750319077
+TEXT 64 -32 Center 2 750319077
 TEXT 20 47 Right 2 Pri
 TEXT 32 176 Right 2 Aux
 TEXT 130 144 Left 2 Sec

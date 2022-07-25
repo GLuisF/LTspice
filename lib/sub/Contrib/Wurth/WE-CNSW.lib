@@ -1,13 +1,22 @@
 **************************************************
-* Manufacturer: 		Wurth Elektronik
-* Kinds:			 SMD Common Mode Line Filter
-* Matchcode: 		WE-CNSW
-* Library Type:		LTspice
-* Version: 		rev18a
-* Created/modified by:	Fredo Huang
-* Date and Time   :		2018-01-03
-* Team: 			eiSos EDA Service
-* Contact: 		libraries@we-online.com
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  SMT Common Mode Line Filter
+* Matchcode:              WE-CNSW 
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-05-26
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
 **************************************************
 .SUBCKT  CNSW  1  2  3  4  PARAMS:
 R_R47  N21893  N21911  {Rs3}

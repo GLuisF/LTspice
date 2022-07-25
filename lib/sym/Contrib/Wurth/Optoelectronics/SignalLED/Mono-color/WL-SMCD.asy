@@ -1,6 +1,5 @@
 Version 4
 SymbolType BLOCK
-SYMATTR Description SMT Mono-color Chip LED Diffused // After inserting, right-click on the symbol to select the part number.
 LINE Normal 16 -29 -16 -29
 LINE Normal 0 -3 16 -29
 LINE Normal -16 -29 0 -3
@@ -18,7 +17,8 @@ ARC Normal 38 -27 49 -16 39 -24 48 -19
 ARC Normal 38 -11 49 0 39 -8 48 -3
 WINDOW 38 17 15 Left 2
 WINDOW 0 17 -44 Left 2
-SYMATTR SpiceModel 0603_150060SS55040
+SYMATTR Description WL-SMCD SMT Mono-color Chip LED Diffused \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WL-SMCD \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WL-SMCD.lib.
+SYMATTR SpiceModel 0603_150060BS55040
 SYMATTR Prefix X
 SYMATTR InstName D
 SYMATTR ModelFile Contrib/Wurth/WL-SMCD.lib

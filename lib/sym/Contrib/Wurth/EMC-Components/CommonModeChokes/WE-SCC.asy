@@ -31,7 +31,7 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -102 84 Left 2
-SYMATTR Description SMT Common Mode Line Filter // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-SCC SMT Common Mode Line Filter \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-SCC \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-SCC.lib.
 SYMATTR SpiceModel 7345_744281101_100u
 SYMATTR Prefix X
 SYMATTR InstName L

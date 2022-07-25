@@ -31,7 +31,7 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -102 84 Left 2
-SYMATTR Description Common Mode Power Line Choke (Horizontal) // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-CMBH Common Mode Power Line Choke (Horizontal)\nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-CMBH \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-CMBH.lib.
 SYMATTR SpiceModel L_744834101_1m
 SYMATTR Prefix X
 SYMATTR InstName L

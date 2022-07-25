@@ -1,6 +1,5 @@
 Version 4
 SymbolType BLOCK
-SYMATTR Description THT Mono-color Round Color // After inserting, right-click on the symbol to select the part number.
 LINE Normal 16 -29 -16 -29
 LINE Normal 0 -3 16 -29
 LINE Normal -16 -29 0 -3
@@ -18,9 +17,10 @@ ARC Normal 38 -27 49 -16 39 -24 48 -19
 ARC Normal 38 -11 49 0 39 -8 48 -3
 WINDOW 38 17 15 Left 2
 WINDOW 0 17 -44 Left 2
+SYMATTR Description WL-TMRC THT Mono-color Round Color \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WL-TMRC \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WL-TMRC.lib.
 SYMATTR Prefix X
 SYMATTR InstName D
-SYMATTR SpiceModel 3mm_151031VS04000
+SYMATTR SpiceModel 3mm_151031SS04000
 SYMATTR ModelFile Contrib/Wurth/WL-TMRC.lib
 PIN 0 -48 NONE 8
 PINATTR PinName 1

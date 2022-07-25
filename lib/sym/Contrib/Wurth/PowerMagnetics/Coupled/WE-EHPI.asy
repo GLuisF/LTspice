@@ -16,19 +16,20 @@ ARC Normal 8 -8 -8 -24 -8 -16 8 -16
 ARC Normal -8 -8 -24 -24 -24 -16 -8 -16
 WINDOW 38 1 35 Center 2
 WINDOW 0 0 -37 Center 2
+SYMATTR Description WE-EHPI Energy Harvesting Coupled Inductor \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-EHPI \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-EHPI.lib.
 SYMATTR SpiceModel 5838_74488540250_25u
 SYMATTR Prefix x
 SYMATTR InstName L
 SYMATTR ModelFile Contrib/Wurth/WE-EHPI.lib
-PIN -48 -16 RIGHT 8
+PIN -48 -16 BOTTOM 2
 PINATTR PinName 1
 PINATTR SpiceOrder 1
-PIN 48 -16 LEFT 8
+PIN 48 -16 BOTTOM 2
 PINATTR PinName 2
 PINATTR SpiceOrder 2
-PIN 48 16 LEFT 8
+PIN 48 16 BOTTOM 2
 PINATTR PinName 3
 PINATTR SpiceOrder 3
-PIN -48 16 RIGHT 8
+PIN -48 16 BOTTOM 2
 PINATTR PinName 4
 PINATTR SpiceOrder 4

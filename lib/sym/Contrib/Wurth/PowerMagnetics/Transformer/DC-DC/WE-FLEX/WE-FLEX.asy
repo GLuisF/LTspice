@@ -21,11 +21,11 @@ TEXT 33 -41 Left 1 PS1
 TEXT 32 24 Left 1 PS2
 WINDOW 0 0 -70 Bottom 2
 WINDOW 38 0 -60 Center 1
-SYMATTR Description Flexible Transformer for SMPS (standard series) // The 6 identical windings can be connected in many configurations to produce the desired inductance, dc resistance and turns ratio. For configuration instructions, go to www.we-online.com/ltspice-flex or find in the LTspice folder \lib\ sym\ Contrib\ Wurth\ Transformers\ DC-DC\ WE-FLEX\ .
+SYMATTR Description WE-FLEX Flexible Transformer for SMPS (standard series) \nSingle Output model - Configure windings as one input and one output for fast simulation \nThe 6 identical windings can be connected in many configurations to produce the desired inductance, dc resistance and turns ratio. \nFor configuration instructions, go to www.we-online.com/ltspice-flex or find in the LTspice folder \lib\ sym\ Contrib\ Wurth\ PowerMagnetics\ Transformers\ DC-DC\ WE-FLEX\ .\nwww.we-online.com/catalog/WE-FLEX \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-FLEX.lib.
 SYMATTR SpiceModel WE-FLEX_ER11-5_749196101
 SYMATTR Prefix X
 SYMATTR InstName T
-SYMATTR ModelFile WE-FLEX.lib
+SYMATTR ModelFile Contrib/Wurth/WE-FLEX.lib
 SYMATTR Value temp = 25
 SYMATTR Value2 config_P=1 config_S=1
 PIN -64 -32 NONE 8

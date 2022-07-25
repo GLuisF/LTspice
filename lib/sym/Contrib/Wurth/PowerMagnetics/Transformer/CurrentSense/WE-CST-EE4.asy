@@ -1,6 +1,6 @@
 Version 4
 SymbolType Block
-SYMATTR Description Current Sense Transformer - EE4.4 // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description Current Sense Transformer - EE4.4\nAfter inserting, right-click on the symbol to select the part number.\nwww.we-online.com/catalog/WE-CST\n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-CST-EE4.lib.
 SYMATTR SpiceModel 749252020
 SYMATTR Prefix X
 SYMATTR InstName T

@@ -1,6 +1,5 @@
 Version 4
 SymbolType BLOCK
-SYMATTR Description SMT Infrared TOP LED Waterclear // After inserting, right-click on the symbol to select the part number.
 LINE Normal 16 -29 -16 -29
 LINE Normal 0 -3 16 -29
 LINE Normal -16 -29 0 -3
@@ -18,6 +17,7 @@ ARC Normal 38 -27 49 -16 39 -24 48 -19
 ARC Normal 38 -11 49 0 39 -8 48 -3
 WINDOW 38 17 15 Left 2
 WINDOW 0 17 -44 Left 2
+SYMATTR Description WL-SITW SMT Infrared TOP LED Waterclear \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WL-SITW \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WL-SITW.lib.
 SYMATTR Prefix X
 SYMATTR InstName D
 SYMATTR SpiceModel 3528_15414185BA210

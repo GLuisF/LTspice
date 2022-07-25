@@ -1,13 +1,22 @@
 **************************************************
-* Manufacturer:       Wurth Elektronik 
-* Kinds:     Coupled Flatwire Inductor
-* Matchcode:          WE-CFWI
-* Library Type:       Ltspice
-* Version:        rev18a
-* Created/modified by:    Fredo       
-* Date and Time   :       3/15/2018
-* Team:           eiSos EDA Service  
-* Contact:        libraries@we-online.com
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  Coupled Flatwire Inductor
+* Matchcode:              WE-CFWI
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-02-17
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
 **************************************************
 .subckt  1310_74485540080_0.8u  1  2  3  4  PARAMS:
 +  Cww=108p
@@ -20,17 +29,17 @@
 +  RDC1=0.0016
 +  RDC2=0.0016
 +  K=0.925337776166087
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -45,17 +54,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0024
 +  RDC2=0.0024
 +  K=0.944722181384559
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -70,17 +79,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0033
 +  RDC2=0.0033
 +  K=0.958859616787506
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -95,17 +104,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0042
 +  RDC2=0.0042
 +  K=0.956793888700459
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -120,17 +129,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0056
 +  RDC2=0.0056
 +  K=0.964543844304761
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -145,17 +154,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0075
 +  RDC2=0.0075
 +  K=0.969241234899017
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -170,17 +179,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0113
 +  RDC2=0.0113
 +  K=0.986154146165801
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -195,17 +204,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.013
 +  RDC2=0.013
 +  K=0.987420882906575
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -220,17 +229,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0139
 +  RDC2=0.0139
 +  K=0.989141041510259
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -245,17 +254,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0061
 +  RDC2=0.0061
 +  K=0.983541021603304
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -270,17 +279,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.0084
 +  RDC2=0.0084
 +  K=0.985875864149334
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******
@@ -295,17 +304,17 @@ Kn_K1  L_L1  L_L2      {K}
 +  RDC1=0.011
 +  RDC2=0.011
 +  K=0.987420882906575
-C_C1  2  1    {Cww/2}
-R_R50  2  1  5000g
-C_C2  3  4    {Cww/2}
-C_C5  3  2    {Cp1}
-R_R1  3  N05454    {RDC1}
-R_R2  3  2    {Rp1}
-L_L1  N05454  2    {Lp1}
-L_L2  N05750  1    {Lp2}
-C_C6  4  1    {Cp2}
-R_R3  4  1    {Rp2}
-R_R4  4  N05750    {RDC2}
+C_C1 3 1 {Cww/2}
+R_R50 3 1 5000g
+C_C2 2 4 {Cww/2}
+C_C5 2 3 {Cp1}
+R_R1 2 N05454 {RDC1}
+R_R2 2 3 {Rp1}
+L_L1 N05454 3 {Lp1}
+L_L2 N05750 1 {Lp2}
+C_C6 4 1 {Cp2}
+R_R3 4 1 {Rp2}
+R_R4 4 N05750 {RDC2}
 Kn_K1  L_L1  L_L2      {K}
 .ends
 ******

@@ -1,3 +1,23 @@
+**************************************************
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  Multilayer Ceramic SMT Inductor 
+* Matchcode:              WE-MK 
+* Library Type:           LTspice
+* Version:                rev22a
+* Created/modified by:    Ella      
+* Date and Time:          2022-05-24
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
 .subckt 0201_7447820010_1n 1 2
 C1 1 N7 252.6464f
 L1 1 N1 0.95n
@@ -2578,7 +2598,7 @@ R7 2 N7 27.1851
 R8 2 1 10g
 .ends 
 *******
-.subckt 0402_7447840156_56n 1 2
+.subckt 0402_7447840156G_56n 1 2
 C1 1 N7 200.6576f
 L1 1 N1 50n
 L2 N1 N2 7.2081n
@@ -3295,6 +3315,258 @@ R4 2 N4 2.9213
 R5 2 N5 2.9163
 R6 2 N6 2.5078
 R7 2 N7 5.6599
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880015_1.5n 1 2
+C1 1 N7 453.7351f
+L1 1 N1 1.45n
+L2 N1 N2 97.7510p
+L3 N2 N3 272.3120p
+L4 N3 N4 346.3155p
+L5 N4 N5 76.5715p
+L6 N5 N6 54.1027p
+R1 2 N1 231.6285m
+R2 2 N2 86.9697m
+R3 2 N3 358.7388m
+R4 2 N4 374.9653m
+R5 2 N5 335.4371m
+R6 2 N6 95.3388m
+R7 2 N7 2.0002
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880027_2.7n 1 2
+C1 1 N7 370.5358f
+L1 1 N1 2.6n
+L2 N1 N2 89.2929p
+L3 N2 N3 138.7830p
+L4 N3 N4 332.2481p
+L5 N4 N5 76.5359p
+L6 N5 N6 54.0851p
+R1 2 N1 324.4136m
+R2 2 N2 192.3667m
+R3 2 N3 307.5942m
+R4 2 N4 374.7480m
+R5 2 N5 336.7382m
+R6 2 N6 95.5494m
+R7 2 N7 1.9562
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880047_4.7n 1 2
+C1 1 N7 380.3262f
+L1 1 N1 4.6n
+L2 N1 N2 62.9873p
+L3 N2 N3 189.8775p
+L4 N3 N4 770.4824p
+L5 N4 N5 79.8434p
+L6 N5 N6 56.1732p
+R1 2 N1 1.3252
+R2 2 N2 569.6958m
+R3 2 N3 291.4611m
+R4 2 N4 518.3425m
+R5 2 N5 484.9844m
+R6 2 N6 124.8340m
+R7 2 N7 1.9629
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880056_5.6n 1 2
+C1 1 N7 417.8944f
+L1 1 N1 5.5n
+L2 N1 N2 89.9765p
+L3 N2 N3 202.8862p
+L4 N3 N4 774.3703p
+L5 N4 N5 79.9053p
+L6 N5 N6 56.2281p
+R1 2 N1 1.3445
+R2 2 N2 608.0293m
+R3 2 N3 448.4145m
+R4 2 N4 522.1708m
+R5 2 N5 489.3162m
+R6 2 N6 156.7441m
+R7 2 N7 1.9687
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880068_6.8n 1 2
+C1 1 N7 327.6543f
+L1 1 N1 6.7n
+L2 N1 N2 147.7032p
+L3 N2 N3 451.9061p
+L4 N3 N4 882.3440p
+L5 N4 N5 80.7630p
+L6 N5 N6 56.8268p
+R1 2 N1 1.3644
+R2 2 N2 754.7182m
+R3 2 N3 514.5473m
+R4 2 N4 565.3774m
+R5 2 N5 533.8102m
+R6 2 N6 234.4840m
+R7 2 N7 1.9655
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880082_8.2n 1 2
+C1 1 N7 364.2628f
+L1 1 N1 8n
+L2 N1 N2 186.9858p
+L3 N2 N3 495.2102p
+L4 N3 N4 915.0111p
+L5 N4 N5 81.0550p
+L6 N5 N6 57.0561p
+R1 2 N1 1.3571
+R2 2 N2 757.3851m
+R3 2 N3 545.0157m
+R4 2 N4 582.0982m
+R5 2 N5 550.8166m
+R6 2 N6 322.8298m
+R7 2 N7 1.9685
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880110_10n 1 2
+C1 1 N7 413.1977f
+L1 1 N1 9.7n
+L2 N1 N2 148.8577p
+L3 N2 N3 252.0940p
+L4 N3 N4 943.1212p
+L5 N4 N5 86.2628p
+L6 N5 N6 60.9923p
+R1 2 N1 2.7142
+R2 2 N2 1.2388
+R3 2 N3 953.8953m
+R4 2 N4 863.5495m
+R5 2 N5 838.7785m
+R6 2 N6 517.8158m
+R7 2 N7 2.5106
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880127_27n 1 2
+C1 1 N7 478.7462f
+L1 1 N1 26n
+L2 N1 N2 1.1309n
+L3 N2 N3 355.5674p
+L4 N3 N4 5.3564n
+L5 N4 N5 91.7711p
+L6 N5 N6 66.6542p
+R1 2 N1 3.2083
+R2 2 N2 1.9025
+R3 2 N3 1.8277
+R4 2 N4 1.1832
+R5 2 N5 1.1651
+R6 2 N6 973.3438m
+R7 2 N7 933.9716m
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880133_33n 1 2
+C1 1 N7 425.4063f
+L1 1 N1 32n
+L2 N1 N2 1.1549n
+L3 N2 N3 1.5729n
+L4 N3 N4 6.5099n
+L5 N4 N5 88.6738p
+L6 N5 N6 62.2288p
+R1 2 N1 4.9688
+R2 2 N2 2.3633
+R3 2 N3 1.5105
+R4 2 N4 1.1722
+R5 2 N5 1.1538
+R6 2 N6 964.7568m
+R7 2 N7 948.7178m
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880156_56n 1 2
+C1 1 N7 497.1717f
+L1 1 N1 53n
+L2 N1 N2 1.1946n
+L3 N2 N3 2.0970n
+L4 N3 N4 5.8004n
+L5 N4 N5 87.6235p
+L6 N5 N6 60.3993p
+R1 2 N1 9.5050
+R2 2 N2 6.1114
+R3 2 N3 2.5141
+R4 2 N4 1.7370
+R5 2 N5 1.7293
+R6 2 N6 1.6696
+R7 2 N7 1.3148
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880210_100n 1 2
+C1 1 N7 425.5670f
+L1 1 N1 95n
+L2 N1 N2 4.0949n
+L3 N2 N3 779.9348p
+L4 N3 N4 9.0957n
+L5 N4 N5 91.2600p
+L6 N5 N6 64.4001p
+R1 2 N1 15.4367
+R2 2 N2 11.8692
+R3 2 N3 3.8873
+R4 2 N4 2.5208
+R5 2 N5 2.5141
+R6 2 N6 1.8963
+R7 2 N7 1.6156
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880212_120n 1 2
+C1 1 N7 525.6170f
+L1 1 N1 110n
+L2 N1 N2 1.4424n
+L3 N2 N3 5.7821n
+L4 N3 N4 11.6583n
+L5 N4 N5 91.3634p
+L6 N5 N6 64.4806p
+R1 2 N1 15.4856
+R2 2 N2 13.2954
+R3 2 N3 3.1134
+R4 2 N4 2.4554
+R5 2 N5 2.4483
+R6 2 N6 2.0122
+R7 2 N7 5.5273
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880222_220n 1 2
+C1 1 N7 515.1440f
+L1 1 N1 195n
+L2 N1 N2 4.5550n
+L3 N2 N3 10.3580n
+L4 N3 N4 25.7766n
+L5 N4 N5 91.2709p
+L6 N5 N6 64.4361p
+R1 2 N1 24.6229
+R2 2 N2 18.4921
+R3 2 N3 4.0010
+R4 2 N4 2.8179
+R5 2 N5 2.8126
+R6 2 N6 2.3636
+R7 2 N7 2.4587
+R8 2 1 10g
+.ends 
+*******
+.subckt 0805_7447880247_470n 1 2
+C1 1 N7 557.0656f
+L1 1 N1 420n
+L2 N1 N2 24.7521n
+L3 N2 N3 35.1655n
+L4 N3 N4 267.7875n
+L5 N4 N5 91.4235p
+L6 N5 N6 64.6063p
+R1 2 N1 24.9116
+R2 2 N2 10.2555
+R3 2 N3 4.3561
+R4 2 N4 2.9216
+R5 2 N5 2.9166
+R6 2 N6 2.5082
+R7 2 N7 5.5787
 R8 2 1 10g
 .ends 
 *******

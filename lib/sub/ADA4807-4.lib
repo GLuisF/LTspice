@@ -95,8 +95,8 @@ R30 N018 COM 1 Temp=-273.15
 R31 N020 COM 1 Temp=-273.15
 G9 COM Vs 3 4 1m
 R32 Vs COM 1k Temp=-273.15
-A3 Vs COM COM COM COM COM VminGD COM SCHMITT Vt={Vsmin-50m} Vh=10m Trise=5n
-A4 Vs COM COM COM COM VmaxGD COM COM SCHMITT Vt={Vsmax-50m} Vh=10m Trise=5n
+A3 Vs COM COM COM COM COM VminGD COM SCHMITT Vt={Vsmin-10m} Vh=10m Trise=5n
+A4 Vs COM COM COM COM VmaxGD COM COM SCHMITT Vt={Vsmax+10m} Vh=10m Trise=5n
 A5 VminGD COM COM COM VmaxGD COM EN COM AND Trise=5n
 R33 EN COM 1G Temp=-273.15
 R34 VmaxGD COM 1G Temp=-273.15
@@ -308,10 +308,10 @@ R5 OLp COM 1k
 R39 OLn COM 1k
 C16 OLp COM 1p
 C17 OLn COM 1p
-B10 COM OLp I=1m*ABS(I(VGP))
-B11 COM OLn I=1m*ABS(I(VGN))
 C25 OL COM 1p
 C61 Aol1 COM 1f
+F3 COM OLp VGP 1m
+F4 COM OLn VGN -1m
 .param Enp=4n Enkp=11
 .param Enn=5.9n Enkn=380
 .param Inn=0.4p Inkp=2.1k
@@ -330,7 +330,7 @@ C61 Aol1 COM 1f
 .model 325nA D(Ron=1Meg Roff=1G Ilimit=325n epsilon=1 Vfwd=1 Noiseless)
 .model DI D(Vfwd=1k Vrev=0 Revepsilon=0.1 Noiseless)
 .model DO D(Vfwd=1k Vrev=0 Revepsilon=0.1 Ron=1m Noiseless)
-.model DG D(Vfwd=10k Vrev=0 Revepsilon=0.5 Ron=1m Noiseless)
+.model DG D(Vfwd=20k Vrev=0 Revepsilon=0.5 Ron=1m Noiseless)
 .model ESDI SW(Ron=50 Roff=1T Vt=0.5 Vh=-0.1 Vser=0.1 Noiseless)
 .model ESDO SW(Ron=50 Roff=1G Vt=0.5 Vh=-0.1 Vser=0.6 Ilimit=4m Lser=1n Noiseless)
 .model OL SW(Ron=10m Roff=1G Vt=500m Vh=-100m Noiseless)

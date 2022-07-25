@@ -1,6 +1,6 @@
 Version 4
 SymbolType CELL
-SYMATTR Description 10Gbit Base-T LAN Transformer // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-LAN 10G Transformer 10Gbit Base-T \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-LAN-10G \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-LAN10G.lib.
 LINE Normal 32 5 -32 5
 LINE Normal 32 -5 -32 -5
 LINE Normal -32 -24 -32 -48

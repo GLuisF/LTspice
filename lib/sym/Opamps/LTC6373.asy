@@ -24,7 +24,7 @@ WINDOW 3 224 96 Left 2
 WINDOW 0 224 -112 Left 2
 SYMATTR Value LTC6373
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6373.sub
+SYMATTR SpiceModel LTC6373.lib
 SYMATTR Value2 LTC6373
 SYMATTR Description 36V Fully Differential Programmable-Gain Instrumentation Amplifier with 20pA Input Bias Current
 PIN -144 -96 NONE 8

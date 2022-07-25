@@ -31,7 +31,7 @@ ARC Normal 0 16 16 32 16 24 0 24
 ARC Normal 16 16 32 32 32 24 16 24
 WINDOW 0 -17 -77 Left 2
 WINDOW 38 -147 81 Left 2
-SYMATTR Description Common Mode Power Line Choke (higher voltage) // After inserting, right-click on the symbol to select the part number.
+SYMATTR Description WE-CMB HV Common Mode Power Line Choke \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-CMBHV \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-CMBHV.lib.
 SYMATTR SpiceModel XL_744830007215_0.7m
 SYMATTR Prefix X
 SYMATTR InstName L

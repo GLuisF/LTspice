@@ -1,3 +1,23 @@
+**************************************************
+* Manufacturer:           Wurth Elektronik 
+* Kinds:                  Flexible Transformer for DC/DC Converter
+* Matchcode:              WE-FLEX+
+* Library Type:           LTspice
+* Version:                rev22b
+* Created/modified by:    Toby    
+* Date and Time:          2022-05-23
+* Team:                   eiSos EDA Service  
+* Contact:                libraries@we-online.com
+**************************************************
+* Copyright(C) 2022 Würth Elektronik eiSos GmbH & Co. KG
+* All Rights Reserved.
+**************************************************
+* Disclaimer: While Würth Elektronik eiSos has made every reasonable effort to ensure the accuracy
+* of the simulation models provided, Würth Elektronik eiSos does not guarantee the exemption of error on
+* the simulation models, nor does Würth Elektronik eiSos guarantee that the simulation model is current.
+* Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
+* Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
+**************************************************
 ************ WE-FLEX+-ETD29 ****************
 .Subckt WE-FLEX+_ETD29_749197101 PR1 PR2 PS1 PS2 params: temp=25 config_P=1 config_S=1
 .param 

@@ -1,0 +1,24 @@
+Version 4
+SymbolType CELL
+LINE Normal 32 20 36 16
+LINE Normal 0 20 -4 24
+LINE Normal 32 20 0 20
+LINE Normal 32 44 0 44
+LINE Normal 0 44 16 20
+LINE Normal 32 44 16 20
+LINE Normal 16 64 16 44
+LINE Normal 16 20 16 0
+LINE Normal 32 32 24 32
+WINDOW 0 8 64 Right 2
+WINDOW 3 8 0 Right 2
+SYMATTR Value LM336-5.0
+SYMATTR Description 5.0V Reference Diode
+PIN 16 64 NONE 0
+PINATTR PinName -
+PINATTR SpiceOrder 2
+PIN 16 0 NONE 0
+PINATTR PinName +
+PINATTR SpiceOrder 1
+PIN 32 32 NONE 0
+PINATTR PinName ADJ
+PINATTR SpiceOrder 3

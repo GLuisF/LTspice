@@ -11,11 +11,9 @@ CIRCLE Normal 68 -25 59 -34
 CIRCLE Normal 53 33 44 24
 CIRCLE Normal 85 33 76 24
 WINDOW 0 -40 0 Right 2
-WINDOW 3 -109 30 Center 0
-SYMATTR Value L=1.97m RS=123 VDC=5 RON=100m
-SYMATTR Description 1 NA Relay
-SYMATTR ModelFile gluisf.lib
-SYMATTR SpiceModel Relay
+WINDOW 39 -7 24 Right 0
+SYMATTR Description SPDT Relay
+SYMATTR SpiceLine L=1.97m RS=123 VDC=5 RON=100m
 PIN 0 -32 NONE 8
 PINATTR PinName A1
 PINATTR SpiceOrder 1

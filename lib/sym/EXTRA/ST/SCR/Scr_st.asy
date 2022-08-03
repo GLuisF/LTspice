@@ -8,10 +8,11 @@ LINE Normal 16 0 16 20
 LINE Normal 16 44 16 64
 LINE Normal -12 64 -32 64
 LINE Normal -12 64 8 44
-WINDOW 0 24 0 Left 0
+WINDOW 0 24 0 Left 2
+WINDOW 38 25 64 Left 2
+SYMATTR SpiceModel SCR_ST
 SYMATTR Prefix X
 SYMATTR ModelFile ../sym/EXTRA/ST/Scr/Scr_st.lib
-SYMATTR SpiceModel Scr_st
 PIN 16 0 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1

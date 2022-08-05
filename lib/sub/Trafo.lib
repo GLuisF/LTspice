@@ -1,0 +1,30 @@
+* Schematic in LTspiceXVII\lib\sym\Gluisf\Trafo.asc
+* Power: 3VA
+* frequency: 60Hz
+* Primary: 115V + 115V
+* Secondary open: 21.6V + 21.6V
+* Secondary loaded: 17.6V + 17.6V
+* Secondary Nominal Current: 69mA
+.subckt MTE-3/7 L1A L1B L2A L2B L3A L3B L4A L4B
+L1 L1A L1B {LP} Rser={RP}
+L2 L2A L2B {LS} Rser={RS}
+L3 L3A L3B {LP} Rser={RP}
+L4 L4A L4B {LS} Rser={RS}
+K1 L1 L2 L3 L4 {M}
+.param LP=21.5 LS=720m RP=880 RS=42 M=1
+.ends MTE-3/7
+
+* Power: 3VA
+* frequency: 60Hz
+* Primary: 115V + 115V
+* Secondary open: 14.4V + 14.4V
+* Secondary loaded: 11.7V + 11.7V
+* Secondary Nominal Current: 105mA
+.subckt MTE-3/5 L1A L1B L2A L2B L3A L3B L4A L4B
+L1 L1A L1B {LP} Rser={RP}
+L2 L2A L2B {LS} Rser={RS}
+L3 L3A L3B {LP} Rser={RP}
+L4 L4A L4B {LS} Rser={RS}
+K1 L1 L2 L3 L4 {M}
+.param LP=21.5 LS=660m RP=880 RS=17 M=1
+.ends MTE-3/5

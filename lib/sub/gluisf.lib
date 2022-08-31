@@ -28,7 +28,7 @@ D2 DGND VCC Z10V
 S1 1 3 4 0 SW
 S2 1 2 N001 0 SW
 A1 4 0 0 0 0 N001 0 0 BUF
-.model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=-0.1)
+.model SW SW(Ron=1m Roff=1G Vt=0.5 Vh=0.1)
 .ends spdtg
 
 * Single-Pole Single-Throw (SPST) Analog Switch
@@ -36,7 +36,7 @@ A1 4 0 0 0 0 N001 0 0 BUF
 S1 2 1 3 0 SW
 R1 1 2 {Roff}
 R2 0 3 1G
-.model SW SW(Ron={Ron} Roff=1G Vt=0.5 Vh=-0.1)
+.model SW SW(Ron={Ron} Roff=1G Vt=0.5 Vh=0.1)
 *.param Ron=1m Roff=1G
 .ends spstg
 

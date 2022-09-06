@@ -1,0 +1,50 @@
+Version 4
+SymbolType CELL
+LINE Normal -112 44 -80 44
+LINE Normal -112 20 -80 20
+LINE Normal -80 20 -96 44
+LINE Normal -112 20 -96 44
+LINE Normal -96 -16 -96 20
+LINE Normal -96 44 -96 80
+LINE Normal -40 32 -44 40
+LINE Normal -40 32 -48 32
+LINE Normal -40 48 -44 56
+LINE Normal -40 48 -48 48
+LINE Normal 12 76 4 84
+LINE Normal 32 96 12 76
+LINE Normal 32 96 4 84
+LINE Normal 8 80 -16 64
+LINE Normal -16 80 -16 16
+LINE Normal -16 32 32 0
+LINE Normal -16 48 -32 48
+LINE Normal -96 -16 -128 -16
+LINE Normal -96 80 -128 80
+LINE Normal -32 -32 -32 48
+LINE Normal 32 -32 -32 -32
+RECTANGLE Normal 32 112 -128 -48
+ARC Normal -72 20 -56 36 -56 28 -72 24
+ARC Normal -56 20 -40 36 -56 28 -40 32
+ARC Normal -72 36 -56 52 -56 44 -72 40
+ARC Normal -56 36 -40 52 -56 44 -40 48
+WINDOW 0 -47 -62 Center 2
+WINDOW 38 -46 126 Center 2
+SYMATTR SpiceModel BJT_10mA
+SYMATTR Prefix X
+SYMATTR Description General Purpose Photocoupler
+SYMATTR SpiceLine REL_CTR=1
+SYMATTR ModelFile OptoAcop.lib
+PIN -128 -16 NONE 0
+PINATTR PinName A
+PINATTR SpiceOrder 1
+PIN -128 80 NONE 0
+PINATTR PinName K
+PINATTR SpiceOrder 2
+PIN 32 96 NONE 8
+PINATTR PinName E
+PINATTR SpiceOrder 3
+PIN 32 0 NONE 8
+PINATTR PinName C
+PINATTR SpiceOrder 4
+PIN 32 -32 NONE 8
+PINATTR PinName B
+PINATTR SpiceOrder 5

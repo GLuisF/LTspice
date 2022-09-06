@@ -686,7 +686,7 @@
 .model IRFML8244 VDMOS(Rg=1.6 Vto=2.3 Rd=3.7m Rs=0.0m Rb=7.5m Kp=8 Cgdmax=0.20n Cgdmin=25p Cgs=0.26n Cjo=0.15n Is=0.65p ksubthres=.1 mfg=International_Rectifier Vds=30 Ron=20m Qg=5.4n)
 .model IRFP054V VDMOS(Rg=2.0 Vto=4 Rd=2.5m Rs=0.0m Rb=3.0m Kp=44 Cgdmax=5n Cgdmin=0.21n Cgs=4.0n Cjo=2.2n Is=10p tt=78n ksubthres=.1 mfg=International_Rectifier Vds=60 Ron=9m Qg=170n)
 .model IRFP240 VDMOS(Rg=3 Vto=4 Rd=72m Rs=18m Rb=36m Kp=4.9 Lambda=.03 Cgdmax=1.34n Cgdmin=.1n Cgs=1.25n Cjo=1.25n Is=67p ksubthres=.1 mfg=International_Rectifier Vds=200 Ron=180m Qg=70n)
-.model irfp240C VDMOS(nchan Vto=4.0 Kp=4.8 Lambda=0.0032 Rs=0.01 Rd=0.1 Rds=1e7 Cgdmax=2600p Cgdmin=10p a=0.35 Cgs=1250p Cjo=3000p m=0.75 VJ=2.5 IS=4.0E-06 N=2.4)
+.model IRFP240C VDMOS(nchan Vto=4.0 Kp=4.8 Lambda=0.0032 Rs=0.01 Rd=0.1 Rds=1e7 Cgdmax=2600p Cgdmin=10p a=0.35 Cgs=1250p Cjo=3000p m=0.75 VJ=2.5 IS=4.0E-06 N=2.4)
 .model IRFP250N VDMOS(Rg=1.44 Vto=4.0 Rd=47m Rs=0m Rb=5.6m Kp=13 Cgdmax=3.9n Cgdmin=0.10n Cgs=1.9n Cjo=1.25n Is=5p tt=186n ksubthres=.1 mfg=International_Rectifier Vds=200 Ron=75m Qg=123n)
 .model IRFP2907 VDMOS(Rg=3 Vto=4.15 Rd=1.8m Rs=.4m Rb=.9m Kp=130 Lambda=.10 Cgdmax=16.11n Cgdmin=1.2n Cgs=18n Cjo=18n Is=806p ksubthres=.1 mfg=International_Rectifier Vds=75 Ron=4.5m Qg=410n)
 .model IRFP4668 VDMOS(Rg=2 Vto=4.85 Rd=1m Rs=1m Rb=1.2m Kp=33 lambda=0.01 Cgs=8n Cgdmin=500p Cgdmax=1n Cjo=4n Is=2n ksubthres=.1 mfg=International_Rectifier Vds=200 Ron=8m Qg=161n)

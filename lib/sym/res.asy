@@ -7,10 +7,6 @@ LINE Normal 0 48 32 64
 LINE Normal 32 32 0 48
 LINE Normal 16 16 16 24
 LINE Normal 16 24 32 32
-LINE Normal 0 96 0 89
-LINE Normal 0 96 0 96
-LINE Normal -2 93 0 96
-LINE Normal 2 93 0 96
 WINDOW 0 36 40 Left 2
 WINDOW 3 36 76 Left 2
 SYMATTR Value R

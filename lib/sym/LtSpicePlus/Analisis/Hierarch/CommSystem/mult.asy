@@ -10,6 +10,7 @@ LINE Normal -44 8 -32 0
 LINE Normal 0 32 -8 44
 LINE Normal 8 44 0 32
 CIRCLE Normal 32 32 -32 -32
+SYMATTR SpiceLine GAIN=1
 PIN -64 0 NONE 8
 PINATTR PinName in
 PINATTR SpiceOrder 1

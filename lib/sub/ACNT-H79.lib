@@ -1,0 +1,71 @@
+* ACPL-C79B SPICE MACRO-MODEL
+* Copyright 2012 Avago Technologies Limited. All Right Reserved
+*
+* ACPL-C79B Spice Macromodel
+* Rev.B (base model AvagoHCPL7800_MOD)
+* 10/12
+* LSP
+*
+* SPICE Model is verified by Orcad PSpice at Ta=25^C.
+* Macro model performance matches the typical datasheet specifications
+* Worst case performance are not modeled.
+*
+* Macromodels provided by Avago Technologies are not warranted
+* as fully representing all of the specification and operating
+* characteristics of the product.
+*
+* Macromodels are useful for evaluating product performance but they
+* cannot model exact device performance under all condition, nor are
+* they intented to replace breadboarding for final verification.
+**
+**********************************************************************
+*                Pin configuration
+*                VDD1  VIN+  VIN-  GND1  GND2  VOUT- VOUT+ VDD2
+*                |     |     |     |     |     |     |     |
+.SUBCKT ACPLC79B 1     2     3     4     5     6     7     8
+DVDDP 2 1 DMOD
+DVDDN 3 1 DMOD
+RSHP 2 9 530
+RSHN 3 10 530
+DINP 4 9 DMOD
+DINN 4 10 DMOD
+RINP 4 9 20K
+RINN 4 10 20K
+IINP 4 9 670n
+IINN 4 10 670n
+GVDD1 1 4 POLY(1) (22,23) 4.37M 0 -445U 0 69.1U 0 -6.34U
+RVDD1 1 4 490
+EDIFF 11 5 POLY(1) (9,10) -3.6M 4
+VREFX3 12 5 3.61
+VREFX2 13 11 2.395
+Q1 13 11 14 QMOD
+Q2 17 5 16 QMOD
+RE1 14 15 30.08K
+RE2 15 16 30.08K
+IDIFF 15 5 37.356U
+RP1 12 17 65.7K
+TDELAY 17 5 18 5 Z0=65.7K TD=970N
+CP1 18 5 1.3P
+RP2 18 19 65.7K
+CP2 19 5 3.3P
+RP3 19 20 52.7K
+CP3 20 22 5.2P
+RP4 20 21 52.7K
+CP4 21 5 2.52P
+EOUTP 22 5 POLY(1) (21,5) -1.205 1.02665
+EOUTN 23 5 POLY(1) (22,5) 2.500 -1.00
+ROUTP 22 7 21
+ROUTN 23 6 21
+RVDD2 8 5 2.2K
+GVDD2 8 5 POLY(1) (22,23) 4.05M 145U 189U -1.22U -15.8U -127N 1.43U
+.MODEL DMOD D IS=8E-13
+.MODEL QMOD NPN
+.ENDS ACPLC79B
+
+**********************************************************************
+*                       Pin configuration
+*                  VDD1  VIN+  VIN-  GND1  GND2  VOUT- VOUT+ VDD2
+*                   |     |     |     |     |     |     |     |
+.SUBCKT ACNT-H79    1     2     3     4     5     6     7     8
+XU1 1 2 3 4 5 6 7 8 ACPLC79B
+.ENDS ACPLC79B

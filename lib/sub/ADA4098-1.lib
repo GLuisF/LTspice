@@ -1,90 +1,90 @@
-* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2021 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADA4098-1 1 2 3 4 5 6
-B1 0 N004 I=10u*dnlim(uplim(V(1),V(4)+69.3,.1), V(4)-.15, .1)+1n*V(1)-10.72254n
-B2 N004 0 I=10u*dnlim(uplim(V(2),V(4)+69.3,.1), V(4)-.16, .1)+1n*V(2)
-C10 N004 0 50f Rpar=100K noiseless
-M1 N018 NG 4 4 NI temp=27
+B1 0 N006 I=10u*dnlim(uplim(V(1),V(4)+69.3,.1), V(4)-.15, .1)+1n*V(1)-10.72254n
+B2 N006 0 I=10u*dnlim(uplim(V(2),V(4)+69.3,.1), V(4)-.16, .1)+1n*V(2)
+C10 N006 0 50f Rpar=100K noiseless
+M1 N019 NG 4 4 NI temp=27
 C2 3 5 1p Rpar=1g noiseless
-D5 NG N021 DLIMN1
-M2 P001 N005 N002 N002 PI temp=27
-A3 N013 N015 4 4 4 4 N005 4 OTA g=2u ref=-.305 linear vlow=-1e308 vhigh=1e308
+D5 NG N022 DLIMN1
+M2 P001 N007 N004 N004 PI temp=27
+A3 N014 N016 4 4 4 4 N007 4 OTA g=2u ref=-.305 linear vlow=-1e308 vhigh=1e308
 C11 5 4 1p Rpar=1g noiseless
 D6 NG 4 DLIMN2
-C16 N015 5 12p
-A5 N010 0 N013 N013 N013 N013 N015 N013 OTA g=70u isource=10.3u Vlow=-1e308 Vhigh=1e308
-G1 4 NG N015 N013 140n
-D9 N015 N013 DLIM
+C16 N016 5 12p
+A5 N012 0 N014 N014 N014 N014 N016 N014 OTA g=70u isource=10.3u Vlow=-1e308 Vhigh=1e308
+G1 4 NG N016 N014 140n
+D9 N016 N014 DLIM
 C7 2 0 2.7p Rser=1k Rpar=100G noiseless
 C13 3 4 10p
-C1 N007 0 30f
-G2 0 N013 4 0 .5m
-G4 0 N013 3 0 .5m
-C18 N013 0 200p Rpar=1K noiseless
+C1 N009 0 30f
+G2 0 N014 4 0 .5m
+G4 0 N014 3 0 .5m
+C18 N014 0 200p Rpar=1K noiseless
 C6 1 0 2.7p Rser=1k Rpar=100G noiseless
-D3 3 N002 DSBD
-C5 3 N002 100f Rpar=10Meg noiseless
-D4 N002 N005 DLIMP
-D2 N007 0 DLIM0
-A2 N014 0 0 0 0 0 0 0 OTA g=0 in=1.8p ink=15
-D11 5 N018 DNR
-C15 N018 4 100f Rpar=10Meg noiseless
-D7 N005 3 DLIMPR
-A6 4 3 M M M M N003 M OTA g=2u iout=1u ref=-2.5 Rout=1Meg Cout=100f vlow=-1e308 vhigh=1e308
-S4 N020 N022 N003 0 SBiasN
-D13 3 N012 DBiasDrop
-C14 N020 4 100f
-S2 N002 N005 0 N003 SHUT
-S3 NG 4 0 N003 SHUT
+D3 3 N004 DSBD
+C5 3 N004 100f Rpar=10Meg noiseless
+D4 N004 N007 DLIMP
+D2 N009 0 DLIM0
+D1 4 5 DESD
+D8 4 1 DESD
+D10 4 2 DESD
+A2 N015 0 0 0 0 0 0 0 OTA g=0 in=1.8p ink=15
+D11 5 N019 DNR
+C15 N019 4 100f Rpar=10Meg noiseless
+D7 N007 3 DLIMPR
+A6 4 3 M M M M N005 M OTA g=2u iout=1u ref=-2.5 Rout=1Meg Cout=100f vlow=-1e308 vhigh=1e308
+S4 N021 N023 N005 0 SBiasN
+D13 3 N013 DBiasDrop
+C14 N021 4 100f
+S2 N004 N007 0 N005 SHUT
+S3 NG 4 0 N005 SHUT
 D16 2 1 D1Meg
-C17 N008 0 174.26f noiseless Rser=2.667Meg Rpar=1Meg
-G3 0 N008 N007 0 1µ
-D17 0 N007 DNLIN
-C20 N010 0 47f Rpar=1Meg noiseless
-G5 0 N010 N009 0 1µ
-S5 N013 N015 4 5 SGK
-C3 3 N005 .9p Rser=700k noiseless
+C17 N010 0 174.26f noiseless Rser=2.667Meg Rpar=1Meg
+G3 0 N010 N009 0 1µ
+D17 0 N009 DNLIN
+C20 N012 0 47f Rpar=1Meg noiseless
+G5 0 N012 N011 0 1µ
+S5 N014 N016 4 5 SGK
+C3 3 N007 .9p Rser=700k noiseless
 C12 NG 4 .9p Rser=700k noiseless
-D14 2 N012 DBiasOTT
-D15 1 N020 DBiasOTT
-S1 0 N006 3 2 SNOI
-A7 N006 0 0 0 0 0 0 0 OTA g=0 in=17.25p ink=5
+D14 2 N013 DBiasOTT
+D15 1 N021 DBiasOTT
+S1 0 N008 3 2 SNOI
+A7 N008 0 0 0 0 0 0 0 OTA g=0 in=17.25p ink=5
 A1 2 1 0 0 0 0 0 0 OTA g=0 in=145f ink=6
-GNOI_I 1 2 N014 0 1µ
-S6 0 N014 3 2 SNOI
-A4 0 N004 0 0 0 0 N007 0 OTA g=1u linear en=16.95n*(1+freq/12e5) enk=3.3 Vhigh=1e308 Vlow=-1e308
-GNOI_V N004 0 N006 0 10n
+GNOI_I 1 2 N015 0 1µ
+S6 0 N015 3 2 SNOI
+A4 0 N006 0 0 0 0 N009 0 OTA g=1u linear en=16.95n*(1+freq/12e5) enk=3.3 Vhigh=1e308 Vlow=-1e308
+GNOI_V N006 0 N008 0 10n
 I1 0 1 1.76n
-S9 3 4 N016 0 SP
-S10 3 N005 N016 0 SHUT2
-S11 NG 4 N016 0 SHUT2
-A8 6 4 0 0 0 0 N016 0 SCHMITT Vt=1.5 Vh=1m Trise=1u Tfall=100u
-S7 5 0 N016 0 SHUT2
-S8 P001 5 0 N016 SHUT3
-S13 N017 4 0 N016 SHUT3
+S9 3 4 N017 0 SP
+S10 3 N007 N017 0 SHUT2
+S11 NG 4 N017 0 SHUT2
+A8 6 4 0 0 0 0 N017 0 SCHMITT Vt=1.5 Vh=1m Trise=1u Tfall=100u
+S7 5 0 N017 0 SHUT2
+S8 P001 5 0 N017 SHUT3
+S13 N018 4 0 N017 SHUT3
 G6 0 M 3 0 500µ
 R1 M 0 1k noiseless
 G7 0 M 4 0 500µ
-R2 N025 0 48 noiseless
-C4 N026 N025 10n Rpar=47.9K noiseless
-R3 N026 0 1 noiseless
-G8 0 N026 1 0 5.25m
-G9 0 N026 2 0 5.25m
-G10 0 N026 0 3 5.25m
-G11 0 N026 0 4 5.25m
-G12 0 N004 0 N025 1µ
-D12 3 N017 DP
-S12 N012 N020 0 N016 SHUT3
+R2 N026 0 48 noiseless
+C4 N027 N026 10n Rpar=47.9K noiseless
+R3 N027 0 1 noiseless
+G8 0 N027 1 0 5.25m
+G9 0 N027 2 0 5.25m
+G10 0 N027 0 3 5.25m
+G11 0 N027 0 4 5.25m
+G12 0 N006 0 N026 1µ
+D12 3 N018 DP
+S12 N013 N021 0 N017 SHUT3
+D18 4 6 DSHUT1
 C9 6 0 100f
-C19 N009 0 174.26f noiseless Rser=3.667Meg Rpar=1Meg
-G13 0 N009 N008 0 1µ
-S14 N022 4 0 N016 SHUT3
-S15 N021 4 0 N016 SHUT3
+C19 N011 0 174.26f noiseless Rser=3.667Meg Rpar=1Meg
+G13 0 N011 N010 0 1µ
+S14 N023 4 0 N017 SHUT3
+S15 N022 4 0 N017 SHUT3
 I2 0 2 2.04n
-D1 4 6 DSHUT1
-D18 4 5 DESD
-S16 2 4 4 2 ESDI
-S18 1 4 4 1 ESDI
 .model DP D(Ron=1k Roff=1G Vfwd=2.5 epsilon=100m ilimit=1.4u noiseless)
 .model SP SW(Ron=100 Roff=1G vt=.5 vh=10m ilimit=17u noiseless)
 .model DESD D(Ron=1k Roff=1G vfwd=700m epsilon=100m noiseless)
@@ -109,5 +109,4 @@ S18 1 4 4 1 ESDI
 .model D1Meg D(Ron=1Meg Roff=1Meg vfwd=0 vrev=0 ilimit=10n revilimit=10n noiseless)
 .model SHUT3 SW(Ron=10 Roff=10G vt=-0.5 vh=100m noiseless)
 .model SHUT2 SW(Ron=10 Roff=10G vt=0.5 vh=100m noiseless)
-.model ESDI SW(Ron=50 Roff=1T Vt=31.6 Vh=-500m Vser=0.1 noiseless)
 .ends ADA4098-1

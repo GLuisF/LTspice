@@ -1,15 +1,15 @@
-* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2021 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADA4097-1 1 2 3 4 5 6
 B1 0 N006 I=10u*dnlim(uplim(V(1),V(4)+69.3,.1), V(4)-.15, .1)+1n*V(1)-10.72254n
 B2 N006 0 I=10u*dnlim(uplim(V(2),V(4)+69.3,.1), V(4)-.16, .1)+1n*V(2)
 C10 N006 0 50f Rpar=100K noiseless
 M1 N019 NG 4 4 NI temp=27
-C2 3 5 1p IC=0 Rpar=1g
+C2 3 5 1p Rpar=1g noiseless
 D5 NG 4 DLIMN1
 M2 P001 N007 N004 N004 PI temp=27
 A3 N014 N016 4 4 4 4 N007 4 OTA g=2u ref=-.305 linear vlow=-1e308 vhigh=1e308
-C11 5 4 1p IC=0 Rpar=1g
+C11 5 4 1p Rpar=1g noiseless
 D6 NG 4 DLIMN2
 C16 N016 5 52p
 A5 N012 0 N014 N014 N014 N014 N016 N014 OTA g=40u isource=5.05u Vlow=-1e308 Vhigh=1e308
@@ -80,7 +80,7 @@ G13 0 N012 N011 0 1µ
 C19 N011 0 125.26f noiseless Rser=2.667Meg Rpar=1Meg
 D18 4 6 DSHUT1
 C8 6 0 100f
-A8 6 4 0 0 0 0 N017 0 SCHMITT Vt=1.5 Vh=1m Trise=1u Tfall=20u IC=0
+A8 6 4 0 0 0 0 N017 0 SCHMITT Vt=1.5 Vh=1m Trise=1u Tfall=20u
 I1 0 2 125p
 .model DP D(Ron=1k Roff=1G Vfwd=2.5 epsilon=100m ilimit=6.5u noiseless)
 .model SP SW(Ron=100 Roff=1G vt=.5 vh=10m ilimit=15u noiseless)

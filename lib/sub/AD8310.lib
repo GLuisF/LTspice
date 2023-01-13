@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2020 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
 *
 .subckt AD8310 1 2 3 4 5 6 7 8
 R1 8 CM_IN 500
@@ -65,7 +65,7 @@ R20 AMP2 2 100k
 B_D1b 2 N007 I={I_D1b}*(COSH(0.25*(V(GC1_in)-V(2))/{denom})-1)/(COSH(0.25*(V(GC1_in)-V(2))/{denom})+1)
 B_D1c 2 N007 I={I_D1c}*(COSH(45m*(V(GC1_in)-V(2))/{denom})-1)/(COSH(45m*(V(GC1_in)-V(2))/{denom})+1)
 R30 7 2 85.7k
-XU1 N006 N004 VCC_INT 2 N004 level.2 Avol=1Meg GBW=25Meg Slew=100Meg ilimit=5m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+XU1 N006 N004 VCC_INT 2 N004 level2 Avol=1Meg GBW=25Meg Slew=100Meg ilimit=5m rail=0 Vos=0 phimargin=45 En=0 Enk=0 In=0 Ink=0 Rin=500Meg
 R33 4 N004 0.05
 R31 INT_FLT N022 7.1e7
 R32 2 OFFS 1e8
@@ -102,5 +102,5 @@ V5 3 INT_FLT 1.75
 .param denom=172.5u*(TEMP+274.15)
 .param Ain=1.58
 .model vcc_switch SW(Ron=1m, Roff=1e9, Vt=0.5)
-.lib UniversalOpamps2.sub
+.lib UniversalOpAmp2.lib
 .ends AD8310

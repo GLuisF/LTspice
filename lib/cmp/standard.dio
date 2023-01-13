@@ -1,4 +1,4 @@
-* Copyright (c) 2000-2022 Analog Devices, Inc.   All rights reserved.
+* Copyright (c) 2000-2023 Analog Devices, Inc.   All rights reserved.
 *
 .model RED_3mm_151031SS04000 D(IS=10.010E-21 N=1.8860 RS=1.0000E-6 IKF=1.0000E3 CJO=1.0000E-12 M=.3333 VJ=.75 BV=5 IBV=10.00E-6 TT=5.0000E-9 Iave=20m Vpk=5 mfg=Wurth type=LED)
 .model LEDBlue D(IS=93.2P RS=42M N=7.47 BV=5 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=5 type=LED)

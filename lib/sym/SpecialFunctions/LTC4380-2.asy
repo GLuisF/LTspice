@@ -7,7 +7,8 @@ WINDOW 3 0 62 Center 2
 SYMATTR Value LTC4380-2
 SYMATTR Description Low-Current Surge Stopper
 SYMATTR Prefix X
-SYMATTR ModelFile LTC4380-2.sub
+SYMATTR SpiceModel LTC4380-2.sub
+SYMATTR Value2 LTC4380-2
 PIN 272 64 RIGHT 8
 PINATTR PinName SEL
 PINATTR SpiceOrder 1

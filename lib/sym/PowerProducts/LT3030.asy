@@ -6,7 +6,7 @@ WINDOW 0 0 -96 Center 2
 WINDOW 3 0 96 Center 2
 SYMATTR Value LT3030
 SYMATTR Prefix X
-SYMATTR SpiceModel LT1763.lib
+SYMATTR SpiceModel LT3030.sub
 SYMATTR Value2 LT3030
 SYMATTR Description Dual 750mA/250mA Low Dropout, Low Noise, µPower Linear Regulator
 PIN 144 -240 RIGHT 8

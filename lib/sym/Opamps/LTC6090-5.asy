@@ -11,11 +11,9 @@ LINE Normal -5 31 -2 28
 LINE Normal -5 39 -5 31
 LINE Normal -2 42 2 42
 LINE Normal 0 80 0 48
-LINE Normal -48 80 -48 72
-LINE Normal -48 -72 -48 -80
-LINE Normal -43 -59 -53 -59
-LINE Normal -48 -54 -48 -64
-LINE Normal -43 64 -53 64
+LINE Normal -27 -48 -37 -48
+LINE Normal -32 -43 -32 -53
+LINE Normal -27 48 -37 48
 LINE Normal -2 42 -5 39
 LINE Normal 0 -48 0 -80
 LINE Normal 48 -24 48 -80
@@ -40,6 +38,8 @@ LINE Normal -18 -36 -5 -36
 LINE Normal 2 -22 2 -36
 LINE Normal 2 -36 11 -36
 LINE Normal 8 -29 2 -29
+LINE Normal -32 64 -32 80
+LINE Normal -32 -64 -32 -80
 WINDOW 3 37 44 Left 2
 WINDOW 0 71 -25 Left 2
 SYMATTR Value LTC6090-5
@@ -56,7 +56,7 @@ PINATTR SpiceOrder 2
 PIN -64 32 NONE 8
 PINATTR PinName IN+
 PINATTR SpiceOrder 3
-PIN -48 80 NONE 8
+PIN -32 80 NONE 8
 PINATTR PinName V-
 PINATTR SpiceOrder 4
 PIN 0 -80 NONE 8
@@ -65,7 +65,7 @@ PINATTR SpiceOrder 5
 PIN 96 0 NONE 8
 PINATTR PinName OUT
 PINATTR SpiceOrder 6
-PIN -48 -80 NONE 8
+PIN -32 -80 NONE 8
 PINATTR PinName V+
 PINATTR SpiceOrder 7
 PIN 48 -80 NONE 8

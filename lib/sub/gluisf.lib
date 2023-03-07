@@ -20,7 +20,7 @@ D2 DGND VCC Z10V
 .model SW sw(Ron=10m Roff=100Meg Vt=5Vh=-.5)
 .model Z1V D(Is=164.04E-18 N=1.0167 Rs=.16158 Ikf=.23257 Cjo=21.570E-12 M=.38366 Vj=.80243 Isr=36.598E-12 Bv=1.02 Ibv=4.9900E-3 tt=173.12E-9 Nbv=0.2 Tbv1=0.0007 Nbvl=0.5 Ibvl=1.0000E-5 Vpk=9.1 mfg=Rohm type=Zener)
 .model Z10V D(Is=164.04E-18 N=1.0167 Rs=.16158 Ikf=.23257 Cjo=21.570E-12 M=.38366 Vj=.80243 Isr=36.598E-12 Bv=10.00 Ibv=4.9900E-3 tt=173.12E-9 Nbv=0.2 Tbv1=0.0007 Nbvl=0.5 Ibvl=1.0000E-5 Vpk=9.1 mfg=Rohm type=Zener)
-.lib UniversalOpamps2.sub
+*.lib UniversalOpamps2.sub
 .ends acdrv2_1
 
 * Single-Pole Double-Throw (SPDT) Analog Switch

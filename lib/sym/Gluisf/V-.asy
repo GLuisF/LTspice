@@ -5,7 +5,7 @@ LINE Normal 0 16 -8 0
 LINE Normal 0 16 8 0
 LINE Normal 0 0 0 16
 WINDOW 3 7 13 Left 1
-SYMATTR Value V=-15
+SYMATTR Value V=-12
 SYMATTR Description V- source conected to ground
 SYMATTR ModelFile gluisf.lib
 SYMATTR SpiceModel V-

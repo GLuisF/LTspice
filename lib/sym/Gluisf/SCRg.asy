@@ -9,16 +9,17 @@ LINE Normal 16 44 16 64
 LINE Normal -12 64 -32 64
 LINE Normal -12 64 8 44
 WINDOW 0 24 0 Left 2
-WINDOW 38 25 64 Left 2
-SYMATTR SpiceModel SCR_ST
+WINDOW 38 33 58 Left 2
 SYMATTR Prefix X
-SYMATTR ModelFile ../sym/EXTRA/ST/Scr/Scr_st.lib
+SYMATTR Description Generic SCR symbol for use with a model that you supply.
+SYMATTR SpiceModel SCR
+SYMATTR ModelFile SCR.lib
 PIN 16 0 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 1
-PIN 16 64 NONE 0
-PINATTR PinName K
-PINATTR SpiceOrder 3
 PIN -32 64 NONE 0
 PINATTR PinName G
 PINATTR SpiceOrder 2
+PIN 16 64 NONE 0
+PINATTR PinName K
+PINATTR SpiceOrder 3

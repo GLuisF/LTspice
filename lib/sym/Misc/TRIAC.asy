@@ -13,10 +13,10 @@ LINE Normal 36 20 64 20
 LINE Normal 0 64 -16 64
 LINE Normal 0 64 20 44
 WINDOW 0 48 0 Left 2
-WINDOW 3 48 72 Left 2
-SYMATTR Value TRIAC
+WINDOW 3 48 70 Left 2
 SYMATTR Prefix X
 SYMATTR Description Generic TRIAC symbol for use with a model that you supply.
+SYMATTR Value TRIAC
 PIN 32 0 NONE 0
 PINATTR PinName MT2
 PINATTR SpiceOrder 1

@@ -5,6 +5,7 @@ RECTANGLE Normal 64 48 0 -16
 WINDOW 3 80 68 Center 2
 WINDOW 0 34 -31 Center 2
 SYMATTR Value PiezoBeeper
+SYMATTR SpiceLine R=1k
 PIN 0 0 NONE 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1

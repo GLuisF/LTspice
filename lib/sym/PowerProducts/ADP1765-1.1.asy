@@ -6,8 +6,8 @@ WINDOW 0 0 -96 Center 2
 WINDOW 3 0 96 Center 2
 SYMATTR Value ADP1765-1.1
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP7102.lib
-SYMATTR Value2 ADP1765 Radj=7357.86
+SYMATTR SpiceModel ADP1765-1.1.sub
+SYMATTR Value2 ADP1765-1.1
 SYMATTR Description 5A, Low Vin, Low Noise, CMOS Linear Regulator, Fixed 1.1V Output
 PIN -128 48 LEFT 8
 PINATTR PinName Vreg

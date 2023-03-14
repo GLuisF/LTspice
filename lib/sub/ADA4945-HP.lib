@@ -5,8 +5,7 @@
 *Rev.1.0 Feb 2019-ZF
 *Rev.1.1 Dec 2019-AR modify Output Clamp-2 blocks VoutP1 dc value
 *Rev.1.5 May 2021-CG separate modes, fixed clamp, resolved convergence issues
-*Rev.1.6 Feb 2023-IW corrected output clamp and differential input clamp
-*Copyright 2019-2023 by Analog Devices
+*Copyright 2019 by Analog Devices
 
 *Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spicemodels/license
 *for License Statement. Use of this model indicates your acceptance
@@ -42,19 +41,16 @@ R3	VoN1	N3	Rideal	50e3
 R4	VoP1	N3	Rideal	50e3
 Ryy	Clamp-H	DGND	Rideal	250e3
 Rxx	Clamp-L	DGND	Rideal	250e3
-DBB1 VinP VinN DBB
-DBB2 VinN VinP DBB
-.model DBB D(Vfwd=1k Vrev=1 Revepsilon=0.1 Ron=1 Noiseless Revilimit=10m)
 
 ***Output Clamp***
-B1 VoN 0 V=uplim(dnlim(V(Clamp-L)-0.5,V(VoN1),0.01u),V(Clamp-H)+0.5,0.01u)
-B2 VoP 0 V=dnlim(uplim(V(Clamp-H)+0.5,V(VoP1),0.01u),V(Clamp-L)-0.5,0.01u)
+B1 VoN 0 V=uplim(dnlim(V(Clamp-L),V(VoN1),0.01u),V(Clamp-H),0.01u)
+B2 VoP 0 V=dnlim(uplim(V(Clamp-H),V(VoP1),0.01u),V(Clamp-L),0.01u)
 RclampH Clamp-H1 VCC Rideal 0.05
 RclampL Clamp-L1 VEE Rideal 0.05
 RoutN VoN VoN1 Rideal 1
-RoutP VoP VoP1 Rideal 1 
-R5	Clamp-H1	Vocm	Rideal	250k
-R6	Clamp-L1	Vocm	Rideal	250k
+RoutP VoP VoP1 Rideal 1
+R5	Clamp-H1	Vocm	Rideal	250e3
+R6	Clamp-L1	Vocm	Rideal	250e3
 
 *** Vos ***
 Iv1 NV1 110 dc 4.5e-7

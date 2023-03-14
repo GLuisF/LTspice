@@ -19,7 +19,7 @@ WINDOW 0 64 -80 Left 2
 WINDOW 3 96 64 Left 2
 SYMATTR Value LT6370
 SYMATTR Prefix X
-SYMATTR SpiceModel LT6370.lib
+SYMATTR SpiceModel LTC1.lib
 SYMATTR Value2 LT6370
 SYMATTR Description Precision, Low Drift, Low Noise, Instrumentation Amplifier
 PIN -32 64 NONE 8

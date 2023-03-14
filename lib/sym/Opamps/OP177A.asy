@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value OP177A
 SYMATTR Prefix X
-SYMATTR SpiceModel OP177A.lib
+SYMATTR SpiceModel ADI.lib
 SYMATTR Value2 OP177A
 SYMATTR Description Precision Operational Amplifier
 PIN -32 80 NONE 0

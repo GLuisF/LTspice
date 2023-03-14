@@ -17,7 +17,7 @@ WINDOW 0 32 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value RH101A
 SYMATTR Prefix X
-SYMATTR SpiceModel RH101A.lib
+SYMATTR SpiceModel LTC.lib
 SYMATTR Value2 RH101A
 SYMATTR Description Operational Amplifier\n\nNOTE:  Model is best effort of typical performance at room temperature.
 PIN -16 32 NONE 0

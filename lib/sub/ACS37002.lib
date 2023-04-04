@@ -1,0 +1,21 @@
+.subckt ACS37002 IP+ IP- GAIN_SEl_0 GAIN_SEL_1 DUT_GND Viout FAULT VCC VOC VREF
+Rp IP+ IP- R=if({package}==1, 0.85m, 1m)
+XSet_BW N002 front_end N002 opamp Aol=100K GBW=400k
+B§OutputStage front_end DUT_GND V=if({polarity}==2,((V(IP+)-V(IP-))/if(package==1, 0.85m, 1.0m)*(if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==0, {sens1}, if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==V(VCC), {sens2}, if(V(GAIN_SEL_1)==V(VCC)&V(GAIN_SEL_0)==0, {sens3}, {sens4})))))+if(VCC_typ==5, 2.5,1.65), ((V(IP+)-V(IP-))/if(package==1, 0.85m, 1.0m)*(if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==0, {sens1}, if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==V(VCC), {sens2}, if(V(GAIN_SEL_1)==V(VCC)&V(GAIN_SEL_0)==0, {sens3}, {sens4})))))+if(VCC_typ==5, 0.5,0.33))
+B§Set_VREF VREF DUT_GND V=if(VCC_typ==5, if({polarity}==2, 2.5, 0.5),if(VCC_typ==3.3, if({polarity}==2, 1.65, 0.33),0))
+B§VSat_High N001 DUT_GND V=V(VCC)-0.3
+VSat_Low N003 DUT_GND 150mV
+XBuffer N002 Viout N001 N003 Viout level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+B1 DUT_GND VCC I=if({VCC_typ}==5, 13mA, 12mA)
+M1 FAULT N004 DUT_GND N005 NMOS l=.4u w=70u
+B§Set_Fault_Response N004 DUT_GND V=delay(V(OUT), 1.5u)
+B§Compare1 N006 DUT_GND V=if(I(Rp)>=if(V(VOC)>0.2,V(VOC),if({polarity}==1,0.5,1))*(if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens1}, if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==V(VCC), if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens2}, if(V(GAIN_SEL_1)==V(VCC)&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens3}, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens4})))), V(VCC), 0)
+A1 N006 N007 0 0 0 0 OUT 0 SRFLOP Vhigh=3.3
+B§Compare2 N007 DUT_GND V=if(I(Rp)<=if(V(VOC)>0.2,V(VOC),if({polarity}==1,0.5,1))*(if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens1}, if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==V(VCC), if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens2}, if(V(GAIN_SEL_1)==V(VCC)&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens3}, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens4}))))-(if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens1}, if(V(GAIN_SEL_1)==0&V(GAIN_SEL_0)==V(VCC), if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens2}, if(V(GAIN_SEL_1)==V(VCC)&V(GAIN_SEL_0)==0, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens3}, if({VCC_typ}==5, if({polarity==2}, 2, 4), if({polarity==2}, 1.32, 2.64))/{sens4}))))*if({VCC_typ==5},0.06, 0.09), V(VCC), 0)
+.model NMOS NMOS
+.model PMOS PMOS
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends ACS37002
+.end

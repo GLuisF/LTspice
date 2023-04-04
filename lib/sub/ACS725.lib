@@ -1,0 +1,13 @@
+.subckt ACS725 IP+ IP- DUT_GND VCC Viout Filter
+Rp IP+ IP- 0.85m
+B1 N002 DUT_GND V=if({polarity}==2, delay((V(IP+)-V(IP-))/0.85m*{Sensitivity}*(V(Vcc)/3.3)+(V(Vcc)/2), 1.38u), delay((V(IP+)-V(IP-))/0.85m*{Sensitivity}*(V(Vcc)/3.3)+(V(Vcc)/10), 1.38u))
+R_F Filter N002 1.8k
+B§VSat_High N001 DUT_GND V=V(VCC)-0.3
+VSat_Low N003 DUT_GND 300mV
+XBuffer Filter Viout N001 N003 Viout level.2 Avol=1Meg GBW=120k Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+I1 VCC DUT_GND 10mA
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends ACS725
+.end

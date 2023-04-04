@@ -1,0 +1,13 @@
+.subckt ACS781 IP+ IP- Viout VCC DUT_GND
+Rp IP+ IP- 200µ
+XSet_BW N002 N003 N002 opamp Aol=100K GBW=120k
+B1 N003 DUT_GND V=if({polarity}== 2,(V(IP+)-V(IP-))/200u*{Sensitivity}*(V(Vcc)/3)+(V(Vcc)/2),(V(IP+)-V(IP-))/200u*{Sensitivity}*(V(Vcc)/3)+(V(Vcc)/10))
+VSat_Low N004 DUT_GND 400mV
+XBuffer N002 Viout N001 N004 Viout level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+VSat_High N001 DUT_GND 4.7V
+I1 DUT_GND VCC 11mA
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends ACS781
+.end

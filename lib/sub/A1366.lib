@@ -1,0 +1,12 @@
+.subckt A1366 Input_Field VCC VOUT NC/GND DUT_GND
+XSensor_BW N002 N004 N002 opamp Aol=100K GBW=120k
+B1 N004 DUT_GND V=if({polarity}== 2,delay(V(Input_Field)*{Sensitivity}*(V(Vcc)/5)+(V(Vcc)/2), 2.7u), delay(V(Input_Field)*{Sensitivity}*(V(Vcc)/5)+(V(Vcc)/10), 2.7u))
+VSat_Low N003 DUT_GND 400mV
+XOutput_stage N002 Vout N001 N003 Vout level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+VSat_High N001 DUT_GND 4.7V
+I1 DUT_GND VCC 10mA
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends A1366
+.end

@@ -1,0 +1,19 @@
+.subckt ACS723 IP+ IP- DUT_GND VCC Viout BW_SEL
+Rp IP+ IP- 0.65m
+XSet_BW N002 N004 N002 opamp Aol=100K GBW=80k
+B§OutputStage N004 DUT_GND V=if({polarity}== 2, (V(IP+)-V(IP-))/0.65m*{Sensitivity}*(V(Vcc)/5)+(V(Vcc)/2), (V(IP+)-V(IP-))/0.65m*{Sensitivity}*(V(Vcc)/5)+(V(Vcc)/10))
+M§BW_SEL N003 BW_SEL N006 N006 NMOS
+R_BW N003 N002 8k
+C_BW N006 DUT_GND 1n
+B§VSat_High N001 DUT_GND V=V(VCC)-0.5
+VSat_Low N005 DUT_GND 500mV
+XBuffer N003 OUTPUT N001 N005 OUTPUT level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+B§PropDelay Viout DUT_GND V=if(V(BW_SEL)==V(Vcc), delay(V(OUTPUT), .217u), delay(V(OUTPUT), .01u))
+I1 DUT_GND VCC 9mA
+.model NMOS NMOS
+.model PMOS PMOS
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends ACS723
+.end

@@ -1,0 +1,20 @@
+.subckt ACS732/3 IP+ IP- VCC VOC FAULT Viout PROGRAM DUT_GND
+Rp IP+ IP- 1.0m
+XSet_BW N002 N003 N002 opamp Aol=100K GBW=1MEG
+B§OutputStage N003 DUT_GND V=if({polarity}==2, delay(((V(IP+)-V(IP-))/1.0m*{sensitivity}*(V(Vcc)/VCC_typ)+(V(Vcc)/2)), .016u), delay(((V(IP+)-V(IP-))/1.0m*{sensitivity}*(V(Vcc)/VCC_typ)+(V(Vcc)/10)), .016u))
+M2 FAULT N006 DUT_GND N007 NMOS l=1u w=84u
+B§Compare1 N005 DUT_GND V=if(abs(I(Rp))>=(((V(VOC)/V(VCC))*5*IRpMAX)), V(VCC), 0)
+B§Compare2 N008 DUT_GND V=if(abs(I(Rp))<=(((V(VOC)/V(VCC))*5*IRpMAX)-(0.05*IRpMAX)), V(VCC),0)
+A1 N005 N008 0 0 0 0 Q 0 SRFLOP Vhigh=3.3
+B§Set_Delay N006 DUT_GND V=delay(V(Q), 500n)
+B§VSat_High N001 DUT_GND V=V(VCC)-0.3
+XBuffer N002 Viout N001 N004 Viout level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+B§ICC DUT_GND VCC I=if({VCC_typ}==5, 24mA, 20mA)
+B§VSat_Low N004 DUT_GND V=if({VCC_typ}==5, 500m, 300m)
+.model NMOS NMOS
+.model PMOS PMOS
+.lib opamp.sub
+.lib UniversalOpamps2.sub
+.backanno
+.ends 732/3
+.end

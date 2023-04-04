@@ -1,0 +1,21 @@
+.subckt ACS711 IP+ IP- DUT_GND VCC Viout FAULT
+Rp IP+ IP- 1.2m
+XSET_BW N002 N003 N002 opamp Aol=100K GBW=100k
+B§OutputStage N003 DUT_GND V=if({polarity}== 2, delay((V(IP+)-V(IP-))/1.2m*{Sensitivity}*(V(Vcc)/3.3)+(V(Vcc)/2), .500u),delay((V(IP+)-V(IP-))/1.2m*{Sensitivity}*(V(Vcc)/3.3)+(V(Vcc)/10), .500u))
+M1 FAULT N005 DUT_GND N006 NMOS l=.4u w=70u
+B§Set_Fault_Response N005 DUT_GND V=delay(V(OUT), 1.3u)
+B§Compare N007 DUT_GND V=if(I(Rp)>=IRpMAX, V(Vcc), 0)
+A1 N007 N008 0 0 0 0 OUT 0 SRFLOP Vhigh=3.3
+B§VSat_High N001 DUT_GND V=V(VCC)-0.3
+VSat_Low N004 DUT_GND 300mV
+XBuffer N002 Viout N001 N004 Viout level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+I1 DUT_GND VCC 4mA
+B§Compare1 N008 DUT_GND V = if(V(Vcc)<PORL,5,0)
+.model NMOS NMOS
+.model PMOS PMOS
+.lib opamp.sub
+.param PORL= 200m
+.lib UniversalOpamps2.sub
+.backanno
+.ends ACS711
+.end

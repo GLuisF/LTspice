@@ -1,0 +1,23 @@
+Version 4
+SymbolType CELL
+LINE Normal 0 32 64 64
+LINE Normal 0 96 64 64
+LINE Normal 0 96 0 32
+LINE Normal 16 16 16 23
+LINE Normal 4 48 12 48
+LINE Normal 8 44 8 52
+LINE Normal 4 80 12 80
+CIRCLE Normal 24 23 8 39
+WINDOW 0 32 16 Left 2
+PIN 0 48 NONE 0
+PINATTR PinName in+
+PINATTR SpiceOrder 1
+PIN 0 80 NONE 0
+PINATTR PinName in-
+PINATTR SpiceOrder 2
+PIN 16 16 NONE 0
+PINATTR PinName _RE
+PINATTR SpiceOrder 4
+PIN 64 64 NONE 0
+PINATTR PinName Q
+PINATTR SpiceOrder 3

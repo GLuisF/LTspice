@@ -5,6 +5,7 @@
 .model LEDGreen D(IS=93.2P RS=42M N=4.61 BV=4 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=4 type=LED)
 .model LEDRed D(IS=93.2P RS=42M N=3.73 BV=4 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=4 type=LED)
 .model LEDWhite D(IS=0.27n RS=5.65 N=6.79 Cjo=42p Iave=30m Vpk=5 type=LED)
+.model LEDIR D(IS=1.5f N=1.57 RS=0.762137 BV=5 VJ=0.56 M=0.055 TT=0.000000008 Iave=50m type=LED)
 .model SAW8C72A D(IS=9.5431E-24 N=15.2235 RS=58.7176 Iave=40m Vpk=23 mfg=Seoul_Semiconductor type=LED)
 .model SAW8CF2A D(IS=8.7204E-16 N=54.3698 RS=106.3124 Iave=20m Vpk=46 mfg=Seoul_Semiconductor type=LED)
 .model 2T0301CW11000012 D(IS=4.8807E-22 N=4.5508 RS=4.9673 Iave=150m Vpk=6.3 mfg=Edison type=LED)

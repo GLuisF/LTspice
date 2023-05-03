@@ -1,6 +1,7 @@
 Version 4
 SymbolType BLOCK
-RECTANGLE Normal -48 -24 64 24
+RECTANGLE Normal -48 -24 54 24
+CIRCLE Normal 64 5 54 -5
 WINDOW 0 8 -24 Bottom 2
 WINDOW 39 12 38 Center 2
 SYMATTR SpiceLine Td=25u

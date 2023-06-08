@@ -1,0 +1,33 @@
+Version 4
+SymbolType CELL
+LINE Normal -16 16 16 16
+LINE Normal -16 48 -16 16
+LINE Normal -8 32 -16 48
+LINE Normal -24 32 -16 48
+LINE Normal -32 48 16 48
+LINE Normal -40 32 -32 48
+LINE Normal -48 48 -40 32
+LINE Normal -64 48 -48 48
+LINE Normal 0 0 16 0
+LINE Normal 0 -5 0 0
+LINE Normal -64 -5 0 -5
+LINE Normal 0 5 -64 5
+LINE Normal 0 0 0 5
+RECTANGLE Normal -80 48 -96 -48
+ARC Normal -69 -5 -60 5 -64 -7 -64 6
+WINDOW 0 -25 -69 Center 2
+PIN -96 0 NONE 8
+PINATTR PinName M_TIP
+PINATTR SpiceOrder 1
+PIN -96 48 NONE 8
+PINATTR PinName M_SLEEVE
+PINATTR SpiceOrder 2
+PIN 16 0 NONE 8
+PINATTR PinName TIP
+PINATTR SpiceOrder 3
+PIN 16 48 NONE 8
+PINATTR PinName SLEEVE
+PINATTR SpiceOrder 4
+PIN 16 16 NONE 8
+PINATTR PinName SHUNT
+PINATTR SpiceOrder 5

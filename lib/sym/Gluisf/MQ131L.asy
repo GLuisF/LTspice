@@ -1,0 +1,30 @@
+Version 4
+SymbolType CELL
+LINE Normal -16 -32 -32 -32
+LINE Normal -8 -48 -16 -32
+LINE Normal 8 -16 -8 -48
+LINE Normal 24 -48 8 -16
+LINE Normal 40 -16 24 -48
+LINE Normal 64 -32 48 -32
+LINE Normal 48 -32 40 -16
+CIRCLE Normal 62 14 -30 -78
+WINDOW 0 64 0 Left 2
+SYMATTR SpiceLine R0=250k
+PIN 64 -32 NONE 0
+PINATTR PinName RF2
+PINATTR SpiceOrder 2
+PIN -32 -32 NONE 0
+PINATTR PinName RF1
+PINATTR SpiceOrder 1
+PIN -16 -64 NONE 0
+PINATTR PinName A
+PINATTR SpiceOrder 3
+PIN 48 -64 NONE 0
+PINATTR PinName B
+PINATTR SpiceOrder 4
+PIN -16 0 NONE 0
+PINATTR PinName A2
+PINATTR SpiceOrder 5
+PIN 48 0 NONE 0
+PINATTR PinName B2
+PINATTR SpiceOrder 6

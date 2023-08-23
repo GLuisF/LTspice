@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1115
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1028.lib
 SYMATTR Value2 LT1028
 SYMATTR Description Ultra-Low Noise, Low Distortion, Audio Operational Amplifier
 PIN -32 80 NONE 0

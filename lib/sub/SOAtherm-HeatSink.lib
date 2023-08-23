@@ -43,7 +43,9 @@ c8 n8 0  {c_per_mm*depth8}
 r9 n8 Tfin {r_per_mm*depth9}
 c9 Tfin 0  {c_per_mm*depth9}
 
-.param Tambient=85 Depth_mm=10 Area_Contact_mm2=100 Rtheta=10 Rinterface={100/Area_Contact_mm2}
+.param Tambient=85 Area_Contact_mm2=100 Rtheta=10
+.param Rinterface={100/Area_Contact_mm2}
+
 .ends copper_test
 
 .subckt aluminum Tc Tinterface Tfin 
@@ -84,5 +86,7 @@ c8 n8 0  {c_per_mm*depth8}
 r9 n8 Tfin {r_per_mm*depth9}
 c9 Tfin 0  {c_per_mm*depth9}
 
-.param Tambient=85 Depth_mm=10 Area_Contact_mm2=100 Rtheta=10 Rinterface={100/Area_Contact_mm2}
+.param Tambient=85 Area_Contact_mm2=100 Rtheta=10
+.param Rinterface={100/Area_Contact_mm2}
+
 .ends aluminum

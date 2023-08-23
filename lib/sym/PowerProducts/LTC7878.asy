@@ -9,8 +9,8 @@ SYMATTR Prefix X
 SYMATTR SpiceModel LTC7878.sub
 SYMATTR Value2 LTC7878
 SYMATTR Description 4-switch buck-boost controller with inductor DCR current sensing
-PIN 304 1424 BOTTOM 8
-PINATTR PinName GND
+PIN 224 1424 BOTTOM 8
+PINATTR PinName SGND
 PINATTR SpiceOrder 1
 PIN 0 528 LEFT 8
 PINATTR PinName VIN
@@ -102,3 +102,6 @@ PINATTR SpiceOrder 30
 PIN 608 528 RIGHT 8
 PINATTR PinName VOUT
 PINATTR SpiceOrder 31
+PIN 384 1424 BOTTOM 8
+PINATTR PinName PGND
+PINATTR SpiceOrder 32

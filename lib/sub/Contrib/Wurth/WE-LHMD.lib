@@ -1,11 +1,11 @@
 **************************************************
-* Manufacturer:           Wurth Elektronik 
-* Kinds:                  SMT High Current Inductor 
-* Matchcode:              WE-LHMD 
+* Manufacturer:           Würth Elektronik 
+* Kinds:                  SMT High Current Inductor
+* Matchcode:              WE-LHMD
 * Library Type:           LTspice
-* Version:                rev22a
-* Created/modified by:    Ella      
-* Date and Time:          2022-05-25
+* Version:                rev22b
+* Created/modified by:    Ella
+* Date and Time:          12/21/2022
 * Team:                   eiSos EDA Service  
 * Contact:                libraries@we-online.com
 **************************************************
@@ -18,132 +18,139 @@
 * Würth Elektronik eiSos reserves the right to make any adjustments at any time without notice.
 * Würth Elektronik eiSos expressly disclaims all implied warranties regarding this simulation model.
 **************************************************
-.subckt 1008_74434301008082_8.2u 1 2 3 4 
-Rdc1 1 N1 32m
-Rp1 1 4 4786
-Cp1 1 4 24.714p
-L1 N1 4 9.395u
+.subckt 1008_74434301008082_8.2u 1 2 3 4
+Rdc1 1 N1 0.032
+Rp1 1 4 7252.3
+Cp1 1 4 25.0343p
+L1 N1 4 8.7705u
 
-Rdc2 2 N2 32m
-Rp2 2 3 4786
-Cp2 2 3 24.714p
-L2 N2 3 9.395u
+Rdc2 2 N2 0.032
+Rp2 2 3 7252.3
+Cp2 2 3 25.0343p
+L2 N2 3 8.7705u
 
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1008_74434301008082_8.2u
-******
-.subckt 1008_74434301008100_10u 1 2
-Rdc1 1 N1 45m
-Rp1 1 4 4842
-Cp1 1 4 28.715p
-L1 N1 4 10.382u
+*******
+.subckt 1008_74434301008100_10u 1 2 3 4
+Rdc1 1 N1 0.045
+Rp1 1 4 5113.3
+Cp1 1 4 26.6818p
+L1 N1 4 11.023u
 
-Rdc2 2 N2 45m
-Rp2 2 3 4842
-Cp2 2 3 28.715p
-L2 N2 3 10.382u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.045
+Rp2 2 3 5113.3
+Cp2 2 3 26.6818p
+L2 N2 3 11.023u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1008_74434301008100_10u
-******
-.subckt 1008_74434301008150_15u 1 2
-Rdc1 1 N1 65m
-Rp1 1 4 6736
-Cp1 1 4 31.878p
-L1 N1 4 16.8u
+*******
+.subckt 1008_74434301008150_15u 1 2 3 4
+Rdc1 1 N1 0.065
+Rp1 1 4 8056.8
+Cp1 1 4 32.5349p
+L1 N1 4 16.8001u
 
-Rdc2 2 N2 65m
-Rp2 2 3 6736
-Cp2 2 3 31.878p
-L2 N2 3 16.8u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.065
+Rp2 2 3 8056.8
+Cp2 2 3 32.5349p
+L2 N2 3 16.8001u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1008_74434301008150_15u
-******
-.subckt 1008_74434301008220_22u 1 2
-Rdc1 1 N1 105m
-Rp1 1 4 5961
-Cp1 1 4 27.708p
-L1 N1 4 24.587u
+*******
+.subckt 1008_74434301008220_22u 1 2 3 4
+Rdc1 1 N1 0.104
+Rp1 1 4 5417.6
+Cp1 1 4 29.3528p
+L1 N1 4 24.0641u
 
-Rdc2 2 N2 105m
-Rp2 2 3 5961
-Cp2 2 3 27.708p
-L2 N2 3 24.587u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.104
+Rp2 2 3 5417.6
+Cp2 2 3 29.3528p
+L2 N2 3 24.0641u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1008_74434301008220_22u
-******
-.subckt 1213_74434301213082_8.2u 1 2
-Rdc1 1 N1 16m
-Rp1 1 4 2383
-Cp1 1 4 36.728p
-L1 N1 4 9.245u
+*******
+.subckt 1213_74434301213082_8.2u 1 2 3 4
+Rdc1 1 N1 0.016
+Rp1 1 4 2176.4706
+Cp1 1 4 35.5882p
+L1 N1 4 8.7647u
 
-Rdc2 2 N2 16m
-Rp2 2 3 2383
-Cp2 2 3 36.728p
-L2 N2 3 9.245u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.016
+Rp2 2 3 2176.4706
+Cp2 2 3 35.5882p
+L2 N2 3 8.7647u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1213_74434301213082_8.2u
-******
-.subckt 1213_74434301213100_10u 1 2
-Rdc1 1 N1 20.5m
-Rp1 1 4 2117
-Cp1 1 4 37.603p
-L1 N1 4 10.762u
+*******
+.subckt 1213_74434301213100_10u 1 2 3 4
+Rdc1 1 N1 0.02
+Rp1 1 4 1600
+Cp1 1 4 37.9p
+L1 N1 4 9.95u
 
-Rdc2 2 N2 20.5m
-Rp2 2 3 2117
-Cp2 2 3 37.603p
-L2 N2 3 10.762u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.02
+Rp2 2 3 1600
+Cp2 2 3 37.9p
+L2 N2 3 9.95u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1213_74434301213100_10u
-******
-.subckt 1213_74434301213150_15u 1 2
-Rdc1 1 N1 33.2m
-Rp1 1 4 2122
-Cp1 1 4 43.189p
-L1 N1 4 16.33u
+*******
+.subckt 1213_74434301213150_15u 1 2 3 4
+Rdc1 1 N1 0.034
+Rp1 1 4 1722.2222
+Cp1 1 4 44.3889p
+L1 N1 4 15.5556u
 
-Rdc2 2 N2 33.2m
-Rp2 2 3 2122
-Cp2 2 3 43.189p
-L2 N2 3 16.33u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.034
+Rp2 2 3 1722.2222
+Cp2 2 3 44.3889p
+L2 N2 3 15.5556u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1213_74434301213150_15u
-******
-.subckt 1213_74434301213220_22u 1 2
-Rdc1 1 N1 50m
-Rp1 1 4 4301
-Cp1 1 4 40.517p
-L1 N1 4 23.319u
+*******
+.subckt 1213_74434301213220_22u 1 2 3 4
+Rdc1 1 N1 0.05
+Rp1 1 4 3833.3333
+Cp1 1 4 41.1111p
+L1 N1 4 22.8889u
 
-Rdc2 2 N2 50m
-Rp2 2 3 4301
-Cp2 2 3 40.517p
-L2 N2 3 23.319u
-Rg1 1 0 100meg
-Rg2 2 0 100meg
-Rg3 3 0 100meg
-Rg4 4 0 100meg
+Rdc2 2 N2 0.05
+Rp2 2 3 3833.3333
+Cp2 2 3 41.1111p
+L2 N2 3 22.8889u
+
+Rq1 1 0 100meg
+Rq2 2 0 100meg
+Rq3 3 0 100meg
+Rq4 4 0 100meg
 .ends 1213_74434301213220_22u
-******
+*******

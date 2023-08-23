@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value AD811
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
+SYMATTR SpiceModel AD811.lib
 SYMATTR Value2 AD811
 SYMATTR Description High Performance Video Op Amp
 PIN -32 80 NONE 0

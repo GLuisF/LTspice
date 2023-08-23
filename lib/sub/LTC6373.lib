@@ -1,166 +1,166 @@
-* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
 *
 .subckt LTC6373 1 2 3 4 5 6 7 8 9 10 11 12 13
-A1 2 DGND COM COM COM COM A0i COM SCHMITT Vt=1.05 Vh=450m Trise=100n
-A2 3 DGND COM COM COM COM A1i COM SCHMITT Vt=1.05 Vh=450m Trise=100n
-A3 11 DGND COM COM COM COM A2i COM SCHMITT Vt=1.05 Vh=450m Trise=100n
-C1 GainInd COM {Cbuf_1k} Rpar=1k Noiseless
-G1 COM GainInd A0i COM 1m
-A4 A2i A1i COM COM A0i _SHDN COM COM AND Trise=10n
-G2 COM GainInd A1i COM 2m
-G3 COM GainInd A2i COM 4m
-D1 11 COM DPININ
-D2 3 COM DPININ
-D3 2 COM DPININ
-S1 A2INN N008 COM GainInd SWRG1
-S2 A2INN N008 COM GainInd SWRG2
-S3 A2INN N008 COM GainInd SWRG3
-S4 A2INN N008 COM GainInd SWRG4
-S5 N008 A1INN COM GainInd SWRG1
-S6 N008 A1INN COM GainInd SWRG2
-S7 N008 A1INN COM GainInd SWRG3
-S8 N008 A1INN COM GainInd SWRG4
-S9 A1INN A1OUT GainInd COM SWRF1
-S10 A1INN A1OUT GainInd COM SWRF2
-S11 A1INN A1OUT GainInd COM SWRF3
-S12 A1INN A1OUT GainInd COM SWRF4
+A1 2 DGND MID MID MID MID A0i MID SCHMITT Vt=1.05 Vh=450m Trise=100n
+A2 3 DGND MID MID MID MID A1i MID SCHMITT Vt=1.05 Vh=450m Trise=100n
+A3 11 DGND MID MID MID MID A2i MID SCHMITT Vt=1.05 Vh=450m Trise=100n
+C1 GainInd MID {Cbuf_1k} Rpar=1k Noiseless
+G1 MID GainInd A0i MID 1m
+A4 A2i A1i MID MID A0i _SHDN MID MID AND Trise=10n
+G2 MID GainInd A1i MID 2m
+G3 MID GainInd A2i MID 4m
+D1 11 MID DPININ
+D2 3 MID DPININ
+D3 2 MID DPININ
+S1 A2INN N008 MID GainInd SWRG1
+S2 A2INN N008 MID GainInd SWRG2
+S3 A2INN N008 MID GainInd SWRG3
+S4 A2INN N008 MID GainInd SWRG4
+S5 N008 A1INN MID GainInd SWRG1
+S6 N008 A1INN MID GainInd SWRG2
+S7 N008 A1INN MID GainInd SWRG3
+S8 N008 A1INN MID GainInd SWRG4
+S9 A1INN A1OUT GainInd MID SWRF1
+S10 A1INN A1OUT GainInd MID SWRF2
+S11 A1INN A1OUT GainInd MID SWRF3
+S12 A1INN A1OUT GainInd MID SWRF4
 C2 A1OUT A1INN 5p Rpar=1.875k Noiseless
-S13 A2OUT A2INN GainInd COM SWRF1
-S14 A2OUT A2INN GainInd COM SWRF2
-S15 A2OUT A2INN GainInd COM SWRF3
-S16 A2OUT A2INN GainInd COM SWRF4
-S17 A3INP A1OUT COM GainInd SWRI1
-S18 A3INP A1OUT COM GainInd SWRI2
-S19 A3INN A2OUT COM GainInd SWRI1
-S20 A3INN A2OUT COM GainInd SWRI2
-S21 6 A3INN GainInd COM SWRO2
-S22 6 A3INN GainInd COM SWRO1
-S23 7 A3INP GainInd COM SWRO2
-S24 7 A3INP GainInd COM SWRO1
+S13 A2OUT A2INN GainInd MID SWRF1
+S14 A2OUT A2INN GainInd MID SWRF2
+S15 A2OUT A2INN GainInd MID SWRF3
+S16 A2OUT A2INN GainInd MID SWRF4
+S17 A3INP A1OUT MID GainInd SWRI1
+S18 A3INP A1OUT MID GainInd SWRI2
+S19 A3INN A2OUT MID GainInd SWRI1
+S20 A3INN A2OUT MID GainInd SWRI2
+S21 6 A3INN GainInd MID SWRO2
+S22 6 A3INN GainInd MID SWRO1
+S23 7 A3INP GainInd MID SWRO2
+S24 7 A3INP GainInd MID SWRO1
 R14 N008 9 250 Noiseless
 C3 A3INP A1OUT 1p Rpar=3.19995k Noiseless
 C4 7 A3INP 1p
 C5 A3INN A2OUT 1p Rpar=3.19995k Noiseless
 C6 A2INN A2OUT 5p Rpar=1.875k Noiseless
-A5 4 13 COM COM COM COM N019 COM SCHMITT Vt={Vsmin-0.45} Trise=10n
-A6 5 13 COM COM COM N017 COM COM SCHMITT Vt={Vsmax} Trise=10n Vh=0
-A7 4 13 COM COM COM N014 COM COM SCHMITT Vt={Vsmax} Trise=10n Vh=0
-A8 N014 N017 N019 COM _SHDN COM EN COM AND Trise={2*ENTon} Tfall={2*ENToff}
+A5 4 13 MID MID MID MID N019 MID SCHMITT Vt={Vsmin-0.45} Trise=10n
+A6 5 13 MID MID MID N017 MID MID SCHMITT Vt={Vsmax} Trise=10n Vh=0
+A7 4 13 MID MID MID N014 MID MID SCHMITT Vt={Vsmax} Trise=10n Vh=0
+A8 N014 N017 N019 MID _SHDN MID EN MID AND Trise={2*ENTon} Tfall={2*ENToff}
 C7 8 13 1p Rpar=4.6Meg Noiseless
-R15 COM ComAdj 1Meg Noiseless
-C8 ComAdj COM 31.8n
+R15 MID ComAdj 1Meg Noiseless
+C8 ComAdj MID 31.8n
 G4 0 Vcc_Int 4 0 1k
 G5 0 Vee_Int 13 0 1k
 R16 Vcc_Int 0 1m Noiseless
 R17 Vee_Int 0 1m Noiseless
 C9 Vcc_Int 0 1µ
 C10 Vee_Int 0 1µ
-B1 COM ComSense I=1m*((V(6)+V(7))/2) Rpar=1k Cpar=1p
-Biq1 4 13 I=IF(V(EN,COM)>0.5, {Iq_on},{Iq_off})
+B1 MID ComSense I=1m*((V(6)+V(7))/2) Rpar=1k Cpar=1p
+Biq1 4 13 I=IF(V(EN,MID)>0.5, {Iq_on},{Iq_off})
 R18 7 A3INP 2k Noiseless
 C11 6 A3INN 1p
 R19 6 A3INN 2k Noiseless
-G6 COM N024 Vocmin COM 1.0005m
+G6 MID N024 Vocmin MID 1.0005m
 C12 5 8 1p Rpar=4.6Meg Noiseless
 C13 10 13 1p Rpar=2.5Meg Noiseless
 C14 10 4 1p Rpar=2.5Meg Noiseless
 R20 N015 Vcc_Int 1Meg Noiseless
 R21 N015 Vee_Int 1Meg Noiseless
 C15 N015 0 1
-C16 COM 0 1n
-E1 COM 0 N015 0 1
-R22 COM 0 1Meg Noiseless
+C16 MID 0 1n
+E1 MID 0 N015 0 1
+R22 MID 0 1Meg Noiseless
 G7 0 DGND 10 0 1m
 C17 DGND 0 1p Rpar=1k Noiseless
-G8 COM Vocmin 8 0 1m
-C18 Vocmin COM {Cbuf_1k} Rpar=1k Noiseless
-C19 EN COM 10p Rpar=1G
-C20 _SHDN COM 10p Rpar=1G
+G8 MID Vocmin 8 0 1m
+C18 Vocmin MID {Cbuf_1k} Rpar=1k Noiseless
+C19 EN MID 10p Rpar=1G
+C20 _SHDN MID 10p Rpar=1G
 R23 A1INN N008 2k Noiseless
 R24 N008 A2INN 2k Noiseless
-C21 N017 COM 10p Rpar=1G
-C22 N019 COM 10p Rpar=1G
-C23 N014 COM 10p Rpar=1G
-I1 10 COM 4µ
-G9 COM ComAdj N024 ComSense 1
+C21 N017 MID 10p Rpar=1G
+C22 N019 MID 10p Rpar=1G
+C23 N014 MID 10p Rpar=1G
+I1 10 MID 4µ
+G9 MID ComAdj N024 ComSense 1
 C24 A1INN N008 1p
 C25 N008 A2INN 1p
-C26 A2i COM 10p Rpar=1G
-C27 A1i COM 10p Rpar=1G
-C28 A0i COM 10p Rpar=1G
-C29 N024 COM {Cbuf_1k}
-R25 N024 COM 1k Noiseless
-I2 1 COM {Ib- Ios}
-Cinp1 COM 12 {Ccm}
-R26 Aol1a COM 1Meg Noiseless
-A9 A1INN N025 EN COM COM COM Aol1a COM OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
-R27 N026 COM 1Meg Noiseless
-C31 N026 COM {Cfp4}
-G10 COM N026 Aol3a COM 1µ
-G11 COM N025 12 COM 1m
-C32 N025 COM {Cbuf_1k}
-G12 12 COM I_np COM 1
-R28 N030 COM 100k Noiseless
-G13 COM I_np N030 COM 1
-RI_np1 I_np COM 1 Noiseless
-A10 COM COM COM COM COM COM N030 COM OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={I_n} Enk={I_nk}
-C33 I_np COM 159p
-R29 COM 12 {Rcm} Noiseless
-R30 A1INN COM {Rcm} Noiseless
-S25 COM N025 EN COM ENI
-C34 Aol1a COM {Cbuf_1Meg}
-I3 12 COM {Ib}
-Cinp2 COM 1 {Ccm}
-R31 Aol1b COM 1Meg Noiseless
-A11 A2INN N033 EN COM COM COM Aol1b COM OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
-R32 N034 COM 1Meg Noiseless
-C35 N034 COM {Cfp4}
-G14 COM N034 Aol3b COM 1µ
-G15 COM N033 1 COM 1m
-C36 N033 COM {Cbuf_1k}
-G16 1 COM I_nn COM 1
-R33 N040 COM 100k Noiseless
-G17 COM I_nn N040 COM 1
-RI_nn1 I_nn COM 1 Noiseless
-C37 I_nn COM 159p
-A12 COM COM COM COM COM COM N040 COM OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={I_n} Enk={I_nk}
-R34 COM 1 {Rcm} Noiseless
-R35 A2INN COM {Rcm} Noiseless
-S26 COM N033 EN COM ENI
-C38 Aol1b COM {Cbuf_1Meg}
-Cinp3 COM N046 {Ccmp_out}
-Cinn3 N050 COM {Ccmn_out}
-Cdiff3 N046 N050 {Cdiff_out}
-R36 A3INPB COM 1m Noiseless
-C39 A3INPB COM {Cbuf_1m}
-G19 COM A3INPB N046 COM 1k
-A13 N050 N044 EN COM COM COM Aol1_out COM OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
-R37 N047 COM 1Meg Noiseless
-G20 COM N047 Clamp_out COM 1µ
-C40 N047 COM {Cfp2_out}
-R38 N049 COM 1Meg Noiseless
-G21 COM N049 N048 COM 1µ
-R39 N048 COM 1Meg Noiseless
-G22 COM N048 N047 COM 1µ
-C41 N048 COM {Cfp3_out}
-C42 N049 COM {Cfp4_out}
-R41 Aol1_out COM 1Meg Noiseless
-R42 Aol_m_out COM 1Meg Noiseless
-G23 COM Aol_m_out N049 COM 1µ
-C43 Aol1_out COM {Cbuf_1Meg}
-C44 Aol_m_out COM {Cbuf_1Meg}
-DGP1 N031 Clamp_out DG
-DGN1 Clamp_out N032 DG
-G24 COM N031 GRpi COM 1k
-G25 COM N032 GRni COM 1k
-R43 N031 COM 1m Noiseless
-R44 N032 COM 1m Noiseless
-R45 GRpi COM 1k Noiseless
-R46 GRni COM 1k Noiseless
-C45 Clamp_out N031 1f
-C46 Clamp_out N032 1f
-IGRp1 COM GRpi {1m*GR}
-IGRn1 GRni COM {1m*GR}
+C26 A2i MID 10p Rpar=1G
+C27 A1i MID 10p Rpar=1G
+C28 A0i MID 10p Rpar=1G
+C29 N024 MID {Cbuf_1k}
+R25 N024 MID 1k Noiseless
+I2 1 MID {Ib- Ios}
+Cinp1 MID 12 {Ccm}
+R26 Aol1a MID 1Meg Noiseless
+A9 A1INN Inp1 EN MID MID MID Aol1a MID OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
+R27 N025 MID 1Meg Noiseless
+C31 N025 MID {Cfp4}
+G10 MID N025 Aol3a MID 1µ
+G11 MID Inp1 12 MID 1m
+C32 Inp1 MID {Cbuf_1k}
+G12 12 MID I_np MID 1
+R28 N029 MID 100k Noiseless
+G13 MID I_np N029 MID 1
+RI_np1 I_np MID 1 Noiseless
+A10 MID MID MID MID MID MID N029 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={I_n} Enk={I_nk}
+C33 I_np MID 159p
+R29 MID 12 {Rcm} Noiseless
+R30 A1INN MID {Rcm} Noiseless
+S25 MID Inp1 EN MID ENI
+C34 Aol1a MID {Cbuf_1Meg}
+I3 12 MID {Ib}
+Cinp2 MID 1 {Ccm}
+R31 Aol1b MID 1Meg Noiseless
+A11 A2INN Inp2 EN MID MID MID Aol1b MID OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
+R32 N032 MID 1Meg Noiseless
+C35 N032 MID {Cfp4}
+G14 MID N032 Aol3b MID 1µ
+G15 MID Inp2 1 MID 1m
+C36 Inp2 MID {Cbuf_1k}
+G16 1 MID I_nn MID 1
+R33 N038 MID 100k Noiseless
+G17 MID I_nn N038 MID 1
+RI_nn1 I_nn MID 1 Noiseless
+C37 I_nn MID 159p
+A12 MID MID MID MID MID MID N038 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={I_n} Enk={I_nk}
+R34 MID 1 {Rcm} Noiseless
+R35 A2INN MID {Rcm} Noiseless
+S26 MID Inp2 EN MID ENI
+C38 Aol1b MID {Cbuf_1Meg}
+Cinp3 MID N044 {Ccmp_out}
+Cinn3 N048 MID {Ccmn_out}
+Cdiff3 N044 N048 {Cdiff_out}
+R36 A3INPB MID 1m Noiseless
+C39 A3INPB MID {Cbuf_1m}
+G19 MID A3INPB N044 MID 1k
+A13 N048 N042 EN MID MID MID Aol1_out MID OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
+R37 N045 MID 1Meg Noiseless
+G20 MID N045 Clamp_out MID 1µ
+C40 N045 MID {Cfp2_out}
+R38 N047 MID 1Meg Noiseless
+G21 MID N047 N046 MID 1µ
+R39 N046 MID 1Meg Noiseless
+G22 MID N046 N045 MID 1µ
+C41 N046 MID {Cfp3_out}
+C42 N047 MID {Cfp4_out}
+R41 Aol1_out MID 1Meg Noiseless
+R42 Aol_m_out MID 1Meg Noiseless
+G23 MID Aol_m_out N047 MID 1µ
+C43 Aol1_out MID {Cbuf_1Meg}
+C44 Aol_m_out MID {Cbuf_1Meg}
+DGP1 N030 Clamp_out DG
+DGN1 Clamp_out N031 DG
+G24 MID N030 GRpi MID 1k
+G25 MID N031 GRni MID 1k
+R43 N030 MID 1m Noiseless
+R44 N031 MID 1m Noiseless
+R45 GRpi MID 1k Noiseless
+R46 GRni MID 1k Noiseless
+C45 Clamp_out N030 1f
+C46 Clamp_out N031 1f
+IGRp1 MID GRpi {1m*GR}
+IGRn1 GRni MID {1m*GR}
 DOP1 Satp 6 DO
 DON1 6 Satn DO
 C50 Satn 13 1n
@@ -169,100 +169,116 @@ DOP2 Satp 7 DO
 DON2 7 Satn DO
 R49 Satp 4 1m
 R50 Satn 13 1m
-C56 GRpi COM 1f
-C57 N031 COM 1f
-C58 N032 COM 1f
-C59 GRni COM 1f
-B5 COM Zo_inP I=1m*(V(Aol_m_out,COM)+ V(ComAdj,COM)) Rpar=1k
-B6 COM Zo_inN I=1m*V(ComAdj, Aol_m_out) Rpar=1k
-A14 COM COM EN COM COM COM N020 COM OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En=V(fA,COM)/(freq**V(M,COM))
-R51 N020 COM 100k Noiseless
-A15 COM N020 EN COM COM COM E_n COM OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En=V(BB,COM)
-B7 COM BB I=1m*Table(V(GainInd,COM), 0, 128n, 1, 66.7n, 2, 38n, 3, 24.4n, 4, 18.7n, 5, 17.55n, 6, 16.36n) Rpar=1k Cpar={Csw}
-B8 COM fC I=1m*Table(V(GainInd,COM), 0, 130, 1, 170, 2, 80, 3, 80, 4, 55, 5, 70, 6, 65) Rpar=1k Cpar={Csw}
-B9 COM M I=1m*Table(V(GainInd,COM), 0, 0.53, 1, 0.5, 2, 0.58, 3, 0.58, 4, 0.6, 5, 0.54, 6, 0.53) Rpar=1k Cpar={Csw}
-B10 COM fA I=1m*V(BB,COM)*(V(fC,COM)**V(M,COM)) Rpar=1k Cpar={Csw}
-R52 E_n COM 100k Noiseless
-I4 N043 N044 16.91n
-R53 N044 N043 1k Noiseless
-R54 N043 N042 1k Noiseless
-G27 N042 N043 E_n COM 0.5m
-C60 CMR N039 {C1a_CMR}
-G28 COM N039 12 COM {G1_CMR}
-R55 N039 COM 1 Noiseless
-R57 CMR N039 {R1a_CMR} Noiseless
-R58 CMR COM {R2a_CMR} Noiseless
-R59 N042 N041 1k Noiseless
-G29 N041 N042 CMR COM 0.5m
-C61 PSRn N052 {C1a_PSRn}
-G30 COM N052 13 COM {G1_PSRn}
-R60 N052 COM 1 Noiseless
-R61 PSRn N052 {R1a_PSRn} Noiseless
-R63 PSRn COM {R2a_PSRn} Noiseless
-C62 PSRp N038 {C1a_PSRp}
-G31 COM N038 4 COM {G1_PSRp}
-R64 N038 COM 1 Noiseless
-R65 PSRp N038 {R1a_PSRp} Noiseless
-R66 PSRp COM {R2a_PSRp} Noiseless
-R67 N041 A3INPB 1k Noiseless
-G32 A3INPB N041 PSRp PSRn 0.5m
-R68 N046 A3INP 1 Noiseless
-R69 N050 A3INN 1 Noiseless
-C63 6 COM 3f
-C64 COM 7 3f
-G33 COM Clampa Aol1a COM {Aol2/1Meg}
-R70 Clampa COM 1Meg Noiseless
-G34 COM Clampb Aol1b COM {Aol2/1Meg}
-R71 Clampb COM 1Meg Noiseless
-G36 COM A2OUT N034 COM {1/Zo_dc}
-R74 A2OUT COM {Zo_dc}
-G37 COM A1OUT N026 COM {1/Zo_dc}
-R75 A1OUT COM {Zo_dc}
-G40 COM Aol2b Clampb COM 1µ
-R76 Aol2b COM 1Meg Noiseless
-G41 COM Aol2a Clampa COM 1µ
-R77 Aol2a COM 1Meg Noiseless
-G42 COM Aol3a Aol2a COM 1µ
-R78 Aol3a COM 1Meg Noiseless
-G43 COM Aol3b Aol2b COM 1µ
-R79 Aol3b COM 1Meg Noiseless
-R80 Clamp_out COM 1Meg Noiseless
-B11 COM Clamp_out I=Uplim(Dnlim(V(Aol1_out,COM)* V(G2_Aol2,COM), -V(SR_Aol2,COM),1m), V(SR_Aol2,COM),1m)
-R81 N029 COM 1m
-R82 N037 COM 1m
-B12 COM G2_Aol2 I=1m*Table(V(GainInd,COM), 2, 0.88, 3, 0.7, 4, 0.75, 5, 0.62, 6, 1.75) Rpar=1k Cpar={Csw}
-C70 Clamp_out N051 Q=x*Table(V(GainInd,COM), 2, 2.3u, 3, 1.36u, 4, 1.71u, 5, 1.23u, 6, 4.2u, 7, 4.4u)
-C30 Clampa N027 Q=x*Table(V(GainInd,COM), 0, {C0}, 1, {C1}, 2, {C2}, 3, {C3}, 4, {C4}, 5, {C5}, 6, {C6})
-C66 Aol2a N028 Q=x*Table(V(GainInd,COM), 0, 4.8f, 1, 19f, 2, 22f, 3, 25f, 4, {Cx2}, 5, 12f, 6, 8f)
-C68 Aol3a N029 Q=x*Table(V(GainInd,COM), 0, 0.5f, 1, 15f, 2, 22f, 3, 16f, 4, {Cx3})
-C69 Aol3b N037 Q=x*Table(V(GainInd,COM), 0, 0.5f, 1, 15f, 2, 22f, 3, 16f, 4, {Cx3})
-C65 Clampb N035 Q=x*Table(V(GainInd,COM), 0, {C0}, 1, {C1}, 2, {C2}, 3, {C3}, 4, {C4}, 5, {C5}, 6, {C6})
-Rx1 7 N053 {Rx_Zo_out} Noiseless
-Rdummy1 7 COM {Rdummy_Zo_out} Noiseless
-R1 N053 COM 1 Noiseless
-B13 COM N053 I=Uplim(Dnlim({G1_Zo_out}* V(Zo_inN,7), {-Izop}, 25m), {-Izon}, 25m)
-Rx2 6 N045 {Rx_Zo_out} Noiseless
-Rdummy2 6 COM {Rdummy_Zo_out} Noiseless
-R2 N045 COM 1 Noiseless
-B14 COM N045 I=Uplim(Dnlim({G1_Zo_out}* V(Zo_inP,6), {Izon}, 25m), {Izop}, 25m)
-B4 COM SR_Aol2 I=1m*Table(V(GainInd,COM), 2,16.7, 3, 12, 4, 13, 5, 15.5, 6, 31) Rpar=1k Cpar={Csw}
-R3 N027 COM 1m
-R5 N028 COM 1m
-R6 N036 COM 1m
-R7 N035 COM 1m
-R8 N051 COM 1m
-C67 Aol2b N036 Q=x*Table(V(GainInd,COM), 0, 4.8f, 1, 19f, 2, 22f, 3, 25f, 4, {Cx2}, 5, 12f, 6, 8f)
+C56 GRpi MID 1f
+C57 N030 MID 1f
+C58 N031 MID 1f
+C59 GRni MID 1f
+B5 MID Zo_inP I=1m*(V(Aol_m_out,MID)+ V(ComAdj,MID)) Rpar=1k
+B6 MID Zo_inN I=1m*V(ComAdj, Aol_m_out) Rpar=1k
+A14 MID MID EN MID MID MID N020 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En=V(fA,MID)/(freq**V(M,MID))
+R51 N020 MID 100k Noiseless
+A15 MID N020 EN MID MID MID E_n MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En=V(BB,MID)
+B7 MID BB I=1m*Table(V(GainInd,MID), 0, 128n, 1, 66.7n, 2, 38n, 3, 24.4n, 4, 18.7n, 5, 17.55n, 6, 16.36n) Rpar=1k Cpar={Csw}
+B8 MID fC I=1m*Table(V(GainInd,MID), 0, 130, 1, 170, 2, 80, 3, 80, 4, 55, 5, 70, 6, 65) Rpar=1k Cpar={Csw}
+B9 MID M I=1m*Table(V(GainInd,MID), 0, 0.53, 1, 0.5, 2, 0.58, 3, 0.58, 4, 0.6, 5, 0.54, 6, 0.53) Rpar=1k Cpar={Csw}
+B10 MID fA I=1m*V(BB,MID)*(V(fC,MID)**V(M,MID)) Rpar=1k Cpar={Csw}
+R52 E_n MID 100k Noiseless
+I4 N041 N042 16.91n
+R53 N042 N041 1k Noiseless
+R54 N041 N040 1k Noiseless
+G27 N040 N041 E_n MID 0.5m
+C60 CMR N037 {C1a_CMR}
+G28 MID N037 12 MID {G1_CMR}
+R55 N037 MID 1 Noiseless
+R57 CMR N037 {R1a_CMR} Noiseless
+R58 CMR MID {R2a_CMR} Noiseless
+R59 N040 N039 1k Noiseless
+G29 N039 N040 CMR MID 0.5m
+C61 PSRn N050 {C1a_PSRn}
+G30 MID N050 13 MID {G1_PSRn}
+R60 N050 MID 1 Noiseless
+R61 PSRn N050 {R1a_PSRn} Noiseless
+R63 PSRn MID {R2a_PSRn} Noiseless
+C62 PSRp N036 {C1a_PSRp}
+G31 MID N036 4 MID {G1_PSRp}
+R64 N036 MID 1 Noiseless
+R65 PSRp N036 {R1a_PSRp} Noiseless
+R66 PSRp MID {R2a_PSRp} Noiseless
+R67 N039 A3INPB 1k Noiseless
+G32 A3INPB N039 PSRp PSRn 0.5m
+R68 N044 A3INP 1 Noiseless
+R69 N048 A3INN 1 Noiseless
+C63 6 MID 3f
+C64 MID 7 3f
+G33 MID Clampa Aol1a MID {Aol2/1Meg}
+R70 Clampa MID 1Meg Noiseless
+G34 MID Clampb Aol1b MID {Aol2/1Meg}
+R71 Clampb MID 1Meg Noiseless
+G36 MID A2OUT N032 MID {1/Zo_dc}
+R74 A2OUT MID {Zo_dc}
+G37 MID A1OUT N025 MID {1/Zo_dc}
+R75 A1OUT MID {Zo_dc}
+G40 MID Aol2b Clampb MID 1µ
+R76 Aol2b MID 1Meg Noiseless
+G41 MID Aol2a Clampa MID 1µ
+R77 Aol2a MID 1Meg Noiseless
+G42 MID Aol3a Aol2a MID 1µ
+R78 Aol3a MID 1Meg Noiseless
+G43 MID Aol3b Aol2b MID 1µ
+R79 Aol3b MID 1Meg Noiseless
+R80 Clamp_out MID 1Meg Noiseless
+B11 MID Clamp_out I=Uplim(Dnlim(V(Aol1_out,MID)* V(G2_Aol2,MID), -V(SR_Aol2,MID),1m), V(SR_Aol2,MID),1m)
+R81 N028 MID 1m
+R82 N035 MID 1m
+B12 MID G2_Aol2 I=1m*Table(V(GainInd,MID), 2, 0.88, 3, 0.7, 4, 0.75, 5, 0.62, 6, 1.75) Rpar=1k Cpar={Csw}
+C70 Clamp_out N049 Q=x*Table(V(GainInd,MID), 2, 2.3u, 3, 1.36u, 4, 1.71u, 5, 1.23u, 6, 4.2u, 7, 4.4u)
+C30 Clampa N026 Q=x*Table(V(GainInd,MID), 0, {C0}, 1, {C1}, 2, {C2}, 3, {C3}, 4, {C4}, 5, {C5}, 6, {C6})
+C66 Aol2a N027 Q=x*Table(V(GainInd,MID), 0, 4.8f, 1, 19f, 2, 22f, 3, 25f, 4, {Cx2}, 5, 12f, 6, 8f)
+C68 Aol3a N028 Q=x*Table(V(GainInd,MID), 0, 0.5f, 1, 15f, 2, 22f, 3, 16f, 4, {Cx3})
+C69 Aol3b N035 Q=x*Table(V(GainInd,MID), 0, 0.5f, 1, 15f, 2, 22f, 3, 16f, 4, {Cx3})
+C65 Clampb N033 Q=x*Table(V(GainInd,MID), 0, {C0}, 1, {C1}, 2, {C2}, 3, {C3}, 4, {C4}, 5, {C5}, 6, {C6})
+Rx1 7 N051 {Rx_Zo_out} Noiseless
+Rdummy1 7 MID {Rdummy_Zo_out} Noiseless
+R1 N051 MID 1 Noiseless
+B13 MID N051 I=Uplim(Dnlim({G1_Zo_out}* V(Zo_inN,7), {-Izop}, 25m), {-Izon}, 25m)
+Rx2 6 N043 {Rx_Zo_out} Noiseless
+Rdummy2 6 MID {Rdummy_Zo_out} Noiseless
+R2 N043 MID 1 Noiseless
+B14 MID N043 I=Uplim(Dnlim({G1_Zo_out}* V(Zo_inP,6), {Izon}, 25m), {Izop}, 25m)
+B4 MID SR_Aol2 I=1m*Table(V(GainInd,MID), 2,16.7, 3, 12, 4, 13, 5, 15.5, 6, 31) Rpar=1k Cpar={Csw}
+R3 N026 MID 1m
+R5 N027 MID 1m
+R6 N034 MID 1m
+R7 N033 MID 1m
+R8 N049 MID 1m
+C67 Aol2b N034 Q=x*Table(V(GainInd,MID), 0, 4.8f, 1, 19f, 2, 22f, 3, 25f, 4, {Cx2}, 5, 12f, 6, 8f)
 C52 Satp 7 1f
 C53 Satn 7 1f
 C54 6 Satp 1f
 C71 6 Satn 1f
 C47 1 A2INN {Cdiff}
 C48 12 A1INN {Cdiff}
-B17 COM SatM I=1m*(V(Vs,COM)*{Msat}+{Bsat}) Rpar=1k Cpar=1n
-G18 COM Vs 4 13 1m
-C72 Vs COM 10p Rpar=1k Noiseless
-B2 Satp 4 I=1k*V(SatM,COM)
-B3 13 Satn I=1k*V(SatM,COM)
+B17 MID SatM I=1m*(V(Vs,MID)*{Msat}+{Bsat}) Rpar=1k Cpar=1n
+G18 MID Vs 4 13 1m
+C72 Vs MID 10p Rpar=1k Noiseless
+B2 Satp 4 I=1k*V(SatM,MID)
+B3 13 Satn I=1k*V(SatM,MID)
+D4 CMp1 Inp1 DO
+D5 Inp1 CMn1 DO
+I5 4 CMp1 {1k*Vcm_max}
+R4 4 CMp1 1m
+C49 4 CMp1 1n
+I6 13 CMn1 {1k*Vcm_min}
+R9 13 CMn1 1m
+C55 13 CMn1 1n
+D6 CMp2 Inp2 DO
+D7 Inp2 CMn2 DO
+I7 4 CMp2 {1k*Vcm_max}
+R10 4 CMp2 1m
+C73 4 CMp2 1n
+I8 13 CMn2 {1k*Vcm_min}
+R11 13 CMn2 1m
+C74 13 CMn2 1n
 .model SWRG1 SW(Ron=2k Roff=10G Vt=-3.5 Vh=-100m Noiseless)
 .model SWRG2 SW(Ron=1k Roff=10G Vt=-2.5 Vh=-100m Noiseless)
 .model SWRG3 SW(Ron=500 Roff=10G Vt=-1.5 Vh=-100m Noiseless)
@@ -293,6 +309,7 @@ B3 13 Satn I=1k*V(SatM,COM)
 .param Cbuf_1Meg={1/(2*pi*1Meg*FpBuf)}
 .param Iq_on=4.4m Iq_off=211u
 .param Vsmin=9 Vsmax=36
+.param Vcm_min=3 Vcm_max=-3
 .param ENTon=9u ENToff=6u
 .param Ib=2p Ios=2p
 .param I_n=1f I_nk=48

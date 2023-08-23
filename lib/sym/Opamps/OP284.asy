@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value OP284
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel OP284.lib
 SYMATTR Value2 OP284
 SYMATTR Description Precision Rail to Rail I/O Op Amp
 PIN -32 80 NONE 0

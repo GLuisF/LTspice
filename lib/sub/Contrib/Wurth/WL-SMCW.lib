@@ -1,11 +1,11 @@
 **************************************************
-* Manufacturer:           Wurth Elektronik 
+* Manufacturer:           Würth Elektronik 
 * Kinds:                  SMT Mono-color Chip LED Waterclear
 * Matchcode:              WL-SMCW
 * Library Type:           LTspice
-* Version:                rev22a
+* Version:                rev22b
 * Created/modified by:    Ella      
-* Date and Time:          2022-02-18
+* Date and Time:          2022-11-09
 * Team:                   eiSos EDA Service  
 * Contact:                libraries@we-online.com
 **************************************************
@@ -572,7 +572,7 @@ D1 1 2 SMCW
 + TT=5.0000E-9
 .ends
 ******
-.subckt  1206_150120SS75000  1  2
+.subckt 1206_150120SS75000  1  2
 D1 1 2 SMCW
 .MODEL SMCW D
 + IS=10.012E-21
@@ -587,7 +587,7 @@ D1 1 2 SMCW
 + TT=5.0000E-9
 .ends
 ******
-.subckt  1206_150120VS75000  1  2
+.subckt 1206_150120VS75000  1  2
 D1 1 2 SMCW
 .MODEL SMCW D
 + IS=10.010E-21
@@ -602,13 +602,88 @@ D1 1 2 SMCW
 + TT=5.0000E-9
 .ends
 ******
-.subckt  1206_150120YS75000  1  2
+.subckt 1206_150120YS75000  1  2
 D1 1 2 SMCW
 .MODEL SMCW D
 + IS=10.010E-21
 + N=1.8505
 + RS=1.0000E-6
 + IKF=.26942
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 1206_150120BS87000  1  2
+D1 1 2 SMCW
+.MODEL SMCW D
++ IS=27.217E-18
++ N=3.3922
++ RS=.54596
++ IKF=413.64E-6
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 1206_150120GS87000  1  2
+D1 1 2 SMCW
+.MODEL SMCW D
++ IS=84.972E-18
++ N=3.3921
++ RS=.54619
++ IKF=413.52E-6
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 1206_150120RS87000  1  2
+D1 1 2 SMCW
+.MODEL SMCW D
++ IS=8.3603E-18
++ N=2.1908
++ RS=1.0000E-6
++ IKF=.23331
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 1206_150120VS87000  1  2
+D1 1 2 SMCW
+.MODEL SMCW D
++ IS=8.3603E-18
++ N=2.1908
++ RS=1.0001E-6
++ IKF=.23331
++ CJO=1.0000E-12
++ M=.3333
++ VJ=.75
++ BV=5
++ IBV=100.00E-6
++ TT=5.0000E-9
+.ends
+******
+.subckt 1206_150120YS87000  1  2
+D1 1 2 SMCW
+.MODEL SMCW D
++ IS=8.3603E-18
++ N=2.1908
++ RS=1.0001E-6
++ IKF=.23331
 + CJO=1.0000E-12
 + M=.3333
 + VJ=.75

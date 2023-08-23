@@ -1,0 +1,127 @@
+*model for MAX49925
+*version 0: 11/2021
+*updated 06/2023: corrected warnings 
+**************************************************************************************
+.SUBCKT MAX49925 RS+ RS- OUT GND VDD REF2 REF1 GAIN2 GAIN1
+
+R+ RS+ ib+ 1g
+R- RS- ib- 1g
+C+ RS+ GND 3PF
+C- RS- GND 3PF
+Vi+ ib+ GND 0
+Vi- ib- GND 0
+
+RGAIN2 GAIN2 GAIN22 100
+CGAIN2 GAIN22 0 500p
+RGAIN1 GAIN1 GAIN11 100
+CGAIN1 GAIN11 0 500p
+Evilh vil 0 value={V(vdd)/2}
+Eg1 gh1 0 value={if(V(GAIN11)>V(vil),1,0)}
+Eg2 gh2 0 value={if(V(GAIN22)>V(vil),1,0)}
+Eg1h gh1h 0 value={1-V(gh1)}
+Eg2h gh2h 0 value={1-V(gh2)}
+Ega ga 0 value={10.003*V(gh1h)*V(gh2h)+20.002*V(gh2h)*V(gh1)+50.01*V(gh2)*V(gh1h)+100.01*V(gh1)*V(gh2)}
+Eo  OUT2 REFX VALUE={(V(rsp)-V(RS-)+0.5u+V(cmr)+V(cmr2)+V(psr)+V(psr2))*V(dqh)*V(ga)}
+
+*Rref1 REF1 REFX 86.4K
+*Rref2 REFX REF2 86.4K
+EREFX REFX 0 value={(V(REF1)+V(REF2))/2}
+I_REF2 REF2 0 1f
+I_REF1 REF1 0 1f
+*Gsh VDD 0 VALUE={-I(Vsh)}
+
+Eh1 h1 0 value={if((V(RS+)-V(RS-))>0.005m,1,0)}
+Gi+ RS+ GND VALUE={-I(Vi+)+0.003u+3.0u*v(h1)}
+Gi- RS- GND VALUE={-I(Vi-)+0.0015u+3.0u*v(h1)}
+Rs+ RS+ rsp 100
+Cs+ rsp RS- 5n
+
+
+Gshp VDD 0 VALUE={5m+0.005u*V(VDD)}
+
+*EVDDP VDDP 0 VDD 0 1
+*Rvdd VDDP VDDP2 33K
+*Cvdd VDDP2 0 0.1uf
+*Ex1 x1 0 value={if(V(VDDP2)>1.5,1,0)}
+
+
+Ecmr cmr 0 VALUE={(V(RS+)-V(RS-))/2*4.15e-8}
+Rcmr cmr cmr1 1
+Ccmr cmr1 0 100n
+Ecmr2 cmr2 0 value={0.3u-1.292*V(cmr1)+0.65e-8*V(RS-)}
+Rpsr psr psr1 100
+Cpsr psr1 0 100n
+Epsr2 psr2 0 value={0.5u-0.892*V(psr1)}
+Epsr psr 0 VALUE={V(vdd)*53.76e-7}
+
+Eddh ddh 0 value={if(V(vdd)>1,1,0)}
+Rdd ddh ddq 100
+Cdd ddq 0 1.6u
+Eddq dqh 0 value={if(V(ddq)>0.5,1,0)}
+
+Ell ll GND VALUE={5m}
+R_Ell ll GND 1G
+
+Elim lim 0 vdd GND 1
+Elim1 lim1 lim VALUE={-0.005}
+R_Elim1 lim1 GND 1G
+*Dlim OUT lim1 DX1
+*Dlima ll OUT DX1
+El2 lim2 GND value={if(V(lim)>6,6,V(lim))}
+R_El2 lim2 GND 1G
+Ro OUT2 OUT1 0.1
+Edd1 dd1 0 value={V(vdd)*2-40m}
+Emm1 mm1 0 value={50m}
+Eo2 out3 0 value={if(V(out1)>V(vdd),V(dd1),V(out1))}
+Eq1 hq1 0 value={if(V(out1)>V(vdd),0,1)}
+Eo3 out4 0 value={if(V(out1)<0,V(mm1),V(out1))}
+Eq2 hq2 0 value={if(V(out1)<0,0,1)}
+Eo4 OUTX 0 value={(V(out3)*V(hq2)+V(out4)*V(hq1))/2*V(dqh)}
+*Dlim OUT lim1 DX1
+*Dlima ll OUT DX1
+*.MODEL DX1  D(n=0.001)
+*Roo OUT2 OUTX 0.1
+D401 OUTX IO1 DY
+D402 IO2 OUTX DY
+D403 OUT IO1 DY
+D404 IO2 OUT DY
+I400 IO1 IO2 20M
+.MODEL DY D(IS=100E-14 N=100M) ;N=10M
+
+.ends
+
+***********************************************************************
+.SUBCKT SHDN 18 91 cs
+***********************************************************************
+V10 10 0 5
+E20 20 18 10 18 0.5
+Ecs cs 18 VALUE={V(96)-V(20)}
+*SHUTDOWN
+RSHIN 91 20 5000K
+ESH3 220 20 91 18 1
+RSHA 220 221 1K
+CSHA 221 20 32P
+ESH2 92 20 221 20 1
+RSH1 92 93 100
+VSH1 93 94 0V
+EHYS 95 94 POLY(2) 10 18 96 20 0 0 0 0 0.33
+RBL 94 20 10K
+ESH1 95 20 10 18 0.45
+****
+*FSH1 20 96 Vsh1 1
+*CSH1 96 20 10P
+*DSH2 20 96 DA
+*DSH1 96 97 DA
+*VSH2 97 20 1V
+*RSH2 96 20 100K
+E96 96 18 value={if(I(vsh1)<0,2.5,3.5)}
+.MODEL DA D(N=10M)
+*.MODEL DA D
+.ends
+***********************************************************************
+
+
+
+
+
+

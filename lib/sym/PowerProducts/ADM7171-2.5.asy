@@ -6,8 +6,8 @@ WINDOW 0 0 -64 Center 2
 WINDOW 3 0 48 Center 2
 SYMATTR Value ADM7171-2.5
 SYMATTR Prefix X
-SYMATTR SpiceModel ADM7171.sub
-SYMATTR Value2 ADM7171 Vref=2.5
+SYMATTR SpiceModel ADM7171-2.5.sub
+SYMATTR Value2 ADM7171-2.5
 SYMATTR Description 6.5V, 1A, Ultralow Noise, High PSRR, Fast Transient Response CMOS LDO, Fixed 2.5V Output
 PIN -128 -96 LEFT 8
 PINATTR PinName Vin

@@ -6,8 +6,8 @@ WINDOW 0 0 -64 Center 2
 WINDOW 3 0 48 Center 2
 SYMATTR Value ADM7170-3.0
 SYMATTR Prefix X
-SYMATTR SpiceModel ADM7170.sub
-SYMATTR Value2 ADM7170 Vref=3
+SYMATTR SpiceModel ADM7170-3.0.sub
+SYMATTR Value2 ADM7170-3.0
 SYMATTR Description 6.5V, 500mA, Ultralow Noise, High PSRR, Fast Transient Response CMOS LDO, Fixed 3V Output
 PIN -128 -96 LEFT 8
 PINATTR PinName Vin

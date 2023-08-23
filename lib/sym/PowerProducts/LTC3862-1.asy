@@ -77,4 +77,4 @@ PINATTR PinName Sense1+
 PINATTR SpiceOrder 23
 PIN 144 -400 TOP 8
 PINATTR PinName 3V8
-PINATTR SpiceOrder 24
+PINATTR SpiceOrder 15

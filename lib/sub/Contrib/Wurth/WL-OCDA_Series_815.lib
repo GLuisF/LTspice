@@ -1,11 +1,11 @@
 **************************************************
-* Manufacturer:           Wurth Elektronik 
+* Manufacturer:           Würth Elektronik 
 * Kinds:                  Optocoupler Darlington
 * Matchcode:              WL-OCDA
 * Library Type:           LTspice
-* Version:                rev21a
+* Version:                rev22b
 * Created/modified by:    Ella      
-* Date and Time:          2022-02-14
+* Date and Time:          2022-12-22
 * Team:                   eiSos EDA Service  
 * Contact:                libraries@we-online.com
 **************************************************
@@ -33,7 +33,7 @@ G1 C B TABLE
 + (0.254110E-20/V(T)+0.117988E-02)/100)}
 + (0,0.0000000001) (10,10)
 
-.model LED D IS=1P N=2.228621 RS=1.560495 BV=6 IBV=10U
+.model LED D 
 + IS=22.505E-18
 + N=1.4098
 + RS=.47806

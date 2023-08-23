@@ -1,0 +1,2707 @@
+07/25/23 LT4200 updated internal parameters
+07/25/23 LTC4214-1 updated internal parameters
+07/25/23 LTC4214-2 updated internal parameters
+07/25/23 LTC4215 updated internal parameters
+07/25/23 LTC4215-2 updated internal parameters
+07/25/23 LTC4217 updated internal parameters
+07/25/23 LTC4217-12 updated internal parameters
+07/25/23 LTC4218 updated internal parameters
+07/25/23 LTC4218-12 updated internal parameters
+07/25/23 LTC4219-12 updated internal parameters
+07/25/23 LTC4219-5 updated internal parameters
+07/25/23 LTC4232 updated internal parameters
+07/25/23 LTC4232-1 updated internal parameters
+07/25/23 LTC4233 updated internal parameters
+07/25/23 LTC4234 updated internal parameters
+07/25/23 LTC4238 updated internal parameters
+07/25/23 LTC4260 updated internal parameters
+07/25/23 LTC4286 updated internal parameters
+07/25/23 LT4363-1 updated internal parameters
+07/25/23 LT4363-2 updated internal parameters
+07/25/23 LTC4242 updated internal parameters
+07/25/23 LTM4702  new model
+07/24/23 ADA4610 Corrected supply current.
+07/24/23 LTC6373 Corrected input voltage range.
+07/24/23 ADG5208  new model
+07/24/23 ADGM1121  new model
+07/21/23 MAX17500  new model
+07/19/23 LTC4246 updated internal parameters
+07/19/23 LTC4279 updated internal parameters
+07/19/23 MAX14525 updated internal parameters
+07/19/23 MAX14575A updated internal parameters
+07/19/23 MAX14575AL updated internal parameters
+07/19/23 MAX14575B updated internal parameters
+07/19/23 MAX14575C updated internal parameters
+07/19/23 MAX15068 updated internal parameters
+07/19/23 MAX15069 updated internal parameters
+07/19/23 MAX15090B updated internal parameters
+07/19/23 MAX15090C updated internal parameters
+07/19/23 MAX15091 updated internal parameters
+07/19/23 MAX15091A updated internal parameters
+07/19/23 MAX15093 updated internal parameters
+07/19/23 MAX15093A updated internal parameters
+07/19/23 MAX15095 updated internal parameters
+07/19/23 MAX15095A updated internal parameters
+07/19/23 MAX15095D updated internal parameters
+07/19/23 MAX15096 updated internal parameters
+07/19/23 MAX15096A updated internal parameters
+07/19/23 MAX15096D updated internal parameters
+07/19/23 MAX16171 updated internal parameters
+07/19/23 MAX16545B updated internal parameters
+07/19/23 MAX16545C updated internal parameters
+07/19/23 MAX16550 updated internal parameters
+07/19/23 MAX17523 updated internal parameters
+07/19/23 MAX17523A updated internal parameters
+07/19/23 MAX17526A updated internal parameters
+07/19/23 MAX17561 updated internal parameters
+07/19/23 MAX17562 updated internal parameters
+07/19/23 MAX17563 updated internal parameters
+07/19/23 MAX17608 updated internal parameters
+07/19/23 MAX17609 updated internal parameters
+07/19/23 MAX17610 updated internal parameters
+07/19/23 MAX17612A updated internal parameters
+07/19/23 MAX17612B updated internal parameters
+07/19/23 MAX17612C updated internal parameters
+07/19/23 MAX17613A updated internal parameters
+07/19/23 MAX17613B updated internal parameters
+07/19/23 MAX17613C updated internal parameters
+07/19/23 MAX20313 updated internal parameters
+07/19/23 MAX20314 updated internal parameters
+07/19/23 MAX20315 updated internal parameters
+07/19/23 MAX20316 updated internal parameters
+07/19/23 MAX20337  new model
+07/19/23 ADA4510  new model
+07/17/23 LTM4668 Improved convergence. Updated pin numbers and the example circuit. 
+07/17/23 LTM4668A Improved convergence. Updated pin numbers and the example circuit. 
+07/14/23 LTC3621 Fixed PMOS Turn-On persistence when Vin is ramping slow
+07/12/23 LTC7150S Fix clock synchronization
+07/12/23 ADP1741  new model
+07/12/23 LTC7066  new model
+07/11/23 MAX16170 Correct function on second IN pin power-up
+07/11/23 MAX14779  new model
+07/10/23 LT4276A Updated obsolete BJT.
+07/10/23 MAX22288 Update Macromodel
+07/10/23 LTC3427-2  new model
+07/07/2023 2ndOrderAllpass Added input, load, simulation command, and "H" parameter.
+07/07/2023 2ndOrderBandpass  Added input, load, simulation command, and "H" parameter.
+07/07/2023 2ndOrderComplexzero Added input, load, simulation command, and "H" parameter.
+07/07/2023 2ndOrderHighpass Added input, load, simulation command, and "H" parameter.
+07/07/2023 2ndOrderLowpass Added input, load, simulation command, and "H" parameter.
+07/07/2023 2ndOrderNotch Added input, load, simulation command, and "H" parameter.
+07/05/23 MAX49925  new model
+07/03/23 AD630  new model
+07/01/23 MAX17640C Documented reference information and updated example circuit.
+07/01/23 MAX17640A  new model
+07/01/23 MAX17640B  new model
+07/01/23 MAX14774  new model
+06/28/23 AD8410A Added Vcm clamp.
+06/28/23 LT9890  new model
+06/27/23 LT1182 Application circuit modified for clarity.
+06/27/23 LTC4450 fix internal floating nodes
+06/27/23 LTC4451 Fix internal status pin
+06/26/23 Updated JFET device models from Linear Systems
+06/26/23 Added Chemi-Con inductors and capacitors
+06/26/23 ADuM4221-1A Update internal delay function
+06/26/23 ADG1408L  new model
+06/24/23 LT1028 Updated symbol to reference correct model.
+06/24/23 LTC7872  new model
+06/22/03 Updated application files to include full name of library devices
+06/22/23 AD5772R Missing Symbol
+06/22/23 ADP5055 Fix VFB2 by correcting CFG1 settings
+06/22/23 LT3097 updated application circuit
+06/22/23 LT3798 Updated the example circuit.
+06/22/23 LTC1874 revised application circuit
+06/22/23 LTC2903-A1 Modify sample macro-model for proper operation
+06/22/23 LTC2903-B1 Modify sample macro-model for proper operation
+06/22/23 LTC2903-C1 Modify sample macro-model for proper operation
+06/22/23 LTC2903-D1 Modify sample macro-model for proper operation
+06/22/23 LTC2903-E1 Modify sample macro-model for proper operation
+06/22/23 LTC3862-1 Improved convergence and updated example circuit.
+06/22/23 LTM4630-1 Modify internal test circuit
+06/22/23 LT1028 Improved accuracy of open loop gain/phase response.
+06/22/23 LT1360 revised application circuit
+06/22/23 LTC2642-14 updated application circuit
+06/22/23 LTC3548-2 Missing .sub file
+06/22/23 MAXM15062  new model
+06/22/23 MAXM15063  new model
+06/22/23 MAXM15064  new model
+06/22/23 MAX22088  new model
+06/22/23 MAX22288  new model
+06/13/23 LT1182 Application circuit modified for clarity.
+06/13/23 LT8648S Fix transient response and Negative Vout
+06/12/23 Minor updates to Wolfspeed library
+06/12/23 Added 1N4007 to standard library
+06/12/23 AD4000 Improved model convergence.
+06/12/23 AD4696 Modified noise in the model file
+06/12/23 LT1182 Updated BJT model for improved convergence.
+06/12/23 LT4295 update LT4295 Macromodel
+06/12/23 LT8609S Fixed Control loop parameters
+06/12/23 LTC7810 Fixed Duty Cycle Limit
+06/12/23 LTC7878 Split GND into SGND and PGND; Update application circuit Schottky diode
+06/12/23 AD8655  new model
+06/06/23 ADP5070 Fix EN1 and 2 Function
+06/06/23 LT8316 Fixed TIMER definition
+06/06/23 Updated Murata capacitors where required
+06/03/23 LT3073 Added text to application circuit.
+06/03/23 LT1806 Updated application example circuit
+06/03/23 LTC7063  new model
+06/03/23 Added Rohm bipolar devices to standard library
+06/03/23 Updated Rohm diode devices in standard library
+05/31/23 ADP1614 Fixed syntax errors and improved convergence.
+05/31/23 ADP1614-1.3 Fixed syntax errors. Calibrated switching frequency and current limit.
+05/31/23 ADP1614-650 Fixed syntax errors. Calibrated switching frequency and current limit.
+05/31/23 LT3073 Model enhanced for speed and convergence.
+05/31/23 LT3762 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT3791 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT3942 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT8376 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT8391 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT8391A Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT8391D Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 LT8393 Replaced LUW-W5AP (obsolete) with LXK2-PW14.
+05/31/23 MAX17640C  new model
+05/31/23 Minor fixes to standard libraries
+05/31/23 Added Wolfspeed components
+05/29/23 Updated inductors from Coilcraft.
+05/29/23 LT8471 Fix switching Freq for Channel 2
+05/29/23 MAX20048  new model
+05/25/23 AD4696 Modified noise in the model file
+05/25/23 LT3013 Model matches the hardware performance
+05/25/23 LT3072 Updated model for shorter run time and better convergence.
+05/25/23 LT8316 Fixed CC/CV Operation
+05/25/23 LTC3114-1 Change PROG Pin to sense switch current as per datasheet
+05/25/23 LTC3315B FCM is ensured to work properly
+05/25/23 LTC4555  new model
+05/17/23 ADCMP356 Minor edit for Diode dot model statement
+05/17/23 LT8643S adjusted soft-start ramp profile
+05/17/23 LTC7060 Replaced diode with RSX205LAM30.
+05/17/23 LTM4626 Remove internal softstart
+05/17/23 LTM4638 remove internal softstart
+05/17/23 LTM4657 remove internal softstart
+05/17/23 LTC6252 Model redesigned on new architecture with accuracy and convergence improvements.
+05/14/23 LT3072 Updated model for faster run time.
+05/10/23 MAX16170  new model
+05/06/23 LT8643S Adjusted internal parameters
+05/02/23 LT8228 updated internal parameeters
+04/27/23 ADG1607  new model
+04/27/23 ADG5206  new model
+04/27/23 ADG5207  new model
+04/26/23 ADG2412 Corrected input voltage range.
+04/26/23 ADG6412 Corrected input voltage range.
+04/25/23 LTC2935-1 Correct function when GND pin is at non-zero
+04/25/23 LTC2935-2 Correct function when GND pin is at non-zero
+04/25/23 LTC2935-3 Correct function when GND pin is at non-zero
+04/25/23 LTC2935-4 Correct function when GND pin is at non-zero
+04/19/23 AD4008 Improved speed and convergence
+04/19/23 AD4696 Improved speed and convergence
+04/19/23 AD8235 Model redesigned on new architecture with accuracy and convergence improvements.
+04/19/23 ADA4097-1 Corrected operation with asymmetrical power supplies.
+04/19/23 ADA4097-2 Corrected operation with asymmetrical power supplies.
+04/18/23 ADCMP356  new model
+04/13/23 LT8643S Adjusted internal control loop parameters
+04/13/23 ADuM3195  new model
+04/13/23 ADuM4195  new model
+04/12/23 LTM4657 Fix CLKOUT signal
+04/12/23 LTC4279  new model
+04/07/23 ADA4807 Improved small-signal accuracy and convergence performance.
+04/07/23 ADA4807-4 Improved small-signal accuracy and convergence performance.
+04/05/23 AD811 Added input voltage noise and input current noise.
+04/04/23 ADP5056 Fixed irregular clk cycles
+04/03/23 LTC1261CS8-4 Fix stability and ripple issue
+04/03/23 LTC1261CS8-4.5 Fix stability and ripple issue
+03/31/23 ADTL084 Corrected input voltage noise.
+03/30/23 MAX9095  new model
+03/29/23 MAX17523  new model
+03/29/23 MAX17523A  new model
+03/28/23 LTM8080  new model
+03/27/23 OP284 Model redesigned on new architecture with accuracy and convergence improvements.
+03/23/23 ADA4528-1  new model
+03/22/23 LTC7050 Changed dead time to avoid Shoot-through in the model.
+03/22/23 ADR3625 Improved convergence performance.
+03/22/23 MAX41400 Improved convergence performance.
+03/22/23 Wurth devices updated
+03/21/23 ADM7170 updated internal parameters
+03/21/23 ADM7170-1.3 updated internal parameters
+03/21/23 ADM7170-1.8 updated internal parameters
+03/21/23 ADM7170-2.5 updated internal parameters
+03/21/23 ADM7170-3.0 updated internal parameters
+03/21/23 ADM7170-3.3 updated internal parameters
+03/21/23 ADM7170-4.2 updated internal parameters
+03/21/23 ADM7170-5.0 updated internal parameters
+03/21/23 ADM7171 updated internal parameters
+03/21/23 ADM7171-1.3 updated internal parameters
+03/21/23 ADM7171-1.8 updated internal parameters
+03/21/23 ADM7171-2.5 updated internal parameters
+03/21/23 ADM7171-3.0 updated internal parameters
+03/21/23 ADM7171-3.3 updated internal parameters
+03/21/23 ADM7171-4.2 updated internal parameters
+03/21/23 ADM7171-5.0 updated internal parameters
+03/21/23 ADM7172 updated internal parameters
+03/21/23 ADM7172-1.3 updated internal parameters
+03/21/23 ADM7172-1.8 updated internal parameters
+03/21/23 ADM7172-2.5 updated internal parameters
+03/21/23 ADM7172-3.0 updated internal parameters
+03/21/23 ADM7172-3.3 updated internal parameters
+03/21/23 ADM7172-4.2 updated internal parameters
+03/21/23 ADM7172-5.0 updated internal parameters
+03/21/23 ADP5055 updated internal parameters
+03/21/23 LT8643S Corrected Burst Mode operation
+03/17/23 AD4697 Improved model convergence
+03/17/23 AD4698 Improved model convergence
+03/17/23 AD5681R Solved port(pin) count mismatch error
+03/16/23 LT3599 updated internal parameters
+03/16/23 LTC3528-2 updated internal parameters
+03/16/23 LTC3528B updated internal parameters
+03/16/23 LTC3528B-2 updated internal parameters
+03/16/23 LTC3529 updated internal parameters
+03/16/23 LTC3537 updated internal parameters
+03/16/23 LTC3539 updated internal parameters
+03/16/23 LTC3539-2 updated internal parameters
+03/16/23 LTC3803 updated internal parameters
+03/16/23 LTC3803-3 updated internal parameters
+03/16/23 LTC3803-5 updated internal parameters
+03/15/23 AD4695 Improved model convergence
+03/15/23 AD4696 Improved model convergence
+03/15/23 LTC3100 internal switch settings
+03/15/23 LTC3105 updated internal parameters
+03/15/23 LTC3310S updated internal parameters
+03/15/23 LTC3310S-1 updated internal parameters
+03/15/23 LTC3527 updated internal parameters
+03/15/23 LTC3527-1 updated internal parameters
+03/15/23 LTC3528 updated internal parameters
+03/15/23 ADG5412BF  new model
+03/14/23 AD8410A  new model
+
+03/14/23 Version 17.1.8 release
+           -Minor bugs fixed
+
+03/13/23 MAX44264  new model
+
+03/13/23 Version 17.1.7 released
+            -Fixed crashing with certain .MEAS directives in some situations
+            -Fixed auto-scaling of X axis when loading raw files where X axis is frequency
+            -Fixed step legend color with multiple plot panes
+            -Fixed incorrect toolbar tooltip hotkey note for Zoom to Fit button
+            -Fixed opening  example files for some selected devices in the LTspice library
+
+03/10/23 LTC3891 Corrected 3 level Current Limits and PLL/Mode functions (FC, PS, Burst Modes, and Sync)
+03/08/23 AD8067 Model redesigned on new architecture with accuracy and convergence improvements.
+03/08/23 ADA4898  new model
+03/07/23 LT6370 Minor syntax error
+03/07/23 RH101A MInor syntax error
+03/07/23 MAX20444B  new model
+03/06/23 ADP7182 Fixed the ground pin current. 
+03/06/23 LTC4373 Added initial conditions to some primitives. 
+03/06/23 AD8220 Corrected input bias current
+03/03/23 MAX25206  new model
+03/02/23 MAX14525  new model
+03/02/23 MAX14575A  new model
+03/02/23 MAX14575AL  new model
+03/02/23 MAX14575B  new model
+03/02/23 MAX14575C  new model
+03/02/23 AD8233  new model
+03/01/23 LT3798 Added EAclk to the error amp for steady state detection
+03/01/23 LTC3106 Fixed Vin Bias Current
+02/28/23 LTC7150S Clock Frequency Setting via Rt Resistor
+02/28/23 LTP8803-1A  new model
+02/27/23 LTC4372 Added initial conditions to some primitives. 
+02/27/23 OP177A Added example circuit.
+02/24/23 ADA4077 Added input series resistance and differential input diodes.
+02/24/23 ADA4945-HP Corrected output clamp and differential input clamp.
+02/24/23 MAX40018  new model
+02/23/23 AD8618 Input Offset Voltage
+02/23/23 OP177A Model redesigned on new architecture with accuracy and convergence improvements.
+02/22/23 LTC3106 Fixed issues on Store OV and UV, Vstore Charging, Current Limit and PGOOD glitch
+02/21/23 AD8421 Update the acceptable Input Range Limit
+02/20/23 LTC3302A  new model
+02/20/23 LTC3302A-05  new model
+02/20/23 LTC3302C  new model
+02/20/23 LTC3302C-05  new model
+02/20/23 LTC3303A  new model
+02/20/23 LTC3303A-05  new model
+02/20/23 LTC3303C  new model
+02/20/23 LTC3303C-05  new model
+02/20/23 LTC3304A  new model
+02/20/23 LTC3304A-05  new model
+02/20/23 LTC3304C  new model
+02/20/23 LTC3304C-05  new model
+02/19/23 LT7200S  new model
+02/16/23 AD7380 Updated modelling of reference current, improved convergence
+02/15/23 AD8651  new model
+02/14/23 Added new devices from Schaffner
+02/14/23 Added new devices from Toshiba
+02/14/23 LTM8083 Fixed a misused symbol.
+02/14/23 ADR3625  new model
+02/14/23 ADG1206L  new model
+02/14/23 ADG1207L  new model
+02/09/23 ADG2412  new model
+02/09/23 ADG6412  new model
+02/06/23 ADP5072 Add Seq pin
+02/06/23 LT7182S Updated text in application circuit regarding GmEA
+02/06/23 ADuM4195-1  new model
+02/03/23 LTC7891 Edited Symbol and removed Bootstrap Diode in application example circuit
+02/03/23 LTM4657 Fix issue during FCM start-up
+02/02/23 LT3799 The LED was changed to the LumiLED L1HZ-5780100000000.
+02/02/23 LT3799-1 The LED was changed to the LumiLED L1HZ-5780100000000.
+02/01/23 ADP1765 Vadj pin function
+02/01/23 ADP1765-0.55 Vadj pin function
+02/01/23 ADP1765-0.9 Vadj pin function
+02/01/23 ADP1765-0.95 Vadj pin function
+02/01/23 ADP1765-1.0 Vadj pin function
+02/01/23 ADP1765-1.1 Vadj pin function
+02/01/23 ADP1765-1.2 Vadj pin function
+02/01/23 ADP1765-1.25 Vadj pin function
+02/01/23 ADP1765-1.3 Vadj pin function
+02/01/23 ADP1765-1.5 Vadj pin function
+01/31/23 Added 31 Lumiled diodes in diode standard library
+01/31/23 LT8608 Corrected synchronization to external clock function
+01/31/23 LTC3307A changed loop gain
+01/31/23 LTC3307B changed loop gain
+01/30/23 AD8601 Corrected voltage noise density.
+01/30/23 AD8602 Corrected voltage noise density.
+01/30/23 AD8604 Corrected voltage noise density.
+01/29/23 LTM4630-1 Updated control parameter
+01/26/23 LT8355-1 Fixed Vref, sampling circuit, and start-up when dimming is set to 100%
+01/26/23 LTC7825  new model
+01/25/23 LT8315 Changed diodes from obsolete parts to currently supported parts.
+01/25/23 LT4322  new model
+01/24/23 MAX16543  new model
+01/24/23 MAX16545B  new model
+01/24/23 MAX16545C  new model
+01/24/23 MAX16550  new model
+01/24/23 MAX17526A  new model
+01/24/23 MAX17612A  new model
+01/24/23 MAX17612B  new model
+01/24/23 MAX17612C  new model
+01/24/23 MAX17613A  new model
+01/24/23 MAX17613B  new model
+01/24/23 MAX17613C  new model
+01/24/23 MAX20313  new model
+01/24/23 MAX20314  new model
+01/24/23 MAX20315  new model
+01/24/23 MAX20316  new model
+01/23/23 LTC7150S Corrected CLKOUT output signal; Updated pin assignments
+01/23/23 LTC7890 corrected clock synchronization function of PLL pin; corrected Mode functions
+01/23/23 LTC7891 corrected clock synchronization function of PLL pin
+01/23/23 MAX40023 Reduced overload recovery time.
+01/23/23 AD8336  new model
+01/22/23 LTC7103 Added Boost pin.
+01/17/23 LT3154-1 removed
+01/17/23 W5AO-LZMZ-5K8L removed as requested
+01/17/23 LTC1261CS8 Fix stability and ripple issue
+01/17/23 LTC7891 corrected Mode functions
+01/16/23 LT8643S Fix Negative Vout config, BIAS, Vin1, and Vin2 Currents,offset on FB Pin.
+01/12/23 LT8650S Fixed CLKout signal when in parallel operation
+01/12/23 LT3073  new model
+01/09/23 Added capacitors from Vishay in standard capacitors library
+01/06/23 LTM4660 Fixed the PLL function and improved convergence.
+01/05/23 LTC7890 corrected function of DTCx Pins Connected with a Resistor to GND
+01/05/23 LTC7891 corrected function of DTCx Pins Connected with a Resistor to GND
+01/05/23 ADA4098-2 Corrected symbol reference to netlist.
+01/05/23 MAX41400 Improved convergence performance.
+01/03/23 LT3097  new model
+12/21/22 LTC1261CS8 Control circuit changes to reduce ripple to better match silicon.
+12/15/22 Updated standard capacitor library to use vendor Chemi-Con over United Chemi-con
+12/14/22 LTC3899 Changed symbol for application circuit.
+12/14/22 LTC7871 Updated symbol.
+12/13/22 LT8333 Update Slope compensation profile to match LTpowerCAD
+12/13/22 LT8334 Update Slope compensation profile to match LTpowerCAD
+12/12/22 MAX17561  new model
+12/12/22 MAX17562  new model
+12/12/22 MAX17563  new model
+12/08/22 LTC6563 Revised model for higher bandwidth
+12/07/22 LTC4286  new model
+12/06/22 ADM1272 Fast response to severe overcurrent
+12/05/22 MAX40023 Model updated to new architecture with accuracy and convergence improvements.
+12/02/22 MAX17608  new model
+12/02/22 MAX17609  new model
+12/02/22 MAX17610  new model
+11/28/22 ADM1272 ESTART/EFAULT pin current, updated symbol pin assignment
+11/28/22 LTC7890 corrected dead-time control
+11/28/22 LTC7891 corrected dead-time control
+11/28/22 LTC3899 Added logic so part would go into shutdown.
+11/28/22 LTC7871 Modified circuit so V5 and DRVCC would be disabled when all run pins pulled low.
+11/22/22 ADL5304  new model
+11/22/22 ADL5304  new model
+11/21/22 AD4030-24 Improved convergence
+11/21/22 ADR1000 Optimized model to improve convergence. Updated example circuit. 
+11/21/22 MAX41400 Corrected internal node references.
+11/17/22 LTM4657 Fix SS currrent issue
+11/16/22 MAX41400 Model updated to new architecture with accuracy and convergence improvements.
+11/16/22 LT1943 Corrected error with .include statement.
+11/16/22 LTM4663 Corrected error with .include statement.
+11/16/22 ADN8834 Corrected error with .include statement.
+11/14/22 AD8422 Changed Quiescent Current
+11/11/22 ADA4896 Updated symbol to reference new model.
+11/11/22 ADA4896-2 Model updated to new architecture with accuracy and convergence improvements.
+11/11/22 LT3030 Added VIN UVLO as a condition that disables the part.
+11/11/22 LTM8022 Revised PGood logic
+11/10/22 ADGM1144  new model
+11/09/22 LTC2057HV Updated the symbol
+11/09/22 LTC2057 Updated the symbol
+11/09/22 LTC2058 Updated the symbol
+11/09/22 LT8584 Simple Mode Operation; DIN pin and DCHRG pin functions
+11/09/22 LTC3290  new model
+11/08/22 LTC6090 Update symbol pin placement for V+ and V-
+11/08/22 LTC6090-5 Update symbol pin placement for V+ and V-
+10/25/22 ADG1206  new model
+10/25/22 ADG1207  new model
+10/20/22 LT8648S Inverted PGood logic 
+10/19/22 LTC3103 minor changes in Burst Model Operation
+10/18/22 LTC7891 Modified Oscillator and Slope Compensation; Fix steady state detection 
+10/18/22 LTC7890 Fixed steady state detection
+10/18/22 LTC3311S Update control paramater value
+10/17/22 LTC3311-0.875 Update the slope compensation
+10/17/22 LTC3311-0.85 Update the slope compensation
+10/17/22 LTC3311 Update the slope compensation
+10/17/22 LTC3311-1 Update the slope compensation
+10/17/22 LTC3311S Fixed the slope comp profile for the entire frequency range
+10/17/22 LTC3311-0.75 Update the slope compensation
+10/17/22 LT3041  new model
+10/13/22 LT8710 Decrease the value to BG minimum ON time.
+10/13/22 LTC2387-16 Updated noise model 
+10/11/22 AD8310 Corrected error with .include statement.
+10/11/22 LT1336 Fix issue on V+ function and shutdown profile
+10/08/22 LTC6373 Improved accuracy of small-signal response.
+10/08/22 ADR1001  new model
+10/07/22 LTC7890 Fixed 2-phase operation and Vprog function
+10/07/22 LT8643S Correct the SS pin to Reference function
+10/07/22 ADGM1001  new model
+10/07/22 MAX15090B  new model
+10/07/22 MAX15090C  new model
+10/07/22 MAX15093  new model
+10/07/22 MAX15091A  new model
+10/07/22 MAX15093A  new model
+10/07/22 MAX15091  new model
+10/06/22 LTC7890 Fixed 2-phase operation and Vprog function
+10/06/22 ADGM1001  new model
+09/30/22 LTM4658 Improved Load Transient Response
+09/30/22 ADG5462F Added decoupling capacitors to the application circuit.
+09/29/22 LTM4661 Soft-start timing was corrected
+09/28/22 LTC4380-2 Fix OV and OC response
+09/28/22 LTC4380-4 Fix OV and OC response
+09/28/22 LTC6373 Improved convergence performance and stability.
+09/28/22 MAX34406F  new model
+09/28/22 MAX34406H  new model
+09/28/22 MAX34406T  new model
+09/28/22 MAX34406W  new model
+09/27/22 LT8685S Correct Trigger levels of PG3 and PG4
+09/27/22 LTM4658 Correct model efficiency profile
+09/27/22 LTC6655LN-5 Corrected high-frequency noise.
+09/26/22 FRA example files updated
+09/25/22 LTC3888 Corrected PWM rails configuration; adjusted pin assignments
+09/25/22 LTC3888-1 Corrected PWM rails configuration; adjusted pin assignments
+09/25/22 LTM4686 Soft-Off (Sequenced Off) function was corrected
+09/25/22 LTM4686-1 Soft-Off (Sequenced Off) function was corrected
+09/25/22 LTC4041  new model
+08/24/22 LT8619 Fixed issues in Burst Mode, Pulse Skipping and External SYNC.
+09/23/22 LT8604C LT8618/8604: Adjusted the INTVCC regulator to reduce simulation time
+09/21/22 LT3380  new model
+09/16/22 LTM4652 Added internal resistor between VINOVP and SGND 
+09/15/22 LTM4670 Made the pin currents available for probing.
+09/15/22 ADG1412L  new model
+09/14/22 LTM4655 Updated CLKset resistor value
+09/14/22 LTM8051 Fixed RUN23 Pin
+09/14/22 AD8475 Updated model symbol
+09/09/22 LTM4652  new model
+09/08/22 LTM4668A Fixed PGood Startup delay
+09/08/22 ADA4097-1 Added initial condition for Convergence
+09/02/22 LT8685S  new model
+08/31/22 ADuM4221-2C Fixed output quiescent current
+08/29/22 Added independent library directories in %LOCALAPPDATA% for each user
+08/29/22 Fixed menus and toolbar buttons to display context-accurate keyboard shortcuts (hot keys)
+08/29/22 Added keyboard shortcut file load/save functionality
+08/29/22 Added impedance measurement capability to Frequency Response Analysis
+08/29/22 LTspice library files are now stored in independent directories in %LOCALAPPDATA% for each user (no longer uses My Documents)
+08/29/22 Fixed intermittent dropped edits after clicking OK in schematic text edit helper windows
+08/29/22 Improved toolbar icon scaling for high-resolution monitors
+08/29/22 Fixed LTspice Most Recently Used file list behavior so it no longer overwrites the Windows global MRU
+08/29/22 Improved waveform viewer auto-ranging of small values in some situations
+08/29/22 Straightened scalloped waveform segments between points on log scale graphs
+08/29/22 ADuM4221-1A Fixed output quiescent current and dead time 
+08/29/22 ADuM4221-1B Fixed output quiescent current and dead time 
+08/29/22 ADuM4221-1C Fixed output quiescent current and dead time 
+08/29/22 ADuM4221-2A Fixed output quiescent current
+08/29/22 ADuM4221-2B Fixed output quiescent current
+08/29/22 ADuM4221A Fixed output quiescent current
+08/29/22 ADuM4221B Fixed output quiescent current
+08/29/22 ADuM4221C Fixed output quiescent current
+08/24/22 LT8619 Fixed issues in Burst Mode, Pulse Skipping and External SYNC.
+08/24/22 LT8638S Fixed issue on LTspice crashing when simulation starts
+08/16/22 ADHV4702-1 Update the symbol to fit the standard template
+08/15/22 LT8692S  new model
+08/15/22 LTM4638 Updated internal compensation values
+08/03/22 LT3083 Fixed the wrong symbol used in the example file
+08/02/22 AD4021 Updated noise figure
+08/02/22 AD4010 Updated noise figure
+08/02/22 AD4011 Updated noise figure
+08/02/22 AD4020 Updated noise figure
+08/02/22 AD4002 Updated noise figure
+08/02/22 AD4003 Updated noise figure
+08/02/22 AD4022 Updated noise figure
+08/02/22 AD4006 Updated noise figure
+08/02/22 AD4007 Updated noise figure
+07/31/22 LT8277  new model
+07/29/22 ADG774A  new model
+07/29/22 ADG774  new model
+07/29/22 ADG784  new model
+07/28/22 ADP2311  new model
+07/26/22 ADP198  new model
+07/21/22 LT8333 Fix issues in BIAS current. transient, overload response,etc.
+07/20/22 ADGM1304  new model
+07/12/22 MAX17597  new model
+07/11/22 LTM8051 Updated RT Pins and Frequency of Spread Spectrum
+07/08/22 ADA4098-1 Improved convergence performance.
+07/07/22 LTC4364-2 Removed irrelevant model parameters.
+07/06/22 Updated most Wuerth device symbols and models including standard libraries for beads, inductors and capacitors
+07/06/22 LT8334 Fix issues in BIAS current. transient, overload response,etc.
+07/06/22 LT8650S Fixed soft-start pull up voltage and DCM to FCM transition when MODE pin is floated
+07/06/22 ADG633  new model
+07/06/22 ADA4899  new model
+07/04/22 LTM8056 Fixed surge current when used as SLAVE in parallel operation
+07/04/22 LTC3306A adjusted internal compensation
+07/04/22 LTM8024 Fixed soft-start pull up voltage and DCM to FCM transition when MODE pin is floated
+07/04/22 LTC3306C Updated internal compensation
+06/30/22 ADG752  new model
+06/30/22 ADG749  new model
+06/29/22 LT3120 fixed RT pin convergence issues and switching frequency programming
+06/29/22 AD4697  new model
+06/29/22 AD4695  new model
+06/24/22 ADM1272 updated model symbol
+06/24/22 LTC4364-2 Optimized internal timing parameters.
+06/23/22 Added Vishay diodes to standard library
+06/22/22 LTC7819  new model
+06/21/22 AD4698 minor edit in the model file
+06/21/22 AD4696 minor edit in the model file
+06/21/22 ADR3425 Improved convergence performance.
+06/17/22 AD4630-16 Corrected cases which could result in high current draw.
+06/17/22 AD4030-24 Corrected cases which could result in high current draw.
+06/17/22 AD4630-24 Corrected cases which could result in high current draw.
+06/17/22 LTM4673  new model
+06/16/22 AD4698  new model
+06/16/22 AD4696  new model
+06/16/22 Added Vishay mos standard devices
+06/13/22 ADP7157-01 matched symbol and model name
+06/13/22 LT7170-1  new model
+06/13/22 ADP7157-02 matched symbol and model name
+06/13/22 ADP7157-04 matched symbol and model name
+06/13/22 ADP7157-03 matched symbol and model name
+06/13/22 Added frequency response analysis
+06/13/22 Reimplemented multi-threading for improved performance and stability
+06/13/22 Numerous bug fixes (major stability improvements, convergence fixes, and schematic editor bugs)
+06/13/22 Faster plotting speed for large datasets (does not apply when Mark Data Points is enabled)
+06/13/22 Changed to straight-line interpolation on log-scale plots 
+06/13/22 Updated initial conditions behavior. For new behavior details, see Help documentation for .ic directive, C. Capacitor, and L. Inductor.
+06/13/22 LTspice library files are now stored in %LOCALAPPDATA% (instead of My Documents)
+06/12/22 ADP172-1.7  new model
+06/12/22 ADP172-1.8  new model
+06/12/22 ADP172-3  new model
+06/12/22 ADP172-1.65  new model
+06/12/22 ADP172-2.9  new model
+06/12/22 ADP172-2.1  new model
+06/12/22 ADP172-1.26  new model
+06/12/22 ADP172-1  new model
+06/12/22 ADP172-1.2  new model
+06/12/22 ADP172-1.5  new model
+06/12/22 ADP172-0.9  new model
+06/12/22 ADP172-2.2  new model
+6/10/22 LTC4020 Current regulation, MOSFET enhancement charachteristics patched
+06/09/22 Updated EPC2007 model
+06/09/22 ADM1272 ESTART and EFAULT pins functional patch
+06/09/22 LTC7131-1 REF input capacitance and internal clock patch
+06/09/22 LTC7891 Replaced GaN FETs in the circuit
+06/09/22 LTC3864 Run pin to gate drive control fix
+06/09/22 LTC7890  new model
+06/08/22 Added Renesas mos devices
+06/06/22 Added over 180 new nmos devices from Nexperia
+06/05/22 In the standard cap library vendor requested to change from United Chemi-Con to Chemi-Con
+06/05/22 Added Nexperia mos devices
+06/05/22 ADG824  new model
+06/05/22 ADG849  new model
+06/05/22 ADG733  new model
+06/05/22 ADG786  new model
+06/05/22 ADG787  new model
+06/05/22 ADG836  new model
+06/05/22 ADG839  new model
+06/05/22 ADG621  new model
+06/05/22 ADG7421F  new model
+06/05/22 ADG858  new model
+06/02/22 LTC4269-2 Fix def con issue
+06/02/22 LTC3901 Corrected sync function; corrected pin number assignments
+06/02/22 ADA4930-1  new model
+06/01/22 LTC7000 Fix issue on Timer reset mistrigger.
+06/01/22 LTC7000-1 Fix issue on Timer reset mistrigger.
+06/01/22 LTC7000 Fix issue on Timer reset mistrigger.
+06/01/22 LTC7000-1 Fix issue on Timer reset mistrigger.
+05/29/22 LTC4269-1 Fix issue on crashing when Vcmp is grounded.
+05/27/22 LT8390 Removed Vt, Vh for logic gates in the model
+05/27/22 LTC6993-3 Removed Vt, Vh for logic gates in the model
+05/27/22 LT8390A Removed Vt, Vh for logic gates in the model
+05/27/22 LTC6993-1 Removed Vt, Vh for logic gates in the model
+05/27/22 AD4130-8  new model
+05/26/22 AD3552R Updated offset parameter in the model and the table in the example.
+05/26/22 ADuM4221-2B  new model
+05/26/22 ADuM4221-1C  new model
+05/26/22 ADuM4221-1B  new model
+05/26/22 ADuM4221-2C  new model
+05/26/22 ADuM4221-2A  new model
+05/26/22 ADuM4221-1A  new model
+05/25/22 AD3542R Updated offset parameter and Rfb circuits. 
+05/25/22 AD3541R Updated offset parameter and Rfb circuits. 
+05/25/22 AD3551R Updated offset parameter in the model and the table in the example.
+05/25/22 ADP7185-2  new model
+05/25/22 ADP7185-3  new model
+05/25/22 ADP7185-0.5  new model
+05/25/22 ADP7185-1.8  new model
+05/25/22 ADP7185-3.3  new model
+05/25/22 ADP7185-1  new model
+05/25/22 ADP7185-2.5  new model
+05/25/22 ADP7185  new model
+05/25/22 ADP7185-1.5  new model
+05/25/22 ADP7185-1.2  new model
+05/23/22 LTC3882 Corrected differential output voltage sensing; change MOSFET
+05/23/22 LTC3882-1 Corrected differential output voltage sensing; change MOSFET
+05/20/22 ADuM4221C Integrated the UVLO parameter into the model.
+05/20/22 ADuM4221B Integrated the UVLO parameter into the model.
+05/20/22 ADuM4221A Integrated the UVLO parameter into the model.
+05/18/22 ADuM4221C  new model
+05/18/22 ADuM4221B  new model
+05/18/22 ADuM4221A  new model
+05/17/22 LT1425 Rebuild the clock Osc, Add Sync Function, and Fix SHDN pin feature
+05/17/22 LT3120 Fix issue on PROG pin when connected to Vcc
+05/12/22 AD8237  new model
+05/11/22 LTC7878  new model
+05/08/22 MAX15068  new model
+05/08/22 MAX15069  new model
+05/05/22 MAX15095A  new model
+05/05/22 MAX15096A  new model
+05/05/22 MAX15095  new model
+05/05/22 MAX15096D  new model
+05/05/22 MAX15095D  new model
+05/05/22 MAX15096  new model
+05/04/22 LTC7103-1  new model
+05/03/22 LT8390 fixed short circuit protection modes
+05/02/22 LT4239  new model
+04/27/22 AD8676  new model
+04/27/22 ADA4896-2  new model
+04/26/22 LT8608S  new model
+04/25/22 LT8642-1  new model
+04/25/22 AD8475  new model
+04/22/22 AD8561  new model
+04/22/22 ADG1634L  new model
+04/21/22 LT8646S Revised the model and application circuit
+04/21/22 LT8650S corrected Synchronization function
+04/21/22 LTM4613 SS pulled down if RUN pin goes low in model
+04/20/22 LT8642S Revised model and application circuit
+04/20/22 LTC2953-1 Revised the model
+04/20/22 ADA4807 Improved convergence performance.
+04/20/22 ADA4807-4 Improved convergence performance.
+04/20/22 AD3541R  new model
+04/20/22 ADR1399E  new model
+04/20/22 ADR1399H  new model
+04/20/22 ADG736  new model
+04/20/22 ADG781  new model
+04/20/22 ADG782  new model
+04/20/22 ADG852  new model
+04/20/22 ADG854  new model
+04/19/22 ADG719  new model
+04/19/22 ADG779  new model
+04/19/22 ADG884  new model
+04/19/22 ADG888  new model
+04/18/22 LTC1726-5 updated application circuit component values
+04/18/22 LTC6373 Model updated to new architecture with convergence improvements.
+04/12/22 ADP1621 Added SYNC function for SDSN pin
+04/11/22 LT8638S Patched internal reference
+04/10/22 LTC7862 TMR current, frequency setting, Vsense max threshold, charge pump current and TG gate voltage
+04/10/22 LTC4425  new model
+04/10/22 LTC7862 TMR current, frequency setting, Vsense max threshold, charge pump current and TG gate voltage
+04/10/22 LTC4425  new model
+04/08/22 ADR1000  new model
+04/06/22 LT8228 Overcurrent Protection, FAULT signaling, ISNS ports sink too much current corrected
+04/06/22 ADP1740-0.75  new model
+04/06/22 ADP1740-1  new model
+04/06/22 ADP1740-1.1  new model
+04/06/22 ADP1740-1.2  new model
+04/06/22 ADP1740-1.3  new model
+04/06/22 ADP1740-1.5  new model
+04/06/22 ADP1740-1.8  new model
+04/06/22 ADP1740-2.5  new model
+04/05/22 AD4630-16 Added Busy and output delay
+04/05/22 AD4630-24 Added Busy and output delay
+04/04/22 ADAQ4380  new model
+04/04/22 MAX16171  new model
+03/31/22 LTspice for Mac 17.0.42 with additional keyboard shortcuts for "R": Resistor,"C": Capacitor, "L":Inductor, "D":Diode, ,"G":Ground, "V": Voltage Source
+03/29/22 LTC3118 Revised the model
+03/29/22 AD4030-24 Typo correction
+03/29/22 LTC3118 Revised the model
+03/28/22 AD4030-24 Added output delay and Busy pin
+03/28/22 LTM4686 minon adjusted to typical value
+03/28/22 LTM4686-1 minon adjusted to typical value
+03/28/22 ADA4091 Corrected Vos and PSRR behavior.
+03/28/22 LTC7891  new model
+03/28/22 LTspice version 17.0.41 on Mac release with minor stability enhancements
+03/28/22 LTspice version 17.0.34 update with minor changes
+03/28/22 EPC2007 model added
+03/28/22 EPC2204 Model added
+03/24/22 LTM4645 Improved start-up waveforms.
+03/24/22 LTC6563 Updated the model
+03/23/22 LT8336 Revised Rt vs Freq
+03/23/22 LT8337 Revised Rt vs Freq
+03/23/22 LT8337-1 Revised Rt vs Freq
+03/23/22 MAX40263  new model
+03/22/22 ADA4661-2 Corrected Vout vs. Iout behavior.
+03/17/22 ADA4530-1 JIRA# 525 update symbol to fit the most common size used.
+03/17/22 ADP5076  new model
+03/16/22 LT8643S fix for Buck negative Vout configuration
+03/10/22 LT3598 JIRA# 520 Add Rail Disconnect function
+03/10/22 LTM8073 JIRA# 522 Fixed Sync Function
+03/10/22 LTC4126-ADJ  new model
+03/03/22 LTC1625 JIRA# 517 Add Sync function and adjust burst current level
+03/03/22 LTC7000 JIRA# 506 Fixed bug on OVLO
+03/03/22 LTC7003 JIRA# 506 Fixed bug on OVLO
+03/01/22 LTspiceXVII version 17.0.33 minor installation issue resolved
+03/01/22 LTC3309B  new model
+02/25/22 AD3551R  new model
+02/22/22 Over 300 Rohm bipolar devices added and or updated
+02/22/22 LT8643S JIRA# 512 Fixed Ext Sync and CLKout feature
+02/22/22 ADA4099-2 Corrected symbol.
+02/22/22 LT8355-1  new model
+02/21/22 LTC6655LN-5 Added noise and startup time vs. NR pin capacitance.
+02/21/22 ADA4505 Test fixture update
+02/21/22 AD5791  new model
+02/18/22 LTM8024 JIRA# 509 Fixed Aux Pin and SS startup issues
+02/16/22 LT8551  new model
+02/16/22 LTC6655LN-5  new model
+02/15/22 LT8228 JIRA #510 revert to original version
+02/15/22 MAX40077 Corrected single-supply operation.
+02/15/22 MAX40078 Corrected single-supply operation.
+02/15/22 MAX40079 Corrected single-supply operation.
+02/15/22 MAX40100 Corrected single-supply operation.
+02/15/22 MAX4124 Corrected single-supply operation.
+02/15/22 MAX4128 Corrected single-supply operation.
+02/15/22 MAX4166 Corrected single-supply operation.
+02/15/22 MAX4168 Corrected single-supply operation.
+02/15/22 MAX4230 Corrected single-supply operation.
+02/15/22 MAX4231 Corrected single-supply operation.
+02/15/22 MAX4232 Corrected single-supply operation.
+02/15/22 MAX4233 Corrected single-supply operation.
+02/15/22 MAX44241 Corrected single-supply operation.
+02/15/22 MAX44243 Corrected single-supply operation.
+02/15/22 MAX44244 Corrected single-supply operation.
+02/15/22 MAX44245 Corrected single-supply operation.
+02/15/22 MAX44246 Corrected single-supply operation.
+02/15/22 MAX44248 Corrected single-supply operation.
+02/15/22 MAX44260 Corrected single-supply operation.
+02/15/22 MAX44281V Corrected single-supply operation.
+02/15/22 MAX4434 Corrected single-supply operation.
+02/15/22 MAX4436 Corrected single-supply operation.
+02/15/22 MAX4488 Corrected single-supply operation.
+02/15/22 MAX4489 Corrected single-supply operation.
+02/14/22 MAX41400 Corrected input voltage noise vs. gain and -3dB bandwidth vs. gain.
+02/14/22 LT8550  new model
+02/14/22 ADR3425  new model
+02/14/22 ADR4533  new model
+02/12/22 LTC7000 JIRA# 506 Add OVLO to trigger Fault
+02/12/22 LTC7003 JIRA# 506 Add OVLO to trigger Fault
+02/10/22 AD3542R  Updated internal connection.
+02/10/22 LT8228 corrected ISNS ports sink too much current; fixed short circuit fault simulation
+02/10/22 LTM8074 fixed synchronization function
+02/10/22 MAX40023 Corrected single-supply operation and input voltage noise vs. frequency.
+02/10/22 MAX40024 Corrected single-supply operation and input voltage noise vs. frequency.
+02/10/22 ADG619  new model
+02/10/22 ADG852  new model
+02/10/22 ADG854  new model
+02/09/22 LT8686S Fixed the various concerns raise after initial release
+02/09/22 MAX41400 Corrected input voltage noise vs. gain and -3dB bandwidth vs. gain.
+02/07/22 LT8228 corrected ISNS ports sink too much current
+02/07/22 LT8337 Revised the model
+02/07/22 LTC7810 JIRA 483 Adjust deadtime to 35ns
+02/07/22 LTM4637 Revised the model
+02/07/22 AD4630-16  new model
+02/04/22 LT1716 Corrected output behavior when externally pulled up or down to voltages beyond the supply rails.
+02/04/22 LT1716 Corrected output behavior when externally pulled up or down to voltages beyond the supply rails.
+02/03/22 LTC7806 Updated application circuit component values.
+02/03/22 LT7104S  new model
+02/01/22 LT8653S JIRA# 494 Fix Enable Gating
+02/01/22 LTM8078 JIRA# 494 Fix Enable Gating
+02/01/22 AD4030-24  new model
+01/31/22 LT8376 Version 4
+01/31/22 LTC7149 Version 4
+01/31/22 LT8374  new model
+01/31/22 LT8374-1  new model
+01/31/22 LTC7131-1  new model
+01/31/22 ADG602  new model
+01/28/22 LT8356-1 Updated Rt vs Freq
+01/28/22 ADA4891 Updated symbol to reference new model, corrected Vs in example circuit.
+01/28/22 ADAQ4003  new model
+01/28/22 ADA4891-1  new model
+01/28/22 ADA4891-2  new model
+01/28/22 ADA4891-3  new model
+01/28/22 ADA4891-4  new model
+01/26/22 ADG5409  new model
+01/26/22 LT8376  new model
+01/25/22 ADG5408  new model
+01/25/22 ADG1209 Change in the device configuration from single-ended mux to differential mux
+01/24/22 LT8356-1  new model
+01/21/22 LTC2950-1 Fix reset of timers during PB# bounce
+01/21/22 LTC2950-2 Fix reset of timers during PB# bounce
+01/21/22 LTC2951-1 Fix reset of timers during PB# bounce
+01/21/22 LTC2951-2 Fix reset of timers during PB# bounce
+01/21/22 SOAtherm-NMOS: Update symbol description to reference tutorial and examples.
+01/20/22 LTM4651 Adjusted PGood response
+01/20/22 LTM4653 Adjusted PGood response; updated application circuit
+01/20/22 LTM8024 Fixed CLK Synchronization and SYNC Pin held Low Issues
+01/19/22 LT8686S  new model
+01/18/22 LT3932 Revised the model
+01/18/22 LTM4651 Adjusted PGood response
+01/18/22 ADA4807 Improved convergence performance.
+01/18/22 ADA4807-4 Improved convergence performance.
+01/17/22 LT8722 change logo to LT
+01/16/22 LT8652SP  new model
+01/16/22 LTM4655 JIRA 436 Updated Pin Namings to match the datasheet
+01/12/22 LT8645S BIAS pin current profile
+01/12/22 LT8646S fixed synchronization function; modelled Bias pin current; adjusted pin assignments
+01/12/22 LTM8071 BIAS pin current profile
+01/11/22 Added SOAtherm-NMOS, LTC4260-SOAtherm-Tutorial1, LTC4260-SOAtherm-Tutorial12, LTC4260-SOAtherm-Tutorial3, LTC4260-SOAtherm-Tutorial1,plt and  SOAtherm-HeatSink-Example.asc
+01/10/22 LTC6563 Application circuit update
+01/10/22 LTspice for Mac OS updated to version 17.0.40 fixing an issue for process information display 
+01/06/22 LTspice for Mac OS updated to version 17.0.39 fixing an issue with Sierrs
+01/05/22 LT1720 Corrected false trips when using floating power supplies.
+01/05/22 LT1721 Updated symbol to reference corrected model.
+01/05/22 LTC4246 Improved convergence by eliminating Voltage Source
+01/05/22 LTC4381-3 Removed voltage clamps on GATE
+01/05/22 LTC4381-4 Removed voltage clamps on GATE
+01/05/22 LT6018 Improved convergence performance.
+01/04/22 ADA4610 Added Ib vs. Vcm behavior.
+01/04/22 LT6018 Improved convergence performance.
+01/03/22 LTC6563  new model
+01/03/22 MAX40023  new model
+01/03/22 MAX40024  new model
+01/03/22 MAX40077  new model
+01/03/22 MAX40078  new model
+01/03/22 MAX40079  new model
+01/03/22 MAX40100  new model
+01/03/22 MAX40108  new model
+01/03/22 MAX40110  new model
+01/03/22 MAX40111  new model
+01/03/22 MAX410  new model
+01/03/22 MAX4124  new model
+01/03/22 MAX4128  new model
+01/03/22 MAX41400  new model
+01/03/22 MAX4162  new model
+01/03/22 MAX4163  new model
+01/03/22 MAX4164  new model
+01/03/22 MAX4166  new model
+01/03/22 MAX4168  new model
+01/03/22 MAX4230  new model
+01/03/22 MAX4231  new model
+01/03/22 MAX4232  new model
+01/03/22 MAX4233  new model
+01/03/22 MAX4238  new model
+01/03/22 MAX4239  new model
+01/03/22 MAX4352  new model
+01/03/22 MAX4353  new model
+01/03/22 MAX4354  new model
+01/03/22 MAX44241  new model
+01/03/22 MAX44243  new model
+01/03/22 MAX44244  new model
+01/03/22 MAX44245  new model
+01/03/22 MAX44246  new model
+01/03/22 MAX44248  new model
+01/03/22 MAX44260  new model
+01/03/22 MAX44281O  new model
+01/03/22 MAX44281U  new model
+01/03/22 MAX44281V  new model
+01/03/22 MAX4434  new model
+01/03/22 MAX4436  new model
+01/03/22 MAX4488  new model
+01/03/22 MAX4489  new model
+01/03/22 MAX9636  new model
+01/03/22 MAX9638  new model
+01/03/22 MAX9914  new model
+01/03/22 MAX9915  new model
+01/03/22 MAX9916  new model
+01/03/22 MAX9917  new model
+12/19/21 LT8640 Fixed synchronization function; adjusted pin assignments
+12/19/21 LT8645S Fixed synchronization function; adjusted pin assignments
+12/19/21 LTM8003 Fixed synchronization function; adjusted pin assignments
+12/19/21 LTM8071 Fixed synchronization function; adjusted pin assignments
+12/18/21 LTC7806  new model
+12/18/21 ADG1519  new model
+12/18/21 LTC7805 JIRA# 467 Adjusted SSMODE1 and SSMODE2 Threshold from 1.5V to 0.72V
+12/17/21 LTC2951-1  new model
+12/17/21 LTC2951-2  new model
+12/16/21 LTC4246  new model
+12/14/21 LT8640 Fixed synchronization function; adjusted pin assignments
+12/14/21 LT8645S Fixed synchronization function; adjusted pin assignments
+12/14/21 LTM8003 Fixed synchronization function; adjusted pin assignments
+12/14/21 LTM8071 Fixed synchronization function; adjusted pin assignments
+12/10/21 ADG601  new model
+12/10/21 ADG5462F  new model
+12/10/21 LTC3888 JIRA 464 Fixed issue on VDD33 pin increasing with time.
+12/10/21 LTC3888-1 JIRA 464 Fixed issue on VDD33 pin increasing with time.
+12/09/21 LTC4249  new model
+12/08/21 LT3465 Added open LED protection in the model
+12/08/21 LT3465A Added open LED protection in the model
+12/08/21 UniversalOpAmp Updated symbol and application circuit to instantiate level1 model.
+12/08/21 UniversalOpAmp3 Updated symbol and application circuit to instantiate level3a model.
+12/07/21 LTC7852-1  new model
+12/07/21 LTC7050 High Z mode and SD functionality improved
+12/06/21 LTC3306A  new model
+12/06/21 LTC3306C  new model
+12/02/21 AD4630-24  new model
+12/02/21 UniversalOpAmp1  new model
+12/02/21 UniversalOpAmp3a Moved Universal OpAmp level3a to its own symbol.
+12/02/21 UniversalOpAmp3b  new model
+12/02/21 UniversalOpAmp4  new model
+12/02/21 LT8302 Updated Softstart Reset Timer
+12/02/21 UniversalOpAmp2 Moved Universal OpAmp level2 to its own symbol.
+11/30/21 LTC3623 JIRA# 455 Fixed grounding issues to fix negative voltage operation.
+11/30/21 LTC2387-16  new model
+11/30/21 LTC2386-16 Sample and hold functionality modified among other changes
+11/30/21 LTC2386-18 Sample and hold functionality modified among other changes
+11/30/21 LTC2387-18 Sample and hold functionality modified among other changes
+11/29/21 LTC3336  new model
+11/29/21 LT8302 LTSPICESD-460
+11/29/21 LTC3312SA Adjusted soft start with respect to Vin and internal enable signal
+11/29/21 LTC3314A Adjusted soft start with respect to Vin and internal enable signal
+11/22/21 LTC3889  new model
+11/20/21 LTM4658  new model
+11/20/21 LTM4670  new model
+11/19/21 ADA4895 Model updated to new architecture with accuracy and convergence improvements.
+11/18/21 LTC3314A  new model
+11/17/21 ADA4932  new model
+11/16/21 LTC4451  new model
+11/16/21 ADG841  new model
+11/16/21 ADG842  new model
+11/16/21 ADA4097-2  new model
+11/16/21 ADA4098-2  new model
+11/16/21 ADA4099-2  new model
+11/16/21 LTC4450 Updated the model for more consistent performance.
+11/16/21 LT6656-2.5 Improved output voltage noise spectrum vs. load current.
+11/12/21 AD8253  new model
+11/12/21 ADA4077-2 Updated symbol
+11/12/21 ADHV4702-1 Provided model and revised the application circuit
+11/11/21 AD5772R Parameters are now accessible
+11/11/21 ADP2303 Reviewed the model
+11/11/21 ADG5412 Convergence characteristics improved
+11/11/21 ADG5412F Convergence characteristics improved
+11/09/21 UniversalOpAmp Reverted level3a and level3b to previous versions. Moved new design to level3c.
+11/09/21 UniversalOpAmp2 Updated symbol to reference new model.
+11/09/21 UniversalOpAmp3 Updated symbol to reference new model.
+11/08/21 ADG772  new model
+11/08/21 ADG819  new model
+11/08/21 AD3542R New pin CAP added, 3V output range removed.
+11/08/21 AD3552R Updated the model to give correct output ranges.
+11/08/21 LT3966 Dynamic responce tuned. Parameter list simplified.
+11/07/21 LTC4450  new model
+11/05/21 LTC6655-2.5 Improved accuracy of output voltage noise spectrum.
+11/05/21 ADA4522 Symbol updated to reference new model.
+11/05/21 ADA4522-1 Model updated to new architecture with accuracy and convergence improvements.
+11/05/21 ADA4522-2 Model updated to new architecture with accuracy and convergence improvements.
+11/05/21 ADA4522-4 Model updated to new architecture with accuracy and convergence improvements.
+11/03/21 LT8722  new model
+11/03/21 LTC3312SA Updated Inductor values in application circuit
+11/03/21 LTM8071 JIRA#437
+11/01/21 LT4200  new model
+11/01/21 LT8350  new model
+10/28/21 LTspice 17.0.32.  Due to large existing user base having being impacted with APPDATA in the path first,  this update will reverse back to My Documents ahead of  APPDATA
+10/26/21 LTC7805 Created Test Jig
+10/26/21 LTM4681 Update Sample file notes on change Variable name
+10/26/21 ADA4625 Model updated to new architecture with accuracy and convergence improvements.
+10/26/21 ADA4625-1 Model updated to new architecture with accuracy and convergence improvements.
+10/26/21 ADA4625-2 Model updated to new architecture with accuracy and convergence improvements.
+10/24/21 LTspice version 17.0.31. APPDATA now in use to help users having issues with My Documents
+10/24/21 LTspice version 17.0.31. Help file minor updates
+10/20/21 LTC3312SA  new model
+10/20/21 LTC4237  new model
+10/18/21 LT8604  new model
+10/18/21 LT8604C  new model
+10/18/21 LT8618C  new model
+10/18/21 LT8618 Bugs fixed
+10/18/21 LT8618-3.3 Bugs fixed
+10/18/21 LTC7132 Fixed Phase Config, Frequency Config, and Sync circuit block
+10/18/21 LTM4681 JIRA 431 Rename some variables to give more character space for users
+10/15/21 LTC4124  new model
+10/15/21 ADG1612 Revised the leakage spec in the model
+10/14/21 LTM8078 Corrected SYNC pin behavior and made improvements to convergence.
+10/13/21 LTC7821 JIRA 393 Fixed issues on syncing and clk alignment
+10/08/21 LTC3621 Corrected Sync/Mode pin function
+10/07/21 LT8638S  new model
+10/07/21 Over 400 Wurth inductor models updated 
+10/06/21 ADG788  new model
+10/06/21 LTC3644 Revised the model
+10/06/21 LTC3644-2 Revised the model
+10/04/21 LT8640S-2  new model
+10/03/21 LTC3871 Change Sync Enable Circuit
+09/30/21 ADHV4702-1 Revised the application circuit
+09/29/21 LTM4705  new model
+09/29/21 ADA4077  new model
+09/29/21 ADA4077-1  new model
+09/29/21 ADA4077-4  new model
+09/29/21 LTM8060 JIRA 416 Fixed issue on clkout and synchronization
+09/29/21 ADA4077-2 Updated symbol to reference new model.
+09/29/21 ADA4522 Corrected current draw through the power supplies, added test fixture.
+09/29/21 ADA4522-1 Updated symbol to reference updated model.
+09/29/21 ADA4522-2 Updated symbol to reference updated model.
+09/29/21 ADA4522-4 Updated symbol to reference updated model.
+09/27/21 AD4000 Improved noise and convergence, added converter noise model. Symbol changed
+09/27/21 AD4001 Improved noise and convergence, added converter noise model. Symbol changed
+09/27/21 AD4002 Improved noise and convergence, added converter noise model. Symbol changed
+09/27/21 AD4003 Improved noise and convergence, added converter noise model. Symbol changed
+09/23/21 LT8358  new model
+09/23/21 LT8636 Corrected FCM at light load
+09/23/21 LT8637 Corrected FCM at light load
+09/23/21 LT8650S JIRA 419 Fixed issue on Enable Pins 1 and 2
+09/23/21 LTM4700 Revised the model
+09/22/21 LTC4381-2  new model
+09/22/21 LTC4381-3  new model
+09/22/21 LTC4381-4  new model
+09/22/21 LT8357 Revised the model
+09/22/21 LTC4372 Updated GATE-SOURCE and GATE-GND pulldown currents.
+09/22/21 ADA4807 Model updated to new architecture with accuracy and convergence improvements.
+09/22/21 ADA4807-1 Updated symbol to reference new model.
+09/22/21 ADA4807-2 Updated symbol to reference new model.
+09/22/21 ADA4807-4 Model updated to new architecture with accuracy and convergence improvements.
+09/22/21 UniversalOpamp Updated architecture for better convergence and added Ro, Ccm, and Cdiff. 
+09/22/21 UniversalOpamp2 Updated symbol to reference new model.
+09/22/21 UniversalOpamp3 Updated symbol to reference new model.
+09/21/21 LT8333  new model
+09/21/21 LT3942 JIRA 410 Fixed issue on ISMON when EN pin is Low
+09/21/21 LT8614 Fixed Pulse Skip Mode function for low Vin operation
+09/20/21 LT3383  new model
+09/20/21 LT8614 Fixed Pulse Skip Mode function for low Vin operation
+09/20/21 LTM4600 Tuned current limit
+09/20/21 LTM4600HV Tuned current limit
+09/17/21 Updated Wurth library to 441 devices
+09/16/21 LT7182S  new model
+09/16/21 ADG734  new model
+09/16/21 LTC3110 Added Rsen pin and fixed enable timing
+09/16/21 LTC7810 JIRA 253 Added OVP Crowbar Protection
+09/16/21 LTM4646 JIRA 414 Issue on RUN pins 1 & 2 Not working when floated
+09/16/21 ADG5412F added charge injection parameter to the model
+09/15/21 LT8637  new model
+09/15/21 ADA4177 Model updated to new architecture with accuracy and convergence improvements.
+09/15/21 ADA4177-1 Updated symbol to reference new model.
+09/15/21 ADA4177-2 Updated symbol to reference new model.
+09/15/21 ADA4177-4 Updated symbol to reference new model.
+09/14/21 LT8636  new model
+09/10/21 LTC4381-1  new model
+09/09/21 LTC3636 JIRA# 409 Fixed Isense and Current limits
+09/07/21 LT8334  new model
+09/05/21 LTC7841  new model
+09/03/21 AD4011  new model
+09/01/21 AD4004  new model
+09/01/21 AD4005  new model
+09/01/21 AD4006  new model
+09/01/21 AD4007  new model
+09/01/21 AD4008  new model
+09/01/21 AD4010  new model
+09/01/21 AD4020  new model
+09/01/21 AD4021  new model
+09/01/21 AD4022  new model
+09/01/21 LTC3372  new model
+09/01/21 ADA4622 Model updated to new architecture with accuracy and convergence improvements.
+08/31/21 ADP5070 Revised inrush current during startup
+08/31/21 ADP5071 Revised inrush current during startup
+08/31/21 LTC3108 Adjusted trigger to charge Vstore
+08/30/21 LTC4380-1 corrected TMR function for short circuit protection
+08/30/21 LTC4380-2 corrected TMR function for short circuit protection
+08/30/21 LTC4380-3 corrected TMR function for short circuit protection
+08/30/21 LTC4380-4 corrected TMR function for short circuit protection
+08/26/21 LT8391D  new model
+08/24/21 LTC7820 Update symbol pin assignment. Symbol update only.
+08/23/21 ADM1272  new model
+08/23/21 ADM1278 Timing adjustments of Fault pin
+08/23/21 LTC7820 Remove hanging components. Probable cause of error seen by the customer.
+08/20/21 ADAQ23876  new model
+08/20/21 LT8708 P. Daria 7/29/2021 JIRA 383
+08/17/21 ADM1278 Cleaned up test fixture, small changes to the model
+08/17/21 LTC3246 Corrected Mode Detection
+08/17/21 ADA4255 Symbol updated
+08/16/21 ADG801 Updated the symbol to match the datasheet. 
+08/16/21 AD8541 Revised the model for AD8541 to improve electrical characteristics.
+08/12/21 ADP7156-1.2 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-1.8 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-2.0 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-2.5 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-2.8 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-3.0 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/12/21 ADP7156-3.3 JIRA# 385 update symbol attribute to properly call the subcircuit
+08/10/21 ADAQ23875  new model
+08/10/21 ADAQ23878  new model
+08/10/21 LTC7880  new model
+08/10/21 LTC4364-2 JIRA# 390 Fix OCP response
+08/08/21 LTC6228 Adjust Noise spectrum knee frequency to match the datasheet
+08/06/21 LT3045 Revised the model for working with vircual GND.
+08/04/21 ADM1278  new model
+08/04/21 ADG821  new model
+08/04/21 ADG822  new model
+08/04/21 ADG802 Updated the symbol to match the datasheet. 
+07/30/21 Update Standard capacitors library
+07/28/21 AD3542R Correction to internal model to fix bug.
+07/27/21 Updated to keep registry changes from installation
+07/25/21 LTC4364-1 JIRA# 354 and 358 Corrected the Isdhn Bias current
+07/25/21 LTM4701 JIRA# 379 Change Pin name on Symbol, PHmode to NC1 & COMP to NC2
+07/25/21 LTC4364-2 JIRA# 354 and 358 Corrected the Isdhn Bias current
+07/23/21 ADA4255 Updated symbol
+07/22/21 AD4000 Adjusted THD to data sheet specification.
+07/21/21 AD7380  new model
+07/21/21 ADA4255 Application circuit updated
+07/19/21 ADG811  new model
+07/19/21 ADG812  new model
+07/15/21 ADG5401F  new model
+07/15/21 ADG5421F  new model
+07/15/21 LT3093 PGood Signal Fixed
+07/15/21 LTC4380-1 corrected TMR function for short circuit protection
+07/15/21 LTC4380-2 corrected TMR function for short circuit protection
+07/15/21 LTC4380-3 corrected TMR function for short circuit protection
+07/15/21 LTC4380-4 corrected TMR function for short circuit protection
+07/14/21 LTC2688  new model
+07/14/21 ADR4520  new model
+07/14/21 LTC3313 Revised current limit
+07/14/21 LTC3313-0.75 Revised current limit
+07/13/21 LT8648S Jira 376
+07/12/21 LTC3110  new model
+07/12/21 LT8640S Copied Clock_Out circuit block from LT8643S
+07/12/21 LT8643S changes similar to LT8640A new model
+07/12/21 LTM4622 Added VIN2 pin
+07/11/21 LTM4622 JIRA # 377 Added Run signal pin to PGood with 200ns delay.
+07/11/21 LTM4622A JIRA # 377 Added Run signal pin to PGood with 200ns delay.
+07/09/21 AD4000  new model
+07/09/21 AD4001  new model
+07/09/21 AD8137  new model
+07/09/21 AD3552R Updated symbol and application circuit to fix model.
+07/06/21 ADG1409  new model
+07/06/21 ADG1609  new model
+07/01/21 ADA4255  new model
+07/01/21 LTC7820 Add INTVcc UVLO to _Fault Trigger & Correct issues in RUN and TIMER pins
+06/30/21 AD3552R  new model
+06/28/21 LT8609S JIRA # 356 Add External Clock Sync Block
+06/25/21 LT3966  new model
+06/25/21 LTC3313  new model
+06/25/21 LTC3313-0.75  new model
+06/25/21 LTC3114-1 Revised LDO UVLO in the model file
+06/24/21 LTC3350 Added pulse skip mode after charging full load capacitor
+06/23/21 LTM8055 Fixed the sharing loop and adjusted the gain & offset of Iout sense
+06/22/21 Added AON6264E, AON6284A, AONR62818, AONS62618 and AONS66920 to standard library
+06/22/21 LTC4380-1 corrected TMR function for short circuit protection
+06/22/21 LTC4380-2 corrected TMR function for short circuit protection
+06/22/21 LTC4380-3 corrected TMR function for short circuit protection
+06/22/21 LTC4380-4 corrected TMR function for short circuit protection
+06/21/21 LT8650S Increased loading capacity and improved burst mode operation.
+06/20/21 LT8302 Corrected Min On Time
+06/18/21 LT8253  new model
+06/18/21 LT8253A  new model
+06/18/21 LT8393  new model
+06/15/21 ADG1608  new model
+06/15/21 LTC3624 Fixed Startup ramp time to resolve issues on FCM & Transients
+06/15/21 LTC3624-2 Fixed Startup ramp time to resolve issues on FCM & Transients
+06/15/21 LTC7150S Fixed Valley Current limit & transient response.
+06/14/21 LTC3311  new model
+06/14/21 LTC3311-0.75  new model
+06/14/21 LTC3311-0.85  new model
+06/14/21 LTC3311-0.875  new model
+06/14/21 LTC3311-1  new model
+06/14/21 LTC7051  new model
+06/13/21 LTC3624 JIRA# 344 Fixed Startup ramp time to resolve issues on FCM & Transients
+06/12/21 ADA4096 Corrected symbol.
+06/11/21 ADA4096  new model
+06/08/21 LT8640A  new model
+06/08/21 LTC4020 Test fixture issue resolved
+06/07/21 LT8306 Updated application circuit
+06/06/21 LTM8060 JIRA # 343 Update Pull down resistors of RUN 2&4 to match RUN 1&3
+06/04/21 ADA4945-HP  new model
+06/02/21 LT3120  new model
+06/02/21 LT8336 Revised application circuit
+06/01/21 ADR5041  new model
+06/01/21 ADR5043  new model
+06/01/21 ADR5044  new model
+06/01/21 ADR5045  new model
+06/01/21 LT8642S JIRA 339 Fix pulse skipping during FCM
+06/01/21 ADR5040 Corrected load regulation and startup response.
+05/28/21 LTC3886 Revised the model
+05/26/21 LTC7061  new model
+05/26/21 LTC7062  new model
+05/26/21 LTC7060 Fixed a convergence issue when used with other part
+05/26/21 LTC7150S Correct the SS charge current to 6u. Correct the implementation of Valley current detection
+05/26/21 LTC7151S Correct SS charge current to 6u
+05/24/21 ADG751  new model
+05/24/21 LT3040 Fixed small load stability and ILIM issues
+05/24/21 LT8336 Revised application circuit
+05/24/21 LT8698S Revised application circuit
+05/24/21 LTC4020 Several patches of charging modes and gate control
+05/23/21 LT8652S Corrected ILim Function
+05/19/21 LTC3612 Added synchronization function to RT/Sync pin
+05/17/21 LT8386  new model
+05/17/21 ADA4097-1  new model
+05/13/21 LT8361 Corrected peak current protection and switching frequency foldback.
+05/13/21 LT8364 Corrected peak current protection and switching frequency foldback.
+05/13/21 LT8365 Corrected peak current protection and switching frequency foldback.
+05/13/21 ADA4940 Corrected floating node warning.
+05/12/21 ADA4940  new model
+05/12/21 LT8362 Corrected peak current protection and switching frequency foldback.
+05/12/21 LTC7871 Updated IMON to follow the setting by SETCUR in over current situation.
+05/12/21 In ADI.lib AD8047 corrected current draw at startup.
+05/12/21 In ADI1.lib ADA4637 corrected open-loop gain/phase behavior.
+05/11/21 LT8338  new model
+05/11/21 LT8698S  new model
+05/11/21 LT4220 Fixed PWRGD logic and adjusted Vee and Vcc turn ON/OFF trigger
+05/10/21 AD8047 Improved convergence performance.
+05/10/21 LT3040  new model
+05/10/21 LT3741 Added SYNC pin, updated test fixture, and corrected CTRL1 pin current.
+05/09/21 LTC3119 Revised symbol, application circuit and PWM logic of the model
+05/09/21 LTC3350 Corrected Output Feedback (OUTFB) voltage loop
+05/07/21 ADA4098-1  new model
+05/07/21 ADA4099-1  new model
+05/05/21 ADG801  new model
+05/05/21 ADG802  new model
+05/03/21 ADP2302 Update Rdson Jira #315 also correct minon as per datasheet
+05/03/21 ADP2303 Created separate model for ADP2303
+05/02/21 ADP1614-1.3 Added SS pin and change SS charging current
+05/02/21 ADP1614-650 Added SS pin and change SS charging current
+04/28/21 ADG5233  new model
+04/28/21 ADG5436  new model
+04/27/21 LT1959 Added Sync pin function
+04/27/21 ADP2302 Model by Kevin Tompsett
+04/27/21 ADP2303 Model by Kevin Tompsett
+04/26/21 LTC4376  new model
+04/26/21 LTM8024 LTM8024
+04/26/21 LTM8078 31 July 2020
+04/22/21 ADG1408  new model
+04/22/21 ADG721  new model
+04/22/21 ADG722  new model
+04/22/21 ADG741  new model
+04/22/21 ADG742  new model
+04/22/21 LT1910 Revised Gate pull-down current
+04/22/21 LT8650S Revised PGood function
+04/22/21 LT8653S Revised clk sync and PG function
+04/22/21 LTM4645 Improved efficiency.
+04/21/21 ADR5040  new model
+04/21/21 LTC4217-12 Improved simulation speed.
+04/20/21 LTC6655LN-2.5  new model
+04/20/21 LT3083 Paul Daria 4/19/2021
+04/19/21 LTC4217 Improved simulation speed.
+04/19/21 LT1021-10 LT1021-10(a LT1236-10 with trim)
+04/19/21 LT1021-5 LT1021-5(a LT1236-5 with trim)
+04/19/21 LT1021-7 LT1021-7(based on LT1236-10)
+04/18/21 ADuM4135 Revised application circuit.
+04/18/21 LT8648S Corrected PGood signal; Fixed Spread Spectrum Mode function; Corrected Switch RdsON
+04/17/21 ADA4637 Corrected output voltage limit versus supply voltage.
+04/14/21 LTC2386-16  new model
+04/14/21 LTC2386-18  new model
+04/14/21 LTC2387-18  new model
+04/14/21 ADG5412F  new model
+04/14/21 ADG701  new model
+04/14/21 ADG702  new model
+04/14/21 ADG711  new model
+04/14/21 ADG712  new model
+04/07/21 LT8601 Changed the low voltage rail to synchronous switching. Added deadtime settings.
+04/07/21 LT8602 Changed the low voltage rails to synchronous switching. Added deadtime settings.
+04/07/21 LTC3810 Corrected BG control during OV with respect to _SHDN
+04/06/21 LT8643S Input current patch when BIAS is not connected to output
+04/06/21 LTC3114-1 Corrected MODE pin behavior and quiescent current.
+04/06/21 ADA4860 Corrected PD pin and input voltage range behavior.
+04/05/21 ADP7156-1.2  new model
+04/05/21 ADP7156-1.8  new model
+04/05/21 ADP7156-2.0  new model
+04/05/21 ADP7156-2.5  new model
+04/05/21 ADP7156-2.8  new model
+04/05/21 ADP7156-3.0  new model
+04/05/21 ADP7156-3.3  new model
+04/05/21 ADP7157-01  new model
+04/05/21 ADP7157-02  new model
+04/05/21 ADP7157-03  new model
+04/05/21 ADP7157-04  new model
+04/05/21 LTC3815 Corrected frequency setting
+03/31/21 ADP7182  new model
+03/31/21 ADP7182-1.2  new model
+03/31/21 ADP7182-1.5  new model
+03/31/21 ADP7182-1.8  new model
+03/31/21 ADP7182-2.5  new model
+03/31/21 ADP7182-3.0  new model
+03/31/21 ADP7182-5.0  new model
+03/25/21 LTC3871 Fixed the reverse current sense gain.
+03/19/21 LTC4373  new model
+03/19/21 LTM8078 Corrected SYNC pin behavior.
+03/22/21 Enhanced steady state analysis by allowing the user to control when to start. See LTspiceHelp for more details
+03/15/21 LTM4655 Corrected pin names of SVout1- and SVout2- in symbol
+03/11/21 LT8304 Remodeled VIN quiescent current per data sheet specifications.
+03/11/21 LT8648S Corrected response of switch with respect to ENABLE pin status
+03/11/21 LTC3633A-1 Correction to Run1 and Run2 input circuits.
+03/11/21 LTM4612 Corrected soft start behavior.
+03/11/21 LTM8073 Corrected SYNC pin behavior.
+03/11/21 LT8337-1  new model
+03/09/21 LTC4372  new model
+03/04/21 LTM4646 RUN pin functionality fixed
+03/04/21 Added 583 devices from Wurth
+03/03/21 LTM4691 Revised the model
+03/03/21 Added  378 NMOS and PMOS Toshiba devices
+03/02/21 LTC3310  new model
+03/02/21 LTC3310-1  new model
+03/02/21 LTC3119 Revised the model
+03/02/21 LTC6228 Fixed the function of the shutdown pin.
+02/22/21 ADP121-1.2  new model
+02/22/21 ADP121-1.5  new model
+02/22/21 ADP121-1.65  new model
+02/22/21 ADP121-1.8  new model
+02/22/21 ADP121-1.875  new model
+02/22/21 ADP121-2.0  new model
+02/22/21 ADP121-2.5  new model
+02/22/21 ADP121-2.8  new model
+02/22/21 ADP121-3.0  new model
+02/22/21 ADP121-3.3  new model
+02/22/21 ADP124-1.8  new model
+02/22/21 ADP124-2.5  new model
+02/22/21 ADP124-2.7  new model
+02/22/21 ADP124-2.8  new model
+02/22/21 ADP124-2.85  new model
+02/22/21 ADP124-2.9  new model
+02/22/21 ADP124-3.0  new model
+02/22/21 ADP124-3.3  new model
+02/20/21 LTC7818 Updated application circuit component values.
+02/19/21 Updated installation file to have all latest models in most recent application
+02/17/21 LT3667 Added diode model (DFLS160.spice)from external source.
+02/17/21 LTC3834 Corrected CLKOUT output with respect to PHASMD pin setting
+02/12/21 LTC7802 Removed extra wires and unused circuits.
+02/12/21 LTC7818 Made corrections to ground.
+02/12/21 LT8306  new model
+02/12/21 LTC7805  new model
+02/12/21 LTC7817  new model
+02/12/21 LTC7871  new model
+02/10/21 ADP1708 Edited the test fixture file
+02/10/21 LT8650S Fixed EN2 pin impedance.
+02/08/21 LTC7803 Configured model for floating applications.
+02/08/21 ADP123 Tuned series pass device properties.
+02/08/21 ADP122 Tuned series pass device properties.
+02/08/21 LTC3644-2 Updated minimum on-time for gate drive.
+02/08/21 ADP1708  new model
+02/08/21 LTC2065  new model
+02/08/21 LTC2068  new model
+02/08/21 Updated Wurth library. Moved symbols and models to the Contrib directories 
+02/05/21 LTC3644-2 Updated minimum on-time for gate drive.
+02/04/21 ADG1334  new model
+02/04/21 ADG5419  new model
+02/04/21 ADP125  new model
+02/04/21 ADG1636  new model
+02/04/21 ADG1433  new model
+02/04/21 LTM4668A  new model
+02/04/21 ADG1233  new model
+01/29/21 LT8643S Tuned apparent efficiency of the model. Patched steady state detection.
+01/27/21 LTC7803 Updated logic and application circuits.
+01/27/21 LTC7804 Updated logic and application circuits.
+01/27/21 LTC7802 Updated logic and application circuits.
+01/27/21 LTC7818  new model
+01/25/21 LTC3722-1 Patched Phase A&B output switch behavior.
+01/25/21 LTM4677 Revised Programmable delay, on/fall times
+01/23/21 Added CMDSH-4E to standard diode library
+01/23/21 LTC7802  new model
+01/23/21 LT1468-2 Updated label to reflect 200MHz.
+01/21/21 ADI.lib updated (ADA4522-1 in fixed output oscillation).
+01/12/21 LTC7804 Correction to pin numbering and symbol names.
+01/12/21 LT3988 FB comparator level properly tuned
+01/12/21 LTC3882-1 Revised PGood function
+01/09/21 LTC3887-1 Revised application circuit
+01/09/21 LTC3886 Revised application circuit
+01/09/21 LTC3887 Revised application circuit
+01/09/21 LTC3886-1 Revised application circuit
+01/09/21 LTC3311S Minor changes in model parameters
+01/07/21 LTM4681  new model
+01/07/21 AD5772R  new model
+01/07/21 LTC3126 Updated open-drain pins leakage currents, UVLO and PGOOD thresholds.
+01/07/21 LTC4364-2 SOURCE pin current is now within the datasheet specifications
+01/07/21 LTM4602 RUN pin behavior during overcurrent condition is fixed. Latch-off added.
+01/07/21 LTC7803 Correction to logic circuits.
+01/07/21 LT8613 SYNC pin functionality and symbol fixed; pulse-skipping added
+12/22/20 Restored Index in LTspice Help
+12/20/20 Fixed LTspiceHelp missing Index
+12/19/20 Added XP-E2-WHT standard diode from CREE
+12/18/20 LTC4413-2 Updated application circuit, OVP, OVI characteristics per data sheet.
+12/13/20 ADP122-3.0  new model
+12/13/20 ADP123  new model
+12/13/20 ADP122-2.5  new model
+12/13/20 ADP122-3.3  new model
+12/13/20 ADP122-2.85  new model
+12/13/20 ADP122-1.8  new model
+12/13/20 ADP122-2.0  new model
+12/13/20 ADP122-2.7  new model
+12/13/20 ADP122-2.9  new model
+12/13/20 ADP122-2.8  new model
+12/13/20 ADP122-2.6  new model
+12/13/20 IRLML6402 VDMOS model added
+12/13/20 LTspice Help updated with additional information on Inductor devices
+12/04/20 ADA4505 Updated current and voltage noise density, PM, input Cdm Ccm, and PSRR.
+12/04/20 LT3083 Fixed OUT behavior in the case of IN voltage lower than OUT voltage.
+12/04/20 ADG5433  new model
+12/04/20 ADGS1212  new model
+12/03/20 ADA4523-1 Changed the size of the symbol and reduced font size of pin names.
+12/03/20 LT3094 Fixed output oscillation and made PG pin high-impedance at 0V input.
+11/25/20 LTspice to version 17.0.19.0 fixing opening test fixtures in some devices
+11/24/20 Added Wuerth components in standard.ind and standard.bead
+11/20/20 LTM4663  new model
+11/20/20 ADN8834  new model
+11/19/20 ADGS5414  new model
+11/19/20 LT8603 Added sync-rect to SW3 and improved convergence.
+11/17/20 ADGS1612  new model
+11/15/20 LT3072 Revised Sync function
+11/12/20 LTC3119 Updated control loop to remove premature output current limit.
+11/12/20 LTC7001 Correction to OVLO threshold and hysteresis.
+11/10/20 ADP2302_3 Revised PGood function
+11/10/20 ADP5301-2 Revised output VID setting
+11/08/20 AD5685R  new model
+11/08/20 AD5694R  new model
+11/08/20 AD5697R  new model
+11/08/20 AD5693R  new model
+11/08/20 AD5682R  new model
+11/08/20 AD5689R  new model
+11/08/20 AD5691R  new model
+11/08/20 AD5692R  new model
+11/08/20 AD5696R  new model
+11/08/20 AD5695R  new model
+11/08/20 AD5684R  new model
+11/08/20 AD5687R  new model
+11/07/20 LT3964 Revised model and application circuit
+11/05/20 LTC7803  new model
+11/02/20 LTC3723-1 Revised parameters for output drivers
+10/31/20 LT8390 Added efficiency calculations. May need: time to start taking data.
+10/31/20 LTC3891 Updated Run pullup current and drive logic, voltage clamp at 11V.
+10/31/20 LTC6655-2.5 Adjusted noise profile.
+10/31/20 LTC6655-2.048 Adjusted noise profile.
+10/31/20 LTC6655-3 Adjusted noise profile.
+10/31/20 LTC6655-5 Adjusted noise profile.
+10/31/20 LTC6655-3.3 Adjusted noise profile.
+10/31/20 ADGS1412  new model
+10/31/20 ADGS5412  new model
+10/30/20 Added Wuerth components in standard.cap
+10/28/20 LTM4650 Revised Sync function
+10/27/20 LT8618 Removed possible convergence issues and minor edits.
+10/27/20 LTC3119 Corrected reference set point for regulation.
+10/27/20 ADG5421  new model
+10/27/20 ADG5401  new model
+10/27/20 AD5681R  new model
+10/27/20 ADM7150-4.5  new model
+10/27/20 ADM7150-2.8  new model
+10/27/20 ADM7150-3.3  new model
+10/27/20 ADM7150-5.0  new model
+10/27/20 ADM7150-1.8  new model
+10/27/20 ADM7150-4.8  new model
+10/27/20 ADM7151-04  new model
+10/27/20 ADM7151-02  new model
+10/27/20 ADM7150-3.0  new model
+10/24/20 Added Wuerth components in standard.bead and standard.ind
+10/24/20 ADA4177-1 Model updating extended ASCII character error
+10/22/20 ADI1.lib Updated
+10/16/20 ADI1.lib Updated 
+10/16/20 LT3932-1 Revised the model
+10/16/20 LT3932 Revised the model
+10/15/20 LT3922-1 Added RP PWM feature to set internal PWM signal frequency.
+10/13/20 ADP2370 Revised PG function
+10/13/20 LT8650S Verified EN1 and EN2 operation.
+10/13/20 LTC6655-1.25 Adjusted noise profile.
+10/13/20 LT8648S Revised current limit and CLKout function
+10/13/20 LT8640S Revised current limit and CLKout
+10/13/20 LT8643S Revised current limit
+10/13/20 LT4295 Updated application circuit class values.
+10/08/20 LTC6655-2.5 Model encrypted
+10/08/20 LTC6655-2.048 Model encrypted
+10/08/20 LTC6655-3.3 Model encrypted
+10/08/20 LTC6655-3 Model encrypted
+10/08/20 LTC6655-4.096 Model encrypted
+10/08/20 LTC6655-5 Model encrypted
+10/08/20 ADP2370 Revised PG function
+10/08/20 LT8650S Verified EN1 and EN2 operation.
+10/08/20 LTC6655-1.25 Adjusted noise profile.
+10/08/20 ADG1221 New model
+10/08/20 ADG1222 New model
+10/08/20 ADG1422 New model
+10/07/20 LTspice version 17.0.0.14 switching use from LTspice.linar.com to LTspice.analog.com
+10/05/20 LTC3888 Added slave bit and revised its features
+10/05/20 LTC3888-1 Added slave bit and revised its features and Vout_trans_rate
+09/310/03/20 190 Components from Wuerth
+10/01/20 ADG1421 New model
+10/01/20 ADG1402 New model
+10/01/20 ADG1311 New model
+10/01/20 ADG1312 New model
+09/30/20 LT3932-1 Revised model and application circuit.
+09/30/20 LT3932 Revised model and application circuit.
+09/30/20 ADA4622 Updated CMRR, PSRR, Input Clamp, Vos, Ib, Zin, short circuit current.
+09/24/20 ADA4077-2 Revised the model and symbol
+09/24/20 ADA4077-2 Revised the model
+09/20/20 LT8653S Revised the model and symbol
+09/18/20 LTM8078 Updated the internal inductor with actual part#
+09/13/20 ADG1414 New model
+09/13/20 ADG419 New model
+09/13/20 ADG612 New model
+09/13/20 ADG636 New model
+09/13/20 ADG611 New model
+09/13/20 ADG1434 New model
+09/13/20 LT8644S New model
+09/13/20 AD5674R New model
+09/13/20 AD5675R New model
+09/13/20 AD5673R New model
+09/13/20 AD5672R New model
+09/13/20 AD5677R New model
+09/13/20 AD5676R New model
+09/13/20 AD5671R New model
+09/13/20 AD8310 New model
+09/10/20 LTM8078 Revised model for Inverting Buck Boost operation.
+09/08/20 LTspice 17.0.0.11 Fixed problem when displaying Hot Keys
+09/04/20 LTC1998 New model
+09/04/20 LTspice adding version number in addition to date release (17.0.0.10)
+09/04/20 LTspice version 17.0.0.10 added use of V to instantiate Voltage symbol
+09/04/20 LTspice saves Gear,  Trapezoidal or Modified Trapezoidal mode for next use
+09/02/20 LT3932 Fix SS and PWM logic and EN pin behavior
+08/29/20 ADP5051_chan3_4 Added application circuits
+08/29/20 ADP5052_chan1_2 Added application circuits
+08/29/20 ADP5052_chan3_4 Added application circuits
+08/29/20 ADP5051_chan1_2 Added application circuits
+08/29/20 ADP5054_chan3_4 Added application circuits
+08/29/20 ADP5054_chan1_2 Added application circuits
+08/29/20 ADP5053_chan3_4 Added application circuits
+08/29/20 ADP5050_chan1_2 Added application circuits
+08/29/20 ADP5050_chan3_4 Added application circuits
+08/29/20 ADP5053_chan1_2 Added application circuits
+08/26/20 LT3932-1 New model
+08/24/20 LT3932 Fix SS and PWM logic and EN pin behavior
+08/21/20 LTC4238 New model
+08/19/20 ADG5236 New model
+08/19/20 LTM8083 New model
+08/19/20 LT3950 Updated model and application circuit
+08/18/20 LTC6902 Minor application circuit update
+08/18/20 LTC7804 Adjusted frequency settings.
+08/18/20 ADP1851 Revised UVLO of VCCO and current sense signal for low Vin operation. Updated Symbol and application circuit.
+08/13/20 AD8479 Fix error in offset voltage
+08/11/20 LT3033 Revised the model
+08/11/20 LT3748 Minor application circuit update.
+08/06/20 AD8479 Fixed gain error and offset voltage performance
+08/06/20 LTM8078 Corrected logic thresholds in Run circuit.
+08/06/20 LTC3371 Revised IC internal control signals for buck regulators.
+08/06/20 LT8642S Updated internal bottom FET current protection.
+08/06/20 PSMN3R7-100BSE new model
+08/06/20 IPT015N10N5 new model
+08/06/20 LTspice Help file
+07/30/20 AD5683R new model
+07/30/20 AD5686R new model
+07/30/20 AD5766 new model
+07/30/20 ADG436 new model
+07/30/20 ADG5212 new device
+07/30/20 LT3083 updated model
+07/30/20 LT3934S updated logic on soft-start to eliminate race condition.
+07/30/20 LT3935 updated logic on soft-start to eliminate race condition.
+07/30/20 LT6018 changes to bias current
+07/30/20 LT8210 correction to current limit circuit IMON, was preventing restart.
+07/30/20 LT8643S revised OTA setting in the model of the LT8643S.
+07/30/20 LTC3315B added application circuit to library.
+07/30/20 LTC3411 updated model
+07/22/20 LT3094 model, symbol, example
+07/22/20 LTM4642 model, symbol
+07/22/20 LTC7810 model, symbol
+07/15/20 ADG1212 model, symbol, example
+07/15/20 ADG1211 model, symbol, example
+07/15/20 ADG1412 model, symbol, example
+07/15/20 ADG1411 model, symbol, example
+07/15/20 ADG1236 model, symbol, example
+07/15/20 ADG1401 model, symbol, example
+07/15/20 ADG1201 model, symbol, example
+07/15/20 ADG5412 model, symbol, example
+07/15/20 ADG411 model, symbol, example
+07/15/20 ADG412 model, symbol, example
+07/15/20 ADG1219 model, symbol, example
+07/15/20 ADG1436 model, symbol, example
+07/15/20 ADGS1414D model, symbol, example
+07/15/20 ADG452 model, symbol, example
+07/15/20 ADG1419 model, symbol, example
+07/15/20 ADG451 model, symbol, example
+07/08/20 ADP5301 model
+07/08/20 ADP5302 model
+07/08/20 ADP5070_1 model
+07/08/20 LT8228 model
+07/08/20 LT8653S model
+07/08/20 ADP5303-3 model
+07/08/20 LT8392 model, symbol, example
+07/08/20 LTC6228 model
+07/08/20 ADP5303-1 model
+07/08/20 ADP5300-4 model
+07/08/20 ADP5304-1 model
+07/08/20 ADP5304-2 model
+07/08/20 ADP5300-1 model
+06/24/20 LT3950 model, example, symbol
+06/24/20 LTC3119 model
+06/24/20 LTC3888 model, example, symbol
+06/24/20 LTC3888-1 model, example, symbol
+06/24/20 LTC3895 model
+06/24/20 LTC7801 model
+06/17/20 LTC3888-1 example, model, symbol
+06/17/20 LTC7050 symbol
+06/17/20 LTC7050-1 symbol
+06/10/20 LT6372-0.2 model, example, symbol
+06/10/20 LT3934S model, example, symbol
+06/10/20 LT3935 model, example, symbol
+06/03/20 LT8357 model, example, symbol
+06/03/20 LTM4655 model, example, symbol
+06/03/20 LTC4380-2 model
+06/03/20 LTC4380-3 model
+06/03/20 LTC4380-1 model
+06/03/20 LTC4380-4 model
+06/03/20 ADA4625-1 model
+05/27/20 ADP3654 model, symbol, example
+05/27/20 LTC2955-1 model
+05/20/20 LT3072 model, example, symbol
+05/20/20 LT3094 model, example, symbol
+05/20/20 LT6370 model
+05/20/20 LT6372-1 model
+05/20/20 LTC3310S model
+05/20/20 LTC3310S-1 model
+05/20/20 LTC3311S model
+05/20/20 LTC3623 model, symbol
+05/20/20 LTC6228 model
+05/20/20 LTC6373 model, example, symbol
+05/20/20 LTM8024 model, example, symbol
+05/13/20 AD5766 symbol
+05/13/20 ADG1211 model, example, symbol
+05/13/20 ADG1236 model, example, symbol
+05/13/20 ADG1411 model, example, symbol
+05/13/20 LT3154 model, example, symbol
+05/13/20 LT3154-1 model, example, symbol
+05/13/20 LT8304 model
+05/13/20 LT8350S model, example, symbol
+05/13/20 LTC3119 model
+05/13/20 LTC7150S model, example, symbol
+05/13/20 LTM4626 model, example, symbol
+05/13/20 LTM4638 model, example, symbol
+05/13/20 LTM4691 model
+05/13/20 LTM4693 model, example
+05/06/20 AD5679R models
+05/06/20 ADA4523-1 models, example, symbol
+05/06/20 LT3845 models
+05/06/20 LT3845A models
+05/06/20 LTC3106 models
+05/06/20 LTC4020 models
+05/06/20 LTC3311S models, example, , symbol
+04/29/20 AD5679R model
+04/29/20 ADG1212 model, example, symbol
+04/29/20 ADG1412 model, example, symbol
+04/29/20 ADR4525 model, example, symbol
+04/29/20 LT3001 model, example, symbol
+04/29/20 LT3002 model, example, symbol
+04/29/20 LT3089 model, example, symbol
+04/29/20 LT3942 model
+04/29/20 LT8365 model
+04/29/20 LT8390 model
+04/29/20 LT8390A model
+04/29/20 LT8391 model
+04/29/20 LT8391A model
+04/29/20 LT8643S model
+04/29/20 LTC3307B model, example, symbol
+04/29/20 LTC3308B model, example, symbol
+04/29/20 LTC3884 model
+04/22/20 LTC3886 example, model and symbol
+04/22/20 LTM4699 example model and symbol
+04/22/20 LTM4660 example, model and symbol
+04/22/20 LT8365 model
+04/22/20 LTC7060 example, model and symbol
+04/22/20 LTM4656 example, model and symbol
+04/22/20 LT8336 example, model and symbol
+04/22/20 LT8337 model
+04/22/20 LTC3311S model
+04/15/20 LTC7151S model
+04/15/20 LTC3856 model, example, symbol
+04/15/20 LTC3884 model, example, symbol
+04/15/20 AD5679R model
+04/15/20 ADG1412 model, example, symbol
+04/15/20 LTC6226 model, example, symbol
+04/15/20 LTC6227 example, symbol
+04/15/20 LTC3154-1 model
+04/15/20 LTM4693 model, example, symbol
+04/15/20 ADG1209 model, example, symbol
+04/15/20 ADG1208 model, example, symbol
+04/15/20 LTM4657 model, example, symbol
+04/15/20 LT8337 model
+04/15/20 LTC3154-ADJ model
+04/08/20 LTC3154-ADJ example, model, symbol
+04/08/20 LT8650SP example, model, symbol
+04/08/20 LT8337 model
+04/08/20 LTC3154-1 example, model, symbol
+04/08/20 ADG1412 example, model, symbol
+04/08/20 LT8653S model
+04/08/20 LTM8060 example, model, symbol
+04/08/20 ADR4525 example, model, symbol
+04/01/20 Updated LTM4636 model symbol
+04/01/20 Updated LT8643S model
+04/01/20 Updated LT8337 model
+04/01/20 Updated LT6018 model
+04/01/20 Added LTM4701 example model symbol
+04/01/20 Updated LTC3119 example model symbol
+04/01/20 Added LT3942 example model symbol
+04/01/20 ADR4525 model symbol example
+03/25/20 Updated LTC3589 model
+03/25/20 Updated ADA4807 model in ADI.lib
+03/25/20 Updated LT8337 model and example
+03/25/20 Updated AD5679R symbol and example
+03/25/20 Updated LTC3119 symbol
+03/25/20 Updated (added to ADI.lib, no previous model available) AD820 model
+03/18/20 Updated LTM4622A model and symbol
+03/18/20 Added LTM8051 symbol, model and example
+03/18/20 Updated LTC4281 model
+03/18/20 Updated LTC3311S symbol, model and example
+03/18/20 Added LTC3310S-1 symbol, model and example
+03/18/20 Added LT8337 symbol, model and example
+03/18/20 Updated LTC3119 model, symbol and example
+03/18/20 Updated ADP5073_4 model
+03/11/20 Added ADA4524 symbol and model
+03/05/20 Updated LT8653S model
+03/05/20 Added LTM8078 symbol and model
+03/05/20 Added AD5679R symbol and model
+03/05/20 Update LT8365 symbol and model
+02/25/20 Update LTM5766 symbol and model
+02/25/20 Update LTM8024 symbol and model
+02/21/20 Updated LT7101 model
+02/21/20 Updated LT4363-1 model
+02/21/20 Updated LT4363-2 model
+02/21/20 Added filter symbols, models and examples: 2ndOrderAllpass
+02/21/20 Added filter symbols, models and examples: 2ndOrderBandpass
+02/21/20 Added filter symbols, models and examples: 2ndOrderComplexzero
+02/21/20 Added filter symbols, models and examples: 2ndOrderHighpass
+02/21/20 Added filter symbols, models and examples: 2ndOrderLowpass
+02/21/20 Added filter symbols, models and examples: 2ndOrderNotch
+01/28/20 Added a symbol, jig and model for LTC3374A
+01/28/20 Updated model for ADP1074
+01/28/20 Updated model for LTC3126
+01/28/20 Updated model for LTC3103
+01/28/20 Updated model for LT8220
+01/28/20 Added new model for LTM4691
+01/23/20 Updated model for LT3482
+01/23/20 Updated model for LT3932
+01/23/20 Updated model for LTC1100
+01/23/20 Updated model for LTC4415
+01/23/20 Updated model for LTC7820
+01/23/20 Added a symbol and model of the LTC1100CS
+12/5/19 Added a symbol and model of the LT8228
+12/5/19 Added a symbol and model of the AD55Bopamp
+12/5/19 Added a symbol and model of the LT8365
+12/5/19 Revised the model of the LT3992
+11/06/19 Revised the symbol of LT6370.
+11/06/19 You are now reminded to check the type of mouse cursor you're using when you change the schematic for waveform viewer background color.
+11/05/19 Minor help file update.
+11/05/19 The waveform mouse cursor can now be specified as White, Black, or XOR in addition to the original automatically selected type.
+11/05/19 The drafting mouse cursor can now be specified as White, Black, or XOR in addition to the original automatically selected type.
+11/04/19 Worked around a MFC problem in measuring the size needed to render some menu items.
+11/04/19 Updated the help file to reflect the new link for the independent users' group.
+10/31/19 Added a symbol and model of the LTC3371.
+10/31/19 Updated the Software License Agreement.
+10/30/19 Revised the model of the LT3093 and LT3094.
+10/30/19 Revised the models of the AD4002 and AD4003.
+10/30/19 Revised the model of the LTC3824.
+10/30/19 Revised the model of the LTC3589.
+10/30/19 Improved vertical centering of up one folder button on Select Component dialog.
+10/18/19 Added a command line switch, -I<path>, that allows a path to be inserted in the symbol and library search path for that invocation of LTspice.
+10/14/19 Added some JFET models supplied by Linear Systems.
+10/14/19 Unicode character U+2212 is now universally accepted as a minus sign('-').
+10/14/19 Revised the model of the LT8711.
+10/12/19 Revised the models of the LTC3315A and LTC3315B.
+10/11/19 Revised the model of the LT8642S.
+10/11/19 Added symbols and models of the LT8618 and LT8618-3.3.
+10/11/19 Trapped a crash mode when trying to expand subcircuits with syntax errors.
+10/10/19 Corrected the font size in some of the older example schematics.
+10/10/19 Revised the model of the LT8609S.
+10/08/19 Improved the initial column width choices in the select diode, bipolar, JFET, and MOSFET dialogs.
+10/08/19 Added support for user-defined strings with .text statements.
+10/08/19 Revised the model of the OP1177, OP2177, and OP4177.
+10/08/19 Revised the model of the LT8640S.
+09/20/19 Revised the model of the LTC3894.
+09/20/19 Added a symbol and model for the LTC7804.
+09/19/19 Added symbols and models for the ADM7154-1.2, ADM7154-1.8, ADM7154-2.5, ADM7154-3.0, ADM7154-3.3, ADM7155-01, ADM7155-02, ADM7155-03, and ADM7155-04.
+09/18/19 Fixed a problem with transmission lines in pseudo transient analysis.
+09/17/19 Fixed a problem cross probing noise contributions in hierarchical designs.
+09/17/19 Revised the model of the LTM4700.
+09/17/19 Updated the Window Explorer previewer .dll's for schematics.
+09/17/19 Adjusted the select diode table column widths.
+09/16/19 Improved the library hash table.
+09/16/19 Revised the model of the LTC2965.
+09/15/19 Added symbols and models of the LTZ1000 and LTZ1000A.
+09/11/19 Ternary operation grammar is now parsed in a larger scope that can no longer confuse subcircuit node name mangling colons with the ternary condition separating colon character.
+09/10/19 Revised the model of the LTC3119.
+09/10/19 Revised the model of the LT1008.
+09/10/19 Revised the models of the LTC4280 and LTC4281.
+09/10/19 Revised the models of the LTC4380-1, LTC4380-2, LTC4380-3, and LTC4380-4.
+09/09/19 Revised the model of the LTC7138.
+09/09/19 Revised the model of the LTC3589.
+09/09/19 Revised the model of the LT3964.
+09/09/19 Revised the symbols of the LTC1693-1, LTC1693-2, LTC1693-3, and LTC1693-5.
+09/09/19 Revised the model of the LTC1693-5.
+08/28/19 Added a symbol and model of the AD8479.
+08/28/19 Added a symbol and model of the LTC3888-1.
+08/28/19 Revised the model of the LT8648S.
+08/28/19 Revised the model of the LT8391A.
+08/23/19 Revised the model of the LTC3779.
+08/22/19 Revised the model of the LT4321.
+08/21/19 Added a symbol and model of the LT4321.
+08/21/19 Revised the algorithm for finding user folder paths to current Windows standards -- should fix the installation problems that some people experienced.
+08/19/19 Revised the models of the LTC4368-1 and LTC4368-2.
+08/19/19 Revised the models of the LTC4367 and LTC4367-1.
+08/08/19 Added a symbol and model of the LTC7050-1.
+08/08/19 Revised the model of the LTC3355.
+08/02/19 Added a symbol and model of the LTC3888.
+08/02/19 Added a symbol and model of the LTC7050.
+08/02/19 Revised the model of the LTC3894.
+07/30/19 Added symbols and models of the ADP5300-1, ADP5300-2, ADP5300-3, ADP5300-4, ADP5301-1, ADP5301-2, ADP5301-3, ADP5302-1, ADP5302-2, ADP5303-1, ADP5303-2, ADP5303-3, ADP5304-1, and ADP5304-2.
+07/30/19 Revised the model of the LT8645S.
+07/25/19 Added a feature to display a color-coded legend of step information.
+07/25/19 The Draw=>Cursor Position command now displays additional information regarding the step.
+07/25/19 Improved the rendering of the MOSFET selection dialog.
+07/25/19 Updated the heapsort() routine.
+07/22/19 Added symbols and models of the ADP1761, ADP1761-0.9, ADP1761-0.95, ADP1761-1.0, ADP1761-1.1, ADP1761-1.2, ADP1761-1.25, ADP1761-1.3, ADP1761-1.5, ADP1764, ADP1764-0.55, ADP1764-0.9, ADP1764-0.95, ADP1764-1.0, ADP1764-1.1, ADP1764-1.2, ADP1764-1.25, ADP1764-1.3, ADP1764-1.5, ADP1765, ADP1765-0.55, ADP1765-0.9, ADP1765-0.95, ADP1765-1.0, ADP1765-1.1, ADP1765-1.2, ADP1765-1.25, ADP1765-1.3, and ADP1765-1.5.
+07/22/19 Added symbols and models of the LTC3307A and LTC3308A.
+07/19/19 Added symbols and models of the ADP7158-1.2, ADP7158-1.8, ADP7158-2.0, ADP7158-2.5, ADP7158-2.8, ADP7158-3.0, ADP7158-3.3, ADP7159-01, ADP7159-02, ADP7159-03, and ADP7159-04.
+07/19/19 Added symbols and models of the LTC6363-.5, LTC6363-1, and LTC6363-2.
+07/19/19 Added a symbol and model of the AD8205.
+07/19/19 Added symbols and models of the ADA4177-1, ADA4177-2, and ADA4177-4.
+07/16/19 Revised the models of the LT1630.
+07/15/19 Revised the models of theADA4625-1 and ADA4625-2.
+07/15/19 Fixed a problem reading some vendor encrypted files.
+07/15/19 Fixed an issue with displayed linewidths in some sprited objects.
+07/15/19 Fixed a problem rendering logos.
+07/11/19 Added some VDMOS models graciously supplied by Bernd Riemann of Alpha & Omega.
+07/11/19 Revised the models of the ADA4625-1 and ADA4625-2.
+07/11/19 Revised the models of the AD8510,  AD8512, and AD8513.
+07/11/19 Added a symbol and model of the SSM2141.
+07/11/19 Revised the model of the AD8675.
+07/09/19 Added a symbol and model of the LT6372-1.
+07/09/19 Revised the model of the LT6370.
+07/08/19 Corrected the display of the state of checked boxes embedded in some menu items.
+07/08/19 Improved rendering of the diode edit state dialog.
+07/08/19 Trapped a crash mode when reporting errors in waveform viewer table function syntax.
+06/21/19 Added a symbol and model for the LTC4421.
+06/19/19 Revised the model of the LT3093.
+06/19/19 Removed some JFETs models from mfgs that discontinued the part.
+06/18/19 Revised the model of the LTM4700.
+06/18/19 Added some bipolar models graciously supplied by Linear Integrated Systems, Inc.
+06/15/19 Revised the symbol and model of the ADA4807-1.
+06/15/19 Added symbols and models for the ADA4807-2 and ADA4807-4.
+06/15/19 Added a symbol and model for the AD8041.
+06/15/19 Added a symbol and model for the AD8033.
+06/15/19 Revised the model of the AD8034.
+06/15/19 Revised the models for the AD8038 and AD8039.
+06/15/19 Added symbols and models for the AD8029, AD8029, and AD8040.
+06/15/19 Added a symbol and model for the AD8032.
+06/15/19 Revised the model of the AD8031.
+06/15/19 Revised the model of the AD823.
+06/15/19 Added a symbol and model for the AD711.
+06/13/19 Revised the model of the LT8650S.
+06/13/19 Added symbols and models for the ADP5055 and ADP5056.
+06/13/19 Revised the model for the AD5766.
+06/13/19 Corrected an error in the arbitrary inductor.
+06/13/19 Reduced the amount of gmin added to ideal diodes.
+06/07/19 Added a symbol and model for the LT3094.
+06/07/19 Added a symbol and model for the LT6370.
+05/24/19 Added a symbol and model for the LT3952A.
+05/24/19 PULSE() functions without at least five the required coefficients specified are now trapped as errors.  Please use PWL() if you only want a step function.
+05/24/19 Added symbols and models the ADA4000-1, ADA4000-2, and ADA4000-4.
+05/24/19 Revised the models for LTM4626 and LTM4638.
+05/23/19 Revised the model for the LT8210.
+05/23/19 Revised the model of the AD713 and AD746.
+05/23/19 Revised the model of the ADTL082.
+05/23/19 Revised the model of the OP27 and OP37.
+05/22/19 Added symbols and models for the ADTL084 and OP227.
+05/22/19 Added a symbol and model for the LT7101.
+05/22/19 Revised the model of the LTC7151S.
+05/22/19 Revised the model of the AD549.
+05/22/19 Revised the model of the AD712.
+05/22/19 Revised the model of the AD795.
+05/20/19 Revised the models of the LTC3309A, LTC3310S, and LTC3315A.
+05/20/19 Added a symbol and model for the LT8648S.
+05/20/19 Extended support for Rpar to the arbitrary nonlinear inductor.
+05/18/19 Adjusted the post-posting of some of the time domain waveform data.
+05/17/19 Added a symbol and model for the ADA4625-2.
+05/14/19 Revised the model of the LTC6363.
+05/14/19 Added a symbol and model for the LTC3370.
+05/13/19 Revised the model of the LT3094.
+05/13/19 Revised the model of the LT5401.
+05/13/19 Revised the model of the LTC7151S.
+05/10/19 Added symbols and models for the ADP7102-1.5 ADP7102-1.8 ADP7102-2.5 ADP7102-3.0 ADP7102-3.3 ADP7102-5.0 ADP7102-9.0 ADP7102 ADP7104-1.5 ADP7104-1.8 ADP7104-2.5 ADP7104-3.0 ADP7104-3.3 ADP7104-5.0 ADP7104-9.0 ADP7104 ADP7105-1.8 ADP7105-3.3 ADP7105-5.0 ADP7105 ADP7112-1.8 ADP7112-2.5 ADP7112-3.3 ADP7112-5.0 ADP7112 ADP7118-1.8 ADP7118-2.5 ADP7118-3.3 ADP7118-4.5 ADP7118-5.0 ADP7118 ADP7142-1.8 ADP7142-2.5 ADP7142-3.3 ADP7142-5.0 and ADP7142.
+05/09/19 Revised the symbols and models of the LTM4626 and LTM4638.
+05/09/19 Revised the model for the LTC3779.
+05/08/19 Revised the model for the LTC7810.
+05/08/19 Revised the model for the LTC4211.
+05/08/19 Revised the model for the ADP5014.
+05/08/19 Updated the help file.
+05/08/19 Revised the model for the LTC3522.
+05/07/19 Switched which interpretation of ambiguous PULSE() is used.
+05/06/19 Expanded the VDMOS temperature scaling with parameters Bex, VtoTc, Tksubthres1, Tksubthres2, Trs1, Trs2, Trg1, Trg2, Trd1, Trd2, Trb1, and Trb2.
+05/06/19 Resolved an ambiguity of some PULSE() parameter configurations.
+05/06/19 Revised the model for the LTM4678.
+05/06/19 Added a symbol and model for the LTM4650A-1.
+05/06/19 Revised the model for the LT8619.
+05/06/19 Revised the model for the LTC3894.
+04/26/19 Added a symbol and model for the LTC6560.
+04/25/19 Silent installation is now supported via the syntax LTspiceXVII.exe -AcceptedLicense.
+04/25/19 Improved the operation of the product name spell checker in the symbol browser.
+04/24/19 Revised the model for the LT8650S.
+04/24/19 Revised the models for the ADP5073 and ADP5074.
+04/24/19 The installer no longer leaves LTspice running as Administrator.
+04/22/19 Added a symbol and model for the LT5401.
+04/22/19 Added symbols and models for the LT5400 series.
+04/21/19 Updated the help file.
+04/21/19 LTspice is no longer running as Administrator after update.
+04/18/19 Added a symbol and model for the ADHV4702-1.
+04/18/19 Revised the model for the ADP1850.
+04/12/19 Added symbols and models for the ADG918 and ADG919.
+04/11/19 Added a symbol and model for the AD590.
+04/11/19 Added a symbol and model for the ADR225.
+04/11/19 Added a B-source function, smallsig(), which returns 1. if a .ac or .noise simulation is going to be done after the .op.
+04/10/19 Added symbols and models for the ADG5248F and ADG5249F.
+04/10/19 Trapped a crash mode regarding the IGBT.
+04/10/19 Trapped a crash mode in one of the compilers regarding disambiguating names.
+04/10/19 Added symbols and models for the ADuM4122A, ADuM4122B, and ADuM4122C.
+04/10/19 Revised the model for the LTC2955-1.
+04/08/19 Added symbols and models for the ADG1208 and ADG1209.
+04/05/19 Revised the model for the LT8650S.
+04/05/19 Added symbols and models for the ADP1606, ADP1607, and ADP1607-001.
+04/05/19 Revised the model for the LTC7840.
+ADP160-1.2, ADP160-1.5, ADP160-1.8, ADP160-2.1, ADP160-2.3, ADP160-2.5, ADP160-2.7, ADP160-2.75, ADP160-2.8, ADP160-2.85, ADP160-3.0, ADP160-3.3, ADP160-4.2, ADP161, ADP162-1.2, ADP162-1.8, ADP162-2.1, ADP162-2.3, ADP162-2.8, ADP162-3.0, ADP162-3.1, ADP162-3.3, ADP162-4.2, ADP163, ADP165-1.2, ADP165-1.8, ADP165-2.2, ADP165-2.3, ADP165-2.85, ADP165-3.0, ADP165-3.3, ADP165-ADJ, ADP166-1.2, ADP166-1.8, ADP166-2.2, ADP166-2.3, ADP166-2.85, ADP166-3.0, ADP166-3.3, and ADP166-ADJ.
+04/05/19 Revised the model for the LTM8067.
+04/05/19 Added 123 JFET models graciously supplied by Linear Integrated Systems, Inc.
+04/02/19 Added a symbol and model for the LTC6228.
+04/02/19 Revised the model for the AD5766.
+04/02/19 Revised the model for the LTC2955-1.
+04/02/19 Revised the model for the LTC3310S.
+04/02/19 Revised the model for the LTC3309A.
+04/02/19 Revised the model for the LTC3315A.
+04/02/19 Removed the LTC3309B and LTC3315B.
+04/01/19 Revised the models for the LT3090 and LT3091.
+04/01/19 Revised the model for the LTC2955-1.
+03/25/19 Added a symbol and model for the LT3033.
+03/15/19 Revised the model for the ADP505x series.
+03/15/19 Revised the model for the LT8650S.
+03/13/19 Updated some digital signed certificates.
+03/13/19 Revised the model for the LT8652S.
+03/13/19 Revised the model for the LTC7840.
+03/13/19 Revised the model for the LTC7810.
+03/13/19 Revised the models for the LTC3221-3.3 and LTC3221-5.
+03/13/19 Updated the logo on the new schematic toolbar icon.
+03/13/19 Removed some extraneous characters from .meas output.
+03/12/19 Revised the model for the LT3755-2.
+03/12/19 Revised the model for the LT3755.
+03/12/19 Revised the model for the LT8630.
+03/12/19 Revised the model for the LTC3522.
+03/12/19 Revised the model for the LTC4020.
+03/12/19 Revised the model for the LTC7810.
+03/12/19 Revised the model for the LTM4642.
+03/12/19 Revised the model for the LTM8073.
+03/12/19 Revised the model for the LT3094.
+03/11/19 Fixed a an error parsing "freq" in mixed case in the complex data viewer.
+02/08/19 Added a symbol and model for the LT3094.
+02/07/19 Added a symbol and model for the LTC3376.
+02/07/19 Fixed an error in solution reporting for .dc sweeps
+02/06/19 Revised the model for the LT3748.
+02/06/19 Added a model of bipolar transistor and diode models supplied by Rohm.  Thank-you.
+02/06/19 Fixed a crash mode on the Mac version regarding component mfg field.
+02/06/19 Improved operation of the Mac version when using the dark display theme.
+02/05/19 .step statements in .lib'ed files are now ignored as they should be.
+02/05/19 Revised the model for the LTC3892.
+02/01/19 Added symbols and models for the ADM7171, ADM7171-1.3, ADM7171-1.8, ADM7171-2.5, ADM7171-3.0, ADM7171-3.3, ADM7171-4.2, and ADM7171-5.0.
+02/01/19 Added symbols and models for the ADM7172, ADM7172-1.3, ADM7172-1.8, ADM7172-2.5, ADM7172-3.0, ADM7172-3.3, ADM7172-4.2, and ADM7172-5.0.
+02/01/19 Fixed a problem authoring .wav files with more than 16 bit resolution.
+01/30/19 Revised the model for the LTC7810.
+01/28/19 Revised the models for the LT1461-2.5, LT1461-3.3, LT1461-3, LT1461-4.096, and LT1461-5.
+01/28/19 Revised the models for the AD4002 and AD4003.
+01/28/19 Revised the symbol and model for the AD5766.
+01/23/19 Added symbols and models for the ADM7170, ADM7170-1.3, ADM7170-1.8, ADM7170-2.5, ADM7170-3.0, ADM7170-3.3, ADM7170-4.2, and the ADM7170-5.0.
+01/23/19 Fixed an issued parsing expressions of waveform data indexed by step number.
+01/18/19 Revised the model for the LTC3522.
+01/18/19 Revised the model for the LT1498.
+01/18/19 Revised the model for the LTM4700.
+01/18/19 Removed the obsoleted SOA accounting files from new installations.
+01/18/19 Added a symbol and model for the LTC4283.
+01/18/19 Revised the model for the LTC3892.
+01/17/19 Added symbols and models for the ADP1071-1 and ADP1071-2.
+01/17/19 Added a symbol and model for the ADP1074.
+01/17/19 Added a symbol and model for the LT8316.
+01/17/19 Hierarchical schematics using symbols for block in the symbol search path are now found.
+01/17/19 Added symbols and models for the ADG1633 and ADG1634.
+01/12/19 Included SOA accounting in the VDMOS device.
+01/10/19 Fixed an issue with dotted line widths in symbols.
+01/10/19 Added a symbol and model for the ADP5072.
+01/10/19 Revised the models for the ADP5070 and ADP5071.
+01/10/19 Revised the symbol and model for the LT3755-2.
+01/10/19 Added a symbol and model for the LT1997-1.
+01/08/19 Fixed an issue with the background color of the select component dialog.
+01/07/19 Revised the model for the LTC3892.
+01/04/19 Added a symbol and model for the LT3070-1.
+01/04/19 Revised the model for the LT8210.
+01/04/19 Added a symbol and model for the AD5766.
+01/04/19 Revised the models for the ADP2300, ADP2301, ADP2302 and ADP2303.
+01/04/19 Revised the model of the LT8711.
+01/04/19 Added a symbol and model for the LTM4668.
+01/04/19 Added a symbol and model for the LTC3644.
+01/04/19 Fixed an issue expanding K-statements.
+01/02/19 Improved the legibility of the dialog that displays a product description.
+01/02/19 Added symbols and models for the ADG1611 and ADG1612.
+12/20/18 Added a symbol and model for the LT8210.
+12/20/18 Added symbols and models for AD4002 and AD4003.
+12/20/18 Improved the file format of ASCII exported data trace names that exceed the ASCII range.
+11/26/18 Added symbols and models for the ADP5138-1 and ADP5138-2.
+11/26/18 Added a symbol and model for the LTM4664.
+11/26/18 Fixed a parsing error impacting user defined functions in behavioral sources.
+11/26/18 Revised the symbol and model for the LTC3129.
+11/26/18 Revised the model of the LT8610.
+11/26/18 Revised the model of the LT8613.
+11/26/18 Revised the model of the LT4295.
+11/26/18 Revised the models of the LTM8003 and LTM8003-3.3.
+11/26/18 Added a symbol and model for the LTM8024.
+11/26/18 Revised the models of the LTC7851 and LTC7851-1.
+11/02/18 Revised the symbol and model of the LTM4680.
+11/01/18 Added symbols and models for the ADP1850 and ADP1851.
+11/01/18 Revised the model of the ADP1853.
+10/31/18 Revised the model of the LTM4678.
+10/31/18 Added a symbol and model for the LTM4700.
+10/31/18 Added a symbol and model for the LTC7151S.
+10/31/18 Added a symbol and model for the LT8652S.
+10/24/18 Added symbols and models for the ADuM4120-1A, ADuM4120-1B, ADuM4120-1C, ADuM4120A, ADuM4120B, and ADuM4120C.
+10/24/18 Added a symbol and model for the ADuM4136.
+10/24/18 Revised the model of the LTM4622.
+10/24/18 Added a symbol and model for the LTC3129-1.
+10/24/18 Added a symbol and model for the LTM8074.
+10/23/18 Added a symbol and model for the LTC2992.
+10/23/18 Fixed an issue with the symbol pin editor pin number limit.  New limit is 4096.
+10/22/18 Adjusted the reverse crossprobing behavior.
+10/22/18 Revised the model of the LT8362.
+10/22/18 Revised the model of the LT8643S.
+10/22/18 Revised the model of the LTC7862.
+10/22/18 Revised the model of the LTM4653.
+10/22/18 Revised the model of the LTM4700.
+10/22/18 Revised the model of the LT8364.
+10/22/18 Fixed a problem differentiating data of with multiple .step statements.
+10/22/18 Fixed an issue rendering some schematics in the previewer .dll.
+10/22/18 Added a symbol and model for the LTM8002.
+10/22/18 Added a symbol and model for the LTC7852.
+10/04/18 Added a symbol and model for the LTC6561.
+10/04/18 Revised the model of the LTC2952.
+09/28/18 Revised the model of the LTC3886.
+09/28/18 Revised the model of the LTC3887-1.
+09/28/18 Revised the model of the LTC3887.
+09/28/18 Revised the models of the LTC3880 and LTC3880-1.
+09/28/18 Revised the model of the LTC3779.
+09/28/18 Revised the model of the LTC3129.
+09/28/18 Revised the models of the LTC3130 and LTC3130-1.
+09/28/18 Revised the models of the LTC3883 and LTC3883-1.
+09/28/18 Added a symbol and model for the LTC3886-1.
+09/28/18 Added a symbol and model for the LTC3777.
+09/28/18 Revised the model of the LTM8071.
+09/28/18 Revised the model of the LT8642S.
+09/28/18 Revised the model of the LT8646S.
+09/28/18 Revised the model of the LT8619-5.
+09/28/18 Revised the models of the LT8708 and LT8708-1.
+09/28/18 Revised the model of the LTC7815.
+09/28/18 Revised the model of the LT8711.
+09/28/18 Revised the model of the LTC7810.
+09/28/18 Revised the symbol of the LT8606.
+09/28/18 Adjusted the behavior of reverse cross probing.
+09/27/18 Corrected an error in one of the checksum algorithms.
+09/24/18 Fixed an error in the phase detector device.
+09/09/18 Trapped a crash mode regarding the new extended reverse cross probing functionality.
+09/06/18 Some discrete component database files are now stored in a more compact format.
+09/06/18 Trapped a crash mode regarding marching waveforms of .step'ed data.
+09/05/18 Revised the symbol of the LTC2058.
+09/04/18 Added a symbol and model for the ADP1853.
+09/04/18 Revised the model of the LT1959.
+09/04/18 Added a symbol and model for the ADuM4135.
+09/04/18 Added a symbol and model for the LTC3129.
+09/04/18 Added capacitor data supplied by Murata.
+09/04/18 Extended reverse cross probing functionality.
+08/31/18 Added a symbol and model for the LTC6115.
+08/31/18 Revised the model of the LTC6101.
+08/31/18 Revised the model of the LTC6078.
+08/31/18 Added a symbol and model for the LTC2058.
+08/31/18 Revised the symbol and model of the ADP5003.
+08/31/18 Added symbols and models for the LTC3309A and LTC3309B.
+08/31/18 Added symbols and models for the LTC3315A and LTC3315B.
+08/31/18 Added a symbol and model for the LTC3310S.
+08/31/18 Revised the models of the LTC3838-1 and LTC3838-2.
+08/31/18 Revised the model of the LTC3838.
+08/31/18 Revised the model of the LTM4642.
+08/31/18 Added a symbol and model for the LTC3130-1.
+08/31/18 Added a symbol and model for the LTM8055-1.
+08/16/18 Added a symbol and model for the LTM4671.
+08/16/18 Added a symbol and model for the LTM8071.
+08/16/18 Fixed a plumbing trouble when dragging a file to an LTspice invocation.
+08/16/18 Fixed the MRU right click menu.
+08/16/18 Improved the operation of atanh() in behavioral expressions.
+08/10/18 Revised the model of the LTC7862.
+08/08/18 Fixed an issued parsing "�" in the waveform expression compiler.
+08/08/18 Fixed an issued regarding opening a file off the MRU.
+08/08/18 Fixed an issued regarding an alternate, binary, symbol file format.
+08/08/18 Worked around a Windows Toolkit issue in Unlink.exe.
+08/08/18 Added a symbol and model for the ADP5003.
+08/08/18 Revised the model of the LTM4641.
+08/08/18 Added a symbol and model for the LTC2325-16.
+08/07/18 Added symbols and models for the ADM7160-1.8, ADM7160-2.5, and ADM7160-3.3.
+08/02/18 Fixed a number of typos in the help file graciously reported by Gil Buller.
+08/02/18 Revised the models of the ADP2360, ADP2360-3.3, and ADP2360-5.0.
+08/02/18 Revised the model of the LTC2966.
+08/02/18 Added a symbol and model for the LTM4644-1.
+08/02/18 Added a symbol and model for the LTC7815.
+08/02/18 Added symbols and models for the ADP150-1.8, ADP150-2.5, ADP150-2.6, ADP150-2.75, ADP150-2.8, ADP150-2.85, ADP150-3.0, ADP150-3.3, ADP151-1.1, ADP151-1.2, ADP151-1.5, ADP151-1.8, ADP151-2.5, ADP151-2.6, ADP151-2.75, ADP151-2.8, ADP151-2.85, ADP151-3.0, and ADP151-3.3.
+08/01/18 Revised the models of the ADP2441 and ADP2442.
+08/01/18 Corrected a typo in one of the error messages.
+08/01/18 Improved the error message of some K-statement syntax errors.
+08/01/18 Automatic drawing of inductor phasing dot for coupled inductors now works for inductors with names that don't start with the letter 'L'.
+08/01/18 Improved the scaling of gmin stepping conductivity with global circuit gmin.
+07/30/18 Revised the model of the LTC2955-1.
+07/30/18 Revised the model of the LT3964.
+07/30/18 Revised the models of the LT1997-2 and LT1997-3.
+07/30/18 Revised the models of the LT8650S, LT8653S, and LTC7810.
+07/20/18 Alleviated the potential for print preview to corrupt the application internal string data.
+07/19/18 Added a symbol and model for the LTC7862.
+07/19/18 Alleviated a potential race condition between client window screen updates.
+07/19/18 Culled some redraws in the waveform viewers.
+07/17/18 Replaced strtod() with a 64 bit-accurate version.
+07/17/18 Improved floating node error messages.
+07/17/18 Added a symbol and model for the LTC7840.
+07/17/18 Revised the model of the LTC3636.
+07/17/18 Trapped a crash mode regarding first order integration.
+07/16/18 Revised the model of the LTM8049.
+07/16/18 Revised the model of the LT3964.
+07/16/18 Behavioral sources will now find device currents for devices with names that start with the wrong letter.
+07/16/18 Mutual inductance statements now work with inductor names that don't start with the letter 'L'.
+07/16/18 Power factor reporting is better at finding voltage sources with names that don't start with the letter 'V'.
+07/13/18 Added symbols and models for the ADP5070 and ADP5071.
+07/11/18 Added symbols and models for the ADP5073, ADP5074, and ADP5075.
+07/11/18 Added a symbol and model for the LTC2325-14.
+07/10/18 Added symbols and models for the ADP1762, ADP1762-0.9, ADP1762-0.95, ADP1762-1.0, ADP1762-1.1, ADP1762-1.2, ADP1762-1.25, ADP1762-1.3, ADP1762-1.5, and the ADP1763.
+07/09/18 Added symbols and models for the ADA4522-2 and ADA4522-4.
+07/09/18 Revised the model of the ADA4625-1.
+07/09/18 Added a symbol and model for the LTC4284.
+07/09/18 Revised the model of the LTC1997-3.
+07/09/18 Added a symbol and model for the LT1997-2.
+07/09/18 Revised the model of the LTC3897.
+07/09/18 Added inductor data graciously supplied by Murata Manufacturing Co., Ltd
+07/09/18 Added symbols and models for the ADuM4121A, ADuM4121B, and ADuM4121C.
+07/09/18 Revised the model of the LT4351.
+07/09/18 Revised the model of the LTC7130.
+07/09/18 Revised the models of the LT8361 and LT8362.
+07/09/18 Revised the model of the LT8616.
+07/09/18 Added a symbol and model for the LTC3894.
+07/06/18 gfloat and gfarad are now limited by gmin.
+07/06/18 Improved the initial topology check to include error messages for dangling and/or cutsets of currents.
+07/03/18 Revised the model of the LTC3130.
+07/03/18 Revised the model of the LT8362.
+07/03/18 Revised the model of the LTC3119.
+07/03/18 Added a symbol and model for the LTC2325-12.
+07/03/18 Added a symbol and model for the LT3964.
+07/03/18 Corrected an error in bipolar Cjc and Cje temperature dependences.
+06/21/18 Added a symbol and model for the LTC3922-1.
+06/21/18 Revised the model of the ADA4522.
+06/21/18 Added a symbol and model for the ADA4530-1.
+06/21/18 Corrected an error in the hand-written lexer that breaks multiple expressions of the Add trace dialog into individually syntax checkable expressions.
+06/20/18 The GUI for opening files mentioned in the .lib editor now searches through the library search paths specified in the control panel.
+06/20/18 Added a symbol and model for the LTC7810.
+06/20/18 Alleviated a problem with CDC::TextOut() clipping long text lines to highly zoomed in sections of schematic.
+06/19/18 Revised the model of the LTM4700.
+06/18/18 Corrected some typos in the help documentation.
+06/18/18 The data trace plotting thread priority is now user adjustable on Tools=>Control Panel=>Operation pane.  It now defaults to medium instead of high.
+06/18/18 Added a symbol and model for the LT4295.
+06/18/18 Revised the model of the LT4351.
+06/15/18 Any real data vertical axis can now be plotted on a log scale.
+06/15/18 Real data log plot vertical axis are now labeled with the units.
+06/15/18 The waveform plotting thread priority is reduced to far below the interacting GUI thread priority.
+06/15/18 The simulation thread priority is now user adjustable.  It defaults to medium instead of high.
+06/15/18 The discrete database merge now does a better job of culling misfiled entries.
+06/15/18 Revised the model of the LTC3130.
+06/14/18 The symbol browser list column widths are now precisely set given the length of the names of the symbols.
+06/14/18 Improved the accuracy of highlighting the correct line in the textblock editor when you right click on a multi-line text block on the schematic.
+06/13/18 Revised the models of the LTC2323-12, LTC2323-14, and LTC2323-16.
+06/13/18 Revised the models of the LT8607, LT8608, LT8609, LT8609S, and LT8609A.
+06/13/18 Added a symbol and model for the LT8653S.
+06/13/18 Added a symbol and model for the LTC2311-16.
+06/12/18 Added a symbol and model for the LTM4680.
+06/12/18 Revised the model of the LTC3636.
+05/24/18 Added a symbol and model for the LT8708.
+05/24/18 Revised the model of the LT8711.
+05/23/18 Revised the model of the LT3795.
+05/23/18 Revised the symbols and models of the ADA4528-1 and ADA4528-2.
+05/23/18 The command line option, -FixUpSchematicFonts, was added to convert tiny schematic comment text or SPICE directives to the default font size.
+05/23/18 Added symbols and models for the ADP2138-0.8, ADP2138-1.0, ADP2138-1.2, ADP2138-1.5, ADP2138-1.8, ADP2138-2.5, ADP2138-2.8, ADP2138-3.0, and ADP2138-3.3.
+05/23/18 Added symbols and models for the ADP2139-0.8, ADP2139-1.0, ADP2139-1.2, ADP2139-1.5, ADP2139-1.8, ADP2139-2.5, ADP2139-2.8, ADP2139-3.0, and ADP2139-3.3.
+05/23/18 Added symbols and models for the ADP2109-1.0, ADP2109-1.1, ADP2109-1.2, ADP2109-1.3, ADP2109-1.5, ADP2109-1.8, ADP2109-1.82, ADP2109-2.3, ADP2109-2.5, ADP2109-3.0, and ADP2109-3.3.
+05/23/18 Added symbols and models for the ADP2108-1.0, ADP2108-1.1, ADP2108-1.2, ADP2108-1.3, ADP2108-1.5, ADP2108-1.8, ADP2108-1.82, ADP2108-2.3, ADP2108-2.5, ADP2108-3.0, and ADP2108-3.3.
+05/21/18 Added symbols and models for the ADP2118-ADJ, ADP2118-1.0, ADP2118-1.2, ADP2118-1.5, ADP2118-1.8, ADP2118-2.5, and ADP2118-3.3.
+05/21/18 Added symbols and models for the ADP2120-ADJ, ADP2120-1.0, ADP2120-1.2, ADP2120-1.5, ADP2120-1.8, ADP2120-2.5, and ADP2120-3.3.
+05/21/18 Fixed an issue with .tran analysis that started with a pseudo tran .op solution.
+05/18/18 The -FixUpSymbolFonts command line option has been extended to schematic symbol attribute window overrides.
+05/18/18 Improved the error message when the Windows previewer DLLs can't be updated.
+05/18/18 Revised the model of the LTC3623.
+05/18/18 Symbol attribute text font size is now selectable just like schematic text font size.  This might cause you a problem with very old symbols that you authored yourself in SwitcherCAD III(pre-LTspice IV or XVII) which did not properly initialize the font size field in the symbol file.  You can fix this problem en masse by (i) launching LTspice with the command line flag -FixUpSymbolFonts (ii) opening all your symbols (iii) close LTspice.  You will be prompted if you want to save the any symbol files that were modified.
+05/18/18 Improved the compression of memorized symbol data in the .dll that teaches Windows Explorer how to preview an LTspice schematic.
+05/18/18 The limit on the number files that can be opened in one command was increased eight fold.
+05/17/18 Non-electrical symbol text annotation font size can now be adjusted.
+05/16/18 The first .step dimension is now reordered to be increasing.
+05/15/18 Added symbols and models of the ADP2503-2.8, ADP2503-3.3, ADP2503-3.5, ADP2503-4.2, ADP2503-4.5, ADP2503-5.0, ADP2503-ADJ, ADP2504-2.8, ADP2504-3.3, ADP2504-3.5, ADP2504-4.2, ADP2504-4.5, ADP2504-5.0, and ADP2504-ADJ.
+05/15/18 Added symbols and models of the ADP2119-ADJ, ADP2119-1.0, ADP2119-1.2, ADP2119-1.5, ADP2119-1.8, ADP2119-2.5, and ADP2119-3.3.
+05/15/18 Added a symbol and model for the LTM4686-1.
+05/15/18 Revised the models of the LT8619 and LT8711.
+05/15/18 Revised the model of the LT1158.
+05/15/18 Added symbols and models for the LTC2311-12 and LTC2311-14.
+05/15/18 Revised the models of the LTC3895 and LTC3896.
+05/15/18 Revised the models of the LTC7000 and LTC7003.
+05/15/18 Fixed an error in the application of the LTC3721-1 jig circuit.
+05/14/18 Trapped a crash mode entailing copying large amounts of netname-translated text blocks.
+05/14/18 If a specific product can't be found on analog.com, the base name will now be checked.
+05/04/18 Added a symbol and model for the LT3752-2.
+05/04/18 Added symbols and models for the ADP2165, ADP2165-1.0, ADP2165-1.2, ADP2165-1.8, ADP2165-2.5, and ADP2165-3.3.
+05/04/18 Added symbols and models for the ADP2166, ADP2166-1.0, ADP2166-1.2, ADP2166-1.8, ADP2166-2.5, and ADP2166-3.3.
+05/03/18 VBIC terminal resistances can now be specified down to 1 milliohm.
+05/03/18 Symbol and Library search path editor right click menu is extended to include browse for directory and disabling user defined paths.
+05/03/18 Corrected the hint on one of the folder browsers.
+04/30/18 Revised the model of the LT8645S.
+04/27/18 Revised the models of the LT8390A and LT8391A.
+04/27/18 Added symbols and models for the LTC2064, LTC2067, LT6274, and LTC6419.
+04/27/18 Revised the models of the LT1236-5 and LT1236-10.
+04/27/18 Added a symbol and model for the LT6376.
+04/27/18 Added a symbol and model for the LTC2066.
+04/27/18 Added symbols and models for the LTM4626 and LTM4638.
+04/26/18 Added a symbol and model for the LTM8063.
+04/26/18 Revised the models of the LT8619 and LT8619-5.
+04/26/18 Added symbols and models for the LT8642S, LTC3882-1, LTM4686, and LTM8008.
+04/24/18 Corrected the behavior of SINE voltage and current sources when Ncycles is specified and revised the help to match.
+04/23/18 Trapped a crash mode regarding copying large blocks.
+04/13/18 Revised the model of the LT8650S.
+04/13/18 Revised the models of the LT8361, LT8362, LT8619, LT8619-5.
+04/12/18 Added symbols and models for the ADP2370-1.2, ADP2370-1.5, ADP2370-1.8, ADP2370-2.5, ADP2370-3.0, ADP2370-3.3, ADP2370-5.0, ADP2370-ADJ, ADP2371-1.2, ADP2371-1.8, ADP2371-3.3, and ADP2371-ADJ.
+04/12/18 Added symbols and models for the ADP2300, ADP2301, ADP2302 and ADP2303.
+04/09/18 Fixed an error in the behavioral expression complier.
+04/09/18 Added symbols and models for the LTC2323-12, LTC2323-14, and LTC2323-16.
+04/06/18 Revised model for the LTC7103.
+04/06/18 Added a symbol and model for the LTC8646S.
+04/06/18 Added symbols and models for the AD8418A, AD8220, AD8221, AD8222, AD8224, AD8226, AD8227, AD8421, AD8422, AD8429, AD8505, AD8506, AD8508, AD8565, AD8613, AD8617, AD8619, AD8657, AD8662, AD8664, AD8665, AD8666, AD8668, ADA4530, ADA4637, ADA4661-2, ADA4666-2, ADA4700-1, ADA4830, ADA4857, and ADA4860.
+04/06/18 Revised models for the ADP2386, ADP2387, ADP2389, and ADP2390.
+04/06/18 Added symbols and models for the ADP1612, ADP1613, ADP1614, ADP1614-1.3, and ADP1614-650.
+04/06/18 Added symbols and models for the ADP2164, ADP2164-1.0, ADP2164-1.2, ADP2164-1.5, ADP2164-1.8, ADP2164-2.5, and ADP2164-3.3.
+04/06/18 Added a symbol and model for the LTC3246.
+04/06/18 Revised the help file.
+04/06/18 Revised models for the LTC7000 and LTC7000-1.
+04/06/18 Revised models for the LTC2953-1 and LTC2953-2.
+04/04/18 Added symbols and models for the ADP2360-3.3 and ADP2360-5.0.
+04/02/18 Revised models for the ADP5050, ADP5051, ADP5052, ADP5053, and ADP5054.
+04/02/18 Revised the model of the LT3912.
+04/02/18 Revised the model of the LT8672.
+04/02/18 Revised the model of the LTC3130.
+04/02/18 Revised the models of the LT8609 and LT8609A.
+04/02/18 Added a symbol and model for the LTM8005.
+04/02/18 Added a symbol and model for the LT3045-1.
+04/02/18 Revised the models of the LTC1992, LTC1992-1, LTC1992-2, LTC1992-5, and LTC1992-10.
+03/15/18 Revised the model of the LT3932.
+03/15/18 Added a symbol and model for the LT8361.
+03/14/18 Added symbols and models for the ADP1621, ADP5014, ADP5050, ADP5051, ADP5052, ADP5053, and ADP5054.
+03/14/18 Added a symbol and model for the LTC3815.
+03/14/18 Removed a limitation of the .step command editor.
+03/12/18 Revised the model of the LT3952.
+03/12/18 Revised the model of the LT1166.
+03/12/18 Revised the model of the LT3932.
+03/12/18 Revised the model of the LTM4700.
+03/12/18 Added a symbol and model for the ADP2360.
+03/12/18 Corrected an error in the VDMOS small signal behavior.
+03/06/18 Added symbols and models for the ADP2389, ADP2390, ADP2441 and ADP2442.
+03/06/18 Revised the model of the LTC3779.
+03/06/18 Revised the model of the LT8711.
+03/05/18 Improved the operation of the caret in some of the text editors.
+02/24/18 Revised the model of the LTC7851-1.
+02/23/18 Revised the model of the LTC7851.
+02/23/18 Revised the model of the LT4275A.
+02/23/18 Added a symbol and model for the LT4294.
+02/23/18 Added symbols and models for the AD549, AD712, AD713, AD746, AD795, AD820, AD822, AD823, AD8235, AD8236, AD823a, AD824, AD8634, AD8682, AD8684, ADA4610, ADA4622, ADA4625, ADA4627, OP1177, OP2177, OP284, OP292, and OP4177.
+02/23/18 Improved the database performance for diodes and transistors.
+02/20/18 Added a symbol and model for the LTM4645.
+02/16/18 Fixed a problem in Assura LVS netlist format.
+02/16/18 Added symbols and models for the LT8619 and LT8619-5.
+02/16/18 Added a symbol and model for the LTM4661.
+02/16/18 Revised the model of the LT3109.
+02/16/18 Revised the model of the LTC2966.
+02/16/18 Revised the model of the LTC3124.
+02/16/18 Added a symbol and model for the LTM4653.
+02/14/18 Improved the search dialog behavior.
+02/14/18 Modified the method of trapping Re from going negative in incorrect bjt models.
+02/13/18 Revised the models of the LT8362 and LT8364.
+02/13/18 Added a symbol and model for the LT8711.
+02/13/18 Added a symbol and model for the LTC3874-1.
+02/13/18 Revised the model of the LT4276A.
+02/13/18 Revised the model of the LT3909.
+02/02/18 Added a symbol and model for the LTC7821.
+02/02/18 Fixed a problem in Dracula and Assura LVS netlist generation.
+02/02/18 Added symbols and models for the ADP2386 and ADP2387.
+02/02/18 Revised the model of the ADP2384.
+01/29/18 Added a symbol and model for the LTC2966.
+01/29/18 Revised the models of the LTC3895 and LTC3896.
+01/29/18 Revised the model of the LT6275.
+01/25/18 Added some diode models from Rohm.
+01/25/18 Revised the model of the LTC4367.
+01/25/18 Removed some objectionable behavior in MOS2.
+01/24/18 Implemented and documented two environmental variables: CAPITAL_KILO and PASTE_OMEGA.
+01/22/18 Revised the model of the LTC3406B-1.2.
+01/22/18 Revised the model of the LTC7103.
+01/19/18 Added a symbol and model for the LT8391A.
+01/17/18 Added symbols and models for the LT6657-1.25, LT6657-3, LT6657-4.096, and LT6657-5.
+01/17/18 Revised the model of the LTC3109.
+01/17/18 Added a symbol and model for the LTC3870-1.
+01/17/18 Added a symbol and model for the LTC7851 and LTC7851-1.
+01/10/18 Revised the model of the LTC3106.
+01/10/18 Revised the model of the LTC5505-1 and LTC5505-2.
+01/09/18 Added a symbol and model for the LTC5532.
+01/08/18 Revised the model of the LTC3623.
+01/08/18 Added symbols and models for the LT6658-1.2, LT6658-1.8, LT6658-2.5, LT6658-3, LT6658-3.3, and LT6658-5.
+01/08/18 Revised the models of the LT3042 and LT3045.
+01/08/18 Added a symbol and model for the LTC3887-1.
+01/08/18 Revised the model of the LTC3636.
+01/07/18 Added a menu command to view this change log file.
+01/03/18 Improved the 3rd party encryption algorithm.
+01/02/18 Updated the copyright and logo.
+01/02/18 Revised the model of the LT8650S.
+01/02/18 Corrected an error in the help file index.
+01/02/18 Fixed a problem generating 3rd party encrypted files.
+12/20/17 Added a symbol and model for the LT6275.
+12/20/17 Revised the models of the LTC4368-1 and LTC4368-2.
+12/20/17 Revised the model of the LT3065.
+12/20/17 Revised the model of the LTC4365.
+12/20/17 Revised the model of the LTC4367.
+12/20/17 Added a symbol and model for the LTM4648.
+12/20/17 Trapped a crash mode in generating 3rd parted encrypted models.
+12/18/17 Revised the model of the LT3762.
+12/18/17 Revised the model of the LT3761 and LT3761A.
+12/11/17 Implemented command line options -alt and -norm to set the solver.
+12/11/17 Revised the model of the LTC3130.
+12/11/17 Added a symbol and model for the LT8364.
+12/11/17 Added a symbol and model for the LTC3623.
+12/11/17 Added a symbol and model for the LTC7124.
+12/11/17 Revised the model of the LTC3126.
+11/07/17 Added a symbol and model for the LT8643S.
+11/07/17 Revised the model of the LTC6241.
+11/07/17 Revised the model of the LTC3108-1.
+11/07/17 Added a symbol and model for the LTM4622A.
+11/07/17 Added a symbol and model for the LT3932.
+11/02/17 Revised the model of the LT3762.
+11/02/17 Revised the model of the AD8691.
+11/02/17 Revised the models of the LTC6362 and LTC6363.
+11/02/17 Revised the models of the LTC6992-1, LTC6992-2, LTC6992-3, and LTC6992-4.
+11/02/17 Revised the models of the LTC4360-1 and LTC4360-2.
+11/02/17 Revised the model of the LT8672.
+11/02/17 Revised the model of the LTC3126.
+11/02/17 Revised the model of the LTC3871.
+10/24/17 Revised the model of the LT8672.
+10/20/17 Added a symbol and model for the AD8452.
+10/20/17 Revised the model of the ADA4522.
+10/19/17 Revised the model of the LTC3779.
+10/19/17 Added a symbol and model for the LTC7130.
+10/19/17 Revised the model of the LT3761A.
+10/19/17 Added a symbol and model for the LTM8065.
+10/19/17 Added a symbol and model for the LT3762.
+10/17/17 Trapped a crash mode that could require shutdown via Windows Task Manager.
+10/16/17 Revised the model of the LTC3108.
+10/16/17 Revised the model of the LTC2952.
+10/16/17 Added a symbol and model for the LTC4418.
+10/16/17 Revised the model of the LTC4417.
+10/16/17 Revised the model of the LTC4214-1.
+10/16/17 Added a symbol and model for the LTM4662.
+10/16/17 Added a symbol and model for the LTC3643.
+10/10/17 An attempt to restart as "Run as Administrator" is made if necessary for a Sync Release.
+10/10/17 Added a symbol and model for the LTC3779.
+10/10/17 Added a command line switch to invoke a sync.
+10/10/17 Revised the model of the LT8614.
+10/10/17 Revised the model of the LT8650S.
+10/10/17 Revised the model of the LTM8055.
+10/03/17 Added a symbol and model for the LTC7150S.
+10/02/17 Revised the model of the LTC3636.
+10/02/17 Added a symbol and model for the LTM4662.
+10/02/17 Added a symbol and model for the LTC3118.
+10/02/17 Trapped a crash mode regarding behavioral sources that were missing the expression for I or V.
+09/22/17 Revised the model of the LT8606.
+09/22/17 Added a symbol and model for the LTC3636.
+09/21/17 Revised the model of the LT8672.
+09/21/17 Revised the model of the LTC7813.
+09/21/17 Revised the model of the LT8641.
+09/21/17 Revised the model of the LT3895.
+09/21/17 Revised the modelscd of the LT8609, LT8609A, and LT8609S.
+09/21/17 Added a symbol and model for the LTC7801.
+09/21/17 Revised the model of the LTM8073.
+09/14/17 Adjusted some pseudo methods.
+09/14/17 Circumvented another bug in MFC controls when operating on a high DPI monitor.
+09/11/17 Sync Release no longer updates the timestamp of the C:\Users\<account>\Documents files if not modified.
+09/11/17 Added a symbol and model for the LTC3119.
+09/11/17 Revised the model of the LT8362.
+09/11/17 Added a symbol and model for the LTM8073.
+09/11/17 Revised the model of the LTC2952.
+09/11/17 Fixed a problem working with longer file and path names.
+09/11/17 Added bipolar and diode models from Rohm.
+09/11/17 Added some inductors from Coilcraft.
+09/07/17 Revised the model of the LTC3891.
+09/07/17 Added a symbol and model for the LTC7800.
+09/06/17 Revised the model of the LT3763.
+09/05/17 Added a symbol and model for the LTM4651.
+09/05/17 Revised the models of the LTC6362 and LTC6363.
+09/05/17 Circumvented a bug in MFC controls when operating on a high DPI monitor.
+09/01/17 Removed the W�rth capacitors from the component database.
+09/01/17 Revised the model of the LT8610AC.
+09/01/17 Revised the model of the LT8672.
+09/01/17 Added a symbol and model for the LTC3559 and LTC3559-1.
+09/01/17 Revised the model of the LTM8064.
+09/01/17 Revised the model of the LT3795.
+09/01/17 Added a symbol and model for the LTC7103.
+08/18/17 Added a symbol and model for the LT8650S.
+08/18/17 Revised the W�rth component database.
+08/17/17 Revised the model of the LT8471.
+08/16/17 The Windows helper .dll's are now digitally signed.
+08/16/17 Added a symbol and model for the ADP2443.
+08/11/17 Increased the size of the Field Update Utility status readout to allow longer paths to be displayed.
+08/10/17 Unconnected pins of BUS'ed devices no longer default to being connected to the same floating node.
+08/10/17 Corrected the prose of the error message reporting parallel voltage sources.
+08/08/17 Added a symbol and model for the LT8362.
+08/08/17 Revised the model of the LTC2965.
+08/07/17 Revised the model of the LT8640S.
+08/07/17 Added a symbol and model for the LTC3886.
+08/07/17 Corrected two typos in the dialog labels.
+07/27/17 Revised the models of the LT1965 series.
+07/27/17 Revised the models of the LT1121, LT1121-3.3, and LT1121-5.
+07/27/17 Revised the jigs of the LTC1992-1, LTC1992-2, LTC1992-5, and LTC1992-10.
+07/27/17 Revised the models of the LT8304 and LT8304-1.
+07/27/17 Added a symbol and model for the LTC2965.
+07/27/17 Added a symbol and model for the LTC7004.
+07/27/17 Added a symbol and model for the LTC7003.
+07/27/17 Added a symbol and model for the LT8645S.
+07/27/17 Improved rendering of the MDI tabs.
+07/27/17 Trapped a memory leak.
+07/22/17 Increased the stack size of some internal compilers to handle highly nested ternary operations.
+07/22/17 Modified nested ternary operator evaluation.
+07/20/17 Revised the model of the LT1784.
+07/20/17 Added a symbol and model for the LTC3589.
+07/20/17 Revised the model of the LT8608.
+07/20/17 Added a symbol and model for the LT8607.
+07/19/17 Corrected a status bar hint.
+07/18/17 Revised the model of the LT1782.
+07/18/17 Revised the models of the LT1490A, LT1636, LT1637, LT1638, and LTC2063.
+07/18/17 Revised the models of the LT8640, LT8640S, LTC3884, LT3652, and LTC7813.
+07/18/17 Revised the model of the LTC7813.
+07/18/17 Revised the model of the LT3652.
+07/18/17 Revised the model of the LTC3884.
+07/18/17 Revised the models of the LT8640 and LT8640S.
+07/18/17 Revised the model of the LT8608.
+07/18/17 Added a symbol and model for the LTC7000.
+06/23/17 Revised the models of the LT7813.
+06/22/17 Resolved an internal error that could occur in the arbitary flux inductor.
+06/22/17 Added a symbol and model for the LTM4650A.
+06/22/17 Revised the models of the LT8640, LT8640S, and LTC3884.
+06/22/17 Added a symbol and model for the LTM4631.
+06/22/17 Added a symbol and model for the LT8606.
+06/22/17 Revised the models of the LTM8054, LTM8055, and LTM8056.
+06/22/17 Revised the model of LTC7001.
+06/19/17 Revised the model of LT8641.
+06/19/17 Revised the models of the LTC4380-1, LTC4380-2, LTC4380-3, and LTC4380-4.
+06/19/17 Added a symbol and model for the LTC2063.
+06/19/17 Added symbols and models for the LTC6258, LTC6259, and LTC6260.
+06/19/17 Added a symbol and model for the LTC7001.
+06/19/17 Revised the ISO16750-2 library.
+06/19/17 Fixed a problem evaluating user-defined functions.
+06/01/17 Revised the model of the LTM4676A.
+05/31/17 Revised the model of the LT8315.
+05/31/17 Revised the model of the LTC2955-1.
+05/31/17 Added a symbol and model for the LTC3106.
+05/26/17 ".option autognd=1" now cooperates fully with initial conditions.
+05/25/17 Prevented the circuit compiler from eliminating the entire circuit even if it is correctly possible.
+05/25/17 Revised the LT8315 jig.
+05/25/17 Improved the handling of initial conditions when combined with some new circuit compiling optimizations.
+05/25/17 Trapped a crash mode regarding circuits with no nodes.
+05/21/17 Revised the model of the LTC7820.
+05/21/17 Revised the model of the LTM4647.
+05/21/17 Revised the models of the LTC4368-1 and LTC4368-2.
+05/21/17 Revised the model of the LT6018.
+05/21/17 Added symbols and models for the LT6262 and LT6263.
+05/21/17 Added a symbol and model for the LT1997-3.
+05/21/17 Revised the model of the LTC6409.
+05/21/17 Revised the model of the LTC6268-10.
+05/21/17 Revised the model of the LTC6087.
+05/21/17 Improved dataflag drag editing.
+05/21/17 Corrected an error in the dataflag operation.
+05/05/17 Added symbol and model for the LTC7820.
+05/04/17 Revised the models of the LT1965, LT1965-1.5, LT1965-1.8, LT1965-2.5, LT1965-3.3, and LT1965B.
+05/03/17 Corrected the pinout of the ADA4841 symbol.
+05/03/17 Revised the model of the LTC2924.
+05/03/17 Improved handling of large lookup tables.
+05/02/17 It's easier to comment out analysis commands.
+05/02/17 Added symbol and model for the LTC3126.
+05/02/17 Revised the models of the LT1461-2.5, LT1461-3.3, LT1461-3, LT1461-4.096, and LT1461-5.
+05/02/17 It's now possible to navigated to the product landing web page of the ADxxxx symbols.
+05/02/17 The description of the ADxxxx symbols is displayed on mouse over.
+05/02/17 The jigs for the ADxxxx symbols and models are now accessible from the symbol browser.
+05/02/17 Trapped a crash mode regarding .op analysis.
+05/01/17 Added symbols and models for the AD795, AD8031, AD8034, AD8038, AD8039, AD8047, AD8065, AD8066, AD8067, AD8091, AD8092, AD811, AD823, AD823A, AD8510, AD8512, AD8513, AD8515, AD8538, AD8539, AD8541, AD8542, AD8544, AD8546, AD8548, AD8551, AD8552, AD8554, AD8571, AD8572, AD8574, AD8601, AD8602, AD8604, AD8605, AD8606, AD8608, AD8614, AD8618, AD8624, AD8628, AD8629, AD8630, AD8641, AD8642, AD8643, AD8648, AD8663, AD8667, AD8669, AD8671, AD8672, AD8674, AD8675, AD8691, ADA4000, ADA4051, ADA4077-2, ADA4091, ADA4092, ADA4096, ADA4177, ADA4500, ADA4505, ADA4522, ADA4528, ADA4665, ADA4805, ADA4807, ADA4841, ADA4891, ADA4895, ADA4896, ADTL082, OP113, OP191, OP213, OP291, OP296, OP37, OP413, OP491, OP492, OP495, OP727, OP747, and OP777.
+05/01/17 Improved noise voltage density cross probing.
+05/01/17 Fixed a problem reading UNICODE symbol files.
+04/27/17 Added symbol and model for the LTM4647.
+04/27/17 Revised the models of the LT8640 and LT8640S.
+04/27/17 Revised the model of the LTC2924.
+04/24/17 Revised the model of the LT8315.
+04/24/17 Revised the models of the LTM8054, LTM8055, and LTM8056.
+04/24/17 Added symbol and model for the LT8672.
+04/24/17 Revised the LT8603 model.
+04/23/17 The .log file is now converted to ASCII if possible after running a simulation in batch mode.
+04/23/17 Trapped a crash mode regarding stipulating a bogus temp directory during Sync Release.
+04/14/17 ".options referencenode=<node name> now instructs LTspice which node to use as the internal frame of reference.
+04/14/17 ".option autognd=1" now allows LTspice to use a different node than "0" as the internal frame of reference.  The output is still always referred to node "0".
+04/13/17 Removed an inconsistency in independent source behavior in a pseudo tran op point solution.
+04/13/17 Revised the models of the LT1963, LT1963-1.5, LT1963-1.8, LT1963-2.5 and LT1963-3.3.
+04/13/17 Revised the models of the LT1764, LT1764-1.5, LT1764-1.8, LT1764-2.5, and LT1764-3.3.
+04/13/17 Revised the model of the LTC4282.
+04/13/17 Added symbol and model for the LT8315.
+04/13/17 .machine commands are no longer culled from hierarchical schematics.
+04/12/17 Trapped a crash mode that could occur in schematic undo operations.
+04/04/17 Trapped a crash mode that could occur on closing the application.
+04/04/17 Improved .machine .rule and .output parsing.
+04/04/17 Added symbol and model for the LT8640S.
+04/04/17 Added symbol and model for the LT8304-1.
+04/04/17 Revised the model of the LT8580.
+04/04/17 Revised the models of the LTC6252 and LTC6253.
+04/04/17 Revised the models of the LTC6246 and LTC6247.
+04/04/17 Revised the models of the LT1812 and LT1813.
+04/04/17 Revised the models of the LTC4364-1 and LTC4364-2.
+04/04/17 Added symbols and models for the LTC6253-7 and LT6658.
+04/04/17 Added ISO16750-2 and ISO7637-2 automotive transient examples.
+03/16/17 Added a symbol and model for the LTM4643.
+03/16/17 Added a symbol and model for the LTM4636 and LTM4636-1.
+03/16/17 Revised the model of the LT8609.
+03/14/17 Fixed a problem remembering which schematic font to use.
+03/10/17 Fixed a problem pasting into the capacitor database editor.
+03/10/17 Trapped a crash mode relating to very long data trace names.
+03/10/17 Fixed a number of plotting issues related to plotting a subset of all steps.
+03/09/17 Trapped a crash mode relating to very small component database files.
+03/09/17 Revised the model of the LTM8064.
+03/09/17 "W�rth Elektronik" is now spelled uniformly between the inductor, bead, and capacitor databases.
+03/09/17 Ctrl-A now selects everything in the component database editors.
+03/09/17 Corrected some issues when plotting selected steps of a simulation with Mark Data points selected.
+03/09/17 On completion of a simulation, the .log file is converted from UNICODE to ASCII if possible to represent in ASCII.
+03/07/17 Improved the ability of the netlist print routines to compute the number of total pages to print.
+03/07/17 Improved the performance of the handler .dll's for Windows Explorer.
+03/07/17 Improved memory storage performance of the text editor.
+03/07/17 Made the Print Monochrome menu item more uniformly accessible and effective.
+03/07/17 Printing syntax colorized netlists is now supported.
+03/06/17 Alleviated some assertion faults.
+03/05/17 Checkable menu items are now indicated as unchecked if unchecked.
+03/05/17 Corrected an error dumping an .emf file of waveform data.
+03/05/17 Immediate feedback is now given when changing toolbar size or MDI background.
+03/05/17 Fixed some menu drawing problems.
+03/04/17 Fixed a problem where a stale version of the MRU list could be displayed.
+03/03/17 Revised the model of the LT3922.
+03/03/17 The blank MDI background choice has been replaced with a drawing of Aristarchus' sun and moon size and distance argument.
+03/03/17 The LTspice XVII MDI background choice has been replaced with an X-ray image of the Antikythera Mechanism.
+03/03/17 The menus are now drawn a bit more compact.
+03/02/17 Added a symbol and model for the LTC2642-12.
+03/02/17 Revised the models of the LTC2642-14 and LTC2642-16.
+03/02/17 Updated the W�rth Elektronik capacitor library.
+03/02/17 The new SPICE syntax-composing GUI editors are now available when editing a netlist.
+03/02/17 Improved the consistency of keyboard short cuts between floated and non-floated windows.
+02/24/17 Added a symbol and model for the LT8390A
+02/24/17 Revised the model of the LT8390.
+02/24/17 Revised the model of the LT8613.
+02/24/17 Revised the model of the LTC2952.
+02/23/17 Added a symbol and model for the LTM4678.
+02/23/17 Added a symbol and model for the LTC3884.
+02/19/17 Extended the handling of legacy poly() syntax to allow parameter use in subcircuits.
+02/19/17 Increased the size of minimized window icons.
+02/19/17 Improved and added several menu item icons.
+02/19/17 Extended the right click menu for floated windows.
+02/19/17 Fixed cut/copy/paste in floated text windows.
+02/19/17 Fixed an error parsing some BSIM models in the Alternate Solver.
+02/19/17 Improved text drawing speed in the netlist editor.
+02/18/17 Improved the rendering of the most recently used file list.
+02/18/17 Added some icons in the menus.
+02/17/17 Extended the functionality of the most recently used file list.
+02/12/17 There's a right click menu for the most recently used files that allows removal from list.
+02/10/17 Revised the model of the LT3744.
+02/09/17 There's now an option to use larger toolbar icons in the Tools=>Control Panel=>Operation pane.
+02/07/17 Improved sync release operation on old computer hardware.
+02/07/17 Improved operation on old computer hardware.
+02/07/17 Improved the installation program's tolerance to missing registry entries.
+02/06/17 Revised the models of the LT8630 and LT8631.
+02/06/17 Added a symbol and model for the LT3045.
+02/06/17 LTspice now allows a maximized window on restart.
+02/06/17 Implemented a graphics performance optimization.
+02/03/17 Revised the model of the LT3042.
+02/03/17 Revised the model of the LT8613.
+02/03/17 Revised the model of the LTC2955-1.
+02/03/17 Revised the models of the LT3460 and LT3460-1.
+02/03/17 Revised the model of the LT3745.
+02/03/17 Revised the model of the LT3744.
+02/02/17 R800 window forward to back utility is only available now when the command line switch -. is supplied.
+02/01/17 Added a symbol and model for the LT8609B.
+01/27/17 Revised the model of the LT6018.
+01/27/17 Added a symbol and model for the LTC4420.
+01/27/17 Added a symbol and model for the LTC6261.
+01/27/17 Revised the models of the LT1789-1 and LT1789-10.
+01/27/17 The screen button on a Logitech R800 presenter will now bring the application to the front or back of the windows.
+01/27/17 Resolved accepting both the UNICODE and the Microsoft OEM versions of lower case Greek mu as the same metric multiplier.
+01/26/17 Added a symbol and model for the LT8630.
+01/26/17 Added a symbol and model for the LTC3130.
+01/26/17 Revised the model of the LTC3896.
+01/26/17 Revised the models of the LT8640 and LT8641.
+01/26/17 Revised the models of the LT8608, LT8609, LT8609A, and LT8609S.
+01/26/17 Revised the model of the LT8610.
+01/26/17 Revised the model of the LTC2955-1.
+01/25/17 Fixed and error regarding parsing some Microsoft OEM characters in UNICODE.
+01/25/17 Schematic file EMF images are now stored in vector commands.
+01/13/17 Revised the model of the LT8631.
+01/13/17 Revised the symbol of the LT2179A.
+01/13/17 Revised the font size used in the jig files.
+01/13/17 Fixed a problem in waveform writing that were .step'ed.
+01/13/17 Improved differential cross probing of a .op solution with .op data labels.
+01/13/17 Fixed a crash mode regarding differential cross probing.
+01/12/17 Improved probing of a .op solution with .op data labels via cross probing.
+01/12/17 Improved the operation when attempting to close a write protected modified schematic.
+01/11/17 Corrected a problem expanding IGBT's in subcircuits.
+01/10/17 Fixed some issues with the Sync Release features that showed up on slow machines.
+01/09/17 Trapped a crash mode in the alternate solver.
+01/09/17 If the string "ADI" is placed as a text object on a symbol, the Analog Devices Inc. logo is rendered in blue.  This logo is a trademark of Analog Devices Inc.
+01/06/17 Added a symbol and model for the LT8705A.
+01/06/17 Added a symbol and model for the LT3745.
+01/06/17 Corrected an error in the help file.
+01/06/17 Revised case handling for letters other than A-Z.
+01/06/17 Added a symbol and model for the LT8609S.
+01/05/17 Added an example jig for the LT3896.
+01/05/17 Added a symbol and model for the LT3922.
+01/05/17 SPICE netlists are now stored as ASCII instead of UNICODE if possible.
+01/05/17 The number of FFT points editor is now displayed without interference from the list of data traces.
+01/05/17 The symbol file name editor is now resized with the general component attribute editor.
+01/05/17 Flag anchors are shown when placing even if "Marked unconnected pins" is not checked.
+01/05/17 Improved scrolling to highlight line of the schematic text editor.
+01/05/17 Improved operation of mirror and rotate when pasting between schematics.
+12/15/16 Revised the models of the LT4320 and LT4320-1.
+12/15/16 Revised the model of the LT1012.
+12/15/16 Revised the model of the LTC4282.
+12/15/16 Added a symbol and model for the LTC3896.
+12/15/16 Revised the model of the LTC3895.
+12/14/16 Added a symbol and model for the LTC7813.
+12/08/16 Revised the model of the LTM8053.
+12/08/16 Added a symbol and model for the LT8391.
+12/08/16 Revised the model of the LT4275A.
+12/06/16 Trapped a crash mode regarding initial plotting and resizing on computers with slow graphics processing.
+12/06/16 Trapped a singularity in the diode flicker noise for unrealistic KF values.
+11/17/16 Revised the models of the LTC4367 and LTC4367-1.
+11/17/16 Added a symbol and model for the LTC4419.
+11/17/16 Added symbols and models for the LTC4368-1 and LTC4368-2.
+11/17/16 Increased thread support to 20 threads for the i7-6950X.
+11/17/16 Traped a crash mode regarding a thread race condition.
+11/17/16 Traped a crash mode regarding the general attribute editor.
+11/04/15 Fixed some problems with displaying .step'ed data.
+10/31/16 Added symbols and models for the LT6656-1.25, LT6656-2.048, LT6656-2.5, LT6656-3.3, LT6656-3, LT6656-4.096, and LT6656-5.
+10/31/16 Fixed an error in generating 3rd party encrypted files.
+10/31/16 Added a symbol and model for the LTM8049.
+10/31/16 Revised the model of the LTC3895.
+10/31/16 Revised the model of the LT8390.
+10/14/16 Added a symbol and model for the LTC7812.
+10/13/16 Added a symbol and model for the LTC3895.
+10/10/16 Increased the size of the inductor, capacitor, and bead database.
+10/05/16 Revised the model of the LT8390.
+10/04/16 Added a symbol and model for the LTC5507.
+09/29/16 Added a symbol and model for the LT6018.
+09/29/16 Revised the models of the LTC2912-1, LTC2912-2, and LTC2912-3.
+09/29/16 Revised the models of the LTC6994-1 and LTC6994-2.
+09/28/16 Added a symbol and model for the LT8390.
+09/28/16 Added a symbol and model for the LTC3107.
+09/07/16 Revised SOAtherm-HeatSink.lib.
+05/09/16 Initial release.  Hanoi, Vietnam.

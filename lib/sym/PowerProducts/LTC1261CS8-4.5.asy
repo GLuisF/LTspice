@@ -13,7 +13,7 @@ SYMATTR Value LTC1261CS8-4.5
 SYMATTR Prefix X
 SYMATTR SpiceModel LTC1261CS8-4.5.sub
 SYMATTR Value2 LTC1261CS8-4.5
-SYMATTR Description Switched Capacitor Regulated Voltage Inverter, Fixed 4.5V Output
+SYMATTR Description Switched Capacitor Regulated Voltage Inverter, Fixed 4V Output
 PIN -144 -96 LEFT 8
 PINATTR PinName Vcc
 PINATTR SpiceOrder 1

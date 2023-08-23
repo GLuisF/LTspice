@@ -15,7 +15,7 @@ WINDOW 0 19 43 Left 2
 WINDOW 3 19 93 Left 2
 SYMATTR Value LT1028
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1028.lib
 SYMATTR Value2 LT1028
 SYMATTR Description Ultra-Low Noise Precision High Speed Operational Amplifier
 PIN -32 80 NONE 0

@@ -12,7 +12,7 @@ Rz1    102    1020    Rideal    1e-6
 Rz2    103    1030    Rideal    1e-6
 Ibias    1020    1030    dc    0.33e-3
 DzPS    98    1020    diode
-Iquies    1020    98    dc    2.97e-3
+Iquies    1020    98    dc    1.269e-3
 S1    98    1030    106    113    Switch
 R1    1020    99    Rideal    1e7
 R2    99    1030    Rideal    1e7

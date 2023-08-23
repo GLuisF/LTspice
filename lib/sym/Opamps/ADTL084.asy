@@ -15,8 +15,8 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value ADTL084
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
-SYMATTR Value2 ADTL082
+SYMATTR SpiceModel ADTL084.lib
+SYMATTR Value2 ADTL084
 SYMATTR Description Quad Low Cost JFET Input Operational Amplifier
 PIN -32 80 NONE 0
 PINATTR PinName In+

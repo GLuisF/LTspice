@@ -21,7 +21,7 @@ TEXT 33 -41 Left 1 PS1
 TEXT 32 24 Left 1 PS2
 WINDOW 0 0 -70 Bottom 2
 WINDOW 38 0 -60 Center 1
-SYMATTR Description WE-FLEX HV Flexible Transformer for SMPS (higher insulation voltage) \nSingle Output model - Configure windings as one input and one output for fast simulation \nThe 6 identical windings can be connected in many configurations to produce the desired inductance, dc resistance and turns ratio. \nFor configuration instructions, go to www.we-online.com/ltspice-flex or find in the LTspice folder \lib\ sym\ Contrib\ Wurth\ PowerMagnetics\ Transformers\ DC-DC\ WE-FLEX\ .\nwww.we-online.com/catalog/WE-FLEXHV \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-FLEX-HV.lib.
+SYMATTR Description WE-FLEX HV Flexible Transformer for SMPS (higher insulation voltage) \nSingle Output model - Configure windings as one input and one output for fast simulation \nThe 6 identical windings can be connected in many configurations to produce the desired inductance, dc resistance and turns ratio. \nFor configuration instructions, go to www.we-online.com/ug001 or find in the LTspice folder \lib\ sym\ Contrib\ Wurth\ PowerMagnetics\ Transformers\ DC-DC\ WE-FLEX\ .\nwww.we-online.com/en/components/products/WE-FLEXHV \n\nPlease note disclaimer in \lib\sub\Contrib\Wurth\WE-FLEX-HV.lib.
 SYMATTR SpiceModel WE-FLEX-HV_ER11-5_749196108
 SYMATTR Prefix X
 SYMATTR ModelFile Contrib/Wurth/WE-FLEX-HV.lib

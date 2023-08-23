@@ -32,7 +32,7 @@ WINDOW 0 20 -44 Left 2
 WINDOW 3 40 48 Left 2
 SYMATTR Value AD8235
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel AD8235.lib
 SYMATTR Value2 AD8235
 SYMATTR Description µPower Precision Instrumentation Amplifier
 PIN -64 48 NONE 0

@@ -12,7 +12,6 @@ WINDOW 39 3 74 Center 1
 SYMATTR Value AD5681R
 SYMATTR SpiceLine Gain=2
 SYMATTR Prefix X
-SYMATTR SpiceModel AD5681R.sub
 SYMATTR Value2 AD5681R
 SYMATTR Description 16Bit nanoDAC+ (one channel, output stage modeled)
 SYMATTR ModelFile AD5681R.sub

@@ -8,7 +8,7 @@ ARC Normal 16 8 32 -8 32 0 19 0
 ARC Normal -16 8 0 -8 0 0 -13 0
 WINDOW 38 2 26 Center 2
 WINDOW 0 -1 -27 Center 2
-SYMATTR Description WE-TCI Thinfilm Chip Inductor \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-TCI\n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-TCI.lib.
+SYMATTR Description WE-TCI Thinfilm Chip Inductor \nAfter inserting, right-click on the symbol to select the part number. \nwww.we-online.com/catalog/WE-TCI \n\nPlease note disclaimer in lib/sub/Contrib/Wurth/WE-TCI.lib.
 SYMATTR SpiceModel 0201_744900010_1n
 SYMATTR Prefix x
 SYMATTR InstName L

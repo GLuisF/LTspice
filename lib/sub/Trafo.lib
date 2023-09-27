@@ -11,7 +11,7 @@ L2 L2A L2B {LS} Rser={RS}
 L3 L3A L3B {LP} Rser={RP}
 L4 L4A L4B {LS} Rser={RS}
 K1 L1 L2 L3 L4 {M}
-.param LP=21.5 LS=720m RP=880 RS=42 M=1
+.param LP=21.5 LS=900m RP=880 RS=42 M=1
 .ends MTE-3/7
 
 * Power: 3VA
@@ -26,5 +26,5 @@ L2 L2A L2B {LS} Rser={RS}
 L3 L3A L3B {LP} Rser={RP}
 L4 L4A L4B {LS} Rser={RS}
 K1 L1 L2 L3 L4 {M}
-.param LP=21.5 LS=660m RP=880 RS=17 M=1
+.param LP=21.5 LS=390m RP=880 RS=17 M=1
 .ends MTE-3/5

@@ -9,21 +9,19 @@ LINE Normal 0 44 16 20
 LINE Normal 16 64 16 44
 LINE Normal 16 20 16 0
 LINE Normal -16 32 8 32
-WINDOW 0 24 64 Left 0
-WINDOW 3 24 -8 Left 0
-
+WINDOW 0 32 0 Left 2
+WINDOW 3 32 64 Left 2
 SYMATTR Value TL431A
 SYMATTR Prefix X
 SYMATTR Description TL431A 2.5V shunt regulator (behavioural model)
 SYMATTR SpiceModel ..\sym\EXTRA\VolReg\TL431A.lib
 SYMATTR Value2 TL431A
-
+PIN -16 32 NONE 0
+PINATTR PinName R
+PINATTR SpiceOrder 1
 PIN 16 64 NONE 0
 PINATTR PinName A
 PINATTR SpiceOrder 2
 PIN 16 0 NONE 0
 PINATTR PinName K
 PINATTR SpiceOrder 3
-PIN -16 32 NONE 0
-PINATTR PinName R
-PINATTR SpiceOrder 1

@@ -6,7 +6,7 @@ WINDOW 0 0 -32 Center 2
 WINDOW 3 0 32 Center 2
 SYMATTR Value LT3022-1.8
 SYMATTR Prefix X
-SYMATTR SpiceModel LT3022.sub
+SYMATTR SpiceModel LT3022-1.8.sub
 SYMATTR Value2 LT3022-1.8
 SYMATTR Description 1A, 0.9V to 10V, Very Low Dropout Linear Regulator, Fixed 1.8V Output Voltage
 PIN 144 -32 RIGHT 8

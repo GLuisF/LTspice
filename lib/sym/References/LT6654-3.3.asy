@@ -6,7 +6,7 @@ WINDOW 0 0 -80 Center 2
 WINDOW 3 12 77 Left 2
 SYMATTR Value LT6654-3.3
 SYMATTR Prefix X
-SYMATTR SpiceModel LT6654.lib
+SYMATTR SpiceModel LT6654-3.3.sub
 SYMATTR Value2 LT6654-3.3
 SYMATTR Description Precision Wide Supply High Output Drive Low Noise Reference
 PIN 0 64 BOTTOM 8

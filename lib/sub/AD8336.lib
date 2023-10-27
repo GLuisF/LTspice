@@ -17,7 +17,7 @@ F1 3 Vimon Vimon 1m
 C16 Vimon 3 1.59f
 A1 2 N032 3 3 3 PWR 3 3 SCHMITT Vt=0 Vh=0.4 Trise=10n
 C17 PWR 3 1p Rpar=1G Noiseless
-B1 3 N032 I=1m*table(V(11,3),(0,0),(3,1.1),(5,1.6),(12,3.6))
+B1 3 N032 I=1m*table(V(11,3),0,0,3,1.1,5,1.6,12,3.6)
 C18 N032 3 1p Rpar=1k Noiseless
 Biq_lo N034 N036 I=IF(V(11,3)>=12, 16m,14m)
 Biq_norm N034 N036 I=IF(V(PWR,3)<0.5,1p, (IF(V(11,3)>=5,12m,11m)))

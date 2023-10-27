@@ -130,7 +130,7 @@ WINDOW 0 192 -128 Bottom 2
 WINDOW 3 193 128 Top 2
 SYMATTR Value LT6375
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC3.lib
+SYMATTR SpiceModel LT6375.lib
 SYMATTR Value2 LT6375
 SYMATTR Description +/-270 Volt Common Mode Voltage Difference Amplifier
 PIN -256 16 NONE 8

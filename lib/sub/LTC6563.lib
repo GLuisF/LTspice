@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
 *
 .subckt LTC6563 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 B12 2 PowOK I= uplim(dnlim(400n*V(3,2)-143n,0,10n)+dnlim(10n*V(3,2),0,10n),1u,10n)
@@ -84,13 +84,13 @@ A4 12 2 2 2 2 _Adj0_o Adj0_o 2 SCHMITT vt=1.15 vh=350m
 A5 11 2 2 2 2 _Adj1_o Adj1_o 2 SCHMITT vt=1.15 vh=350m
 C8 16 2 1.5p
 R9 3 16 208k
-A6 2 16 2 2 2 _PWRMD_OUT PWRMD_OUT 2 SCHMITT vt=-1.15 vh=-350m trise = 10n
+A6 16 2 2 2 2 PWRMD_OUT _PWRMD_OUT 2 SCHMITT vt=1.15 vh=350m trise = 10n
 C9 10 2 1.5p Rpar=29k noiseless
 A7 10 2 2 2 2 _Csel0 Csel0 2 SCHMITT vt=1.15 vh=350m trise=5n
 C10 9 2 1.5p Rpar=29k noiseless
 C11 13 2 1.5p
 A8 9 2 2 2 2 _Csel1 Csel1 2 SCHMITT vt=1.15 vh=350m trise=5n
-A9 2 13 2 2 2 _HiZ HiZ 2 SCHMITT vt=-1.15 vh=-350m trise=10n tfall=21n
+A9 13 2 2 2 2 HiZ _HiZ 2 SCHMITT vt=1.15 vh=350m trise=10n tfall=21n
 R10 3 13 208k
 A10 HiZ 2 2 2 2 _outcm outcm 2 SCHMITT vt=0.45 vh=350m trise = 20n
 B1 2 vlogic I=1m*((1*v(Adj0_o,2)*v(Adj1_o,2))+(1.33*v(_Adj0_o,2)*v(Adj1_o,2))+(2*v(Adj0_o,2)*v(_Adj1_o,2))+(4*v(_Adj0_o,2)*v(_Adj1_o,2)))
@@ -208,8 +208,8 @@ B24 7 2 I=-dnlim(1m*V(Inode4,2),0,5u)
 B25 3 5x4 I=(.5+.5*tanh((V(3,5x4)/10m)))*(348.7u+1.2613m*V(CH4_ON,2)-1m*V(X4,2))*V(PowOK,2)
 C59 5x4 2 10f Rpar=2k noiseless
 B29 2 7 I=uplim(v(8,2)/9k, 270u, 10u)
-C64 2 _PWRMD_OUT 1f Rpar=1G
-C65 2 PWRMD_OUT 1f Rpar=1G
+C64 2 PWRMD_OUT 1f Rpar=1G
+C65 2 _PWRMD_OUT 1f Rpar=1G
 C66 2 _Adj1_o 1f Rpar=1G
 C67 2 Adj1_o 1f Rpar=1G
 C63 2 _Adj0_o 1f Rpar=1G

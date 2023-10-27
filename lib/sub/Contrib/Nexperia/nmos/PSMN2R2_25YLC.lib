@@ -80,7 +80,7 @@ E12    13   0  TABLE {V(12)}
 
 
 .MODEL MINT NMOS(Vto=2.01156541151876 Kp=3.4733e+02 Nfs=470000000000 Eta=1000
-+ Level=3 L=1e-4 W=1e-4 Gamma=0 Phi=0.6 Is=1e-24
++ Level=1 L=1e-4 W=1e-4 Gamma=0 Phi=0.6 Is=1e-24
 + Js=0 Vmax=600)
 
 .MODEL DBD D(Bv=26.00 Ibv=2.50E-04 Rs=1E-6 Is=8.2199902684135e-13

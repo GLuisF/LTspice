@@ -1,3 +1,148 @@
+10/25/23 LTC3729 added RUN/SS pin short circuit latch-off function
+10/25/23 LTC4041 Modified range of Vin operation
+10/25/23 LTM4677 Fixed a syntax error and updated the example circuit.
+10/25/23 LTM4678 Resolved Gmin stepping issues.
+10/25/23 LTM4680 Resolved Gmin stepping issues.
+10/25/23 LTM4686 Fixed syntax errors and resolved Gmin stepping issues.
+10/25/23 LTM4686-1 Fixed syntax errors and resolved Gmin stepping issues.
+10/25/23 MAX20444B Fixed issue on 3 Channel Setting
+10/25/23 Removed obsolete Rubycon devices from standard library
+10/25/23 Updated devices from Schaffner
+10/20/23 Removed obsolete devices from Rubycon in the capacitors standard library
+10/18/23 LT1166 Improved operating point convergence.
+10/18/23 AD8460  new model
+10/18/23 LTC3884-1  new model
+10/17/23 LTC7872 Improved convergence and updated the example circuit.
+10/17/23 AD4858  new model
+10/17/23 ADG5209  new model
+10/16/23 ADA4896-2 Update model to for better convergence
+10/11/23 MAX22088 updated dynamic cable termination turn-off, Ilimit on VRAW & VCC
+10/11/23 MAX4271  new model
+10/11/23 MAX4272  new model
+10/11/23 MAX4273  new model
+10/11/23 ADA4351  new model
+10/11/23 Added C3M0016120K in Wolfspeed library
+10/10/23 LTC3722-1 Add Sync Pin
+10/10/23 LTC3816 Improved convergence and updated the example circuit.
+10/10/23 LTM4647 Corrected PHASMD and CLKOUT pin function
+10/10/23 ADuM4195-1 Updated isolation.
+10/10/23 LTC4370 Improved convergence and updated the example circuit.
+10/10/23 ADuM4146B  new model
+10/10/23 ADuM4146C  new model
+10/10/23 ADuM4146A Updated diode in applications circuit.
+10/06/23 CHEMI-CON library updated
+10/06/23 MAX5920A  new model
+10/06/23 MAX5920B  new model
+10/06/23 MAX5921A  new model
+10/06/23 MAX5921B  new model
+10/06/23 MAX5921E  new model
+10/06/23 MAX5921F  new model
+10/06/23 MAX5938A  new model
+10/06/23 MAX5938L  new model
+10/06/23 MAX5939A  new model
+10/06/23 MAX5939B  new model
+10/06/23 MAX5939E  new model
+10/06/23 MAX5939F  new model
+10/06/23 MAX5949A  new model
+10/06/23 MAX5949B  new model
+10/06/23 MAX20336  new model
+10/05/23 LTC3884 Minor edits for correct 5V output programming using VOUT_CFGn Resistor
+10/05/23 ADuM4146A  new model
+09/28/23 LT8650S Fixed simulation speed
+09/28/23 LTC2928  new model
+09/28/23 MAX5924A  new model
+09/28/23 MAX5924B  new model
+09/28/23 MAX5924C  new model
+09/28/23 MAX5924D  new model
+09/28/23 MAX5925A  new model
+09/28/23 MAX5925B  new model
+09/28/23 MAX5925C  new model
+09/28/23 MAX5925D  new model
+09/28/23 MAX5926  new model
+09/28/23 MAX5976A  new model
+09/28/23 MAX5976B  new model
+09/27/23 Wolfspeed library updated
+09/26/23 ADuM4221A Updated ground isolation and added details to the symbol.
+09/26/23 ADuM4221B Updated ground isolation and added details to the symbol.
+09/26/23 ADuM4221C Updated ground isolation and added details to the symbol.
+09/26/23 LTC7878 Fixed Gmin stepping, so direct Newton iteration finds operating point.
+09/26/23 LTM4663 Corrected a typo in a model statement and fixed Gmin stepping. 
+09/24/23 LT8638S Model update for IBB configuration
+09/24/23 LTC3891 Improved convergence and updated the example circuit.
+09/24/23 AD7380-4  new model
+09/24/23 LTM4712  new model
+09/24/23 MAX15162  new model
+09/24/23 MAX15162A  new model
+09/24/23 MAX16550A  new model
+09/24/23 MAX16550B  new model
+09/24/23 MAX5932  new model
+09/24/23 MAX5933A  new model
+09/24/23 MAX5933B  new model
+09/24/23 MAX5933C  new model
+09/24/23 MAX5933D  new model
+09/24/23 MAX5933E  new model
+09/24/23 MAX5933F  new model
+09/24/23 MAX5947A  new model
+09/24/23 MAX5947B  new model
+09/24/23 MAX5947C  new model
+09/20/23 MAX9095 Corrected input/output polarity and test circuit.
+09/20/23 LTM4709  new model
+09/20/23 LTC2953-1 Fix timer reset on PB# bounce
+09/18/23 LTC7801 Corrected synchonization function
+09/18/23 ADA4510 Improved convergence performance.
+09/18/23 LTC6373 Corrected output voltage limit vs. V+OUT pin voltage.
+09/18/23 LTC7801 Corrected synchonization function
+09/18/23 ADA4510 Improved convergence performance.
+09/18/23 LTC6373 Corrected output voltage limit vs. V+OUT pin voltage.
+09/15/23 LT8301 Corrected boundary detector blanking
+09/14/23 LTP8800-1A  new model
+09/08/23 LT8640 updated internal parameters
+09/08/23 LT8640-1 Fixed synchronization and updated internal parameters
+09/05/23 LT8648S Update macromodel
+08/27/23 LTM4710-1  new model
+08/25/23 MAX22288 updated dynamic cable termination turn-off
+08/22/23 ADAQ7768-1 Replaced partial FDA model with complete FDA model.
+08/22/23 LT1573 Fixed a syntax error and updated the symbol.
+08/22/23 ADA4945-HP Corrected load current reflected through the positive and negative supplies.
+08/22/23 ADL5303  new model
+08/18/23 ADHV4702-1 Corrected input bias current vs. common mode voltage.
+08/18/23 MAX17613A updated UVLO Threshold
+08/18/23 MAX17613B updated UVLO Threshold
+08/18/23 MAX17613C updated UVLOINT Threshold
+08/17/23 LT8711 Fixed syntax errors and updated the example circuit.
+08/17/23 LTC7878 Combine SGND and PGND into GND; Update application circuit Schottky diode
+08/16/23 LT8361 Fixed syntax errors and updated the example circuit.
+08/16/23 LT8362 Fixed syntax errors and updated the example circuit.
+08/16/23 LT8364 Fixed syntax errors and updated the example circuit.
+08/15/23 LT8619-5 Fixed error amplifier DC gain and syntax errors.
+08/11/23 LT8312 Updated diode.
+08/11/23 LT8642S Fixed error amplifier DC gain and syntax errors.
+08/11/23 LT8672 Updated diode.
+08/11/23 LTC1647-1 Updated diode.
+08/11/23 LTC1647-2 Updated diode.
+08/11/23 LTC1647-3 Updated diode.
+08/11/23 LTC7001 Updated diode.
+08/11/23 LTC7004 Updated diode.
+08/11/23 LTC7806 Updated diode.
+08/11/23 LTC7819 Updated diode.
+08/11/23 ADA4945-HP Model redesigned on new architecture with accuracy and convergence improvements.
+08/10/23 LTC6373 Improved convergence performance.
+08/08/23 LT1028CS Corrected symbol.
+08/08/23 ADM705 Fixed Missing model definition
+08/08/23 ADM706 Fixed Missing model definition
+08/03/23 ADA4510 Corrected load current reflected through the positive and negative supplies.
+08/02/23 ADM705  new model
+08/02/23 ADM706  new model
+08/02/23 ADM707  new model
+08/02/23 ADM708  new model
+08/01/23 LTC3644 Improved convergence and fixed syntax errors.
+08/01/23 AD8411A Corrected output voltage clamp.
+08/01/23 ADAQ7768-1  new model
+07/28/23 LTC3721-1 Updated diode
+07/28/23 ADA4510 Added load current reflected through the supplies.
+07/28/23 AD734  new model
+07/28/23 AD8411A  new model
+07/27/23 ADA4510 Corrected common-mode rejection ratio and input resistance.
 07/25/23 LT4200 updated internal parameters
 07/25/23 LTC4214-1 updated internal parameters
 07/25/23 LTC4214-2 updated internal parameters

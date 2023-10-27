@@ -38,4 +38,4 @@ PINATTR PinName Gate
 PINATTR SpiceOrder 10
 PIN 0 160 BOTTOM 8
 PINATTR PinName GND
-PINATTR SpiceOrder 11
+PINATTR SpiceOrder 6

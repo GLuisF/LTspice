@@ -1,0 +1,29 @@
+* Part Type: Capacitor	
+* Product Number:HHXJ250ARA101MF61G	
+* Brief Explanation:
+* 1)This is Conductive Polymer Hybrid Aluminum Electrolytic Capacitor.
+* 2)This Capacitor has two pins.
+* Device Maker: Nippon Chemi-Con Corporation
+* Model Maker: Nippon Chemi-Con Corporation
+* Creation date: 2021-06-04
+* Model Ver: A
+* Model Changes:
+* A)First edition
+* Model Level No.: -
+* Nominal Variation of Model: N=3
+* Temperature Variation of Model: T=20
+* LCR_Value=100E-6
+* Notes on Analysis: -
+
+.SUBCKT HHXJ250ARA101MF61G_20deg-C 1 2
+
+C1 4 2 4.57e-05
+C2 5 2 2.06e-05
+C3 6 2 2.88e-05
+R1 3 4 1.70e-02
+R2 4 5 8.51e-02
+R3 5 6 1.70e+00
+L1 1 3 2.60e-09
+
+.ENDS
+* hhxj250ara101mf61g_A001_pspice

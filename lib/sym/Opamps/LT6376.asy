@@ -124,7 +124,7 @@ WINDOW 0 192 -128 Bottom 2
 WINDOW 3 193 128 Top 2
 SYMATTR Value LT6376
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC5.lib
+SYMATTR SpiceModel LT6376.lib
 SYMATTR Value2 LT6376
 SYMATTR Description +/-110 Volt Common Mode Voltage G=10 Difference Amplifier
 PIN -256 16 NONE 8

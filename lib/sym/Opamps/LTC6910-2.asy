@@ -10,7 +10,7 @@ WINDOW 0 -8 -40 Center 2
 WINDOW 3 -8 42 Center 2
 SYMATTR Value LTC6910-2
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1.LIB
+SYMATTR SpiceModel LTC1.lib
 SYMATTR Value2 LTC6910-2
 SYMATTR Description Digitally Controlled Programmable Gain Amplifiers in SOT-23
 PIN 144 0 NONE 0

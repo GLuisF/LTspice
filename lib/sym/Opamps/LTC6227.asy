@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LTC6227
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6226.sub
+SYMATTR SpiceModel LTC6226.lib
 SYMATTR Value2 LTC6226
 SYMATTR Description 1nV/rHz 420 MHz, 180V/us, Low Distortion Rail-to-Rail Output Op Amp
 PIN -32 32 NONE 0

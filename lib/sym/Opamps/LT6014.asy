@@ -15,7 +15,7 @@ WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value LT6014
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6013
 SYMATTR Description Dual 145µA, 9.5nV/rtHz, Av > 5, Rail-to-Rail Op Amp
 PIN -32 16 NONE 0

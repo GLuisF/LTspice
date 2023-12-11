@@ -15,7 +15,7 @@ WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value LT6202
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6202
 SYMATTR Description 100 MHz, Rail-to-Rail, 1.9nV/rtHz Low Power Op Amp
 PIN -32 16 NONE 0

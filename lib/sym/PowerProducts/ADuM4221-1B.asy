@@ -1,28 +1,32 @@
 Version 4
 SymbolType CELL
-LINE Normal -32 80 -32 16
-LINE Normal -5 66 -32 80
-LINE Normal -5 29 -32 16
-LINE Normal 32 48 0 31
-LINE Normal 0 64 32 48
-LINE Normal -9 33 0 23
-LINE Normal 0 39 -9 33
-LINE Normal -9 46 0 39
-LINE Normal 0 54 -9 46
-LINE Normal -9 62 0 54
-LINE Normal 0 71 -9 62
-LINE Normal -2 33 7 23
-LINE Normal 7 39 -2 33
-LINE Normal -2 46 7 39
-LINE Normal 7 54 -2 46
-LINE Normal -2 62 7 54
-LINE Normal 7 71 -2 62
-LINE Normal -59 48 -32 48
-LINE Normal 19 41 48 41
-LINE Normal 18 55 47 55
-RECTANGLE Normal 144 304 -160 -144
-TEXT 0 112 Center 2 ADI
-WINDOW 0 0 -63 Center 2
+LINE Normal -31 35 -31 -29
+LINE Normal -4 21 -31 35
+LINE Normal -4 -16 -31 -29
+LINE Normal 33 3 1 -14
+LINE Normal 1 19 33 3
+LINE Normal -8 -12 1 -22
+LINE Normal 1 -6 -8 -12
+LINE Normal -8 1 1 -6
+LINE Normal 1 9 -8 1
+LINE Normal -8 17 1 9
+LINE Normal 1 26 -8 17
+LINE Normal -1 -12 8 -22
+LINE Normal 8 -6 -1 -12
+LINE Normal -1 1 8 -6
+LINE Normal 8 9 -1 1
+LINE Normal -1 17 8 9
+LINE Normal 8 26 -1 17
+LINE Normal -58 3 -31 3
+LINE Normal 20 -4 49 -4
+LINE Normal 19 10 48 10
+LINE Normal -80 64 -54 64
+LINE Normal -54 84 -63 76
+LINE Normal -54 64 -54 84
+LINE Normal -54 84 -46 75
+RECTANGLE Normal 143 304 -161 -144
+TEXT -7 224 Center 2 ADI
+WINDOW 0 0 -83 Center 2
 WINDOW 3 -10 269 Center 2
 SYMATTR Value ADuM4221-1B
 SYMATTR Prefix X

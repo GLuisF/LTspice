@@ -156,7 +156,7 @@ WINDOW 3 96 192 Left 2
 WINDOW 0 144 -192 Left 2
 SYMATTR Value LT1993-10
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC3.LIB
+SYMATTR SpiceModel LTC3.lib
 SYMATTR Value2 LT1993-10
 SYMATTR Description 700MHz Low Distortion, Low Noise Differential Amplifier and ADC Driver
 PIN 48 -176 TOP 4

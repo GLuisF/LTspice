@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LT6233-10
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6233-10
 SYMATTR Description 375MHz, AV=10, Rail-to-Rail Output, 1.9nV/rtHz, 1.2mA Op Amp
 PIN -32 32 NONE 0

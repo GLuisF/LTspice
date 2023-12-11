@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2022 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
 *
 .subckt AD8310 1 2 3 4 5 6 7 8
 R1 8 CM_IN 500

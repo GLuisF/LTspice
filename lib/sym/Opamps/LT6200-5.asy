@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LT6200-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6200-5
 SYMATTR Description 800MHz, Av=5 Rail-to-Rail Low Noise Op Amp
 PIN -32 32 NONE 0

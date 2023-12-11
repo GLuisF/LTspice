@@ -16,7 +16,7 @@ WINDOW 0 -16 -105 Center 2
 WINDOW 3 -16 111 Center 2
 SYMATTR Value LTC6911-2
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1.LIB
+SYMATTR SpiceModel LTC1.lib
 SYMATTR Value2 LTC6911-2
 SYMATTR Description Dual Matched Amplifiers with Digitally Programmable Gain in MSOP
 PIN -112 -64 NONE 4

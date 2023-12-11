@@ -1,3 +1,51 @@
+12/07/23 LT3045 Fix Overshoot recovery current
+12/07/23 LT8210 Updated for better convergence.
+12/07/23 LTC3225-1 Fix singular matrix issue
+12/07/23 ADA4084-2  new model
+12/04/23 ADPL54203  new model
+12/03/23 LTM4656 Updates to improve convergence and transient response.
+12/03/23 MAX17555A  new model
+11/30/23 LT3048-12 Update Enable logic for output of the LDO.
+11/30/23 LT3579 Update Switching current during start up
+11/30/23 CMP401  new model
+11/29/23 ADG5212 Updated bandwidth and off isolation. Added off and on leakage. 
+11/29/23 LTC1043 fix singular matrix issue
+11/29/23 Updated Schaffner RT_RB_3ph_1046625A_ue Common-mode Choke Library
+11/23/23 LT3040 Fixed issue when the GND is floating
+11/23/23 LTP8800-1A Resubmit due to missing .sub file in library
+11/23/23 LTC6226 Improved convergence performance.
+11/23/23 LTC6227 Corrected symbol.
+11/23/23 Added Schaffner Common-mode Choke Library
+11/20/23 Added Coilcraft inductors to standard library
+11/15/23 CMP402  new model
+11/14/23 LTC3896 Fix control loop parameters
+11/14/23 LT3046  new model
+11/14/23 ADG5243F  new model
+11/14/23 LTC3896 Fix control loop parameters
+11/14/23 LT3046  new model
+11/14/23 ADG5243F  new model
+11/09/23 Added COG capacitors from Vishay in capacitors standard library
+11/09/23 AD8310 Updated application circuit
+11/09/23 LT8418  new model
+11/08/23 Updated inductor library components from Tanyo Yuden
+11/06/23 AD8460 Improved slew rate accuracy, added DAC input clamp, and removed artificial output current spikes
+11/06/23 ADuM4221-2A Updated ground isolation, symbol details, and application circuit.
+11/06/23 ADuM4221-2B Updated ground isolation, symbol details, and application circuit.
+11/06/23 ADuM4221-2C Updated ground isolation, symbol details, and application circuit.
+11/06/23 LT8316 Fixed Buck Mode Operation
+11/06/23 LTM8083 LTM8083 Updated model for best practices, raised FB pin threshold
+11/06/23 ADG5204  new model
+11/06/23 MAX49918  new model
+10/31/23 ADuM4221-1A Updated ground isolation, symbol details, and application circuit.
+10/31/23 ADuM4221-1B Updated ground isolation, symbol details, and application circuit.
+10/31/23 ADuM4221-1C Updated ground isolation, symbol details, and application circuit.
+10/31/23 LTC7852-1 Fixed Error during simulation, Currrent Limit and EA Sink/Source Current
+10/30/23 LTC4287  new model
+10/27/23 LTC7131-1 Updated INTVcc and error amplifier circuits. Improved convergence.
+10/27/23 LTM4660 Updated the CLKOUT circuit.
+10/27/23 LT3078  new model
+10/27/23 MAX38902B  new model
+10/27/23 ADG1534  new model
 10/25/23 LTC3729 added RUN/SS pin short circuit latch-off function
 10/25/23 LTC4041 Modified range of Vin operation
 10/25/23 LTM4677 Fixed a syntax error and updated the example circuit.

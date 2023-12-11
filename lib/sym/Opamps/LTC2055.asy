@@ -15,7 +15,7 @@ WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value LTC2055
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LTC2054
 SYMATTR Description Dual Low Power Zero-Drift Op Amp in SOT-23
 PIN -32 16 NONE 0

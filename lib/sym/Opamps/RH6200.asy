@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value RH6200
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6200
 SYMATTR Description 165 MHz, Rail-to-Rail Input and Output, 0.95nV/rtHz Low Noise Op Amp
 PIN -32 32 NONE 0

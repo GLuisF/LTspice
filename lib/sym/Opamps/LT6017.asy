@@ -15,7 +15,7 @@ WINDOW 0 16 -32 Left 2
 WINDOW 3 16 32 Left 2
 SYMATTR Value LT6017
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6016
 SYMATTR Description 3.2MHz, 0.8 V/µs Low Power, Over-The-Top Precision Op Amp
 PIN -32 16 NONE 0

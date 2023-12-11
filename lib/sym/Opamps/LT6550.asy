@@ -58,7 +58,7 @@ WINDOW 3 18 107 Left 2
 WINDOW 0 16 -91 Left 2
 SYMATTR Value LT6550
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6550
 SYMATTR Description 3.3V Triple Video Amplifier
 PIN -112 -16 NONE 8

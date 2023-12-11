@@ -40,7 +40,7 @@ WINDOW 3 16 64 Left 2
 WINDOW 0 16 -64 Left 2
 SYMATTR Value LTC1992-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC4.LIB
+SYMATTR SpiceModel LTC4.lib
 SYMATTR Value2 LTC1992-5
 SYMATTR Description Low Power, Fully Differential I/O Amplifier
 PIN -64 -48 NONE 8

@@ -6,7 +6,7 @@ WINDOW 0 0 -120 Center 2
 WINDOW 3 0 120 Center 2
 SYMATTR Value LT1166
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1166.sub
 SYMATTR Value2 LT1166
 SYMATTR Description Power Output Stage Automatic Bias System
 PIN 0 -208 TOP 8

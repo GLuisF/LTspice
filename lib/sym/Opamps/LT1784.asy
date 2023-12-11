@@ -21,7 +21,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LT1784
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT1784
 SYMATTR Description 2.5MHz Over-The-Top Rail-to-Rail Op Amp
 PIN -32 32 NONE 0

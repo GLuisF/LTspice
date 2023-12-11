@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LT6230-10
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2.LIB
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LT6230-10
 SYMATTR Description 1.45GHz, Av=10, Rail-to-Rail Output, Low Noise, 3.4mA Op Amp
 PIN -32 32 NONE 0

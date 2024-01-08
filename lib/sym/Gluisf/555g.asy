@@ -8,7 +8,6 @@ ARC Normal -20 -124 4 -100 -20 -112 -8 -100
 ARC Normal -4 -124 20 -100 8 -100 20 -112
 TEXT 0 0 Center 2 555
 WINDOW 0 0 -146 Center 2
-SYMATTR SpiceLine Vhigh=9
 PIN -112 -96 LEFT 8
 PINATTR PinName GND
 PINATTR SpiceOrder 1

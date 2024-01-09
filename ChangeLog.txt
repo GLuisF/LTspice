@@ -1,3 +1,5 @@
+12/12/23 Added XFMRS inductors in standard library
+12/11/23 Added more discrete devices from Wolfspeed
 12/07/23 LT3045 Fix Overshoot recovery current
 12/07/23 LT8210 Updated for better convergence.
 12/07/23 LTC3225-1 Fix singular matrix issue

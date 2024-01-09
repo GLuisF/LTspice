@@ -21,9 +21,9 @@ CIRCLE Normal 50 82 46 78
 TEXT 23 100 Right 2 KS
 WINDOW 3 96 31 Left 2
 WINDOW 0 96 53 Left 2
-SYMATTR Value C3M0016120K
+SYMATTR Value C3M0032120K
 SYMATTR Prefix X
-SYMATTR ModelFile Contrib/Wolfspeed/C3M0016120K.lib
+SYMATTR ModelFile Contrib/Wolfspeed/C3M0032120K.lib
 SYMATTR Description N-Channel MOSFET transistor
 PIN 48 0 NONE 0
 PINATTR PinName D

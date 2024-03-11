@@ -1,3 +1,46 @@
+01/31/24 LT3845A Added SYNC Pin on the Model
+01/31/24 LTC7132 corrected gate drive logic and timings
+01/31/24 ADA4610 Improved accuracy of input current noise and output impedance.
+01/31/24 LT3845A Added SYNC Pin on the Model
+01/31/24 LTC7132 corrected gate drive logic and timings
+01/31/24 ADA4610 Improved accuracy of input current noise and output impedance.
+01/31/24 LT3845A Added SYNC Pin on the Model
+01/31/24 LTC7132 corrected gate drive logic and timings
+01/31/24 ADA4610 Improved accuracy of input current noise and output impedance.
+01/29/24 LTC3126 Fixed UVLO falling threshold and Valid Signal Response
+01/29/24 ADA4511 Updated symbol description.
+01/29/24 MAX22205  new model
+01/28/24 MAX17555C  new model
+01/26/24 LTC4371 Fixed Ideal diode 15mV Forward voltage drop
+01/26/24 LTM4643 corrected synchronization function
+01/26/24 ADA4098-1 Improved accuracy of output impedance and open loop gain/phase.
+01/26/24 ADA4098-2 Improved accuracy of output impedance and open loop gain/phase.
+01/26/24 ADA4511  new model
+01/23/24 LT8277 Fixed Under voltage threshold and CLKOUT phase
+01/23/24 LT8330 Corrected UVLO operation.
+01/23/24 ADG5207 Fixed crosstalk and updated application circuit.
+01/23/24 LTC2066 Improved accuracy of open loop gain/phase response.
+01/23/24 LTC2067 Updated symbol to reference new model.
+01/23/24 MAX1522  new model
+01/23/24 MAX1523  new model
+01/23/24 MAX1524  new model
+01/23/24 MAX17553C  new model
+01/16/24 ADuM4221-1A Fixed issue when ferrite bead is connected to output pin
+01/16/24 ADuM4221-1B Fixed issue when ferrite bead is connected to output pin
+01/16/24 ADuM4221-1C Fixed issue when ferrite bead is connected to output pin
+01/16/24 ADuM4221-2A Fixed issue when ferrite bead is connected to output pin
+01/16/24 ADuM4221-2B Fixed issue when ferrite bead is connected to output pin
+01/16/24 ADuM4221-2C Fixed issue when ferrite bead is connected to output pin
+01/16/24 LTC3769 adjusted control loop parameters
+01/16/24 LTC7871 modify IMON to follow SETCUR when operating in CC mode
+01/09/24 ADP5075 Fix SS pin voltage
+01/09/24 ADuM4221A Fixed issue when ferrite bead is connected to output pin
+01/09/24 ADuM4221B Fixed issue when ferrite bead is connected to output pin
+01/09/24 ADuM4221C Fixed issue when ferrite bead is connected to output pin
+01/09/24 LT1175 Fixed Transient, dropout and SHDN response
+01/09/24 ADG5206 Fixed crosstalk and updated application circuit.
+01/09/24 MAX17555B  new model
+01/09/24 MAX25510  new model
 12/12/23 Added XFMRS inductors in standard library
 12/11/23 Added more discrete devices from Wolfspeed
 12/07/23 LT3045 Fix Overshoot recovery current

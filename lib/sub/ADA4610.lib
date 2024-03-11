@@ -22,7 +22,7 @@ e3    110    0    99    0    1
 *
 *
 ***Inputs***
-B_IbiasP 110 2 I=TABLE(V(100), -4.1,-100p,-4,-14.2p,-3.5,7.9p,-3.4,8.9p,-3,7.9p,-2.7,3.9p,-2.3,1.6p,-2,2.4p,4,5.2p,4.2,50p,5,200p)
+B_IbiasP 110 2 I=TABLE(V(100), (-4.1,-100p),(-4,-14.2p),(-3.5,7.9p),(-3.4,8.9p),(-3,7.9p),(-2.7,3.9p),(-2.3,1.6p),(-2,2.4p),(4,5.2p),(4.2,50p),(5,200p)) ;5e-12
 IbiasN    110    9    dc    3e-12
 S2    1    100    106    113    Switch
 S3    9    101    106    113    Switch
@@ -57,24 +57,21 @@ Dvn1    23    22    DVnoisy
 *
 *
 ***Inoise***
-FnIN    9    110    Vmeas3    0.7071068
-Vmeas3    51    110    dc    0
-VnIN    50    110    dc    0.65
-DnIN    50    51    DINnoisy
-FnIN1    110    9    Vmeas4    0.7071068
-Vmeas4    53    110    dc    0
-VnIN1    52    110    dc    0.65
-DnIN1    52    53    DINnoisy
+.param Ena=1.54f Enb=-0.161f
+.param Enc=1.14e-18 Enr=989.6m
+FnIN 9 110 VIIN 1
+R1IN I_n3 110 1 Noiseless
+VIIN I_n2 I_n3 0
+R2IN I_n1 110 100k Noiseless
+A1IN 110 110 110 110 110 110 I_n1 110 OTA G=10u Iout=1m En={Ena}+{Enb}*Pwr({Enr},freq)+{Enc}*freq Vhigh=1k Vlow=-1k
+G1IN 110 I_n2 I_n1 110 1
 *
-FnIP    2    110    Vmeas5    0.7071068
-Vmeas5    31    110    dc    0
-VnIP    30    110    dc    0.65
-DnIP    30    31    DIPnoisy
-FnIP1    110    2    Vmeas6    0.7071068
-Vmeas6    33    110    dc    0
-VnIP1    32    110    dc    0.65
-DnIP1    32    33    DIPnoisy
-*
+FnIP 2 110 VIIP 1
+R1IP I_p3 110 1 Noiseless
+VIIP I_p2 I_p3 0
+R2IP I_p1 110 100k Noiseless
+A1IP 110 110 110 110 110 110 I_p1 110 OTA G=10u Iout=1m En={Ena}+{Enb}*Pwr({Enr},freq)+{Enc}*freq Vhigh=1k Vlow=-1k
+G1IP 110 I_p2 I_p1 110 1
 *
 ***CMRR***
 RcmrrP    3    10    Rideal    1e12
@@ -109,9 +106,9 @@ DzSlewN    201    110    DzSlewN
 *
 *
 ***Dominant Pole at 350 Hz***
-g210    210    110    200    110    0.3502e-6
+g210    210    110    200    110    460n ;0.3502e-6
 R210    210    110    Rideal    454.73e6
-C210    210    110    1e-012
+C210    210    110    1p ;1e-12
 *
 *
 ***Output Voltage Clamp-1***
@@ -222,20 +219,32 @@ DzOVee    315    110    diode
 DOVee    315    103    diode
 *
 *
+***Output Impedance***
+*
+Rzo2 313a Zoi {Ro1}
+Czo2 313a Zoi {Co1}
+Rzo1 Zoi 313 {Ro}
+Czo1 Zoi 313 {Co}
+Czo4 313a 110 {Cp}
+Czo3 Zoi 110 {Cp}
+.param Ro=800 Co=500n
+.param Ro1=120 Ro2=10 Co1=2n
+.param Cp=10p
+*
 ***Output Switch***
-S4    104    313    106    113    Switch
+S4    104    313a    106    113    Switch
 *
 *
 *** Common Models ***
-.model    diode    d(bv=100)
-.model    Switch    vswitch(Von=1.505,Voff=1.495,ron=0.001,roff=1e6)
-.model    DzVoutP    D(BV=4.3)
-.model    DzVoutN    D(BV=4.3)
-.model    DzSlewP    D(BV=174.665)
-.model    DzSlewN    D(BV=174.665)
+.model    diode    d(bv=100 Noiseless)
+.model    Switch    vswitch(Von=1.505 Voff=1.495 ron=0.001 roff=1e6 Noiseless)
+.model    DzVoutP    D(BV=4.3 Noiseless)
+.model    DzVoutN    D(BV=4.3 Noiseless)
+.model    DzSlewP    D(BV=174.665 Noiseless)
+.model    DzSlewN    D(BV=174.665 Noiseless)
 .model    DVnoisy    D(IS=2.03e-15 KF=8.16e-18)
-.model    DINnoisy    D(IS=1.45e-22 KF=8.13e-18)
-.model    DIPnoisy    D(IS=1.45e-22 KF=8.13e-18)
-.model    Rideal    res(T_ABS=-273)
+.model    DINnoisy    D(IS=1.45e-22 KF=8.13e-18 Noiseless)
+.model    DIPnoisy    D(IS=1.45e-22 KF=8.13e-18 Noiseless)
+.model    Rideal    res(T_ABS=-273.15)
 *
 .ends ADA4610

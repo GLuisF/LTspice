@@ -6,7 +6,8 @@ WINDOW 0 0 -192 Center 2
 WINDOW 3 4 138 Center 2
 SYMATTR Value LT7170-1
 SYMATTR Prefix X
-SYMATTR Description 20A, 16V Dual Phase Dual Output Step-Down Silent Switcher with Digital Power System Management \n\nNote: SDA, SCL, _Alert, Share_clk, WP, GPIOs, ASEL, TSNSs are not modeled
+SYMATTR Description 20A, 16V Dual-Phase Step-Down Silent Switcher with PMBUS/Digital Power System Management 
+SYMATTR Details Model Notes: SDA, SCL, _ALERT, ASEL, VOUT_CFG, and PWM_CFG pin functions are not modeled
 SYMATTR ModelFile LT7170-1.sub
 SYMATTR SpiceLine FREQUENCY_SWITCH=750k VOUT_RANGE=0 VOUT_COMMAND=0.85 VIN_ON= 1.4 VIN_OFF=1.35 TON_DELAY=.01m TON_RISE=.5m  TOFF_DELAY=.2m TOFF_FALL=.3m  ILIM_RANGE=0 PulseSkipMode=0 FCM_DURING_TOFF_FALL=1
 SYMATTR SpiceLine2 GMEA_CONTROL=10  RITH=7k CITH=320p MFR_PWM_PHASE=180 OUTPUT_DISCHARGE=1 VOUT_UV_FAULT_LIMIT=4.8 VOUT_OV_FAULT_LIMIT=5.2 VOUT_UV_WARN_LIMIT=4.9 VOUT_OV_WARN_LIMIT=5.1 DISABLE_SW1=0

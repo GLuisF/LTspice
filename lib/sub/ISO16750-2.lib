@@ -131,9 +131,10 @@ I1 - + SINE(0 {1/Ri} 2 {t0+tf+t6+t7} 0 180 {t8*2})
 .param Ri=0.5
 .param t0=1
 .param Creservoir=0.15 Rshunt=1.55
+.param Vua=-59
 L1 N004 N005 2m
 D1 N007 + Dideal
-V2 N007 - PWL(0 0 1m {Ua})
+V2 N007 - PWL(0 0 1m {Vua})
 R1 N005 - {Rshunt}
 D2 N006 + Dideal
 C1 N003 - {Creservoir}
@@ -157,9 +158,10 @@ V5 N008 - PWL(0 0 1m {Usclamp})
 .param Ri=1
 .param t0=1
 .param Creservoir=0.15 Rshunt=1.55
+.param Vua=-118
 L1 N004 N005 2m
 D1 N007 + Dideal
-V2 N007 - PWL(0 0 1m {Ua})
+V2 N007 - PWL(0 0 1m {Vua})
 R1 N005 - {Rshunt}
 D2 N006 + Dideal
 C1 N003 - {Creservoir}
@@ -182,9 +184,10 @@ V5 N008 - PWL(0 0 1m {Usclamp})
 .param Ri=0.5
 .param t0=1
 .param Creservoir=0.15 Rshunt=1.55
+.param Vua=7
 L1 N004 N005 2m
 D1 N007 + Dideal
-V2 N007 - PWL(0 0 1m {Ua})
+V2 N007 - PWL(0 0 1m {Vua})
 R1 N005 - {Rshunt}
 D2 N006 + Dideal
 C1 N003 - {Creservoir}
@@ -207,9 +210,10 @@ V5 N008 - PWL(0 0 1m {Usclamp})
 .param Ri=1
 .param t0=1
 .param Creservoir=0.15 Rshunt=1.55
+.param Vua=26
 L1 N004 N005 2m
 D1 N007 + Dideal
-V2 N007 - PWL(0 0 1m {Ua})
+V2 N007 - PWL(0 0 1m {Vua})
 R1 N005 - {Rshunt}
 D2 N006 + Dideal
 C1 N003 - {Creservoir}

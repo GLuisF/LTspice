@@ -8,8 +8,9 @@ SYMATTR Value LTC7132
 SYMATTR Prefix X
 SYMATTR Description 25A, Dual PolyPhase Step-Down DC/DC Regulator with Sub-Milliohm DCR Sensing and Digital Power System Management\n\nNote: SDA, SCL, _Alert, Share_clk, WP, GPIOs, ASEL, TSNSs are not modeled
 SYMATTR ModelFile LTC7132.sub
-SYMATTR SpiceLine VIN_ON=5.5 VIN_OFF=5 Vout_0=1.6 Vout_1=2.5 Ilim0_range=0 Ilim1_range=0 OC_limit0=1 OC_limit1=1 Mode_ll=2 Fault_response=0 Retry_delay=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K LowDcr=1
-SYMATTR SpiceLine2 Freq=500K Sync=0 Ton0_delay=.3m Ton0_rise=.5m Ton1_delay=.3m Ton1_rise=.5m Toff0_delay=.2m Toff0_fall=.3m Toff1_delay=.2m Toff1_fall=.3m Vout0_range=0 Vout1_range=0
+SYMATTR SpiceLine VIN_ON=5.5 VIN_OFF=5 Vout_0=1.6 Vout_1=2.5 Ilim0_range=0 Ilim1_range=0 OC_limit0=1 OC_limit1=1 Mode_ll=1 Fault_response=0 Retry_delay=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K LowDcr=1
+SYMATTR SpiceLine2 Freq=500K PHs_0=0 PHs_1=180 Ton0_delay=.3m Ton0_rise=.5m Ton1_delay=.3m Ton1_rise=.5m Toff0_delay=.2m Toff0_fall=.3m Toff1_delay=.2m Toff1_fall=.3m Vout0_range=0 Vout1_range=0 Sync=0
+SYMATTR Value2 LTC7132
 PIN 256 0 RIGHT 8
 PINATTR PinName Vsense0+
 PINATTR SpiceOrder 1
@@ -69,40 +70,40 @@ PINATTR PinName IthR1
 PINATTR SpiceOrder 30
 PIN -256 96 LEFT 8
 PINATTR PinName Vsense1-
-PINATTR SpiceOrder 31
+PINATTR SpiceOrder 10
 PIN -256 0 LEFT 8
 PINATTR PinName Vsense1+
-PINATTR SpiceOrder 32
+PINATTR SpiceOrder 9
 PIN -256 576 LEFT 8
 PINATTR PinName PGood1
-PINATTR SpiceOrder 27
+PINATTR SpiceOrder 20
 PIN -256 -288 LEFT 8
 PINATTR PinName SW1
-PINATTR SpiceOrder 26
+PINATTR SpiceOrder 15
 PIN -256 -384 LEFT 8
 PINATTR PinName Boost1
-PINATTR SpiceOrder 20
+PINATTR SpiceOrder 14
 PIN -96 -464 TOP 8
 PINATTR PinName IntVcc
-PINATTR SpiceOrder 19
+PINATTR SpiceOrder 16
 PIN -192 -464 TOP 8
 PINATTR PinName Vin
-PINATTR SpiceOrder 16
+PINATTR SpiceOrder 26
 PIN 192 -464 TOP 8
 PINATTR PinName ExtVcc
-PINATTR SpiceOrder 15
+PINATTR SpiceOrder 27
 PIN 0 -464 TOP 8
 PINATTR PinName PGND
-PINATTR SpiceOrder 14
+PINATTR SpiceOrder 31
 PIN 256 -384 RIGHT 8
 PINATTR PinName Boost0
-PINATTR SpiceOrder 13
+PINATTR SpiceOrder 12
 PIN 256 -288 RIGHT 8
 PINATTR PinName SW0
-PINATTR SpiceOrder 12
+PINATTR SpiceOrder 13
 PIN 256 576 RIGHT 8
 PINATTR PinName PGood0
-PINATTR SpiceOrder 10
+PINATTR SpiceOrder 19
 PIN 96 -464 TOP 8
 PINATTR PinName SGND
-PINATTR SpiceOrder 9
+PINATTR SpiceOrder 32

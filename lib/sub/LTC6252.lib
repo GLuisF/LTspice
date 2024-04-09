@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt LTC6252 1 2 3 4 5 6
 A2 5 2 MID MID MID MID N071 MID SCHMITT Vt=1.05 Vh=0.1 Trise={2*ENton} Tfall={2*ENtoff}
@@ -247,7 +247,7 @@ B6 Inn1 MID I=IF(V(PNP,MID)>0.5, I(Vinp), I(Vinn))
 .model ENA SW(Ron=1Meg Roff=1u Vt=500m Vh=-100m Noiseless)
 .model ENZ SW(Ron=1 Roff=1u Vt=500m Vh=-100m Noiseless)
 .model ESDI SW(Ron=50 Roff=1T Vt=0.5 Vh=-0.1 Vser=0.1 Noiseless)
-.model ESDO SW(Ron=50 Roff=1G Vt=0.5 Vh=-0.1 Vser=0.6 Ilimit=4m Lser=1n Noiseless).
+.model ESDO SW(Ron=50 Roff=1G Vt=0.5 Vh=-0.1 Vser=0.6 Ilimit=4m Lser=1n Noiseless)
 .model NS SW(Ron=1u Roff=1G Vt=500m Vh=-100m Noiseless)
 .param Aol_PB=98.8
 .param SRp=500 SRn={-SRp}

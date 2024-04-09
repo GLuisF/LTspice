@@ -1,3 +1,108 @@
+04/04/24 LTC3888-1 Incorporated best practices, changed input resistance of Vsense pins to match datasheet
+04/04/24 LTC6373 Corrected input voltage noise.
+04/01/24 LTM8053 Corrected control loop parameters
+03/29/24 ADA4870  new model
+03/26/24 LTC3723-1 Corrected gate drive control glitches
+03/26/24 LTC3891 Corrected ILIM pin settings
+03/26/24 LTP8800-2 Update Application Circuit
+03/26/24 LTP8800-4A Update Application Circuit
+03/26/24 OP482 Fix Macromodel transient command
+03/26/24 AD4080  new model
+03/26/24 LT8627SP  new model
+03/26/24 MAX4051A  new model
+03/26/24 MAX4052A  new model
+03/20/24 ADCMP356 Corrected syntax.
+03/20/24 LTC3203-1 Corrected syntax.
+03/20/24 LTC7890 Change Vith Clamp to 1.4V, add Slope recovery, Fixed Burst Mode Vith Level, Fixed DRVUV function, and correct the DRVcc Levels
+03/20/24 MAX22288 Fixed Dout Logic, Internal Grounding, and Blip issue
+03/20/24 AD734 Corrected syntax.
+03/20/24 LTC6252 Corrected syntax.
+03/20/24 LTM4678A  new model
+03/17/24 LTM4650-1 Resolved Gmin stepping issues.
+03/17/24 ADG1408L Corrected syntax.
+03/17/24 ADA4510 Corrected syntax.
+03/17/24 ADA4511 Corrected syntax.
+03/17/24 ADA4522-1 Corrected syntax.
+03/17/24 AD5423  new model
+03/17/24 LT8673  new model
+03/17/24 LTM4650-2  new model
+03/17/24 LTP8800-2  new model
+03/17/24 LTP8800-4A  new model
+03/12/24 LTM8051 Fix Run Pin functionality
+03/12/24 ADG1633 Reduced Iq and matched symbol and model name
+03/12/24 ADG1634 Reduced Iq and matched symbol and model name
+03/12/24 MAX6037_ADJ  new model
+03/10/24 LTC3302A Soft-start retry after EN pin toggle
+03/10/24 LTC3302A-05 Soft-start retry after EN pin toggle
+03/10/24 LTC3302C Soft-start retry after EN pin toggle
+03/10/24 LTC3302C-05 Soft-start retry after EN pin toggle
+03/10/24 LTC3303A Soft-start retry after EN pin toggle
+03/10/24 LTC3303A-05 Soft-start retry after EN pin toggle
+03/10/24 LTC3303C Soft-start retry after EN pin toggle
+03/10/24 LTC3303C-05 Soft-start retry after EN pin toggle
+03/10/24 LTC3304A Soft-start retry after EN pin toggle
+03/10/24 LTC3304A-05 Soft-start retry after EN pin toggle
+03/10/24 LTC3304C Soft-start retry after EN pin toggle
+03/10/24 LTC3304C-05 Soft-start retry after EN pin toggle
+03/10/24 ADA4930-1 Corrected shutdown behavior.
+03/10/24 MAX38908  new model
+03/07/24 AD8460 Improved convergence performance.
+03/07/24 LT3845A Fix SYNC pin issue
+03/07/24 LT8582 Updated model for best practices, corrected PG pin behavior, adjusted Rser and K factor on example circuit, fixed CLKOUT driver behavior
+03/07/24 LTM4678 Updated Application circuit
+03/07/24 MAX17553C Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17555A Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17555B Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17555C Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17640A Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17640B Replaced the LT logo on the symbol with MAXIM.
+03/07/24 MAX17640C Replaced the LT logo on the symbol with MAXIM.
+03/04/24 ADA4930-1 Corrected shutdown behavior.
+03/04/24 ADP7104 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-1.5 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-1.8 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-2.5 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-3.0 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-3.3 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-5.0 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 ADP7104-9.0 Changed linked model file for symbol, renamed model in dot model statement.
+03/04/24 LTC3630 Fixed Run Pin Current
+03/04/24 LTC7840 Fixed SYNC FUnction, ILIM response, OCP and Hiccup, and Softstart response
+03/04/24 LTM8078 Fixed Vin UVLO fault response
+03/04/24 MAX38902B Fixed transient, noise, PSRR, and regulation issues
+03/04/24 ADG1334 Edited for best practices, fixed charge injection, ton, toff, tbbm, bandwidth
+03/04/24 AD8561 correct inverted input terminals
+03/04/24 MAX14662  new model
+03/04/24 OP482  new model
+02/24/24 LTC7810 corrected gate drive controls
+02/15/24 ADA4932 Improved convergence and accuracy of AC and noise response.
+02/15/24 ADAQ7767-1  new model
+02/15/24 MAX1852  new model
+02/15/24 MAX1853  new model
+02/13/24 ADuM4121A Updated the symbol.
+02/13/24 ADuM4121B Updated the symbol.
+02/13/24 ADuM4121C Updated the symbol.
+02/13/24 LT8306 Fixed Start-up risetime, Negative Output, and EN Hysteresis Issue
+02/13/24 MAX22701D  new model
+02/12/24 LTC7063 Fixed PWM issue
+02/12/24 ADA4937 Added input current noise, improved convergence performance.
+02/12/24 LT8618A-3.3  new model
+02/12/24 LT8618A-5  new model
+02/07/24 ADuM4121A Fixed UVLO, VIH/VIL, peak current, internal RdsOn and timing.
+02/07/24 ADuM4121B Fixed UVLO, VIH/VIL, peak current, internal RdsOn and timing.
+02/07/24 ADuM4121C Fixed UVLO, VIH/VIL, peak current, internal RdsOn and timing.
+02/07/24 LT7170-1 Updated current limit and error amp of the IC model
+02/07/24 LT8610 Corrected SYNC pin function; updated control loop parameters; updated model symbol
+02/07/24 LT7170  new model
+02/07/24 ADGS2414D  new model
+02/07/24 ADA4938  new model
+02/02/24 LT8330 Corrected UVLO operation and minimum on-time.
+02/02/24 LTC3126 Fixed UVLO falling threshold and Valid Signal Response
+02/02/24 ADA4522-1 Added flicker component to input voltage noise.
+02/02/24 ADA4522-2 Added flicker component to input voltage noise.
+02/02/24 ADA4522-4 Added flicker component to input voltage noise.
+02/02/24 ADPL26001  new model
+02/02/24 ADA4937  new model
 01/31/24 LT3845A Added SYNC Pin on the Model
 01/31/24 LTC7132 corrected gate drive logic and timings
 01/31/24 ADA4610 Improved accuracy of input current noise and output impedance.

@@ -226,7 +226,7 @@ R64 N010 MID 1
 .param Co1=30p
 .param gmcas=9m
 .param gm2=9.44m
-.parak k_gm2=1
+.param k_gm2=1
 .param Ro2=1G
 .param Co2= 12p
 .param Rz=75

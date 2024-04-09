@@ -31,9 +31,9 @@ WINDOW 0 0 -96 Bottom 2
 WINDOW 3 0 53 Center 2
 SYMATTR Value ADuM4121B
 SYMATTR Prefix X
-SYMATTR SpiceModel ADuM4121xx.sub
+SYMATTR SpiceModel ADuM4121B.sub
 SYMATTR Description High Voltage Isolated Gate Driver with Internal Miller Clamp, 2A Output
-SYMATTR Value2 ADuM4121xx Vrun2=7.2
+SYMATTR Value2 ADuM4121B
 PIN -80 -96 TOP 8
 PINATTR PinName Vdd1
 PINATTR SpiceOrder 1

@@ -27,47 +27,6 @@ D4 4 3 S
 .model S D(Ron=5 Roff=1G Vfwd=.4 epsilon=1)
 .ends ADG1611
 *
-.subckt ADG1633 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-C1 15 16 8p
-C2 13 16 63p
-C5 1 16 63p
-S1 N004 1 16 N002 TN
-S2 13 N004 N002 16 BN
-S3 1 N009 N002 16 TP
-S4 N009 13 16 N002 BP
-C6 3 16 33p
-C7 2 16 19p
-M1 3 N004 2 2 N m=.22
-M2 2 N009 3 3 P m=.22
-D1 2 1 S
-D2 13 3 S
-D3 3 1 S
-D4 13 2 S
-A2 15 16 16 16 16 N007 N005 16 SCHMITT Vt=1.4 Vh=1m tripdt=5n Trise=100n Td=80n
-S5 N015 1 16 N012 TN
-S6 13 N015 N012 16 BN
-S7 1 N014 N012 16 TP
-S8 N014 13 16 N012 BP
-C11 4 16 19p
-M3 3 N015 4 4 N m=.22
-M4 4 N014 3 3 P m=.22
-D5 4 1 S
-D6 13 3 S
-D7 3 1 S
-D8 13 4 S
-C8 14 16 8p
-A3 14 16 16 16 16 N008 16 16 SCHMITT Vt=1.4 Vh=1m tripdt=5n Trise=100n Tfall=225n
-A5 16 N005 16 N008 16 N002 16 16 AND Trise=90n Tfall=10n tripdt=5n
-A1 16 N007 16 N008 16 N012 16 16 AND Trise=90n Tfall=10n tripdt=5n
-.model N VDMOS(Kp=.12 Vto= .5 Is=0 mtriode=1.3 Cgs=10p Ksubthres=.4 nlev=3 gdsnoi=2)
-.model P VDMOS(Kp=.12 Vto=-.5 pchan Is=0 mtriode=1.3 Cgs=10p Ksubthres=.4 nlev=3 gdsnoi=2)
-.model TN SW(Ron=500 Roff=1G Vt=-.4 Vh=-.1)
-.model BN SW(Ron=500 Roff=1G Vt=.6 Vh=-.1)
-.model TP SW(Ron=500 Roff=1G Vt=.6 Vh=-.1)
-.model BP SW(Ron=500 Roff=1G Vt=-.4 Vh=-.1)
-.model S D(Ron=5 Roff=1G Vfwd=.4 epsilon=1)
-.ends ADG1633
-*
 .subckt ADG5248F 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 C2 3 14 63p
 C5 13 14 63p

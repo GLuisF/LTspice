@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADA4510 1 2 3 4 5
 R82 N043 4 1µ Noiseless
@@ -226,7 +226,7 @@ R64 N010 MID 1
 .param Co1=30p
 .param gmcas=9m
 .param gm2=9.44m
-.parak k_gm2=1
+.param k_gm2=1
 .param Ro2=1G
 .param Co2= 12p
 .param Rz=75

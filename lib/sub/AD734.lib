@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt AD734 1 2 3 4 5 6 7 8 9 10 11 12 13 14
 CINX 1 2 2p
@@ -16,7 +16,7 @@ FU1 MID VU VU 1.01
 RU3 VU MID 1Meg
 VR1 N054 8 8
 QR N052 N054 13 0 QPU
-EU U MID POLY(3) 4 5 VU MID VR2 MID (0,1.0101,1,1.0101)
+EU U MID POLY(3) 4 5 VU MID VR2 MID 0 1.0101 1 1.0101
 RU5 U MID 1Meg
 RR N054 13 100k
 VR2 N052 8 0

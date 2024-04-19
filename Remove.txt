@@ -2623,3 +2623,5 @@
 \lib\sub\Contrib\Schaffner\RT_RB_1ph_1046622C_e.lib
 \lib\sub\Contrib\Schaffner\RT_RB_3ph_1046625C_e.lib
 \lib\sub\LT1175.lib
+\lib\sub\ADuM4121xx.sub
+\lib\sym\Comparators\AD8561.asy

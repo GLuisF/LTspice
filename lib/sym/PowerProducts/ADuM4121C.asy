@@ -28,12 +28,12 @@ LINE Normal -48 16 -32 16
 RECTANGLE Normal 128 96 -128 -96
 TEXT 0 -56 Center 1 ADI
 WINDOW 0 0 -96 Bottom 2
-WINDOW 3 0 54 Center 2
+WINDOW 3 0 53 Center 2
 SYMATTR Value ADuM4121C
 SYMATTR Prefix X
-SYMATTR SpiceModel ADuM4121xx.sub
+SYMATTR SpiceModel ADuM4121C.sub
 SYMATTR Description High Voltage Isolated Gate Driver with Internal Miller Clamp, 2A Output
-SYMATTR Value2 ADuM4121xx Vrun2=11.2
+SYMATTR Value2 ADuM4121C
 PIN -80 -96 TOP 8
 PINATTR PinName Vdd1
 PINATTR SpiceOrder 1

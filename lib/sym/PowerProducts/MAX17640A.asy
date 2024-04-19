@@ -1,7 +1,7 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal -144 -208 144 224
-TEXT 0 16 Center 2 LT
+TEXT 0 16 Center 2 MAXIM
 WINDOW 0 0 -128 Center 2
 WINDOW 3 0 128 Center 2
 SYMATTR Value MAX17640A

@@ -130,7 +130,7 @@ E56 56  0 POLY(2) 4 0 52 0 1.2m 1 -37m
 R51 51 0 1k
 R52 52 0 1k
 BD51 51 0 v=uramp(v(50))
-BD52 52 0 v=-uarmp(v(50))
+BD52 52 0 v=-uramp(v(50))
 G53  3  0 POLY(1) 51 0  -49U 1M
 G54  0  4 POLY(1) 52 0  -49U -1M
 *

@@ -1,4 +1,4 @@
-* Copyright (c) 2000-2024 Analog Devices, Inc.   All rights reserved.
+* Copyright (c) 2014-2024 GLuisF Devices, Inc.   All rights reserved.
 *
 .model 2N7000 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p mfg=Fairchild Vds=60 Ron=2 Qg=1.5n)
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1 mfg=Fairchild Vds=60 Ron=2 Qg=1.5n)
@@ -11,7 +11,7 @@
 .model 2SK134C VDMOS(nchan Vto=0.02 Kp=0.85 Lambda=0.02 Rs=0.62 Rd=0.1 Rds=1e7 Cgdmax=100p Cgdmin=5p a=0.25 Cgs=600p Cjo=1080p m=0.7 VJ=2.5 IS=4.0E-06 N=2.4)
 .model 2SK1489 NMOS(LEVEL=3 L=2u W=4.8 KP=1.0362u RS=10m RD=.7366 VTO=2.2500 RDS=5.3333E6 TOX=2u CGSO=1.9n CGDO=31.4p CBD=3.74n MJ=1.1448 PB=2.0044 RG=10m IS=5.1802m N=5 RB=1n GAMMA=0 KAPPA=0)
 .model 2SK1530C VDMOS(nchan Vto=1.55 Kp=9.0 Lambda=0.002 Rs=0.025 Rd=0.1 Rds=1e7 Cgdmax=1500p Cgdmin=15p a=0.33 Cgs=880p Cjo=1260p m=0.68 VJ=2.5 IS=4.0E-06 N=2.4)
-.model 3N163 VDMOS(pchan Vto=-3.0 Rd=10 Rs=100 Kp=4.0m Lambda=21m Cgdmin=0.2p Cgdmax=1.9p A=0.26 Cgs=1.9p N=1.02 M=0.68 Cjo=3.5p Is=0.05p VJ=2.5 TT=24n ksubthres=150m mtriode=0.6 mfg=Linear_Systems Vds=40 Ron=400)
+.model 3N163 VDMOS(pchan Vto=-3.0 Rd=10 Rs=100 Kp=4.0m Lambda=21m Cgdmin=0.2p Cgdmax=1.9p A=0.26 Cgs=1.9p  N=1.02 M=0.68 Cjo=3.5p Is=0.05p VJ=2.5 TT=24n ksubthres=150m mtriode=0.6 mfg=Linear_Systems Vds=40 Ron=400)
 .model AO3423 VDMOS(pchan Kp=6.8 Rs=0.0584 Rd=0.0043 Rg=11.2 Vto=-0.85 mtriode=.6 Ksubthres=.1 Lambda=0.001 Cgdmax=287p Cgdmin=13p Cgs=288p tt=09n A=0.43 Is=5.85E-07 N=1.856 Rb=0.019095 M=1.379 Vj=6.84 Cjo=90.0pF mfg=AOS Vds=-20 Ron=76m Qg=3.2n)
 .model AO4614B_N VDMOS(Kp=19.4363 Rs=0.006 Rd=0.0105 Rg=4.6 Vto=2.68 mtriode=1.2 Ksubthres=.0001 Lambda=0.14 Cgdmax=349p Cgdmin=17p Cgs=473p tt=26n A=0.24 Is=7.78E-15 N=0.896 Rb=0.007406 m=0.963 Vj=4.79 Cjo=190.0pF mfg=AOS Vds=40 Ron=24m Qg=4.3n)
 .model AO4614B_P VDMOS(pchan Kp=13.4564 Rs=0.0004 Rd=0.0259 Rg=14.0 Vto=-2.55 mtriode=.85 Ksubthres=.1 Lambda=0.11 Cgdmax=572p Cgdmin=28p Cgs=868p tt=30n A=0.23 Is=1.26E-10 N=1.276 Rb=0.00823 m=1.322 Vj=6.13 Cjo=170.0pF mfg=AOS Vds=-40 Ron=36m Qg=7.9n)

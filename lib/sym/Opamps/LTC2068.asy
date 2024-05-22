@@ -17,9 +17,9 @@ WINDOW 0 14 -25 Left 2
 WINDOW 3 30 39 Left 2
 SYMATTR Value LTC2068
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC2066.lib
-SYMATTR Value2 LTC2066
-SYMATTR Description Quad 10µA Supply Current, Low IB, Zero-Drift Operational Amplifier
+SYMATTR SpiceModel LTC2068.lib
+SYMATTR Value2 LTC2068
+SYMATTR Description 10µA Supply Current, Low IB, Zero-Drift Operational Amplifier
 PIN -32 16 NONE 0
 PINATTR PinName IN+
 PINATTR SpiceOrder 1

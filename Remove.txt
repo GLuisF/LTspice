@@ -2594,9 +2594,6 @@
 \lib\sym\PowerProducts\LTC7892.asy
 \lib\sub\LTC7892.sub
 \examples\Applications\LTC7892.asc
-\lib\sym\PowerProducts\LT8350S.asy
-\lib\sub\LT8350S.sub
-\examples\Applications\LT8350S.asc
 \lib\sym\PowerProducts\LT3097.asy
 \lib\sub\LT3097.sub
 \examples\Applications\LT3097.asc
@@ -2625,3 +2622,7 @@
 \lib\sub\LT1175.lib
 \lib\sub\ADuM4121xx.sub
 \lib\sym\Comparators\AD8561.asy
+.\lib\sym\PowerProducts\ADuM4195.asy
+\lib\sub\ADuM4195.sub
+\examples\Applications\ADuM4195.asc
+\examples\Educational\FRA\fra_eg10_LT8609S_inverting_probe.asc

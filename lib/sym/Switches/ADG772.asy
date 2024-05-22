@@ -26,7 +26,7 @@ SYMATTR Value ADG772
 SYMATTR Prefix X
 SYMATTR SpiceModel ADG772.sub
 SYMATTR Value2 ADG772
-SYMATTR Description CMOS Low Power Dual 2:1 Mux/Demux \nUSB 2.0 (480 Mbps)/USB 1.1. \n(Only one channel is modelled and crosstalk is not included.) \n(Switch shown for a logic 0 input)
+SYMATTR Description CMOS Low Power Dual 2:1 Mux/Demux \n USB 2.0 (480 Mbps)/USB 1.1. \n(Switch shown for a logic 0 input)
 PIN -96 48 NONE 8
 PINATTR PinName IN
 PINATTR SpiceOrder 1
@@ -42,6 +42,6 @@ PINATTR SpiceOrder 4
 PIN 0 -144 TOP 8
 PINATTR PinName Vdd
 PINATTR SpiceOrder 5
-PIN 0 160 BOTTOM 8
+PIN 0 160 BOTTOM 4
 PINATTR PinName GND
 PINATTR SpiceOrder 6

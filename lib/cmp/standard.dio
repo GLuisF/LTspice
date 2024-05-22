@@ -1,4 +1,4 @@
-* Copyright (c) 2000-2024 Analog Devices, Inc.   All rights reserved.
+* Copyright (c) 2014-2024 GLuisF Devices, Inc.   All rights reserved.
 *
 .model RED_3mm_151031SS04000 D(IS=10.010E-21 N=1.8860 RS=1.0000E-6 IKF=1.0000E3 CJO=1.0000E-12 M=.3333 VJ=.75 BV=5 IBV=10.00E-6 TT=5.0000E-9 Iave=20m Vpk=5 mfg=Wurth type=LED)
 .model LEDBlue D(IS=93.2P RS=42M N=7.47 BV=5 IBV=10U CJO=2.97P VJ=0.75 M=0.333 TT=4.32U Iave=40m Vpk=5 type=LED)
@@ -44,8 +44,7 @@
 .model 1N4106 D(BV=12 CJO=107.101P IBV=50U IS=5.72393F M=501.929M RS=100 VJ=750M)
 .model 1N4148 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
 .model 1N4448HWT D(IS=137f RS=0.168 BV=80 IBV=100n CJO=3.56p M=0.333 N=1.11 TT=5.76n Vpk=80V Iave=0.25 Tt=4ns mfg=Diodes_Inc type=Silicon)
-.model 1N4467 D(IS=84.5f N=1 RS=0.1 Ikf=0 Xti=3 Eg=1.11 Cjo=930p M=0.3333 Vj=0.75 Fc=0.5 Isr=83.39n Nr=2 Bv=12.05 Ibv=0.1785 Tt=144.3n type=Zener)
-.model 1N4937 D(IS=830n RS=34.0m BV=600 IBV=5.00u CJO=26.5p M=0.333 N=2.46 TT=288n)
+.model 1n4467 D(IS=84.5f N=1 RS=0.1 Ikf=0 Xti=3 Eg=1.11 Cjo=930p M=0.3333 Vj=0.75 Fc=0.5 Isr=83.39n Nr=2 Bv=12.05 Ibv=0.1785 Tt=144.3n type=Zener)
 .model 1N5355B D(IS=9.15E-16 RS=2.1 TT=5.01E-8 CJO=2.79E-10 M=0.33 BV=17.87 IBV=0.065 Vpk=18V mfg=Diodes_Inc type=Zener )
 .model 1N5369B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=51 IBV=25m NBV=35 Vpk=51 mfg=OnSemi type=Zener)
 .model 1N5371B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=60 IBV=20m NBV=30 Vpk=60 mfg=OnSemi type=Zener)
@@ -151,7 +150,7 @@
 .model 90CLQ100 D IS=0.00032603 RS=0.00931445 N=2 EG=1.3 XTI=0.5 BV=100 IBV=0.0001 CJO=3.07785n VJ=0.4 M=0.479989 FC=0.5 TT=0
 .model AA112 D IS=1.2u N=1.4 RS=80 cjo=1.2p tt=18n eg=0.69 type=Germanium
 .model AEG_AA112 D(IS=2.777779u RS=35.67365 BV=20 IBV=0.0022 CJO=1p TT=1p M=0.5 VJ=1 N=2.172326 EG=0.67 FC=0.5 type=Germanium)
-.model AEG_AA117 D(IS=1.111111E-05 RS=46.02731 BV=115 IBV=0.006 CJO=1p TT=1p ISR=1.581139E-06 M=0.5 VJ=0.5 N=3.542911 IKF=0.03 NR=29.56001 EG=0.67 FC=0.5 XTI=3.012615 NBV=14.78 IBVL=0.00007 NBVL=22.17001 type=Germanium
+.model AEG_AA117 D(IS=1.111111E-05 RS=46.02731 BV=115 IBV=0.006 CJO=1p TT=1p ISR=1.581139E-06 M=0.5 VJ=0.5 N=3.542911 IKF=0.03 NR=29.56001 EG=0.67 FC=0.5 XTI=3.012615 NBV=14.78 IBVL=0.00007 NBVL=22.17001 type=Germanium)
 .model AL307 D(IS=5.493858e-021 N=1.41399 RS=46.6023 TT=5U CJO=5P VJ=750M EG=1.43 type=LED mfg=USSR)
 .model AOT-2015 D(Is=5.961e-10 Rs=1.07 N=6.222 Cjo=.5n Xti=200 Iave=175mA Vpk=5 mfg=AOT type=LED)
 .model APT1608SURCK d(IS=2.01E-17 N=2.139 RS=2 m=0.431 Vj=2.32 Cjo=35pF IBV=10u BV=5 EG=2.26 XTI=3 Iave=30mA Vpk=5 mfg=Kingbright type=LED)
@@ -177,16 +176,6 @@
 .model BAS81 D(IS=86.03n N=1.678 RS=11.45 Ikf=914.9u Xti=3 Eg=1.11 Cjo=1.8p M=0.3333 Vj=0.75 Fc=0.5 Isr=15.8E-30 Nr=6.116 Bv=100 Ibv=100u Tt=5n type=Schottky)
 .model BAT46WJ D(Is=.1703u N=1.06 Rs=1.3 Cjo=35p Vj=.4 M=.5 Eg=.69 XTI=2 Iave=.25 Vpk=100 mfg=NXP type=Schottky)
 .model BAT54 D(Is=.1u Rs=2.2 N=1 Cjo=12p M=.3 Eg=.69 Xti=2 Iave=300m Vpk=30 mfg=Vishay type=Schottky)
-.MODEL BAT54AHM D(Is=85.777E-9 N=1.0710 Rs=.45336 Ikf=21.653 Xti=2 Eg=.67 Cjo=31.124E-12 M=.47078 Vj=.5022 Isr=7.640E-8 Nr=2.3 Bv=30 Trs1=0.0042 Iave=0.2 Vpk=30 mfg=Rohm type=Schottky)
-.MODEL BAT54CHM D(Is=97.864E-9 N=1.1435 Rs=.80019 Ikf=29.354 Xti=2 Eg=.69 Cjo=17.406E-12 M=.43177 Vj=.50393 Isr=34.375E-9 Nr=1.3 Bv=30 Trs1=0.003 Iave=0.2 Vpk=30 mfg=Rohm type=Schottky)
-.MODEL BAT54HM D(Is=85.777E-9 N=1.0710 Rs=.45336 Ikf=21.653 Xti=2 Eg=.67 Cjo=31.124E-12 M=.47078 Vj=.5022 Isr=7.640E-8 Nr=2.3 Bv=30 Trs1=0.0042 Iave=0.2 Vpk=30 mfg=Rohm type=Schottky)
-.MODEL BAT54SHM D(Is=85.777E-9 N=1.0710 Rs=.45336 Ikf=21.653 Xti=2 Eg=.67 Cjo=31.124E-12 M=.47078 Vj=.5022 Isr=7.640E-8 Nr=2.3 Bv=30 Trs1=0.0042 Iave=0.2 Vpk=30 mfg=Rohm type=Schottky)
-.MODEL BAV170HM D(Is=1.5619E-12 N=1.3911 Rs=.61265 Ikf=4.6442 Cjo=2.4780E-12 M=.2722 Vj=.50196 Isr=4.4836E-12 Nr=3 Bv=100 tt=500E-9 Iave=0.215 Vpk=100 mfg=Rohm type=Switching)
-.MODEL BAV199HM D(Is=1.5619E-12 N=1.3911 Rs=.61265 Ikf=4.6442 Cjo=2.4780E-12 M=.2722 Vj=.50196 Isr=4.4836E-12 Nr=3 Bv=100 tt=500E-9 Iave=0.215 Vpk=100 mfg=Rohm type=Switching)
-.MODEL BAV70HM D(Is=1.2872E-9 N=1.7918 Rs=.90633 Ikf=83.541E-3 Cjo=628.00E-15 M=.12181 Vj=7.4703 Isr=3.4924E-9 Nr=2.3 Bv=90 tt=27.411E-9 Iave=0.215 Vpk=90 mfg=Rohm type=Switching)
-.MODEL BAV99HM D(Is=1.7962E-9 N=1.7555 Rs=.55113 Ikf=72.153E-3 Cjo=1.3304E-12 M=.11174 Vj=4.1020 Isr=3.2239E-9 Nr=4 Bv=100 tt=11.542E-9 Iave=0.215 Vpk=100 mfg=Rohm type=Switching)
-.MODEL BAW156HM D(Is=1.5619E-12 N=1.3911 Rs=.61265 Ikf=4.6442 Cjo=2.4780E-12 M=.2722 Vj=.50196 Isr=4.4836E-12 Nr=3 Bv=100 tt=500E-9 Iave=0.215 Vpk=100 mfg=Rohm type=Switching)
-.MODEL BAW56HM D(Is=1.7962E-9 N=1.7555 Rs=.55113 Ikf=72.153E-3 Cjo=1.3304E-12 M=.11174 Vj=4.1020 Isr=3.2239E-9 Nr=4 Bv=100 tt=11.542E-9 Iave=0.215 Vpk=100 mfg=Rohm type=Switching)
 .model BB112 D(IS=1e-14 RS=0.0011 CJO=2.324n VJ=0.75 TT=5n M=0.9 BV=100 XTI=3 FC=0.5 IBV=0.0001 mfg=Philips type=Varactor
 .model BB119 D IS=1.122e-17 RS=0.0011 CJO=4.163e-11 VJ=0.75 TT=5n M=0.3333 BV=100 N=1 EG=1.11 XTI=3 FC=0.5 IBV=0.0001 TNOM=27 mfg=Philips type=Varactor
 .model BB130 D IS=1e-14 RS=0.0011 CJO=5.563e-11 VJ=0.75 TT=5n M=0.3333 BV=100 N=1 EG=1.11 XTI=3 FC=0.5 IBV=0.0001 TNOM=27 mfg=Philips type=Varactor
@@ -1563,7 +1552,7 @@
 .model ZLLS2000 D(Is=2u Rs=.06 N=1 Cjo=182p M=.3 Eg=.69 Iave=1 Vpk=40 mfg=Zetex type=Schottky)
 .model ZLLS350 D IS=14E-8 N=1.03 ISR=90n NR=2 IKF=0.043 BV=56 IBV=0.1m RS=1.2 TT=1n CJO=13.5p VJ=0.6 M=0.33 EG=0.63 XTI=2 TRS1=4m Iave=650m Vpk=40 mfg=Zetex type=Schottky
 .model XP-E2-WHT D(IS=5.01824E-16 N=3.36413016 RS=0.244130334 XTI=40.92995615 IKF=0 EG=2.5000 mfg=CREE Vpk=5)
-.model CMDSH-4E D(Is=82.9n Rs=2.02 N=1.04 Cjo=12.802p M=.47462 Eg=0.69 Xti=2 Iave=200m Vpk=40 mfg=Central type=Schottky)
+.model CMDSH-4E D(Is=82.9n Rs=2.02 N=1.04 Cjo=12.802p M=.47462 Eg=0.69 Xti=2 Iave=200m Vpk=40 mfg= Central type=Schottky)
 .model DFLS160 D(Is=736n Rs=63.0m Vpk=60.0 ibv=100u Cjo=163p M=0.333 N=1.01 tt=14.4n Iave=1 )
 .model RB058LAM150 D(Is=17.821E-9 N=1.1099 Rs=14.223E-3 Ikf=41.417E-3 Xti=2.0 Eg=0.851 Cjo=200.10E-12 M=0.4473 Vj=0.5015 Isr=9.6164E-9 Nr=1.17 Bv=150 Trs1=-2.2000E-3 Iave=3 Vpk=150 mfg=Rohm type=Schottky)
 .model RB068LAM100 D(Is=6.2345E-09 N=1.1199 Rs=15.270E-03 Ikf=44.721E-03 Xti=2.0 Eg=0.912 Cjo=287.30E-12 M=0.5127 Vj=0.5812 Isr=3.1623E-09 Nr=1.3467 Bv=100 Trs1=-2.9503E-03 Tikf=9.9475E-03 Iave=2 Vpk=100 mfg=Rohm type=Schottky)

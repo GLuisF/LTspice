@@ -4,6 +4,10 @@ LINE Normal 32 0 0 0
 LINE Normal 32 32 0 32
 LINE Normal 32 64 0 64
 RECTANGLE Normal 32 96 -32 -32
+WINDOW 0 0 -48 Center 2
+SYMATTR SpiceModel Generic3Pin
+SYMATTR ModelFile generic.lib
+SYMATTR Prefix X
 PIN 0 0 RIGHT 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1

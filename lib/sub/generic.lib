@@ -1,0 +1,68 @@
+* Generic Symbols for connectors
+
+.subckt Generic1Pin 1
+R1 1 0 1G
+.ends Generic1Pin
+
+.subckt Generic2Pin 1 2
+R1 1 0 1G
+R2 2 0 1G
+.ends Generic2Pin
+
+.subckt Generic3Pin 1 2 3
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+.ends Generic3Pin
+
+.subckt Generic4Pin 1 2 3 4
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+.ends Generic4Pin
+
+.subckt Generic4Pin 1 2 3 4
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+.ends Generic4Pin
+
+.subckt Generic5Pin 1 2 3 4 5
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+R5 5 0 1G
+.ends Generic5Pin
+
+.subckt Generic6Pin 1 2 3 4 5 6
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+R5 5 0 1G
+R6 6 0 1G
+.ends Generic6Pin
+
+.subckt Generic7Pin 1 2 3 4 5 6 7
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+R5 5 0 1G
+R6 6 0 1G
+R7 7 0 1G
+.ends Generic7Pin
+
+.subckt Generic8Pin 1 2 3 4 5 6 7 8
+R1 1 0 1G
+R2 2 0 1G
+R3 3 0 1G
+R4 4 0 1G
+R5 5 0 1G
+R6 6 0 1G
+R7 7 0 1G
+R8 8 0 1G
+.ends Generic8Pin

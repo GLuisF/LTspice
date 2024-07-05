@@ -6,8 +6,8 @@ WINDOW 0 0 -104 Center 2
 WINDOW 3 0 120 Center 2
 SYMATTR Value ADP5074
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP5073_4.sub
-SYMATTR Value2 ADP5073_4 CL=2.75 CS=80m Ron=220m IQ=2.5m
+SYMATTR SpiceModel ADP5074.sub
+SYMATTR Value2 ADP5074 CS=80m Ron=220m IQ=2.5m
 SYMATTR Description 2.4A, DC to DC Inverting Regulator
 PIN -144 288 LEFT 8
 PINATTR PinName Sync/Freq

@@ -1,0 +1,46 @@
+*$
+*//-----------------------------------------------------------------------//
+*//   Part        : EKXQ451ELL111MMN3S
+*//   Date        : 2022/10/27
+*//   Temperature : 20deg.C/-40deg.C/105deg.C
+*//   Model       : RC-ladder 7 Elements Model
+*//   Copyright (C) 2022 Nippon Chemi-Con Corporation.
+*//   All Rights Reserved.
+*//-----------------------------------------------------------------------//
+
+.SUBCKT EKXQ451ELL111MMN3S_20deg-C 1 2
+
+C1 4 2 1.64e-06
+C2 5 2 5.07e-05
+C3 6 2 3.87e-05
+R1 3 4 3.62e-01
+R2 4 5 4.12e-01
+R3 5 6 4.16e-01
+L1 1 3 8.00e-09
+
+.ENDS
+
+.SUBCKT EKXQ451ELL111MMN3S_-40deg-C 1 2
+
+C1 4 2 9.29e-08
+C2 5 2 4.97e-07
+C3 6 2 3.93e-05
+R1 3 4 2.51e-01
+R2 4 5 3.81e+01
+R3 5 6 9.90e+01
+L1 1 3 8.00e-09
+
+.ENDS
+
+.SUBCKT EKXQ451ELL111MMN3S_105deg-C 1 2
+
+C1 4 2 8.75e-05
+C2 5 2 6.78e-06
+C3 6 2 3.32e-06
+R1 3 4 6.28e-02
+R2 4 5 8.46e-01
+R3 5 6 1.14e+02
+L1 1 3 8.00e-09
+
+.ENDS
+*$

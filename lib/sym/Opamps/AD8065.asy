@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value AD8065
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI.lib
+SYMATTR SpiceModel AD8065.lib
 SYMATTR Value2 AD8065
 SYMATTR Description Single 135MHz low noise FET Input Amp
 PIN -32 80 NONE 0

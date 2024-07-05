@@ -1,3 +1,138 @@
+07/03/24 AD4080 Improved noise performance and updated the example circuit.
+07/03/24 LTC3900 Renamed diode model in the application circuit.
+07/03/24 LTC7805 Fixed Pgood response and correct IntVcc level
+07/03/24 LT1166 Improve AC Response to match datasheet with best convergence
+07/03/24 LTC690 Fix convergence and Example circuit
+07/03/24 LTC692 Fixed Convergence and Example Circuit
+07/03/24 LTC694 Fixed Convergence and Example Circuit
+07/03/24 LTC694-3.3 Fixed Convergence and Example Circuit
+07/03/24 ADuM4223A  new model
+07/03/24 ADuM4223B  new model
+07/03/24 ADuM4223C  new model
+07/03/24 ADM4854  new model
+07/01/24 LTC3261 Fixed Vin current during Shutdown, Oscillator Frequency and Voltage Loss
+07/01/24 LT1389-1.25 Fixed convergence issues
+07/01/24 LT1389-2.5 Fixed convergence issues
+07/01/24 LT1389-4.096 Fixed convergence issues
+07/01/24 LT1389-5 Fixed convergence issues
+07/01/24 ADA4870 Added sink and source current on supply rails
+07/01/24 ADG5404F  new model
+06/26/24 LTC3649 Corrected PGOOD pin and SYNC pin function
+06/23/24 LT3798 Fix convergence issues
+06/23/24 LT8336 Fixed convergence issues and updated symbol file
+06/23/24 LT8337 Fixed convergence issues and updated symbol file
+06/23/24 LT8337-1 Fixed convergence issues and updated symbol file
+06/23/24 LT8361 Fixed convergence issues and updated symbol file
+06/23/24 LT8362 Fixed convergence issues and updated symbol file
+06/23/24 LTC1643AH Fix convergence issues
+06/23/24 AD8233 Fixed convergence issues
+06/23/24 ADA4691 correct syntax implementation
+06/21/24 ADAQ23875 Improved convergence.
+06/21/24 ADM706 Update model to support new code version
+06/21/24 ADM707 Update model to support new code version
+06/21/24 ADM708 Update model to support new code version
+06/21/24 ADP1761-0.9 Fix example file
+06/21/24 ADP5073 Updated basic function.
+06/21/24 ADP5074 Updated basic function.
+06/21/24 LT1184 Fix model operation
+06/21/24 LT1186F Fixed application circuit from convergence issues
+06/21/24 AD8065 Corrected input bias current and input resistance, and improved convergence performance.
+06/17/24 ADM705 Updated model to support new code version.
+06/17/24 LT4180 Fixed operating point issues with example circuit, fixed dithering frequency programming
+06/17/24 LTC3723-1 Added voltage clamp characteristics to vcc pin, improved operating point performance
+06/17/24 LTC7840 Fixed hiccup reset of Channel 2
+06/11/24 UniversalOpamap5 added
+06/11/24 UniversalOpamp example updated
+06/10/24 LTM8078 Fixed convergence issues
+06/09/24 ADP1741 Fixed parser issue.
+06/09/24 ADuM7223A Replaced ports with net names.
+06/09/24 MAX22088 Fixed parser issue.
+06/09/24 MAX22288 Fixed 24.1 Simulation issue
+06/09/24 ADuM3223B  new model
+06/09/24 ADuM3223C  new model
+06/09/24 ADuM7223B  new model
+06/09/24 ADuM7223C  new model
+06/09/24 ADG5436F  new model
+06/05/24 ADP1761 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-0.9 Fixed convergence issues and update model symbol
+06/05/24 ADP1761-0.95 Fixed convergence issues and Model Symbol
+06/05/24 ADP1761-1.0 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-1.1 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-1.2 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-1.25 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-1.3 Fixed convergence issues and update symbol file
+06/05/24 ADP1761-1.5 Fixed convergence issues and update symbol file
+06/05/24 ADP5051_chan3_4 Update application circuit
+06/05/24 LT3439 Fixed convergence issues and updated model symbol
+06/05/24 LTC3625-1 Improved convergence behavior.
+06/03/24 ADM7170 Fixed convergence issues
+06/03/24 ADM7170-1.3 Fixed Convergence issues
+06/03/24 ADM7170-1.8 fixed convergence issues
+06/03/24 ADM7170-2.5
+06/03/24 ADM7170-3.0 Fixed Convergence issues
+06/03/24 ADM7170-3.3 Fixed Convergence issues
+06/03/24 ADM7170-4.2 Fixed convergence issues
+06/03/24 ADM7170-5.0 Fixed convergence issues
+06/03/24 ADP7105 Fixed convergence issues and update model symbol
+06/03/24 ADP7105-1.8 Fixed convergence issues and update model symbol
+06/03/24 ADP7105-3.3 Fixed convergence issues and update model symbol
+06/03/24 ADP7105-5.0 Fixed convergence issues and update model symbol
+06/03/24 ADP7185 Fixed convergence issues
+06/03/24 ADP7185-0.5 Fixed convergence issues
+06/03/24 ADP7185-1 Fixed convergence issues
+06/03/24 ADP7185-1.2 fixed convergence issues
+06/03/24 ADP7185-1.5 fixed convergence issues
+06/03/24 ADP7185-1.8 fixed convergence issues
+06/03/24 ADP7185-2 Fixed convergence issues
+06/03/24 ADP7185-2.5 Fixed convergence issues
+06/03/24 ADP7185-3 Fixed convergence issues
+06/03/24 ADP7185-3.3 Fixed convergence issues
+05/30/24 LT3740 Fix convergence issues
+05/30/24 LTC3774 Added aliases and Fixed convergence
+05/30/24 LTC7063 Fix Convergence issues
+05/30/24 LTM8080 Fix convergence issues
+05/30/24 ADA4945-LP  new model
+05/28/24 LTC7000-1 Add ESD diodes on Sense pins
+05/23/24 LTC3376 Redid Model to include all outputs
+05/23/24 LTC7803 Minor logic corrections to support new code version to be released.
+05/23/24 MAX22288 Fixed slew rate accuracy
+05/17/24 ADA4691  new model
+05/13/24 LTC3118 Fixed input currents
+05/13/24 ADA4945-HP Corrected high supply current when starting power supplies from 0V.
+05/13/24 ADL5303 Corrected voltage noise density.
+05/13/24 ADuM7223A  new model
+05/13/24 AD8231  new model
+05/13/24 AD8304  new model
+05/07/24 AD8460 Improved accuracy of open loop gain/phase and open loop output impedance.
+05/07/24 AD8624 Model redesigned on new architecture with accuracy and convergence improvements.
+05/04/24 AD4052  new model
+05/04/24 MAX4730  new model
+05-02-24 IdealTransformer Changed turns ratio sources from '1/N' to 'N' per convention. Added node names, changed resistor names to be more descriptive. Changed input to sinusoid.
+05/01/24 ADA4351 Updated overload recovery, syntax issues
+05/01/24 ADAQ4380-4  new model
+04/30/24 ADAQ4380 Improved accuracy of voltage noise and current noise.
+04/30/24 LT3693 Corrected control loop parameters; added SYNC pin
+04/30/24 LT8316 Improved model accuracy.
+04/30/24 LT8582 Fixed Clock Functionality
+04/30/24 LTC7065  new model
+04/29/24 LT1175-5 fixed broken subcircuit reference
+04/28/24 LTC7103-1 Improved initial operating point performance
+04/28/24 ADG1634 Fixed leakage, symbol and application circuit.
+04/25/24 LT7170-1 Model updated for FRA HW correlation and faster transient simulation
+04/24/24 LT3685 Corrected control loop parameters; added SYNC pin
+04/23/24 LT317A Fix model duplication issue
+04/23/24 LT3745 Removed large numbers in sim and improved convergence.
+04/23/24 LTC7000 Fixed issue Bias Current level
+04/23/24 LTC7000-1 Fixed issue Bias Current level
+04/23/24 LTM4658 Updated internal CLK generation in the model.
+04/23/24 LTM4671 Fixed SS pin charging current of High Power Channels
+04/23/24 LTM8024 Fix the issue on RT
+04/23/24 LTC2954-1 Fix simulation stuck issue
+04/23/24 LTC2954-2 Fix simulation stuck issue
+04/23/24 LT8210-1  new model
+04/23/24 LTM4659  new model
+04/23/24 MAX17553A  new model
+04/23/24 MAX17553B  new model
 04/18/24 MAX20444B Fixed STAGE 2 response to match the actual part performance
 04/18/24 LTM4682  new model
 04/18/24 LTM4683  new model

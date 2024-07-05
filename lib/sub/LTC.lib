@@ -8790,69 +8790,6 @@ D3 3 4 DC
 .model DC D(Ron=100.0 Roff=1G Vfwd=1.0 ilimit=350u noiseless)
 .ends LT1880
 *
-.subckt LT317A 1 2 3
-Q27 3 N005 N009 0 NPN1BH temp=27
-Q28 N004 N009 N017 0 NPN2
-R4 N017 2 .1 noiseless
-C1 N012 2 30p
-Q19 N007 N006 N005 0 LPNP temp=27
-Q18 N012 N007 N005 0 LPNP temp=27
-R21 N006 N007 1.6k noiseless
-Q17 N012 2 N019 0 NPN1 temp=27
-R22 N019 1 12k noiseless
-C2 N012 1 30p
-Q20 N007 2 N014 0 NPN1 M=10 temp=27
-R23 N014 N019 2.5k noiseless
-R26 N009 2 160 noiseless
-R1 0 N003 27Meg noiseless
-A1 3 2 0 0 0 0 N003 0 OTA g=15n linear vlow=-1e308 vhigh=1e308
-A2 0 N003 2 2 2 2 N002 2 OTA g=22n linear ref=8.8 vlow=-1e308 vhigh=1e308
-G2 N002 2 N002 3 .1m vto=250m dir=1
-G3 2 N002 2 N002 .1m vto=-80m dir=1
-M1 2 N002 N005 N005 PM1
-C3 N010 N012 .1f Rpar=20k noiseless
-C6 3 N002 .1f Rpar=100Meg noiseless
-C7 N002 2 1f Rpar=100Meg noiseless
-C8 3 N004 1p Rpar=220m noiseless
-D1 N005 N010 DDROP
-C10 0 N003 600f Rser=50k noiseless
-Q1 N005 N016 2 0 NPN1BH temp=27
-C17 N005 N010 30p
-A5 N015 N017 2 2 2 2 N016 2 OTA g=2.27u iout=5u Rout=10Meg Cout=1p vlow=0 vhigh=10
-D7 3 2 DB1
-D8 3 2 DB2
-D9 3 2 DB3
-C5 3 2 10p
-C4 N013 N018 10p
-G1 0 N013 3 2 20m
-G4 0 N011 N018 0 2m
-G10 0 N011 N018 0 30 vto=.1m dir=1
-G11 N011 0 0 N018 30 vto=.1m dir=1
-D4 N011 0 DD
-C9 N011 0 1f
-C13 N018 0 1p Rpar=100 noiseless
-G5 N003 0 N008 0 100µ
-G6 3 N012 N011 0 1µ
-D3 N004 N005 DBIASS
-D2 3 2 DBRK
-C11 N008 0 60p Rser=333k Rpar=1Meg noiseless
-G7 0 N008 N010 N012 1µ
-C12 N013 0 10p Rpar=100 noiseless
-A3 3 2 2 2 2 2 N015 2 OTA g=90n linear rout=100k cout=10f ref=18 vlow=-.12 vhigh=.08
-.model LPNP PNP(BF=100 BR=40 Is=1e-16 VAF=10 VAR=10  Cjc=1p Cje=1p noiseless)
-.model NPN1  NPN(BF=100 BR=20 Is=1e-16 Cjc=.1p Cje=.1p TF=.1n noiseless)
-.model NPN1BH  NPN(BF=1000 BR=20 Is=1e-15 Cjc=1p Cje=1p TF=.1n noiseless)
-.model NPN2  NPN(BF=100 BR=20 Is=1e-14 Cjc=10p Cje=1p TF=.1n IKF=2 Rb=2 Re=20m  noiseless)
-.model PM1 VDMOS(vto=1 kp=1m pchan)
-.model DBIASS D(Ron=10 Roff=1g vfwd=10m epsilon=10m ilimit=300u noiseless)
-.model DDROP D(Ron=100 Roff=1g vfwd=650m epsilon=100m noiseless)
-.model DD D(Ron=10 Roff=100k vfwd=100 epsilon=1 vrev=100 revepsilon=1 noiseless)
-.model DB1 D(Ron=100 Roff=1g Vfwd=1 epsilon=50m ilimit=800u noiseless)
-.model DB2 D(Ron=25k Roff=1g Vfwd=1 epsilon=50m noiseless)
-.model DB3 D(Ron=30k Roff=1g Vfwd=15 epsilon=200m noiseless)
-.model DBRK D(Ron=10 Roff=1g vfwd=40.1 epsilon=100m)
-.ends LT317A
-*
 .subckt RH111 1 2 3 4 5 6 7 8
 B1 0 N003 I=10u*dnlim(uplim(V(2),V(8)-1.1,.1), V(4)+.2,.1)+1n*V(2)-.01n
 B2 N003 0 I=10u*dnlim(uplim(V(3),V(8)-1.09,.1), V(4)+0.19, .1)+1n*V(3)

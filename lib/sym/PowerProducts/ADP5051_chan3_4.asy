@@ -5,10 +5,10 @@ TEXT 0 0 Center 2 ADI
 TEXT 0 56 Center 2 ADP5051_chan3_4
 WINDOW 0 0 -56 Center 2
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP505x_chan3_4.sub
-SYMATTR Value ADP505x_chan3_4
-SYMATTR Description Channel 3 and 4 Switcher model for the ADP5050, ADP5051, ADP5052, and ADP5053.
-SYMATTR Value2 ADP505x_chan3_4
+SYMATTR SpiceModel ADP5051_chan3_4.sub
+SYMATTR Value ADP5051_chan3_4
+SYMATTR Description Channel 3 and 4 Switcher model for the ADP5051
+SYMATTR Value2 ADP5051_chan3_4
 PIN -144 224 LEFT 8
 PINATTR PinName Rt
 PINATTR SpiceOrder 1

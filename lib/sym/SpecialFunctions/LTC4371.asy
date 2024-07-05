@@ -7,8 +7,8 @@ WINDOW 0 0 41 Center 2
 SYMATTR Value LTC4371
 SYMATTR Prefix X
 SYMATTR Description Dual Negative Voltage Ideal Diode-OR Controller
-SYMATTR SpiceModel LTC4371
-SYMATTR ModelFile LTC4371.sub
+SYMATTR SpiceModel LTC4371.sub
+SYMATTR Value2 LTC4371
 PIN -336 192 BOTTOM 8
 PINATTR PinName DA
 PINATTR SpiceOrder 1

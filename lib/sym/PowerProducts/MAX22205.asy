@@ -7,9 +7,7 @@ WINDOW 0 2 -279 Center 2
 SYMATTR Value MAX22205
 SYMATTR Description 65V, 7.6A High Current Single H-Bridge with
 SYMATTR Prefix X
-SYMATTR Value2 MAX22205
 SYMATTR ModelFile MAX22205.sub
-SYMATTR SpiceModel MAX22205
 SYMATTR SpiceLine TA=25 Rth=38
 PIN -256 -592 LEFT 9
 PINATTR PinName VM

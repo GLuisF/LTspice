@@ -1,8 +1,8 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADL5303 1 2 3 4 5 6 7 8 9 10 11 12
 G1 11 G1 N005 11 3.33m
-R5 G1 11 1k
+R5 G1 11 1k Noiseless
 DOP1 Vsatp 6 DO
 G3 11 Vsatp Satp 11 1k
 R8 Vsatp 11 1m
@@ -18,14 +18,14 @@ C7 Satn 11 1n
 I1 Satp 9 {Sat}
 I2 11 Satn {Sat}
 Iref 11 4 2
-R6 4 11 1
-R3 4 N003 40k
-R12 N003 11 13.334k
+R6 4 11 1 Noiseless
+R3 4 N003 40k Noiseless
+R12 N003 11 13.334k Noiseless
 R14 N002 1 1m
 B3 N002 1 I=1k*({Vsuma}*Pwr({Vsumb},I(Rs))*Pwr(I(Rs),{Vsumc}))
 B1 11 3 I=1k*(Dnlim({Vpda}+{Vpdb}* I(Rs)+{Vpdc}*I(Rs)**2+{Vpdd}* I(Rs)**3,1m,1m))
 R15 11 3 1m
-R16 N005 OPA1 1k
+R16 N005 OPA1 1k Noiseless
 I3 N005 OPA1 354µ
 C8 11 3 100p
 Cinp1 11 N028 {Ccm_buf}
@@ -96,9 +96,9 @@ S1 11 N006 EN 11 ENZ
 S2 11 N029 EN 11 ENA
 S3 11 N030 EN 11 ENA
 S6 11 8 EN 11 ENZ2
-R7 N034 11 1Meg
+R7 N034 11 1Meg Noiseless
 R13 5 11 1µ
-R17 N035 11 1Meg
+R17 N035 11 1Meg Noiseless
 C11 N031 11 {Cfp2_buf}
 DOP2 N020 8 DO
 DON2 8 N021 DO
@@ -141,7 +141,7 @@ C28 N005 11 50p
 B17 0 AC I=1m*Smallsig() Rpar=1k Cpar=1n
 SW4 N014 INPT AC 0 AC
 C9 N014 N016 100n
-R34 N016 11 10k
+R34 N016 11 10k Noiseless
 .param Iq_on=4.5m Iq_off=60u
 .model DOX D(Vfwd=1k Vrev=0 Revepsilon=1u Ron=1m Noiseless)
 .model DO D(Vfwd=1k Vrev=0 Revepsilon=0.1 Ron=1m Noiseless)

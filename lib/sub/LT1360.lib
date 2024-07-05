@@ -33,7 +33,7 @@ D2 2 4 DBIAS
 D4 1 4 DBIAS
 A3 0 N007 0 0 0 0 N006 0 OTA g=534u iout=10m Cout=1.7p Vlow=-1e308 Vhigh=1e308
 D1 N007 0 DSlewLim
-G1 0 N005 N006 0 1µ
+G1 0 N005 N006 0 1u
 C8 0 N005 1f Rpar=1Meg noiseless
 D3 3 4 DC
 C11 N006 5 30p Rser=200k noiseless
@@ -72,7 +72,7 @@ D2 2 4 DBIAS
 D4 1 4 DBIAS
 A3 0 N007 0 0 0 0 N006 0 OTA g=225u iout=5m Cout=512f Vlow=-1e308 Vhigh=1e308
 D1 N007 0 DSlewLim
-G1 0 N005 N006 0 1µ
+G1 0 N005 N006 0 1u
 C8 0 N005 .6f Rpar=1Meg noiseless
 D3 3 4 DC
 C11 N006 5 800f Rser=4k noiseless

@@ -6,7 +6,7 @@ WINDOW 0 0 -48 Center 2
 WINDOW 3 0 48 Center 2
 SYMATTR Value ADP7105-5.0
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP7102.lib
+SYMATTR SpiceModel ADP7105.sub
 SYMATTR Value2 ADP7105 Vref=5
 SYMATTR Description 20V, 500mA, Low Noise, CMOS LDO with Soft Start, 5V Fixed Output
 PIN -128 -96 LEFT 8

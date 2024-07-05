@@ -6,7 +6,7 @@ WINDOW 0 0 -96 Center 2
 WINDOW 3 0 96 Center 2
 SYMATTR Value ADP1761-1.25
 SYMATTR Prefix X
-SYMATTR SpiceModel ADP7102.lib
+SYMATTR SpiceModel ADP1761.sub
 SYMATTR Value2 ADP1761 Radj=8333.33
 SYMATTR Description 1A, Low Vin, Low Noise, CMOS Linear Regulator, Fixed 1.25V Output
 PIN -128 48 LEFT 8

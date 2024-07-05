@@ -1,199 +1,199 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADA4945-HP 1 2 3 4 5 6 7 8 9 10 11 12 13
 C2 Clamp MID {Cfp1}
-R14 MID N072 1Meg Noiseless
-C5 N072 MID {Cfp1o}
+R14 MID N071 1Meg Noiseless
+C5 N071 MID {Cfp1o}
 B1 MID Zo_inp I=0.5m*(V(Avo,MID)+ V(MIDAdj,MID)) Rpar=1k Cpar=0.1f
-Cinp MID N012 {Ccm}
-Cinn N026 MID {Ccm}
-R22 N012 2 {Rser} Noiseless
-Cdiff N012 N026 {Cdiff}
-R21 N026 3 {Rser} Noiseless
-R12 N012 N026 {Rdiff} Noiseless
-R13 MID N012 {Rcm} Noiseless
-R23 N026 MID {Rcm} Noiseless
+Cinp MID N011 {Ccm}
+Cinn N025 MID {Ccm}
+R22 N011 2 {Rser} Noiseless
+Cdiff N011 N025 {Cdiff}
+R21 N025 3 {Rser} Noiseless
+R12 N011 N025 {Rdiff} Noiseless
+R13 MID N011 {Rcm} Noiseless
+R23 N025 MID {Rcm} Noiseless
 R24 Zo_outp MIDSense 10Meg Noiseless
 R25 MIDSense Zo_outn 10Meg Noiseless
 R7 7 1 1m Noiseless
 R26 8 4 1m Noiseless
-G8 MID N064 N065 MID 1
-R27 MID N064 1 Noiseless
-C15 N064 MID 1f
-G34 0 Vcc_Int N054 0 1k
-G35 0 Vee_Int N063 0 1k
+G8 MID N060 N061 MID 1
+R27 MID N060 1 Noiseless
+C15 N060 MID 1f
+G34 0 Vcc_Int N052 0 1k
+G35 0 Vee_Int N069 0 1k
 R18 Vcc_Int 0 1m Noiseless
 R74 Vee_Int 0 1m Noiseless
 C16 Vcc_Int 0 1µ
 C17 Vee_Int 0 1µ
-R77 N060 Vcc_Int 1Meg Noiseless
-R82 N060 Vee_Int 1Meg Noiseless
-C20 N060 0 1
+R77 N063 Vcc_Int 1Meg Noiseless
+R82 N063 Vee_Int 1Meg Noiseless
+C20 N063 0 1
 C21 MID 0 1n
-E3 MID 0 N060 0 1
+E3 MID 0 N063 0 1
 R83 MID 0 1Meg Noiseless
 B18 MID Clamp I=Uplim(Dnlim({Avo2/1Meg}*V(Gain1,MID), {Isink},1u),{Isrc},1u)
-G42 MID MIDAdj N072 MID 1µ
+G42 MID MIDAdj N071 MID 1µ
 R15 MID MIDAdj 1Meg Noiseless
 C45 MIDAdj MID {Cfp2o}
 Rpd1 MID 1 1G Noiseless
 Rpd2 MID 4 1G Noiseless
-A1 N026 IVR MID MID MID MID Gain1 MID OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
-R61 N013 MID 1Meg Noiseless
-G17 MID N013 Clamp MID 1µ
-C12 N013 MID {Cfp2}
+A1 N025 IVR MID MID MID MID Gain1 MID OTA G=100u Iout=1m Vhigh=1k Vlow=-1k
+R61 N012 MID 1Meg Noiseless
+G17 MID N012 Clamp MID 1µ
+C12 N012 MID {Cfp2}
 R62 N004 N003 {R2x_Avo} Noiseless
 R63 N003 N010 {R1x_Avo} Noiseless
-Rx3 N014 N010 {Rx_Avo} Noiseless
-Cx1 N014 MID {Cx_Avo}
-G19 MID N004 N014 N003 1Meg
+Rx3 N013 N010 {Rx_Avo} Noiseless
+Cx1 N013 MID {Cx_Avo}
+G19 MID N004 N013 N003 1Meg
 R65 MID N004 1 Noiseless
 R66 N010 MID 1 Noiseless
-G30 MID N010 N013 MID 1
+G30 MID N010 N012 MID 1
 R68 Avo MID 1 Noiseless
 G31 MID Avo N004 MID 1
 C22 Gain1 MID 1e-18
-Rx4 Zo_outp N027 {Rx_Zo} Noiseless
+Rx4 Zo_outp N026 {Rx_Zo} Noiseless
 Rdummy3 Zo_outp MID {Rdummy_Zo} Noiseless
-G6 MID N015 Zo_inp Zo_outp {G1_Zo}
-R16 N015 MID 1 Noiseless
-R35 N015 N016 {R1a_Zo} Noiseless
-R36 N016 MID {R2a_Zo} Noiseless
-G18 MID N017 N016 MID {G2_Zo}
-C10 N016 N015 {C1a_Zo}
-R37 N019 MID 1 Noiseless
-R59 N017 N018 {R2c_Zo} Noiseless
-R60 N018 N031 {R1c_Zo} Noiseless
-C13 MID N031 {C1c_Zo}
-Gb1 MID N019 N018 MID 1
-R91 N019 N020 {R1b_Zo} Noiseless
-R92 N020 MID {R2b_Zo} Noiseless
-C23 N020 N019 {C1b_Zo}
-R97 N017 MID 1 Noiseless
-G22 MID N021 N020 MID {G3_Zo}
-R98 N021 N022 {R2d_Zo} Noiseless
-R99 N022 N032 {R1d_Zo} Noiseless
-C24 MID N032 {C1d_Zo}
-Gb2 MID N023 N022 MID 1
-R100 N021 MID 1 Noiseless
-R101 N023 MID 1 Noiseless
-R102 N023 N024 {R2d_Zo} Noiseless
-R103 N024 N033 {R1d_Zo} Noiseless
-C25 MID N033 {C1d_Zo}
-Gb3 MID N025 N024 MID 1
-R104 N025 MID 1 Noiseless
-R105 N025 ZoFp {R2d_Zo} Noiseless
-R106 ZoFp N034 {R1d_Zo} Noiseless
-C26 MID N034 {C1d_Zo}
-B5 MID N027 I=Uplim(Dnlim(1* V(ZoFp,MID), {Izon}, 25m), {Izop}, 25m)
-Rx1 Zo_outn N047 {Rx_Zo} Noiseless
+G6 MID N014 Zo_inp Zo_outp {G1_Zo}
+R16 N014 MID 1 Noiseless
+R35 N014 N015 {R1a_Zo} Noiseless
+R36 N015 MID {R2a_Zo} Noiseless
+G18 MID N016 N015 MID {G2_Zo}
+C10 N015 N014 {C1a_Zo}
+R37 N018 MID 1 Noiseless
+R59 N016 N017 {R2c_Zo} Noiseless
+R60 N017 N030 {R1c_Zo} Noiseless
+C13 MID N030 {C1c_Zo}
+Gb1 MID N018 N017 MID 1
+R91 N018 N019 {R1b_Zo} Noiseless
+R92 N019 MID {R2b_Zo} Noiseless
+C23 N019 N018 {C1b_Zo}
+R97 N016 MID 1 Noiseless
+G22 MID N020 N019 MID {G3_Zo}
+R98 N020 N021 {R2d_Zo} Noiseless
+R99 N021 N031 {R1d_Zo} Noiseless
+C24 MID N031 {C1d_Zo}
+Gb2 MID N022 N021 MID 1
+R100 N020 MID 1 Noiseless
+R101 N022 MID 1 Noiseless
+R102 N022 N023 {R2d_Zo} Noiseless
+R103 N023 N032 {R1d_Zo} Noiseless
+C25 MID N032 {C1d_Zo}
+Gb3 MID N024 N023 MID 1
+R104 N024 MID 1 Noiseless
+R105 N024 ZoFp {R2d_Zo} Noiseless
+R106 ZoFp N033 {R1d_Zo} Noiseless
+C26 MID N033 {C1d_Zo}
+B5 MID N026 I=Uplim(Dnlim(1* V(ZoFp,MID), {Izon}, 25m), {Izop}, 25m)
+Rx1 Zo_outn N046 {Rx_Zo} Noiseless
 Rdummy1 Zo_outn MID {Rdummy_Zo} Noiseless
-G23 MID N036 Zo_inn Zo_outn {G1_Zo}
-R39 N036 MID 1 Noiseless
-R40 N036 N037 {R1a_Zo} Noiseless
-R108 N037 MID {R2a_Zo} Noiseless
-G25 MID N038 N037 MID {G2_Zo}
-C27 N037 N036 {C1a_Zo}
-R109 N040 MID 1 Noiseless
-R110 N038 N039 {R2c_Zo} Noiseless
-R111 N039 N049 {R1c_Zo} Noiseless
-C28 MID N049 {C1c_Zo}
-Gb4 MID N040 N039 MID 1
-R112 N040 N041 {R1b_Zo} Noiseless
-R113 N041 MID {R2b_Zo} Noiseless
-C29 N041 N040 {C1b_Zo}
-R114 N038 MID 1 Noiseless
-G32 MID N042 N041 MID {G3_Zo}
-R115 N042 N043 {R2d_Zo} Noiseless
-R116 N043 N050 {R1d_Zo} Noiseless
-C30 MID N050 {C1d_Zo}
-Gb5 MID N044 N043 MID 1
-R117 N042 MID 1 Noiseless
-R118 N044 MID 1 Noiseless
-R119 N044 N045 {R2d_Zo} Noiseless
-R120 N045 N051 {R1d_Zo} Noiseless
-C46 MID N051 {C1d_Zo}
-Gb6 MID N046 N045 MID 1
-R121 N046 MID 1 Noiseless
-R122 N046 ZoFn {R2d_Zo} Noiseless
-R123 ZoFn N052 {R1d_Zo} Noiseless
-C47 MID N052 {C1d_Zo}
-B8 MID N047 I=Uplim(Dnlim(1* V(ZoFn,MID), {Izon}, 25m), {Izop}, 25m)
+G23 MID N035 Zo_inn Zo_outn {G1_Zo}
+R39 N035 MID 1 Noiseless
+R40 N035 N036 {R1a_Zo} Noiseless
+R108 N036 MID {R2a_Zo} Noiseless
+G25 MID N037 N036 MID {G2_Zo}
+C27 N036 N035 {C1a_Zo}
+R109 N039 MID 1 Noiseless
+R110 N037 N038 {R2c_Zo} Noiseless
+R111 N038 N048 {R1c_Zo} Noiseless
+C28 MID N048 {C1c_Zo}
+Gb4 MID N039 N038 MID 1
+R112 N039 N040 {R1b_Zo} Noiseless
+R113 N040 MID {R2b_Zo} Noiseless
+C29 N040 N039 {C1b_Zo}
+R114 N037 MID 1 Noiseless
+G32 MID N041 N040 MID {G3_Zo}
+R115 N041 N042 {R2d_Zo} Noiseless
+R116 N042 N049 {R1d_Zo} Noiseless
+C30 MID N049 {C1d_Zo}
+Gb5 MID N043 N042 MID 1
+R117 N041 MID 1 Noiseless
+R118 N043 MID 1 Noiseless
+R119 N043 N044 {R2d_Zo} Noiseless
+R120 N044 N050 {R1d_Zo} Noiseless
+C46 MID N050 {C1d_Zo}
+Gb6 MID N045 N044 MID 1
+R121 N045 MID 1 Noiseless
+R122 N045 ZoFn {R2d_Zo} Noiseless
+R123 ZoFn N051 {R1d_Zo} Noiseless
+C47 MID N051 {C1d_Zo}
+B8 MID N046 I=Uplim(Dnlim(1* V(ZoFn,MID), {Izon}, 25m), {Izop}, 25m)
 R125 11 12 480k
-B13 MID N072 I=Uplim(Dnlim(V(Vocmi,MIDSense), {Isinko},10u),{Isrco},10u)
-B4 MID N061 I=1m*((V(2,MID)+ V(3,MID))/2)
-R9 N061 MID 1k Noiseless
-C6 CMR N055 {C1a_CMR}
-G1 MID N055 N061 MID {G1_CMR}
-R10 N055 MID 1 Noiseless
-R11 CMR N055 {R1a_CMR} Noiseless
+B13 MID N071 I=Uplim(Dnlim(V(Vocmi,MIDSense), {Isinko},10u),{Isrco},10u)
+B4 MID N059 I=1m*((V(2,MID)+ V(3,MID))/2)
+R9 N059 MID 1k Noiseless
+C6 CMR N053 {C1a_CMR}
+G1 MID N053 N059 MID {G1_CMR}
+R10 N053 MID 1 Noiseless
+R11 CMR N053 {R1a_CMR} Noiseless
 R28 CMR MID {R2a_CMR} Noiseless
 A2 MID MID MID MID MID MID E_n MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={En} Enk={Enk} Cout=250f
 R29 E_n MID 100k Noiseless
-C7 N057 N056 {C1a_BAL}
-G2 MID N056 8 7 {G1_BAL}
-R30 N056 MID 1 Noiseless
-R31 N057 N056 {R1a_BAL} Noiseless
-R32 N057 MID {R2a_BAL} Noiseless
-R33 N058 N059 {R1b_BAL} Noiseless
-R34 N059 MID {R2b_BAL} Noiseless
-G3 MID BAL N059 MID {G2_BAL}
-C8 N059 N058 {C1b_BAL}
-R38 N058 MID 1 Noiseless
-G4 MID N058 N057 MID 1
+C7 N055 N054 {C1a_BAL}
+G2 MID N054 8 7 {G1_BAL}
+R30 N054 MID 1 Noiseless
+R31 N055 N054 {R1a_BAL} Noiseless
+R32 N055 MID {R2a_BAL} Noiseless
+R33 N056 N057 {R1b_BAL} Noiseless
+R34 N057 MID {R2b_BAL} Noiseless
+G3 MID BAL N057 MID {G2_BAL}
+C8 N057 N056 {C1b_BAL}
+R38 N056 MID 1 Noiseless
+G4 MID N056 N055 MID 1
 R41 BAL MID 1 Noiseless
-C9 N083 N082 {C1a_PSRp}
-G5 MID N082 5 MID {G1_PSRp}
-R42 N082 MID 1 Noiseless
-R43 N083 N082 {R1a_PSRp} Noiseless
-R44 N083 MID {R2a_PSRp} Noiseless
-C11 N085 N084 {C1b_PSRp}
-R45 N085 MID {R2b_PSRp} Noiseless
-R46 N085 N084 {R1b_PSRp} Noiseless
-G9 MID N084 N083 MID 1
-R47 N084 MID 1 Noiseless
-G10 MID PSRp N085 MID {G2_PSRp}
+C9 N082 N081 {C1a_PSRp}
+G5 MID N081 5 MID {G1_PSRp}
+R42 N081 MID 1 Noiseless
+R43 N082 N081 {R1a_PSRp} Noiseless
+R44 N082 MID {R2a_PSRp} Noiseless
+C11 N084 N083 {C1b_PSRp}
+R45 N084 MID {R2b_PSRp} Noiseless
+R46 N084 N083 {R1b_PSRp} Noiseless
+G9 MID N083 N082 MID 1
+R47 N083 MID 1 Noiseless
+G10 MID PSRp N084 MID {G2_PSRp}
 R48 PSRp MID 1 Noiseless
-C14 N088 N089 {C1a_PSRn}
-G11 MID N089 6 MID {G1_PSRn}
-R49 N089 MID 1 Noiseless
-R50 N088 N089 {R1a_PSRn} Noiseless
-R51 N088 MID {R2a_PSRn} Noiseless
-C18 N086 N087 {C1b_PSRn}
-R52 N086 MID {R2b_PSRn} Noiseless
-R53 N086 N087 {R1b_PSRn} Noiseless
-G12 MID PSRn N086 MID {G2_PSRn}
+C14 N087 N088 {C1a_PSRn}
+G11 MID N088 6 MID {G1_PSRn}
+R49 N088 MID 1 Noiseless
+R50 N087 N088 {R1a_PSRn} Noiseless
+R51 N087 MID {R2a_PSRn} Noiseless
+C18 N085 N086 {C1b_PSRn}
+R52 N085 MID {R2b_PSRn} Noiseless
+R53 N085 N086 {R1b_PSRn} Noiseless
+G12 MID PSRn N085 MID {G2_PSRn}
 R54 PSRn MID 1 Noiseless
-G13 MID N087 N088 MID 1
-R55 N087 MID 1
-A3 MID MID MID MID MID MID N074 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={fA}/(freq**{M})
-A4 MID N074 MID MID MID MID N077 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={BB} Cout={Coutn}
-A5 MID MID MID MID MID MID N067 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={fA}/(freq**{M})
-A6 MID N067 MID MID MID MID N070 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={BB} Cout={Coutn}
-G14 MID N075 N077 MID 10µ
-R56 N077 MID 100k Noiseless
-R57 N074 MID 100k Noiseless
-R58 N075 MID 100k Noiseless
-C19 N075 MID {Coutn}
-G15 MID N076 N075 MID 10µ
-R64 N076 MID 100k Noiseless
-C31 N076 MID {Coutn}
-G16 MID I_np N076 MID 10µ
+G13 MID N086 N087 MID 1
+R55 N086 MID 1
+A3 MID MID MID MID MID MID N073 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={fA}/(freq**{M})
+A4 MID N073 MID MID MID MID N076 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={BB} Cout={Coutn}
+A5 MID MID MID MID MID MID N064 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={fA}/(freq**{M})
+A6 MID N064 MID MID MID MID N068 MID OTA G=10u Iout=1m Vhigh=1k Vlow=-1k En={BB} Cout={Coutn}
+G14 MID N074 N076 MID 10µ
+R56 N076 MID 100k Noiseless
+R57 N073 MID 100k Noiseless
+R58 N074 MID 100k Noiseless
+C19 N074 MID {Coutn}
+G15 MID N075 N074 MID 10µ
+R64 N075 MID 100k Noiseless
+C31 N075 MID {Coutn}
+G16 MID I_np N075 MID 10µ
 R67 I_np MID 100k Noiseless
 C32 I_np MID {Coutn}
-G20 MID N068 N070 MID 10µ
-R69 N068 MID 100k Noiseless
-C33 N068 MID {Coutn}
-G21 MID N069 N068 MID 10µ
-R70 N069 MID 100k Noiseless
-C34 N069 MID {Coutn}
-G24 MID I_nn N069 MID 10µ
+G20 MID N065 N068 MID 10µ
+R69 N065 MID 100k Noiseless
+C33 N065 MID {Coutn}
+G21 MID N066 N065 MID 10µ
+R70 N066 MID 100k Noiseless
+C34 N066 MID {Coutn}
+G24 MID I_nn N066 MID 10µ
 R71 I_nn MID 100k Noiseless
 C35 I_nn MID {Coutn}
-R72 N070 MID 100k Noiseless
-R73 N067 MID 100k Noiseless
-G26 N012 MID I_np MID 1
-G27 N026 MID I_nn MID 1
+R72 N068 MID 100k Noiseless
+R73 N064 MID 100k Noiseless
+G26 N011 MID I_np MID 1
+G27 N025 MID I_nn MID 1
 G28 MID IVR N009 MID 1m
 R75 MID IVR 1k Noiseless
 C36 IVR MID 1f
@@ -205,33 +205,33 @@ G33 N007 N008 PSRp PSRn 1m
 R80 N008 N007 1k Noiseless
 G36 N008 N009 E_n MID 1m
 R81 N009 N008 1k Noiseless
-G37 MID N005 N012 MID 1k
+G37 MID N005 N011 MID 1k
 R84 MID N005 1m Noiseless
 C37 N005 MID 1f
-G38 N064 Vocmi BAL MID 1m
-R85 Vocmi N064 1k Noiseless
-BIbp N012 MID I={Ib}+{Ibd}* (Temp-27)
-BIos N012 N026 I={Iosa}+ {Iosb}*Temp+ {Iosc}*Temp**2+ {Iosd}*Temp**3
-BIbn N026 MID I={Ib}+{Ibd}* (Temp-27)
+G38 N060 Vocmi BAL MID 1m
+R85 Vocmi N060 1k Noiseless
+BIbp N011 MID I={Ib}+{Ibd}* (Temp-27)
+BIos N011 N025 I={Iosa}+ {Iosb}*Temp+ {Iosc}*Temp**2+ {Iosd}*Temp**3
+BIbn N025 MID I={Ib}+{Ibd}* (Temp-27)
 DIP CMp IVR DO
 DIN IVR CMn DO
-A7 9 N079 MID MID MID MID _SHDN MID SCHMITT Vt={ENVt} Vh={ENVh} Trise={ENTon} Tfall={ENToff}
-R90 N079 13 1µ
+A7 9 N078 MID MID MID MID _SHDN MID SCHMITT Vt={ENVt} Vh={ENVh} Trise={ENTon} Tfall={ENToff}
+R90 N078 13 1µ
 I1 9 MID 50n
 C1 _SHDN MID 10p Rpar=1G
-A8 N054 N063 MID MID MID MID N071 MID SCHMITT Vt={Vs_min} Vh=0 Trise=10n
-A9 N054 N063 MID MID MID N062 MID MID SCHMITT Vt={Vs_max} Vh=0 Trise=10n
-A10 N062 MID N071 MID _SHDN MID EN MID AND Trise={ENTon} Tfall={ENToff}
-BIq N054 N063 I=IF(V(EN,MID)>0.5, {Iq_on},{Iq_off})
+A8 N052 N069 MID MID MID MID N070 MID SCHMITT Vt={Vs_min} Vh=0 Trise=10n
+A9 N052 N069 MID MID MID N067 MID MID SCHMITT Vt={Vs_max} Vh=0 Trise=10n
+A10 N067 MID N070 MID _SHDN MID EN MID AND Trise={ENTon} Tfall={ENToff}
+BIq N052 N069 I=IF(V(EN,MID)>0.5, {Iq_on},{Iq_off})
 C41 EN MID 10p Rpar=1G
-C42 N071 MID 10p Rpar=1G
-C43 N062 MID 10p Rpar=1G
-DGP1 N094 Clamp DG
-DGN1 Clamp N095 DG
-G51 MID N094 GRpi MID 1k
-G52 MID N095 GRni MID 1k
-R139 N094 MID 1m Noiseless
-R140 N095 MID 1m Noiseless
+C42 N070 MID 10p Rpar=1G
+C43 N067 MID 10p Rpar=1G
+DGP1 N093 Clamp DG
+DGN1 Clamp N094 DG
+G51 MID N093 GRpi MID 1k
+G52 MID N094 GRni MID 1k
+R139 N093 MID 1m Noiseless
+R140 N094 MID 1m Noiseless
 R141 GRpi Zo_outp 1k Noiseless
 R142 GRni Zo_outn 1k Noiseless
 C54 GRni Zo_outn 10p
@@ -241,62 +241,68 @@ I5 GRni Zo_outn {OR}
 G47 MID Zo_inn MIDAdj Avo 0.5m
 R128 Zo_inn MID 1k
 C57 Zo_inn MID 0.1f
-R93 10 N065 1µ
-R94 N054 5 1µ
-R107 N063 6 1µ
-R8 N027 MID 1
-R95 N047 MID 1
+R93 10 N061 1µ
+R94 N052 5 1µ
+R107 N069 6 1µ
+R8 N026 MID 1
+R95 N046 MID 1
 S1 MID Gain1 EN MID ENA
 S2 MID Clamp EN MID ENA
-R2 11 N090 1k
-I2 11 N090 0.5m
-R96 12 N096 1k
-I3 N096 12 0.5m
+R2 11 N089 1k
+I2 11 N089 0.5m
+R96 12 N095 1k
+I3 N095 12 0.5m
 A11 11 5 MID MID MID MID _CLAMPp MID SCHMITT Vt=-100m Vh=50m Trise=10n
 C3 _CLAMPp MID 10p Rpar=1G
 A12 6 12 MID MID MID MID _CLAMPn MID SCHMITT Vt=-100m Vh=50m Trise=10n
 C40 _CLAMPn MID 10p Rpar=1G
-S3 CLsatp N090 _CLAMPp MID CL
-S4 CLsatn N096 _CLAMPn MID CL
-DOP1 N093 Zo_outn DO
-G41 MID N093 CLsatp MID 1k
-C44 N093 MID 1n
-R124 N093 MID 1m Noiseless
-DOP2 N092 Zo_outp DO
-G43 MID N092 CLsatp MID 1k
-C48 N092 MID 1n
-R126 N092 MID 1m Noiseless
-DOP3 Zo_outn N098 DO
-G44 MID N098 CLsatn MID 1k
-C49 N098 MID 1n
-R127 N098 MID 1m Noiseless
-DOP4 Zo_outp N097 DO
-G45 MID N097 CLsatn MID 1k
-C50 N097 MID 1n
-R129 N097 MID 1m Noiseless
-C51 11 N090 10p
-C52 12 N096 10p
-DOP5 N091 CLsatp DO
-DOP6 CLsatn N099 DO
-V5 N099 6 0.1
-V6 5 N091 0.1
+S3 CLsatp N089 _CLAMPp MID CL
+S4 CLsatn N095 _CLAMPn MID CL
+DOP1 N092 Zo_outn DO
+G41 MID N092 CLsatp MID 1k
+C44 N092 MID 1n
+R124 N092 MID 1m Noiseless
+DOP2 N091 Zo_outp DO
+G43 MID N091 CLsatp MID 1k
+C48 N091 MID 1n
+R126 N091 MID 1m Noiseless
+DOP3 Zo_outn N097 DO
+G44 MID N097 CLsatn MID 1k
+C49 N097 MID 1n
+R127 N097 MID 1m Noiseless
+DOP4 Zo_outp N096 DO
+G45 MID N096 CLsatn MID 1k
+C50 N096 MID 1n
+R129 N096 MID 1m Noiseless
+C51 11 N089 10p
+C52 12 N095 10p
+DOP5 N090 CLsatp DO
+DOP6 CLsatn N098 DO
+V5 N098 6 0.1
+V6 5 N090 0.1
 R130 5 CLsatp 100k
 R131 CLsatn 6 100k
-I6 5 CMp {1k*Vcm_max}
-R1 5 CMp 1m
-C53 5 CMp 1n
-I7 6 CMn {1k*Vcm_min}
-R132 6 CMn 1m
-C56 6 CMn 1n
+I6 5_BUF CMp {1k*Vcm_max}
+R1 5_BUF CMp 1m
+C53 5_BUF CMp 1n
+I7 6_BUF CMn {1k*Vcm_min}
+R132 6_BUF CMn 1m
+C56 6_BUF CMn 1n
 Rop Zo_outp 8 1m
 Ron Zo_outn 7 1m
-C4 N065 MID 1p Rpar=125k
-DBB1 N012 N026 DBB
-DBB2 N026 N012 DBB
-Bop_sink N063 MID I=Uplim(I(Rop), 0,1u)
-Bop_src N054 MID I=Dnlim(I(Rop), 0,1u)
-Bon_sink N063 MID I=Uplim(I(Ron), 0,1u)
-Bon_src N054 MID I=Dnlim(I(Ron), 0,1u)
+C4 N061 MID 1p Rpar=125k
+DBB1 N011 N025 DBB
+DBB2 N025 N011 DBB
+Bop_sink N069 MID I=Uplim(I(Rop), 0,1u)
+Bop_src N052 MID I=Dnlim(I(Rop), 0,1u)
+Bon_sink N069 MID I=Uplim(I(Ron), 0,1u)
+Bon_src N052 MID I=Dnlim(I(Ron), 0,1u)
+G39 0 5_BUF N052 0 1k
+R3 5_BUF 0 1m
+C38 5_BUF 0 1n
+G40 0 6_BUF N069 0 1k
+R4 6_BUF 0 1m
+C39 6_BUF 0 1n
 .param Vosa=-1.3u Vosb=62n Vosc=-250p
 .param Ib=-1.2u Ibd=-10n
 .param Iosa=9n Iosb=50p

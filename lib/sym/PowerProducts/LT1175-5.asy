@@ -6,7 +6,7 @@ WINDOW 0 0 -48 Center 2
 WINDOW 3 0 48 Center 2
 SYMATTR Value LT1175-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LT1175.sub
+SYMATTR SpiceModel LT1175-5.sub
 SYMATTR Value2 LT1175-5
 SYMATTR Description 500mA Negative Low Dropout µPower Regulator, Fixed 5V Output
 PIN -144 -96 LEFT 8

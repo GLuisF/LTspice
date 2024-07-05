@@ -1,4 +1,4 @@
-* Copyright (c) 1998-2023 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2024 Analog Devices, Inc.  All rights reserved.
 *
 .subckt ADA4351 1 2 3 4 5 6 7 8 9 10
 CinDiff INNx INPx 2p
@@ -139,9 +139,9 @@ GFP5 VMIDx VoutN VALUE = { (V(8,VMIDx)-abs(V(8,VMIDx)))/2 }
 Rvoutn VoutN VMIDx RQT 1 Noiseless
 Cimonn VimonN VMIDx 10p
 Cimonp VimonP VMIDx 10p
-GxP1 VMIDx VsatP VALUE = { V(AVDDx,VMIDx)-( 0.002247759 + 13.5745*V(VimonP,VMIDx) + 54.21124*V(VimonP,VMIDx) ^2 + 625.8952*V(VimonP,VMIDx)^3 ) }
+GxP1 VMIDx VsatP VALUE = { V(AVDDx,VMIDx)-( 0.002247759 + 13.5745*V(VimonP,VMIDx) + 54.21124*V(VimonP,VMIDx)**2 + 625.8952*V(VimonP,VMIDx)**3 ) }
 Rvsatp VsatP VMIDx RQT 1 Noiseless
-GxN1 VMIDx VsatN VALUE = { V(AVSSx,VMIDx)-( 0.002286496 + 8.848029*V(VimonN,VMIDx) + 16.54695*V(VimonN,VMIDx)^2 + 778.2158*V(VimonN,VMIDx)^3 ) }
+GxN1 VMIDx VsatN VALUE = { V(AVSSx,VMIDx)-( 0.002286496 + 8.848029*V(VimonN,VMIDx) + 16.54695*V(VimonN,VMIDx)**2 + 778.2158*V(VimonN,VMIDx)**3 ) }
 Rvsatn VsatN VMIDx RQT 1 Noiseless
 Cvsatp VsatP VMIDx 1E-15
 Cvsatn VsatN VMIDx 1E-15
@@ -299,7 +299,7 @@ Rimonn VimonN VMIDx RQT 1 Noiseless
 Rimonp VimonP VMIDx RQT 1 Noiseless
 DP_CLMP N035 Aol_ClmpP Diode_clmp
 DN_CLMP N037 N036 Diode_clmp
-VP_CLMP N036 N035 0.65
+VP_CLMP N035 N036 0.65
 VN_CLMP N037 Aol_ClmpN 0.65
 VaolSNS N036 AolZ 0
 GFPclmpp VMIDx Aol_ClmpP VALUE = {1+((V(Aol_out,VMIDx)+abs(V(Aol_out,VMIDx)))/2)}

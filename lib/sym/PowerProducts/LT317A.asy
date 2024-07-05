@@ -3,10 +3,10 @@ SymbolType CELL
 RECTANGLE Normal -128 -64 128 96
 TEXT 0 0 Center 2 LT
 WINDOW 0 0 -63 Bottom 2
-WINDOW 3 16 112 Left 2
+WINDOW 3 -49 40 Left 2
 SYMATTR Value LT317A
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT317A.sub
 SYMATTR Value2 LT317A
 SYMATTR Description Positive Adjustable Regulator
 PIN 0 96 BOTTOM 8

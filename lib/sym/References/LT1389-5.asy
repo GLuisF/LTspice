@@ -12,7 +12,7 @@ WINDOW 3 16 32 Left 2
 WINDOW 0 30 -32 Left 2
 SYMATTR Value LT1389-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LT1389.lib
+SYMATTR SpiceModel LT1389-5.sub
 SYMATTR Value2 LT1389-5
 SYMATTR Description Nanopower Precision Shunt Voltage Reference
 PIN 0 -32 NONE 8

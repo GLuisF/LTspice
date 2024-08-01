@@ -21,6 +21,7 @@ WINDOW 3 -24 64 Left 2
 SYMATTR Value Triode
 SYMATTR Prefix X
 SYMATTR Description This symbol is for use with a subcircuit macromodel that you supply.
+SYMATTR ModelFile Tubes_Koren.lib
 PIN 0 -48 NONE 0
 PINATTR PinName Plate
 PINATTR SpiceOrder 1

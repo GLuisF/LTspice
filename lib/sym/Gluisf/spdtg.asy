@@ -11,8 +11,9 @@ CIRCLE Normal 33 -35 24 -26
 WINDOW 0 -33 58 Left 2
 SYMATTR Prefix X
 SYMATTR Description Single-Pole Double-Throw (SPDT) Analog Switch
-SYMATTR Value spdtg
 SYMATTR ModelFile gluisf.lib
+SYMATTR SpiceModel spdtg
+SYMATTR SpiceLine Ron=1m Roff=1G
 PIN -48 0 NONE 8
 PINATTR PinName 1
 PINATTR SpiceOrder 1

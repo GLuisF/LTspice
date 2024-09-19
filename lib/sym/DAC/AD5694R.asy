@@ -12,7 +12,6 @@ WINDOW 39 3 74 Center 1
 SYMATTR Value AD5694R
 SYMATTR SpiceLine Gain=2
 SYMATTR Prefix X
-SYMATTR Value2 AD5694R
 SYMATTR Description 16Bit nanoDAC+ (one channel, output stage modeled)
 SYMATTR ModelFile AD5694R.sub
 PIN -160 0 LEFT 8

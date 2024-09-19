@@ -6,7 +6,6 @@ WINDOW 3 4 75 Center 2
 WINDOW 39 4 736 Center 2
 SYMATTR Value MAX25510
 SYMATTR SpiceLine SIM_SPEED_MULT=10 ENABLED_CH=4
-SYMATTR Value2 MAX25510
 SYMATTR Prefix X
 SYMATTR Description 4-Channel, Low-Voltage, 120mA LED Backlight Drivers with Integrated Boost Converter
 SYMATTR ModelFile MAX25510.sub

@@ -9,7 +9,6 @@ SYMATTR Prefix X
 SYMATTR Description 8-Output Regulator with Sequencing and I2C
 SYMATTR SpiceLine Vref1=.5 Freq1=0 Mode1=0 Vref1_slew=0 DVDT1=0 Phase1=0 OVEN1=1 Vref2=.5 Freq2=0 Mode2=0 Vref2_slew=0 DVDT2=0 Phase2=0 OVEN2=1
 SYMATTR SpiceLine2 Vref3=.5 Freq3=0 Mode3=0 Vref3_slew=0 DVDT3=0 Phase3=0 OVEN3=1 Vref_LDO2=.5 LDO2_slew=3 OVEN_LDO2=1 OVEN_LDO3=1 LDO4_ref=0 OVEN_LDO4=1 Mode_BB=0 OVEN_BB=1
-SYMATTR Value2 LTC3589
 SYMATTR ModelFile LTC3589.sub
 PIN -464 0 LEFT 8
 PINATTR PinName Vin_LDO2

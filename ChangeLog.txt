@@ -1,3 +1,228 @@
+09/18/24 LT3046 Fixed PG Behavior, Current Limit pin, Internal current limit and VIN Min
+09/18/24 LT3686 improve convergence
+09/18/24 LT3686A improve convergence
+09/18/24 LT8228 Fixed current limit and pulse freezing isue during buck-boost transition and vice versa.
+09/18/24 LT8602 Corrected Burst Mode function; Improved convergence
+09/16/24 ADM7150-1.8 Logic Threshold and VIN min Fix
+09/16/24 ADM7150-3.3 Logic Threshol and VIN min fix
+09/16/24 ADM7150-5.0 Logic Threshold and VIN min fix
+09/16/24 LT8686S Fixed parallel/slave configuration and FB pin bias current
+09/16/24 LTC7124 improve convergence and fix pin numbering
+09/16/24 LTC6115 Fix convergence
+09/13/24 LTC4444-5 Improved timing.
+09/13/24 MAX20810  new model
+09/10/24 LT3090 Corrected noise level
+09/07/24 LT3695 improve convergence
+09/07/24 LT3695-5 improve convergence
+09/07/24 LTC3533 Fixed Short Circuit recovery response and current limits
+09/04/24 LTC7103 Updated grounding.
+09/04/24 AD4050  new model
+09/03/24 LT8609 Resolved convergence issues; updated control loop parameters; updated model symbol
+09/03/24 LT8609A Resolved convergence issues; updated control loop parameters; updated model symbol
+09/03/24 LT8609B Resolved convergence issues; updated control loop parameters; updated model symbol
+09/03/24 LT8609S Resolved convergence issues; updated model symbol
+09/03/24 ADG1212 Added Leakage. Updated symbol, application circuit, and AC parameter.
+09/03/24 ADG759  new model
+09/03/24 ADGS1408  new model
+08/29/24 Updated some bipolar standard devices from standard.bjt
+08/29/24 Updated list of jfet devices to currently supported  ones
+08/29/24 LT1509 Remodeled for convergence improvement
+08/29/24 LT1328 Remodeled version for convergence improvement
+08/24/24 LT3694 remodeled for better convergence
+08/24/24 LT3694-1 remodeled for better convergence
+08/24/24 LT7200S Fixed syntax errors of duplicated model definitions and update symbol
+08/24/24 LT8277 Fixed convergence issue.
+08/24/24 MAX25510 Fixed convergence issue and negative hysteresis.
+08/21/24 AD4858 Updated the symbol.
+08/21/24 AD5535Bopamp Updated the symbol.
+08/21/24 AD8460 Updated the symbol.
+08/21/24 ADM1278 Updated the symbol.
+08/21/24 LT3070-1 Updated the symbol.
+08/21/24 LT3763 Fixed convergence issues and updated symbol file
+08/21/24 LT3799 Remodeled to improve convergence
+08/21/24 LT8210-1 Updated gate drive response.
+08/21/24 LT8277 Updated the symbol.
+08/21/24 LT8644S Updated the symbol.
+08/21/24 LT8722 Updated the symbol.
+08/21/24 LTC2900-2 Updated for convergence.
+08/21/24 LTC2908-B1 Updated the symbol.
+08/21/24 LTC2908-C1 Updated the symbol.
+08/21/24 LTC3260 Improved PSRR response.
+08/21/24 LTC3302A Updated the symbol.
+08/21/24 LTC3302C Updated the symbol.
+08/21/24 LTC3303A Updated the symbol.
+08/21/24 LTC3303C Updated the symbol.
+08/21/24 LTC3304A Updated the symbol.
+08/21/24 LTC3304C Updated the symbol.
+08/21/24 LTC3306A Updated the symbol.
+08/21/24 LTC3306C Updated the symbol.
+08/21/24 LTC3311S Updated control loop parameters; updated model symbol
+08/21/24 LTC3370 Updated the symbol and the application circuit.
+08/21/24 LTC3589 Updated the symbol.
+08/21/24 LTC3888 Updated the symbol.
+08/21/24 LTC3888-1 Updated the symbol.
+08/21/24 LTC4124 Update the example file and fix convergence issue
+08/21/24 LTC4222 Updated the symbol.
+08/21/24 LTC4280 Updated the symbol.
+08/21/24 LTM8002 Updated SYNC function.
+08/21/24 LTP8800-2 Updated the symbol and the application circuit.
+08/21/24 MAX25510 Updated the symbol.
+08/21/24 LT1166 Fixed new Line errors
+08/21/24 LTC4249 Updated the symbol.
+08/21/24 LTC4355 Updated the symbol.
+08/21/24 ADGM1304 Updated the symbol and the application circuit.
+08/21/24 ADA4097-1 Model redesigned on new architecture, with accuracy and convergence improvements. Updated example circuit.
+08/21/24 ADA4097-2 Updated example circuit.
+08/21/24 AD8139  new model
+08/15/24 AD4000 Updated the symbol.
+08/15/24 AD4001 Updated the symbol.
+08/15/24 AD4002 Updated the symbol.
+08/15/24 AD4003 Updated the symbol.
+08/15/24 AD4004 Updated the symbol.
+08/15/24 AD4005 Updated the symbol.
+08/15/24 AD4006 Updated the symbol.
+08/15/24 AD4007 Updated the symbol.
+08/15/24 AD4008 Updated the symbol.
+08/15/24 AD4010 Updated the symbol.
+08/15/24 AD4011 Updated the symbol.
+08/15/24 AD4020 Updated the symbol.
+08/15/24 AD4021 Updated the symbol.
+08/15/24 AD4022 Updated the symbol.
+08/15/24 AD4858 Updated the symbol.
+08/15/24 AD5671R Updated the symbol.
+08/15/24 AD5672R Updated the symbol.
+08/15/24 AD5673R Updated the symbol.
+08/15/24 AD5674R Updated the symbol.
+08/15/24 AD5675R Updated the symbol.
+08/15/24 AD5676R Updated the symbol.
+08/15/24 AD5677R Updated the symbol.
+08/15/24 AD5679R Updated the symbol.
+08/15/24 AD5681R Updated the symbol.
+08/15/24 AD5682R Updated the symbol.
+08/15/24 AD5683R Updated the symbol.
+08/15/24 AD5684R Updated the symbol.
+08/15/24 AD5685R Updated the symbol.
+08/15/24 AD5686R Updated the symbol.
+08/15/24 AD5687R Updated the symbol.
+08/15/24 AD5689R Updated the symbol.
+08/15/24 AD5691R Updated the symbol.
+08/15/24 AD5692R Updated the symbol.
+08/15/24 AD5693R Updated the symbol.
+08/15/24 AD5694R Updated the symbol.
+08/15/24 AD5695R Updated the symbol.
+08/15/24 AD5696R Updated the symbol.
+08/15/24 AD5697R Updated the symbol.
+08/15/24 AD5770R Updated the symbol.
+08/15/24 AD8460 Updated the symbol.
+08/15/24 LT3090 Fix response during Shutdown
+08/15/24 LTC3126 Updated BG drive and added slope compensation for the model.
+08/15/24 LTC3891 Fixed a syntax error. Updated the application circuit.
+08/15/24 LTC7841 Updated the symbol and the application circuit.
+08/15/24 LTC4355 Updated the symbol and the application circuit.
+08/15/24 LT1010 Model redesigned on new architecture with accuracy and convergence improvements.
+08/15/24 LTC3337  new model
+08/15/24 LTM4703  new model
+08/15/24 MAX22700E  new model
+08/15/24 MAX22701E  new model
+08/13/24 LT3073 Fix REF pin current
+08/13/24 LT3154 Fixed SS pin sinking Current
+08/13/24 LTC3769 Added Slope recovery circuit to fix current limit issue.
+08/13/24 LTC3891 Fix Sense- bias current
+08/13/24 AD8422 Improved convergence performance.
+08/13/24 ADA4522-1 Improved convergence performance, corrected supply current.
+08/13/24 ADA4522-2 Improved convergence performance, corrected supply current.
+08/13/24 ADA4522-4 Improved convergence performance, corrected supply current.
+08/13/24 ADuM4195  new model
+08/05/24 LT8210 Changed hystersis definition.
+08/05/24 LTC4380-4 Fix Gate Clamp Level for -4 variant
+08/05/24 MAX20444B Fixed Syntax error, improve covergence and symbol attribute setup
+08/05/24 ADA4891-1 Corrected supply current.
+08/05/24 ADA4891-3 Corrected supply current.
+08/05/24 ADA4891-4 Corrected supply current.
+08/01/24 LTC3118 Improved Vin Or-ing function
+08/01/24 LTC7132 Improved convergence.
+08/01/24 LTM8060 Updated control loop and oscillator to improve convergence; Updated symbol and application circuit
+08/01/24 LTC2960-1 remodeled version for better convergence
+08/01/24 LTC2960-2 Remodeled for better convergence
+08/01/24 LTC2960-3 Remodeled for better convergence
+08/01/24 LTC2960-4 Remodeled for better convergence
+08/01/24 ADuM340E0  new model
+08/01/24 ADuM342E0  new model
+08/01/24 MAX17606  new model
+07/30/24 LTC2909-2.5 Improved naming convention.
+07/30/24 LTC2909-3.3 Improved naming convention.
+07/30/24 LTC2909-5 Improved naming convention.
+07/30/24 LT3077  new model
+07/29/24 LTC3425 Fixed operating point issues and updated symbol file
+07/29/24 ADG706  new model
+07/29/24 ADG709  new model
+07/27/24 ADP5072 Fix convergence issues
+07/27/24 ADP5076 Fix convergence issues
+07/24/24 LT5400-1 Improved convergence performance.
+07/24/24 ADP2443 Fix syntax issue.
+07/24/24 ADP5071 Rebased to ADP5076 and fix syntax issues.
+07/24/24 ADP5075 Fix convergence issues
+07/24/24 LT8210 Improved shutdown behavior.
+07/24/24 LT8622S Fine-tuned Diode dot model statement
+07/24/24 LT8624S Fine-tuned Diode dot model statement
+07/24/24 LT8625S Fine-tuned Diode dot model statement
+07/24/24 LT8625SP Fine-tuned Diode dot model statement
+07/24/24 LT8625SP-1 Fine-tuned Diode dot model statement
+07/24/24 LT8627SP Fine-tuned Diode dot model statement
+07/22/24 LT6658-5 remove redundant definitions
+07/22/24 ADPL76030  new model
+07/20/24 ADG1211 Added Leakage. Updated symbol, application circuit, and AC parameter.
+07/20/24 ADG1411 Added Leakage. Updated symbol, application circuit, and AC parameter.
+07/20/24 ADG1412 Added Leakage. Updated symbol, application circuit, and AC parameter.
+07/20/24 ADG1611 Added Leakage. Updated symbol, application circuit, and AC parameter.
+07/20/24 ADG1612 Added Leakage. Updated symbol, application circuit, and AC parameter.
+07/20/24 ADA4098-1 Adjusted example circuit.
+07/20/24 ADA4098-2 Adjusted example circuit.
+07/20/24 ADG2436  new model
+07/20/24 ADG6436  new model
+07/18/24 LTC2904 Improved convergence.
+07/18/24 LTC2906 Improved convergence.
+07/18/24 LTC2908-A1 Improved convergence.
+07/18/24 LTP8800-2 Update example circuit notes and improve simulation performance.
+07/18/24 LTC6900 Improved convergence.
+07/18/24 ADA4098-1 Corrected shutdown behavior, improved convergence performance.
+07/18/24 ADA4098-2 Corrected shutdown behavior, improved convergence performance.
+07/18/24 ADCMP580  new model
+07/18/24 LTP8802A-1B  new model
+07/16/24 LTC2903-A1 Changed external sources to PWL that start at 0V.
+07/16/24 LTC2903-B1 Changed external sources to PWL that start at 0V.
+07/16/24 LTC2903-C1 Changed external sources to PWL that start at 0V.
+07/16/24 LTC2903-D1 Changed external sources to PWL that start at 0V.
+07/16/24 LTC2903-E1 Changed external sources to PWL that start at 0V.
+07/16/24 LTC3405A Fix wrong node connections in the model
+07/16/24 LTC4450 fix syntax error
+07/16/24 LTC4451 Fix syntax error
+07/15/24 LTP8800-2 Updated symbol references.
+07/15/24 LTP8800-4A Updated symbol references.
+07/15/24 LTC4371 Updated symbol references.
+07/15/24 ADA4255 Updated symbol references.
+07/15/24 ADuM341E0  new model
+07/12/24 LT3763 improve convergence on logic circuit implementations
+07/12/24 ADA4099-2 Updated symbol to reference updated ADA4099 model.
+07/11/24 ADA4945-HP Improve noise profile to match datasheet
+07/10/24 LT3033 Improve convergence
+07/10/24 LT4295 Updated external components.  The external components previously used were obsolete.
+07/10/24 LT8376 Improve ill-formed circuits
+07/10/24 LT8613 Fixed Inverting configuration
+07/10/24 LTC3805 Fixed the Run pin Bias Current
+07/10/24 LTC3805-5 Fixed the Run pin Bias Current
+07/08/24 ADP1740-1.3 Improve logic implementation and PSRR Simplification
+07/08/24 ADP1740-1.5 Improve PSRR Implementation and other Logic circuits
+07/08/24 ADP1740-1.8 Improve implementation of internal circuits
+07/08/24 ADP5050_chan1_2 Fix RLIM current Limit function
+07/08/24 LTC1727-2.5 Changed external sources to PWL that start from 0V.
+07/08/24 LTC1727-5 Changed external sources to PWL that start from 0V.
+07/08/24 ADA4099-1 Corrected shutdown behavior.
+07/05/24 LT4276A Model components updated.
+07/05/24 ADA4945-HP Imrpoved accuracy of supply voltage range
+07/05/24 ADA4945-LP Improve accuracy of supply voltage ranges
+07/05/24 LT8342  new model
+07/05/24 AD637  new model
 07/03/24 AD4080 Improved noise performance and updated the example circuit.
 07/03/24 LTC3900 Renamed diode model in the application circuit.
 07/03/24 LTC7805 Fixed Pgood response and correct IntVcc level

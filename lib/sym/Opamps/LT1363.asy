@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1363
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1360.lib
 SYMATTR Value2 LT1363
 SYMATTR Description 70MHz, 1000V/µs, Operational Amplifier
 PIN -32 80 NONE 0

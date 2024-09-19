@@ -1,4 +1,4 @@
-* Copyright © Linear Technology Corp. 12/20/06. All rights reserved.
+ï»¿* Copyright Â© Linear Technology Corp. 12/20/06. All rights reserved.
 
 .subckt LT6000 1 2 3 4 5 6
 A1 2 1 0 0 0 0 0 0 OTA g=0 in=24.7f ink=22
@@ -572,8 +572,8 @@ S4 3 4 N004 0 SWB
 C12 14 N009 12f Rser=90k noiseless
 C5 N002 0 400f noiseless Rpar=1k
 R4 INMR 4 500
-G2 0 N009 N002 0 10µ
-L1 N009 0 182.8µ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
+G2 0 N009 N002 0 10Âµ
+L1 N009 0 182.8Âµ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
 G5 0 N002 N008 0 1m
 R19 N013 16 19
 R20 3 2 200k
@@ -607,8 +607,8 @@ S6 5 6 N004 0 SWB
 C16 12 N026 12f Rser=90k noiseless
 C17 N021 0 400f noiseless Rpar=1k
 R27 INMG 6 500
-G8 0 N026 N021 0 10µ
-L2 N026 0 182.8µ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
+G8 0 N026 N021 0 10Âµ
+L2 N026 0 182.8Âµ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
 G9 0 N021 N025 0 1m
 R31 5 2 200k
 G10 N007 N024 N013 16 105m
@@ -639,8 +639,8 @@ S3 7 8 N004 0 SWB
 C25 10 N039 12f Rser=90k noiseless
 C26 N034 0 400f noiseless Rpar=1k
 R13 INMB 8 500
-G13 0 N039 N034 0 10µ
-L3 N039 0 182.8µ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
+G13 0 N039 N034 0 10Âµ
+L3 N039 0 182.8Âµ Cpar=.684f Rpar=219.047619047619047628k Rser=184K noiseless
 G14 0 N034 N038 0 1m
 R15 7 2 200k
 G15 N007 N037 N013 16 105m
@@ -694,8 +694,8 @@ C4 14 4 .9p
 S4 3 4 N004 0 SWB
 C12 14 N009 10f Rser=150k noiseless
 C5 N002 0 800f noiseless Rpar=1k
-G2 0 N009 N002 0 10µ
-L1 N009 0 151µ Cpar=.422f Rpar=263.9k Rser=161K noiseless
+G2 0 N009 N002 0 10Âµ
+L1 N009 0 151Âµ Cpar=.422f Rpar=263.9k Rser=161K noiseless
 G5 0 N002 N008 0 1m
 R20 3 2 200k
 G1 N007 N011 N013 16 82m
@@ -724,7 +724,7 @@ C14 12 5 1p Rser=150 noiseless
 C15 12 6 .9p
 S6 5 6 N004 0 SWB
 C17 N021 0 800f noiseless Rpar=1k
-G8 0 N026 N021 0 10µ
+G8 0 N026 N021 0 10Âµ
 G9 0 N021 N025 0 1m
 R31 5 2 200k
 G10 N007 N024 N013 16 82m
@@ -750,7 +750,7 @@ C23 10 7 1p Rser=150 noiseless
 C24 10 8 .9p
 S3 7 8 N004 0 SWB
 C26 N034 0 800f noiseless Rpar=1k
-G13 0 N039 N034 0 10µ
+G13 0 N039 N034 0 10Âµ
 G14 0 N034 N038 0 1m
 R15 7 2 200k
 G15 N007 N037 N013 16 82m
@@ -767,8 +767,8 @@ S9 11 6 N004 0 swPow
 S10 9 8 N004 0 swPow
 A14 15 1 0 0 0 0 N004 0 SCHMITT Vt=1.5 Vh=10m trise=50n tfall=1u Vlow=0 Vhigh=1
 D12 N013 16 DVBC3
-L2 N026 0 151µ Cpar=.422f Rpar=263.9k Rser=161K noiseless
-L3 N039 0 151µ Cpar=.422f Rpar=263.9k Rser=161K noiseless
+L2 N026 0 151Âµ Cpar=.422f Rpar=263.9k Rser=161K noiseless
+L3 N039 0 151Âµ Cpar=.422f Rpar=263.9k Rser=161K noiseless
 C16 12 N026 10f Rser=150k noiseless
 C25 10 N039 10f Rser=150k noiseless
 A1 14 3 0 0 0 0 0 0 OTA g=0 in=5p ink=36.4k
@@ -796,8 +796,8 @@ C10 N004 0 .1f Rpar=100k noiseless
 R2 3 N010 8Meg noiseless
 R3 N010 4 8Meg noiseless
 C6 3 1 1p Rpar=10Meg Rser=100 noiseless
-G1 0 N009 N010 0 10µ
-G2 0 N010 N005 0 35µ
+G1 0 N009 N010 0 10Âµ
+G2 0 N010 N005 0 35Âµ
 C14 N010 N013 21f
 A2 6 4 0 0 0 N006 0 0 SCHMITT Vt=3 Vh=10m tau=40n Vlow=0 Vhigh=1
 M1 3 N007 5 5 N1 temp=27
@@ -862,12 +862,12 @@ R2 N005 4 10G noiseless
 B1 0 N004 I=1m*dnlim(uplim(V(1),V(3)-1.4,0.1), V(4)-50m,.1)+1n*V(1)
 B2 N004 0 I=1m*dnlim(uplim(V(2),V(3)-1.39,0.1), V(4)-51m,0.1)+1n*V(2)
 G1 0 N008 N007 0 1m
-L1 N008 0 65µ Rser=1.25K Rpar=5K noiseless
-G2 0 N009 N008 0 1µ
+L1 N008 0 65Âµ Rser=1.25K Rpar=5K noiseless
+G2 0 N009 N008 0 1Âµ
 C1 N009 0 150f Rpar=1Meg noiseless
 C2 N007 0 30p Rser=1K Rpar=1K Cpar=2p noiseless
 A3 0 N004 0 0 0 0 N007 0 OTA g=1m linear en=8n enk=200 Vhigh=1e308 Vlow=-1e308
-L3 0 N004 10µ Rser=1.25K Rpar=5K Cpar=.2p noiseless
+L3 0 N004 10Âµ Rser=1.25K Rpar=5K Cpar=.2p noiseless
 .model DX D(Ron=1k Roff=1T Vfwd=1.6 Vrev=1.6 epsilon=0.5 revepsilon=0.5 noiseless)
 .model N VDMOS(Vto=-1.05 Kp=10.5m)
 .model P VDMOS(Vto=1.05 Kp=10.5m pchan)
@@ -891,12 +891,12 @@ R2 N005 4 10G noiseless
 B1 0 N004 I=1m*dnlim(uplim(V(1),V(3)-.75,0.1), V(4)-50m,.1)+1n*V(1)
 B2 N004 0 I=1m*dnlim(uplim(V(2),V(3)-.749,0.1), V(4)-51m,0.1)+1n*V(2)
 G1 0 N008 N007 0 1m
-L1 N008 0 65µ Rser=1.25K Rpar=5K noiseless
-G2 0 N009 N008 0 1µ
+L1 N008 0 65Âµ Rser=1.25K Rpar=5K noiseless
+G2 0 N009 N008 0 1Âµ
 C1 N009 0 150f Rpar=1Meg noiseless
 C2 N007 0 30p Rser=1K Rpar=1K Cpar=2p noiseless
 A3 0 N004 0 0 0 0 N007 0 OTA g=1m linear en=8n enk=200 Vhigh=1e308 Vlow=-1e308
-L3 0 N004 10µ Rser=1.25K Rpar=5K Cpar=.2p noiseless
+L3 0 N004 10Âµ Rser=1.25K Rpar=5K Cpar=.2p noiseless
 .model DX D(Ron=1k Roff=1T Vfwd=1.6 Vrev=1.6 epsilon=0.5 revepsilon=0.5 noiseless)
 .model N VDMOS(Vto=-1.05 Kp=10.5m)
 .model P VDMOS(Vto=1.05 Kp=10.5m pchan)
@@ -1007,8 +1007,8 @@ D18 1 N008 DABI
 R3 7 N008 457k
 A12 4 N018 4 5 4 N021 4 4 OR Ref=.39 Trise=10n Tfall=1n IC=0
 C9 N025 0 1p Rpar=100k
-G1 0 N025 5 4 10µ
-I1 N025 0 3.947µ
+G1 0 N025 5 4 10Âµ
+I1 N025 0 3.947Âµ
 A20 N009 N013 4 N012 4 4 N018 4 AND tfall=.1u trise=.1u
 A19 N016 N021 4 4 4 4 N022 4 OR Trise=10n Tfall=10n
 D2 0 N023 DLAT1
@@ -1091,8 +1091,8 @@ C22 N008 4 2p
 D18 1 N008 DABI
 R3 7 N008 457k
 C9 N022 0 1p Rpar=100k
-G1 0 N022 5 4 10µ
-I1 N022 0 3.947µ
+G1 0 N022 5 4 10Âµ
+I1 N022 0 3.947Âµ
 D14 0 N018 DLAT
 D2 0 N019 DLAT1
 C8 N019 0 150p
@@ -1188,8 +1188,8 @@ R3 9 N008 457k
 A12 5 N018 5 6 5 N021 5 5 OR Ref=.39 Trise=10n Tfall=1n IC=0
 A16 0 N023 0 0 0 0 N034 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C9 N031 0 1p Rpar=100k
-G1 0 N031 6 5 10µ
-I1 N031 0 3.947µ
+G1 0 N031 6 5 10Âµ
+I1 N031 0 3.947Âµ
 G2 N023 0 N022 5 1m
 A7 0 N029 N012 5 5 5 N032 5 OTA g=2u ref=-90m asym isource=330n isink=-10u Vlow=-1e308 Vhigh=1e308
 A10 0 N034 0 0 0 0 N023 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
@@ -1197,9 +1197,9 @@ A5 5 N025 5 7 5 5 N024 5 AND Ref=.41 Trise=1n Tfall=10n IC=1
 A11 0 N030 0 0 0 0 N029 0 OTA g=2m asym isource=200u isink=-1u Vlow=-1e308 Vhigh=1e308 Cout=30.8p
 D21 0 N029 DLAT
 C13 N030 0 1p Rpar=100k
-I2 0 N030 4.053µ
+I2 0 N030 4.053Âµ
 G4 N029 0 N020 5 1m
-G3 N030 0 7 5 10µ
+G3 N030 0 7 5 10Âµ
 D22 0 N035 DLAT1
 C14 N035 0 150p
 A17 0 N029 0 0 0 0 N035 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
@@ -1296,8 +1296,8 @@ R3 9 N008 457k
 A12 5 N018 5 6 5 N020 5 5 OR Ref=.39 Trise=10n Tfall=1n IC=0
 A16 0 N022 0 0 0 0 N033 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C9 N028 0 1p Rpar=100k
-G1 0 N028 6 5 10µ
-I1 N028 0 3.947µ
+G1 0 N028 6 5 10Âµ
+I1 N028 0 3.947Âµ
 G2 N022 0 N021 5 1m
 A7 0 N029 N012 5 5 5 N031 5 OTA g=2u ref=-90m asym isource=330n isink=-10u Vlow=-1e308 Vhigh=1e308
 A10 0 N033 0 0 0 0 N022 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
@@ -1310,8 +1310,8 @@ C13 N034 0 150p
 A11 5 N018 5 7 5 N024 5 5 OR Ref=.39 Trise=10n Tfall=1n IC=0
 A14 0 N029 0 0 0 0 N034 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C14 N030 0 1p Rpar=100k
-G3 0 N030 7 5 10µ
-I2 N030 0 3.947µ
+G3 0 N030 7 5 10Âµ
+I2 N030 0 3.947Âµ
 G4 N029 0 N025 5 1m
 A17 0 N034 0 0 0 0 N029 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
 A18 5 N024 5 5 5 5 N025 5 OR Trise=10n Tfall=10n
@@ -1364,7 +1364,7 @@ S4 N011 7 0 N009 SHUT1
 S2 4 N016 0 N009 SHUT1
 C8 2 3 .5p Rser=100 noiseless
 G3 0 N007 N006 0 1m
-L1 N007 0 219µ Cpar=440f Rser=1.1k Rpar=11k noiseless
+L1 N007 0 219Âµ Cpar=440f Rser=1.1k Rpar=11k noiseless
 D7 N013 N012 DLIM2
 R3 7 1 2Meg
 R5 N015 1 10k
@@ -1510,7 +1510,7 @@ D21 4 6 DESD
 D22 4 5 DESD
 G2 0 N008 N007 0 1m
 C23 N008 0 10p Rpar=1K noiseless
-L1 N007 0 555µ Cpar=282f Rser=1.05k Rpar=21k noiseless
+L1 N007 0 555Âµ Cpar=282f Rser=1.05k Rpar=21k noiseless
 D1 2 3 DIN temp=27
 D2 3 2 DIN temp=27
 B3 7 2 I=(.5+.5*tanh(V(7,2)/100m))*(.3p +24.5f*dnlim(V(7,4)-30,0,1))
@@ -1562,7 +1562,7 @@ D10 4 5 DBIAS1
 D11 1 5 DBIAS1
 D9 N005 0 DSLW2
 A2 0 N009 0 0 0 0 N003 0 OTA g=10m asym isource=1u isink=-12u Vhigh=1e308 Vlow=-1e308
-G5 0 N009 N005 0 1µ
+G5 0 N009 N005 0 1Âµ
 C15 N009 0 20p Rpar=1Meg
 C4 N012 N014 1p
 R1 N014 0 1
@@ -1668,8 +1668,8 @@ D18 1 N008 DABI
 R3 7 N008 457k
 A12 4 N014 4 5 4 N017 4 4 OR Ref=.39 Trise=700n Tfall=100n
 C9 N020 0 1p Rpar=100k
-G1 0 N020 5 4 10µ
-I1 N020 0 3.947µ
+G1 0 N020 5 4 10Âµ
+I1 N020 0 3.947Âµ
 D2 0 N018 DLAT1
 C13 N018 0 150p
 A5 0 N016 0 0 0 0 N018 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
@@ -1763,17 +1763,17 @@ R3 9 N008 457k
 A12 N014 5 5 6 5 N018 5 5 OR Ref=.39 Trise=700n Tfall=100n
 A16 0 N019 0 0 0 0 N028 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C9 N025 0 1p Rpar=100k
-G1 0 N025 6 5 10µ
-I1 N025 0 3.947µ
+G1 0 N025 6 5 10Âµ
+I1 N025 0 3.947Âµ
 G2 N019 0 N018 5 1m
 A7 0 N023 N011 5 5 5 N026 5 OTA g=2u ref=-90m asym isource=330n isink=-10u Vlow=-1e308 Vhigh=1e308
 A10 0 N028 0 0 0 0 N019 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
 A11 0 N024 0 0 0 0 N023 0 OTA g=2m asym isource=200u isink=-1u Vlow=-1e308 Vhigh=1e308 Cout=30.8p
 D21 0 N023 DLAT
 C13 N024 0 1p Rpar=100k
-I2 0 N024 4.053µ
+I2 0 N024 4.053Âµ
 G4 N023 0 N017 5 1m
-G3 N024 0 7 5 10µ
+G3 N024 0 7 5 10Âµ
 D22 0 N029 DLAT1
 C14 N029 0 150p
 A17 0 N023 0 0 0 0 N029 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
@@ -1865,8 +1865,8 @@ D18 1 N008 DABI
 R3 9 N008 457k
 A16 0 N017 0 0 0 0 N027 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C9 N022 0 1p Rpar=100k
-G1 0 N022 6 5 10µ
-I1 N022 0 3.947µ
+G1 0 N022 6 5 10Âµ
+I1 N022 0 3.947Âµ
 G2 N017 0 N016 5 1m
 A7 0 N023 N011 5 5 5 N025 5 OTA g=2u ref=-90m asym isource=330n isink=-10u Vlow=-1e308 Vhigh=1e308
 A10 0 N027 0 0 0 0 N017 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
@@ -1876,8 +1876,8 @@ D22 0 N028 DLAT1
 C13 N028 0 150p
 A14 0 N023 0 0 0 0 N028 0 OTA g=20m asym isource=10m isink=-34u Vlow=-1e308 Vhigh=1e308 ref=-10m
 C14 N024 0 1p Rpar=100k
-G3 0 N024 7 5 10µ
-I2 N024 0 3.947µ
+G3 0 N024 7 5 10Âµ
+I2 N024 0 3.947Âµ
 G4 N023 0 N019 5 1m
 A17 0 N028 0 0 0 0 N023 0 OTA g=10m asym isource=400u isink=-10u Vlow=-1e308 Vhigh=1e308
 A2 2 5 5 5 5 5 N012 5 SCHMITT trise=500n vt=1 vh=.5
@@ -1919,7 +1919,7 @@ D17 1 11 D10Z
 D16 11 1 D3D
 D18 4 3 D10Z
 C28 3 4 1p
-G7 PG 1 N002 0 1µ
+G7 PG 1 N002 0 1Âµ
 B5 0 N002 I=1u*uplim(-V(XGN)+60m,70m*V(11,4)+300m,10m)
 C29 N002 0 1f Rpar=1Meg noiseless
 B6 PG 1 I=290n + 1.1n*uplim(V(11,4),10,2)

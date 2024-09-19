@@ -256,7 +256,7 @@ C25 IVR CMn 1f
 + Iosa=7.3n Iosb=101p
 + Iosc=-567f Iosd=1.03f
 + Vcm_min=0 Vcm_max=-1.3
-+ Vs_min=3 Vs_max=11
++ Vs_min=2.9 Vs_max=11
 + Iscp=140m Iscn={-Iscp}
 + Iq_on=1.4m Iq_off=60u
 + IZop={Rx_Zo*Iscp} IZon={Rx_Zo*Iscn}

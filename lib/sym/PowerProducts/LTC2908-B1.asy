@@ -7,7 +7,6 @@ WINDOW 3 1 53 Center 2
 SYMATTR Value LTC2908-B1
 SYMATTR Prefix X
 SYMATTR Description Precision Six Supply Monitor (3.3, 2.5, 1.8, 1.5, 2 adjust-0.5)
-SYMATTR SpiceModel LTC2908-B1
 SYMATTR ModelFile LTC2908-B1.sub
 PIN 0 112 BOTTOM 8
 PINATTR PinName GND

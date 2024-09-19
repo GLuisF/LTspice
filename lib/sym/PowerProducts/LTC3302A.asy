@@ -6,7 +6,6 @@ WINDOW 0 0 -41 Center 2
 WINDOW 3 0 71 Center 2
 SYMATTR Value LTC3302A
 SYMATTR Prefix X
-SYMATTR Value2 LTC3302A
 SYMATTR Description 5V, 2A, 2MHz, Synchronous Step-down Regulator
 SYMATTR SpiceLine Vout_trim=1.0
 SYMATTR ModelFile LTC3302A.sub

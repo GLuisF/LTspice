@@ -7,7 +7,6 @@ WINDOW 3 0 64 Center 2
 SYMATTR Value ADM1278
 SYMATTR Description Hot Swap Controller and Digital Power and Energy Monitor with PMBus Interface
 SYMATTR Prefix X
-SYMATTR SpiceModel ADM1278
 SYMATTR ModelFile ADM1278.sub
 SYMATTR SpiceLine oc_filt_select=1 oc_trip_select=1 fhdis=0 oc_retry_dis=0
 PIN 208 112 RIGHT 8

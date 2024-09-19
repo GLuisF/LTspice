@@ -8,7 +8,7 @@ SYMATTR Value LT3694-1
 SYMATTR Prefix X
 SYMATTR SpiceModel LT3694-1.sub
 SYMATTR Value2 LT3694-1
-SYMATTR Description 36V, 2.6A Fault Monolithic Buck Regulator with Dual LDO
+SYMATTR Description 36V, 2.6A Monolithic Buck Regulator with Dual LDO
 PIN 0 -416 TOP 8
 PINATTR PinName Vin
 PINATTR SpiceOrder 1

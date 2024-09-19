@@ -11,7 +11,6 @@ WINDOW 3 4 42 Center 2
 WINDOW 39 3 74 Center 1
 SYMATTR Value AD5679R
 SYMATTR Prefix X
-SYMATTR Value2 AD5679R
 SYMATTR Description 16-Channel, 16Bit nanaDAC+ (one channel, output stage modeled)
 SYMATTR ModelFile AD5679R.sub
 SYMATTR SpiceLine Gain=2

@@ -39,7 +39,7 @@ WINDOW 3 16 160 Left 2
 SYMATTR Value LT5400-1
 SYMATTR Prefix X
 SYMATTR Description Quad Matched Resistor Network
-SYMATTR SpiceModel LT5400.lib
+SYMATTR SpiceModel LT5400-1.sub
 SYMATTR Value2 LT5400-1
 PIN -96 -96 NONE 8
 PINATTR PinName 1

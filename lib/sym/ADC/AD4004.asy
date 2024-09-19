@@ -13,7 +13,6 @@ SYMATTR Value AD4004
 SYMATTR SpiceLine EN_Hi_Z=1
 SYMATTR Description 16-Bi Pseudo Differential, 1 Msps SAR ADC
 SYMATTR Prefix X
-SYMATTR Value2 AD4004
 SYMATTR ModelFile AD4004.sub
 PIN -32 -144 TOP 8
 PINATTR PinName REF

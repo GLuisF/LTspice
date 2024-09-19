@@ -14,7 +14,6 @@ SYMATTR SpiceLine Softspan=15
 SYMATTR Value AD4858
 SYMATTR SpiceLine2 SHDR=1
 SYMATTR Prefix X
-SYMATTR Value2 AD4858
 SYMATTR Description 20-Bit Full Buffered SAR ADC
 SYMATTR ModelFile AD4858.sub
 PIN -160 0 LEFT 16

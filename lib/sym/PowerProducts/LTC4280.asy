@@ -8,10 +8,8 @@ WINDOW 39 0 80 Center 2
 SYMATTR Value LTC4280
 SYMATTR SpiceLine uvautoretry=1 ovautoretry=1 ocautoretry=0
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC4280
 SYMATTR Description Hot Swap Controller with I2C Compatible Monitoring
 SYMATTR ModelFile LTC4280.sub
-SYMATTR Value2 LTC4280
 PIN -320 -64 LEFT 8
 PINATTR PinName UV
 PINATTR SpiceOrder 1

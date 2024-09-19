@@ -10,7 +10,6 @@ SYMATTR Value LT8277
 SYMATTR SpiceLine CLKOUT=1 CLKOUT_EN=1 SS=1 PH2_LL=0 t0=30m v0=30 t1=50m v1=60 t2=65m v2=45 t3=75m v3=50
 SYMATTR SpiceLine2 t4=85m v4=40 t5=95m v5=35 t6=115m v6=55 t7=125m v7=48 t8=135m v8=32 t9=150m v9=52
 SYMATTR Prefix X
-SYMATTR Value2 LT8277
 SYMATTR Description Multi-Phase Current Mode Step-Up DC/DC Controller
 SYMATTR ModelFile LT8277.sub
 PIN -192 -240 LEFT 8

@@ -2429,6 +2429,7 @@
 \examples\Applications\8714.asc
 \examples\Applications\9100.asc
 \examples\Educational\FRA\fra_eg2.asc
+\examples\Educational\FRA\fra_eg2_LT8609.asc
 \examples\Educational\FRA\fra_eg3.asc
 \examples\Educational\FRA\fra_eg4.asc
 \examples\Educational\FRA\fra_eg5.asc
@@ -2644,4 +2645,14 @@
 \examples\Applications\UniversalOpAmp4.asc
 \lib\sub\ADP5073_4.sub
 \lib\sub\ADP5070_1.sub
-\lib\sub\LT1389.lib
+\lib\sub\ADA4099-2.lib
+\lib\sub\ADA4098-2.lib
+\lib\sym\SpecialFunctions\LTC2909-25.asy
+\lib\sub\LTC2909-25.sub
+\examples\Applications\LTC2909-25.asc
+\lib\sym\SpecialFunctions\LTC2909-33.asy
+\lib\sub\LTC2909-33.sub
+\examples\Applications\LTC2909-33.asc
+\lib\sym\SpecialFunctions\LTC2909-50.asy
+\lib\sub\LTC2909-50.sub
+\examples\Applications\LTC2909-50.asc

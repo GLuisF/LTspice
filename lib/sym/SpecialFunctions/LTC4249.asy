@@ -8,7 +8,6 @@ WINDOW 39 0 168 Center 2
 SYMATTR Value LTC4249
 SYMATTR SpiceLine HiResIMON=0
 SYMATTR Prefix X
-SYMATTR Value2 LTC4249
 SYMATTR Description 65V Dual Electronic Circuit Breaker with Current Monitors
 SYMATTR ModelFile LTC4249.sub
 PIN -160 -128 LEFT 8

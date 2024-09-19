@@ -7,10 +7,9 @@ WINDOW 3 1 580 Center 2
 SYMATTR Value LTC3888-1
 SYMATTR SpiceLine Frequency_Switch=250 Vout0=2.5 Vout1=3 PWM_config=3 GM0=3m GM1=3m Vout_Trans_Rate0=7.5 Vout_Trans_Rate1=9 Vout_Scale_Loop0=2.507 Vout_Scale_Loop1=4.487 Ton_Delay0=0 Ton_Delay1=0 Toff_Delay0=0
 SYMATTR Prefix X
-SYMATTR Value2 LTC3888-1
 SYMATTR Description Dual Output 8-Phase Step-Down DC/DC Controller with Digital Power System Management
 SYMATTR ModelFile LTC3888-1.sub
-SYMATTR SpiceLine2 Toff_Delay1=0 Rith0=5k Rith1=5k  OC_Limit0=20 OC_Limit1=20 Ton_Min=45n VOUT_UV_Fault_Limit0=2.2 VOUT_UV_Fault_Limit1=2.8 VOUT_OV_Fault_Limit0=2.6 VOUT_OV_Fault_Limit1=3.1 Iout_Cal_Gain=5m Slave0=0 Slave1=0
+SYMATTR SpiceLine2 Toff_Delay1=0 Rith0=5k Rith1=5k OC_Limit0=20 OC_Limit1=20 Ton_Min=45n VOUT_UV_Fault_Limit0=2.2 VOUT_UV_Fault_Limit1=2.8 VOUT_OV_Fault_Limit0=2.6 VOUT_OV_Fault_Limit1=3.1 Iout_Cal_Gain=5m Slave0=0 Slave1=0
 PIN -144 -352 LEFT 8
 PINATTR PinName PWM0
 PINATTR SpiceOrder 1

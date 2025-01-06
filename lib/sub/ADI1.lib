@@ -1,4 +1,4 @@
-ï»¿* Copyright (c) 1998-2019 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2019 Analog Devices, Inc.  All rights reserved.
 *
 .subckt AD549 1 2 3 4 5
 A1 2 1 0 0 0 0 0 0 OTA g=0 in=.11f ink=1 incm=.0011f incmk=1
@@ -24,7 +24,7 @@ B3 0 N004 I=2m*dnlim(uplim(V(1),V(3)-.8,.1), V(4)+3, .1)+100n*V(1)
 B4 N004 0 I=2m*dnlim(uplim(V(2),V(3)-1.25,.1), V(4)+3, .1)+100n*V(2)
 C12 N004 0 20p Rpar=1K noiseless
 C2 N006 0 20p Rpar=1K noiseless
-L1 N004 N006 20Âµ
+L1 N004 N006 20µ
 .model X D(Ron=5K Roff=100G Vfwd=-1.25 epsilon=.1 noiseless)
 .model Y D(Ron=5K Roff=1T Vfwd=2.5 epsilon=.1 noiseless)
 .model N VDMOS(Vto=-250m Kp=4m Ksubthres=.1 noiseless)
@@ -93,7 +93,7 @@ B2 0 N004 I=2m*dnlim(uplim(V(1),V(3)-0.5,.1), V(4)+3.5, .1)+100n*V(1)
 A2 0 N006 M M M M N005 M OTA g=130u Isrc=180u en=16n enk=100 Vlow=-1e308 Vhigh=1e308 Cout= 1.4p Isink=-120u asym
 C5 N004 0 5p Rpar=1K noiseless
 C10 N006 0 5p Rpar=1K noiseless
-L1 N004 N006 5Âµ
+L1 N004 N006 5µ
 .model X D(Ron=10K Roff=100G Vfwd=-1.25 epsilon=.1 noiseless)
 .model Y D(Ron=500 Roff=1T Vfwd=2.86 epsilon=.1 noiseless)
 .model N VDMOS(Vto=-250m Kp=5m Ksubthres=.2 noiseless)
@@ -125,8 +125,8 @@ R3 M 0 1K noiseless
 S1 N004 M 4 3 UVLO
 D3 N004 3 X
 D4 4 N004 X
-L1 N003 N005 22Âµ
-L2 N005 N006 22Âµ
+L1 N003 N005 22µ
+L2 N005 N006 22µ
 C2 N006 0 22p Rpar=1K noiseless
 C5 N005 0 44p
 D2 3 4 IQ
@@ -147,9 +147,9 @@ D5 N006 3 X1
 D6 4 N006 X2
 C2 3 N006 1p
 C3 N006 4 1p
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=.8f ink=1 incm=.08f incmk=1
 I1 1 4 2p load
@@ -162,7 +162,7 @@ B3 0 N004 I=2m*dnlim(uplim(V(1),V(3)-1,.1), V(4)+-.2, .1)+100n*V(1)
 B4 N004 0 I=2m*dnlim(uplim(V(2),V(3)-1,.1), V(4)+-.2, .1)+100n*V(2)
 C4 N004 0 35p Rpar=1K noiseless
 D1 3 4 IQ
-L1 N004 N005 35Âµ
+L1 N004 N005 35µ
 C6 N005 0 35p Rpar=1K noiseless
 C7 3 5 1p
 C8 5 4 1p
@@ -645,7 +645,7 @@ D6 5 N003 Y2B
 D9 N003 5 Y1
 B1 N002 0 I=2m*dnlim(uplim(V(2),V(3)-1.4,.1), V(4)+1.4, .1)+100n*V(2)
 B2 0 N002 I=2m*dnlim(uplim(V(1),V(3)-1.4,.1), V(4)+1.4, .1)+100n*V(1)
-L3 N005 N006 22Âµ
+L3 N005 N006 22µ
 C2 N006 0 22p Rpar=1K noiseless
 D2 3 4 IQ
 .model X1 D(Ron=1K Roff=100G Vfwd=-0.75 epsilon=.1 noiseless)
@@ -673,7 +673,7 @@ D2 3 4 IQ
 *
 * Not Modeled:
 *
-* Parameters modeled include: Vsy=Â±15V
+* Parameters modeled include: Vsy=±15V
 *
 * END Notes
 *
@@ -1586,7 +1586,7 @@ EG2 47 50 POLY(1) (30,98) 3.574E-01 1
 *for License Statement. Use of this model indicates your acceptance
 *of the terms and provisions in the License Staement.
 *
-* BEGIN Notes: VSY=5V, T=25Â°C
+* BEGIN Notes: VSY=5V, T=25°C
 **Not modeled: Distortion, PSRR, Overload Recovery,
 *             Shutdown Turn On/Turn Off time
 *
@@ -2926,7 +2926,7 @@ H2 N016 VNEGx POLY(1) VOSO 0 0 8000
 *   Pulse response vs cap load
 *   Input impedance
 *
-* Typical Specifications from Â±15V Table Used in Model
+* Typical Specifications from ±15V Table Used in Model
 *
 * END Notes
 *
@@ -3254,7 +3254,7 @@ GI2 0 Vsl+out VALUE={LIMIT(1*V(Vsl+in,Vsl+out),15,-15)}
 *   Pulse response vs cap load
 *   Input impedance
 *
-* Typical Specifications from Â±15V Table Used in Model
+* Typical Specifications from ±15V Table Used in Model
 *
 * END Notes
 *
@@ -4253,7 +4253,7 @@ EG2 47 50 POLY(1) (30,98) 6.335E-01 1
 *
 * Not Modeled:
 *
-* Parameters modeled include: VSY=18V, T=25Â°C
+* Parameters modeled include: VSY=18V, T=25°C
 *
 * END Notes
 *
@@ -4938,9 +4938,9 @@ C1 N006 N005 {Cf}
 A1 N009 0 N010 N010 N010 N010 N005 N010 OTA g={Ga} Iout={Islew} en=8n enk=12 Vhigh=1e308 Vlow=-1e308
 D5 N006 3 X
 D6 4 N006 X
-G2 0 N010 3 0 500Âµ
+G2 0 N010 3 0 500µ
 R4 N010 0 1K noiseless
-G3 0 N010 4 0 500Âµ
+G3 0 N010 4 0 500µ
 S1 N005 N010 4 3 SD
 C4 N004 0 {5p*x} Rpar=1K noiseless
 C18 2 1 1p Rpar=4Meg noiseless
@@ -4948,10 +4948,10 @@ D8 3 1 1nA m=.4
 C3 3 5 1p
 C7 5 4 .25p
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=.2p ink=1.5K incm=.02p incmk=1.5k
-Ã–1 N006 3 4 N005 N010 Gm1={Gb} Ibias=500u
+Ö1 N006 3 4 N005 N010 Gm1={Gb} Ibias=500u
 D1 3 2 1nA m=.4
 R5 5 N006 25
-L2 N004 N007 {5Âµ*x}
+L2 N004 N007 {5µ*x}
 C10 N007 0 {5p*x} Rpar=1K noiseless
 D2 2 3 OVP1
 D4 2 3 OVP2
@@ -4965,9 +4965,9 @@ D10 2 1 DIN
 B3 N004 0 I=2m*dnlim(uplim(V(2),V(3)-1.4,.1), V(4)+1.4, .1)+100n*V(2)
 B4 0 N004 I=2m*dnlim(uplim(V(1),V(3)-1.4,.1), V(4)+1.4, .1)+100n*V(1)
 D11 N010 N005 IO
-L1 N008 0 10Âµ Rser=1K noiseless
+L1 N008 0 10µ Rser=1K noiseless
 G1 0 N008 N007 0 1m
-L3 N009 0 10Âµ Rser=1K noiseless
+L3 N009 0 10µ Rser=1K noiseless
 G4 0 N009 N008 0 1m
 .param Cf = 1p
 .param Ro       =  11.8K
@@ -5023,7 +5023,7 @@ G4 0 N009 N008 0 1m
 * Not Modeled:
 *    
 * Parameters modeled include: 
-*  This model simulates typical values at Vs=Â±15V
+*  This model simulates typical values at Vs=±15V
 *  The ADA4637 is decompensated. Operate at a noise gain >5
 *
 * END Notes
@@ -5177,7 +5177,7 @@ R24  30a 30  1m;  30 is output pin
 *
 * Copyright 2013 by Analog Devices
 *
-* VSY=18V, T=25Â°C
+* VSY=18V, T=25°C
 *
 * Refer to "README.DOC" file for License Statement.  Use of this
 * model indicates your acceptance of the terms and provisions in
@@ -5291,7 +5291,7 @@ EG2 47 50 POLY(1) (30,98) 6.964E-01 1
 *
 * Copyright 2014 by Analog Devices
 *
-* T=25Â°C
+* T=25°C
 *
 * Refer to "README.DOC" file for License Statement.  Use of this
 * model indicates your acceptance of the terms and provisions in
@@ -6015,8 +6015,8 @@ Cinn N003 0 {Cinn}
 Binp 0 Binp I=Uplim(Dnlim(V(INp)+{Vos}, V(Vcm_min), 0.3), V(Vcm_max), 0.3) Rpar=1
 Binn 0 Binn I=Uplim(Dnlim(V(2), V(Vcm_min), 0.3), V(Vcm_max), 0.3) Rpar=1
 R2 Zol1 0 {Zol} Noiseless
-R3 N003 2 1Âµ Noiseless
-R4 INp 1 1Âµ Noiseless
+R3 N003 2 1µ Noiseless
+R4 INp 1 1µ Noiseless
 Bpd 6 0 I={Ipd_off}+V(_PD)* {Ipd_on-Ipd_off}
 Bq 3 4 I={Iq_off}+V(_PD)* {Iq_on-Iq_off}+V(Imon)
 G7 0 Vs 3 4 1m
@@ -6024,7 +6024,7 @@ R9 Vs 0 1k Noiseless
 A7 VminGD 0 _PD 0 VmaxGD 0 GO 0 AND Tau=1n
 A5 Vs 0 0 0 0 0 VminGD 0 SCHMITT Vt={Vsmin-50m} Vh=10m Tau=1n
 A6 Vs 0 0 0 0 VmaxGD 0 0 SCHMITT Vt={Vsmax-50m} Vh=10m Tau=1n
-R_Iout N004 N002 1Âµ
+R_Iout N004 N002 1µ
 Bimon 0 Imon I=1m*I(R_Iout) Rpar=1k Cpar=1p
 Bhi 0 Hi I=1m*(V(3)-Table(V(Imon), 4m, 0.9, 20m, 1.9, 27m, 3, 85m, 5)) Rpar=1k
 Blo 0 Lo I=1m*(V(4)+Table(-V(Imon), 4m, 0.9, 20m, 1.9, 27m, 3, 85m, 5)) Rpar=1k
@@ -6102,7 +6102,7 @@ M4 4 N011 6 6 PG temp=27
 C17 3 6 500f
 C21 6 4 500f
 C22 N011 Mid 28.937f Rpar=2Meg noiseless
-G3 Mid N011 1 Mid 1Âµ
+G3 Mid N011 1 Mid 1µ
 S2 N011 Mid N011 3 Suplim
 A5 1 0 0 0 0 0 0 0 OTA g=0 in=.07f
 D6 2 6 DIN
@@ -6167,7 +6167,7 @@ M4 4 N011 6 6 PG temp=27
 C17 3 6 500f
 C21 6 4 500f
 C22 N011 Mid 28.937f Rpar=2Meg noiseless
-G3 Mid N011 1 Mid 1Âµ
+G3 Mid N011 1 Mid 1µ
 S2 N011 Mid N011 3 Suplim
 A5 1 0 0 0 0 0 0 0 OTA g=0 in=.07f
 D6 2 6 DIN

@@ -2595,9 +2595,6 @@
 \lib\sym\PowerProducts\LTC7892.asy
 \lib\sub\LTC7892.sub
 \examples\Applications\LTC7892.asc
-\lib\sym\PowerProducts\LT3097.asy
-\lib\sub\LT3097.sub
-\examples\Applications\LT3097.asc
 \lib\sym\DAC\AD5772R.asy
 \lib\sub\AD5772R.sub
 \examples\Applications\AD5772R.asc
@@ -2656,3 +2653,9 @@
 \lib\sym\SpecialFunctions\LTC2909-50.asy
 \lib\sub\LTC2909-50.sub
 \examples\Applications\LTC2909-50.asc
+\lib\sub\AD8655.lib
+\lib\sub\ADA4945-HP.lib
+\lib\sub\ADA4945-LP.lib
+\lib\sym\OpAmps\AD4858.sym
+\lib\sub\ADA4255.lib
+\lib\sub\LTC6115.lib

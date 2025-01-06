@@ -1,3 +1,129 @@
+12/29/24 LT8365 Updated model symbol; updated application circuit; improved model convergence
+12/29/24 LT8364 Updated model symbol; updated application circuit; improved model convergence
+12/29/24 LT8362 Updated model symbol; updated application circuit; improved model convergence
+12/29/24 LT8361 Updated model symbol; updated application circuit; improved model convergence
+12/29/24 LT3041 Improved load step performance
+12/29/24 AD8675 Remodeled Version
+12/19/24 LTC7841 Updated model for improved pulse interleaving. 
+12/18/24 MAX42402B New device
+12/18/24 MAX16141 Updated model to add features
+12/18/24 LTC4000 Fixed EG Circuit and Improve Convergence performance
+12/18/24 LTC3888 Updated application circuit with newer version of LTC7050
+12/18/24 LTC3888-1 Updated application circuit with newer version of LTC7050
+12/18/24 LTC1643AL Updated model to fix bug and improve simulation time
+12/18/24 LTC1643AL-1 Updated model to fix bug and improve simulation time
+12/18/24 LT4295 Fix convergence issue
+12/17/24 MAX22700D New device
+12/17/24 LTC7050 Improved timing; updated model symbol
+12/17/24 LTC3888 Fixed PWM configuration; updated control loop parameters
+12/17/24 LTC3888-1 Fixed PWM configuration; updated control loop parameters
+12/14/24 ADGS6414D New device
+12/14/24 LTC7822 New device
+12/14/24 LTC7822-1 New device
+12/14/24 LTC2955-1 Fix convergence issue
+12/14/24 LTC2900-1 Fix convergence issue
+12/14/24 LT3935 Improved convergence performance
+12/10/24 LT8365 Improved initial operating point performance
+12/10/24 LT8316 Fixed SMODE minimum frequency
+12/10/24 LT3688 Fixed convergence, removed defcons
+12/10/24 LTC6115 Fix convergence and update model symbol
+12/09/24 LT8365 Improved initial operating point performance
+12/09/24 LT8316 Fixed SMODE minimum frequency
+12/09/24 LT3688 Fixed convergence, removed defcons
+12/07/24 LT8608 Improved initial operating point performance
+12/07/24 ADA4255 Improved convergence performance.
+12/06/24 LTC7893 Updated external FET in model
+12/06/24 LTC7891 Updated external FET in model
+12/06/24 LTC7890 Updated external FET in model
+12/06/24 ADA4870 Changed /SD for +5V above Vee in application circuit
+12/03/24 LTC1232 improve clock osc implementation
+12/03/24 LTM8060F New device
+12/02/24 MAX16141 New device
+11/28/24 LTM4664 Resolved convergence issues; Fixed Timer, FAULT, and PGOOD pin functions
+11/28/24 LT7200S Fixed RUN1 issue
+11/28/24 LTC7890 Solved parallel output operation; updated control loop; improved convergence; updated symbol and application circuit
+11/28/24 LT4276A Improve convergence and clock architecture
+11/28/24 LTC7891 Updated control loop; improved convergence; updated symbol and application circuit
+11/23/24 ADA4945-LP Corrected internal bias of VOCM.
+11/23/24 ADA4945-HP Corrected internal bias of VOCM.
+11/23/24 LTC4380-3 Improved convergence for upcoming new LTspice24.1 release.
+11/21/24 ADPL44002 New device
+11/19/24 LT8228 Fixed Buck mode and Boost mode transition; improved convergence
+11/19/24 MAX44280 New device
+11/14/24 LT4423 New device
+11/14/24 LT4422 New device
+11/14/24 ADL5569 New device
+11/10/24 LTC3882 Updated SYNC function
+11/10/24 LTC3882-2 New device
+11/10/24 LTC3882-1 Updated SYNC function
+11/10/24 LT8292 New device
+11/07/24 ADGS1208 New device
+11/07/24 ADR4550 New device
+11/07/24 LTC6902 Update Rset to anticipate datasheet change, improved output waveforms.
+11/07/24 LT3094 Fixed issue with long duration simulations
+11/07/24 ADN4620 New device
+11/07/24 LT1991 Improved convergence performance.
+11/07/24 ADL5567 New device
+11/07/24 AD8655 Fixed Voltage Noise
+11/07/24 ADGS1208 New device
+11/07/24 ADR4550 New device
+11/07/24 LTC6902 Update Rset to anticipate datasheet change, improved output waveforms.
+11/07/24 LT3094 Fixed issue with long duration simulations
+11/07/24 ADN4620 New device
+11/07/24 LT1991 Improved convergence performance.
+11/07/24 ADL5567 New device
+11/07/24 AD8655 Fixed Voltage Noise
+10/27/24 LTC7893 New device
+10/27/24 LTC7821 Updated model to fix bug and improve simulation time
+10/27/24 LTC3882 Minor changes in control loop parameters, and RUN logic for each channel; Updated components in application circuit
+10/27/24 LTC3882-1 Minor changes in control loop parameters, and RUN logic for each channel; Updated components in application circuit
+10/27/24 LTC3304C Improved convergence
+10/27/24 LTC3304C-05 Improved convergence
+10/27/24 LTC3304A Improved convergence
+10/27/24 LTC3304A-05 Improved convergence
+10/27/24 LTC3303C Improved convergence
+10/27/24 LTC3303C-05 Improved convergence
+10/27/24 LTC3303A Improved convergence
+10/27/24 LTC3303A-05 Improved convergence
+10/27/24 LTC3302C Improved convergence
+10/27/24 LTC3302C-05 Improved convergence
+10/27/24 LTC3302A Improved convergence
+10/27/24 LTC3302A-05 Improved convergence
+10/27/24 LT8615 New device
+10/27/24 LT8316 Improved model accuracy.
+10/19/24 LT1497 Remodel to match Op-Amp standard architecture
+10/19/24 LT3073 Updated marg pin functionality.
+10/19/24 LTC4354 Improve Convergence and fix model circuit
+10/19/24 ADG711 Added Leakage. Updated symbol and symbol description.
+10/19/24 ADG712 Added Leakage. Updated symbol and symbol description.
+10/19/24 ADG1604  new model
+10/19/24 ADG5404  new model
+10/08/24 ADAQ7767-1 Improved noise performance.
+10/08/24 LTC7891 Improved convergence.
+10/08/24 MAX20830  new model
+10/02/24 LT3012 corrected internal parameter; improved convergence
+10/02/24 LT3012B corrected internal parameter; improved convergence
+10/02/24 LTC7103 miscellaneous performance improvements
+10/02/24 LTC7890 Improved convergence.
+10/02/24 LT7171-1  new model
+10/02/24 MAX17291B  new model
+10/02/24 ADA4620  new model
+09/26/24 ADAQ4224 Updated block name.
+09/26/24 LT8614 Updated SYNC functionality.
+09/26/24 LTC3884 Corrected gate drive logic and timings; improved convergence
+09/26/24 LTC7820 Corrected Run pin function; improved convergence
+09/26/24 LTM8002 Corrected SYNC pin function; updated control loop parameters; improved convergence
+09/26/24 AD4056  new model
+09/26/24 AD4058  new model
+09/26/24 LT8640SA  new model
+09/26/24 LT8643SA  new model
+09/26/24 MAXM15067  new model
+09/24/24 LT3689 Improve convergence and fix sync function
+09/24/24 LT3689-5 Improve convergence
+09/24/24 MAX20810 Revised the on resistance of the synchronous switch.
+09/24/24 AD8452 improve convergence
+09/24/24 ADAQ4224  new model
+09/24/24 MAX20815  new model
 09/18/24 LT3046 Fixed PG Behavior, Current Limit pin, Internal current limit and VIN Min
 09/18/24 LT3686 improve convergence
 09/18/24 LT3686A improve convergence

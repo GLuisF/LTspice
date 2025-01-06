@@ -1,4 +1,4 @@
-ï»¿* Copyright (c) 1998-2019 Analog Devices, Inc.  All rights reserved.
+* Copyright (c) 1998-2019 Analog Devices, Inc.  All rights reserved.
 *
 .subckt AD8031 1 2 3 4 5
 C1 N005 X {Cf}
@@ -9,14 +9,14 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N005 3 X1
 D6 4 N005 X2
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=.4p ink=200k incm=.04p incmk=200k
 C11 3 1 .8p Rpar=160Meg noiseless
 C4 N004 0 1.2p Rpar=1K noiseless
-L1 N004 N006 1.2Âµ
+L1 N004 N006 1.2µ
 C6 N006 0 1.2p Rpar=1K noiseless
 C2 3 N005 1p
 C3 3 5 1p
@@ -66,13 +66,13 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N006 3 X1
 D6 4 N006 X1
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=7f ink=10 incm=.007f incmk=10
 C4 N004 0 2.1p Rpar=1K noiseless
-L1 N004 N005 2.1Âµ
+L1 N004 N005 2.1µ
 C6 N005 0 2.1p Rpar=1K noiseless
 C2 3 N006 1p
 C3 3 5 1p
@@ -158,14 +158,14 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N005 3 X1
 D6 4 N005 X1
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=1.1p ink=4K incm=.1p incmk=4K
 C11 3 1 1p Rpar=12Meg noiseless
 C4 N004 0 {.5p*x} Rpar=1K noiseless
-L1 N004 N006 {.5Âµ*x}
+L1 N004 N006 {.5µ*x}
 C6 N006 0 {.5p*x} Rpar=1K noiseless
 C2 3 N005 {1p*y}
 D4 3 2 bias
@@ -225,14 +225,14 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N005 3 X1
 D6 4 N005 X1
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=1.1p ink=4K incm=.1p incmk=4K
 C11 3 1 1p Rpar=12Meg noiseless
 C4 N004 0 {.5p*x} Rpar=1K noiseless
-L1 N004 N006 {.5Âµ*x}
+L1 N004 N006 {.5µ*x}
 C6 N006 0 {.5p*x} Rpar=1K noiseless
 C2 3 N005 {1p*y}
 D3 3 4 IQ
@@ -285,14 +285,14 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N005 3 X1
 D6 4 N005 X1
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=600f ink=2K incm=60f incmk=2K
 C11 3 1 .9p Rpar=320K noiseless
 C4 N004 0 {.5p*x} Rpar=1K noiseless
-L1 N004 N006 {.5Âµ*x}
+L1 N004 N006 {.5µ*x}
 C6 N006 0 {.5p*x} Rpar=1K noiseless
 C2 3 N005 1p
 D1 5 N005 AA
@@ -303,8 +303,8 @@ C12 3 6 1p Rpar=2Meg noiseless
 S2 M X 3 6 DIS
 S3 3 4 6 3 IQ
 D3 3 4 IQ
-I1 3 1 1.2Âµ load
-I2 3 2 1.2Âµ load
+I1 3 1 1.2µ load
+I2 3 2 1.2µ load
 C5 1 4 .9p Rpar=320K noiseless
 C9 2 4 .9p Rpar=320K noiseless
 C10 3 2 .9p Rpar=320K noiseless
@@ -1437,16 +1437,16 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N006 3 X1
 D6 4 N006 X2
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=1f ink=100 incm=.08f incmk=100
 C11 3 1 .9p Rpar=2e13 noiseless
 C4 N004 0 5p Rpar=1K noiseless
-L1 N004 N005 5Âµ
+L1 N004 N005 5µ
 C6 N005 0 5p Rpar=1K noiseless
-I3 3 4 50Âµ load
+I3 3 4 50µ load
 C2 3 N006 1p
 C3 3 5 1p
 C7 5 4 1p
@@ -1496,16 +1496,16 @@ D21 X 3 ESD
 D22 4 X ESD
 D5 N006 3 X1
 D6 4 N006 X2
-G2 0 M 3 0 500Âµ
+G2 0 M 3 0 500µ
 R4 M 0 1K noiseless
-G3 0 M 4 0 500Âµ
+G3 0 M 4 0 500µ
 S1 X M 4 3 SD
 A2 2 1 0 0 0 0 0 0 OTA g=0 in=1f ink=100 incm=.08f incmk=100
 C11 3 1 .9p Rpar=2e13 noiseless
 C4 N004 0 5p Rpar=1K noiseless
-L1 N004 N005 5Âµ
+L1 N004 N005 5µ
 C6 N005 0 5p Rpar=1K noiseless
-I3 3 4 50Âµ load
+I3 3 4 50µ load
 C2 3 N006 1p
 C3 3 5 1p
 C7 5 4 1p
@@ -5310,60 +5310,6 @@ L3   34 39     1E-8;  39 is output pin
 .MODEL DIN1 D(IS=1E-16, RS=1.0E-0, KF=3.7E-16, AF=1)
 .ENDS AD8674
 *
-.subckt AD8675 1 2 3 4 5
-C1 N006 N005 {Cf}
-A1 N009 0 N010 N010 N010 N010 N005 N010 OTA g={Ga} Iout={Islew} en=2.8n enk=4.5 Vhigh=1e308 Vlow=-1e308
-D5 N006 3 X1
-D6 4 N006 X2
-G2 0 N010 3 0 500Âµ
-R4 N010 0 1K noiseless
-G3 0 N010 4 0 500Âµ
-S1 N005 N010 4 3 SD
-C4 N004 0 {5p*x} Rpar=1K noiseless
-C11 3 2 .95p Rpar=1T noiseless
-C18 2 1 8.65p Rpar=1T noiseless
-D8 3 1 1nA m=.5
-C3 3 5 .25p
-C7 5 4 .25p
-A2 2 1 0 0 0 0 0 0 OTA g=0 in=.1p ink=1.5K incm=.1p incmk=1.5k
-Ã–1 N006 3 4 N005 N010 Gm1={Gb} Ibias=2.3m
-C2 2 4 .95p Rpar=1T noiseless
-C5 3 1 .95p Rpar=1T noiseless
-C6 1 4 .95p Rpar=1T noiseless
-D1 3 2 1nA m=.5
-B3 N004 0 I=2m*dnlim(uplim(V(2),V(3)-2,.1), V(4)+2, .1)+100n*V(2)
-B4 0 N004 I=2m*dnlim(uplim(V(1),V(3)-2,.1), V(4)+2, .1)+100n*V(1)
-D3 N005 N010 IO
-R5 5 N006 22
-L1 N004 N007 {5Âµ*x}
-L2 N008 N009 {5Âµ*x}
-C10 N009 0 {5p*x} Rpar=1K noiseless
-C8 N007 0 {10p*x}
-L3 N007 N008 {5Âµ*x}
-C12 N008 0 {10p*x}
-.param Cf = 6p
-.param Ro       =  5K
-.param Avol     =  4Meg
-.param RL       =  2K
-.param AVmid =  10
-.param FmidA = 1Meg
-.param Zomid  = 5
-.param FmidZ  = 1Meg
-.param Vslew  = 2.5Meg
-.param Vmin = 2
-.param Roe = 1/(1/RL+1/Ro)
-.param Gb = ((FmidZ/FmidA)*(Roe/(AVmid*Zomid))-1)/Roe
-.param Ga = 2*pi*FmidZ*Cf/(Zomid*gb)
-.param RH = Avol/(Ga*Gb*Roe)
-.param Islew = Vslew*Cf*(1+1/(Roe*Gb))
-.model X1 D(Ron=1m Roff=1G Vfwd=0 epsilon=10m noiseless)
-.model X2 D(Ron=1m Roff=1G Vfwd=20m epsilon=10m noiseless)
-.model SD SW(Ron=10m Roff={RH} Vt={-Vmin-100m} Vh=-.1 noiseless)
-.model 1nA D(Ron=500Meg epsilon=.5 Ilimit=1n noiseless)
-.model IO  D(Ron=2K Roff=1T Vfwd={32m/Gb} Vrev={32m/Gb} revepsilon=.1 epsilon=.1 noiseless)
-.param X=.6
-.ends AD8675
-*
 * Robert Ritchie
 .subckt AD8691 1 2 3 4 5
 M1 14A 7A 8A 8A PIXN temp=27
@@ -5384,7 +5330,7 @@ C3 N007 73A 10n Rpar=3.98K noiseless
 B2 N007 0 V=-70.3m+14.1m*V(3,4)
 RC1 16A 4 8.00E+02 noiseless
 A1 0 0 1 1 1 1 7A 1 OTA g=.1 linear Rout=10 en=8.3n enk=280 vlow=-1e308 vhigh=1e308
-I2 1 7A 40Âµ
+I2 1 7A 40µ
 G2 1 7A 22A 0 100m
 G3 1 7A 73A 0 100m
 R7 N007 0 1 noiseless
@@ -5400,13 +5346,13 @@ D1 3 8A Dptail
 M2 16A 2 8A 8A PIXN temp=27
 B3 0 30A I=16.7m*V(14A,16A)*(.5+.5*tanh(V(30A,Limlow)/100m))*(.5+.5*tanh(V(Limhigh,30A)/100m))
 G1 0 Limhigh 3 4 .5m
-I1 Limhigh 0 729Âµ
-G6 0 Limhigh 14A 16A 90Âµ
+I1 Limhigh 0 729µ
+G6 0 Limhigh 14A 16A 90µ
 R12 Limhigh 0 1K noiseless
 G7 0 Limlow 4 3 .5m
 R13 Limlow 0 1K noiseless
-I5 Limlow 0 7Âµ
-G8 0 Limlow 14A 16A 90Âµ
+I5 Limlow 0 7µ
+G8 0 Limlow 14A 16A 90µ
 B4 4 3 I=332u*(.5+.5*tanh((V(3,4)-300m)/120m))
 .model PIXN VDMOS(Vto=-.5 Kp=112m lambda=10m Cgs=100f pchan noiseless)
 .model NOXN VDMOS(Vto=.328 Kp=27.8m lambda=10m)
@@ -6494,12 +6440,12 @@ D16 3 4 DBURN
 R4 N011 ON 10Meg noiseless
 A4 0 XSMIN ON 0 0 0 N005 0 OTA g=100u linear vlow=-1e308 vhigh=1e308
 R6 ON 0 100Meg noiseless
-G2 4 N010 3 4 1Âµ
+G2 4 N010 3 4 1µ
 R5 N010 4 1Meg noiseless
 D3 3 6 470nA
 A3 N010 6 0 0 0 N011 0 0 SCHMITT Vt=0 Vh=150m Trise=3.5u Tfall=425n vlow=0 vhigh=1.1
-I1 N010 4 3.5Âµ
-G3 4 N010 4 N010 100Âµ vto=-1.335 dir=1
+I1 N010 4 3.5µ
+G3 4 N010 4 N010 100µ vto=-1.335 dir=1
 .param Cf = 1p
 .param Ro       =  5K
 .param Avol     =  3.16Meg
@@ -7610,7 +7556,7 @@ B2 0 N004 I=1m*dnlim(uplim(V(1),V(3)-2.7,.1), V(4)+2.7, .1)+100n*V(1)
 C1 2 1 1.375p noiseless
 D7 2 1 IN
 G3 0 N006 N004 0 1.1m
-L1 N006 0 30Âµ Rser=1K Cpar=1p Rpar=10K noiseless
+L1 N006 0 30µ Rser=1K Cpar=1p Rpar=10K noiseless
 C2 5 4 2p Rpar=20K noiseless
 .model IN D(Ron=.2 Roff=6Meg Vfwd=.65 epsilon=.5 Vrev=.65 revepsilon=.5 noiseless)
 .model X D(Ron=200K Roff=100G Vfwd=-2.5 epsilon=.1 noiseless)
@@ -7646,7 +7592,7 @@ B2 0 N004 I=1m*dnlim(uplim(V(1),V(3)-2.7,.1), V(4)+2.7, .1)+100n*V(1)
 C1 2 1 1.375p noiseless
 D7 2 1 IN
 G3 0 N006 N004 0 1.1m
-L1 N006 0 30Âµ Rser=1K Cpar=1p Rpar=10K noiseless
+L1 N006 0 30µ Rser=1K Cpar=1p Rpar=10K noiseless
 C2 5 4 2p Rpar=20K noiseless
 .model IN D(Ron=.2 Roff=6Meg Vfwd=.65 epsilon=.5 Vrev=.65 revepsilon=.5 noiseless)
 .model X D(Ron=200K Roff=100G Vfwd=-2.5 epsilon=.1 noiseless)
@@ -8624,7 +8570,7 @@ R3 M 0 1K noiseless
 S1 N004 M 4 7 UVLO
 D3 N004 7 X
 D4 4 N004 X
-L2 N003 N007 20Âµ
+L2 N003 N007 20µ
 C2 N007 0 20p Rpar=1K noiseless
 D2 7 4 IQ
 B1 N003 0 I=2m*dnlim(uplim(V(A),V(7)-4,.1), V(4)+4, .1)+100n*V(A)
@@ -8665,7 +8611,7 @@ C3 5 2 3p
 C4 6 2 3p
 C5 1 2 3p
 C6 3 2 3p
-I1 6 5 1Âµ load
+I1 6 5 1µ load
 D4 6 2 IQ
 .param Ref = 1.791Meg
 .model X D(Ron=10 Vfwd=.5 epsilon=.1 Vrev=16.23 revepsilon=1 noiseless)
@@ -8702,7 +8648,7 @@ R5 5 B 17671.43509
 R7 N009 3 530155.305
 R8 N001 A 15693.6
 R9 N001 1 2011.7645
-L1 N003 N007 2Âµ
+L1 N003 N007 2µ
 C2 N007 0 2p Rpar=1K noiseless
 C1 N009 0 35e-16
 C5 A B 5.2p

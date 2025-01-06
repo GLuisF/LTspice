@@ -2,6 +2,7 @@
 *//-----------------------------------------------------------------------//
 *//   Part No.    : EMHS250ARA102MKE0S
 *//   Date        : 2024/02/19
+*//   Simulator   : P-Spice
 *//   Temperature : 20deg-C/-40deg-C/125deg-C
 *//   Model       : RC-ladder 7 Elements Model
 *//   Copyright (C) 2024 Nippon Chemi-Con Corporation.

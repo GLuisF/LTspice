@@ -1,4 +1,4 @@
-ï»¿* Copyright Â© Analog Devices, Inc. 2019. All rights reserved.
+* Copyright © Analog Devices, Inc. 2019. All rights reserved.
 *
 .subckt LT1011 1 2 3 4 5 6 7 8
 B1 0 N002 I=10u*dnlim(uplim(V(2),V(8)-1.25,.1),V(4)+.2,.1)-.1n
@@ -16,7 +16,7 @@ R2 8 5 1k
 A1 8 5 5 5 5 5 4 5 OTA g=.62m linear Vlow=-1e308 Vhigh=1e308 ref=.389
 A3 8 6 6 6 6 6 4 6 OTA g=.62m linear Vlow=-1e308 Vhigh=1e308 ref=.389
 R3 8 6 1k
-G2 0 N002 5 6 7.3Âµ
+G2 0 N002 5 6 7.3µ
 S4 1 8 0 N004 Sgpwr
 R5 4 1 100Meg
 C8 N009 1 .1p
@@ -196,7 +196,7 @@ M3 5 N004 N003 N003 P temp=27
 D12 3 N004 DLIMP
 C3 3 N004 5p Rpar=10Meg
 D4 4 5 DSI temp=27
-G1 3 4 3 N004 100Âµ
+G1 3 4 3 N004 100µ
 .model DBIAS D(Ron=1k Roff=10G Vfwd=1 epsilon=.1 ilimit=3n)
 .model DBIASC D(Ron=20Meg Roff=10G Vfwd= 1u Vrev=1u
 + epsilon=10u revepsilon=10u ilimit=3n revilimit=3n)
@@ -252,7 +252,7 @@ SW1 4 N004 5 4 SPFB
 C3 3 N004 3p Rpar=10Meg
 D1 3 N004 DLIMP
 D3 3 5 DTRICKLE
-G3 3 4 3 N004 135Âµ
+G3 3 4 3 N004 135µ
 .model DP D(Ron=100 Roff=1Meg Vfwd=1 ilimit=56u)
 .model DBIAS D(Ron=1k Roff=10G Vfwd=1 epsilon=.1 ilimit=3n)
 .model DBIASC D(Ron=20Meg Roff=10G Vfwd= 1u Vrev=1u
@@ -490,7 +490,7 @@ C3 3 5 2p
 C4 5 4 2p
 D5 N005 N007 Y
 A3 0 N004 0 0 0 0 N006 0 OTA g=1m linear en=8n enk=4 Rout=1k Cout=4p Vlow=-560m Vhigh=560m
-G2 0 N005 N008 0 1Âµ
+G2 0 N005 N008 0 1µ
 G5 N008 0 N008 3 500m dir=1 vto=-.3
 G6 0 N008 4 N008 500m dir=1 vto=-.3
 D4 N009 7 DSREF
@@ -507,7 +507,7 @@ S4 N006 N011 N009 6 SPOLE
 C13 N011 0 40p
 R3 N008 4 20Meg noiseless
 R6 2 1 6.9Meg noiseless
-G1 N009 4 6 N009 330Âµ
+G1 N009 4 6 N009 330µ
 C14 6 7 500f
 D1 N013 N005 Y
 A5 6 N009 4 4 4 4 3 4 OTA g=14.2m asym isink=-35m isource=10u ref=.1 Vlow=-1e308 Vhigh=1e308
@@ -603,7 +603,7 @@ C3 7 6 .5p
 C4 6 4 .5p
 D5 N005 6 YU
 D6 6 N005 YD
-G1 0 N005 N008 0 1Âµ
+G1 0 N005 N008 0 1µ
 D2 7 4 DP
 R1 VINM 10 450k
 R6 7 N008 1G noiseless
@@ -652,7 +652,7 @@ C3 7 6 .5p
 C4 6 4 .5p
 D5 N005 6 YU
 D6 6 N005 YD
-G1 0 N005 N008 0 1Âµ
+G1 0 N005 N008 0 1µ
 D2 7 4 DP
 R1 VINM 10 50k
 R6 7 N008 1G noiseless
@@ -695,7 +695,7 @@ D1 N004 1 X
 D2 2 N004 X
 C2 1 4 1p
 C3 4 2 1p
-G1 2 N002 N004 2 10Âµ
+G1 2 N002 N004 2 10µ
 C4 N002 2 5n Rser=15K Rpar=100K noiseless
 D3 N002 3 Y
 A2 1 2 2 2 2 2 N003 2 SCHMITT Vt=1.35 Vh=1m Tau=10u
@@ -718,7 +718,7 @@ D5 0 VINTB DLATB
 D13 5 2 DP
 R6 5 N006 590Meg
 R7 N006 2 590Meg
-G3 N006 0 N006 N004 100Âµ dir=1 vto=0
+G3 N006 0 N006 N004 100µ dir=1 vto=0
 G4 0 N006 2 N006 500m dir=1 vto=.3
 R3 5 N004 600Meg
 A5 VINTB 0 0 0 0 0 N006 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
@@ -747,7 +747,7 @@ C10 1 2 5p
 D10 0 VINTA DLATA
 R5 5 N014 590Meg
 R8 N014 2 590Meg
-G2 N014 0 N014 N004 100Âµ dir=1 vto=0
+G2 N014 0 N014 N004 100µ dir=1 vto=0
 G5 0 N014 2 N014 500m dir=1 vto=.3
 A3 VINTA 0 0 0 0 0 N014 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
 C11 N015 N014 50f
@@ -783,7 +783,7 @@ D5 0 VINTB DLAT
 D13 5 2 DP
 R6 5 N006 590Meg
 R7 N006 2 590Meg
-G3 N006 0 N006 N004 100Âµ dir=1 vto=0
+G3 N006 0 N006 N004 100µ dir=1 vto=0
 G4 0 N006 2 N006 500m dir=1 vto=.3
 R3 5 N004 600Meg
 A5 VINTB 0 0 0 0 0 N006 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
@@ -811,7 +811,7 @@ C10 1 2 5p
 D10 0 VINTA DLAT
 R5 5 N014 590Meg
 R8 N014 2 590Meg
-G2 N014 0 N014 N004 100Âµ dir=1 vto=0
+G2 N014 0 N014 N004 100µ dir=1 vto=0
 G5 0 N014 2 N014 500m dir=1 vto=.3
 A3 VINTA 0 0 0 0 0 N014 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
 C11 N015 N014 50f
@@ -845,7 +845,7 @@ D5 0 VINTB DLAT
 D13 5 2 DP
 R6 5 N006 590Meg
 R7 N006 2 590Meg
-G3 N006 0 N006 N004 100Âµ dir=1 vto=0
+G3 N006 0 N006 N004 100µ dir=1 vto=0
 G4 0 N006 2 N006 500m dir=1 vto=.3
 R3 5 N004 600Meg
 A5 VINTB 0 0 0 0 0 N006 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
@@ -874,7 +874,7 @@ C10 1 2 5p
 D10 0 VINTA DLAT
 R5 5 N014 590Meg
 R8 N014 2 590Meg
-G2 N014 0 N014 N004 100Âµ dir=1 vto=0
+G2 N014 0 N014 N004 100µ dir=1 vto=0
 G5 0 N014 2 N014 500m dir=1 vto=.3
 A3 VINTA 0 0 0 0 0 N014 0 OTA g=2m asym Vlow=-1e308 Vhigh=1e308 isource=1u isink=-.115u
 C11 N015 N014 50f
@@ -1243,7 +1243,7 @@ D5 0 N004 DLAT
 D13 3 4 DP
 R6 3 N007 590Meg
 R7 N007 4 590Meg
-G3 N007 0 N007 N005 100Âµ dir=1 vto=0
+G3 N007 0 N007 N005 100µ dir=1 vto=0
 G4 0 N007 4 N007 500m dir=1 vto=.3
 C10 4 1 .5p
 C12 4 2 .5p
@@ -1275,7 +1275,7 @@ C4 6 2 20p
 D13 7 2 DP
 R6 7 N008 590Meg
 R7 N008 2 590Meg
-G3 N008 0 N008 N006 100Âµ dir=1 vto=0
+G3 N008 0 N008 N006 100µ dir=1 vto=0
 G4 0 N008 2 N008 500m dir=1 vto=.3
 A3 0 N005 N010 0 0 0 N002 0 OTA g=20u linear cout=10f Vlow=-1e308 Vhigh=1e308
 C10 2 4 .5p
@@ -1308,7 +1308,7 @@ C9 8 2 .5p
 D3 0 N012 DLAT
 R1 7 N017 590Meg
 R4 N017 2 590Meg
-G2 N017 0 N017 N015 100Âµ dir=1 vto=0
+G2 N017 0 N017 N015 100µ dir=1 vto=0
 G5 0 N017 2 N017 500m dir=1 vto=.3
 A6 0 N012 N010 0 0 0 N011 0 OTA g=20u linear cout=10f Vlow=-1e308 Vhigh=1e308
 R5 7 N015 600Meg
@@ -1346,7 +1346,7 @@ C4 6 2 20p
 D13 7 2 DP
 R6 7 N008 590Meg
 R7 N008 2 590Meg
-G3 N008 0 N008 N006 100Âµ dir=1 vto=0
+G3 N008 0 N008 N006 100µ dir=1 vto=0
 G4 0 N008 2 N008 500m dir=1 vto=.3
 A3 0 N005 N010 0 0 0 N002 0 OTA g=20u linear cout=10f Vlow=-1e308 Vhigh=1e308
 C10 2 4 .5p
@@ -1379,7 +1379,7 @@ C9 8 2 .5p
 D3 0 N012 DLAT
 R1 7 N017 590Meg
 R4 N017 2 590Meg
-G2 N017 0 N017 N015 100Âµ dir=1 vto=0
+G2 N017 0 N017 N015 100µ dir=1 vto=0
 G5 0 N017 2 N017 500m dir=1 vto=.3
 A6 0 N012 N010 0 0 0 N011 0 OTA g=20u linear cout=10f Vlow=-1e308 Vhigh=1e308
 R5 7 N015 600Meg
@@ -2044,7 +2044,7 @@ R3 2 6 378k
 A6 N005 0 N002 0 0 0 VDH0 0 OTA g=500u linear Vlow=-1e308 Vhigh=1e308
 D6 0 N005 DLAT
 C3 N005 0 1p
-G1 0 N005 0 VDH0 500Âµ
+G1 0 N005 0 VDH0 500µ
 R4 N004 7 14.5k
 A8 7 3 0 0 0 N002 0 0 SCHMITT vt=.4 vh=0 trise=1n tfall=1.5n
 C11 VH 0 1p Rpar=2k

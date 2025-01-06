@@ -148,7 +148,6 @@ WINDOW 3 -71 66 Left 2
 WINDOW 39 251 -35 Right 1
 SYMATTR Value AD8460
 SYMATTR Prefix X
-SYMATTR SpiceModel AD8460
 SYMATTR Description 110 V High Voltage, 1 A High Current, Arbitrary Waveform Generator with Integrated 14-Bit High Speed DAC
 SYMATTR ModelFile AD8460.sub
 SYMATTR SpiceLine Ccomp={Ccomp}

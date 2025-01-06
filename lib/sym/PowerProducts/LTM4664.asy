@@ -2,14 +2,14 @@ Version 4
 SymbolType CELL
 RECTANGLE Normal -1008 -688 1024 688
 TEXT 0 0 Center 2 LT
-WINDOW 0 5 -334 Center 2
-WINDOW 3 3 338 Center 2
+WINDOW 0 5 -334 Center 3
+WINDOW 3 3 338 Center 3
 SYMATTR Value LTM4664
 SYMATTR Prefix X
 SYMATTR Description High Efficiency Dual Output Step-Down Converter with Power System Management
 SYMATTR ModelFile LTM4664.sub
-SYMATTR SpiceLine VIN_ON=5.5 VIN_OFF=5 Vout_0=1 Vout_1=1 Ilim0_range=1 Ilim1_range=1 OC_limit0=1 OC_limit1=1 Mode_ll=2 Fault_response=0 Retry_delay=.1m gm0=3m gm1=3m Rth0=5K Rth1=5K Sync=0
-SYMATTR SpiceLine2 Freq=500K PHs_0=0 PHs_1=180 Ton0_delay=.3m Ton0_rise=.5m Ton1_delay=.3m Ton1_rise=.5m Toff0_delay=.2m Toff0_fall=.3m Toff1_delay=.2m Toff1_fall=.3m Vout0_range=0 Vout1_range=0
+SYMATTR SpiceLine VIN_ON=11.5 VIN_OFF=11 Vout_0=1.0 Vout_1=1.5 Ilim0_range=1 Ilim1_range=1 OC_limit0=1 OC_limit1=1 Mode_ll=1 Fault_response=0 Retry_delay=0.1m gm0=3m gm1=3m Rth0=10K Rth1=10K Sync=0
+SYMATTR SpiceLine2 Freq=500K PHs_0=0 PHs_1=180 Ton0_delay=0.3m Ton0_rise=0.5m Ton1_delay=0.3m Ton1_rise=0.5m Toff0_delay=0.2m Toff0_fall=0.3m Toff1_delay=0.2m Toff1_fall=0.3m Vout0_range=0 Vout1_range=0 LowDCR=1
 PIN 1024 -48 RIGHT 8
 PINATTR PinName Vosns+_C0
 PINATTR SpiceOrder 1
@@ -180,7 +180,7 @@ PINATTR PinName VinS1
 PINATTR SpiceOrder 57
 PIN -944 -688 TOP 8
 PINATTR PinName InSnsS1+
-PINATTR SpiceOrder 59
+PINATTR SpiceOrder 50
 PIN 848 -688 TOP 8
 PINATTR PinName SW4
 PINATTR SpiceOrder 60
@@ -195,10 +195,10 @@ PINATTR PinName VinS2
 PINATTR SpiceOrder 63
 PIN 400 -688 TOP 8
 PINATTR PinName InSnsS2-
-PINATTR SpiceOrder 64
+PINATTR SpiceOrder 58
 PIN 288 -688 TOP 8
 PINATTR PinName InSnsS2+
-PINATTR SpiceOrder 50
+PINATTR SpiceOrder 59
 PIN 624 -688 TOP 8
 PINATTR PinName VinS2F
-PINATTR SpiceOrder 58
+PINATTR SpiceOrder 64

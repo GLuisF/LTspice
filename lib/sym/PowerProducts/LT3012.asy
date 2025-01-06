@@ -6,7 +6,7 @@ WINDOW 0 0 -48 Center 2
 WINDOW 3 0 48 Center 2
 SYMATTR Value LT3012
 SYMATTR Prefix X
-SYMATTR SpiceModel LT3012.lib
+SYMATTR SpiceModel LT3012.sub
 SYMATTR Value2 LT3012
 SYMATTR Description 250mA, 4V to 80V Low Dropout µPower Linear Regulator
 PIN 144 -32 RIGHT 8
@@ -20,7 +20,7 @@ PINATTR PinName GND
 PINATTR SpiceOrder 5
 PIN -144 64 LEFT 8
 PINATTR PinName _SHDN
-PINATTR SpiceOrder 8
+PINATTR SpiceOrder 3
 PIN -144 -32 LEFT 8
 PINATTR PinName IN
-PINATTR SpiceOrder 10
+PINATTR SpiceOrder 1

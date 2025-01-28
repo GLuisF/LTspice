@@ -6,7 +6,6 @@ WINDOW 0 0 -112 Center 2
 WINDOW 3 0 112 Center 2
 SYMATTR Value LT8644S
 SYMATTR Prefix X
-SYMATTR Value2 LT8644S
 SYMATTR Description 18V, 10A Synchronous Step-Down Silent Switcher 2
 SYMATTR ModelFile LT8644S.sub
 PIN -144 -48 LEFT 8

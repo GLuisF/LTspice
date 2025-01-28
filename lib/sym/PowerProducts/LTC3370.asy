@@ -8,7 +8,6 @@ WINDOW 39 0 112 Center 1
 SYMATTR Value LTC3370
 SYMATTR SpiceLine CHAN=1
 SYMATTR Prefix X
-SYMATTR Value2 LTC3370
 SYMATTR Description 20V, 4-Channel Buck DCDC with 8x Configurable 1A Power Stages
 SYMATTR ModelFile LTC3370.sub
 PIN 144 144 RIGHT 8

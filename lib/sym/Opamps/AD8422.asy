@@ -19,7 +19,7 @@ WINDOW 0 80 -48 Left 2
 WINDOW 3 96 48 Left 2
 SYMATTR Value AD8422
 SYMATTR Prefix X
-SYMATTR SpiceModel AD8422.lib
+SYMATTR SpiceModel AD8422.sub
 SYMATTR Value2 AD8422
 SYMATTR Description High Performance, Low Power, R-R Precision In-Amp
 PIN -32 80 NONE 0

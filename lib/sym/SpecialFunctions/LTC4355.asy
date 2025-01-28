@@ -6,10 +6,8 @@ WINDOW 3 0 56 Center 2
 WINDOW 0 0 -40 Center 2
 SYMATTR Value LTC4355
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC4355
 SYMATTR Description Positive High Voltage Ideal Diode-OR with Input Supply and Fuse Monitors
 SYMATTR ModelFile LTC4355.sub
-SYMATTR Value2 LTC4355
 PIN -224 -160 TOP 8
 PINATTR PinName In1
 PINATTR SpiceOrder 1

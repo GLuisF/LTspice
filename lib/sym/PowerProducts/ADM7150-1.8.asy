@@ -6,8 +6,8 @@ WINDOW 3 0 96 Center 2
 WINDOW 0 0 -96 Center 2
 SYMATTR Value ADM7150-1.8
 SYMATTR Prefix X
-SYMATTR SpiceModel ADM7150_1.sub
-SYMATTR Value2 ADM7150_1 Vreg=3.5 Vref=1.812
+SYMATTR SpiceModel ADM7150-1.8.sub
+SYMATTR Value2 ADM7150-1.8
 SYMATTR Description 800 mA, Ultralow Noise, High PSRR, RF Linear Regulator
 PIN -160 144 LEFT 8
 PINATTR PinName Vreg

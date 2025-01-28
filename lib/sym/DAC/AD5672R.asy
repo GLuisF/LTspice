@@ -12,7 +12,6 @@ WINDOW 39 3 74 Center 1
 SYMATTR Value AD5672R
 SYMATTR SpiceLine Gain=2
 SYMATTR Prefix X
-SYMATTR Value2 AD5672R
 SYMATTR Description 16-Channel, 16Bit nanaDAC+ (one channel, output stage modeled)
 SYMATTR ModelFile AD5672R.sub
 PIN -160 0 LEFT 8

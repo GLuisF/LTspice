@@ -6,9 +6,9 @@ WINDOW 0 0 -144 Center 2
 WINDOW 3 0 144 Center 2
 SYMATTR Value LT3695-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LT3695-x.sub
-SYMATTR Value2 LT3695-x R=526K
-SYMATTR Description 1A Fault Tolerant µPower Step-Down Regulator, Fixed 5V Output
+SYMATTR SpiceModel LT3695-5.sub
+SYMATTR Value2 LT3695-5
+SYMATTR Description 1A Fault Tolerant Micropower Step-Down Regulator, Fixed 5V Output
 PIN 48 240 BOTTOM 8
 PINATTR PinName PGND
 PINATTR SpiceOrder 1
@@ -17,31 +17,31 @@ PINATTR PinName DA
 PINATTR SpiceOrder 2
 PIN 144 0 RIGHT 8
 PINATTR PinName SW
-PINATTR SpiceOrder 4
+PINATTR SpiceOrder 3
 PIN -144 -96 LEFT 8
 PINATTR PinName Run/SS
-PINATTR SpiceOrder 5
+PINATTR SpiceOrder 4
 PIN -144 96 LEFT 8
 PINATTR PinName Rt
-PINATTR SpiceOrder 6
+PINATTR SpiceOrder 5
 PIN -144 0 LEFT 8
 PINATTR PinName SYNC
-PINATTR SpiceOrder 7
+PINATTR SpiceOrder 6
 PIN 0 -224 TOP 8
 PINATTR PinName Vin
-PINATTR SpiceOrder 8
+PINATTR SpiceOrder 7
 PIN -144 192 LEFT 8
 PINATTR PinName Vc
+PINATTR SpiceOrder 8
+PIN 144 -192 RIGHT 8
+PINATTR PinName OUT
 PINATTR SpiceOrder 9
 PIN -144 -192 LEFT 8
 PINATTR PinName PG
-PINATTR SpiceOrder 13
-PIN -48 240 BOTTOM 8
-PINATTR PinName GND
-PINATTR SpiceOrder 14
-PIN 144 -192 RIGHT 8
-PINATTR PinName OUT
-PINATTR SpiceOrder 15
+PINATTR SpiceOrder 10
 PIN 144 -96 RIGHT 8
 PINATTR PinName Boost
-PINATTR SpiceOrder 16
+PINATTR SpiceOrder 11
+PIN -48 240 BOTTOM 8
+PINATTR PinName GND
+PINATTR SpiceOrder 12

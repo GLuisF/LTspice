@@ -11,17 +11,17 @@ WINDOW 0 0 -144 Center 2
 WINDOW 3 0 144 Center 2
 SYMATTR Value LT1328
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1328.lib
 SYMATTR Value2 LT1328
-SYMATTR Description 4Mbps IrDA Infrared Receiver -- simulate with LT1328PD, the IR diode
+SYMATTR Description 4Mbps IrDA Infrared Receiver
 PIN -128 -96 LEFT 8
 PINATTR PinName IN
 PINATTR SpiceOrder 1
 PIN -128 -32 LEFT 8
-PINATTR PinName FIL
+PINATTR PinName FILT
 PINATTR SpiceOrder 2
 PIN -128 32 LEFT 8
-PINATTR PinName SW
+PINATTR PinName FILT_SW
 PINATTR SpiceOrder 3
 PIN -128 96 LEFT 8
 PINATTR PinName GND

@@ -8,7 +8,6 @@ SYMATTR Prefix X
 SYMATTR Value LT3070-1
 SYMATTR ModelFile LT3070-1.sub
 SYMATTR Description 5A, Low Noise, Programmable Output 85mV Dropout Linear Regulator
-SYMATTR Value2 LT3070-1
 PIN 0 336 BOTTOM 8
 PINATTR PinName GND
 PINATTR SpiceOrder 1

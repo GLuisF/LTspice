@@ -10,10 +10,8 @@ SYMATTR Value LTC4222
 SYMATTR SpiceLine uvautoretry1=1 ovautoretry1=1 ocautoretry1=0
 SYMATTR SpiceLine2 uvautoretry2=1 ovautoretry2=1 ocautoretry2=0
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC4222
 SYMATTR Description Dual Hot Swap Controller with I2C Compatible Monitoring
 SYMATTR ModelFile LTC4222.sub
-SYMATTR Value2 LTC4222
 PIN 0 -128 TOP 8
 PINATTR PinName Sense-1
 PINATTR SpiceOrder 1

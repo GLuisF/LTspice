@@ -19,7 +19,7 @@ WINDOW 0 80 -48 Left 2
 WINDOW 3 96 48 Left 2
 SYMATTR Value AD8221
 SYMATTR Prefix X
-SYMATTR SpiceModel ADI1.lib
+SYMATTR SpiceModel AD8221.sub
 SYMATTR Value2 AD8221
 SYMATTR Description Precision In-Amp
 PIN -32 80 NONE 0

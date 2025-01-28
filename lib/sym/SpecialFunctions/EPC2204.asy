@@ -1,33 +1,31 @@
 Version 4
 SymbolType CELL
-LINE Normal 80 -32 80 16
-LINE Normal 48 0 80 0
-LINE Normal 72 -32 80 -32
-LINE Normal 48 -32 72 -36
-LINE Normal 48 -32 72 -28
-LINE Normal 72 -36 72 -28
-LINE Normal 48 -72 48 -56
-LINE Normal 48 -40 48 -24
-LINE Normal 48 -8 48 8
-LINE Normal 32 0 40 0
-LINE Normal 40 -64 40 0
-LINE Normal 80 -64 48 -64
-LINE Normal 80 -80 80 -64
-LINE Normal 32 0 32 0
-LINE Normal 80 -80 80 -80
-LINE Normal 80 16 80 16
-WINDOW 0 96 -80 Left 2
-WINDOW 3 96 16 Left 2
+LINE Normal 48 48 48 96
+LINE Normal 16 80 48 80
+LINE Normal 40 48 48 48
+LINE Normal 16 48 40 44
+LINE Normal 16 48 40 52
+LINE Normal 40 44 40 52
+LINE Normal 16 8 16 24
+LINE Normal 16 40 16 56
+LINE Normal 16 72 16 88
+LINE Normal 0 80 8 80
+LINE Normal 8 16 8 80
+LINE Normal 48 16 16 16
+LINE Normal 48 0 48 16
+WINDOW 0 56 32 Left 2
+WINDOW 3 56 72 Left 2
 SYMATTR Value EPC2204
-SYMATTR Description EPC2204 GaN Power Transistor
-SYMATTR Prefix x
-SYMATTR ModelFile EPC2204.lib
-PIN 32 0 NONE 0
-PINATTR PinName gatein
+SYMATTR SpiceModel EPC2204.lib
+SYMATTR Description EPC2204 EPC GaN Power Transistor
+SYMATTR Prefix X
+SYMATTR Value2 EPC2204
+PIN 48 0 NONE 0
+PINATTR PinName D
 PINATTR SpiceOrder 1
-PIN 80 -80 NONE 0
-PINATTR PinName drainin
+PIN 0 80 NONE 0
+PINATTR PinName G
 PINATTR SpiceOrder 2
-PIN 80 16 NONE 0
-PINATTR PinName N_0
+PIN 48 96 NONE 0
+PINATTR PinName S
 PINATTR SpiceOrder 3

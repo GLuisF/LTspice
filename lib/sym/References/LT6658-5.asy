@@ -6,7 +6,7 @@ WINDOW 0 0 -80 Center 2
 WINDOW 3 0 80 Center 2
 SYMATTR Value LT6658-5
 SYMATTR Prefix X
-SYMATTR SpiceModel LT6658.lib
+SYMATTR SpiceModel LT6658-5.sub
 SYMATTR Value2 LT6658-5
 SYMATTR Description Precision Dual Output, High Current, Low Noise, Voltage Reference
 PIN -96 -192 TOP 8

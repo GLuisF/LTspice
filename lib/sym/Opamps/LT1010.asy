@@ -13,7 +13,7 @@ WINDOW 0 24 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1010
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1010.lib
 SYMATTR Value2 LT1010
 SYMATTR Description Fast +/-150mA Power Buffer
 PIN -32 64 NONE 0

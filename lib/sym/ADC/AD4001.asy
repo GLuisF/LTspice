@@ -12,7 +12,6 @@ WINDOW 39 -65 58 Center 1
 SYMATTR Value AD4001
 SYMATTR SpiceLine EN_Hi_Z=1
 SYMATTR Prefix X
-SYMATTR Value2 AD4001
 SYMATTR Description 16-Bit Differential, 2 Msps SAR ADC
 SYMATTR ModelFile AD4001.sub
 PIN -32 -144 TOP 8

@@ -6,7 +6,7 @@ WINDOW 0 0 -64 Center 2
 WINDOW 3 0 62 Center 2
 SYMATTR Value LT4363-1
 SYMATTR SpiceModel LT4363-1.sub
-SYMATTR Description Surge Stopper
+SYMATTR Description High Voltage Surge Stopper with Current Limit
 SYMATTR Value2 LT4363-1
 SYMATTR Prefix X
 PIN 272 -64 RIGHT 8
@@ -34,7 +34,7 @@ PIN -80 128 BOTTOM 8
 PINATTR PinName GND
 PINATTR SpiceOrder 8
 PIN 272 0 RIGHT 8
-PINATTR PinName FLTB
+PINATTR PinName _FLT
 PINATTR SpiceOrder 9
 PIN 272 64 RIGHT 8
 PINATTR PinName ENOUT

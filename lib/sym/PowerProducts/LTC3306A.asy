@@ -8,7 +8,6 @@ WINDOW 39 1 79 Center 1
 SYMATTR Value LTC3306A
 SYMATTR SpiceLine Vout=0.5
 SYMATTR Prefix X
-SYMATTR Value2 LTC3306A
 SYMATTR Description 2Mhz, 1.75A Synchronous Step-Down Regulator
 SYMATTR ModelFile LTC3306A.sub
 PIN -128 -112 LEFT 8

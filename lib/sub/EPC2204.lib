@@ -1,4 +1,5 @@
-.subckt EPC2204 gatein drainin sourcein
+************************************************************************
+.subckt EPC2204 D G S
 .param  si={aWg*7.500e-04} so={aWg*3.900e-03} sr={aWg}
 .param  aWg={Wg*1E-3} Wg=837000 A1={4.555e-02*aWg} k2=1.824e+00 k3=9.000e-02 rpara=3.606e-03
 +	rpara_s_factor=3.229e-01 aITc=3.000e-03 arTc=-7.500e-03 k2Tc=6.000e-04
@@ -14,9 +15,9 @@
 +	asd9=-8.125e+01 asd10=5.665e+00
 +	rg_value=0.4
 
-rd drainin drain {((1-rpara_s_factor)*rpara*(1-arTc*(Temp-25)))}
-rs sourcein source {(rpara_s_factor*rpara*(1-arTc*(Temp-25)))}
-rg gatein gate {(rg_value)}
+rd D drain {((1-rpara_s_factor)*rpara*(1-arTc*(Temp-25)))}
+rs S source {(rpara_s_factor*rpara*(1-arTc*(Temp-25)))}
+rg G gate {(rg_value)}
 
 Rcsdconv drain source {100000Meg/aWg}
 Rcgsconv gate source {100000Meg/aWg}
@@ -54,3 +55,4 @@ C_CSD1	source drain Q=(asd2*asd4*log(1+exp((v(source,drain)-asd3)/asd4))+
 
 .ends
 
+************************************************************************

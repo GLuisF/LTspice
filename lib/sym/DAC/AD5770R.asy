@@ -12,7 +12,6 @@ WINDOW 39 0 86 Center 1
 SYMATTR Value AD5770R
 SYMATTR SpiceLine Range=1
 SYMATTR Prefix X
-SYMATTR Value2 AD5770R
 SYMATTR Description 6-Channel, 14Bit Current Output DACs (one channel, output stage modeled)
 SYMATTR ModelFile AD5770R.sub
 PIN -160 0 LEFT 8

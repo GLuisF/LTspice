@@ -21,7 +21,6 @@ WINDOW 0 64 -128 Bottom 2
 WINDOW 3 0 80 Center 2
 SYMATTR Value ADGM1304
 SYMATTR Prefix X
-SYMATTR Value2 ADGM1304
 SYMATTR Description 0 Hz/dc to 14 GHz, Single-Pole, Four-Throw MEMS Switch with Integrated Driver (Switch shown for a logic 0 input)
 SYMATTR SpiceLine time_drift=10
 SYMATTR ModelFile ADGM1304.sub

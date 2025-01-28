@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1013
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1013.sub
 SYMATTR Value2 LT1013
 SYMATTR Description Dual Precision Operational Amplifier
 PIN -32 80 NONE 0

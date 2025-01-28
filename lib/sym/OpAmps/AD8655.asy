@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value AD8655
 SYMATTR Prefix X
-SYMATTR SpiceModel AD8655.lib
+SYMATTR SpiceModel AD8655.sub
 SYMATTR Value2 AD8655
 SYMATTR Description Low Noise, Precision CMOS Amplifier
 PIN -32 80 NONE 0

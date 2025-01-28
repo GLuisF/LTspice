@@ -29,7 +29,7 @@ WINDOW 0 89 -49 Left 2
 WINDOW 3 89 47 Left 2
 SYMATTR Value ADA4945-HP
 SYMATTR Prefix X
-SYMATTR SpiceModel ADA4945-HP.lib
+SYMATTR SpiceModel ADA4945-HP.sub
 SYMATTR Value2 ADA4945-HP
 SYMATTR Description Ultralow Power, Low Distortion, Fully Differential ADC Driver
 PIN -48 -32 NONE 0

@@ -15,7 +15,7 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1497
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
+SYMATTR SpiceModel LT1497.sub
 SYMATTR Value2 LT1497
 SYMATTR Description Dual 125mA, 50MHz, Current Feedback Amplifier
 PIN -32 80 NONE 0

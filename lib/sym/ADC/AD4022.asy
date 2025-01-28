@@ -12,7 +12,6 @@ WINDOW 39 -64 55 Center 1
 SYMATTR Value AD4022
 SYMATTR SpiceLine EN_Hi_Z=1
 SYMATTR Prefix X
-SYMATTR Value2 AD4022
 SYMATTR Description 20-Bit Differential, 500ksps SAR ADC
 SYMATTR ModelFile AD4022.sub
 PIN -32 -144 TOP 8

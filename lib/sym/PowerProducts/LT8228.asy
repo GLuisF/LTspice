@@ -1,6 +1,6 @@
 Version 4
 SymbolType CELL
-RECTANGLE Normal 735 -336 -737 368
+RECTANGLE Normal 736 -336 -736 368
 TEXT 0 2 Center 2 LT
 WINDOW 0 2 -47 Center 2
 WINDOW 3 0 45 Center 2

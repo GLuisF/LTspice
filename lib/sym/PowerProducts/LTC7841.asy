@@ -3,10 +3,10 @@ SymbolType CELL
 RECTANGLE Normal -320 -448 320 448
 TEXT 0 0 Center 2 LT
 WINDOW 0 0 -240 Center 2
-WINDOW 3 -1 190 Center 2
+WINDOW 3 0 192 Center 2
+WINDOW 39 0 272 Center 2
 SYMATTR Value LTC7841
 SYMATTR Prefix X
-SYMATTR Value2 LTC7841
 SYMATTR Description PolyPhase Synchronous Boost Controller with PMBus Interface
 SYMATTR ModelFile LTC7841.sub
 SYMATTR SpiceLine Vout_command=0.5

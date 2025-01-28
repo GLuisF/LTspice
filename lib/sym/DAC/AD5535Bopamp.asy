@@ -6,7 +6,6 @@ WINDOW 0 0 -48 Center 2
 WINDOW 3 4 42 Center 2
 SYMATTR Value AD5535Bopamp
 SYMATTR Prefix X
-SYMATTR Value2 AD5535Bopamp
 SYMATTR Description 32-Channel, 14-Bit DAC (one channel, output stage modelled)
 SYMATTR ModelFile AD5535Bopamp.sub
 PIN -160 0 LEFT 8

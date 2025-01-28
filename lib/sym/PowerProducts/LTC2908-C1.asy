@@ -7,7 +7,6 @@ WINDOW 3 1 40 Center 2
 SYMATTR Value LTC2908-C1
 SYMATTR Prefix X
 SYMATTR Description Hex Supply Monitor (2.5, 5 adjust-0.5)
-SYMATTR SpiceModel LTC2908-C1
 SYMATTR ModelFile LTC2908-C1.sub
 PIN 0 128 BOTTOM 8
 PINATTR PinName GND

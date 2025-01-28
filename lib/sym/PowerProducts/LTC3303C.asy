@@ -6,7 +6,6 @@ WINDOW 0 0 -41 Center 2
 WINDOW 3 0 71 Center 2
 SYMATTR Value LTC3303C
 SYMATTR Prefix X
-SYMATTR Value2 LTC3303C
 SYMATTR Description 5V, 4A, 6MHz, Synchronous Step-down Regulator
 SYMATTR SpiceLine Vout_trim=1.8
 SYMATTR ModelFile LTC3303C.sub

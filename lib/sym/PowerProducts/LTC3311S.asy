@@ -10,7 +10,7 @@ SYMATTR SpiceModel LTC3311S.sub
 SYMATTR Value2 LTC3311S
 SYMATTR Description 5V, 12.5A Monolithic Synchronous Step-down Regulator\n\nNote: SSTT pin Temperature Monitoring function is not modeled
 PIN 0 -176 TOP 8
-PINATTR PinName Vin
+PINATTR PinName VIN
 PINATTR SpiceOrder 1
 PIN -160 -128 LEFT 8
 PINATTR PinName EN
@@ -22,22 +22,22 @@ PIN 160 64 RIGHT 8
 PINATTR PinName FB
 PINATTR SpiceOrder 4
 PIN -64 208 BOTTOM 8
-PINATTR PinName Agnd
+PINATTR PinName AGND
 PINATTR SpiceOrder 5
 PIN 64 208 BOTTOM 8
-PINATTR PinName Pgnd
+PINATTR PinName PGND
 PINATTR SpiceOrder 6
 PIN 160 160 RIGHT 8
-PINATTR PinName Rt
+PINATTR PinName RT
 PINATTR SpiceOrder 7
 PIN 160 -128 RIGHT 8
-PINATTR PinName Pgood
+PINATTR PinName PGOOD
 PINATTR SpiceOrder 8
 PIN -160 -32 LEFT 8
-PINATTR PinName Mode/Sync
+PINATTR PinName MODE/SYNC
 PINATTR SpiceOrder 9
 PIN -160 160 LEFT 8
-PINATTR PinName Ith
+PINATTR PinName ITH
 PINATTR SpiceOrder 10
 PIN -160 64 LEFT 8
 PINATTR PinName SSTT

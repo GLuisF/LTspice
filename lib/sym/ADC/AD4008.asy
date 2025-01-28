@@ -13,7 +13,6 @@ SYMATTR Value AD4008
 SYMATTR SpiceLine EN_Hi_Z=1
 SYMATTR Description 16-Bi Pseudo Differential, 500ksps SAR ADC
 SYMATTR Prefix X
-SYMATTR Value2 AD4008
 SYMATTR ModelFile AD4008.sub
 PIN -32 -144 TOP 8
 PINATTR PinName REF

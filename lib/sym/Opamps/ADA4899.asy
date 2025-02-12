@@ -39,7 +39,7 @@ WINDOW 0 16 -63 Left 2
 WINDOW 3 16 -41 Left 2
 SYMATTR Value ADA4899
 SYMATTR Prefix X
-SYMATTR SpiceModel ADA4899.lib
+SYMATTR SpiceModel ADA4899.sub
 SYMATTR Value2 ADA4899
 SYMATTR Description 1nV/rtHz Voltage Noise, High-speed Op-amp
 PIN -32 0 NONE 0

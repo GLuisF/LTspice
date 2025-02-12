@@ -2659,3 +2659,15 @@
 \lib\sym\OpAmps\AD4858.sym
 \lib\sub\ADA4255.lib
 \lib\sub\LTC6115.lib
+\lib\sym\PowerProducts\LTC7822.asy
+\lib\sub\LTC7822.sub
+\examples\Applications\LTC7822.asc
+\lib\sym\PowerProducts\LTC7822-1.asy
+\lib\sub\LTC7822-1.sub
+\examples\Applications\LTC7822-1.asc
+\lib\sub\LTC1043.lib
+\lib\sym\PowerProducts\ADPL40502-1.1.asy
+\lib\sub\ADPL40502-1.1.sub
+\examples\Applications\ADPL40502-1.1.asc
+\lib\sub\ADA4899.lib
+\lib\sub\AD8422.lib

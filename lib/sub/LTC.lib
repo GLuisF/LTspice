@@ -209,41 +209,6 @@ C14 N008 5 30f Rser=10k noiseless
 .model P VDMOS(Vto=40m Kp=60m pchan)
 .ends LT1012
 *
-.subckt LT1013 1 2 3 4 5
-A1 2 1 0 0 0 0 0 0 OTA g=0 in=15f ink=60
-B1 0 N003 I=10u*dnlim(uplim(V(1),V(3)-1.1,.1), V(4)-0.4, .1)+1n*V(1)
-B2 N003 0 I=10u*dnlim(uplim(V(2),V(3)-1.09,.1), V(4)-0.41, .1)+1n*V(2)
-C6 3 1 .1p Rpar=20G noiseless
-C7 1 4 .1p noiseless Rpar=20G
-C8 2 4 .1p Rpar=20G noiseless
-C9 3 2 .1p Rpar=20G noiseless
-C10 N003 0 1f Rpar=100K noiseless
-D1 N005 3 XU
-D4 4 N005 XD
-M1 3 N004 5 5 N temp=27
-M2 4 N004 5 5 P temp=27
-C1 N004 0 12f Rpar=1Meg noiseless
-C3 3 5 .5p
-C4 5 4 .5p
-D5 N004 5 YU
-D6 5 N004 YD
-G1 0 N004 N005 0 1µ
-C2 2 1 1f Rpar=435Meg noiseless
-A2 0 N006 0 0 0 0 N005 0 OTA g=160u iout=9.59u Cout=23.4p Vhigh=1e308 Vlow=-1e308
-G2 0 N006 N007 0 1m
-L2 N006 0 .457m Cpar=5.08p Rser=1.29k Rpar=4.448275862068965k noiseless
-A3 0 N003 0 0 0 0 N007 0 OTA g=1m linear en=20.2n enk=2 Vhigh=1e308 Vlow=-1e308
-C11 N007 0 532p Rpar=1k noiseless
-D2 2 3 DBIAS
-D3 1 3 DBIAS
-.model XU D(Ron=1K Roff=100G Vfwd=-.72 epsilon=1.0 noiseless)
-.model XD D(Ron=1K Roff=100G Vfwd=-.114 epsilon=1.0 noiseless)
-.model YU D(Ron=500 Roff=1T Vfwd=.77 epsilon=.1 noiseless)
-.model YD D(Ron=1k Roff=1T Vfwd=.74 epsilon=.1 noiseless)
-.model DBIAS D(Ron=1k Roff=1T Vrev=0.6 revilimit=12n noiseless)
-.model N VDMOS(Vto=-100m Kp=70m)
-.model P VDMOS(Vto=100m Kp=70m pchan)
-.ends LT1013
 *
 .subckt LT1016 1 2 3 4 5 6 7 8
 A3 5 6 0 0 0 0 N016 0 SCHMITT Vt=1.5 Vh=0 tau=3n

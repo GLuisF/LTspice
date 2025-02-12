@@ -20,7 +20,7 @@ WINDOW 3 19 64 Left 2
 WINDOW 0 33 -64 Left 2
 SYMATTR Value LTC2057HV
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6.lib
+SYMATTR SpiceModel LTC2057.sub
 SYMATTR Value2 LTC2057
 SYMATTR Description High Voltage, Low Noise Zero-Drift Operation Amplifier
 PIN 16 -32 NONE 6

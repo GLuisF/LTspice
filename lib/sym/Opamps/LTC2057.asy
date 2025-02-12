@@ -16,11 +16,11 @@ LINE Normal -2 27 -11 27
 LINE Normal 16 -32 16 -8
 TEXT 25 -19 Left 1 _SD
 TEXT 25 19 Left 1 SDCOM
-WINDOW 3 11 70 Left 2
-WINDOW 0 27 -59 Left 2
+WINDOW 3 19 64 Left 2
+WINDOW 0 33 -64 Left 2
 SYMATTR Value LTC2057
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6.lib
+SYMATTR SpiceModel LTC2057.sub
 SYMATTR Value2 LTC2057
 SYMATTR Description High Voltage, Low Noise Zero-Drift Operation Amplifier
 PIN 16 -32 NONE 6

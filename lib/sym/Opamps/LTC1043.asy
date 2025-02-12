@@ -6,7 +6,7 @@ WINDOW 0 16 -176 Left 2
 WINDOW 3 16 176 Left 2
 SYMATTR Value LTC1043
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1043.lib
+SYMATTR SpiceModel LTC1043.net
 SYMATTR Value2 LTC1043
 SYMATTR Description Dual Instrumentation Switched Capacitor Building Block
 PIN -128 -96 LEFT 8

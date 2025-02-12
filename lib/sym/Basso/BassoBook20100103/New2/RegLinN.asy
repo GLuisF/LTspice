@@ -1,7 +1,9 @@
 Version 4
 SymbolType BLOCK
 RECTANGLE Normal 64 48 -64 -48
-TEXT -48 -64 Left 0 RegLinN
+TEXT -48 -64 Left 2 RegLinN
+WINDOW 39 16 64 Left 2
+SYMATTR SpiceLine Vref=6
 PIN -64 -16 LEFT 8
 PINATTR PinName In
 PINATTR SpiceOrder 1

@@ -7,17 +7,17 @@
 +Ibo=15uA
 *
 *Tr:      Rise time (in µs)
-*Vbo:	  Break over voltage	
+*Vbo:	  Break over voltage
 *Delta_V: Dynamic breakover voltage
-*Ibo:     Breakover current          
-C_C1         N02098 DIAC_OUT 1u IC=0   
-V_IDIAC1     DIAC_IN N01041 DC 0Vdc AC 0Vac 
-R_R1         N02098 TRG  1.462*{Tr}  
-D_D1         N06161 N01041 DZ19V 
-E_ABM1       TRG DIAC_OUT VALUE { IF(ABS(I(V_IDIAC1))>{Ibo},1,0)}    
-D_D2         N06161 N01060 DZ19V 
-D_D3         N10655 N01060 DZ14V 
-D_D4         N10655 DIAC_OUT DZ14V 
+*Ibo:     Breakover current
+C_C1         N02098 DIAC_OUT 1u IC=0
+V_IDIAC1     DIAC_IN N01041 DC 0Vdc AC 0Vac
+R_R1         N02098 TRG  {1.462*Tr}
+D_D1         N06161 N01041 DZ19V
+E_ABM1       TRG DIAC_OUT VALUE { IF(ABS(I(V_IDIAC1))>{Ibo},1,0)}
+D_D2         N06161 N01060 DZ19V
+D_D3         N10655 N01060 DZ14V
+D_D4         N10655 DIAC_OUT DZ14V
 S_S1         N01041 N01060 N02098 DIAC_OUT _S1
 RS_S1        N02098 DIAC_OUT 1G
 C_C2         DIAC_IN DIAC_OUT 10p
@@ -36,7 +36,7 @@ C_C2         DIAC_IN DIAC_OUT 10p
 +	     Vj=.75 Fc=.5 Isr=2.088n Nr=2 Bv={Delta_V} Ibv=.17098 Nbv=1.2072
 +	     Ibvl=2.002m Nbvl=1.1457 Tbv1=888.89u)
 *	Vz = 18 @ 14mA, Zz = 37 @ 1mA, Zz = 11 @ 5mA, Zz = 7.9 @ 20mA
-.ends   
+.ends
 *
 *********************************************************************
 * 				Standard DIACs			    *

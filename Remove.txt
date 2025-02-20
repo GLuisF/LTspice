@@ -2671,3 +2671,8 @@
 \examples\Applications\ADPL40502-1.1.asc
 \lib\sub\ADA4899.lib
 \lib\sub\AD8422.lib
+\lib\sub\MAX40023.lib
+\lib\sub\MAX41400.lib
+\lib\sub\AD8411A.lib
+\lib\sub\ADA4891-3.lib
+\lib\sub\OP284.lib

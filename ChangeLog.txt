@@ -1,3 +1,80 @@
+02/17/25 AD4112 New device
+02/17/25 LT1013D Corrected symbol.
+02/17/25 OP284 Update to improve convergence
+02/17/25 LT1013A Corrected symbol.
+02/17/25 ADA4891-3 Update to improve convergence
+02/17/25 LT1014 Corrected symbol.
+02/17/25 LT1014A Corrected symbol.
+02/17/25 LT1014D Corrected symbol.
+02/17/25 LT1672 Update to support new LTspice24.1 code
+02/17/25 LTC5507 Update to support new LTspice24.1 code
+02/17/25 LT8609S Fixed Steady-state detection 
+02/17/25 MAX38912 New device
+02/17/25 ADP2389 Improved the clock generation circuit. 
+02/17/25 LTM4651 Fixed convergence issues
+02/17/25 LT8609B Fixed Steady-state detection 
+02/17/25 LT3952A Fixed convergence issue
+02/17/25 LT3952 Fixed convergence issue
+02/17/25 LTC7892 New device
+02/17/25 LTC4359 Model improvement needed to support code changes in 24.1
+02/17/25 LT8609A Fixed Steady-state detection 
+02/17/25 LT8609 Fixed Steady-state detection 
+02/17/25 LT8292 Update to improve convergence in current version of LTspice
+02/17/25 LTC3774 Update to improve convergence
+02/17/25 LT8645S Fixed Steady-state detection 
+02/17/25 MAX22513 New device
+02/10/25 ADA4352-2 New device
+02/10/25 LTC7892 New device
+02/10/25 MAX22256 New device
+02/07/25 LTC7892 New device
+02/07/25 MAX22256 New device
+02/05/25 MAX41400 Update to improve convergence
+02/05/25 LTM8083 Update to improve convergence
+02/05/25 LTM8060 Fixed RUN pin function of each output channels
+02/05/25 LTM8060F Fixed RUN pin function of each output channels
+01/31/25 LTM4707 New device
+01/29/25 MAX77659A New device
+01/29/25 ADAQ4216 New device
+01/24/25 LT8650S Fixed EN pin function; updated model symbol
+01/24/25 ADM1281-3 New device
+01/24/25 ADM1281-2 New device
+01/24/25 ADM1281-1 New device
+01/24/25 AD8422 Corrected noise behavior.
+01/23/25 LT7171 New device
+01/23/25 ADA4899 Improved transient convergence.
+01/21/25 LTC2995 Improved convergence; updated model symbol
+01/21/25 LTC2953-2 Improved convergence; updated application circuit
+01/21/25 LTC1922-1 Improved convergence; added SYNC pin; updated symbol and application circuit
+01/21/25 LT8316 Fixed missing jumper causing issue on subckt generation
+01/21/25 Added XFMRS inductors
+01/20/25 LTP8803-1A Make LF_GAIN_SETTING available for editing
+01/20/25 LTP8800-1A Make LF_GAIN_SETTING available for editing
+01/20/25 LTM4693 Fixed floating node issue.
+01/20/25 LT3077 Fixed missing LT3077 symbol on the example schematic
+01/20/25 ADPL40502-1.1 New device
+01/20/25 AD8412A New device
+01/20/25 AD3530R New device
+01/20/25 AD4081 New device
+01/20/25 AD4000 Improved model convergence.
+01/16/25 LTM4680 Corrected oscillator function; updated model symbol
+01/16/25 LTC3376 Fixed PGOOD1
+01/16/25 LTC2902-2 Fixed Convergence Issue
+01/16/25 LTC2902-1 Fixed Convergence Issue
+01/16/25 LT8608 Corrected internal switch timings
+01/16/25 LTC2057 Improved convergence performance.
+01/16/25 LTC2057HV Updated symbol to point to revised model.
+01/16/25 LTC1043 Updated model to improve convergence
+01/13/25 MAX14783E New device
+01/13/25 LTM4719 New device
+01/13/25 LTC4373 improve convergence
+01/13/25 LTC4372 improve convergence
+01/13/25 LTC4240 Improven convergence
+01/13/25 LTC3897 made miscellaneous performance improvements
+01/13/25 LTC3559 Redesigned oscillator circuit; improved convergence
+01/13/25 LTC3559-1 Redesigned oscillator circuit; improved convergence
+01/13/25 ADP1621 Improved convergence
+01/13/25 LT1013 Corrected output spike in transient startup condition.
+01/13/25 AD8221 Model redesigned on new architecture with accuracy and convergence improvements.
 12/29/24 LT8365 Updated model symbol; updated application circuit; improved model convergence
 12/29/24 LT8364 Updated model symbol; updated application circuit; improved model convergence
 12/29/24 LT8362 Updated model symbol; updated application circuit; improved model convergence

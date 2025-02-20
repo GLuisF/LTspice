@@ -24,7 +24,7 @@ WINDOW 0 139 -53 Left 2
 WINDOW 3 137 -30 Left 2
 SYMATTR Value MAX41400
 SYMATTR Prefix X
-SYMATTR SpiceModel MAX41400.lib
+SYMATTR SpiceModel MAX41400.sub
 SYMATTR Value2 MAX41400
 SYMATTR Description Low-Power, Precision Instrumentation Amplifier with Programmable Gain
 PIN 32 -96 NONE 8

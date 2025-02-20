@@ -21,7 +21,7 @@ WINDOW 0 3 -63 Left 2
 WINDOW 3 4 -41 Left 2
 SYMATTR Value ADA4891-3
 SYMATTR Prefix X
-SYMATTR SpiceModel ADA4891-3.lib
+SYMATTR SpiceModel ADA4891-3.sub
 SYMATTR Value2 ADA4891-3
 SYMATTR Description Low Cost CMOS, High Speed, Rail-to-Rail Amplifier
 PIN -32 0 NONE 0

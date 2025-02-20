@@ -52,7 +52,7 @@ WINDOW 0 48 -48 Left 2
 WINDOW 3 48 48 Left 2
 SYMATTR Value AD8411A
 SYMATTR Prefix X
-SYMATTR SpiceModel AD8411A.lib
+SYMATTR SpiceModel AD8411A.sub
 SYMATTR Value2 AD8411A
 SYMATTR Description Bidirectional G of 50 Current Sense Amplifier
 PIN -32 32 NONE 0

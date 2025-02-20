@@ -21,7 +21,7 @@ WINDOW 0 3 -63 Left 2
 WINDOW 3 4 -41 Left 2
 SYMATTR Value MAX40023
 SYMATTR Prefix X
-SYMATTR SpiceModel MAX40023.lib
+SYMATTR SpiceModel MAX40023.sub
 SYMATTR Value2 MAX40023
 SYMATTR Description Low-Noise, Low-Power, Low-Bias-Current Amplifiers
 PIN -32 0 NONE 0

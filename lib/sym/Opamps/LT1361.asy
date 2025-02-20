@@ -15,9 +15,8 @@ WINDOW 0 16 32 Left 2
 WINDOW 3 16 96 Left 2
 SYMATTR Value LT1361
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC.lib
-SYMATTR Value2 LT1360
 SYMATTR Description Dual 50MHz, 800V/µs, Operational Amplifier
+SYMATTR ModelFile LT1361.sub
 PIN -32 80 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

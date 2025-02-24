@@ -303,10 +303,10 @@ R2 3 2 {Rt*(ratio)}
 .param ratio=w**pwrexp
 .param RD=Rt*ratio
 *
-R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m)}
-R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m)}
-R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m)}
-R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m)}
+R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m))}
+R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m))}
+R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m))}
+R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -350,10 +350,10 @@ vsw 7 0 {w}
 .param ratio=exp(pwrexp*(1-w))
 .param RD=Rt*ratio
 *
-R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m)}
-R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m)}
-R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m)}
-R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m)}
+R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m))}
+R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m))}
+R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m))}
+R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -397,10 +397,10 @@ vsw 7 0 {w}
 .param ratio=exp(pwrexp*(w))
 .param RD=Rt*ratio
 *
-R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m)}
-R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m)}
-R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m)}
-R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m)}
+R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m))}
+R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m))}
+R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m))}
+R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -443,10 +443,10 @@ vsw 7 0 {1-w}
 .param RD=Rt*ratio
 .param TAP1=limit(0.01m, (RTAP/RT), 0.99999)
 *
-R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m)}
-R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m)}
-R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m)}
-R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m)}
+R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m))}
+R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m))}
+R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m))}
+R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -492,10 +492,10 @@ vsw 7 0 {ratio}
 *
 .param RD=Rt*ratio
 *
-R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m)}
-R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m)}
-R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m)}
-R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m)}
+R1 1 5 {limit(0.01m, (RT-RD), (RT-RTAP-0.01m))}
+R2 5 4 {limit(0.01m, (RD-RTAP), (RT-RTAP-0.01m))}
+R3 4 6 {limit(0.01m, (RTAP-RD), (RTAP-0.01m))}
+R4 6 2 {limit(0.01m, (RD), (RTAP-0.01m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -533,10 +533,10 @@ vsw 7 0 {w}
 
 .param RD=Rtot*ratio
 
-R1 1 5 {limit(1m, (RT-RD), (RT-RTAP-1m)}
-R2 5 4 {limit(1m, (RD-RTAP), (RT-RTAP-1m)}
-R3 4 6 {limit(1m, (RTAP-RD), (RTAP-1m)}
-R4 6 2 {limit(1m, (RD), (RTAP-1m)}
+R1 1 5 {limit(1m, (RT-RD), (RT-RTAP-1m))}
+R2 5 4 {limit(1m, (RD-RTAP), (RT-RTAP-1m))}
+R3 4 6 {limit(1m, (RTAP-RD), (RTAP-1m))}
+R4 6 2 {limit(1m, (RD), (RTAP-1m))}
 
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2
@@ -574,10 +574,10 @@ vsw 7 0 {w}
 *
 .param RD=Rt*ratio
 *
-R1 1 5 {limit(1m, (RT-RD), (RT-RTAP-1m)}
-R2 5 4 {limit(1m, (RD-RTAP), (RT-RTAP-1m)}
-R3 4 6 {limit(1m, (RTAP-RD), (RTAP-1m)}
-R4 6 2 {limit(1m, (RD), (RTAP-1m)}
+R1 1 5 {limit(1m, (RT-RD), (RT-RTAP-1m))}
+R2 5 4 {limit(1m, (RD-RTAP), (RT-RTAP-1m))}
+R3 4 6 {limit(1m, (RTAP-RD), (RTAP-1m))}
+R4 6 2 {limit(1m, (RD), (RTAP-1m))}
 *
 sw5 5 3 7 0 sw1
 sw6 6 3 7 0 sw2

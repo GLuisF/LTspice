@@ -84,7 +84,7 @@
 * LF355/NS               LF355.MOD             LF355
 * LF356/NS               LF356.MOD             LF356
 * LF357/NS               LF357.MOD             LF357
-* LM358/NS               LM358.MOD             LM358
+* LM358_NS               LM358.MOD             LM358
 * LM359/NS               LM359.MOD             LM359
 * LF411/NS               LF411.MOD             LF411
 * LF412/NS               LF412.MOD             LF412
@@ -3775,7 +3775,7 @@ RL3 22 28 100K
 *                   |   |   |   |   output
 *                   |   |   |   |   |
 *                   |   |   |   |   |
-.SUBCKT LM358/NS    1   2  99  50  28
+.SUBCKT LM358_NS    1   2  99  50  28
 *
 *Features:
 *Eliminates need for dual supplies

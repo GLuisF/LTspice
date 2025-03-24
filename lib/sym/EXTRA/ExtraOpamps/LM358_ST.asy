@@ -13,11 +13,11 @@ LINE Normal 8 -24 8 -16
 LINE Normal 4 20 12 20
 WINDOW 0 16 -32 Left 0
 WINDOW 3 16 32 Left 0
-SYMATTR Value LM358/ST
+SYMATTR Value LM358_ST
 SYMATTR Prefix X
 SYMATTR SpiceModel ..\sym\EXTRA\ExtraComparators\st_models.lib
-SYMATTR Value2 LM358/ST
-SYMATTR Description LM358/ST
+SYMATTR Value2 LM358_ST
+SYMATTR Description LM358_ST
 PIN -32 16 NONE 0
 PINATTR PinName In+
 PINATTR SpiceOrder 1

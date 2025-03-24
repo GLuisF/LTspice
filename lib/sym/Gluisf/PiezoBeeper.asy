@@ -2,9 +2,8 @@ Version 4
 SymbolType BLOCK
 LINE Normal 96 48 64 -16
 RECTANGLE Normal 64 48 0 -16
-WINDOW 3 80 68 Center 2
+TEXT -2 61 Left 2 PiezoBeeper
 WINDOW 0 34 -31 Center 2
-SYMATTR Value PiezoBeeper
 SYMATTR SpiceLine R=1k
 PIN 0 0 NONE 8
 PINATTR PinName 1

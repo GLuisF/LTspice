@@ -83,9 +83,9 @@ XOUT  Yi Y  VDD VGND  CD40_OUT_1X  vdd2={vdd1} speed2={speed1}  tripdt2={tripdt1
 * Ci->Sn Tpd         320n  only modelled with Tpd=td1
 * tr                 100n
 .SUBCKT CD4008B  A0 A1 A2 A3 B0 B1 B2 B3 CI S0 S1 S2 S3 CO  VDD VGND  vdd1={vdd} speed1={speed} tripdt1b={tripdt}
-.param td1=1e-9*(400-40-10)*5.0/(vdd1}*{speed1}
-.param td2=1e-9*(250-40-10)*5.0/(vdd1}*{speed1}
-.param td4=1e-9*(130-40-10)*5.0/(vdd1}*{speed1}
+.param td1=1e-9*(400-40-10)*5.0/{vdd1}*{speed1}
+.param td2=1e-9*(250-40-10)*5.0/{vdd1}*{speed1}
+.param td4=1e-9*(130-40-10)*5.0/{vdd1}*{speed1}
 .param td3=td2-td4
 *
 XIN1  A0 A0i  VCC VGND  CD40_IN_1  vdd2={vdd1}  speed2={speed1}  tripdt2={tripdt1b} 

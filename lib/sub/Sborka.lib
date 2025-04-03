@@ -233,8 +233,8 @@ vkz 1 0 0
 .ends GND1
 
 .subckt g_loop L I1 I2 B COM H
-G1 COM N001 L I1 {1µ/(A*N)}
-C1 N001 COM 1µ
+G1 COM N001 L I1 {1Âµ/(A*N)}
+C1 N001 COM 1Âµ
 E1 B COM N001 COM 1
 V1 I1 I2 0
 H1 H COM V1 {N/Lm}
@@ -940,8 +940,7 @@ LEX 6 3 0.3E-9
 + ISE=1.77e-11 NE=2.1 BR=1 NR=1 VAR=0
 + IKR=0 ISC=0 NC=2 RE=0.6 RB=12
 + RBM=3.7 IRB=1.2e-5 RC=8 CJE=1.2p VJE=0.77
-+ MJE=0.5 CJC=0.8p VJC=0.27 MJC=0.56 XCJC=0
- FC=0.5 TF=14p
++ MJE=0.5 CJC=0.8p VJC=0.27 MJC=0.56 XCJC=0 FC=0.5 TF=14p
 + XTF=3 VTF=25 ITF=0.1 PTF=0 TR=0.3n
 + EG=1.11 XTB=0 XTI=3)
 .ENDS
@@ -1460,10 +1459,10 @@ R2 NC 0 5meg
 R3 Vo Vo1 1m
 .model DINP D(Ron=5 Roff=10meg Vfwd=1.1 Vrev=5)
 .model DOUT D(Ron=0 Roff=10meg Vfwd=2)
-.model SWON CSW(It=2.9m Ih=-0,1m Ron=1 Roff=10meg)
-.model SWUP SW(Vt=2.5 Vh=-0,5 Ron=1.2 Roff=10meg)
-.model SWDN SW(Vt=2.5 Vh=-0,5 Ron=10meg Roff=2)
-.model SWOFF CSW(It=2.9m Ih=-0,1m Ron=10meg Roff=1)
+.model SWON CSW(It=2.9m Ih=-0.1m Ron=1 Roff=10meg)
+.model SWUP SW(Vt=2.5 Vh=-0.5 Ron=1.2 Roff=10meg)
+.model SWDN SW(Vt=2.5 Vh=-0.5 Ron=10meg Roff=2)
+.model SWOFF CSW(It=2.9m Ih=-0.1m Ron=10meg Roff=1)
 .ends hcpl3180
 
 
@@ -1590,7 +1589,7 @@ Q1 vb1p vb1 4 0 NPN1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl1 4 1
-C1 ctrl1 4 10µ
+C1 ctrl1 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
@@ -1623,7 +1622,7 @@ Q1 vb1p vb1 4 0 NPN1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl1 4 1
-C1 ctrl1 4 10µ
+C1 ctrl1 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
@@ -1656,7 +1655,7 @@ Q1 vb1p vb1 4 0 NPN1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl1 4 1
-C1 ctrl1 4 10µ
+C1 ctrl1 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
@@ -1689,7 +1688,7 @@ Q1 vb1p vb1 4 0 NPN1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl1 4 1
-C1 ctrl1 4 10µ
+C1 ctrl1 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl1 4 I=-500*I(D1)*3m/Itrig
@@ -1727,7 +1726,7 @@ Q2 vb1 vb1p vd1 0 PNP1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl10 4 1
-C1 ctrl10 4 10µ
+C1 ctrl10 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl10 4 I=-500*I(D1)*3m/Itrig
@@ -1742,10 +1741,10 @@ E1 vd2 N001 ctrl1 4 -1
 R34 3 4 100MEG
 R12 ctrl1 4 1
 B2 ctrl1 4 V=IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)
-C2 ctrl1 4 1µ
+C2 ctrl1 4 1Âµ
 B3 34 0 I=-V(3,4)/1000
 R13 34 0 1k
-C3 34 0 .1µ
+C3 34 0 .1Âµ
 .MODEL PNP1 PNP(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL NPN1 NPN(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL D1 D(Is=0.1u Rs=2 Cj0=50p)
@@ -1768,7 +1767,7 @@ Q2 vb1 vb1p vd1 0 PNP1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl10 4 1
-C1 ctrl10 4 10µ
+C1 ctrl10 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl10 4 I=-500*I(D1)*3m/Itrig
@@ -1783,10 +1782,10 @@ E1 vd2 N001 ctrl1 4 -1
 R34 3 4 100MEG
 R12 ctrl1 4 1
 B2 ctrl1 4 V=IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)
-C2 ctrl1 4 1µ
+C2 ctrl1 4 1Âµ
 B3 34 0 I=-V(3,4)/1000
 R13 34 0 1k
-C3 34 0 .1µ
+C3 34 0 .1Âµ
 .MODEL PNP1 PNP(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL NPN1 NPN(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL D1 D(Is=0.1u Rs=2 Cj0=50p)
@@ -1809,7 +1808,7 @@ Q2 vb1 vb1p vd1 0 PNP1
 R3 vb1 4 {RH2}
 D1 1 2 DL
 R1 ctrl10 4 1
-C1 ctrl10 4 10µ
+C1 ctrl10 4 10Âµ
 R2 ctrl1 vb1 {RH1}
 R4 vd1 vb1p {RH3}
 B1 ctrl10 4 I=-500*I(D1)*3m/Itrig
@@ -1824,10 +1823,10 @@ E1 vd2 N001 ctrl1 4 -1
 R34 3 4 100MEG
 R12 ctrl1 4 1
 B2 ctrl1 4 V=IF(V(ctrl10,4)>1.45 & abs(V(34)) < 12, 2, 0)
-C2 ctrl1 4 1µ
+C2 ctrl1 4 1Âµ
 B3 34 0 I=-V(3,4)/1000
 R13 34 0 1k
-C3 34 0 .1µ
+C3 34 0 .1Âµ
 .MODEL PNP1 PNP(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL NPN1 NPN(Is=1f BF=10 Cjc=10p Cje=20p Tf=0.1u Ise=1p)
 .MODEL D1 D(Is=0.1u Rs=2 Cj0=50p)
@@ -3935,8 +3934,8 @@ G38 0 38 37 0 1m
 R38 39 0 1K
 L38 38 39 32U
 E38 35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(18.0,1n))(20.0,1))
-G36 33 0 TABLE {V(35,4)} ((-22.0,-1)((-20.0,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(18.0,1n)(20.0,1))
+G36 33 0 TABLE {V(35,4)} ((-22.0,-1)(-20.0,-1n)(0,0)(1,1n))
 *
 * Output Stage
 R80 50 0 100MEG
@@ -4119,8 +4118,8 @@ G38 0 38 37 0 1m
 R38 39 0 1K
 L38 38 39 32U
 E38 35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(18.0,1n))(20.0,1))
-G36 33 0 TABLE {V(35,4)} ((-22.0,-1)((-20.0,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(18.0,1n)(20.0,1))
+G36 33 0 TABLE {V(35,4)} ((-22.0,-1)(-20.0,-1n)(0,0)(1,1n))
 *
 * Output Stage
 *R80 50 0 100MEG
@@ -4306,8 +4305,8 @@ G38 0 38 37 0 1m
 R38 39 0 1K
 L38 38 39 79.5U
 E38 35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(90,1n))(91,1))
-G36 33 0 TABLE {V(35,4)} ((-91,-1)((-90,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(90,1n)(91,1))
+G36 33 0 TABLE {V(35,4)} ((-91,-1)(-90,-1n)(0,0)(1,1n))
 *
 * Output Stage
 R80 50 0 100MEG
@@ -4460,8 +4459,8 @@ R38 39 0 1K
 Cr38 39 0 1p ;my
 L38 38 39 4.54M
 E38 35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(65,1n))(65.5,1))
-G36 33 0 TABLE {V(35,4)} ((-65.5,-1)((-65,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(65,1n)(65.5,1))
+G36 33 0 TABLE {V(35,4)} ((-65.5,-1)(-65,-1n)(0,0)(1,1n))
 *
 * Output Stage
 *R80 50 0 100MEG
@@ -4617,8 +4616,8 @@ cr38 39 0 1p ;my
 L38  38 39 35U
 R388 38 39 50k
 E38  35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(90.0,1n))(95.0,1))
-G36 33 0 TABLE {V(35,4)} ((-95.0,-1)((-90.0,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(90.0,1n)(95.0,1))
+G36 33 0 TABLE {V(35,4)} ((-95.0,-1)(-90.0,-1n)(0,0)(1,1n))
 *
 * Output Stage
 *R80 50 0 100MEG
@@ -4793,8 +4792,8 @@ C37  37 0 88.4P
 G38  0 38 37 0 1m
 R38  38 0 1K
 E38  35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(270,1n))(297,1))
-G36 33 0 TABLE {V(35,4)} ((-297,-1)((-270,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(270,1n)(297,1))
+G36 33 0 TABLE {V(35,4)} ((-297,-1)(-270,-1n)(0,0)(1,1n))
 *
 * Output Stage
 *R80 50 0 100MEG
@@ -4926,7 +4925,7 @@ FCASC1 092 86 VCONT 8
 R18 Vcc+ 090 150
 R17 Vcc+ 092 150
 FEF2 18 Vcc- VCONT 3.35
-FEF1 Vcc+ 46 VCONT 3.35*
+FEF1 Vcc+ 46 VCONT 3.35
 ECMRR 070 0 POLY(1) IN+ IN- 0 500e-3 500e-3
 GCMRR 065 0 070 Vcc- -10e-9
 RCMRR1 065 0 1e3
@@ -6530,7 +6529,7 @@ DLN 92 90 DX
 DP 4 3 DX
 EGND 99 0 POLY (2) (3,0) (4,0) 0 .5 .5
 FB 7 99 POLY (5) VB VC VE VLP
-+ VLN 0 8.84E6 –10E6 10E6 10E6 –10E6
++ VLN 0 8.84E6 Â–10E6 10E6 10E6 Â–10E6
 GA 6 0 11 12 62.83u
 GCM 0 6 10 99 12.34n
 ISS 3 10 DC 11.05u
@@ -7726,9 +7725,9 @@ EVL1 90 18 10 18 1
 VOSBAL 7 29 3.00000000E-03
 EU1 8 1 20 12 0.0001
 EU2 8 7 5 12 -1
-RB1 12 10 1 TC= 1.991040E-03 (-1.244400E-04)
+RB1 12 10 1 TC= 1.991040E-03 -1.244400E-04
 IB4 10 12 1.000000E-06
-RB3 12 5 8743.17 TC= 1.60000000E-03 (0.00000000E+00)
+RB3 12 5 8743.17 TC= 1.60000000E-03 0.00000000E+00
 IB3 12 5 5.718750E-07
 G1 12 1 10 12 1.025000E-05
 G2 12 36 10 12 9.750000E-06
@@ -7981,8 +7980,8 @@ G38  0 38 37 0 1m
 R38  39 0 1K
 L38  38 39 13M
 E38  35 0 38 0 1
-G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(30.0,1n))(32.0,1))
-G36 33 0 TABLE {V(35,4)} ((-32.0,-1)((-30.0,-1n)(0,0)(1,1n))
+G35 33 0 TABLE {V(35,3)} ((-1,-1n)(0,0)(30.0,1n)(32.0,1))
+G36 33 0 TABLE {V(35,4)} ((-32.0,-1)(-30.0,-1n)(0,0)(1,1n))
 *
 * Output Stage
 *R80 50 0 100MEG
@@ -10024,7 +10023,7 @@ DGK 6 5 ZGK
 + CJE=1.34P CJC=286F TF=18.95U TR=1.27M)
 .MODEL DLED D (IS=140P RS=520M N=2.63 BV=6 IBV=10U
 + CJO=50P VJ=.75 M=.333 TT=432N)
-H1 2 0 VLED -.8 93.3
+H1 2 0 VLED -.8
 VLED 17 16
 D1 16 18 DLED
 .ENDS
@@ -10051,7 +10050,7 @@ DGK 6 5 ZGK
 + CJE=1.34P CJC=268F TF=14.47U TR=637U)
 .MODEL DLED D (IS=140P RS=520M N=2.63 BV=6 IBV=10U
 + CJO=50P VJ=.75 M=.333 TT=432N)
-H1 2 0 VLED -.8 93.3
+H1 2 0 VLED -.8
 VLED 17 16
 D1 16 18 DLED
 .ENDS 4N40
@@ -13494,9 +13493,9 @@ R15 62 0 1MEG
 R16 64 0 1MEG
 .ENDS VIDEO
 
-* Áèáëèîòåêà ëè÷íûõ ìîäåëåé Âàëåíòèíà ßêîâëåâè÷à Âîëîäèíà
-* Ìîäåëü ØÈÌ êîíòðîëëåðà TL494
-* Ñîçäàíà 1 Ôåâðàëÿ 2008 ãîäà
+* ÃÃ¨Ã¡Ã«Ã¨Ã®Ã²Ã¥ÃªÃ  Ã«Ã¨Ã·Ã­Ã»Ãµ Ã¬Ã®Ã¤Ã¥Ã«Ã¥Ã© Ã‚Ã Ã«Ã¥Ã­Ã²Ã¨Ã­Ã  ÃŸÃªÃ®Ã¢Ã«Ã¥Ã¢Ã¨Ã·Ã  Ã‚Ã®Ã«Ã®Ã¤Ã¨Ã­Ã 
+* ÃŒÃ®Ã¤Ã¥Ã«Ã¼ Ã˜ÃˆÃŒ ÃªÃ®Ã­Ã²Ã°Ã®Ã«Ã«Ã¥Ã°Ã  TL494
+* Ã‘Ã®Ã§Ã¤Ã Ã­Ã  1 Ã”Ã¥Ã¢Ã°Ã Ã«Ã¿ 2008 Ã£Ã®Ã¤Ã 
 *
 .subckt tl494 IN1 -IN1 IN2 -IN2 FB DTC Vref OCT CT1 ET1 CT2 ET2 Ct Rt GND Vcc
 A1 N005 GND N006 GND GND N005 N011 GND DFLOP Vhigh=5 Trise=50n Rout=30
@@ -14072,7 +14071,7 @@ Voffset H H1 1E-30 ;dc bias needed to make AC analysis work
 Bpirr Pirr 0 v=(abs(v(H)) - {Hc/(1-cb)}) + {Hc/(1-cb)} * exp(-abs(v(H))/{Hc/(1-cb)})
 BXinitial Xinit 0 v={Chi} * sgn(v(H)) *( {(1-cb)} * v(Pirr) + {cb}*abs(v(H)) )
 BM B 0 v={Bsat}*( {1-Hard} * 2/PI * atan(PI/2 * v(Xinit)) ;round materials
-+ + {Hard} * if(( (abs(v(Xinit)) > 50) , sgn(v(Xinit)) , tanh(v(Xinit)) ) ) ) ;hard materials
++ + {Hard} * if(( (abs(v(Xinit)) > 50)) , sgn(v(Xinit)) , tanh(v(Xinit)) ) ) ;hard materials
 .ENDS
 
 * Helmut Sennewald 11/9/2003

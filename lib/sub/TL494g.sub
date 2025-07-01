@@ -1,0 +1,58 @@
+*
+.subckt tl494 +IN1 -IN1 +IN2 -IN2 Fb DT Vref OC C_1 E_1 C_2 E_2 CT RT GND VCC
+A1 N004 0 N003 0 0 N004 N009 0 DFLOP Vhigh=5 Trise=50n Rout=30
+A2 0 0 0 N007 N009 0 N005 0 AND Vhigh=5 Trise=50n Rout=30
+A3 N004 N007 0 0 0 0 N011 0 AND Vhigh=5 Trise=50n Rout=30
+A4 N003 N005 0 0 0 N008 0 0 OR Vhigh=5 Trise=300n Rout=30
+A5 N003 N011 0 0 0 N013 0 0 OR Vhigh=5 Trise=300n Rout=30
+G1 N001 E_1 N008 GND table=(1 0,4 250m)
+G3 N012 E_2 N013 GND table=(1 0,4 250m)
+A6 Na Nb 0 0 0 0 N003 0 OR Vhigh=5 Trise=50n Rout=30
+A7 N002 CT 0 0 0 0 Na 0 SCHMITT Vt=0 Vh=0 Vhigh=5
+A8 Fb N014 0 0 0 0 Nb 0 SCHMITT Vt=0 Vh=0 Vhigh=5
+V4 N014 CT .7
+V5 N002 DT .1
+D1 N016 Fb Ideal
+D2 N017 Fb Ideal
+R1 +IN1 Nc 1e6
+R2 +IN2 N010 1e6
+C1 Nc -IN1 15n9
+C2 N010 -IN2 15n9
+D3 E_1 N001 IdealZ
+E1 N016 GND Nc -IN1 table=(0,0 1.96m,0 2m,2 2.04m,4 20m,4.5)
+R3 GND -IN1 1e7
+R4 +IN1 GND 1e7
+R5 +IN2 GND 1e7
+R6 -IN2 GND 1e6
+I1 Fb GND .7m
+V2 N015 GND 3.65
+F1 GND CT V2 -1
+S1 GND CT N006 GND Osc
+D4 C_1 N001 Ideal1
+D5 C_1 N001 Ideal2
+G2 E_1 N001 VCC E_1 table=(0 250m,1.42 243m,1.46 150m,1.57 0)
+D6 E_2 N012 IdealZ
+D7 C_2 N012 Ideal1
+D8 C_2 N012 Ideal2
+G4 E_2 N012 VCC E_2 table=(0 250m,1.42 243m,1.46 150m,1.57 0)
+C3 N001 E_1 5p
+C4 N012 E_2 5p
+D9 N015 RT Ideal
+R7 GND CT 1e7
+R8 E_2 GND 1e7
+R9 E_1 GND 1e7
+G5 VCC GND VCC GND TABLE=(1 0,5 4.5m,6.85 7.6m,40 8.4m)
+I2 GND Vref 25m
+D10 GND Vref Ideal3
+B1 VCC GND I=I(D10)+25m
+R10 OC N007 1k
+R11 N006 CT 5k
+C5 GND N006 10p
+E2 N017 GND N010 -IN2 table=(0,0 1.96m,0 2m,2 2.04m,4 20m,4.5)
+.Model Idealz D(Ron=0 Roff=20meg Vfwd=0 Vrev=41)
+.Model Ideal D(Ron=0 Roff=1G Vfwd=0)
+.Model Osc Sw(Ron=10 Vt=1.51 Vh=1.49 Ilimit=20m)
+.MODEL Ideal1 D(Ron=2 Roff=1G Vfwd=0.66)
+.Model Ideal2 D(Ron=175 Roff=1G Vfwd=0)
+.Model Ideal3 D(Ron=0 Roff=1G Vfwd=0 Vrev=5)
+.ends

@@ -180,10 +180,10 @@ D2 N005 N009 1N4148
 Q1 N002 2 N001 0 N temp=27
 R2 N001 1 10.06K
 Q3 3 N007 2 0 NP
-I2 3 N002 55µ
+I2 3 N002 55 
 Q7 3 N002 N006 0 NA
 Q12 2 N006 N007 0 PA
-I1 N006 2 100µ
+I1 N006 2 100 
 D1 N007 3 D
 G1 N007 3 3 2 table( 4 0 8.5 .72m)
 R3 3 N007 100K
@@ -881,7 +881,7 @@ RI OUT 4 100MEG
 .subckt LM317Psp 1 2 3
 X1 1 2 3 LM117PSp
 .ends
-..............................................................................
+
 *
 .SUBCKT LM317    1    2    3
 D4            4   3  D_Z6V0
@@ -1494,7 +1494,7 @@ V1 N016 0 20
 R9 N016 REF 3.6k  
 Q7b N008 N008 REF 0 P
 Q7a N003 N008 REF 0 P
-R10 MINUS 0 1µ
+R10 MINUS 0 1 
 C3 REF N002 20p
 C1 N006 N004 30p
 .model N NPN(BF=125 Cje=.5p Cjc=.5p Rb=500 NF=1.074)

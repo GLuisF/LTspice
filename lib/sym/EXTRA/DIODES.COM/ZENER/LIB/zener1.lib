@@ -1,0 +1,32 @@
+* SRC=1N4728A;DI_1N4728A;Diodes;Zener <=10V; 3.30V  1.00W   Diodes Inc.
+.SUBCKT DI_1N4728A  1 2
+*       Terminals   A K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 0.972
+.MODEL DF D ( IS=125p RS=0.620 N=1.10
++ CJO=364p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=25.0f RS=1.24 N=3.00 )
+.ENDS
+
+* SRC=SMAZ8V2;DI_SMAZ8V2;Diodes;Zener <=10V; 8.20V  1.00W   Diodes Inc.
+.SUBCKT DI_SMAZ8V2  1 2
+*       Terminals   A K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 7.04
+.MODEL DF D ( IS=50.2p RS=0.851 N=1.10
++ CJO=794p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=10.0f RS=0.115 N=1.49 )
+.ENDS
+
+* SRC=SMAZ9V1;DI_SMAZ9V1;Diodes;Zener <=10V; 9.10V  1.00W   Diodes Inc.
+.SUBCKT DI_SMAZ9V1  1 2
+*       Terminals   A K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 8.30
+.MODEL DF D ( IS=45.3p RS=0.836 N=1.10
++ CJO=661p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=9.05f RS=0.161 N=1.04 )
+.ENDS

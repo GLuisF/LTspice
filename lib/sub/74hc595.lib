@@ -1,0 +1,38 @@
+.subckt 74hc595 _OE RCLK SER _SRCLR SRCLK _QH QA QB QC QD QE QF QG QH VCC VGND  vcc1={vcc} speed1={speed} tripdt1={tripdt}
+.param vcc=5 speed=1 tripdt=1e-9
+.param vcc1={vcc} speed1={speed} tripdt1={tripdt}
+.param td1=1e-9*(11-3-3)*4.0/({vcc1}-0.5)*{speed1}
+.param td2=1e-9*(14+4-3-3)*4.0/({vcc1}-0.5)*{speed1}
+A1 si 0 sck sclr 0 0 qi1 0 DFLOP td={td1}
+A2 qi1 0 sck sclr 0 0 qi2 0 DFLOP td={td1}
+A3 qi2 0 sck sclr 0 0 qi3 0 DFLOP td={td1}
+A4 qi3 0 sck sclr 0 0 qi4 0 DFLOP td={td1}
+A5 qi4 0 sck sclr 0 0 qi5 0 DFLOP td={td1}
+A6 qi5 0 sck sclr 0 0 qi6 0 DFLOP td={td1}
+A7 qi6 0 sck sclr 0 0 qi7 0 DFLOP td={td1}
+A8 qi7 0 sck sclr 0 0 qi8 0 DFLOP td={td1}
+A9 qi1 0 rck sclr 0 0 QAx 0 DFLOP td={td1}
+A10 qi2 0 rck sclr 0 0 QBx 0 DFLOP td={td1}
+A11 qi3 0 rck sclr 0 0 QCx 0 DFLOP td={td1}
+A12 qi4 0 rck sclr 0 0 QDx 0 DFLOP td={td1}
+A13 qi5 0 rck sclr 0 0 QEx 0 DFLOP td={td1}
+A14 qi6 0 rck sclr 0 0 QFx 0 DFLOP td={td1}
+A15 qi7 0 rck sclr 0 0 QGx 0 DFLOP td={td1}
+A16 qi8 0 rck sclr 0 0 QHx 0 DFLOP td={td1}
+XU1 SER si VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU2 SRCLK sck VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU3 _SRCLR N001 VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU4 RCLK rck VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU5 oei QAx QA VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU6 oei QBx QB VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU7 oei QCx QC VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU8 oei QDx QD VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU9 oei QEx QE VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU10 oei QFx QF VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU11 oei QGx QG VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU12 oei QHx QH VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU13 oei qi8 _QH VCC 0 74HC_OUT_TS_2X vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+XU14 _OE N002 VCC 0 74hc_IN_1 vcc2={vcc1} speed2={speed1} tripdt2={tripdt1}
+A17 N001 0 0 0 0 sclr 0 0 BUF
+A18 N002 0 0 0 0 oei 0 0 BUF
+.ends
